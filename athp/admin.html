@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aestyve Admin — 관리자</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:   #1A2755;
+      --accent:    #4F7EF7;
+      --white:     #ffffff;
+      --bg:        #f4f6fb;
+      --sidebar-w: 240px;
+      --gray-100:  #f0f2f8;
+      --gray-200:  #e2e5ef;
+      --gray-600:  #555c78;
+      --border:    #dde1ef;
+      --radius:    8px;
+      --shadow:    0 2px 12px rgba(26,39,85,.1);
+      --danger:    #dc2626;
+      --success:   #16a34a;
+    }
+    html, body { height: 100%; font-family: 'Inter','Noto Sans KR',sans-serif; background: var(--bg); color: var(--primary); font-size: 14px; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; }
+    input, textarea, select { font-family: inherit; }
+
+    /* ── Layout ── */
+    .admin-layout { display: flex; min-height: 100vh; }
+
+    /* Sidebar */
+    #sidebar {
+      width: var(--sidebar-w);
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      z-index: 50;
+      overflow-y: auto;
+    }
+    .sidebar-logo {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar-logo img { height: 32px; filter: brightness(0) invert(1); opacity: .9; }
+    .sidebar-logo span { font-size: .75rem; font-weight: 600; opacity: .6; text-transform: uppercase; letter-spacing: .08em; }
+    .sidebar-nav { flex: 1; padding: 16px 0; }
+    .nav-group { padding: 8px 0; }
+    .nav-group-label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      padding: 8px 20px 4px;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      font-size: .85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.7);
+      border-radius: 0;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+    .sidebar-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .sidebar-link.active { background: rgba(79,126,247,.25); color: #fff; border-left: 3px solid var(--accent); }
+    .sidebar-link i { width: 18px; text-align: center; opacity: .8; }
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .75rem;
+      color: rgba(255,255,255,.3);
+    }
+
+    /* Main */
+    #admin-main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Topbar */
+    #topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    #topbar h2 { font-size: 1rem; font-weight: 700; }
+    .topbar-actions { display: flex; gap: 8px; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      border: 1.5px solid transparent;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: #2F3C86; }
+    .btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-accent:hover { background: #3d6be0; }
+    .btn-outline { background: transparent; color: var(--primary); border-color: var(--border); }
+    .btn-outline:hover { background: var(--gray-100); }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-danger:hover { background: #b91c1c; }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-success:hover { background: #15803d; }
+
+    /* Content Area */
+    #admin-content { padding: 28px; flex: 1; }
+
+    /* Panel */
+    .panel {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .panel-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .panel-title {
+      font-size: .9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel-title i { color: var(--accent); }
+    .panel-body { padding: 20px; }
+
+    /* Form */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid.full { grid-template-columns: 1fr; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group.span2 { grid-column: span 2; }
+    .form-label {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-size: .85rem;
+      color: var(--primary);
+      background: var(--white);
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-control:focus { border-color: var(--accent); }
+    textarea.form-control { resize: vertical; min-height: 80px; }
+    .form-note { font-size: .72rem; color: var(--gray-600); margin-top: 2px; }
+
+    /* Lang Tabs */
+    .lang-tabs { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
+    .lang-tab {
+      padding: 5px 12px;
+      font-size: .75rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .lang-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .lang-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* Toggle Switch */
+    .toggle-wrap { display: flex; align-items: center; gap: 10px; }
+    .toggle-label { font-size: .85rem; font-weight: 500; }
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: var(--gray-200);
+      border-radius: 999px;
+      transition: .3s;
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: .3s;
+    }
+    .toggle input:checked + .toggle-slider { background: var(--accent); }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+    /* List (Hero/Cat/Product/Review) */
+    .item-list { display: flex; flex-direction: column; gap: 12px; }
+    .item-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg);
+      transition: border-color .2s;
+    }
+    .item-card:hover { border-color: var(--accent); }
+    .item-color-block {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .item-info { flex: 1; min-width: 0; }
+    .item-title { font-size: .88rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .item-meta { font-size: .72rem; color: var(--gray-600); margin-top: 2px; }
+    .item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .btn-sm {
+      padding: 5px 12px;
+      font-size: .75rem;
+      border-radius: 5px;
+    }
+
+    /* Modal */
+    #modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #modal-overlay.open { display: flex; }
+    #modal-box {
+      background: var(--white);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    #modal-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #modal-title { font-size: 1rem; font-weight: 700; }
+    #modal-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--gray-600);
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    #modal-close:hover { color: var(--danger); }
+    #modal-body { padding: 20px; }
+    #modal-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    /* Toast */
+    #admin-toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      min-width: 200px;
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      font-size: .85rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--success);
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+    }
+    #admin-toast.error { background: var(--danger); }
+    #admin-toast.show { opacity: 1; transform: translateY(0); }
+
+    /* Section View */
+    .section-view { display: none; }
+    .section-view.active { display: block; }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-card .num { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
+    .stat-card .lbl { font-size: .72rem; color: var(--gray-600); margin-top: 4px; }
+
+    /* Color input */
+    .color-row { display: flex; align-items: center; gap: 8px; }
+    .color-row input[type=color] { width: 36px; height: 36px; border: none; border-radius: 4px; cursor: pointer; padding: 0; }
+    .color-row input[type=text] { flex: 1; }
+
+    /* Import/Export area */
+    .json-area {
+      width: 100%;
+      min-height: 200px;
+      font-family: monospace;
+      font-size: .8rem;
+      padding: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      resize: vertical;
+      background: #f8f9fc;
+      color: var(--primary);
+    }
+    .json-area:focus { border-color: var(--accent); outline: none; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 3px; }
+
+    @media (max-width: 900px) {
+      #sidebar { width: 0; transform: translateX(-100%); transition: transform .3s; }
+      #sidebar.open { width: var(--sidebar-w); transform: translateX(0); }
+      #admin-main { margin-left: 0; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.span2 { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside id="sidebar">
+    <div class="sidebar-logo">
+      <img src="images/logo.png" alt="Aestyve" />
+      <span>Admin</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label">대시보드</div>
+        <button class="sidebar-link active" data-section="dashboard"><i class="fas fa-home"></i> 대시보드</button>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">콘텐츠</div>
+        <button class="sidebar-link" data-section="settings"><i class="fas fa-cog"></i> 사이트 설정</button>
+        <button class="sidebar-link" data-section="hero"><i class="fas fa-images"></i> 히어로 배너</button>
+        <button class="sidebar-link" data-section="categories"><i class="fas fa-th-large"></i> 카테고리</button>
+        <button class="sidebar-link" data-section="products"><i class="fas fa-box"></i> 제품</button>
+        <button class="sidebar-link" data-section="reviews"><i class="fas fa-star"></i> 리뷰</button>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">데이터</div>
+        <button class="sidebar-link" data-section="data"><i class="fas fa-database"></i> Import/Export</button>
+      </div>
+    </nav>
+    <div class="sidebar-footer">v2.0 &copy; 2025 Aestyve</div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div id="admin-main">
+    <!-- Topbar -->
+    <div id="topbar">
+      <h2 id="topbar-title"><i class="fas fa-home" style="margin-right:8px;color:var(--accent)"></i>대시보드</h2>
+      <div class="topbar-actions">
+        <a href="index.html" target="_blank" class="btn btn-outline"><i class="fas fa-external-link-alt"></i> 홈페이지</a>
+        <button class="btn btn-success" id="save-all-btn"><i class="fas fa-save"></i> 저장</button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div id="admin-content">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="section-view active" id="section-dashboard">
+        <div class="stats-row" id="dash-stats">
+          <div class="stat-card"><div class="num" id="dash-hero-count">-</div><div class="lbl">히어로 배너</div></div>
+          <div class="stat-card"><div class="num" id="dash-cat-count">-</div><div class="lbl">카테고리</div></div>
+          <div class="stat-card"><div class="num" id="dash-prod-count">-</div><div class="lbl">제품</div></div>
+          <div class="stat-card"><div class="num" id="dash-rev-count">-</div><div class="lbl">리뷰</div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-info-circle"></i> 사용 방법</span>
+          </div>
+          <div class="panel-body">
+            <p style="font-size:.85rem;line-height:1.8;color:var(--gray-600);">
+              1. 사이드바에서 수정할 섹션을 선택하세요.<br/>
+              2. 내용을 편집 후 <strong>저장</strong> 버튼을 클릭하세요.<br/>
+              3. 변경된 내용은 브라우저의 localStorage에 즉시 저장됩니다.<br/>
+              4. 다른 사용자에게도 반영하려면 <strong>Import/Export</strong> 메뉴에서 JSON을 다운로드 후<br/>
+              &nbsp;&nbsp;&nbsp;GitHub 저장소의 <code>data/content.json</code>을 교체하세요 (Vercel이 자동 재배포).<br/>
+              5. <strong>Reset</strong> 버튼은 기본값으로 되돌립니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="section-view" id="section-settings">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-cog"></i> 사이트 기본 설정</span>
+            <button class="btn btn-primary btn-sm" onclick="saveSection('settings')"><i class="fas fa-save"></i> 저장</button>
+          </div>
+          <div class="panel-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">브랜드명</label>
+                <input type="text" class="form-control" id="set-brandName" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">주요 색상 (Primary)</label>
+                <div class="color-row">
+                  <input type="color" id="set-primaryColorPicker" oninput="document.getElementById('set-primaryColor').value=this.value" />
+                  <input type="text" class="form-control" id="set-primaryColor" placeholder="#1A2755" oninput="document.getElementById('set-primaryColorPicker').value=this.value" />
+                </div>
+              </div>
+
+              <!-- 공지 바 -->
+              <div class="form-group span2">
+                <label class="form-label">공지 바</label>
+                <div class="toggle-wrap" style="margin-bottom:10px;">
+                  <label class="toggle"><input type="checkbox" id="set-noticeVisible" /><span class="toggle-slider"></span></label>
+                  <span class="toggle-label">공지 바 표시</span>
+                </div>
+                <div id="notice-lang-fields"></div>
+              </div>
+
+              <!-- 슬로건 -->
+              <div class="form-group span2">
+                <label class="form-label">슬로건 (언어별)</label>
+                <div id="slogan-lang-fields"></div>
+              </div>
+
+              <!-- 브랜드 스토리 -->
+              <div class="form-group span2">
+                <label class="form-label">브랜드 스토리 (언어별)</label>
+                <div id="story-lang-fields"></div>
+              </div>
+
+              <!-- 통계 -->
+              <div class="form-group span2">
+                <label class="form-label">통계 수치 3개</label>
+                <div id="stats-fields"></div>
+              </div>
+
+              <!-- 연락처 -->
+              <div class="form-group">
+                <label class="form-label">전화번호</label>
+                <input type="text" class="form-control" id="set-phone" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">이메일</label>
+                <input type="email" class="form-control" id="set-email" />
+              </div>
+              <div class="form-group span2">
+                <label class="form-label">주소</label>
+                <input type="text" class="form-control" id="set-address" />
+              </div>
+
+              <!-- SNS -->
+              <div class="form-group">
+                <label class="form-label">Instagram URL</label>
+                <input type="url" class="form-control" id="set-instagram" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">YouTube URL</label>
+                <input type="url" class="form-control" id="set-youtube" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Facebook URL</label>
+                <input type="url" class="form-control" id="set-facebook" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">TikTok URL</label>
+                <input type="url" class="form-control" id="set-tiktok" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── HERO ── -->
+      <div class="section-view" id="section-hero">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-images"></i> 히어로 배너</span>
+            <button class="btn btn-primary btn-sm" onclick="openAddModal('hero')"><i class="fas fa-plus"></i> 추가</button>
+          </div>
+          <div class="panel-body">
+            <div class="item-list" id="hero-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CATEGORIES ── -->
+      <div class="section-view" id="section-categories">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-th-large"></i> 카테고리</span>
+            <button class="btn btn-primary btn-sm" onclick="openAddModal('category')"><i class="fas fa-plus"></i> 추가</button>
+          </div>
+          <div class="panel-body">
+            <div class="item-list" id="category-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRODUCTS ── -->
+      <div class="section-view" id="section-products">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-box"></i> 제품</span>
+            <button class="btn btn-primary btn-sm" onclick="openAddModal('product')"><i class="fas fa-plus"></i> 추가</button>
+          </div>
+          <div class="panel-body">
+            <div class="item-list" id="product-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── REVIEWS ── -->
+      <div class="section-view" id="section-reviews">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-star"></i> 리뷰</span>
+            <button class="btn btn-primary btn-sm" onclick="openAddModal('review')"><i class="fas fa-plus"></i> 추가</button>
+          </div>
+          <div class="panel-body">
+            <div class="item-list" id="review-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DATA ── -->
+      <div class="section-view" id="section-data">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-download"></i> Export JSON</span>
+          </div>
+          <div class="panel-body">
+            <p style="font-size:.82rem;color:var(--gray-600);margin-bottom:12px;">
+              현재 편집된 전체 데이터를 JSON으로 다운로드합니다.<br/>
+              이 파일을 GitHub 저장소의 <code>data/content.json</code>에 업로드하면 사이트에 반영됩니다.
+            </p>
+            <div style="display:flex;gap:8px;margin-bottom:16px;">
+              <button class="btn btn-accent" onclick="exportJson()"><i class="fas fa-download"></i> JSON 다운로드</button>
+              <button class="btn btn-outline" onclick="showJsonPreview()"><i class="fas fa-eye"></i> 미리보기</button>
+            </div>
+            <textarea class="json-area" id="json-preview" placeholder="'미리보기' 버튼을 클릭하면 JSON이 여기 표시됩니다." readonly></textarea>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-upload"></i> Import JSON</span>
+          </div>
+          <div class="panel-body">
+            <p style="font-size:.82rem;color:var(--gray-600);margin-bottom:12px;">
+              JSON 파일을 선택하거나 아래 텍스트박스에 직접 붙여넣고 Import 버튼을 클릭하세요.
+            </p>
+            <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center;">
+              <input type="file" id="import-file" accept=".json" style="font-size:.8rem;" />
+              <button class="btn btn-accent" onclick="importFromFile()"><i class="fas fa-file-import"></i> 파일 Import</button>
+            </div>
+            <textarea class="json-area" id="import-text" placeholder="또는 여기에 JSON을 직접 붙여넣으세요..."></textarea>
+            <div style="margin-top:12px;display:flex;gap:8px;">
+              <button class="btn btn-primary" onclick="importFromText()"><i class="fas fa-check"></i> 텍스트 Import</button>
+              <button class="btn btn-danger" onclick="resetToDefault()"><i class="fas fa-undo"></i> 기본값 Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /admin-content -->
+  </div><!-- /admin-main -->
+</div><!-- /admin-layout -->
+
+<!-- ── Modal ── -->
+<div id="modal-overlay">
+  <div id="modal-box">
+    <div id="modal-header">
+      <span id="modal-title">편집</span>
+      <button id="modal-close" onclick="closeModal()" aria-label="닫기">✕</button>
+    </div>
+    <div id="modal-body"></div>
+    <div id="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal()">취소</button>
+      <button class="btn btn-primary" id="modal-save-btn" onclick="saveModal()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="admin-toast"></div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
