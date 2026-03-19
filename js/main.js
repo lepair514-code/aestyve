@@ -173,80 +173,54 @@ function renderNav(navItems) {
   }
 }
 
-/* ─── Hero Slider ─── */
+/* ─── Hero Video (단일 비디오 배너) ─── */
 function renderHero(heroes) {
-  if (!heroes?.length) return;
-  const track = $('#hero-track');
-  const dotsWrap = $('#hero-dots');
-  if (!track || !dotsWrap) return;
+  const videoWrap = $('#hero-video-wrap');
+  const overlay   = $('#hero-overlay');
+  if (!videoWrap || !overlay) return;
 
-  // Slides
-  track.innerHTML = heroes.map((h, i) => {
-    const titleLines = t(h.title) || '';
-    // 배경 미디어: 동영상 > 이미지 > 색상
-    let bgMedia = '';
-    if (h.bgVideo) {
-      bgMedia = `<video class="hero-bg-media" autoplay muted loop playsinline src="${h.bgVideo}"></video>`;
-    } else if (h.bgImage) {
-      bgMedia = `<img class="hero-bg-media" src="${h.bgImage}" alt="" aria-hidden="true" />`;
-    }
-    const bgStyle = (h.bgVideo || h.bgImage) ? '' : `background:${h.bgColor || '#1A2755'};`;
-    return `
-    <div class="hero-slide" role="group" aria-label="슬라이드 ${i+1}" data-idx="${i}">
-      <div class="hero-bg-block" style="${bgStyle}">${bgMedia}</div>
-      <div class="hero-deco" style="background:${h.accentColor || '#4F7EF7'};${(h.bgVideo||h.bgImage)?'opacity:.35;':''}"></div>
-      <div class="hero-deco2" style="background:${h.accentColor || '#4F7EF7'};${(h.bgVideo||h.bgImage)?'opacity:.25;':''}"></div>
-      <div class="container">
-        <div class="hero-content">
-          <span class="hero-label" style="background:${h.accentColor || '#4F7EF7'}22;color:${h.accentColor || '#A8B9FF'};">
-            ${t(h.label)}
-          </span>
-          <h1 class="hero-title" style="color:#ffffff;">${(titleLines).replace(/\n/g,'<br/>')}</h1>
-          <p class="hero-subtitle" style="color:rgba(255,255,255,.75);">${t(h.subtitle)}</p>
-          <a href="${h.btnHref || '#'}" class="hero-btn"
-             style="color:${h.accentColor || '#A8B9FF'};border-color:${h.accentColor || '#A8B9FF'};">
-            ${t(h.btnText)} <span>&#8594;</span>
-          </a>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+  // 히어로 데이터: 첫 번째 항목만 사용 (단일 배너)
+  const h = (heroes && heroes.length > 0) ? heroes[0] : null;
 
-  // Dots
-  dotsWrap.innerHTML = heroes.map((_, i) =>
-    `<button class="hero-dot${i===0?' active':''}" role="tab" aria-label="슬라이드 ${i+1} 선택" data-idx="${i}"></button>`
-  ).join('');
-  $$('.hero-dot', dotsWrap).forEach(dot => {
-    dot.addEventListener('click', () => goHero(parseInt(dot.dataset.idx)));
-  });
+  /* ── 배경 미디어 렌더 ── */
+  let bgHtml = '';
+  if (h && h.bgVideo) {
+    // Base64 또는 URL 동영상 — 최대 1GB 지원(브라우저 ObjectURL 방식)
+    bgHtml = `<video id="hero-video"
+        class="hero-video-full"
+        autoplay muted loop playsinline
+        preload="auto"
+        src="${h.bgVideo}"></video>`;
+  } else if (h && h.bgImage) {
+    bgHtml = `<img id="hero-image" class="hero-video-full" src="${h.bgImage}" alt="" aria-hidden="true" />`;
+  } else {
+    // 데이터 없을 때 기본 색상 블록
+    const bgColor = (h && h.bgColor) || '#1A2755';
+    bgHtml = `<div class="hero-video-full" style="background:${bgColor};"></div>`;
+  }
+  videoWrap.innerHTML = bgHtml;
 
-  goHero(0);
-  startHeroAuto();
+  /* ── 오버레이 텍스트 ── */
+  if (h) {
+    const accent = h.accentColor || '#A8B9FF';
+    const titleLines = (t(h.title) || '').replace(/\n/g, '<br/>');
+    overlay.innerHTML = `
+      <div class="hero-overlay-inner">
+        ${t(h.label) ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
+        ${titleLines ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
+        ${t(h.subtitle) ? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
+        ${t(h.btnText) ? `<a href="${h.btnHref || '#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
+      </div>`;
+    overlay.style.display = '';
+  } else {
+    overlay.style.display = 'none';
+  }
 }
 
-function goHero(idx) {
-  const heroes = STATE.content?.heroes;
-  if (!heroes) return;
-  const count = heroes.length;
-  idx = ((idx % count) + count) % count;
-  STATE.heroIdx = idx;
+/* 슬라이더 관련 함수 — 단일 비디오 모드에서는 미사용 (하위 호환 유지) */
+function goHero()       {}
+function startHeroAuto(){}
 
-  const track = $('#hero-track');
-  if (track) track.style.transform = `translateX(-${idx * 100}%)`;
-
-  $$('.hero-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === idx);
-    d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
-  });
-}
-
-function startHeroAuto() {
-  clearInterval(STATE.heroTimer);
-  STATE.heroTimer = setInterval(() => {
-    const count = STATE.content?.heroes?.length || 1;
-    goHero((STATE.heroIdx + 1) % count);
-  }, 5500);
-}
 
 /* ─── Categories ─── */
 function renderCategories(cats) {
@@ -521,11 +495,9 @@ function init() {
   initLang();
   renderLangSwitcher();
   initFilters();
-  initHeroNav();
   initReviewNav();
   initHeaderScroll();
   initHamburger();
-  initHeroSwipe();
   loadContent();
 }
 

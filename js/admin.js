@@ -318,26 +318,44 @@ function handleFileUpload(id, mediaType, input) {
   const file = input.files[0];
   if (!file) return;
 
-  const maxSize = mediaType === 'video' ? 50 * 1024 * 1024 : 10 * 1024 * 1024;
+  // 동영상: 최대 1GB / 이미지: 최대 10MB
+  const maxSize = mediaType === 'video' ? 1024 * 1024 * 1024 : 10 * 1024 * 1024;
   if (file.size > maxSize) {
-    toast('파일 크기가 너무 큽니다. (' + (mediaType === 'video' ? '50MB' : '10MB') + ' 이하)', 'error');
+    toast('파일 크기가 너무 큽니다. (' + (mediaType === 'video' ? '1GB' : '10MB') + ' 이하)', 'error');
     input.value = '';
     return;
   }
 
+  // 동영상은 ObjectURL로 처리 (Base64 메모리 오버플로 방지)
+  if (mediaType === 'video') {
+    const objectUrl = URL.createObjectURL(file);
+    const hidden = document.getElementById('m-media-' + id);
+    if (hidden) {
+      // ObjectURL을 값으로 저장 (탭 세션 내 유효)
+      hidden.value = objectUrl;
+      // 파일 객체도 별도 보관 (저장 시 Blob으로 처리)
+      hidden.dataset.objectUrl = objectUrl;
+      hidden.dataset.fileName = file.name;
+    }
+    const preview = document.getElementById('upload-preview-' + id);
+    if (preview) {
+      preview.innerHTML = '<video src="' + objectUrl + '" class="upload-preview-img" controls muted playsinline></video>';
+    }
+    const box = document.getElementById('upload-box-' + id);
+    if (box) box.classList.add('has-file');
+    toast('✅ ' + file.name + ' (' + (file.size / (1024*1024)).toFixed(1) + 'MB) 로드 완료! 저장 버튼을 눌러 적용하세요.');
+    return;
+  }
+
+  // 이미지는 기존 Base64 방식
   const reader = new FileReader();
   reader.onload = function(e) {
     const base64 = e.target.result;
     const hidden = document.getElementById('m-media-' + id);
     if (hidden) hidden.value = base64;
-
     const preview = document.getElementById('upload-preview-' + id);
     if (preview) {
-      if (mediaType === 'video') {
-        preview.innerHTML = '<video src="' + base64 + '" class="upload-preview-img" controls muted playsinline></video>';
-      } else {
-        preview.innerHTML = '<img src="' + base64 + '" class="upload-preview-img" alt="미리보기" />';
-      }
+      preview.innerHTML = '<img src="' + base64 + '" class="upload-preview-img" alt="미리보기" />';
     }
     const box = document.getElementById('upload-box-' + id);
     if (box) box.classList.add('has-file');
@@ -374,7 +392,7 @@ function mediaUploadField(id, label, currentSrc, accept) {
     previewHtml = '<div class="upload-placeholder"><span>' + (isVideo ? '🎬' : '🖼️') + '</span><p>' + (isVideo ? '동영상 없음' : '이미지 없음') + '</p></div>';
   }
 
-  const hint = isVideo ? 'MP4, WebM (최대 50MB)' : 'JPG, PNG, GIF, WebP (최대 10MB)';
+  const hint = isVideo ? 'MP4, WebM (최대 1GB — ObjectURL 방식)' : 'JPG, PNG, GIF, WebP (최대 10MB)';
   const hasFile = currentSrc ? ' has-file' : '';
   const clearBtn = currentSrc
     ? '<button type="button" class="btn btn-danger btn-sm" style="margin-top:6px;" onclick="clearMedia(\'' + id + '\')">🗑️ 제거</button>'
@@ -431,11 +449,16 @@ function buildModal(type, item) {
   };
 
   if (type === 'hero') {
+    // 단일 비디오 배너 — 동영상 우선, 이미지 대체 지원
     html =
-      mediaUploadField('heroImg',   '배경 이미지 (없으면 배경색 사용)',         item && item.bgImage || '', 'image/*') +
-      mediaUploadField('heroVideo', '배경 동영상 🎬 (업로드 시 이미지보다 우선)', item && item.bgVideo || '', 'video/mp4,video/webm') +
+      '<div class="form-group" style="background:#eef2ff;border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:.82rem;color:#374151;">' +
+        '<strong>💡 히어로 배너</strong>는 동영상 1개를 전체화면으로 표시합니다.<br/>' +
+        '동영상이 없으면 이미지, 이미지도 없으면 배경색이 표시됩니다.' +
+      '</div>' +
+      mediaUploadField('heroVideo', '🎬 배경 동영상 (MP4/WebM, 최대 1GB — 권장)', item && item.bgVideo || '', 'video/mp4,video/webm') +
+      mediaUploadField('heroImg',   '🖼️ 대체 이미지 (동영상 없을 때 표시)',         item && item.bgImage || '', 'image/*') +
       lc('bgColor', '배경 색상 (이미지/동영상 없을 때)', item && item.bgColor || '#1A2755') +
-      lc('accentColor', '강조 색상', item && item.accentColor || '#4F7EF7') +
+      lc('accentColor', '강조 색상 (텍스트/버튼)', item && item.accentColor || '#4F7EF7') +
       langFields('label',    item && item.label) +
       langFields('title',    item && item.title,    true) +
       langFields('subtitle', item && item.subtitle) +
@@ -522,10 +545,12 @@ function saveModal() {
   let obj = {};
 
   if (type === 'hero') {
+    // 동영상: ObjectURL은 세션 내 로컬 URL이므로 저장 시 그대로 보관
+    // (새로고침 후에는 재업로드 필요 — Vercel 무료플랜 파일 저장 한계)
     obj = {
       id:          (idx >= 0 ? items[idx] && items[idx].id : null) || uid(),
-      bgImage:     mediaVal('heroImg',   items[idx] && items[idx].bgImage),
       bgVideo:     mediaVal('heroVideo', items[idx] && items[idx].bgVideo),
+      bgImage:     mediaVal('heroImg',   items[idx] && items[idx].bgImage),
       bgColor:     val('bgColor'),
       accentColor: val('accentColor'),
       label:       collectLang('label'),
