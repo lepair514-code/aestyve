@@ -185,16 +185,30 @@ function renderHero(heroes) {
   /* ── 배경 미디어 렌더 ── */
   let bgHtml = '';
   if (h && h.bgVideo) {
-    // Base64 또는 URL 동영상 — 최대 1GB 지원(브라우저 ObjectURL 방식)
-    bgHtml = `<video id="hero-video"
-        class="hero-video-full"
-        autoplay muted loop playsinline
-        preload="auto"
-        src="${h.bgVideo}"></video>`;
+    const src = h.bgVideo;
+
+    // YouTube URL 감지 → iframe embed 처리
+    const ytMatch = src.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    if (ytMatch) {
+      const videoId = ytMatch[1];
+      bgHtml = `<iframe id="hero-video"
+          class="hero-video-full"
+          src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen></iframe>`;
+    } else {
+      // 직접 MP4/WebM URL 또는 ObjectURL
+      bgHtml = `<video id="hero-video"
+          class="hero-video-full"
+          autoplay muted loop playsinline
+          preload="auto"
+          src="${src}"></video>`;
+    }
   } else if (h && h.bgImage) {
     bgHtml = `<img id="hero-image" class="hero-video-full" src="${h.bgImage}" alt="" aria-hidden="true" />`;
   } else {
-    // 데이터 없을 때 기본 색상 블록
+    // 데이터 없거나 배경색만 있을 때
     const bgColor = (h && h.bgColor) || '#1A2755';
     bgHtml = `<div class="hero-video-full" style="background:${bgColor};"></div>`;
   }
@@ -220,6 +234,7 @@ function renderHero(heroes) {
 /* 슬라이더 관련 함수 — 단일 비디오 모드에서는 미사용 (하위 호환 유지) */
 function goHero()       {}
 function startHeroAuto(){}
+
 
 
 /* ─── Categories ─── */

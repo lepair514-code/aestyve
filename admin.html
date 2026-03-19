@@ -421,6 +421,79 @@
     .upload-hint-sub { font-size: .7rem; color: var(--gray-600); font-weight: 400; }
     .form-note { font-size: .72rem; color: var(--gray-600); margin-top: 4px; }
 
+    /* ── Media Tabs (파일 업로드 ↔ URL 입력) ── */
+    .media-field-wrap { /* 래퍼 */ }
+    .media-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .media-tab {
+      flex: 1;
+      padding: 7px 10px;
+      font-size: .78rem;
+      font-weight: 600;
+      background: var(--gray-100);
+      border: none;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .media-tab:first-child { border-right: 1px solid var(--border); }
+    .media-tab.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .media-tab:hover:not(.active) { background: #e8ecf8; color: var(--primary); }
+
+    /* URL 입력 행 */
+    .url-input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .url-media-input {
+      flex: 1;
+      font-size: .82rem;
+    }
+    .url-apply-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* URL 호스팅 가이드 */
+    .url-source-hints {
+      background: #f8faff;
+      border: 1px solid #d0d9f7;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-top: 4px;
+    }
+    .url-hint-title {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 0 6px;
+    }
+    .url-hint-list {
+      margin: 0;
+      padding-left: 16px;
+      font-size: .74rem;
+      color: var(--gray-700);
+      line-height: 1.8;
+    }
+    .url-hint-list code {
+      background: #e8ecf8;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: .71rem;
+      word-break: break-all;
+    }
+
     /* Import/Export area */
     .json-area {
       width: 100%;

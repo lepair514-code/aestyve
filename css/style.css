@@ -178,6 +178,17 @@ img { display: block; max-width: 100%; }
   object-position: center;
   pointer-events: none;
 }
+/* YouTube iframe — cover 효과 (가로세로비 유지하며 확대) */
+#hero-video-wrap iframe.hero-video-full {
+  width: 177.78vh;   /* 16/9 × 100vh */
+  height: 56.25vw;  /* 9/16 × 100vw */
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: unset;
+}
 
 /* 어두운 그라디언트 오버레이 (텍스트 가독성) */
 #hero::after {

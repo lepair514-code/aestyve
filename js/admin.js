@@ -313,7 +313,7 @@ function closeModal() {
   modalCtx = null;
 }
 
-/* ─── 파일 업로드 → Base64 변환 ─── */
+/* ─── 파일 업로드 핸들러 ─── */
 function handleFileUpload(id, mediaType, input) {
   const file = input.files[0];
   if (!file) return;
@@ -331,9 +331,7 @@ function handleFileUpload(id, mediaType, input) {
     const objectUrl = URL.createObjectURL(file);
     const hidden = document.getElementById('m-media-' + id);
     if (hidden) {
-      // ObjectURL을 값으로 저장 (탭 세션 내 유효)
       hidden.value = objectUrl;
-      // 파일 객체도 별도 보관 (저장 시 Blob으로 처리)
       hidden.dataset.objectUrl = objectUrl;
       hidden.dataset.fileName = file.name;
     }
@@ -347,7 +345,7 @@ function handleFileUpload(id, mediaType, input) {
     return;
   }
 
-  // 이미지는 기존 Base64 방식
+  // 이미지는 Base64 방식
   const reader = new FileReader();
   reader.onload = function(e) {
     const base64 = e.target.result;
@@ -369,18 +367,81 @@ function clearMedia(id) {
   const hidden = document.getElementById('m-media-' + id);
   if (hidden) hidden.value = '__clear__';
   const preview = document.getElementById('upload-preview-' + id);
-  if (preview) preview.innerHTML = '<div class="upload-placeholder"><span>🖼️</span><p>이미지 없음</p></div>';
+  if (preview) preview.innerHTML = '<div class="upload-placeholder"><span>🖼️</span><p>미디어 없음</p></div>';
   const box = document.getElementById('upload-box-' + id);
   if (box) box.classList.remove('has-file');
   const fileInput = document.getElementById('m-file-' + id);
   if (fileInput) fileInput.value = '';
-  toast('이미지가 제거됩니다. 저장 버튼을 눌러주세요.');
+  // URL 입력창도 초기화
+  const urlInput = document.getElementById('m-url-' + id);
+  if (urlInput) urlInput.value = '';
+  toast('미디어가 제거됩니다. 저장 버튼을 눌러주세요.');
 }
 window.clearMedia = clearMedia;
 
-/* ─── 업로드 박스 HTML 생성 헬퍼 ─── */
+/* ─── URL 입력 → 미리보기 적용 ─── */
+function applyMediaUrl(id, mediaType) {
+  const urlInput = document.getElementById('m-url-' + id);
+  if (!urlInput) return;
+  const url = urlInput.value.trim();
+  if (!url) { toast('URL을 입력해주세요.', 'error'); return; }
+
+  // 간단한 URL 유효성 체크
+  if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('//')) {
+    toast('올바른 URL을 입력해주세요. (http:// 또는 https://로 시작)', 'error');
+    return;
+  }
+
+  const hidden = document.getElementById('m-media-' + id);
+  if (hidden) hidden.value = url;
+
+  const preview = document.getElementById('upload-preview-' + id);
+  if (preview) {
+    if (mediaType === 'video') {
+      preview.innerHTML = '<video src="' + url + '" class="upload-preview-img" controls muted playsinline></video>';
+    } else {
+      preview.innerHTML = '<img src="' + url + '" class="upload-preview-img" alt="미리보기" onerror="this.parentElement.innerHTML=\'<div class=upload-placeholder><span>❌</span><p>이미지 로드 실패</p></div>\'" />';
+    }
+  }
+  const box = document.getElementById('upload-box-' + id);
+  if (box) box.classList.add('has-file');
+  toast('✅ URL 적용 완료! 저장 버튼을 눌러 반영하세요.');
+}
+window.applyMediaUrl = applyMediaUrl;
+
+/* ─── 미디어 탭 전환 (파일 업로드 ↔ URL 입력) ─── */
+function switchMediaTab(id, tabName) {
+  const fileTab  = document.getElementById('media-tab-file-' + id);
+  const urlTab   = document.getElementById('media-tab-url-'  + id);
+  const filePane = document.getElementById('media-pane-file-' + id);
+  const urlPane  = document.getElementById('media-pane-url-'  + id);
+  if (!fileTab || !urlTab || !filePane || !urlPane) return;
+
+  if (tabName === 'file') {
+    fileTab.classList.add('active');
+    urlTab.classList.remove('active');
+    filePane.style.display = '';
+    urlPane.style.display  = 'none';
+  } else {
+    urlTab.classList.add('active');
+    fileTab.classList.remove('active');
+    urlPane.style.display  = '';
+    filePane.style.display = 'none';
+  }
+}
+window.switchMediaTab = switchMediaTab;
+
+/* ─── 업로드 박스 HTML 생성 헬퍼 (파일 탭 + URL 탭) ─── */
 function mediaUploadField(id, label, currentSrc, accept) {
   const isVideo = accept.includes('video');
+
+  // 현재 값이 URL인지 Base64/ObjectURL인지 판단
+  const isUrlSrc = currentSrc && (currentSrc.startsWith('http') || currentSrc.startsWith('//'));
+  const isFileSrc = currentSrc && !isUrlSrc;
+
+  // 초기 탭: URL이면 URL탭, 파일이면 파일탭, 없으면 URL탭(동영상) / 파일탭(이미지)
+  const defaultTab = (isUrlSrc || (!currentSrc && isVideo)) ? 'url' : 'file';
+
   let previewHtml;
   if (currentSrc) {
     if (isVideo) {
@@ -392,19 +453,67 @@ function mediaUploadField(id, label, currentSrc, accept) {
     previewHtml = '<div class="upload-placeholder"><span>' + (isVideo ? '🎬' : '🖼️') + '</span><p>' + (isVideo ? '동영상 없음' : '이미지 없음') + '</p></div>';
   }
 
-  const hint = isVideo ? 'MP4, WebM (최대 1GB — ObjectURL 방식)' : 'JPG, PNG, GIF, WebP (최대 10MB)';
   const hasFile = currentSrc ? ' has-file' : '';
+  const currentUrl = isUrlSrc ? currentSrc : '';
+
+  // 파일 업로드 패널
+  const filePane = '<div id="media-pane-file-' + id + '" style="' + (defaultTab === 'file' ? '' : 'display:none;') + '">' +
+    '<div class="upload-box' + hasFile + '" id="upload-box-' + id + '" onclick="document.getElementById(\'m-file-' + id + '\').click()">' +
+      '<div class="upload-preview" id="upload-preview-' + id + '">' + previewHtml + '</div>' +
+      '<div class="upload-hint"><span>📁 클릭하여 파일 선택</span>' +
+        '<span class="upload-hint-sub">' + (isVideo ? 'MP4, WebM — 최대 1GB' : 'JPG, PNG, WebP, GIF — 최대 10MB') + '</span>' +
+      '</div>' +
+    '</div>' +
+    '<input type="file" id="m-file-' + id + '" accept="' + accept + '" style="display:none" onchange="handleFileUpload(\'' + id + '\',\'' + (isVideo ? 'video' : 'image') + '\',this)" />' +
+  '</div>';
+
+  // URL 입력 패널
+  const urlPane = '<div id="media-pane-url-' + id + '" style="' + (defaultTab === 'url' ? '' : 'display:none;') + '">' +
+    '<div class="url-input-row">' +
+      '<input type="url" class="form-control url-media-input" id="m-url-' + id + '" placeholder="https://example.com/video.mp4" value="' + esc(currentUrl) + '" />' +
+      '<button type="button" class="btn btn-primary btn-sm url-apply-btn" onclick="applyMediaUrl(\'' + id + '\',\'' + (isVideo ? 'video' : 'image') + '\')">' +
+        '적용' +
+      '</button>' +
+    '</div>' +
+    (isVideo ? '<div class="url-source-hints">' +
+      '<p class="url-hint-title">💡 무료 동영상 호스팅 추천</p>' +
+      '<ul class="url-hint-list">' +
+        '<li><strong>YouTube</strong> — 업로드 후 <code>https://www.youtube.com/watch?v=VIDEO_ID</code> (단, 직접 재생 불가, 임베드 필요)</li>' +
+        '<li><strong>Google Drive</strong> — 파일 공유 후 <code>https://drive.google.com/uc?export=download&id=FILE_ID</code></li>' +
+        '<li><strong>Cloudflare R2</strong> / <strong>AWS S3</strong> — 공개 버킷에 업로드 후 직접 MP4 URL 사용 ⭐ 권장</li>' +
+        '<li><strong>Dropbox</strong> — 공유 링크 끝을 <code>?dl=1</code>로 변경</li>' +
+      '</ul>' +
+    '</div>' : '') +
+    // URL 적용 후 미리보기는 파일탭 박스 재사용
+    (!isUrlSrc ? '' : '<div class="upload-box has-file" id="upload-box-' + id + '" style="margin-top:8px;cursor:default;">' +
+      '<div class="upload-preview" id="upload-preview-' + id + '">' + previewHtml + '</div>' +
+    '</div>') +
+  '</div>';
+
+  // URL 탭인데 미리보기 박스가 파일탭에 있으면 URL 탭에도 추가
+  const urlPreviewBox = defaultTab === 'url' && !isUrlSrc
+    ? '<div class="upload-box' + hasFile + '" id="upload-box-' + id + '" style="margin-top:8px;cursor:default;">' +
+        '<div class="upload-preview" id="upload-preview-' + id + '">' + previewHtml + '</div>' +
+      '</div>'
+    : '';
+
   const clearBtn = currentSrc
     ? '<button type="button" class="btn btn-danger btn-sm" style="margin-top:6px;" onclick="clearMedia(\'' + id + '\')">🗑️ 제거</button>'
     : '';
 
-  return '<div class="form-group" style="margin-bottom:16px;">' +
+  return '<div class="form-group media-field-wrap" style="margin-bottom:16px;">' +
     '<label class="form-label">' + label + '</label>' +
-    '<div class="upload-box' + hasFile + '" id="upload-box-' + id + '" onclick="document.getElementById(\'m-file-' + id + '\').click()">' +
-      '<div class="upload-preview" id="upload-preview-' + id + '">' + previewHtml + '</div>' +
-      '<div class="upload-hint"><span>📁 클릭하여 파일 선택</span><span class="upload-hint-sub">' + hint + '</span></div>' +
+    // 탭 버튼
+    '<div class="media-tabs">' +
+      '<button type="button" class="media-tab' + (defaultTab === 'file' ? ' active' : '') + '" id="media-tab-file-' + id + '" onclick="switchMediaTab(\'' + id + '\',\'file\')">' +
+        '📁 파일 업로드' +
+      '</button>' +
+      '<button type="button" class="media-tab' + (defaultTab === 'url' ? ' active' : '') + '" id="media-tab-url-' + id + '" onclick="switchMediaTab(\'' + id + '\',\'url\')">' +
+        '🔗 URL 직접 입력' +
+      '</button>' +
     '</div>' +
-    '<input type="file" id="m-file-' + id + '" accept="' + accept + '" style="display:none" onchange="handleFileUpload(\'' + id + '\',\'' + (isVideo ? 'video' : 'image') + '\',this)" />' +
+    filePane +
+    urlPane +
     clearBtn +
     '<input type="hidden" id="m-media-' + id + '" value="' + (currentSrc ? '__keep__' : '') + '" />' +
   '</div>';
@@ -451,12 +560,14 @@ function buildModal(type, item) {
   if (type === 'hero') {
     // 단일 비디오 배너 — 동영상 우선, 이미지 대체 지원
     html =
-      '<div class="form-group" style="background:#eef2ff;border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:.82rem;color:#374151;">' +
-        '<strong>💡 히어로 배너</strong>는 동영상 1개를 전체화면으로 표시합니다.<br/>' +
-        '동영상이 없으면 이미지, 이미지도 없으면 배경색이 표시됩니다.' +
+      '<div class="form-group" style="background:#eef2ff;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:.82rem;color:#374151;line-height:1.7;">' +
+        '<strong>💡 히어로 배너 사용법</strong><br/>' +
+        '① <strong>🔗 URL 직접 입력</strong> 탭: 클라우드에 올린 동영상 URL을 붙여넣으면 <strong>영구 저장</strong>됩니다.<br/>' +
+        '② <strong>📁 파일 업로드</strong> 탭: 로컬 파일을 선택하면 현재 세션에서 미리보기 가능합니다 (새로고침 시 소멸).<br/>' +
+        '③ 동영상이 없으면 이미지, 이미지도 없으면 배경색이 표시됩니다.' +
       '</div>' +
-      mediaUploadField('heroVideo', '🎬 배경 동영상 (MP4/WebM, 최대 1GB — 권장)', item && item.bgVideo || '', 'video/mp4,video/webm') +
-      mediaUploadField('heroImg',   '🖼️ 대체 이미지 (동영상 없을 때 표시)',         item && item.bgImage || '', 'image/*') +
+      mediaUploadField('heroVideo', '🎬 배경 동영상 (URL 입력 권장 — MP4/WebM, 최대 1GB)', item && item.bgVideo || '', 'video/mp4,video/webm') +
+      mediaUploadField('heroImg',   '🖼️ 대체 이미지 (동영상 없을 때 표시)',                  item && item.bgImage || '', 'image/*') +
       lc('bgColor', '배경 색상 (이미지/동영상 없을 때)', item && item.bgColor || '#1A2755') +
       lc('accentColor', '강조 색상 (텍스트/버튼)', item && item.accentColor || '#4F7EF7') +
       langFields('label',    item && item.label) +
@@ -534,19 +645,27 @@ function saveModal() {
   };
   const val = function(id) { return (document.getElementById('m-' + id) || {}).value || ''; };
 
-  // 미디어 값 수집: __keep__ = 기존 유지, __clear__ = 삭제, base64 = 신규
+  // 미디어 값 수집: URL 탭 입력 → hidden 필드 → 기존값 순으로 우선순위
   const mediaVal = function(id, existing) {
+    // URL 탭에 값이 있으면 최우선
+    const urlEl = document.getElementById('m-url-' + id);
+    if (urlEl && urlEl.value.trim()) {
+      return urlEl.value.trim();
+    }
     const v = (document.getElementById('m-media-' + id) || {}).value || '';
     if (v === '__keep__') return existing || '';
     if (v === '__clear__') return '';
-    return v; // base64
+    // ObjectURL(blob:)은 세션 내 임시값 → 저장 안 함 (영구 저장 불가)
+    if (v.startsWith('blob:')) {
+      toast('⚠️ 파일 업로드는 새로고침 시 사라집니다. URL 탭을 사용하면 영구 저장됩니다.', 'error', 4000);
+      return existing || ''; // 기존값 유지
+    }
+    return v; // base64 또는 http URL
   };
 
   let obj = {};
 
   if (type === 'hero') {
-    // 동영상: ObjectURL은 세션 내 로컬 URL이므로 저장 시 그대로 보관
-    // (새로고침 후에는 재업로드 필요 — Vercel 무료플랜 파일 저장 한계)
     obj = {
       id:          (idx >= 0 ? items[idx] && items[idx].id : null) || uid(),
       bgVideo:     mediaVal('heroVideo', items[idx] && items[idx].bgVideo),
