@@ -94,6 +94,22 @@ function renderLangSwitcher() {
 
 /* ─── content.json 로드 ─── */
 async function loadContent() {
+  // 1) 관리자가 수정한 내용이 localStorage에 있으면 최우선 사용
+  try {
+    const stored = localStorage.getItem('aestyve_content');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed === 'object') {
+        STATE.content = parsed;
+        renderAll();
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn('[Aestyve] localStorage 파싱 오류, content.json으로 대체');
+  }
+
+  // 2) localStorage 없으면 서버의 content.json 로드
   try {
     const res = await fetch('data/content.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -101,7 +117,7 @@ async function loadContent() {
     renderAll();
   } catch (err) {
     console.error('[Aestyve] content.json 로드 실패:', err);
-    renderError('data/content.json 파일을 찾을 수 없습니다.<br/>관리자 페이지에서 데이터를 Export 후 파일을 배포해주세요.');
+    renderError('콘텐츠를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.');
   }
 }
 

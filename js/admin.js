@@ -265,7 +265,7 @@ function saveSection(section) {
   };
 
   saveToStorage();
-  toast('✅ 사이트 설정이 저장되었습니다.');
+  toast('✅ 사이트 설정이 저장되었습니다. 홈페이지에 즉시 반영됩니다.');
 }
 
 /* ─── List 렌더 (Hero / Category / Product / Review) ─── */
@@ -522,7 +522,7 @@ function saveModal() {
   closeModal();
   renderList(type, items);
   renderDashboard();
-  toast(`✅ ${typeLabel(type)} 저장 완료!`);
+  toast(`✅ ${typeLabel(type)} 저장 완료! 홈페이지에 즉시 반영됩니다.`);
 }
 
 /* ─── 삭제 / 순서 이동 ─── */
@@ -632,7 +632,7 @@ function initSaveAllBtn() {
   btn.addEventListener('click', () => {
     saveSection('settings');
     saveToStorage();
-    toast('✅ 모든 변경사항이 저장되었습니다.');
+    toast('✅ 저장 완료! 홈페이지에 즉시 반영됩니다.');
   });
 }
 
