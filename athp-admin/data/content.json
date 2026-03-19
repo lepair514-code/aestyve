@@ -1,0 +1,103 @@
+{
+  "settings": {
+    "brandName": "Aestyve",
+    "primaryColor": "#1A2755",
+    "accentColor": "#2F3C86",
+    "noticeBar": {
+      "visible": true,
+      "text": {
+        "ko": "🎉 신규 회원가입 시 10% 할인 쿠폰 증정! 지금 바로 시작하세요.",
+        "en": "🎉 Get 10% off coupon on sign-up! Start now.",
+        "zh-CN": "🎉 新会员注册即享9折优惠券！立即开始。",
+        "th": "🎉 สมัครสมาชิกใหม่รับคูปองส่วนลด 10%! เริ่มเลย"
+      }
+    },
+    "slogan": {
+      "ko": "피부과학의 혁신, 아름다움의 새 기준",
+      "en": "Innovation in Dermatology, A New Standard of Beauty",
+      "zh-CN": "皮肤科学的创新，美丽的新标准",
+      "th": "นวัตกรรมผิวหนัง มาตรฐานความงามใหม่"
+    },
+    "brandStory": {
+      "ko": "Aestyve는 최첨단 피부과학과 아름다움에 대한 깊은 이해를 바탕으로 탄생했습니다. 우리는 모든 피부 타입에 맞는 솔루션을 제공하며, 과학적으로 검증된 성분과 혁신적인 기술을 통해 당신의 피부를 더욱 빛나게 합니다.",
+      "en": "Aestyve was born from cutting-edge dermatology and a deep understanding of beauty. We provide solutions for every skin type, making your skin shine brighter through scientifically validated ingredients and innovative technology.",
+      "zh-CN": "Aestyve 诞生于尖端皮肤科学和对美的深刻理解。我们为每种肤质提供解决方案，通过科学验证的成分和创新技术让您的皮肤更加焕发光彩。",
+      "th": "Aestyve เกิดจากวิทยาศาสตร์ผิวหนังขั้นสูงและความเข้าใจอย่างลึกซึ้งเกี่ยวกับความงาม เราให้บริการโซลูชันสำหรับผิวทุกประเภท"
+    },
+    "stats": [
+      { "number": "500+", "label": { "ko": "임상 검증 성분", "en": "Clinically Tested Ingredients", "zh-CN": "临床验证成分", "th": "ส่วนผสมที่ผ่านการทดสอบ" } },
+      { "number": "98%", "label": { "ko": "고객 만족도", "en": "Customer Satisfaction", "zh-CN": "客户满意度", "th": "ความพึงพอใจของลูกค้า" } },
+      { "number": "30+", "label": { "ko": "피부과 전문의 검증", "en": "Dermatologist Verified", "zh-CN": "皮肤科医生认证", "th": "ได้รับการรับรองจากผู้เชี่ยวชาญ" } }
+    ],
+    "contact": {
+      "phone": "+82-2-1234-5678",
+      "email": "hello@aestyve.com",
+      "address": "서울특별시 강남구 테헤란로 123, 에스티브 빌딩"
+    },
+    "social": {
+      "instagram": "https://instagram.com/aestyve",
+      "youtube": "",
+      "facebook": "",
+      "tiktok": ""
+    }
+  },
+  "nav": [
+    { "id": "nav1", "label": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" }, "href": "#products" },
+    { "id": "nav2", "label": { "ko": "PRODUCTS", "en": "PRODUCTS", "zh-CN": "产品", "th": "สินค้า" }, "href": "#products" },
+    { "id": "nav3", "label": { "ko": "BRAND", "en": "BRAND", "zh-CN": "品牌", "th": "แบรนด์" }, "href": "#brand" },
+    { "id": "nav4", "label": { "ko": "CONTACT", "en": "CONTACT", "zh-CN": "联系", "th": "ติดต่อ" }, "href": "#contact" }
+  ],
+  "heroes": [
+    {
+      "id": "h1",
+      "bgColor": "#1A2755",
+      "accentColor": "#4F7EF7",
+      "label": { "ko": "NEW ARRIVAL", "en": "NEW ARRIVAL", "zh-CN": "新品上市", "th": "สินค้าใหม่" },
+      "title": { "ko": "피부를 위한\n완벽한 솔루션", "en": "The Perfect\nSolution for Skin", "zh-CN": "皮肤的\n完美解决方案", "th": "โซลูชันที่สมบูรณ์แบบ\nสำหรับผิวของคุณ" },
+      "subtitle": { "ko": "과학적으로 검증된 성분, 혁신적인 뷰티 테크", "en": "Scientifically Verified Ingredients, Innovative Beauty Tech", "zh-CN": "科学验证成分，创新美容科技", "th": "ส่วนผสมที่ผ่านการตรวจสอบทางวิทยาศาสตร์" },
+      "btnText": { "ko": "지금 쇼핑하기", "en": "Shop Now", "zh-CN": "立即购买", "th": "ช้อปเลย" },
+      "btnHref": "#products"
+    },
+    {
+      "id": "h2",
+      "bgColor": "#2F3C86",
+      "accentColor": "#A8B9FF",
+      "label": { "ko": "BEST SELLER", "en": "BEST SELLER", "zh-CN": "畅销产品", "th": "ขายดีที่สุด" },
+      "title": { "ko": "당신의 피부가\n기다리던 변화", "en": "The Change\nYour Skin Awaits", "zh-CN": "您的皮肤\n期待的改变", "th": "การเปลี่ยนแปลง\nที่ผิวของคุณรอคอย" },
+      "subtitle": { "ko": "30명 이상의 피부과 전문의가 검증한 Formula", "en": "Formula verified by 30+ dermatologists", "zh-CN": "经30名以上皮肤科医生验证的配方", "th": "สูตรที่ได้รับการยืนยันจากผู้เชี่ยวชาญกว่า 30 คน" },
+      "btnText": { "ko": "베스트셀러 보기", "en": "View Best Sellers", "zh-CN": "查看畅销品", "th": "ดูสินค้าขายดี" },
+      "btnHref": "#products"
+    },
+    {
+      "id": "h3",
+      "bgColor": "#111827",
+      "accentColor": "#F0B429",
+      "label": { "ko": "DERMA SCIENCE", "en": "DERMA SCIENCE", "zh-CN": "皮肤科学", "th": "วิทยาศาสตร์ผิวหนัง" },
+      "title": { "ko": "피부과학이\n만든 뷰티", "en": "Beauty Made\nby Derma Science", "zh-CN": "皮肤科学\n创造的美丽", "th": "ความงามที่สร้างจาก\nวิทยาศาสตร์ผิวหนัง" },
+      "subtitle": { "ko": "임상 시험 완료, 500+ 검증 성분", "en": "Clinical trials complete, 500+ verified ingredients", "zh-CN": "临床试验完成，500+验证成分", "th": "การทดลองทางคลินิกเสร็จสิ้น ส่วนผสมที่ผ่านการตรวจสอบ 500+ รายการ" },
+      "btnText": { "ko": "브랜드 스토리", "en": "Brand Story", "zh-CN": "品牌故事", "th": "เรื่องราวของแบรนด์" },
+      "btnHref": "#brand"
+    }
+  ],
+  "categories": [
+    { "id": "cat1", "bgColor": "#E8ECF8", "accentColor": "#1A2755", "icon": "✨", "title": { "ko": "수분 & 보습", "en": "Hydration", "zh-CN": "补水保湿", "th": "ความชุ่มชื้น" }, "desc": { "ko": "건조한 피부를 위한 집중 수분 라인", "en": "Intensive hydration line for dry skin", "zh-CN": "针对干性肌肤的集中补水系列", "th": "ไลน์มอยส์เจอร์ไรเซอร์เข้มข้นสำหรับผิวแห้ง" } },
+    { "id": "cat2", "bgColor": "#1A2755", "accentColor": "#A8B9FF", "icon": "🔬", "title": { "ko": "안티에이징", "en": "Anti-Aging", "zh-CN": "抗衰老", "th": "แอนตี้เอจจิ้ง" }, "desc": { "ko": "피부과학 기반 노화 방지 솔루션", "en": "Derma-science based anti-aging solution", "zh-CN": "基于皮肤科学的抗衰老解决方案", "th": "โซลูชันต่อต้านการแก่ตัวบนพื้นฐานวิทยาศาสตร์ผิวหนัง" } },
+    { "id": "cat3", "bgColor": "#F0F4F8", "accentColor": "#2F3C86", "icon": "🌿", "title": { "ko": "민감성", "en": "Sensitive", "zh-CN": "敏感肌肤", "th": "ผิวแพ้ง่าย" }, "desc": { "ko": "자극 없는 저자극 포뮬러", "en": "Low-irritation formula without stimulation", "zh-CN": "无刺激低敏配方", "th": "สูตรที่ไม่ระคายเคืองสำหรับผิวบอบบาง" } },
+    { "id": "cat4", "bgColor": "#2F3C86", "accentColor": "#E8ECF8", "icon": "⚡", "title": { "ko": "브라이트닝", "en": "Brightening", "zh-CN": "美白提亮", "th": "เพิ่มความสว่าง" }, "desc": { "ko": "칙칙한 피부톤을 환하게 개선", "en": "Brighten dull skin tone effectively", "zh-CN": "有效改善暗沉肤色", "th": "ปรับโทนสีผิวที่หมองคล้ำให้สว่างขึ้น" } }
+  ],
+  "products": [
+    { "id": "p1", "category": "best", "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" }, "bgColor": "#E8ECF8", "accentColor": "#1A2755", "name": { "ko": "딥 하이드레이션 세럼", "en": "Deep Hydration Serum", "zh-CN": "深层补水精华", "th": "เซรั่มไฮเดรชั่นเข้มข้น" }, "price": "₩48,000", "desc": { "ko": "72시간 수분 지속 하이알루론산 세럼", "en": "72-hour moisture retention hyaluronic acid serum", "zh-CN": "72小时持久保湿透明质酸精华", "th": "เซรั่มไฮยาลูโรนิกแอซิดที่คงความชุ่มชื้น 72 ชั่วโมง" } },
+    { "id": "p2", "category": "new", "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" }, "bgColor": "#1A2755", "accentColor": "#A8B9FF", "name": { "ko": "레티놀 나이트 크림", "en": "Retinol Night Cream", "zh-CN": "视黄醇晚霜", "th": "ครีมกลางคืนเรตินอล" }, "price": "₩65,000", "desc": { "ko": "0.3% 순수 레티놀 + 나이아신아마이드 탄력 크림", "en": "0.3% Pure Retinol + Niacinamide Firming Cream", "zh-CN": "0.3%纯视黄醇+烟酰胺紧致霜", "th": "ครีมกระชับผิวเรตินอล 0.3% + ไนอาซินาไมด์" } },
+    { "id": "p3", "category": "best", "badge": { "ko": "피부과 추천", "en": "Derm Pick", "zh-CN": "皮肤科推荐", "th": "แนะนำโดยผู้เชี่ยวชาญ" }, "bgColor": "#F0F4F8", "accentColor": "#2F3C86", "name": { "ko": "칼밍 선크림 SPF50+", "en": "Calming Sunscreen SPF50+", "zh-CN": "舒缓防晒霜 SPF50+", "th": "ครีมกันแดดกล่อมผิว SPF50+" }, "price": "₩32,000", "desc": { "ko": "민감성 피부 전용 물광 선크림", "en": "Dewy sunscreen specially for sensitive skin", "zh-CN": "专为敏感肌肤设计的水润防晒霜", "th": "ครีมกันแดดชุ่มชื้นสำหรับผิวบอบบางโดยเฉพาะ" } },
+    { "id": "p4", "category": "new", "badge": { "ko": "LIMITED", "en": "LIMITED", "zh-CN": "限量版", "th": "จำกัด" }, "bgColor": "#111827", "accentColor": "#F0B429", "name": { "ko": "비타민C 브라이트닝 앰플", "en": "Vitamin C Brightening Ampoule", "zh-CN": "维生素C美白安瓶", "th": "แอมพูลวิตามินซีเพิ่มความสว่าง" }, "price": "₩55,000", "desc": { "ko": "20% 비타민C 유도체 고농축 미백 앰플", "en": "20% Vitamin C Derivative High-Concentration Brightening Ampoule", "zh-CN": "20%维生素C衍生物高浓度美白安瓶", "th": "แอมพูลเพิ่มความสว่างความเข้มข้นสูงวิตามินซีเดริเวทีฟ 20%" } },
+    { "id": "p5", "category": "best", "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" }, "bgColor": "#2F3C86", "accentColor": "#E8ECF8", "name": { "ko": "펩타이드 아이크림", "en": "Peptide Eye Cream", "zh-CN": "肽眼霜", "th": "ครีมบำรุงรอบดวงตาเปปไทด์" }, "price": "₩42,000", "desc": { "ko": "5종 펩타이드 복합체 탄력 아이크림", "en": "5-Peptide Complex Firming Eye Cream", "zh-CN": "5种肽复合物紧致眼霜", "th": "ครีมกระชับรอบดวงตาสารประกอบเปปไทด์ 5 ชนิด" } },
+    { "id": "p6", "category": "new", "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" }, "bgColor": "#E8ECF8", "accentColor": "#1A2755", "name": { "ko": "AHA/BHA 클렌징 토너", "en": "AHA/BHA Cleansing Toner", "zh-CN": "AHA/BHA 洁肤爽肤水", "th": "โทนเนอร์ทำความสะอาด AHA/BHA" }, "price": "₩38,000", "desc": { "ko": "각질 제거 + 모공 케어 이중 기능 토너", "en": "Dual-function toner for exfoliation + pore care", "zh-CN": "去角质+毛孔护理双效爽肤水", "th": "โทนเนอร์สองหน้าที่สำหรับการขัดผิว + ดูแลรูขุมขน" } }
+  ],
+  "reviews": [
+    { "id": "r1", "rating": 5, "name": { "ko": "김지은", "en": "Jieun K.", "zh-CN": "金智恩", "th": "จีอึน เค." }, "text": { "ko": "딥 하이드레이션 세럼 사용 후 피부가 완전히 달라졌어요! 건조함이 사라지고 탄력도 생겼어요.", "en": "My skin completely changed after using Deep Hydration Serum! Dryness disappeared and elasticity improved.", "zh-CN": "使用深层补水精华后，我的皮肤完全变了！干燥消失了，弹性也增加了。", "th": "ผิวของฉันเปลี่ยนไปอย่างสิ้นเชิงหลังจากใช้เซรั่มไฮเดรชั่น!" } },
+    { "id": "r2", "rating": 5, "name": { "ko": "이서연", "en": "Seoyeon L.", "zh-CN": "李瑞妍", "th": "ซอยอน แอล." }, "text": { "ko": "민감성 피부인데 칼밍 선크림이 정말 잘 맞아요. 자극도 없고 촉촉해서 매일 사용 중이에요.", "en": "I have sensitive skin and the calming sunscreen fits perfectly. No irritation and moisturizing, using it daily.", "zh-CN": "我是敏感肌，舒缓防晒霜非常适合我。无刺激且保湿，每天使用中。", "th": "ฉันมีผิวแพ้ง่ายและครีมกันแดดกล่อมผิวเข้ากันได้ดีมาก ไม่ระคายเคืองและชุ่มชื้น" } },
+    { "id": "r3", "rating": 5, "name": { "ko": "박민준", "en": "Minjun P.", "zh-CN": "朴民俊", "th": "มินจุน พี." }, "text": { "ko": "레티놀 크림인데 자극이 전혀 없어서 놀랐어요. 2주 만에 피부 톤이 밝아지는 걸 느꼈어요.", "en": "I was surprised that the retinol cream had no irritation at all. I felt my skin tone brighten in just 2 weeks.", "zh-CN": "没想到视黄醇霜完全没有刺激感。两周内就感受到肤色变亮了。", "th": "ฉันแปลกใจที่ครีมเรตินอลไม่ระคายเคืองเลย รู้สึกว่าโทนสีผิวสว่างขึ้นภายใน 2 สัปดาห์" } },
+    { "id": "r4", "rating": 4, "name": { "ko": "최유나", "en": "Yuna C.", "zh-CN": "崔侑那", "th": "ยูนา ซี." }, "text": { "ko": "비타민C 앰플이 기대 이상이에요! 칙칙하던 피부가 밝아지고 전반적인 피부 상태도 좋아졌어요.", "en": "Vitamin C ampoule exceeded my expectations! My dull skin became brighter and overall skin condition improved.", "zh-CN": "维生素C安瓶超出了我的预期！暗沉的皮肤变亮了，整体状态也改善了。", "th": "แอมพูลวิตามินซีเกินความคาดหมายของฉัน ผิวที่หมองคล้ำสว่างขึ้นและสภาพผิวโดยรวมดีขึ้น" } },
+    { "id": "r5", "rating": 5, "name": { "ko": "한지수", "en": "Jisu H.", "zh-CN": "韩智秀", "th": "จีซู เอช." }, "text": { "ko": "Aestyve 제품은 정말 믿을 수 있어요. 피부과 추천 제품이라 더 믿고 사용했는데 효과가 확실해요!", "en": "Aestyve products are really trustworthy. I used it with more confidence as it was recommended by dermatologists and the effects are clear!", "zh-CN": "Aestyve的产品真的值得信赖。皮肤科推荐让我更放心使用，效果确实显著！", "th": "ผลิตภัณฑ์ Aestyve เชื่อถือได้จริงๆ ฉันใช้ด้วยความมั่นใจมากขึ้นเพราะผู้เชี่ยวชาญแนะนำ" } }
+  ]
+}
