@@ -183,11 +183,19 @@ function renderHero(heroes) {
   // Slides
   track.innerHTML = heroes.map((h, i) => {
     const titleLines = t(h.title) || '';
+    // 배경 미디어: 동영상 > 이미지 > 색상
+    let bgMedia = '';
+    if (h.bgVideo) {
+      bgMedia = `<video class="hero-bg-media" autoplay muted loop playsinline src="${h.bgVideo}"></video>`;
+    } else if (h.bgImage) {
+      bgMedia = `<img class="hero-bg-media" src="${h.bgImage}" alt="" aria-hidden="true" />`;
+    }
+    const bgStyle = (h.bgVideo || h.bgImage) ? '' : `background:${h.bgColor || '#1A2755'};`;
     return `
     <div class="hero-slide" role="group" aria-label="슬라이드 ${i+1}" data-idx="${i}">
-      <div class="hero-bg-block" style="background:${h.bgColor || '#1A2755'};"></div>
-      <div class="hero-deco" style="background:${h.accentColor || '#4F7EF7'};"></div>
-      <div class="hero-deco2" style="background:${h.accentColor || '#4F7EF7'};"></div>
+      <div class="hero-bg-block" style="${bgStyle}">${bgMedia}</div>
+      <div class="hero-deco" style="background:${h.accentColor || '#4F7EF7'};${(h.bgVideo||h.bgImage)?'opacity:.35;':''}"></div>
+      <div class="hero-deco2" style="background:${h.accentColor || '#4F7EF7'};${(h.bgVideo||h.bgImage)?'opacity:.25;':''}"></div>
       <div class="container">
         <div class="hero-content">
           <span class="hero-label" style="background:${h.accentColor || '#4F7EF7'}22;color:${h.accentColor || '#A8B9FF'};">
@@ -248,13 +256,18 @@ function renderCategories(cats) {
     grid.innerHTML = `<div class="error-block">카테고리 데이터 없음</div>`;
     return;
   }
-  grid.innerHTML = cats.map(c => `
+  grid.innerHTML = cats.map(c => {
+    // 카테고리 이미지가 있으면 표시, 없으면 이모지
+    const iconHtml = c.bgImage
+      ? `<img src="${c.bgImage}" class="cat-img" alt="${t(c.title)}" />`
+      : `<span class="cat-icon">${c.icon||'✨'}</span>`;
+    return `
     <div class="category-card" style="background:${c.bgColor||'#E8ECF8'};color:${c.accentColor||'#1A2755'};" tabindex="0" role="button" aria-label="${t(c.title)}">
-      <span class="cat-icon">${c.icon||'✨'}</span>
+      ${iconHtml}
       <div class="cat-title">${t(c.title)}</div>
       <div class="cat-desc" style="color:${c.accentColor||'#1A2755'};">${t(c.desc)}</div>
-    </div>`
-  ).join('');
+    </div>`;
+  }).join('');
 
   // Section text i18n
   updateStaticText('#cat-tag', { ko:'카테고리', en:'CATEGORIES', 'zh-CN':'分类', th:'หมวดหมู่' });
@@ -270,12 +283,15 @@ function renderProducts(prods) {
     grid.innerHTML = `<div class="error-block" style="grid-column:1/-1;">제품 데이터 없음</div>`;
     return;
   }
-  grid.innerHTML = prods.map(p => `
+  grid.innerHTML = prods.map(p => {
+    // 제품 이미지가 있으면 표시, 없으면 이니셜
+    const thumbContent = p.image
+      ? `<img src="${p.image}" class="product-img" alt="${t(p.name)}" />`
+      : `<div class="product-thumb-inner" style="background:${p.bgColor||'#E8ECF8'};color:${p.accentColor||'#1A2755'};">${(t(p.name)||'').split(' ').slice(0,2).map(w => w[0]||'').join('')}</div>`;
+    return `
     <div class="product-card" data-cat="${p.category||'all'}">
       <div class="product-thumb" style="background:${p.bgColor||'#E8ECF8'};">
-        <div class="product-thumb-inner" style="background:${p.bgColor||'#E8ECF8'};color:${p.accentColor||'#1A2755'};">
-          ${(t(p.name)||'').split(' ').slice(0,2).map(w => w[0]||'').join('')}
-        </div>
+        ${thumbContent}
         <span class="product-badge" style="background:${p.accentColor||'#1A2755'};">${t(p.badge)||''}</span>
       </div>
       <div class="product-body">
@@ -288,8 +304,8 @@ function renderProducts(prods) {
           </button>
         </div>
       </div>
-    </div>`
-  ).join('');
+    </div>`;
+  }).join('');
 
   updateStaticText('#prod-tag', { ko:'제품', en:'PRODUCTS', 'zh-CN':'产品', th:'สินค้า' });
   updateStaticText('#prod-title', { ko:'Aestyve 제품', en:'Aestyve Products', 'zh-CN':'Aestyve 产品', th:'สินค้า Aestyve' });
