@@ -3,5 +3,6 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" }
-  ]
+  ],
+  "buildCommand": null
 }
