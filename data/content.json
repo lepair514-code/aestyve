@@ -50,33 +50,14 @@
   "heroes": [
     {
       "id": "h1",
-      "bgColor": "#1A2755",
-      "accentColor": "#4F7EF7",
-      "label": { "ko": "NEW ARRIVAL", "en": "NEW ARRIVAL", "zh-CN": "新品上市", "th": "สินค้าใหม่" },
+      "bgVideo": "https://youtu.be/uRgcUCCeykk",
+      "bgColor": "#0a0a0a",
+      "accentColor": "#A8B9FF",
+      "label": { "ko": "AESTYVE", "en": "AESTYVE", "zh-CN": "AESTYVE", "th": "AESTYVE" },
       "title": { "ko": "피부를 위한\n완벽한 솔루션", "en": "The Perfect\nSolution for Skin", "zh-CN": "皮肤的\n完美解决方案", "th": "โซลูชันที่สมบูรณ์แบบ\nสำหรับผิวของคุณ" },
       "subtitle": { "ko": "과학적으로 검증된 성분, 혁신적인 뷰티 테크", "en": "Scientifically Verified Ingredients, Innovative Beauty Tech", "zh-CN": "科学验证成分，创新美容科技", "th": "ส่วนผสมที่ผ่านการตรวจสอบทางวิทยาศาสตร์" },
       "btnText": { "ko": "지금 쇼핑하기", "en": "Shop Now", "zh-CN": "立即购买", "th": "ช้อปเลย" },
       "btnHref": "#products"
-    },
-    {
-      "id": "h2",
-      "bgColor": "#2F3C86",
-      "accentColor": "#A8B9FF",
-      "label": { "ko": "BEST SELLER", "en": "BEST SELLER", "zh-CN": "畅销产品", "th": "ขายดีที่สุด" },
-      "title": { "ko": "당신의 피부가\n기다리던 변화", "en": "The Change\nYour Skin Awaits", "zh-CN": "您的皮肤\n期待的改变", "th": "การเปลี่ยนแปลง\nที่ผิวของคุณรอคอย" },
-      "subtitle": { "ko": "30명 이상의 피부과 전문의가 검증한 Formula", "en": "Formula verified by 30+ dermatologists", "zh-CN": "经30名以上皮肤科医生验证的配方", "th": "สูตรที่ได้รับการยืนยันจากผู้เชี่ยวชาญกว่า 30 คน" },
-      "btnText": { "ko": "베스트셀러 보기", "en": "View Best Sellers", "zh-CN": "查看畅销品", "th": "ดูสินค้าขายดี" },
-      "btnHref": "#products"
-    },
-    {
-      "id": "h3",
-      "bgColor": "#111827",
-      "accentColor": "#F0B429",
-      "label": { "ko": "DERMA SCIENCE", "en": "DERMA SCIENCE", "zh-CN": "皮肤科学", "th": "วิทยาศาสตร์ผิวหนัง" },
-      "title": { "ko": "피부과학이\n만든 뷰티", "en": "Beauty Made\nby Derma Science", "zh-CN": "皮肤科学\n创造的美丽", "th": "ความงามที่สร้างจาก\nวิทยาศาสตร์ผิวหนัง" },
-      "subtitle": { "ko": "임상 시험 완료, 500+ 검증 성분", "en": "Clinical trials complete, 500+ verified ingredients", "zh-CN": "临床试验完成，500+验证成分", "th": "การทดลองทางคลินิกเสร็จสิ้น ส่วนผสมที่ผ่านการตรวจสอบ 500+ รายการ" },
-      "btnText": { "ko": "브랜드 스토리", "en": "Brand Story", "zh-CN": "品牌故事", "th": "เรื่องราวของแบรนด์" },
-      "btnHref": "#brand"
     }
   ],
   "categories": [

@@ -173,13 +173,12 @@ function renderNav(navItems) {
   }
 }
 
-/* ─── Hero Video (단일 비디오 배너) ─── */
+/* ─── Hero Video (단일 전체화면 비디오 배너) ─── */
 function renderHero(heroes) {
   const videoWrap = $('#hero-video-wrap');
   const overlay   = $('#hero-overlay');
   if (!videoWrap || !overlay) return;
 
-  // 히어로 데이터: 첫 번째 항목만 사용 (단일 배너)
   const h = (heroes && heroes.length > 0) ? heroes[0] : null;
 
   /* ── 배경 미디어 렌더 ── */
@@ -187,28 +186,61 @@ function renderHero(heroes) {
   if (h && h.bgVideo) {
     const src = h.bgVideo;
 
-    // YouTube URL 감지 → iframe embed 처리
-    const ytMatch = src.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    // YouTube URL 감지 (youtu.be / youtube.com 모두 지원)
+    const ytMatch = src.match(
+      /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
+    );
+
     if (ytMatch) {
       const videoId = ytMatch[1];
-      bgHtml = `<iframe id="hero-video"
+      // 고화질(hd1080) + 자동재생 + 음소거 해제 가능 + 루프 + 컨트롤 숨김
+      const embedSrc =
+        `https://www.youtube.com/embed/${videoId}` +
+        `?autoplay=1` +
+        `&mute=1` +           // 브라우저 정책: 최초 로드는 mute=1 필수
+        `&loop=1` +
+        `&playlist=${videoId}` + // loop 작동 필수 파라미터
+        `&controls=0` +
+        `&showinfo=0` +
+        `&rel=0` +
+        `&modestbranding=1` +
+        `&playsinline=1` +
+        `&enablejsapi=1` +    // JS API 활성화 (음소거 해제 제어용)
+        `&vq=hd1080` +        // 기본 화질 1080p 요청
+        `&origin=${encodeURIComponent(location.origin)}`;
+
+      bgHtml = `<iframe
+          id="hero-yt-iframe"
           class="hero-video-full"
-          src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+          src="${embedSrc}"
           frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen></iframe>`;
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen
+          title="Aestyve Hero Video"></iframe>`;
+
+      // 음소거 해제 버튼 (클릭 시 postMessage로 unMute)
+      bgHtml += `<button id="hero-unmute-btn" aria-label="소리 켜기" title="소리 켜기"
+          onclick="heroToggleMute(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <!-- muted icon (기본) -->
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="yt-icon-poly"/>
+            <line x1="23" y1="9" x2="17" y2="15" class="yt-muted-line"/>
+            <line x1="17" y1="9" x2="23" y2="15" class="yt-muted-line"/>
+          </svg>
+        </button>`;
+
     } else {
-      // 직접 MP4/WebM URL 또는 ObjectURL
+      // 직접 MP4/WebM URL
       bgHtml = `<video id="hero-video"
           class="hero-video-full"
-          autoplay muted loop playsinline
-          preload="auto"
+          autoplay muted loop playsinline preload="auto"
           src="${src}"></video>`;
     }
   } else if (h && h.bgImage) {
-    bgHtml = `<img id="hero-image" class="hero-video-full" src="${h.bgImage}" alt="" aria-hidden="true" />`;
+    bgHtml = `<img id="hero-image" class="hero-video-full"
+        src="${h.bgImage}" alt="" aria-hidden="true" />`;
   } else {
-    // 데이터 없거나 배경색만 있을 때
     const bgColor = (h && h.bgColor) || '#1A2755';
     bgHtml = `<div class="hero-video-full" style="background:${bgColor};"></div>`;
   }
@@ -216,14 +248,14 @@ function renderHero(heroes) {
 
   /* ── 오버레이 텍스트 ── */
   if (h) {
-    const accent = h.accentColor || '#A8B9FF';
+    const accent     = h.accentColor || '#A8B9FF';
     const titleLines = (t(h.title) || '').replace(/\n/g, '<br/>');
     overlay.innerHTML = `
       <div class="hero-overlay-inner">
-        ${t(h.label) ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
-        ${titleLines ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
-        ${t(h.subtitle) ? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
-        ${t(h.btnText) ? `<a href="${h.btnHref || '#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
+        ${t(h.label)   ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
+        ${titleLines   ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
+        ${t(h.subtitle)? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
+        ${t(h.btnText) ? `<a href="${h.btnHref||'#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
       </div>`;
     overlay.style.display = '';
   } else {
@@ -231,9 +263,38 @@ function renderHero(heroes) {
   }
 }
 
+/* ── YouTube 음소거 토글 (YT iframe postMessage API) ── */
+let _ytMuted = true;
+function heroToggleMute(btn) {
+  const iframe = document.getElementById('hero-yt-iframe');
+  if (!iframe) return;
+  _ytMuted = !_ytMuted;
+
+  // YouTube IFrame Player API postMessage
+  iframe.contentWindow.postMessage(
+    JSON.stringify({ event: 'command', func: _ytMuted ? 'mute' : 'unMute', args: [] }),
+    '*'
+  );
+
+  // 버튼 아이콘 교체
+  const mutedLines = btn.querySelectorAll('.yt-muted-line');
+  mutedLines.forEach(l => { l.style.display = _ytMuted ? '' : 'none'; });
+
+  // 음소거 해제 시 볼륨 100 설정
+  if (!_ytMuted) {
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }),
+      '*'
+    );
+  }
+}
+window.heroToggleMute = heroToggleMute;
+
 /* 슬라이더 관련 함수 — 단일 비디오 모드에서는 미사용 (하위 호환 유지) */
 function goHero()       {}
 function startHeroAuto(){}
+
+
 
 
 
