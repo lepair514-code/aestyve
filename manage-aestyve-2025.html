@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aestyve</title>
+  <!-- 검색엔진 색인 차단 -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #1A2755;
+      --accent:  #4F7EF7;
+      --white:   #ffffff;
+      --bg:      #f4f6fb;
+      --border:  #dde1ef;
+      --danger:  #dc2626;
+      --radius:  10px;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+    }
+
+    /* ── 전체 레이아웃 ── */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* ── 카드 ── */
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(26,39,85,.13);
+      padding: 44px 40px 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    /* ── 로고 ── */
+    .logo-wrap {
+      margin-bottom: 28px;
+    }
+    .logo-wrap img {
+      height: 40px;
+      display: inline-block;
+    }
+    /* 로고 이미지 로드 실패 시 텍스트 폴백 */
+    .logo-text {
+      display: none;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      color: var(--primary);
+    }
+
+    /* ── 타이틀 ── */
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .card-sub {
+      font-size: .82rem;
+      color: #6b7280;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    /* ── 폼 ── */
+    .form-group {
+      position: relative;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .form-label {
+      display: block;
+      font-size: .75rem;
+      font-weight: 600;
+      color: #6b7280;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 11px 44px 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-size: .92rem;
+      font-family: inherit;
+      color: var(--primary);
+      background: var(--white);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-input:focus { border-color: var(--accent); }
+    .form-input.error { border-color: var(--danger); }
+
+    /* 눈 아이콘 버튼 */
+    .toggle-pw {
+      position: absolute;
+      right: 12px;
+      bottom: 11px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9aa0b8;
+      font-size: .95rem;
+      padding: 0;
+      line-height: 1;
+    }
+    .toggle-pw:hover { color: var(--primary); }
+
+    /* ── 에러 메시지 ── */
+    .error-msg {
+      display: none;
+      font-size: .78rem;
+      color: var(--danger);
+      margin-top: -8px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .error-msg.show { display: block; }
+
+    /* ── 로그인 버튼 ── */
+    .btn-login {
+      width: 100%;
+      padding: 13px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-size: .92rem;
+      font-weight: 700;
+      font-family: inherit;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      margin-top: 4px;
+    }
+    .btn-login:hover { background: #2F3C86; }
+    .btn-login:active { transform: scale(.98); }
+    .btn-login:disabled { opacity: .6; cursor: not-allowed; }
+
+    /* ── 흔들림 애니메이션 ── */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-8px); }
+      40%       { transform: translateX(8px); }
+      60%       { transform: translateX(-6px); }
+      80%       { transform: translateX(6px); }
+    }
+    .shake { animation: shake .4s ease; }
+
+    /* ── 하단 홈 링크 ── */
+    .back-link {
+      margin-top: 20px;
+      font-size: .78rem;
+      color: #9aa0b8;
+    }
+    .back-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="card" id="login-card">
+
+    <!-- 로고 -->
+    <div class="logo-wrap">
+      <img src="images/logo.png" alt="Aestyve"
+           onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block';" />
+      <span class="logo-text">AESTYVE</span>
+    </div>
+
+    <h1 class="card-title">관리자 로그인</h1>
+    <p class="card-sub">관리자 전용 페이지입니다</p>
+
+    <form id="login-form" autocomplete="off" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label class="form-label" for="pw-input">비밀번호</label>
+        <input
+          type="password"
+          id="pw-input"
+          class="form-input"
+          placeholder="비밀번호를 입력하세요"
+          autocomplete="current-password"
+          autofocus
+        />
+        <button type="button" class="toggle-pw" onclick="togglePw()" aria-label="비밀번호 보기/숨기기">
+          👁
+        </button>
+      </div>
+
+      <p class="error-msg" id="error-msg">비밀번호가 올바르지 않습니다.</p>
+
+      <button type="submit" class="btn-login" id="login-btn">로그인</button>
+    </form>
+  </div>
+
+  <p class="back-link">
+    <a href="/">← 홈페이지로 돌아가기</a>
+  </p>
+</div>
+
+<script>
+  // ── 비밀번호 설정 (변경하려면 이 값만 바꾸면 됩니다) ──
+  const ADMIN_PASSWORD = 'aestyve2025!';
+
+  // 이미 인증된 경우 바로 이동
+  if (sessionStorage.getItem('aestyve_admin_auth') === 'yes') {
+    location.replace('admin.html');
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const input  = document.getElementById('pw-input');
+    const errMsg = document.getElementById('error-msg');
+    const btn    = document.getElementById('login-btn');
+    const card   = document.getElementById('login-card');
+
+    const val = input.value;
+
+    if (val === ADMIN_PASSWORD) {
+      // 성공 — 세션에 저장 후 이동
+      sessionStorage.setItem('aestyve_admin_auth', 'yes');
+      btn.textContent = '✓ 인증 완료...';
+      btn.disabled = true;
+      setTimeout(() => { location.replace('admin.html'); }, 500);
+    } else {
+      // 실패
+      input.classList.add('error');
+      errMsg.classList.add('show');
+      card.classList.remove('shake');
+      void card.offsetWidth; // reflow
+      card.classList.add('shake');
+      input.value = '';
+      input.focus();
+      setTimeout(() => {
+        input.classList.remove('error');
+        card.classList.remove('shake');
+      }, 600);
+    }
+  }
+
+  function togglePw() {
+    const input = document.getElementById('pw-input');
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+
+  // 엔터키 지원 (이미 form submit으로 처리되지만 명시)
+  document.getElementById('pw-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('login-form').requestSubmit();
+  });
+</script>
+</body>
+</html>

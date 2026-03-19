@@ -665,6 +665,12 @@
 <!-- Toast -->
 <div id="admin-toast"></div>
 
+<!-- 관리자 인증 체크 -->
+<script>
+  if (sessionStorage.getItem('aestyve_admin_auth') !== 'yes') {
+    location.replace('manage-aestyve-2025.html');
+  }
+</script>
 <script src="js/admin.js"></script>
 </body>
 </html>

@@ -2,7 +2,8 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" }
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/manage-aestyve-2025", "destination": "/manage-aestyve-2025.html" }
   ],
   "buildCommand": null
 }

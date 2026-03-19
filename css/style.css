@@ -108,20 +108,6 @@ img { display: block; max-width: 100%; }
   opacity: .6;
 }
 .lang-btn:hover, .lang-btn.active { opacity: 1; border-color: var(--primary); background: var(--gray-100); }
-.admin-btn {
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  color: var(--white);
-  background: var(--primary);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 6px 14px;
-  transition: var(--trans);
-  text-transform: uppercase;
-}
-.admin-btn:hover { background: var(--primary-light); }
-
 /* Mobile Hamburger */
 .hamburger {
   display: none;
@@ -774,7 +760,6 @@ img { display: block; max-width: 100%; }
 @media (max-width: 768px) {
   #main-nav { display: none; }
   .hamburger { display: flex; }
-  .admin-btn { display: none; }
   .hero-slide { min-height: 420px; }
   .hero-content { padding: 60px 0; }
   .hero-deco { width: 260px; height: 260px; right: -60px; }
