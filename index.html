@@ -3,221 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aestyve — 피부과학의 혁신</title>
-  <meta name="description" content="Aestyve - 최첨단 피부과학과 혁신적인 뷰티 테크놀로지" />
+  <title>Aestyve — Coming Soon</title>
+  <meta name="description" content="Aestyve - 최첨단 피부과학과 혁신적인 뷰티 테크놀로지. 곧 만나보세요." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1A2755;
+      --accent:  #4F7EF7;
+      --gold:    #C9A96E;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: #0c0e18;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── 배경 입자 애니메이션 ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(26,39,85,.7) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(79,126,247,.18) 0%, transparent 55%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── 메인 래퍼 ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    /* ── 로고 ── */
+    .logo-wrap {
+      margin-bottom: 52px;
+      animation: fadeDown .8s ease both;
+    }
+    .logo-wrap img {
+      height: 56px;
+      width: auto;
+      filter: brightness(0) invert(1); /* 흰색 반전 */
+      opacity: .92;
+    }
+
+    /* ── 공사중 뱃지 ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,169,110,.12);
+      border: 1px solid rgba(201,169,110,.35);
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      animation: fadeDown .9s .1s ease both;
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 1.6s infinite;
+    }
+
+    /* ── 메인 타이틀 ── */
+    .main-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      margin-bottom: 24px;
+      animation: fadeUp .9s .15s ease both;
+    }
+    .main-title em {
+      font-style: normal;
+      background: linear-gradient(90deg, #A8B9FF 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── 서브 설명 ── */
+    .sub-text {
+      font-size: clamp(.92rem, 2.2vw, 1.1rem);
+      font-weight: 400;
+      color: rgba(255,255,255,.55);
+      line-height: 1.75;
+      max-width: 480px;
+      margin: 0 auto 52px;
+      animation: fadeUp .9s .22s ease both;
+    }
+
+    /* ── 구분선 ── */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      border-radius: 2px;
+      margin: 0 auto 52px;
+      animation: fadeUp .9s .28s ease both;
+    }
+
+    /* ── 카운터 박스 ── */
+    .stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 60px;
+      animation: fadeUp .9s .32s ease both;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num span {
+      background: linear-gradient(90deg, #A8B9FF, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.38);
+      text-transform: uppercase;
+    }
+
+    /* ── 이메일 문의 버튼 ── */
+    .cta-wrap {
+      animation: fadeUp .9s .38s ease both;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      padding: 14px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      box-shadow: 0 4px 24px rgba(79,126,247,.35);
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(79,126,247,.5);
+      background: #3a6ce8;
+    }
+    .btn-sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.55);
+      font-size: .85rem;
+      font-weight: 500;
+      padding: 14px 28px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 100px;
+      text-decoration: none;
+      transition: color .2s, border-color .2s;
+    }
+    .btn-sub:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+
+    /* ── 하단 카피 ── */
+    .footer-copy {
+      position: fixed;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: .72rem;
+      color: rgba(255,255,255,.2);
+      letter-spacing: .06em;
+      pointer-events: none;
+    }
+
+    /* ── 떠다니는 원 장식 ── */
+    .deco-circle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .deco-circle-1 {
+      width: 500px; height: 500px;
+      top: -200px; right: -150px;
+      background: radial-gradient(circle, rgba(79,126,247,.08) 0%, transparent 70%);
+      animation: float 8s ease-in-out infinite;
+    }
+    .deco-circle-2 {
+      width: 320px; height: 320px;
+      bottom: -100px; left: -80px;
+      background: radial-gradient(circle, rgba(201,169,110,.07) 0%, transparent 70%);
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    /* ── 애니메이션 ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.7); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-30px); }
+    }
+
+    /* ── 모바일 ── */
+    @media (max-width: 480px) {
+      .stats { gap: 32px; }
+      .logo-wrap img { height: 44px; }
+      .cta-wrap { flex-direction: column; align-items: center; }
+      .btn-main, .btn-sub { width: 100%; max-width: 300px; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ===== NOTICE BAR ===== -->
-<div id="notice-bar" role="banner" aria-label="공지사항"></div>
+<!-- 장식 원 -->
+<div class="deco-circle deco-circle-1"></div>
+<div class="deco-circle deco-circle-2"></div>
 
-<!-- ===== HEADER ===== -->
-<header id="site-header">
-  <div class="container">
-    <div class="header-inner">
-      <!-- Logo -->
-      <a href="#" class="logo-wrap" aria-label="Aestyve 홈">
-        <img src="images/logo.png" alt="Aestyve" id="header-logo" />
-      </a>
+<main class="page">
 
-      <!-- Desktop Nav -->
-      <nav id="main-nav" aria-label="주 내비게이션"></nav>
+  <!-- 로고 -->
+  <div class="logo-wrap">
+    <img src="images/logo.png" alt="Aestyve" />
+  </div>
 
-      <!-- Actions -->
-      <div class="header-actions">
-        <!-- Language Buttons -->
-        <div id="lang-switcher" role="group" aria-label="언어 선택"></div>
-        <!-- Hamburger -->
-        <button class="hamburger" id="hamburger" aria-label="메뉴 열기" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+  <!-- 뱃지 -->
+  <div class="badge">
+    <span class="badge-dot"></span>
+    준비 중입니다
+  </div>
+
+  <!-- 타이틀 -->
+  <h1 class="main-title">
+    피부과학의<br/><em>새로운 기준</em>
+  </h1>
+
+  <!-- 구분선 -->
+  <div class="divider"></div>
+
+  <!-- 설명 -->
+  <p class="sub-text">
+    Aestyve는 최첨단 피부과학과 혁신적인 뷰티 테크놀로지로<br/>
+    새로운 아름다움의 경험을 준비하고 있습니다.<br/>
+    곧 만나보세요.
+  </p>
+
+  <!-- 통계 -->
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num"><span>500+</span></div>
+      <div class="stat-label">임상 검증 성분</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span>98%</span></div>
+      <div class="stat-label">고객 만족도</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span>30+</span></div>
+      <div class="stat-label">피부과 전문의</div>
     </div>
   </div>
-  <!-- Mobile Nav -->
-  <nav id="mobile-nav" aria-label="모바일 내비게이션">
-    <div id="mobile-nav-links"></div>
-    <div class="mobile-lang-row" id="mobile-lang-switcher"></div>
-  </nav>
-</header>
 
-<!-- ===== HERO VIDEO ===== -->
-<section id="hero" aria-label="히어로 배너">
-  <!-- 비디오 배경 (관리자에서 업로드) -->
-  <div id="hero-video-wrap"></div>
-  <!-- 히어로 텍스트/버튼 오버레이 -->
-  <div id="hero-overlay" class="hero-overlay-content"></div>
-</section>
-
-<!-- ===== TRUST BAR ===== -->
-<section id="trust-bar" aria-label="신뢰 배지">
-  <div class="container">
-    <div class="trust-items">
-      <div class="trust-item"><span class="trust-icon">🧪</span><span>피부과 테스트 완료</span></div>
-      <div class="trust-item"><span class="trust-icon">🌱</span><span>안전한 인증 성분</span></div>
-      <div class="trust-item"><span class="trust-icon">🏆</span><span>뷰티 어워드 수상</span></div>
-      <div class="trust-item"><span class="trust-icon">💚</span><span>클린 뷰티 인증</span></div>
-    </div>
+  <!-- CTA 버튼 -->
+  <div class="cta-wrap">
+    <a href="mailto:hello@aestyve.com" class="btn-main">
+      ✉️ &nbsp;문의하기
+    </a>
+    <a href="https://instagram.com/aestyve" target="_blank" rel="noopener" class="btn-sub">
+      📸 &nbsp;Instagram
+    </a>
   </div>
-</section>
 
-<!-- ===== CATEGORIES ===== -->
-<section id="categories" aria-label="카테고리">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag" id="cat-tag">CATEGORIES</span>
-      <h2 class="section-title" id="cat-title">피부 고민별 솔루션</h2>
-      <p class="section-desc" id="cat-desc">당신의 피부 타입과 고민에 맞는 과학적 솔루션을 찾아보세요</p>
-    </div>
-    <div class="category-grid" id="category-grid">
-      <div class="loading-block"><div class="loading-spinner"></div><br/>로딩 중...</div>
-    </div>
-  </div>
-</section>
+</main>
 
-<!-- ===== PRODUCTS ===== -->
-<section id="products" aria-label="제품">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag" id="prod-tag">PRODUCTS</span>
-      <h2 class="section-title" id="prod-title">Aestyve 제품</h2>
-      <p class="section-desc" id="prod-desc">피부과학이 만든 믿을 수 있는 뷰티 솔루션</p>
-    </div>
-    <!-- Filter Tabs -->
-    <div class="filter-tabs" role="tablist" aria-label="제품 필터">
-      <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">ALL</button>
-      <button class="filter-tab" data-filter="new" role="tab" aria-selected="false">NEW</button>
-      <button class="filter-tab" data-filter="best" role="tab" aria-selected="false">BEST</button>
-    </div>
-    <!-- Product Grid -->
-    <div class="product-grid" id="product-grid">
-      <div class="loading-block" style="grid-column:1/-1"><div class="loading-spinner"></div><br/>로딩 중...</div>
-    </div>
-  </div>
-</section>
+<!-- 하단 카피 -->
+<p class="footer-copy">© 2025 Aestyve. All rights reserved.</p>
 
-<!-- ===== BRAND ===== -->
-<section id="brand" aria-label="브랜드 스토리">
-  <div class="container">
-    <div class="brand-grid">
-      <!-- Text -->
-      <div class="brand-text">
-        <p class="brand-tag" id="brand-tag">ABOUT AESTYVE</p>
-        <h2 class="brand-title" id="brand-title">피부과학의 혁신,<br/>아름다움의 새 기준</h2>
-        <p class="brand-desc" id="brand-desc">브랜드 스토리를 불러오는 중...</p>
-        <div class="brand-stats" id="brand-stats">
-          <div class="brand-stat"><div class="stat-number">-</div><div class="stat-label">-</div></div>
-          <div class="brand-stat"><div class="stat-number">-</div><div class="stat-label">-</div></div>
-          <div class="brand-stat"><div class="stat-number">-</div><div class="stat-label">-</div></div>
-        </div>
-      </div>
-      <!-- Visual Blocks -->
-      <div class="brand-visual" id="brand-visual">
-        <div class="brand-block" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.3);">DERMA SCIENCE</div>
-        <div class="brand-block" style="background:rgba(79,126,247,.15);color:rgba(255,255,255,.4);">CLINICAL</div>
-        <div class="brand-block" style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.3);">INNOVATION</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== REVIEWS ===== -->
-<section id="reviews" aria-label="고객 리뷰">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">REVIEWS</span>
-      <h2 class="section-title" id="review-title">고객 후기</h2>
-      <p class="section-desc" id="review-desc">Aestyve를 경험한 고객들의 진솔한 이야기</p>
-    </div>
-    <div class="reviews-track-wrap">
-      <div class="reviews-track" id="reviews-track"></div>
-    </div>
-    <div class="reviews-nav">
-      <button class="reviews-arrow" id="rev-prev" aria-label="이전 리뷰">&#8592;</button>
-      <button class="reviews-arrow" id="rev-next" aria-label="다음 리뷰">&#8594;</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" aria-label="연락처">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">CONTACT</span>
-      <h2 class="section-title">문의하기</h2>
-      <p class="section-desc">궁금한 점이 있으시면 언제든지 연락주세요</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h3 id="contact-brand-name">Aestyve</h3>
-        <p id="contact-slogan">피부과학의 혁신, 아름다움의 새 기준</p>
-        <div class="contact-detail">
-          <div class="contact-row"><i class="fas fa-phone"></i><span id="contact-phone">-</span></div>
-          <div class="contact-row"><i class="fas fa-envelope"></i><span id="contact-email">-</span></div>
-          <div class="contact-row"><i class="fas fa-map-marker-alt"></i><span id="contact-address">-</span></div>
-        </div>
-        <div class="social-links" id="social-links"></div>
-      </div>
-      <div class="contact-map-block">
-        <div class="contact-map-inner">MAP PLACEHOLDER</div>
-        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;" id="contact-map-text">
-          서울특별시 강남구 테헤란로 123<br/>에스티브 빌딩
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer id="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo-wrap">
-          <img src="images/logo.png" alt="Aestyve" style="height:36px;" />
-        </div>
-        <p id="footer-desc">피부과학의 혁신으로 탄생한 프리미엄 뷰티 브랜드.<br/>모든 피부 타입을 위한 과학적 솔루션.</p>
-      </div>
-      <div class="footer-col">
-        <h5>PRODUCTS</h5>
-        <ul>
-          <li><a href="#products">New Arrivals</a></li>
-          <li><a href="#products">Best Sellers</a></li>
-          <li><a href="#categories">Categories</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>BRAND</h5>
-        <ul>
-          <li><a href="#brand">Brand Story</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>SUPPORT</h5>
-        <ul>
-          <li><a href="#contact">Customer Service</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span id="footer-copyright">© 2025 Aestyve. All rights reserved.</span>
-      <span>Made with ❤️ in Seoul</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ===== TOAST ===== -->
-<div id="toast" role="alert" aria-live="polite"></div>
-
-<!-- Scripts -->
-<script src="js/main.js"></script>
 </body>
 </html>
