@@ -73,13 +73,24 @@ function renderNav(navItems) {
   }
 }
 
-/* ─── 콘텐츠 로드 (content.json 우선) ─── */
+/* ─── 콘텐츠 로드 (content.json + IndexedDB) ─── */
 async function loadContent() {
+  /* 1) IndexedDB에서 detailImages 맵 로드 */
+  const imgMap = await ImageStore.getAll();
+
+  /* 2) content.json fetch */
   let fresh = null;
   try {
     const res = await fetch('data/content.json?v=' + Date.now());
     if (res.ok) fresh = await res.json();
   } catch (e) {}
+
+  function _applyImgMap(products) {
+    return (products || []).map(p => ({
+      ...p,
+      detailImages: imgMap[p.id] || [],
+    }));
+  }
 
   if (fresh) {
     try {
@@ -87,7 +98,6 @@ async function loadContent() {
       if (stored) {
         const cached = JSON.parse(stored);
         if (cached && typeof cached === 'object') {
-          const imgMap = _loadDetailImagesMap();
           STATE.content = {
             ...fresh,
             heroes:   cached.heroes   || fresh.heroes,
@@ -98,10 +108,10 @@ async function loadContent() {
               if (!cp) return { ...fp, detailImages: imgMap[fp.id] || [] };
               return {
                 ...fp,
-                name:         cp.name         || fp.name,
-                detail:       cp.detail       || fp.detail,
-                category:     cp.category     || fp.category,
-                detailImages: imgMap[fp.id]   || cp.detailImages || [],
+                name:     cp.name     || fp.name,
+                detail:   cp.detail   || fp.detail,
+                category: cp.category || fp.category,
+                detailImages: imgMap[fp.id] || [],
               };
             }),
             categories: fresh.categories || cached.categories,
@@ -111,17 +121,18 @@ async function loadContent() {
         }
       }
     } catch (e) {}
-    STATE.content = fresh;
+    STATE.content = { ...fresh, products: _applyImgMap(fresh.products) };
     renderProduct();
     return;
   }
 
+  /* 3) fetch 실패 → localStorage 폴백 */
   try {
     const stored = localStorage.getItem('aestyve_content');
     if (stored) {
       const parsed = JSON.parse(stored);
       if (parsed && typeof parsed === 'object') {
-        _restoreDetailImages(parsed);
+        parsed.products = _applyImgMap(parsed.products);
         STATE.content = parsed;
         renderProduct();
         return;
@@ -129,20 +140,6 @@ async function loadContent() {
     }
   } catch (e) {}
   console.error('[Aestyve] content.json 로드 실패');
-}
-
-function _loadDetailImagesMap() {
-  try {
-    const raw = localStorage.getItem('aestyve_content_dimgs');
-    if (raw) return JSON.parse(raw);
-  } catch(e) {}
-  return {};
-}
-function _restoreDetailImages(data) {
-  const imgMap = _loadDetailImagesMap();
-  (data.products || []).forEach(p => {
-    if (p.id) p.detailImages = imgMap[p.id] || p.detailImages || [];
-  });
 }
 
 /* ─── 제품 렌더 ─── */

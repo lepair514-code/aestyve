@@ -4,21 +4,6 @@
  */
 
 const STORAGE_KEY = 'aestyve_content';
-
-/* detailImages 별도 저장소 로드 헬퍼 */
-function _loadDetailImagesMap() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY + '_dimgs');
-    if (raw) return JSON.parse(raw);
-  } catch(e) {}
-  return {};
-}
-function _restoreDetailImages(data) {
-  const imgMap = _loadDetailImagesMap();
-  (data.products || []).forEach(p => {
-    if (p.id) p.detailImages = imgMap[p.id] || p.detailImages || [];
-  });
-}
 const LANGS = ['ko', 'en', 'zh-CN', 'th'];
 const LANG_LABELS = { ko: '한국어', en: 'English', 'zh-CN': '中文', th: 'ภาษาไทย' };
 
@@ -52,28 +37,31 @@ function esc(s) {
 
 /* ─── 데이터 로드 ─── */
 async function loadData() {
-  /* 1) content.json 항상 먼저 fetch (이미지 경로 최신값 보장) */
+  /* 구 localStorage _dimgs → IndexedDB 마이그레이션 (최초 1회) */
+  await ImageStore.migrateFromLocalStorage();
+
+  /* 1) IndexedDB에서 detailImages 맵 로드 */
+  const imgMap = await ImageStore.getAll();
+
+  /* 2) content.json fetch */
   let fresh = null;
   try {
     const res = await fetch('data/content.json?v=' + Date.now());
     if (res.ok) fresh = await res.json();
   } catch (e) {}
 
-  /* 2) localStorage: 관리자가 편집한 hero·settings·nav·detail·name 은 유지
-        products 이미지/id 는 항상 content.json 기준으로 덮어씀 */
+  /* 3) localStorage slim 데이터 (이름·카테고리 등) 로드 */
   if (fresh) {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const cached = JSON.parse(stored);
         if (cached && typeof cached === 'object') {
-          const imgMap = _loadDetailImagesMap();
           DATA = {
             ...fresh,
             heroes:   cached.heroes   || fresh.heroes,
             settings: cached.settings || fresh.settings,
             nav:      cached.nav      || fresh.nav,
-            /* products: 이미지/id는 content.json 기준, name·detail은 localStorage 유지 */
             products: (fresh.products || []).map(fp => {
               const cp = (cached.products || []).find(p => p.id === fp.id);
               if (!cp) return { ...fp, detailImages: imgMap[fp.id] || [] };
@@ -82,52 +70,51 @@ async function loadData() {
                 name:         cp.name         || fp.name,
                 detail:       cp.detail       || fp.detail,
                 category:     cp.category     || fp.category,
-                detailImages: imgMap[fp.id]   || cp.detailImages || [],
+                detailImages: imgMap[fp.id]   || [],
               };
             }),
             categories: fresh.categories || cached.categories,
           };
-          /* _dimgs는 건드리지 않고 slim 데이터만 갱신 */
           _saveSlimOnly();
           renderAll();
           return;
         }
       }
     } catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
-    /* localStorage 없으면 fresh 그대로 사용 (detailImages는 _dimgs에서 복원) */
-    const imgMap2 = _loadDetailImagesMap();
+    /* localStorage 없으면 fresh 그대로 */
     DATA = {
       ...fresh,
       products: (fresh.products || []).map(p => ({
-        ...p,
-        detailImages: imgMap2[p.id] || [],
+        ...p, detailImages: imgMap[p.id] || [],
       })),
     };
-    /* _dimgs는 건드리지 않고 slim 데이터만 갱신 */
     _saveSlimOnly();
     renderAll();
     return;
   }
 
-  /* 3) fetch 실패 → localStorage 폴백 */
+  /* 4) fetch 실패 → localStorage 폴백 */
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       DATA = JSON.parse(stored);
-      _restoreDetailImages(DATA);
+      /* detailImages를 IndexedDB에서 복원 */
+      (DATA.products || []).forEach(p => {
+        if (p.id) p.detailImages = imgMap[p.id] || [];
+      });
       renderAll();
       return;
     }
   } catch (e) {}
 
-  /* 4) 완전 실패 → 기본값 */
+  /* 5) 완전 실패 → 기본값 */
   DATA = getDefaultData();
-  saveToStorage();
+  _saveSlimOnly();
   renderAll();
   toast('content.json을 찾을 수 없어 기본값으로 시작합니다.', 'error', 5000);
 }
 
-/* slim 저장: detailImages 제외한 메인 데이터만 저장 (_dimgs는 건드리지 않음) */
+/* slim 저장: detailImages 제외한 텍스트 데이터만 localStorage에 저장 */
 function _saveSlimOnly() {
   try {
     const slim = {
@@ -139,29 +126,22 @@ function _saveSlimOnly() {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(slim));
   } catch(e) {
-    toast('저장 공간이 부족합니다.', 'error', 5000);
+    toast('텍스트 데이터 저장 실패', 'error', 5000);
     console.error('[Admin] localStorage 저장 실패', e);
   }
 }
 
+/* 텍스트 데이터(slim) + 이미지(IndexedDB) 함께 저장 */
 function saveToStorage() {
-  /* detailImages(Base64)는 별도 키에 분리 저장 → 메인 key 용량 초과 방지 */
-  try {
-    /* 1) 기존 _dimgs를 읽어서 현재 DATA의 detailImages로 머지 저장
-          → DATA에 없는 제품의 이미지는 유지됨 */
-    const existing = _loadDetailImagesMap();
-    const imgMap = { ...existing };
-    (DATA.products || []).forEach(p => {
-      if (!p.id) return;
-      if (p.detailImages && p.detailImages.length) {
-        imgMap[p.id] = p.detailImages;
-      } else if (!(p.id in imgMap)) {
-        /* _dimgs에도 없으면 빈 배열 유지 (덮어쓰지 않음) */
-      }
-    });
-    localStorage.setItem(STORAGE_KEY + '_dimgs', JSON.stringify(imgMap));
-  } catch(e) { console.warn('[Admin] detailImages 저장 실패', e); }
-  /* 2) 메인 DATA는 detailImages 제외하고 저장 */
+  /* 1) detailImages → IndexedDB (용량 제한 없음) */
+  const savePromises = (DATA.products || []).map(p => {
+    if (!p.id) return Promise.resolve();
+    return ImageStore.set(p.id, p.detailImages || []);
+  });
+  Promise.all(savePromises).catch(e =>
+    console.warn('[Admin] IndexedDB 저장 오류', e)
+  );
+  /* 2) 텍스트 데이터 → localStorage */
   _saveSlimOnly();
 }
 
@@ -721,7 +701,13 @@ window.saveProductModal = function() {
     DATA.products.push(obj);
   }
 
-  saveToStorage();
+  /* detailImages → IndexedDB 직접 저장 (localStorage 용량 한도 우회) */
+  ImageStore.set(obj.id, obj.detailImages)
+    .catch(e => console.warn('[Admin] IndexedDB 저장 실패', e));
+
+  /* 텍스트 데이터 → localStorage */
+  _saveSlimOnly();
+
   closeModal();
   renderProductAdminList();
   renderDashboard();
