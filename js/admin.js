@@ -1,32 +1,19 @@
 /**
- * Aestyve — admin.js
- * 기능: localStorage 기반 CRUD, 파일 업로드(Base64), Import/Export/Reset, 다국어 폼, 모달 편집
+ * Aestyve — admin.js v3
+ * Hero 비디오 URL + Products 이미지/이름/설명 직접 수정
  */
 
-/* ─── 상수 ─── */
 const STORAGE_KEY = 'aestyve_content';
 const LANGS = ['ko', 'en', 'zh-CN', 'th'];
 const LANG_LABELS = { ko: '한국어', en: 'English', 'zh-CN': '中文', th: 'ภาษาไทย' };
-const SECTIONS = ['dashboard', 'settings', 'hero', 'categories', 'products', 'reviews', 'data'];
-const TOPBAR_TITLES = {
-  dashboard: '대시보드',
-  settings: '사이트 설정',
-  hero: '히어로 배너',
-  categories: '카테고리',
-  products: '제품',
-  reviews: '리뷰',
-  data: 'Import / Export',
-};
 
-/* ─── 상태 ─── */
 let DATA = null;
-let currentLang = 'ko';
-let modalCtx = null;
+let modalProductIdx = -1; // -1 = 신규
 
 /* ─── 유틸 ─── */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-const uid = () => 'id_' + Math.random().toString(36).slice(2, 10);
+const uid = () => 'p_' + Math.random().toString(36).slice(2, 9);
 
 function toast(msg, type = 'success', dur = 2800) {
   const el = $('#admin-toast');
@@ -39,25 +26,21 @@ function toast(msg, type = 'success', dur = 2800) {
   });
 }
 
-function getLangField(obj, field) {
-  return (obj?.[field] && typeof obj[field] === 'object') ? obj[field] : {};
-}
-function getStr(obj, field, lang) {
-  const f = getLangField(obj, field);
-  return f[lang] || f['ko'] || '';
+function esc(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 /* ─── 데이터 로드 ─── */
 async function loadData() {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored) {
-    try {
-      DATA = JSON.parse(stored);
-      renderAll();
-      return;
-    } catch (e) {
-      console.warn('[Admin] localStorage 파싱 오류, content.json 로드');
-    }
+    try { DATA = JSON.parse(stored); renderAll(); return; }
+    catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
   }
   try {
     const res = await fetch('data/content.json');
@@ -67,9 +50,10 @@ async function loadData() {
     renderAll();
   } catch (err) {
     console.error('[Admin] content.json 로드 실패:', err);
-    toast('content.json을 찾을 수 없습니다. Import 메뉴에서 파일을 불러오세요.', 'error', 5000);
     DATA = getDefaultData();
+    saveToStorage();
     renderAll();
+    toast('content.json을 찾을 수 없어 기본값으로 시작합니다.', 'error', 5000);
   }
 }
 
@@ -77,780 +61,535 @@ function saveToStorage() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA));
 }
 
-/* ─── 기본값 ─── */
+/* ─── 기본 데이터 ─── */
 function getDefaultData() {
   return {
     settings: {
       brandName: 'Aestyve',
       primaryColor: '#1A2755',
-      accentColor: '#2F3C86',
-      noticeBar: { visible: true, text: { ko: '신규 회원가입 시 10% 할인 쿠폰 증정!', en: 'Get 10% off on sign-up!', 'zh-CN': '新会员注册即享9折优惠券！', th: 'สมัครสมาชิกรับส่วนลด 10%!' } },
+      noticeBar: { visible: false, text: { ko: '', en: '', 'zh-CN': '', th: '' } },
       slogan: { ko: '피부과학의 혁신', en: 'Innovation in Dermatology', 'zh-CN': '皮肤科学的创新', th: 'นวัตกรรมผิวหนัง' },
       brandStory: { ko: 'Aestyve는 최첨단 피부과학으로 탄생했습니다.', en: 'Aestyve was born from cutting-edge dermatology.', 'zh-CN': 'Aestyve诞生于尖端皮肤科学。', th: 'Aestyve เกิดจากวิทยาศาสตร์ผิวหนังขั้นสูง' },
-      stats: [
-        { number: '500+', label: { ko: '임상 검증 성분', en: 'Clinically Tested', 'zh-CN': '临床验证', th: 'ส่วนผสมทดสอบ' } },
-        { number: '98%',  label: { ko: '고객 만족도',    en: 'Satisfaction',    'zh-CN': '客户满意度', th: 'ความพึงพอใจ' } },
-        { number: '30+',  label: { ko: '피부과 전문의',  en: 'Dermatologists',  'zh-CN': '皮肤科医生', th: 'ผู้เชี่ยวชาญ' } },
-      ],
-      contact: { phone: '+82-2-1234-5678', email: 'hello@aestyve.com', address: '서울특별시 강남구' },
-      social: { instagram: '', youtube: '', facebook: '', tiktok: '' }
+      stats: [],
+      contact: { phone: '', email: '', address: '' },
+      social: { instagram: '', youtube: '', facebook: '', tiktok: '' },
     },
     nav: [
-      { id: 'nav1', label: { ko: 'NEW',      en: 'NEW',      'zh-CN': '新品', th: 'ใหม่'    }, href: '#products' },
-      { id: 'nav2', label: { ko: 'PRODUCTS', en: 'PRODUCTS', 'zh-CN': '产品', th: 'สินค้า' }, href: '#products' },
-      { id: 'nav3', label: { ko: 'BRAND',    en: 'BRAND',    'zh-CN': '品牌', th: 'แบรนด์' }, href: '#brand'    },
-      { id: 'nav4', label: { ko: 'CONTACT',  en: 'CONTACT',  'zh-CN': '联系', th: 'ติดต่อ' }, href: '#contact'  },
+      { id: 'nav1', label: { ko: 'PRODUCTS', en: 'PRODUCTS', 'zh-CN': '产品', th: 'สินค้า' }, href: '#products' },
+      { id: 'nav2', label: { ko: 'BRAND', en: 'BRAND', 'zh-CN': '品牌', th: 'แบรนด์' }, href: '#brand' },
+      { id: 'nav3', label: { ko: 'CONTACT', en: 'CONTACT', 'zh-CN': '联系', th: 'ติดต่อ' }, href: '#contact' },
     ],
-    heroes: [], categories: [], products: [], reviews: [],
+    heroes: [],
+    categories: [],
+    products: [],
+    reviews: [],
   };
 }
 
 /* ─── 전체 렌더 ─── */
 function renderAll() {
   renderDashboard();
-  renderSettings();
-  renderList('hero',     DATA.heroes     || []);
-  renderList('category', DATA.categories || []);
-  renderList('product',  DATA.products   || []);
-  renderList('review',   DATA.reviews    || []);
+  renderHeroForm();
+  renderProductAdminList();
+  renderSettingsForm();
 }
 
 /* ─── Dashboard ─── */
 function renderDashboard() {
-  const set = (id, val) => { const el = $(id); if (el) el.textContent = val; };
-  set('#dash-hero-count', DATA.heroes?.length     || 0);
-  set('#dash-cat-count',  DATA.categories?.length || 0);
-  set('#dash-prod-count', DATA.products?.length   || 0);
-  set('#dash-rev-count',  DATA.reviews?.length    || 0);
+  const prodCount = $('#dash-prod-count');
+  if (prodCount) prodCount.textContent = DATA.products?.length || 0;
+
+  const heroStatus = $('#dash-hero-status');
+  if (heroStatus) {
+    const h = DATA.heroes?.[0];
+    heroStatus.textContent = h?.bgVideo ? '✅' : h?.bgImage ? '🖼️' : '없음';
+  }
 }
 
-/* ─── Settings 렌더 ─── */
-function renderSettings() {
-  const s = DATA.settings || {};
+/* ─── Hero 폼 렌더 ─── */
+function renderHeroForm() {
+  const h = DATA.heroes?.[0] || {};
+
+  // YouTube URL
+  const ytInput = $('#hero-yt-url');
+  if (ytInput) ytInput.value = h.bgVideo || '';
+
+  // YouTube 미리보기 (저장된 URL이 있으면 표시)
+  if (h.bgVideo) {
+    showYoutubePreview(h.bgVideo);
+  }
+
+  // 텍스트 오버레이
   const setVal = (id, val) => { const el = $(id); if (el) el.value = val || ''; };
-
-  setVal('#set-brandName', s.brandName);
-  setVal('#set-primaryColor', s.primaryColor || '#1A2755');
-  const picker = $('#set-primaryColorPicker');
-  if (picker) picker.value = s.primaryColor || '#1A2755';
-  const noticeChk = $('#set-noticeVisible');
-  if (noticeChk) noticeChk.checked = !!s.noticeBar?.visible;
-
-  function buildLangFields(containerId, dataObj, fieldKey, isTextarea = false) {
-    const wrap = $(containerId);
-    if (!wrap) return;
-    wrap.innerHTML = '';
-    const tabRow = document.createElement('div');
-    tabRow.className = 'lang-tabs';
-    LANGS.forEach(lc => {
-      const btn = document.createElement('button');
-      btn.className = 'lang-tab' + (lc === 'ko' ? ' active' : '');
-      btn.textContent = LANG_LABELS[lc];
-      btn.type = 'button';
-      btn.dataset.lang = lc;
-      btn.onclick = () => {
-        tabRow.querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        wrap.querySelectorAll('.lang-input-block').forEach(b => {
-          b.style.display = b.dataset.lang === lc ? '' : 'none';
-        });
-      };
-      tabRow.appendChild(btn);
-    });
-    wrap.appendChild(tabRow);
-    const val = dataObj?.[fieldKey] || {};
-    LANGS.forEach((lc, i) => {
-      const block = document.createElement('div');
-      block.className = 'lang-input-block';
-      block.dataset.lang = lc;
-      block.style.display = i === 0 ? '' : 'none';
-      const ctrl = document.createElement(isTextarea ? 'textarea' : 'input');
-      ctrl.className = 'form-control';
-      ctrl.dataset.field = fieldKey;
-      ctrl.dataset.lang = lc;
-      if (!isTextarea) ctrl.type = 'text';
-      ctrl.value = val[lc] || '';
-      if (isTextarea) ctrl.rows = 3;
-      block.appendChild(ctrl);
-      wrap.appendChild(block);
-    });
-  }
-
-  buildLangFields('#notice-lang-fields', s.noticeBar, 'text');
-  buildLangFields('#slogan-lang-fields', s, 'slogan');
-  buildLangFields('#story-lang-fields', s, 'brandStory', true);
-
-  const statsWrap = $('#stats-fields');
-  if (statsWrap) {
-    const stats = s.stats || [{},{},{}];
-    statsWrap.innerHTML = stats.map((st, i) =>
-      '<div style="display:grid;grid-template-columns:120px 1fr;gap:8px;margin-bottom:12px;align-items:start;">' +
-        '<div><label class="form-label">수치 ' + (i+1) + '</label>' +
-        '<input type="text" class="form-control" id="stat-num-' + i + '" value="' + (st.number||'') + '" placeholder="예: 500+" /></div>' +
-        '<div><label class="form-label">라벨 (' + LANG_LABELS[currentLang] + ')</label>' +
-        '<input type="text" class="form-control" id="stat-label-' + i + '" value="' + ((st.label||{})[currentLang]||'') + '" placeholder="라벨" /></div>' +
-      '</div>'
-    ).join('');
-  }
-
-  setVal('#set-phone',     s.contact?.phone);
-  setVal('#set-email',     s.contact?.email);
-  setVal('#set-address',   s.contact?.address);
-  setVal('#set-instagram', s.social?.instagram);
-  setVal('#set-youtube',   s.social?.youtube);
-  setVal('#set-facebook',  s.social?.facebook);
-  setVal('#set-tiktok',    s.social?.tiktok);
+  setVal('#hero-title-ko',   (h.title    || {}).ko   || '');
+  setVal('#hero-title-en',   (h.title    || {}).en   || '');
+  setVal('#hero-subtitle-ko',(h.subtitle || {}).ko   || '');
+  setVal('#hero-btn-ko',     (h.btnText  || {}).ko   || '');
+  setVal('#hero-btn-href',   h.btnHref                || '#products');
 }
 
-/* ─── Settings 저장 ─── */
-function saveSection(section) {
-  if (section !== 'settings') return;
-  const s = DATA.settings = DATA.settings || {};
-  s.brandName    = $('#set-brandName')?.value || s.brandName;
-  s.primaryColor = $('#set-primaryColor')?.value || s.primaryColor;
-  s.noticeBar    = s.noticeBar || {};
-  s.noticeBar.visible = !!$('#set-noticeVisible')?.checked;
-
-  function collectLangField(containerId) {
-    const result = {};
-    $$(`.lang-input-block`, $(containerId) || document).forEach(block => {
-      const ctrl = block.querySelector('[data-lang]');
-      if (ctrl) result[ctrl.dataset.lang] = ctrl.value;
-    });
-    return result;
+/* YouTube 미리보기 */
+function showYoutubePreview(url) {
+  if (!url) return;
+  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (!ytMatch) { toast('올바른 YouTube URL을 입력해주세요.', 'error'); return; }
+  const videoId = ytMatch[1];
+  const wrap = $('#hero-yt-preview');
+  const iframe = $('#hero-yt-iframe-preview');
+  if (wrap && iframe) {
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0&modestbranding=1`;
+    wrap.style.display = '';
   }
-  s.noticeBar.text = collectLangField('#notice-lang-fields');
-  s.slogan         = collectLangField('#slogan-lang-fields');
-  s.brandStory     = collectLangField('#story-lang-fields');
+}
+window.previewYoutube = function() {
+  const url = ($('#hero-yt-url') || {}).value?.trim() || '';
+  if (!url) { toast('YouTube URL을 입력해주세요.', 'error'); return; }
+  showYoutubePreview(url);
+};
 
-  s.stats = (s.stats || [{},{},{}]).map((st, i) => ({
-    number: $(`#stat-num-${i}`)?.value || st.number,
-    label: { ...(st.label||{}) }
-  }));
-  (s.stats || []).forEach((st, i) => {
-    const v = $(`#stat-label-${i}`)?.value;
-    if (v !== undefined) st.label[currentLang] = v;
-  });
+/* Hero 동영상 파일 업로드 (ObjectURL — 임시) */
+window.handleHeroVideo = function(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 500 * 1024 * 1024) { toast('500MB 이하 파일만 지원합니다.', 'error'); input.value = ''; return; }
+  const url = URL.createObjectURL(file);
+  const preview = $('#hero-video-preview');
+  if (preview) preview.innerHTML = `<video src="${url}" style="width:100%;max-height:200px;object-fit:cover;" controls muted playsinline></video>`;
+  const area = $('#hero-video-upload-area');
+  if (area) area.classList.add('has-media');
+  // ObjectURL은 임시 — hero bgVideo는 YouTube URL만 영구 저장
+  toast('✅ 미리보기 완료! 영구 적용은 YouTube URL을 사용하세요.', 'success', 4000);
+};
 
+/* Hero 저장 */
+window.saveHero = function() {
+  const ytUrl   = ($('#hero-yt-url') || {}).value?.trim() || '';
+  const titleKo = ($('#hero-title-ko') || {}).value?.trim() || '';
+  const titleEn = ($('#hero-title-en') || {}).value?.trim() || '';
+  const subKo   = ($('#hero-subtitle-ko') || {}).value?.trim() || '';
+  const btnKo   = ($('#hero-btn-ko') || {}).value?.trim() || '';
+  const btnHref = ($('#hero-btn-href') || {}).value?.trim() || '#products';
+
+  const hero = {
+    id: 'h1',
+    bgVideo:     ytUrl,
+    bgImage:     DATA.heroes?.[0]?.bgImage || '',
+    bgColor:     DATA.heroes?.[0]?.bgColor || '#1A2755',
+    accentColor: DATA.heroes?.[0]?.accentColor || '#A8B9FF',
+    label:    { ko: 'AESTYVE', en: 'AESTYVE', 'zh-CN': 'AESTYVE', th: 'AESTYVE' },
+    title:    { ko: titleKo, en: titleEn, 'zh-CN': titleKo, th: titleKo },
+    subtitle: { ko: subKo,  en: subKo,  'zh-CN': subKo,  th: subKo  },
+    btnText:  { ko: btnKo,  en: btnKo || 'Shop Now', 'zh-CN': btnKo || '立即购买', th: btnKo || 'ช้อปเลย' },
+    btnHref,
+  };
+
+  DATA.heroes = [hero];
+  saveToStorage();
+  renderDashboard();
+  toast('✅ 메인 영상 설정이 저장되었습니다! 홈페이지를 새로고침하면 반영됩니다.');
+};
+
+/* ─── Products 관리자 리스트 렌더 ─── */
+function renderProductAdminList() {
+  const list = $('#product-admin-list');
+  if (!list) return;
+  const prods = DATA.products || [];
+
+  if (!prods.length) {
+    list.innerHTML = `<div style="padding:32px;text-align:center;color:var(--gray-600);font-size:.85rem;">
+      등록된 제품이 없습니다. <strong>제품 추가</strong> 버튼으로 추가하세요.</div>`;
+    return;
+  }
+
+  list.innerHTML = prods.map((p, i) => {
+    const name = getLangStr(p.name, 'ko') || `제품 ${i + 1}`;
+    const desc = getLangStr(p.desc, 'ko') || '';
+    const thumbHtml = p.image
+      ? `<img src="${esc(p.image)}" alt="${esc(name)}" />`
+      : `<div class="no-img">📦</div>`;
+
+    return `
+    <div class="prod-admin-card">
+      <div class="prod-admin-thumb">${thumbHtml}</div>
+      <div class="prod-admin-info">
+        <div class="prod-admin-name">${esc(name)}</div>
+        <div class="prod-admin-desc">${esc(desc)}</div>
+      </div>
+      <div class="prod-admin-actions">
+        <button class="btn btn-outline btn-sm" onclick="openProductModal(${i})"><i class="fas fa-edit"></i> 편집</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${i})"><i class="fas fa-trash"></i></button>
+        ${i > 0              ? `<button class="btn btn-outline btn-sm" title="위로" onclick="moveProduct(${i},-1)">▲</button>` : ''}
+        ${i < prods.length-1 ? `<button class="btn btn-outline btn-sm" title="아래로" onclick="moveProduct(${i},1)">▼</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getLangStr(obj, lang) {
+  if (!obj) return '';
+  if (typeof obj === 'string') return obj;
+  return obj[lang] || obj['ko'] || obj['en'] || '';
+}
+
+/* ─── Product Modal (편집/추가) ─── */
+window.openProductModal = function(idx) {
+  modalProductIdx = idx;
+  const p = idx >= 0 ? (DATA.products || [])[idx] : null;
+  buildProductModal(p);
+  $('#modal-title').textContent = idx >= 0 ? '제품 편집' : '새 제품 추가';
+  $('#modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+
+window.addProduct = function() {
+  openProductModal(-1);
+};
+
+function buildProductModal(p) {
+  const body = $('#modal-body');
+  if (!body) return;
+
+  const currentImg = p?.image || '';
+  const imgPreviewHtml = currentImg
+    ? `<img src="${esc(currentImg)}" style="width:100%;max-height:180px;object-fit:cover;border-radius:6px;display:block;" />`
+    : `<div class="upload-placeholder"><span class="icon">🖼️</span><p>이미지를 업로드하거나 URL을 입력하세요</p></div>`;
+
+  // 다국어 이름/설명 필드 (ko, en만 간소화)
+  const nameKo  = getLangStr(p?.name, 'ko');
+  const nameEn  = getLangStr(p?.name, 'en');
+  const descKo  = getLangStr(p?.desc, 'ko');
+  const descEn  = getLangStr(p?.desc, 'en');
+  const nameZhCN = (p?.name || {})['zh-CN'] || '';
+  const nameTh   = (p?.name || {})['th'] || '';
+  const descZhCN = (p?.desc || {})['zh-CN'] || '';
+  const descTh   = (p?.desc || {})['th'] || '';
+
+  body.innerHTML = `
+    <!-- 이미지 섹션 -->
+    <div class="form-group" style="margin-bottom:20px;">
+      <label class="form-label">제품 이미지</label>
+
+      <!-- 탭 -->
+      <div class="media-tabs">
+        <button type="button" class="media-tab active" id="modal-tab-file" onclick="switchModalTab('file')">📁 파일 업로드</button>
+        <button type="button" class="media-tab" id="modal-tab-url"  onclick="switchModalTab('url')">🔗 URL 입력</button>
+      </div>
+
+      <!-- 파일 업로드 패널 -->
+      <div id="modal-pane-file">
+        <div class="upload-area" id="modal-img-upload-area" onclick="document.getElementById('modal-img-file').click()">
+          <div class="upload-preview" id="modal-img-preview">${imgPreviewHtml}</div>
+          <div class="upload-footer">JPG · PNG · WebP — 클릭하여 선택</div>
+        </div>
+        <input type="file" id="modal-img-file" accept="image/*" style="display:none" onchange="handleModalImage(this)" />
+      </div>
+
+      <!-- URL 입력 패널 -->
+      <div id="modal-pane-url" style="display:none;">
+        <div class="url-row">
+          <input type="url" class="form-control" id="modal-img-url" placeholder="https://example.com/product.jpg" value="${esc(currentImg.startsWith('http') ? currentImg : '')}" />
+          <button type="button" class="btn btn-accent btn-sm" onclick="applyModalImgUrl()">적용</button>
+        </div>
+        <div style="margin-top:8px;border-radius:var(--radius);overflow:hidden;background:var(--gray-100);">
+          <div id="modal-img-url-preview" style="min-height:80px;display:flex;align-items:center;justify-content:center;">
+            ${currentImg.startsWith('http') ? `<img src="${esc(currentImg)}" style="width:100%;max-height:160px;object-fit:cover;display:block;" />` : `<span style="color:var(--gray-400);font-size:.8rem;">미리보기</span>`}
+          </div>
+        </div>
+      </div>
+
+      <!-- 실제 이미지 경로를 담는 hidden -->
+      <input type="hidden" id="modal-img-value" value="${esc(currentImg)}" />
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
+
+    <!-- 이름 -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">제품 이름</div>
+      <div class="form-row" style="margin-bottom:8px;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇰🇷 한국어</label>
+          <input type="text" class="form-control" id="m-name-ko" value="${esc(nameKo)}" placeholder="제품명 (한국어)" />
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇺🇸 English</label>
+          <input type="text" class="form-control" id="m-name-en" value="${esc(nameEn)}" placeholder="Product Name" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇨🇳 中文</label>
+          <input type="text" class="form-control" id="m-name-zhcn" value="${esc(nameZhCN)}" placeholder="产品名称" />
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇹🇭 ภาษาไทย</label>
+          <input type="text" class="form-control" id="m-name-th" value="${esc(nameTh)}" placeholder="ชื่อผลิตภัณฑ์" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 설명 -->
+    <div>
+      <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">제품 설명</div>
+      <div class="form-row" style="margin-bottom:8px;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇰🇷 한국어</label>
+          <textarea class="form-control" id="m-desc-ko" rows="2" placeholder="제품 설명">${esc(descKo)}</textarea>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇺🇸 English</label>
+          <textarea class="form-control" id="m-desc-en" rows="2" placeholder="Product description">${esc(descEn)}</textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇨🇳 中文</label>
+          <textarea class="form-control" id="m-desc-zhcn" rows="2" placeholder="产品描述">${esc(descZhCN)}</textarea>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">🇹🇭 ภาษาไทย</label>
+          <textarea class="form-control" id="m-desc-th" rows="2" placeholder="คำอธิบายผลิตภัณฑ์">${esc(descTh)}</textarea>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* 탭 전환 */
+window.switchModalTab = function(tab) {
+  const fileTab  = $('#modal-tab-file');
+  const urlTab   = $('#modal-tab-url');
+  const filePane = $('#modal-pane-file');
+  const urlPane  = $('#modal-pane-url');
+  if (!fileTab) return;
+  if (tab === 'file') {
+    fileTab.classList.add('active'); urlTab.classList.remove('active');
+    filePane.style.display = ''; urlPane.style.display = 'none';
+  } else {
+    urlTab.classList.add('active'); fileTab.classList.remove('active');
+    urlPane.style.display = ''; filePane.style.display = 'none';
+  }
+};
+
+/* 파일 업로드 → Base64 */
+window.handleModalImage = function(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 10 * 1024 * 1024) { toast('10MB 이하 이미지만 지원합니다.', 'error'); input.value = ''; return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const b64 = e.target.result;
+    const preview = $('#modal-img-preview');
+    if (preview) preview.innerHTML = `<img src="${b64}" style="width:100%;max-height:180px;object-fit:cover;display:block;" />`;
+    const hidden = $('#modal-img-value');
+    if (hidden) hidden.value = b64;
+    const area = $('#modal-img-upload-area');
+    if (area) area.classList.add('has-media');
+    toast('✅ 이미지 업로드 완료! 저장 버튼을 눌러 반영하세요.');
+  };
+  reader.readAsDataURL(file);
+};
+
+/* URL 적용 */
+window.applyModalImgUrl = function() {
+  const urlInput = $('#modal-img-url');
+  if (!urlInput) return;
+  const url = urlInput.value.trim();
+  if (!url || (!url.startsWith('http') && !url.startsWith('/'))) {
+    toast('올바른 URL을 입력해주세요.', 'error'); return;
+  }
+  const urlPreview = $('#modal-img-url-preview');
+  if (urlPreview) urlPreview.innerHTML = `<img src="${esc(url)}" style="width:100%;max-height:160px;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<span style=color:var(--danger);padding:12px;font-size:.8rem;>이미지를 불러올 수 없습니다.</span>'" />`;
+  const hidden = $('#modal-img-value');
+  if (hidden) hidden.value = url;
+  toast('✅ URL 적용! 저장 버튼을 눌러 반영하세요.');
+};
+
+/* Modal 저장 */
+window.saveProductModal = function() {
+  const imgVal  = ($('#modal-img-value') || {}).value || '';
+  // URL 탭에 직접 입력한 값이 있으면 우선 사용
+  const urlInput = ($('#modal-img-url') || {}).value?.trim() || '';
+  const finalImg = urlInput && urlInput.startsWith('http') ? urlInput : imgVal;
+
+  const obj = {
+    id: modalProductIdx >= 0 ? (DATA.products[modalProductIdx]?.id || uid()) : uid(),
+    image: finalImg,
+    category: modalProductIdx >= 0 ? (DATA.products[modalProductIdx]?.category || 'all') : 'all',
+    name: {
+      ko:      ($('#m-name-ko') || {}).value?.trim() || '',
+      en:      ($('#m-name-en') || {}).value?.trim() || '',
+      'zh-CN': ($('#m-name-zhcn') || {}).value?.trim() || '',
+      th:      ($('#m-name-th') || {}).value?.trim() || '',
+    },
+    desc: {
+      ko:      ($('#m-desc-ko') || {}).value?.trim() || '',
+      en:      ($('#m-desc-en') || {}).value?.trim() || '',
+      'zh-CN': ($('#m-desc-zhcn') || {}).value?.trim() || '',
+      th:      ($('#m-desc-th') || {}).value?.trim() || '',
+    },
+  };
+
+  if (!DATA.products) DATA.products = [];
+
+  if (modalProductIdx >= 0) {
+    DATA.products[modalProductIdx] = obj;
+  } else {
+    DATA.products.push(obj);
+  }
+
+  saveToStorage();
+  closeModal();
+  renderProductAdminList();
+  renderDashboard();
+  toast('✅ 제품이 저장되었습니다! 홈페이지에 즉시 반영됩니다.');
+};
+
+window.closeModal = function() {
+  $('#modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  modalProductIdx = -1;
+};
+
+/* 삭제 */
+window.deleteProduct = function(idx) {
+  if (!confirm('정말 삭제하시겠습니까?')) return;
+  DATA.products.splice(idx, 1);
+  saveToStorage();
+  renderProductAdminList();
+  renderDashboard();
+  toast('🗑️ 삭제 완료');
+};
+
+/* 순서 이동 */
+window.moveProduct = function(idx, dir) {
+  const arr = DATA.products;
+  const ni = idx + dir;
+  if (ni < 0 || ni >= arr.length) return;
+  [arr[idx], arr[ni]] = [arr[ni], arr[idx]];
+  saveToStorage();
+  renderProductAdminList();
+};
+
+/* ─── Settings 폼 ─── */
+function renderSettingsForm() {
+  const s = DATA.settings || {};
+  const set = (id, val) => { const el = $(id); if (el) el.value = val || ''; };
+  set('#set-brandName',  s.brandName);
+  set('#set-phone',      s.contact?.phone);
+  set('#set-email',      s.contact?.email);
+  set('#set-address',    s.contact?.address);
+  set('#set-instagram',  s.social?.instagram);
+}
+
+window.saveSettings = function() {
+  if (!DATA.settings) DATA.settings = {};
+  const s = DATA.settings;
+  s.brandName = $('#set-brandName')?.value || s.brandName;
   s.contact = {
     phone:   $('#set-phone')?.value   || '',
     email:   $('#set-email')?.value   || '',
     address: $('#set-address')?.value || '',
   };
-  s.social = {
-    instagram: $('#set-instagram')?.value || '',
-    youtube:   $('#set-youtube')?.value   || '',
-    facebook:  $('#set-facebook')?.value  || '',
-    tiktok:    $('#set-tiktok')?.value    || '',
-  };
+  s.social = s.social || {};
+  s.social.instagram = $('#set-instagram')?.value || '';
   saveToStorage();
-  toast('✅ 사이트 설정이 저장되었습니다. 홈페이지에 즉시 반영됩니다.');
-}
+  toast('✅ 설정이 저장되었습니다.');
+};
 
-/* ─── List 렌더 ─── */
-function renderList(type, items) {
-  const list = $(`#${type}-list`);
-  if (!list) return;
-  if (!items.length) {
-    list.innerHTML = '<p style="color:var(--gray-600);font-size:.85rem;padding:12px 0;">데이터가 없습니다. + 추가 버튼으로 항목을 추가하세요.</p>';
-    return;
-  }
-  list.innerHTML = items.map((item, i) => {
-    const bgColor    = item.bgColor    || '#E8ECF8';
-    const accentColor = item.accentColor || '#1A2755';
-    let thumb = '', title = '', meta = '';
-
-    if (type === 'hero') {
-      thumb = item.bgImage
-        ? '<img src="' + item.bgImage + '" style="width:44px;height:44px;object-fit:cover;border-radius:6px;" />'
-        : '<div style="width:44px;height:44px;border-radius:6px;background:' + bgColor + ';display:flex;align-items:center;justify-content:center;font-size:1.2rem;">' + (item.bgVideo ? '🎬' : '🖼️') + '</div>';
-      title = getStr(item, 'title', 'ko') || ('히어로 ' + (i+1));
-      meta  = getStr(item, 'label', 'ko') + (item.bgImage ? ' 📷' : '') + (item.bgVideo ? ' 🎬' : '');
-    } else if (type === 'category') {
-      thumb = item.bgImage
-        ? '<img src="' + item.bgImage + '" style="width:44px;height:44px;object-fit:cover;border-radius:6px;" />'
-        : '<div style="width:44px;height:44px;border-radius:6px;background:' + bgColor + ';color:' + accentColor + ';display:flex;align-items:center;justify-content:center;font-size:1.2rem;">' + (item.icon || '✨') + '</div>';
-      title = getStr(item, 'title', 'ko') || ('카테고리 ' + (i+1));
-      meta  = getStr(item, 'desc', 'ko');
-    } else if (type === 'product') {
-      thumb = item.image
-        ? '<img src="' + item.image + '" style="width:44px;height:44px;object-fit:cover;border-radius:6px;" />'
-        : '<div style="width:44px;height:44px;border-radius:6px;background:' + bgColor + ';color:' + accentColor + ';display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📦</div>';
-      title = getStr(item, 'name', 'ko') || ('제품 ' + (i+1));
-      meta  = (item.price || '') + ' · ' + (item.category || '');
-    } else if (type === 'review') {
-      thumb = '<div style="width:44px;height:44px;border-radius:6px;background:#FEF3C7;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">⭐</div>';
-      title = getStr(item, 'name', 'ko') || ('리뷰 ' + (i+1));
-      meta  = '★'.repeat(item.rating||5) + ' · ' + (getStr(item, 'text', 'ko')||'').slice(0,40) + '...';
-    }
-
-    return '<div class="item-card" data-type="' + type + '" data-idx="' + i + '">' +
-      '<div class="item-thumb">' + thumb + '</div>' +
-      '<div class="item-info"><div class="item-title">' + title + '</div><div class="item-meta">' + meta + '</div></div>' +
-      '<div class="item-actions">' +
-        '<button class="btn btn-outline btn-sm" onclick="openEditModal(\'' + type + '\',' + i + ')"><i class="fas fa-edit"></i> 편집</button>' +
-        '<button class="btn btn-danger btn-sm" onclick="deleteItem(\'' + type + '\',' + i + ')"><i class="fas fa-trash"></i></button>' +
-        (i > 0 ? '<button class="btn btn-outline btn-sm" onclick="moveItem(\'' + type + '\',' + i + ',-1)" title="위로">▲</button>' : '') +
-        (i < items.length-1 ? '<button class="btn btn-outline btn-sm" onclick="moveItem(\'' + type + '\',' + i + ',1)" title="아래로">▼</button>' : '') +
-      '</div></div>';
-  }).join('');
-}
-
-/* ─── Modal (Add / Edit) ─── */
-function openAddModal(type)      { modalCtx = { type, idx: -1 }; buildModal(type, null);        openModal(typeLabel(type) + ' 추가'); }
-function openEditModal(type, idx){ modalCtx = { type, idx };     buildModal(type, getItems(type)[idx]); openModal(typeLabel(type) + ' 편집'); }
-function typeLabel(type) { return { hero:'히어로 배너', category:'카테고리', product:'제품', review:'리뷰' }[type] || type; }
-function getItems(type)  { return { hero: DATA.heroes, category: DATA.categories, product: DATA.products, review: DATA.reviews }[type] || []; }
-
-function openModal(title) {
-  $('#modal-title').textContent = title;
-  $('#modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  $('#modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-  modalCtx = null;
-}
-
-/* ─── 파일 업로드 핸들러 ─── */
-function handleFileUpload(id, mediaType, input) {
-  const file = input.files[0];
-  if (!file) return;
-
-  // 동영상: 최대 1GB / 이미지: 최대 10MB
-  const maxSize = mediaType === 'video' ? 1024 * 1024 * 1024 : 10 * 1024 * 1024;
-  if (file.size > maxSize) {
-    toast('파일 크기가 너무 큽니다. (' + (mediaType === 'video' ? '1GB' : '10MB') + ' 이하)', 'error');
-    input.value = '';
-    return;
-  }
-
-  // 동영상은 ObjectURL로 처리 (Base64 메모리 오버플로 방지)
-  if (mediaType === 'video') {
-    const objectUrl = URL.createObjectURL(file);
-    const hidden = document.getElementById('m-media-' + id);
-    if (hidden) {
-      hidden.value = objectUrl;
-      hidden.dataset.objectUrl = objectUrl;
-      hidden.dataset.fileName = file.name;
-    }
-    const preview = document.getElementById('upload-preview-' + id);
-    if (preview) {
-      preview.innerHTML = '<video src="' + objectUrl + '" class="upload-preview-img" controls muted playsinline></video>';
-    }
-    const box = document.getElementById('upload-box-' + id);
-    if (box) box.classList.add('has-file');
-    toast('✅ ' + file.name + ' (' + (file.size / (1024*1024)).toFixed(1) + 'MB) 로드 완료! 저장 버튼을 눌러 적용하세요.');
-    return;
-  }
-
-  // 이미지는 Base64 방식
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const base64 = e.target.result;
-    const hidden = document.getElementById('m-media-' + id);
-    if (hidden) hidden.value = base64;
-    const preview = document.getElementById('upload-preview-' + id);
-    if (preview) {
-      preview.innerHTML = '<img src="' + base64 + '" class="upload-preview-img" alt="미리보기" />';
-    }
-    const box = document.getElementById('upload-box-' + id);
-    if (box) box.classList.add('has-file');
-    toast('✅ ' + file.name + ' 업로드 완료!');
-  };
-  reader.readAsDataURL(file);
-}
-window.handleFileUpload = handleFileUpload;
-
-function clearMedia(id) {
-  const hidden = document.getElementById('m-media-' + id);
-  if (hidden) hidden.value = '__clear__';
-  const preview = document.getElementById('upload-preview-' + id);
-  if (preview) preview.innerHTML = '<div class="upload-placeholder"><span>🖼️</span><p>미디어 없음</p></div>';
-  const box = document.getElementById('upload-box-' + id);
-  if (box) box.classList.remove('has-file');
-  const fileInput = document.getElementById('m-file-' + id);
-  if (fileInput) fileInput.value = '';
-  // URL 입력창도 초기화
-  const urlInput = document.getElementById('m-url-' + id);
-  if (urlInput) urlInput.value = '';
-  toast('미디어가 제거됩니다. 저장 버튼을 눌러주세요.');
-}
-window.clearMedia = clearMedia;
-
-/* ─── URL 입력 → 미리보기 적용 ─── */
-function applyMediaUrl(id, mediaType) {
-  const urlInput = document.getElementById('m-url-' + id);
-  if (!urlInput) return;
-  const url = urlInput.value.trim();
-  if (!url) { toast('URL을 입력해주세요.', 'error'); return; }
-
-  // 간단한 URL 유효성 체크
-  if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('//')) {
-    toast('올바른 URL을 입력해주세요. (http:// 또는 https://로 시작)', 'error');
-    return;
-  }
-
-  const hidden = document.getElementById('m-media-' + id);
-  if (hidden) hidden.value = url;
-
-  const preview = document.getElementById('upload-preview-' + id);
-  if (preview) {
-    if (mediaType === 'video') {
-      preview.innerHTML = '<video src="' + url + '" class="upload-preview-img" controls muted playsinline></video>';
-    } else {
-      preview.innerHTML = '<img src="' + url + '" class="upload-preview-img" alt="미리보기" onerror="this.parentElement.innerHTML=\'<div class=upload-placeholder><span>❌</span><p>이미지 로드 실패</p></div>\'" />';
-    }
-  }
-  const box = document.getElementById('upload-box-' + id);
-  if (box) box.classList.add('has-file');
-  toast('✅ URL 적용 완료! 저장 버튼을 눌러 반영하세요.');
-}
-window.applyMediaUrl = applyMediaUrl;
-
-/* ─── 미디어 탭 전환 (파일 업로드 ↔ URL 입력) ─── */
-function switchMediaTab(id, tabName) {
-  const fileTab  = document.getElementById('media-tab-file-' + id);
-  const urlTab   = document.getElementById('media-tab-url-'  + id);
-  const filePane = document.getElementById('media-pane-file-' + id);
-  const urlPane  = document.getElementById('media-pane-url-'  + id);
-  if (!fileTab || !urlTab || !filePane || !urlPane) return;
-
-  if (tabName === 'file') {
-    fileTab.classList.add('active');
-    urlTab.classList.remove('active');
-    filePane.style.display = '';
-    urlPane.style.display  = 'none';
-  } else {
-    urlTab.classList.add('active');
-    fileTab.classList.remove('active');
-    urlPane.style.display  = '';
-    filePane.style.display = 'none';
-  }
-}
-window.switchMediaTab = switchMediaTab;
-
-/* ─── 업로드 박스 HTML 생성 헬퍼 (파일 탭 + URL 탭) ─── */
-function mediaUploadField(id, label, currentSrc, accept) {
-  const isVideo = accept.includes('video');
-
-  // 현재 값이 URL인지 Base64/ObjectURL인지 판단
-  const isUrlSrc = currentSrc && (currentSrc.startsWith('http') || currentSrc.startsWith('//'));
-  const isFileSrc = currentSrc && !isUrlSrc;
-
-  // 초기 탭: URL이면 URL탭, 파일이면 파일탭, 없으면 URL탭(동영상) / 파일탭(이미지)
-  const defaultTab = (isUrlSrc || (!currentSrc && isVideo)) ? 'url' : 'file';
-
-  let previewHtml;
-  if (currentSrc) {
-    if (isVideo) {
-      previewHtml = '<video src="' + currentSrc + '" class="upload-preview-img" controls muted playsinline></video>';
-    } else {
-      previewHtml = '<img src="' + currentSrc + '" class="upload-preview-img" alt="미리보기" />';
-    }
-  } else {
-    previewHtml = '<div class="upload-placeholder"><span>' + (isVideo ? '🎬' : '🖼️') + '</span><p>' + (isVideo ? '동영상 없음' : '이미지 없음') + '</p></div>';
-  }
-
-  const hasFile = currentSrc ? ' has-file' : '';
-  const currentUrl = isUrlSrc ? currentSrc : '';
-
-  // 파일 업로드 패널
-  const filePane = '<div id="media-pane-file-' + id + '" style="' + (defaultTab === 'file' ? '' : 'display:none;') + '">' +
-    '<div class="upload-box' + hasFile + '" id="upload-box-' + id + '" onclick="document.getElementById(\'m-file-' + id + '\').click()">' +
-      '<div class="upload-preview" id="upload-preview-' + id + '">' + previewHtml + '</div>' +
-      '<div class="upload-hint"><span>📁 클릭하여 파일 선택</span>' +
-        '<span class="upload-hint-sub">' + (isVideo ? 'MP4, WebM — 최대 1GB' : 'JPG, PNG, WebP, GIF — 최대 10MB') + '</span>' +
-      '</div>' +
-    '</div>' +
-    '<input type="file" id="m-file-' + id + '" accept="' + accept + '" style="display:none" onchange="handleFileUpload(\'' + id + '\',\'' + (isVideo ? 'video' : 'image') + '\',this)" />' +
-  '</div>';
-
-  // URL 입력 패널
-  const urlPane = '<div id="media-pane-url-' + id + '" style="' + (defaultTab === 'url' ? '' : 'display:none;') + '">' +
-    '<div class="url-input-row">' +
-      '<input type="url" class="form-control url-media-input" id="m-url-' + id + '" placeholder="https://example.com/video.mp4" value="' + esc(currentUrl) + '" />' +
-      '<button type="button" class="btn btn-primary btn-sm url-apply-btn" onclick="applyMediaUrl(\'' + id + '\',\'' + (isVideo ? 'video' : 'image') + '\')">' +
-        '적용' +
-      '</button>' +
-    '</div>' +
-    (isVideo ? '<div class="url-source-hints">' +
-      '<p class="url-hint-title">💡 무료 동영상 호스팅 추천</p>' +
-      '<ul class="url-hint-list">' +
-        '<li><strong>YouTube</strong> — 업로드 후 <code>https://www.youtube.com/watch?v=VIDEO_ID</code> (단, 직접 재생 불가, 임베드 필요)</li>' +
-        '<li><strong>Google Drive</strong> — 파일 공유 후 <code>https://drive.google.com/uc?export=download&id=FILE_ID</code></li>' +
-        '<li><strong>Cloudflare R2</strong> / <strong>AWS S3</strong> — 공개 버킷에 업로드 후 직접 MP4 URL 사용 ⭐ 권장</li>' +
-        '<li><strong>Dropbox</strong> — 공유 링크 끝을 <code>?dl=1</code>로 변경</li>' +
-      '</ul>' +
-    '</div>' : '') +
-    // URL 적용 후 미리보기는 파일탭 박스 재사용
-    (!isUrlSrc ? '' : '<div class="upload-box has-file" id="upload-box-' + id + '" style="margin-top:8px;cursor:default;">' +
-      '<div class="upload-preview" id="upload-preview-' + id + '">' + previewHtml + '</div>' +
-    '</div>') +
-  '</div>';
-
-  // URL 탭인데 미리보기 박스가 파일탭에 있으면 URL 탭에도 추가
-  const urlPreviewBox = defaultTab === 'url' && !isUrlSrc
-    ? '<div class="upload-box' + hasFile + '" id="upload-box-' + id + '" style="margin-top:8px;cursor:default;">' +
-        '<div class="upload-preview" id="upload-preview-' + id + '">' + previewHtml + '</div>' +
-      '</div>'
-    : '';
-
-  const clearBtn = currentSrc
-    ? '<button type="button" class="btn btn-danger btn-sm" style="margin-top:6px;" onclick="clearMedia(\'' + id + '\')">🗑️ 제거</button>'
-    : '';
-
-  return '<div class="form-group media-field-wrap" style="margin-bottom:16px;">' +
-    '<label class="form-label">' + label + '</label>' +
-    // 탭 버튼
-    '<div class="media-tabs">' +
-      '<button type="button" class="media-tab' + (defaultTab === 'file' ? ' active' : '') + '" id="media-tab-file-' + id + '" onclick="switchMediaTab(\'' + id + '\',\'file\')">' +
-        '📁 파일 업로드' +
-      '</button>' +
-      '<button type="button" class="media-tab' + (defaultTab === 'url' ? ' active' : '') + '" id="media-tab-url-' + id + '" onclick="switchMediaTab(\'' + id + '\',\'url\')">' +
-        '🔗 URL 직접 입력' +
-      '</button>' +
-    '</div>' +
-    filePane +
-    urlPane +
-    clearBtn +
-    '<input type="hidden" id="m-media-' + id + '" value="' + (currentSrc ? '__keep__' : '') + '" />' +
-  '</div>';
-}
-
-/* ─── Modal Body Builder ─── */
-function buildModal(type, item) {
-  const body = $('#modal-body');
-  if (!type) return;
-  let html = '';
-
-  const li = function(id, label, val, inputType, note) {
-    val = val || ''; inputType = inputType || 'text'; note = note || '';
-    return '<div class="form-group" style="margin-bottom:12px;">' +
-      '<label class="form-label">' + label + '</label>' +
-      '<input type="' + inputType + '" class="form-control" id="m-' + id + '" value="' + esc(val) + '" />' +
-      (note ? '<div class="form-note">' + note + '</div>' : '') +
-    '</div>';
-  };
-
-  const lc = function(id, label, val) {
-    val = val || '';
-    return '<div class="form-group" style="margin-bottom:12px;">' +
-      '<label class="form-label">' + label + '</label>' +
-      '<div class="color-row">' +
-        '<input type="color" id="m-' + id + '-picker" value="' + (val||'#1A2755') + '" oninput="document.getElementById(\'m-' + id + '\').value=this.value" />' +
-        '<input type="text" class="form-control" id="m-' + id + '" value="' + esc(val) + '" oninput="document.getElementById(\'m-' + id + '-picker\').value=this.value" />' +
-      '</div></div>';
-  };
-
-  const langFields = function(id, obj, isTA) {
-    isTA = isTA || false;
-    const tabs = LANGS.map(function(lcode, i) {
-      return '<button type="button" class="lang-tab' + (i===0?' active':'') + '" onclick="switchModalLang(this,\'modal-lf-' + id + '\')" data-lang="' + lcode + '">' + LANG_LABELS[lcode] + '</button>';
-    }).join('');
-    const fields = LANGS.map(function(lcode, i) {
-      const v = (obj||{})[lcode] || '';
-      if (isTA) return '<div class="lang-input-block" data-lang="' + lcode + '" id="modal-lf-' + id + '-' + lcode + '" style="display:' + (i===0?'':'none') + ';"><textarea class="form-control" id="m-' + id + '-' + lcode + '" rows="3">' + esc(v) + '</textarea></div>';
-      return '<div class="lang-input-block" data-lang="' + lcode + '" id="modal-lf-' + id + '-' + lcode + '" style="display:' + (i===0?'':'none') + ';"><input type="text" class="form-control" id="m-' + id + '-' + lcode + '" value="' + esc(v) + '" /></div>';
-    }).join('');
-    return '<div class="form-group" style="margin-bottom:12px;"><label class="form-label">' + id.replace(/-/g,' ') + ' (다국어)</label><div class="lang-tabs">' + tabs + '</div>' + fields + '</div>';
-  };
-
-  if (type === 'hero') {
-    // 단일 비디오 배너 — 동영상 우선, 이미지 대체 지원
-    html =
-      '<div class="form-group" style="background:#eef2ff;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:.82rem;color:#374151;line-height:1.7;">' +
-        '<strong>💡 히어로 배너 사용법</strong><br/>' +
-        '① <strong>🔗 URL 직접 입력</strong> 탭: 클라우드에 올린 동영상 URL을 붙여넣으면 <strong>영구 저장</strong>됩니다.<br/>' +
-        '② <strong>📁 파일 업로드</strong> 탭: 로컬 파일을 선택하면 현재 세션에서 미리보기 가능합니다 (새로고침 시 소멸).<br/>' +
-        '③ 동영상이 없으면 이미지, 이미지도 없으면 배경색이 표시됩니다.' +
-      '</div>' +
-      mediaUploadField('heroVideo', '🎬 배경 동영상 (URL 입력 권장 — MP4/WebM, 최대 1GB)', item && item.bgVideo || '', 'video/mp4,video/webm') +
-      mediaUploadField('heroImg',   '🖼️ 대체 이미지 (동영상 없을 때 표시)',                  item && item.bgImage || '', 'image/*') +
-      lc('bgColor', '배경 색상 (이미지/동영상 없을 때)', item && item.bgColor || '#1A2755') +
-      lc('accentColor', '강조 색상 (텍스트/버튼)', item && item.accentColor || '#4F7EF7') +
-      langFields('label',    item && item.label) +
-      langFields('title',    item && item.title,    true) +
-      langFields('subtitle', item && item.subtitle) +
-      langFields('btnText',  item && item.btnText) +
-      li('btnHref', '버튼 링크', item && item.btnHref || '#products', 'url');
-
-  } else if (type === 'category') {
-    html =
-      mediaUploadField('catImg', '카테고리 이미지 (없으면 이모지 표시)', item && item.bgImage || '', 'image/*') +
-      li('icon', '이모지 아이콘 (이미지 없을 때)', item && item.icon || '✨', 'text', '이모지 1개 입력 (예: ✨ 🔬 🌿 ⚡)') +
-      lc('bgColor',    '배경 색상',          item && item.bgColor    || '#E8ECF8') +
-      lc('accentColor','텍스트/강조 색상',   item && item.accentColor || '#1A2755') +
-      langFields('title', item && item.title) +
-      langFields('desc',  item && item.desc);
-
-  } else if (type === 'product') {
-    html =
-      mediaUploadField('prodImg', '상품 이미지', item && item.image || '', 'image/*') +
-      langFields('name', item && item.name) +
-      li('price', '가격', item && item.price || '') +
-      '<div class="form-group" style="margin-bottom:12px;"><label class="form-label">카테고리 (필터용)</label>' +
-        '<select class="form-control" id="m-category">' +
-          '<option value="all"'  + ((item && item.category||'')==='all'  ?' selected':'') + '>전체(all)</option>' +
-          '<option value="new"'  + ((item && item.category||'')==='new'  ?' selected':'') + '>신제품(new)</option>' +
-          '<option value="best"' + ((item && item.category||'')==='best' ?' selected':'') + '>베스트(best)</option>' +
-        '</select></div>' +
-      langFields('badge', item && item.badge) +
-      lc('bgColor',    '배경 색상 (이미지 없을 때)', item && item.bgColor    || '#E8ECF8') +
-      lc('accentColor','강조 색상',                  item && item.accentColor || '#1A2755') +
-      langFields('desc', item && item.desc, true);
-
-  } else if (type === 'review') {
-    html =
-      langFields('name', item && item.name) +
-      '<div class="form-group" style="margin-bottom:12px;"><label class="form-label">별점 (1-5)</label>' +
-        '<input type="number" class="form-control" id="m-rating" min="1" max="5" value="' + (item && item.rating || 5) + '" /></div>' +
-      langFields('text', item && item.text, true);
-  }
-
-  body.innerHTML = html;
-}
-
-function switchModalLang(btn, groupId) {
-  const parent = btn.closest('.form-group');
-  parent.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  const lang = btn.dataset.lang;
-  parent.querySelectorAll('.lang-input-block').forEach(function(b) {
-    b.style.display = b.dataset.lang === lang ? '' : 'none';
-  });
-}
-window.switchModalLang = switchModalLang;
-
-function esc(s) {
-  if (s === null || s === undefined) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-/* ─── Modal 저장 ─── */
-function saveModal() {
-  if (!modalCtx) return;
-  const type = modalCtx.type;
-  const idx  = modalCtx.idx;
-  const items = getItems(type);
-
-  const collectLang = function(id) {
-    const result = {};
-    LANGS.forEach(function(lcode) {
-      const el = document.getElementById('m-' + id + '-' + lcode);
-      if (el) result[lcode] = el.value;
-    });
-    return result;
-  };
-  const val = function(id) { return (document.getElementById('m-' + id) || {}).value || ''; };
-
-  // 미디어 값 수집: URL 탭 입력 → hidden 필드 → 기존값 순으로 우선순위
-  const mediaVal = function(id, existing) {
-    // URL 탭에 값이 있으면 최우선
-    const urlEl = document.getElementById('m-url-' + id);
-    if (urlEl && urlEl.value.trim()) {
-      return urlEl.value.trim();
-    }
-    const v = (document.getElementById('m-media-' + id) || {}).value || '';
-    if (v === '__keep__') return existing || '';
-    if (v === '__clear__') return '';
-    // ObjectURL(blob:)은 세션 내 임시값 → 저장 안 함 (영구 저장 불가)
-    if (v.startsWith('blob:')) {
-      toast('⚠️ 파일 업로드는 새로고침 시 사라집니다. URL 탭을 사용하면 영구 저장됩니다.', 'error', 4000);
-      return existing || ''; // 기존값 유지
-    }
-    return v; // base64 또는 http URL
-  };
-
-  let obj = {};
-
-  if (type === 'hero') {
-    obj = {
-      id:          (idx >= 0 ? items[idx] && items[idx].id : null) || uid(),
-      bgVideo:     mediaVal('heroVideo', items[idx] && items[idx].bgVideo),
-      bgImage:     mediaVal('heroImg',   items[idx] && items[idx].bgImage),
-      bgColor:     val('bgColor'),
-      accentColor: val('accentColor'),
-      label:       collectLang('label'),
-      title:       collectLang('title'),
-      subtitle:    collectLang('subtitle'),
-      btnText:     collectLang('btnText'),
-      btnHref:     val('btnHref') || '#products',
-    };
-  } else if (type === 'category') {
-    obj = {
-      id:          (idx >= 0 ? items[idx] && items[idx].id : null) || uid(),
-      bgImage:     mediaVal('catImg', items[idx] && items[idx].bgImage),
-      icon:        val('icon') || '✨',
-      bgColor:     val('bgColor'),
-      accentColor: val('accentColor'),
-      title:       collectLang('title'),
-      desc:        collectLang('desc'),
-    };
-  } else if (type === 'product') {
-    obj = {
-      id:          (idx >= 0 ? items[idx] && items[idx].id : null) || uid(),
-      image:       mediaVal('prodImg', items[idx] && items[idx].image),
-      category:    val('category') || 'all',
-      price:       val('price'),
-      bgColor:     val('bgColor'),
-      accentColor: val('accentColor'),
-      name:        collectLang('name'),
-      badge:       collectLang('badge'),
-      desc:        collectLang('desc'),
-    };
-  } else if (type === 'review') {
-    obj = {
-      id:     (idx >= 0 ? items[idx] && items[idx].id : null) || uid(),
-      rating: parseInt((document.getElementById('m-rating') || {}).value || '5') || 5,
-      name:   collectLang('name'),
-      text:   collectLang('text'),
-    };
-  }
-
-  if (idx >= 0) { items[idx] = obj; } else { items.push(obj); }
-
-  if (type === 'hero')     DATA.heroes     = items;
-  else if (type === 'category') DATA.categories = items;
-  else if (type === 'product')  DATA.products   = items;
-  else if (type === 'review')   DATA.reviews    = items;
-
-  saveToStorage();
-  closeModal();
-  renderList(type, items);
-  renderDashboard();
-  toast('✅ ' + typeLabel(type) + ' 저장 완료! 홈페이지에 즉시 반영됩니다.');
-}
-
-/* ─── 삭제 / 순서 이동 ─── */
-function deleteItem(type, idx) {
-  if (!confirm('정말 삭제하시겠습니까?')) return;
-  const items = getItems(type);
-  items.splice(idx, 1);
-  if (type === 'hero')          DATA.heroes     = items;
-  else if (type === 'category') DATA.categories = items;
-  else if (type === 'product')  DATA.products   = items;
-  else if (type === 'review')   DATA.reviews    = items;
-  saveToStorage();
-  renderList(type, items);
-  renderDashboard();
-  toast('🗑️ 삭제 완료');
-}
-window.deleteItem = deleteItem;
-
-function moveItem(type, idx, dir) {
-  const items = getItems(type);
-  const newIdx = idx + dir;
-  if (newIdx < 0 || newIdx >= items.length) return;
-  const tmp = items[idx]; items[idx] = items[newIdx]; items[newIdx] = tmp;
-  if (type === 'hero')          DATA.heroes     = items;
-  else if (type === 'category') DATA.categories = items;
-  else if (type === 'product')  DATA.products   = items;
-  else if (type === 'review')   DATA.reviews    = items;
-  saveToStorage();
-  renderList(type, items);
-}
-window.moveItem = moveItem;
-
-/* ─── Import / Export / Reset ─── */
-function showJsonPreview() {
+/* ─── Import / Export ─── */
+window.showJsonPreview = function() {
   const ta = $('#json-preview');
   if (ta) ta.value = JSON.stringify(DATA, null, 2);
-}
+};
 
-function exportJson() {
+window.exportJson = function() {
   const json = JSON.stringify(DATA, null, 2);
   const blob = new Blob([json], { type: 'application/json' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'content.json';
-  a.click();
+  a.href = url; a.download = 'content.json'; a.click();
   URL.revokeObjectURL(url);
-  toast('✅ content.json 다운로드 완료! GitHub의 data/content.json을 교체하세요.');
-}
+  toast('✅ content.json 다운로드 완료! GitHub data/content.json을 교체하세요.');
+};
 
-function importFromFile() {
-  const file = $('#import-file') && $('#import-file').files && $('#import-file').files[0];
+window.importFromFile = function() {
+  const file = $('#import-file')?.files?.[0];
   if (!file) { toast('파일을 선택해주세요.', 'error'); return; }
   const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      DATA = JSON.parse(e.target.result);
-      saveToStorage(); renderAll();
-      toast('✅ JSON 파일 Import 완료!');
-    } catch (err) { toast('JSON 파싱 오류: ' + err.message, 'error'); }
+  reader.onload = e => {
+    try { DATA = JSON.parse(e.target.result); saveToStorage(); renderAll(); toast('✅ Import 완료!'); }
+    catch (err) { toast('JSON 파싱 오류: ' + err.message, 'error'); }
   };
   reader.readAsText(file);
-}
+};
 
-function importFromText() {
-  const text = ($('#import-text') || {}).value && ($('#import-text').value).trim();
-  if (!text) { toast('JSON 텍스트를 입력해주세요.', 'error'); return; }
-  try {
-    DATA = JSON.parse(text);
-    saveToStorage(); renderAll();
-    toast('✅ JSON 텍스트 Import 완료!');
-  } catch (err) { toast('JSON 파싱 오류: ' + err.message, 'error'); }
-}
+window.importFromText = function() {
+  const text = $('#import-text')?.value?.trim() || '';
+  if (!text) { toast('JSON을 입력해주세요.', 'error'); return; }
+  try { DATA = JSON.parse(text); saveToStorage(); renderAll(); toast('✅ Import 완료!'); }
+  catch (err) { toast('JSON 파싱 오류: ' + err.message, 'error'); }
+};
 
-function resetToDefault() {
-  if (!confirm('모든 데이터를 기본값으로 초기화하시겠습니까?\n(이 작업은 되돌릴 수 없습니다.)')) return;
+window.resetToDefault = function() {
+  if (!confirm('모든 데이터를 초기화하시겠습니까?\n(되돌릴 수 없습니다.)')) return;
   localStorage.removeItem(STORAGE_KEY);
   DATA = getDefaultData();
   saveToStorage(); renderAll();
-  toast('✅ 기본값으로 초기화되었습니다.');
-}
-
-window.exportJson      = exportJson;
-window.importFromFile  = importFromFile;
-window.importFromText  = importFromText;
-window.resetToDefault  = resetToDefault;
-window.showJsonPreview = showJsonPreview;
-window.openAddModal    = openAddModal;
-window.openEditModal   = openEditModal;
-window.closeModal      = closeModal;
-window.saveModal       = saveModal;
-window.saveSection     = saveSection;
+  toast('✅ 초기화 완료');
+};
 
 /* ─── 전체 저장 버튼 ─── */
 function initSaveAllBtn() {
   const btn = $('#save-all-btn');
   if (!btn) return;
-  btn.addEventListener('click', function() {
-    saveSection('settings');
+  btn.addEventListener('click', () => {
     saveToStorage();
-    toast('✅ 저장 완료! 홈페이지에 즉시 반영됩니다.');
+    toast('✅ 전체 저장 완료! 홈페이지를 새로고침하면 반영됩니다.');
   });
 }
 
 /* ─── Sidebar 내비게이션 ─── */
+const SECTION_ICONS = {
+  dashboard: 'fas fa-home',
+  hero:      'fas fa-film',
+  products:  'fas fa-images',
+  settings:  'fas fa-cog',
+  data:      'fas fa-database',
+};
+const SECTION_TITLES = {
+  dashboard: '대시보드',
+  hero:      '메인 영상',
+  products:  '제품 이미지',
+  settings:  '사이트 설정',
+  data:      'Import / Export',
+};
+
 function initSidebar() {
-  $$('.sidebar-link').forEach(function(btn) {
-    btn.addEventListener('click', function() {
+  $$('.sidebar-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
       const section = btn.dataset.section;
       if (!section) return;
-      $$('.sidebar-link').forEach(function(b) { b.classList.remove('active'); });
+      $$('.sidebar-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      $$('.section-view').forEach(function(el) { el.classList.remove('active'); });
+      $$('.section-view').forEach(el => el.classList.remove('active'));
       const target = $(`#section-${section}`);
       if (target) target.classList.add('active');
       const titleEl = $('#topbar-title');
       if (titleEl) {
-        const icons = { dashboard:'fas fa-home', settings:'fas fa-cog', hero:'fas fa-images', categories:'fas fa-th-large', products:'fas fa-box', reviews:'fas fa-star', data:'fas fa-database' };
-        titleEl.innerHTML = '<i class="' + (icons[section]||'fas fa-circle') + '" style="margin-right:8px;color:var(--accent)"></i>' + (TOPBAR_TITLES[section]||section);
+        const icon = SECTION_ICONS[section] || 'fas fa-circle';
+        titleEl.innerHTML = `<i class="${icon}" style="color:var(--accent)"></i> ${SECTION_TITLES[section] || section}`;
       }
     });
   });
 }
 
-/* ─── Modal Overlay 클릭 닫기 ─── */
+/* ─── Modal 닫기 ─── */
 function initModal() {
   const overlay = $('#modal-overlay');
   if (!overlay) return;
-  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 }
 
 /* ─── Init ─── */

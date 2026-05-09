@@ -1,16 +1,12 @@
 /**
  * Aestyve — main.js
- * 기능: content.json 로드 → 다국어(i18n) → 렌더(히어로/카테고리/제품/리뷰/연락처)
- *       슬라이더 자동/수동, 탭 필터, 리뷰 슬라이더, 헤더 스크롤, 햄버거, 토스트
+ * Hero 비디오 + Products 이미지 수직 나열 + Brand/Contact/Footer
  */
 
 /* ─── 전역 상태 ─── */
 const STATE = {
   lang: 'ko',
   content: null,
-  heroIdx: 0,
-  heroTimer: null,
-  revIdx: 0,
 };
 
 const LANGS = [
@@ -25,6 +21,7 @@ const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const t = (obj) => {
   if (!obj) return '';
+  if (typeof obj === 'string') return obj;
   return obj[STATE.lang] || obj['ko'] || obj['en'] || '';
 };
 function showToast(msg, duration = 2400) {
@@ -47,7 +44,6 @@ function initLang() {
     else if (nav.startsWith('en')) STATE.lang = 'en';
     else STATE.lang = 'ko';
   }
-  // URL param override
   const params = new URLSearchParams(location.search);
   const lp = params.get('lang');
   if (lp && LANGS.find(l => l.code === lp)) STATE.lang = lp;
@@ -60,7 +56,7 @@ function setLang(code) {
   if (STATE.content) renderAll();
 }
 
-/* ─── 언어 스위처 렌더 ─── */
+/* ─── 언어 스위처 ─── */
 function renderLangSwitcher() {
   const wrap = $('#lang-switcher');
   const mobileWrap = $('#mobile-lang-switcher');
@@ -74,27 +70,20 @@ function renderLangSwitcher() {
     btn.textContent = flag;
     btn.title = label;
     btn.setAttribute('aria-label', label);
-    btn.setAttribute('aria-pressed', code === STATE.lang ? 'true' : 'false');
-    btn.addEventListener('click', () => {
-      setLang(code);
-      renderLangSwitcher();
-    });
+    btn.addEventListener('click', () => { setLang(code); renderLangSwitcher(); });
     wrap.appendChild(btn);
 
     if (mobileWrap) {
       const btn2 = btn.cloneNode(true);
-      btn2.addEventListener('click', () => {
-        setLang(code);
-        renderLangSwitcher();
-      });
+      btn2.addEventListener('click', () => { setLang(code); renderLangSwitcher(); });
       mobileWrap.appendChild(btn2);
     }
   });
 }
 
-/* ─── content.json 로드 ─── */
+/* ─── 콘텐츠 로드 ─── */
 async function loadContent() {
-  // 1) 관리자가 수정한 내용이 localStorage에 있으면 최우선 사용
+  // localStorage 우선
   try {
     const stored = localStorage.getItem('aestyve_content');
     if (stored) {
@@ -106,10 +95,9 @@ async function loadContent() {
       }
     }
   } catch (e) {
-    console.warn('[Aestyve] localStorage 파싱 오류, content.json으로 대체');
+    console.warn('[Aestyve] localStorage 파싱 오류');
   }
-
-  // 2) localStorage 없으면 서버의 content.json 로드
+  // content.json fallback
   try {
     const res = await fetch('data/content.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -117,41 +105,20 @@ async function loadContent() {
     renderAll();
   } catch (err) {
     console.error('[Aestyve] content.json 로드 실패:', err);
-    renderError('콘텐츠를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.');
   }
-}
-
-function renderError(msg) {
-  const sections = ['#hero', '#categories', '#products', '#brand', '#reviews'];
-  sections.forEach(sel => {
-    const el = $(sel);
-    if (el) el.innerHTML = `<div class="container"><div class="error-block">${msg}</div></div>`;
-  });
 }
 
 /* ─── 전체 렌더 ─── */
 function renderAll() {
   const c = STATE.content;
   if (!c) return;
-  renderNoticeBar(c.settings);
   renderNav(c.nav);
   renderHero(c.heroes);
-  renderCategories(c.categories);
   renderProducts(c.products);
   renderBrand(c.settings);
-  renderReviews(c.reviews);
   renderContact(c.settings);
   renderFooter(c.settings);
   renderLangSwitcher();
-}
-
-/* ─── Notice Bar ─── */
-function renderNoticeBar(s) {
-  const el = $('#notice-bar');
-  if (!el) return;
-  if (!s.noticeBar?.visible) { el.style.display = 'none'; return; }
-  el.style.display = '';
-  el.textContent = t(s.noticeBar.text);
 }
 
 /* ─── Nav ─── */
@@ -166,14 +133,13 @@ function renderNav(navItems) {
     mLinks.innerHTML = navItems.map(item =>
       `<a href="${item.href}" class="mobile-nav-link">${t(item.label)}</a>`
     ).join('');
-    // Close mobile nav on link click
     $$('.mobile-nav-link', mLinks).forEach(a => {
       a.addEventListener('click', () => toggleMobileNav(false));
     });
   }
 }
 
-/* ─── Hero Video (단일 전체화면 비디오 배너) ─── */
+/* ─── Hero 비디오 ─── */
 function renderHero(heroes) {
   const videoWrap = $('#hero-video-wrap');
   const overlay   = $('#hero-overlay');
@@ -181,32 +147,19 @@ function renderHero(heroes) {
 
   const h = (heroes && heroes.length > 0) ? heroes[0] : null;
 
-  /* ── 배경 미디어 렌더 ── */
   let bgHtml = '';
   if (h && h.bgVideo) {
     const src = h.bgVideo;
-
-    // YouTube URL 감지 (youtu.be / youtube.com 모두 지원)
     const ytMatch = src.match(
       /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
     );
-
     if (ytMatch) {
       const videoId = ytMatch[1];
-      // 고화질(hd1080) + 자동재생 + 음소거 해제 가능 + 루프 + 컨트롤 숨김
       const embedSrc =
         `https://www.youtube.com/embed/${videoId}` +
-        `?autoplay=1` +
-        `&mute=1` +           // 브라우저 정책: 최초 로드는 mute=1 필수
-        `&loop=1` +
-        `&playlist=${videoId}` + // loop 작동 필수 파라미터
-        `&controls=0` +
-        `&showinfo=0` +
-        `&rel=0` +
-        `&modestbranding=1` +
-        `&playsinline=1` +
-        `&enablejsapi=1` +    // JS API 활성화 (음소거 해제 제어용)
-        `&vq=hd1080` +        // 기본 화질 1080p 요청
+        `?autoplay=1&mute=1&loop=1&playlist=${videoId}` +
+        `&controls=0&showinfo=0&rel=0&modestbranding=1` +
+        `&playsinline=1&enablejsapi=1&vq=hd1080` +
         `&origin=${encodeURIComponent(location.origin)}`;
 
       bgHtml = `<iframe
@@ -218,44 +171,36 @@ function renderHero(heroes) {
           allowfullscreen
           title="Aestyve Hero Video"></iframe>`;
 
-      // 음소거 해제 버튼 (클릭 시 postMessage로 unMute)
       bgHtml += `<button id="hero-unmute-btn" aria-label="소리 켜기" title="소리 켜기"
           onclick="heroToggleMute(this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round">
-            <!-- muted icon (기본) -->
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="yt-icon-poly"/>
             <line x1="23" y1="9" x2="17" y2="15" class="yt-muted-line"/>
             <line x1="17" y1="9" x2="23" y2="15" class="yt-muted-line"/>
           </svg>
         </button>`;
-
     } else {
-      // 직접 MP4/WebM URL
-      bgHtml = `<video id="hero-video"
-          class="hero-video-full"
-          autoplay muted loop playsinline preload="auto"
-          src="${src}"></video>`;
+      bgHtml = `<video id="hero-video" class="hero-video-full"
+          autoplay muted loop playsinline preload="auto" src="${src}"></video>`;
     }
   } else if (h && h.bgImage) {
-    bgHtml = `<img id="hero-image" class="hero-video-full"
-        src="${h.bgImage}" alt="" aria-hidden="true" />`;
+    bgHtml = `<img class="hero-video-full" src="${h.bgImage}" alt="" aria-hidden="true" />`;
   } else {
     const bgColor = (h && h.bgColor) || '#1A2755';
     bgHtml = `<div class="hero-video-full" style="background:${bgColor};"></div>`;
   }
   videoWrap.innerHTML = bgHtml;
 
-  /* ── 오버레이 텍스트 ── */
   if (h) {
-    const accent     = h.accentColor || '#A8B9FF';
+    const accent = h.accentColor || '#A8B9FF';
     const titleLines = (t(h.title) || '').replace(/\n/g, '<br/>');
     overlay.innerHTML = `
       <div class="hero-overlay-inner">
-        ${t(h.label)   ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
-        ${titleLines   ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
-        ${t(h.subtitle)? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
-        ${t(h.btnText) ? `<a href="${h.btnHref||'#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
+        ${t(h.label)    ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
+        ${titleLines    ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
+        ${t(h.subtitle) ? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
+        ${t(h.btnText)  ? `<a href="${h.btnHref||'#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
       </div>`;
     overlay.style.display = '';
   } else {
@@ -263,122 +208,68 @@ function renderHero(heroes) {
   }
 }
 
-/* ── YouTube 음소거 토글 (YT iframe postMessage API) ── */
+/* ─── YouTube 음소거 토글 ─── */
 let _ytMuted = true;
 function heroToggleMute(btn) {
   const iframe = document.getElementById('hero-yt-iframe');
   if (!iframe) return;
   _ytMuted = !_ytMuted;
-
-  // YouTube IFrame Player API postMessage
   iframe.contentWindow.postMessage(
-    JSON.stringify({ event: 'command', func: _ytMuted ? 'mute' : 'unMute', args: [] }),
-    '*'
+    JSON.stringify({ event: 'command', func: _ytMuted ? 'mute' : 'unMute', args: [] }), '*'
   );
-
-  // 버튼 아이콘 교체
-  const mutedLines = btn.querySelectorAll('.yt-muted-line');
-  mutedLines.forEach(l => { l.style.display = _ytMuted ? '' : 'none'; });
-
-  // 음소거 해제 시 볼륨 100 설정
+  btn.querySelectorAll('.yt-muted-line').forEach(l => { l.style.display = _ytMuted ? '' : 'none'; });
   if (!_ytMuted) {
     iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }),
-      '*'
+      JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*'
     );
   }
 }
 window.heroToggleMute = heroToggleMute;
 
-/* 슬라이더 관련 함수 — 단일 비디오 모드에서는 미사용 (하위 호환 유지) */
-function goHero()       {}
-function startHeroAuto(){}
-
-
-
-
-
-/* ─── Categories ─── */
-function renderCategories(cats) {
-  const grid = $('#category-grid');
-  if (!grid) return;
-  if (!cats?.length) {
-    grid.innerHTML = `<div class="error-block">카테고리 데이터 없음</div>`;
-    return;
-  }
-  grid.innerHTML = cats.map(c => {
-    // 카테고리 이미지가 있으면 표시, 없으면 이모지
-    const iconHtml = c.bgImage
-      ? `<img src="${c.bgImage}" class="cat-img" alt="${t(c.title)}" />`
-      : `<span class="cat-icon">${c.icon||'✨'}</span>`;
-    return `
-    <div class="category-card" style="background:${c.bgColor||'#E8ECF8'};color:${c.accentColor||'#1A2755'};" tabindex="0" role="button" aria-label="${t(c.title)}">
-      ${iconHtml}
-      <div class="cat-title">${t(c.title)}</div>
-      <div class="cat-desc" style="color:${c.accentColor||'#1A2755'};">${t(c.desc)}</div>
-    </div>`;
-  }).join('');
-
-  // Section text i18n
-  updateStaticText('#cat-tag', { ko:'카테고리', en:'CATEGORIES', 'zh-CN':'分类', th:'หมวดหมู่' });
-  updateStaticText('#cat-title', { ko:'피부 고민별 솔루션', en:'Solutions by Skin Concern', 'zh-CN':'按肤质烦恼分类', th:'โซลูชันตามปัญหาผิว' });
-  updateStaticText('#cat-desc', { ko:'당신의 피부 타입과 고민에 맞는 과학적 솔루션을 찾아보세요', en:'Find scientific solutions tailored to your skin type and concerns', 'zh-CN':'找到适合您肤质和烦恼的科学解决方案', th:'ค้นหาโซลูชันทางวิทยาศาสตร์ที่เหมาะกับประเภทผิวและปัญหาของคุณ' });
-}
-
-/* ─── Products ─── */
+/* ─── Products — 순수 이미지 수직 나열 ─── */
 function renderProducts(prods) {
   const grid = $('#product-grid');
   if (!grid) return;
-  if (!prods?.length) {
-    grid.innerHTML = `<div class="error-block" style="grid-column:1/-1;">제품 데이터 없음</div>`;
+
+  if (!prods || !prods.length) {
+    grid.innerHTML = `<div class="loading-block">제품 데이터 없음</div>`;
     return;
   }
-  grid.innerHTML = prods.map(p => {
-    // 제품 이미지가 있으면 표시, 없으면 이니셜
-    const thumbContent = p.image
-      ? `<img src="${p.image}" class="product-img" alt="${t(p.name)}" />`
-      : `<div class="product-thumb-inner" style="background:${p.bgColor||'#E8ECF8'};color:${p.accentColor||'#1A2755'};">${(t(p.name)||'').split(' ').slice(0,2).map(w => w[0]||'').join('')}</div>`;
+
+  /* 섹션 헤딩 */
+  const headingHtml = `
+    <div class="product-list-heading">
+      <h2>PRODUCTS</h2>
+      <p>${STATE.lang === 'ko' ? 'Aestyve 제품 라인업' :
+          STATE.lang === 'en' ? 'Aestyve Product Lineup' :
+          STATE.lang === 'zh-CN' ? 'Aestyve 产品系列' :
+          'ผลิตภัณฑ์ Aestyve'}</p>
+    </div>`;
+
+  /* 제품 행 — 이미지 + 이름 + 설명만 */
+  const itemsHtml = prods.map((p, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const imgHtml = p.image
+      ? `<img src="${p.image}" alt="${t(p.name)}" loading="lazy" />`
+      : `<div style="width:100%;height:100%;background:#f0f0ee;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:2rem;">✦</div>`;
+
     return `
-    <div class="product-card" data-cat="${p.category||'all'}">
-      <div class="product-thumb" style="background:${p.bgColor||'#E8ECF8'};">
-        ${thumbContent}
-        <span class="product-badge" style="background:${p.accentColor||'#1A2755'};">${t(p.badge)||''}</span>
-      </div>
-      <div class="product-body">
-        <div class="product-name">${t(p.name)}</div>
-        <div class="product-desc">${t(p.desc)}</div>
-        <div class="product-footer">
-          <span class="product-price">${p.price||''}</span>
-          <button class="product-buy" onclick="showToast('준비 중입니다 😊')">
-            ${STATE.lang==='ko'?'구매하기':STATE.lang==='en'?'Buy Now':STATE.lang==='zh-CN'?'立即购买':'ซื้อเลย'}
-          </button>
-        </div>
+    <div class="prod-item">
+      <div class="prod-img-wrap">${imgHtml}</div>
+      <div class="prod-info">
+        <div class="prod-number">No. ${num}</div>
+        <div class="prod-name">${t(p.name) || ''}</div>
+        ${t(p.desc) ? `<div class="prod-desc">${t(p.desc)}</div>` : ''}
       </div>
     </div>`;
   }).join('');
 
-  updateStaticText('#prod-tag', { ko:'제품', en:'PRODUCTS', 'zh-CN':'产品', th:'สินค้า' });
-  updateStaticText('#prod-title', { ko:'Aestyve 제품', en:'Aestyve Products', 'zh-CN':'Aestyve 产品', th:'สินค้า Aestyve' });
-  updateStaticText('#prod-desc', { ko:'피부과학이 만든 믿을 수 있는 뷰티 솔루션', en:'Trustworthy beauty solutions made by derma science', 'zh-CN':'皮肤科学打造的可信赖美容解决方案', th:'โซลูชันความงามที่เชื่อถือได้จากวิทยาศาสตร์ผิวหนัง' });
-
-  // Re-apply current filter
-  const activeTab = $('.filter-tab.active');
-  if (activeTab) applyFilter(activeTab.dataset.filter);
-}
-
-function applyFilter(filter) {
-  $$('.product-card').forEach(card => {
-    const cat = card.dataset.cat || 'all';
-    const show = filter === 'all' || cat === filter;
-    card.classList.toggle('hidden', !show);
-  });
+  grid.innerHTML = headingHtml + itemsHtml;
 }
 
 /* ─── Brand ─── */
 function renderBrand(s) {
-  updateStaticText('#brand-title', { ko:'피부과학의 혁신,\n아름다움의 새 기준', en:'Innovation in Dermatology,\nA New Standard of Beauty', 'zh-CN':'皮肤科学的创新，\n美丽的新标准', th:'นวัตกรรมผิวหนัง\nมาตรฐานความงามใหม่' });
-  updateStaticText('#brand-tag', { ko:'ABOUT AESTYVE', en:'ABOUT AESTYVE', 'zh-CN':'关于 AESTYVE', th:'เกี่ยวกับ AESTYVE' });
-
+  if (!s) return;
   const descEl = $('#brand-desc');
   if (descEl && s.brandStory) descEl.textContent = t(s.brandStory);
 
@@ -386,63 +277,34 @@ function renderBrand(s) {
   if (statsEl && s.stats?.length) {
     statsEl.innerHTML = s.stats.map(st => `
       <div class="brand-stat">
-        <div class="stat-number">${st.number||'-'}</div>
-        <div class="stat-label">${t(st.label)||'-'}</div>
-      </div>`
-    ).join('');
-  }
-}
-
-/* ─── Reviews ─── */
-let revAutoTimer = null;
-function renderReviews(reviews) {
-  const track = $('#reviews-track');
-  if (!track) return;
-  if (!reviews?.length) {
-    track.innerHTML = `<div class="error-block">리뷰 데이터 없음</div>`;
-    return;
+        <div class="stat-number">${st.number || '-'}</div>
+        <div class="stat-label">${t(st.label) || '-'}</div>
+      </div>`).join('');
   }
 
-  updateStaticText('#review-title', { ko:'고객 후기', en:'Customer Reviews', 'zh-CN':'客户评价', th:'รีวิวจากลูกค้า' });
-  updateStaticText('#review-desc', { ko:'Aestyve를 경험한 고객들의 진솔한 이야기', en:'Honest stories from customers who experienced Aestyve', 'zh-CN':'亲身体验Aestyve的客户真实故事', th:'เรื่องราวจริงจากลูกค้าที่มีประสบการณ์กับ Aestyve' });
+  const tagEl = $('#brand-tag');
+  if (tagEl) tagEl.textContent = { ko:'ABOUT AESTYVE', en:'ABOUT AESTYVE', 'zh-CN':'关于 AESTYVE', th:'เกี่ยวกับ AESTYVE' }[STATE.lang] || 'ABOUT AESTYVE';
 
-  track.innerHTML = reviews.map(r => `
-    <div class="review-card">
-      <div class="review-stars">${'★'.repeat(r.rating||5)}${'☆'.repeat(5-(r.rating||5))}</div>
-      <p class="review-text">"${t(r.text)}"</p>
-      <span class="review-author">— ${t(r.name)}</span>
-    </div>`
-  ).join('');
-
-  STATE.revIdx = 0;
-  clearInterval(revAutoTimer);
-  revAutoTimer = setInterval(() => scrollReviews(1), 4000);
-}
-
-function scrollReviews(dir) {
-  const track = $('#reviews-track');
-  if (!track) return;
-  const cards = $$('.review-card', track);
-  if (!cards.length) return;
-  const count = cards.length;
-  STATE.revIdx = ((STATE.revIdx + dir) % count + count) % count;
-
-  const cardW = cards[0].offsetWidth + 20; // gap
-  track.style.transform = `translateX(-${STATE.revIdx * cardW}px)`;
+  const titleEl = $('#brand-title');
+  if (titleEl) titleEl.innerHTML = ({
+    ko: '피부과학의 혁신,<br/>아름다움의 새 기준',
+    en: 'Innovation in Dermatology,<br/>A New Standard of Beauty',
+    'zh-CN': '皮肤科学的创新，<br/>美丽的新标准',
+    th: 'นวัตกรรมผิวหนัง<br/>มาตรฐานความงามใหม่',
+  }[STATE.lang] || '');
 }
 
 /* ─── Contact ─── */
 function renderContact(s) {
   if (!s) return;
-  const setT = (id, val) => { const el = $(id); if (el) el.textContent = val || '-'; };
-  setT('#contact-brand-name', s.brandName);
-  setT('#contact-slogan', t(s.slogan));
-  setT('#contact-phone', s.contact?.phone);
-  setT('#contact-email', s.contact?.email);
-  setT('#contact-address', s.contact?.address);
-  setT('#contact-map-text', s.contact?.address);
+  const set = (id, val) => { const el = $(id); if (el) el.textContent = val || '-'; };
+  set('#contact-brand-name', s.brandName);
+  set('#contact-slogan', t(s.slogan));
+  set('#contact-phone', s.contact?.phone);
+  set('#contact-email', s.contact?.email);
+  set('#contact-address', s.contact?.address);
+  set('#contact-map-text', s.contact?.address);
 
-  const social = s.social || {};
   const socDefs = [
     { key: 'instagram', icon: 'fab fa-instagram', label: 'Instagram' },
     { key: 'youtube',   icon: 'fab fa-youtube',   label: 'YouTube' },
@@ -451,82 +313,28 @@ function renderContact(s) {
   ];
   const sl = $('#social-links');
   if (sl) {
+    const social = s.social || {};
     sl.innerHTML = socDefs
-      .filter(s => social[s.key])
-      .map(s => `<a href="${social[s.key]}" class="social-link" target="_blank" rel="noopener" aria-label="${s.label}"><i class="${s.icon}"></i></a>`)
+      .filter(d => social[d.key])
+      .map(d => `<a href="${social[d.key]}" class="social-link" target="_blank" rel="noopener" aria-label="${d.label}"><i class="${d.icon}"></i></a>`)
       .join('');
   }
 }
 
 /* ─── Footer ─── */
 function renderFooter(s) {
+  if (!s) return;
   const fd = $('#footer-desc');
-  if (fd) fd.innerHTML = `${t(s.slogan)||'Aestyve'} — ${t(s.brandStory)||''}`.slice(0, 100) + '...';
+  if (fd) fd.textContent = t(s.slogan) || 'Aestyve';
   const fc = $('#footer-copyright');
-  if (fc) fc.textContent = `© ${new Date().getFullYear()} ${s.brandName||'Aestyve'}. All rights reserved.`;
+  if (fc) fc.textContent = `© ${new Date().getFullYear()} ${s.brandName || 'Aestyve'}. All rights reserved.`;
 }
 
-/* ─── Helper: static text i18n ─── */
-function updateStaticText(sel, obj) {
-  const el = $(sel);
-  if (!el) return;
-  const txt = t(obj);
-  if (txt) el.innerHTML = txt.replace(/\n/g, '<br/>');
-}
-
-/* ─── Filter Tabs (이벤트 위임) ─── */
-function initFilters() {
-  const tabContainer = document.querySelector('.filter-tabs');
-  if (!tabContainer) return;
-  tabContainer.addEventListener('click', e => {
-    const btn = e.target.closest('.filter-tab');
-    if (!btn) return;
-    $$('.filter-tab').forEach(t => {
-      t.classList.remove('active');
-      t.setAttribute('aria-selected', 'false');
-    });
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-    applyFilter(btn.dataset.filter);
-  });
-}
-
-/* ─── Hero Navigation ─── */
-function initHeroNav() {
-  const prev = $('#hero-prev');
-  const next = $('#hero-next');
-  if (prev) prev.addEventListener('click', () => {
-    const count = STATE.content?.heroes?.length || 1;
-    goHero((STATE.heroIdx - 1 + count) % count);
-    startHeroAuto();
-  });
-  if (next) next.addEventListener('click', () => {
-    const count = STATE.content?.heroes?.length || 1;
-    goHero((STATE.heroIdx + 1) % count);
-    startHeroAuto();
-  });
-}
-
-/* ─── Reviews Navigation ─── */
-function initReviewNav() {
-  const prev = $('#rev-prev');
-  const next = $('#rev-next');
-  if (prev) prev.addEventListener('click', () => {
-    clearInterval(revAutoTimer);
-    scrollReviews(-1);
-  });
-  if (next) next.addEventListener('click', () => {
-    clearInterval(revAutoTimer);
-    scrollReviews(1);
-  });
-}
-
-/* ─── Header Scroll ─── */
+/* ─── Header scroll ─── */
 function initHeaderScroll() {
   const header = $('#site-header');
   if (!header) return;
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
 }
 
 /* ─── Hamburger ─── */
@@ -542,7 +350,6 @@ function toggleMobileNav(force) {
 function initHamburger() {
   const btn = $('#hamburger');
   if (btn) btn.addEventListener('click', () => toggleMobileNav());
-  // Close on outside click
   document.addEventListener('click', e => {
     const nav = $('#mobile-nav');
     const header = $('#site-header');
@@ -550,34 +357,14 @@ function initHamburger() {
   });
 }
 
-/* ─── Touch / Swipe (Hero) ─── */
-function initHeroSwipe() {
-  const section = $('#hero');
-  if (!section) return;
-  let startX = 0;
-  section.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  section.addEventListener('touchend', e => {
-    const diff = e.changedTouches[0].clientX - startX;
-    if (Math.abs(diff) > 50) {
-      const count = STATE.content?.heroes?.length || 1;
-      goHero(diff < 0 ? (STATE.heroIdx + 1) % count : (STATE.heroIdx - 1 + count) % count);
-      startHeroAuto();
-    }
-  });
-}
-
 /* ─── Init ─── */
 function init() {
   initLang();
   renderLangSwitcher();
-  initFilters();
-  initReviewNav();
   initHeaderScroll();
   initHamburger();
   loadContent();
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-// 전역 노출 (onclick 콜백용)
 window.showToast = showToast;
