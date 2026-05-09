@@ -18,14 +18,13 @@
     }
 
     html, body {
-      height: 100%;
       font-family: 'Inter', 'Noto Sans KR', sans-serif;
       background: #0c0e18;
       color: #fff;
       overflow-x: hidden;
     }
 
-    /* ── 배경 입자 애니메이션 ── */
+    /* ── 배경 그라디언트 ── */
     body::before {
       content: '';
       position: fixed;
@@ -46,7 +45,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 48px 24px;
+      padding: 48px 24px 80px;
       text-align: center;
     }
 
@@ -58,7 +57,7 @@
     .logo-wrap img {
       height: 56px;
       width: auto;
-      filter: brightness(0) invert(1); /* 흰색 반전 */
+      filter: brightness(0) invert(1);
       opacity: .92;
     }
 
@@ -124,7 +123,7 @@
       animation: fadeUp .9s .28s ease both;
     }
 
-    /* ── 카운터 박스 ── */
+    /* ── 통계 박스 ── */
     .stats {
       display: flex;
       gap: 48px;
@@ -172,7 +171,6 @@
       cursor: pointer;
       transition: color .2s, border-color .2s, background .2s;
       animation: fadeUp .9s .38s ease both;
-      margin-bottom: 0;
     }
     .products-toggle:hover {
       color: #fff;
@@ -192,31 +190,42 @@
     .products-toggle.open .arrow { transform: rotate(180deg); }
 
     /* ── 제품 이미지 섹션 ── */
+    /* visibility + scale 방식: height/overflow 트릭 완전 제거 */
     .products-section {
       width: 100%;
-      max-width: 680px;
-      display: none;
-      opacity: 0;
+      max-width: 720px;
       margin-top: 0;
-      transition: opacity .4s ease, margin .4s ease;
+      visibility: hidden;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .45s ease, transform .45s ease, margin .4s ease;
+      /* 높이는 항상 auto — 숨길 때는 position:absolute로 흐름에서 제거 */
+      position: absolute;
+      left: -9999px;
     }
     .products-section.open {
-      display: block;
+      position: static;
+      visibility: visible;
+      pointer-events: auto;
       opacity: 1;
+      transform: translateY(0);
       margin-top: 40px;
     }
+
+    /* ── 제품 카드 ── */
     .product-item {
       margin-bottom: 20px;
       border-radius: 16px;
       overflow: hidden;
       background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.08);
       transition: transform .25s ease, box-shadow .25s ease;
     }
     .product-item:last-child { margin-bottom: 0; }
     .product-item:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,.5);
+      box-shadow: 0 16px 48px rgba(0,0,0,.55);
     }
     .product-item img {
       width: 100%;
@@ -236,7 +245,7 @@
       pointer-events: none;
     }
 
-    /* ── 떠다니는 원 장식 ── */
+    /* ── 장식 원 ── */
     .deco-circle {
       position: fixed;
       border-radius: 50%;
@@ -277,6 +286,7 @@
     @media (max-width: 480px) {
       .stats { gap: 32px; }
       .logo-wrap img { height: 44px; }
+      .products-section { max-width: 100%; }
     }
   </style>
 </head>
@@ -335,46 +345,43 @@
     PRODUCTS &nbsp;<i class="arrow">&#8964;</i>
   </button>
 
-  <!-- 제품 이미지 목록 -->
+  <!-- 제품 이미지 목록 (lazy 없이 미리 로드) -->
   <div class="products-section" id="productsSection">
     <div class="product-item">
-      <img src="images/products/liquid-pcl.jpg" alt="Aestyve Liquid PCL" loading="lazy" />
+      <img src="images/products/liquid-pcl.jpg" alt="Aestyve Liquid PCL" />
     </div>
     <div class="product-item">
-      <img src="images/products/ha-filler.jpg" alt="Aestyve HA FILLER Series" loading="lazy" />
+      <img src="images/products/ha-filler.jpg" alt="Aestyve HA FILLER Series" />
     </div>
     <div class="product-item">
-      <img src="images/products/revibe.jpg" alt="Aestyve Revibe" loading="lazy" />
+      <img src="images/products/revibe.jpg" alt="Aestyve Revibe" />
     </div>
     <div class="product-item">
-      <img src="images/products/1906nad.jpg" alt="1906NAD+" loading="lazy" />
+      <img src="images/products/1906nad.jpg" alt="1906NAD+" />
     </div>
     <div class="product-item">
-      <img src="images/products/innofill-plla.jpg" alt="INNOFILL Aestyve PLLA FILLER" loading="lazy" />
+      <img src="images/products/innofill-plla.jpg" alt="INNOFILL Aestyve PLLA FILLER" />
     </div>
   </div>
 
 </main>
 
+<!-- 하단 카피 -->
+<p class="footer-copy">© 2025 Aestyve. All rights reserved.</p>
+
 <script>
   function toggleProducts() {
     var btn = document.getElementById('productsBtn');
     var sec = document.getElementById('productsSection');
-    var isOpen = sec.classList.contains('open');
-    if (isOpen) {
-      sec.style.opacity = '0';
-      setTimeout(function(){ sec.classList.remove('open'); }, 350);
+    if (sec.classList.contains('open')) {
+      sec.classList.remove('open');
       btn.classList.remove('open');
     } else {
       sec.classList.add('open');
-      setTimeout(function(){ sec.style.opacity = '1'; }, 10);
       btn.classList.add('open');
     }
   }
 </script>
-
-<!-- 하단 카피 -->
-<p class="footer-copy">© 2025 Aestyve. All rights reserved.</p>
 
 </body>
 </html>
