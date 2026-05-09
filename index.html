@@ -155,48 +155,75 @@
       text-transform: uppercase;
     }
 
-    /* ── 이메일 문의 버튼 ── */
-    .cta-wrap {
-      animation: fadeUp .9s .38s ease both;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn-main {
+    /* ── PRODUCTS 버튼 ── */
+    .products-toggle {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--accent);
+      background: transparent;
+      color: rgba(255,255,255,.75);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 12px 32px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+      animation: fadeUp .9s .38s ease both;
+      margin-bottom: 0;
+    }
+    .products-toggle:hover {
       color: #fff;
-      font-size: .88rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      padding: 14px 36px;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: transform .2s, box-shadow .2s, background .2s;
-      box-shadow: 0 4px 24px rgba(79,126,247,.35);
+      border-color: rgba(255,255,255,.5);
+      background: rgba(255,255,255,.06);
     }
-    .btn-main:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(79,126,247,.5);
-      background: #3a6ce8;
+    .products-toggle.open {
+      color: var(--gold);
+      border-color: rgba(201,169,110,.5);
+      background: rgba(201,169,110,.06);
     }
-    .btn-sub {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,.55);
-      font-size: .85rem;
-      font-weight: 500;
-      padding: 14px 28px;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 100px;
-      text-decoration: none;
-      transition: color .2s, border-color .2s;
+    .products-toggle .arrow {
+      display: inline-block;
+      transition: transform .3s ease;
+      font-style: normal;
     }
-    .btn-sub:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+    .products-toggle.open .arrow { transform: rotate(180deg); }
+
+    /* ── 제품 이미지 섹션 ── */
+    .products-section {
+      width: 100%;
+      max-width: 680px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .6s cubic-bezier(.4,0,.2,1), opacity .4s ease, margin .4s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+    .products-section.open {
+      max-height: 6000px;
+      opacity: 1;
+      margin-top: 40px;
+    }
+    .product-item {
+      margin-bottom: 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .product-item:last-child { margin-bottom: 0; }
+    .product-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.5);
+    }
+    .product-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     /* ── 하단 카피 ── */
     .footer-copy {
@@ -251,8 +278,6 @@
     @media (max-width: 480px) {
       .stats { gap: 32px; }
       .logo-wrap img { height: 44px; }
-      .cta-wrap { flex-direction: column; align-items: center; }
-      .btn-main, .btn-sub { width: 100%; max-width: 300px; justify-content: center; }
     }
   </style>
 </head>
@@ -306,17 +331,46 @@
     </div>
   </div>
 
-  <!-- CTA 버튼 -->
-  <div class="cta-wrap">
-    <a href="mailto:hello@aestyve.com" class="btn-main">
-      ✉️ &nbsp;문의하기
-    </a>
-    <a href="https://instagram.com/aestyve" target="_blank" rel="noopener" class="btn-sub">
-      📸 &nbsp;Instagram
-    </a>
+  <!-- PRODUCTS 버튼 -->
+  <button class="products-toggle" id="productsBtn" onclick="toggleProducts()">
+    PRODUCTS &nbsp;<i class="arrow">&#8964;</i>
+  </button>
+
+  <!-- 제품 이미지 목록 -->
+  <div class="products-section" id="productsSection">
+    <div class="product-item">
+      <img src="https://www.genspark.ai/api/files/s/neZKlVcm" alt="Aestyve Liquid PCL" loading="lazy" />
+    </div>
+    <div class="product-item">
+      <img src="https://www.genspark.ai/api/files/s/i5p8O6ZP" alt="Aestyve HA FILLER Series" loading="lazy" />
+    </div>
+    <div class="product-item">
+      <img src="https://www.genspark.ai/api/files/s/zTAzKubg" alt="Aestyve Revibe" loading="lazy" />
+    </div>
+    <div class="product-item">
+      <img src="https://www.genspark.ai/api/files/s/T70QUyGi" alt="1906NAD+" loading="lazy" />
+    </div>
+    <div class="product-item">
+      <img src="https://www.genspark.ai/api/files/s/3nkvo8rZ" alt="INNOFILL Aestyve PLLA FILLER" loading="lazy" />
+    </div>
   </div>
 
 </main>
+
+<script>
+  function toggleProducts() {
+    var btn = document.getElementById('productsBtn');
+    var sec = document.getElementById('productsSection');
+    var isOpen = sec.classList.contains('open');
+    if (isOpen) {
+      sec.classList.remove('open');
+      btn.classList.remove('open');
+    } else {
+      sec.classList.add('open');
+      btn.classList.add('open');
+    }
+  }
+</script>
 
 <!-- 하단 카피 -->
 <p class="footer-copy">© 2025 Aestyve. All rights reserved.</p>
