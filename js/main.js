@@ -2,7 +2,7 @@
  * Aestyve — main.js
  */
 
-const STATE = { lang: 'ko', content: null };
+const STATE = { lang: 'ko', content: null, activeCat: 'all' };
 const LANGS = [
   { code: 'ko', flag: '🇰🇷', label: '한국어' },
   { code: 'en', flag: '🇺🇸', label: 'English' },
@@ -67,58 +67,76 @@ function renderLangSwitcher() {
 
 /* ─── 콘텐츠 로드 ─── */
 async function loadContent() {
-  /* 1) content.json 항상 먼저 fetch */
   let fresh = null;
   try {
-    const res = await fetch('data/content.json?v=' + Date.now()); // 캐시 무력화
+    const res = await fetch('data/content.json?v=' + Date.now());
     if (res.ok) fresh = await res.json();
   } catch (e) {}
 
-  /* 2) localStorage: 관리자가 저장한 hero·settings·nav 만 덮어씀
-        products / categories 는 content.json 값을 절대 우선 */
-  let merged = fresh;
   if (fresh) {
     try {
       const stored = localStorage.getItem('aestyve_content');
       if (stored) {
         const cached = JSON.parse(stored);
         if (cached && typeof cached === 'object') {
-          merged = {
-            ...fresh,                          // content.json 전체 베이스
-            /* 관리자 전용 필드만 localStorage 값으로 덮어씀 */
+          /* detailImages는 별도 키에서 복원 */
+          const imgMap = _loadDetailImagesMap();
+          const merged = {
+            ...fresh,
             heroes:   cached.heroes   || fresh.heroes,
             settings: cached.settings || fresh.settings,
             nav:      cached.nav      || fresh.nav,
-            /* products·categories 는 항상 content.json 우선 —
-               단, 관리자가 detail/name 편집한 경우 id 매칭으로 병합 */
             products: (fresh.products || []).map(fp => {
               const cp = (cached.products || []).find(p => p.id === fp.id);
-              if (!cp) return fp;
+              if (!cp) return { ...fp, detailImages: imgMap[fp.id] || [] };
               return {
-                ...fp,                 // image, id, badges 등은 content.json 기준
-                name:   cp.name   || fp.name,
-                detail: cp.detail || fp.detail,
+                ...fp,
+                name:         cp.name         || fp.name,
+                detail:       cp.detail       || fp.detail,
+                category:     cp.category     || fp.category,
+                detailImages: imgMap[fp.id]   || cp.detailImages || [],
               };
             }),
             categories: fresh.categories || cached.categories,
           };
+          STATE.content = merged;
+          renderAll();
+          return;
         }
       }
     } catch (e) {}
-    STATE.content = merged;
+    STATE.content = fresh;
     renderAll();
     return;
   }
 
-  /* 3) fetch 완전 실패 시 localStorage 폴백 */
   try {
     const stored = localStorage.getItem('aestyve_content');
     if (stored) {
       const parsed = JSON.parse(stored);
-      if (parsed && typeof parsed === 'object') { STATE.content = parsed; renderAll(); return; }
+      if (parsed && typeof parsed === 'object') {
+        _restoreDetailImages(parsed);
+        STATE.content = parsed;
+        renderAll();
+        return;
+      }
     }
   } catch (e) {}
   console.error('[Aestyve] content.json 로드 실패');
+}
+
+function _loadDetailImagesMap() {
+  try {
+    const raw = localStorage.getItem('aestyve_content_dimgs');
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return {};
+}
+function _restoreDetailImages(data) {
+  const imgMap = _loadDetailImagesMap();
+  (data.products || []).forEach(p => {
+    if (p.id) p.detailImages = imgMap[p.id] || p.detailImages || [];
+  });
 }
 
 /* ─── 전체 렌더 ─── */
@@ -127,7 +145,7 @@ function renderAll() {
   if (!c) return;
   renderNav(c.nav);
   renderHero(c.heroes);
-  renderProducts(c.products);
+  renderCategoryTabs(c.categories, c.products);
   renderBrand(c.settings);
   renderContact(c.settings);
   renderFooter(c.settings);
@@ -199,116 +217,66 @@ function heroToggleMute(btn) {
 }
 window.heroToggleMute = heroToggleMute;
 
-/* ─── Products — 가로 슬라이더 ─── */
-let sliderIdx = 0;
+/* ─── 카테고리 탭 + 제품 그리드 ─── */
+function renderCategoryTabs(cats, prods) {
+  const tabsEl = $('#cat-tabs');
+  if (!tabsEl) return;
 
-function renderProducts(prods) {
-  const track = $('#slider-track');
-  const dotsWrap = $('#slider-dots');
-  if (!track || !prods || !prods.length) return;
+  const categories = cats || [];
 
-  track.innerHTML = prods.map((p) =>
-    `<a class="slide-card" href="product.html?id=${p.id}">
-      <div class="slide-img-wrap">
-        <img src="${p.image || ''}" alt="${t(p.name)}" loading="lazy" />
+  tabsEl.innerHTML = categories.map(c => {
+    const label = t(c.label) || c.id;
+    const isActive = STATE.activeCat === c.id;
+    return `<button class="cat-tab${isActive ? ' active' : ''}" data-cat="${c.id}">${label}</button>`;
+  }).join('');
+
+  $$('.cat-tab', tabsEl).forEach(btn => {
+    btn.addEventListener('click', () => {
+      STATE.activeCat = btn.dataset.cat;
+      $$('.cat-tab', tabsEl).forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProductGrid(prods);
+    });
+  });
+
+  renderProductGrid(prods);
+}
+
+function renderProductGrid(prods) {
+  const grid = $('#prod-grid');
+  if (!grid) return;
+  if (!prods || !prods.length) {
+    grid.innerHTML = `<div class="prod-empty">등록된 제품이 없습니다.</div>`;
+    return;
+  }
+
+  const filtered = STATE.activeCat === 'all'
+    ? prods
+    : prods.filter(p => p.category === STATE.activeCat);
+
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="prod-empty">해당 카테고리에 제품이 없습니다.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => {
+    const name = t(p.name) || '';
+    const catLabel = (() => {
+      const c = (STATE.content?.categories || []).find(c => c.id === p.category);
+      return c ? (t(c.label) || p.category) : (p.category || '');
+    })();
+    return `
+    <a class="prod-card" href="product.html?id=${p.id}">
+      <div class="prod-card-img-wrap">
+        <img src="${p.image || ''}" alt="${name}" loading="lazy"
+             onerror="this.parentElement.innerHTML='<div class=prod-card-no-img>📦</div>'" />
       </div>
-    </a>`
-  ).join('');
-
-  /* dots */
-  dotsWrap.innerHTML = prods.map((_, i) =>
-    `<button class="slide-dot${i === 0 ? ' active' : ''}" data-i="${i}" aria-label="제품 ${i+1}"></button>`
-  ).join('');
-  $$('.slide-dot', dotsWrap).forEach(btn =>
-    btn.addEventListener('click', () => goSlide(parseInt(btn.dataset.i)))
-  );
-
-  sliderIdx = 0;
-  updateSlider(prods.length);
-}
-
-function goSlide(idx) {
-  const prods = STATE.content?.products || [];
-  sliderIdx = Math.max(0, Math.min(idx, prods.length - 1));
-  updateSlider(prods.length);
-}
-
-function updateSlider(total) {
-  const track = $('#slider-track');
-  if (!track) return;
-
-  /* 카드 너비 = 트랙 부모 기준으로 계산 */
-  const card = track.querySelector('.slide-card');
-  if (!card) return;
-  const gap = 24;
-  const cardW = card.getBoundingClientRect().width + gap;
-  track.style.transform = `translateX(-${sliderIdx * cardW}px)`;
-
-  /* dots */
-  $$('.slide-dot').forEach((d, i) => d.classList.toggle('active', i === sliderIdx));
-
-  /* 버튼 상태 */
-  const prev = $('#slider-prev');
-  const next = $('#slider-next');
-  if (prev) prev.style.opacity = sliderIdx === 0 ? '0.25' : '1';
-  if (next) next.style.opacity = sliderIdx >= total - 1 ? '0.25' : '1';
-}
-
-function initSlider() {
-  const prev = $('#slider-prev');
-  const next = $('#slider-next');
-  if (prev) prev.addEventListener('click', () => goSlide(sliderIdx - 1));
-  if (next) next.addEventListener('click', () => goSlide(sliderIdx + 1));
-
-  /* 드래그 vs 클릭 구분 */
-  const track = $('#slider-track');
-  if (!track) return;
-
-  let startX = 0, startY = 0, moved = 0, isDragging = false;
-  const DRAG_THRESHOLD = 8; // px — 이 이상 움직여야 드래그로 판정
-
-  track.addEventListener('pointerdown', e => {
-    startX  = e.clientX;
-    startY  = e.clientY;
-    moved   = 0;
-    isDragging = false;
-    track.setPointerCapture(e.pointerId);
-  });
-
-  track.addEventListener('pointermove', e => {
-    moved = e.clientX - startX;
-    const movedY = Math.abs(e.clientY - startY);
-    /* 가로 이동이 세로보다 크고 임계값 넘으면 드래그로 전환 */
-    if (!isDragging && Math.abs(moved) > DRAG_THRESHOLD && Math.abs(moved) > movedY) {
-      isDragging = true;
-    }
-  });
-
-  track.addEventListener('pointerup', e => {
-    if (isDragging) {
-      /* 드래그: 슬라이드 이동 */
-      const total = STATE.content?.products?.length || 0;
-      if (moved < -50)      goSlide(sliderIdx + 1);
-      else if (moved > 50)  goSlide(sliderIdx - 1);
-    } else {
-      /* 클릭: 가장 가까운 <a> 를 찾아 바로 이동 */
-      const card = e.target.closest('.slide-card');
-      if (card && card.href) {
-        window.location.href = card.href;
-      }
-    }
-    isDragging = false;
-    moved = 0;
-  });
-
-  /* 드래그 중 <a> 기본 클릭 동작 차단 */
-  track.addEventListener('click', e => {
-    if (Math.abs(e.clientX - startX) > DRAG_THRESHOLD) {
-      e.preventDefault();
-    }
-  });
-
-  window.addEventListener('resize', () => updateSlider(STATE.content?.products?.length || 0));
+      <div class="prod-card-info">
+        ${catLabel ? `<span class="prod-card-cat">${catLabel}</span>` : ''}
+        <div class="prod-card-name">${name}</div>
+      </div>
+    </a>`;
+  }).join('');
 }
 
 /* ─── Brand ─── */
@@ -400,7 +368,6 @@ function init() {
   renderLangSwitcher();
   initHeaderScroll();
   initHamburger();
-  initSlider();
   loadContent();
 }
 

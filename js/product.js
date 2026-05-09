@@ -1,6 +1,6 @@
 /**
  * Aestyve — product.js
- * 상세 페이지: URL 파라미터 ?id=p1 로 제품 데이터 로드
+ * 상세 페이지
  */
 
 const STATE = { lang: 'ko', content: null };
@@ -17,6 +17,9 @@ const t = (obj) => {
   if (typeof obj === 'string') return obj;
   return obj[STATE.lang] || obj['ko'] || obj['en'] || '';
 };
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
 /* ─── 언어 ─── */
 function initLang() {
@@ -30,14 +33,12 @@ function initLang() {
   const lp = new URLSearchParams(location.search).get('lang');
   if (lp && LANGS.find(l => l.code === lp)) STATE.lang = lp;
 }
-
 function setLang(code) {
   STATE.lang = code;
   localStorage.setItem('aestyve_lang', code);
   document.documentElement.lang = code;
   if (STATE.content) renderProduct();
 }
-
 function renderLangSwitcher() {
   const wrap = $('#lang-switcher');
   const mobileWrap = $('#mobile-lang-switcher');
@@ -58,7 +59,6 @@ function renderLangSwitcher() {
     }
   });
 }
-
 function renderNav(navItems) {
   const nav = $('#main-nav');
   if (!nav || !navItems) return;
@@ -73,9 +73,8 @@ function renderNav(navItems) {
   }
 }
 
-/* ─── 콘텐츠 로드 (content.json 우선, localStorage fallback) ─── */
+/* ─── 콘텐츠 로드 (content.json 우선) ─── */
 async function loadContent() {
-  /* 1) content.json 항상 먼저 fetch */
   let fresh = null;
   try {
     const res = await fetch('data/content.json?v=' + Date.now());
@@ -83,12 +82,12 @@ async function loadContent() {
   } catch (e) {}
 
   if (fresh) {
-    /* content.json 성공 → localStorage의 name·detail·detailImages 덮어쓰기 */
     try {
       const stored = localStorage.getItem('aestyve_content');
       if (stored) {
         const cached = JSON.parse(stored);
         if (cached && typeof cached === 'object') {
+          const imgMap = _loadDetailImagesMap();
           STATE.content = {
             ...fresh,
             heroes:   cached.heroes   || fresh.heroes,
@@ -96,13 +95,13 @@ async function loadContent() {
             nav:      cached.nav      || fresh.nav,
             products: (fresh.products || []).map(fp => {
               const cp = (cached.products || []).find(p => p.id === fp.id);
-              if (!cp) return fp;
+              if (!cp) return { ...fp, detailImages: imgMap[fp.id] || [] };
               return {
                 ...fp,
                 name:         cp.name         || fp.name,
                 detail:       cp.detail       || fp.detail,
                 category:     cp.category     || fp.category,
-                detailImages: cp.detailImages || fp.detailImages || [],
+                detailImages: imgMap[fp.id]   || cp.detailImages || [],
               };
             }),
             categories: fresh.categories || cached.categories,
@@ -117,16 +116,33 @@ async function loadContent() {
     return;
   }
 
-  /* 2) fetch 실패 → localStorage 폴백 */
   try {
     const stored = localStorage.getItem('aestyve_content');
     if (stored) {
       const parsed = JSON.parse(stored);
-      if (parsed && typeof parsed === 'object') { STATE.content = parsed; renderProduct(); return; }
+      if (parsed && typeof parsed === 'object') {
+        _restoreDetailImages(parsed);
+        STATE.content = parsed;
+        renderProduct();
+        return;
+      }
     }
   } catch (e) {}
+  console.error('[Aestyve] content.json 로드 실패');
+}
 
-  console.error('[Aestyve] content.json 로드 실패 및 localStorage 없음');
+function _loadDetailImagesMap() {
+  try {
+    const raw = localStorage.getItem('aestyve_content_dimgs');
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return {};
+}
+function _restoreDetailImages(data) {
+  const imgMap = _loadDetailImagesMap();
+  (data.products || []).forEach(p => {
+    if (p.id) p.detailImages = imgMap[p.id] || p.detailImages || [];
+  });
 }
 
 /* ─── 제품 렌더 ─── */
@@ -137,109 +153,149 @@ function renderProduct() {
   renderNav(c.nav);
   renderLangSwitcher();
 
-  /* URL에서 id 파라미터 읽기 */
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
   const prods = c.products || [];
   const p = id ? prods.find(x => x.id === id) : prods[0];
 
-  if (!p) {
-    document.title = 'Aestyve — Product';
-    return;
-  }
+  if (!p) { document.title = 'Aestyve — Product'; return; }
 
-  const name   = t(p.name)   || '';
-  const detail = t(p.detail) || t(p.desc) || '';
-
+  const name = t(p.name) || '';
   document.title = `Aestyve — ${name}`;
 
-  const imgEl  = $('#detail-img');
-  const nameEl = $('#detail-name');
-  const descEl = $('#detail-desc');
+  /* 메인 이미지 */
+  const imgEl = $('#detail-img');
+  if (imgEl) { imgEl.src = p.image || ''; imgEl.alt = name; }
 
-  if (imgEl)  { imgEl.src = p.image || ''; imgEl.alt = name; }
+  /* 배지 */
+  const badgesEl = $('#detail-badges');
+  if (badgesEl) {
+    const badges = p.badges || [];
+    badgesEl.innerHTML = badges.map(b => `<span class="detail-badge">${esc(b)}</span>`).join('');
+    badgesEl.style.display = badges.length ? '' : 'none';
+  }
+
+  /* 제품명 */
+  const nameEl = $('#detail-name');
   if (nameEl) nameEl.textContent = name;
-  if (descEl) {
-    if (detail) {
-      descEl.textContent = detail;
-      descEl.className = 'detail-desc';
+
+  /* 목적/설명 */
+  const purposeEl = $('#detail-purpose');
+  if (purposeEl) {
+    const purpose = t(p.purpose) || t(p.detail) || t(p.desc) || '';
+    if (purpose) {
+      purposeEl.textContent = purpose;
+      purposeEl.style.display = '';
     } else {
-      descEl.textContent = STATE.lang === 'ko' ? '상세 내용은 준비 중입니다.' : 'Details coming soon.';
-      descEl.className = 'detail-empty';
+      purposeEl.style.display = 'none';
     }
   }
 
-  /* ─── 상세 이미지 갤러리 ─── */
-  const section = $('#detail-images-section');
-  if (section) {
-    const imgs = p.detailImages || [];
-    if (imgs.length > 0) {
-      section.style.display = '';
-      section.innerHTML = imgs.map((src, i) => `
-        <div class="detail-gallery-item" onclick="openLightbox(${i})">
-          <img src="${src}" alt="${name} 상세 이미지 ${i + 1}"
-               onerror="this.closest('.detail-gallery-item').style.display='none'" />
-        </div>`).join('');
-      /* 라이트박스 데이터 저장 */
-      section._imgs = imgs;
+  /* 스펙 테이블: composition + rawMaterial */
+  const specsEl = $('#detail-specs');
+  if (specsEl) {
+    const rows = [];
+    const specLabels = {
+      ko: { composition: '용량 / 구성', rawMaterial: '원료', storage: '보관 방법' },
+      en: { composition: 'Composition', rawMaterial: 'Raw Material', storage: 'Storage' },
+      'zh-CN': { composition: '成分', rawMaterial: '原料', storage: '储存方法' },
+      th: { composition: 'ส่วนประกอบ', rawMaterial: 'วัตถุดิบ', storage: 'การเก็บรักษา' },
+    };
+    const labels = specLabels[STATE.lang] || specLabels['ko'];
+    if (p.composition) rows.push([labels.composition, p.composition]);
+    if (p.rawMaterial)  rows.push([labels.rawMaterial, p.rawMaterial]);
+
+    if (rows.length) {
+      specsEl.innerHTML = `
+        <table class="detail-spec-table">
+          <tbody>
+            ${rows.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}
+          </tbody>
+        </table>`;
+      specsEl.style.display = '';
     } else {
-      section.style.display = 'none';
-      section.innerHTML = '';
+      specsEl.style.display = 'none';
+    }
+  }
+
+  /* 보관 방법 */
+  const storageEl = $('#detail-storage');
+  if (storageEl) {
+    const storage = t(p.storage) || '';
+    if (storage) {
+      const storageTitle = { ko:'보관 방법', en:'Storage', 'zh-CN':'储存方法', th:'การเก็บรักษา' }[STATE.lang] || 'Storage';
+      storageEl.innerHTML = `
+        <div class="detail-storage-inner">
+          <i class="fas fa-snowflake"></i>
+          <div>
+            <div class="detail-storage-title">${esc(storageTitle)}</div>
+            <div class="detail-storage-text">${esc(storage)}</div>
+          </div>
+        </div>`;
+      storageEl.style.display = '';
+    } else {
+      storageEl.style.display = 'none';
+    }
+  }
+
+  /* 카탈로그 이미지 갤러리 */
+  const gallerySection = $('#detail-gallery-section');
+  const galleryGrid = $('#detail-gallery-grid');
+  const imgs = p.detailImages || [];
+  if (gallerySection && galleryGrid) {
+    if (imgs.length) {
+      gallerySection.style.display = '';
+      galleryGrid.innerHTML = imgs.map((src, i) => `
+        <div class="detail-gallery-item" data-idx="${i}" role="button" tabindex="0"
+             aria-label="카탈로그 이미지 ${i+1}">
+          <img src="${esc(src)}" alt="${esc(name)} 카탈로그 ${i+1}"
+               onerror="this.closest('.detail-gallery-item').style.display='none'" />
+          <div class="detail-gallery-zoom"><i class="fas fa-search-plus"></i></div>
+        </div>`).join('');
+
+      /* 클릭 → 라이트박스 */
+      galleryGrid.querySelectorAll('.detail-gallery-item').forEach(item => {
+        item.addEventListener('click', () => openLightbox(parseInt(item.dataset.idx), imgs, name));
+        item.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') openLightbox(parseInt(item.dataset.idx), imgs, name);
+        });
+      });
+    } else {
+      gallerySection.style.display = 'none';
     }
   }
 }
 
 /* ─── 라이트박스 ─── */
-window.openLightbox = function(idx) {
-  const section = $('#detail-images-section');
-  const imgs = section?._imgs || [];
-  if (!imgs.length) return;
+let _lbImgs = [], _lbCurrent = 0;
 
-  let current = idx;
-  const overlay = document.createElement('div');
-  overlay.id = 'lightbox-overlay';
-  overlay.innerHTML = `
-    <div id="lightbox-bg"></div>
-    <button id="lightbox-close" aria-label="닫기">✕</button>
-    ${imgs.length > 1 ? `<button id="lightbox-prev" aria-label="이전">&#8249;</button>` : ''}
-    <div id="lightbox-img-wrap">
-      <img id="lightbox-img" src="${imgs[current]}" alt="" />
-    </div>
-    ${imgs.length > 1 ? `<button id="lightbox-next" aria-label="다음">&#8250;</button>` : ''}
-    ${imgs.length > 1 ? `<div id="lightbox-counter">${current + 1} / ${imgs.length}</div>` : ''}
-  `;
-  document.body.appendChild(overlay);
+function openLightbox(idx, imgs, altBase) {
+  _lbImgs = imgs;
+  _lbCurrent = idx;
+  const lb = $('#lightbox');
+  if (!lb) return;
+  lb.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-
-  const imgEl = overlay.querySelector('#lightbox-img');
-  const counter = overlay.querySelector('#lightbox-counter');
-
-  function goTo(i) {
-    current = (i + imgs.length) % imgs.length;
-    imgEl.src = imgs[current];
-    if (counter) counter.textContent = `${current + 1} / ${imgs.length}`;
-  }
-
-  overlay.querySelector('#lightbox-close').addEventListener('click', closeLightbox);
-  overlay.querySelector('#lightbox-bg').addEventListener('click', closeLightbox);
-  overlay.querySelector('#lightbox-prev')?.addEventListener('click', () => goTo(current - 1));
-  overlay.querySelector('#lightbox-next')?.addEventListener('click', () => goTo(current + 1));
-
-  document.addEventListener('keydown', _lbKeyHandler);
-  function _lbKeyHandler(e) {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft')  goTo(current - 1);
-    if (e.key === 'ArrowRight') goTo(current + 1);
-  }
-  overlay._keyHandler = _lbKeyHandler;
-};
-
+  _lbRender(altBase);
+}
+function _lbRender(altBase) {
+  const img = $('#lightbox-img');
+  const counter = $('#lightbox-counter');
+  const prev = $('#lightbox-prev');
+  const next = $('#lightbox-next');
+  if (img) { img.src = _lbImgs[_lbCurrent]; img.alt = `${altBase || ''} ${_lbCurrent + 1}`; }
+  if (counter) counter.textContent = `${_lbCurrent + 1} / ${_lbImgs.length}`;
+  if (prev) prev.style.display = _lbImgs.length > 1 ? '' : 'none';
+  if (next) next.style.display = _lbImgs.length > 1 ? '' : 'none';
+}
 function closeLightbox() {
-  const overlay = $('#lightbox-overlay');
-  if (!overlay) return;
-  document.removeEventListener('keydown', overlay._keyHandler);
-  overlay.remove();
+  const lb = $('#lightbox');
+  if (lb) lb.style.display = 'none';
   document.body.style.overflow = '';
+}
+function lbGo(dir) {
+  _lbCurrent = (_lbCurrent + dir + _lbImgs.length) % _lbImgs.length;
+  _lbRender();
 }
 
 /* ─── Header scroll ─── */
@@ -277,4 +333,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initHamburger();
   loadContent();
+
+  /* 라이트박스 이벤트 */
+  const lb = $('#lightbox');
+  if (lb) {
+    $('#lightbox-bg')?.addEventListener('click', closeLightbox);
+    $('#lightbox-close')?.addEventListener('click', closeLightbox);
+    $('#lightbox-prev')?.addEventListener('click', () => lbGo(-1));
+    $('#lightbox-next')?.addEventListener('click', () => lbGo(1));
+    document.addEventListener('keydown', e => {
+      if (lb.style.display === 'none') return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft')  lbGo(-1);
+      if (e.key === 'ArrowRight') lbGo(1);
+    });
+  }
 });

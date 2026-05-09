@@ -356,16 +356,28 @@ function buildProductModal(p) {
   const nameZhCN = (p?.name || {})['zh-CN'] || '';
   const nameTh   = (p?.name || {})['th'] || '';
 
-  // 상세 내용 (모달에 표시되는 본문)
-  const detailKo   = getLangStr(p?.detail, 'ko');
-  const detailEn   = getLangStr(p?.detail, 'en');
-  const detailZhCN = (p?.detail || {})['zh-CN'] || '';
-  const detailTh   = (p?.detail || {})['th'] || '';
+  /* ── 상세 필드 값 추출 ── */
+  const purposeKo   = getLangStr(p?.purpose, 'ko')   || getLangStr(p?.detail, 'ko');
+  const purposeEn   = getLangStr(p?.purpose, 'en')   || getLangStr(p?.detail, 'en');
+  const purposeZhCN = (p?.purpose || p?.detail || {})['zh-CN'] || '';
+  const purposeTh   = (p?.purpose || p?.detail || {})['th']    || '';
+  const storageKo   = getLangStr(p?.storage, 'ko');
+  const storageEn   = getLangStr(p?.storage, 'en');
+  const storageZhCN = (p?.storage || {})['zh-CN'] || '';
+  const storageTh   = (p?.storage || {})['th']    || '';
+  const badgesStr   = (p?.badges || []).join(', ');
+  const composition = p?.composition || '';
+  const rawMaterial = p?.rawMaterial  || '';
+
+  const HR = `<hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />`;
+  const SECTION = (title, sub='') => `
+    <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:${sub?'4px':'10px'};">${title}</div>
+    ${sub ? `<div style="font-size:.72rem;color:var(--gray-400);margin-bottom:10px;">${sub}</div>` : ''}`;
 
   body.innerHTML = `
-    <!-- 이미지 -->
+    <!-- ① 썸네일 이미지 -->
+    ${SECTION('제품 이미지 (썸네일)')}
     <div class="form-group" style="margin-bottom:20px;">
-      <label class="form-label">제품 이미지 (썸네일)</label>
       <div class="media-tabs">
         <button type="button" class="media-tab active" id="modal-tab-file" onclick="switchModalTab('file')">📁 파일 업로드</button>
         <button type="button" class="media-tab" id="modal-tab-url" onclick="switchModalTab('url')">🔗 URL 입력</button>
@@ -390,12 +402,11 @@ function buildProductModal(p) {
       </div>
       <input type="hidden" id="modal-img-value" value="${esc(currentImg)}" />
     </div>
+    ${HR}
 
-    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
-
-    <!-- 카테고리 선택 -->
+    <!-- ② 카테고리 -->
+    ${SECTION('카테고리')}
     <div class="form-group" style="margin-bottom:20px;">
-      <label class="form-label">카테고리</label>
       <div class="cat-select-wrap">
         <select id="m-category">
           ${(DATA.categories || []).map(c => {
@@ -404,82 +415,92 @@ function buildProductModal(p) {
             return `<option value="${esc(c.id)}" ${sel}>${esc(label)}</option>`;
           }).join('')}
         </select>
-        <span style="font-size:.75rem;color:var(--gray-600);">카테고리 관리는 사이드바 <strong>카테고리 관리</strong>에서</span>
       </div>
     </div>
+    ${HR}
 
-    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
-
-    <!-- 제품 이름 -->
-    <div style="margin-bottom:16px;">
-      <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">제품 이름</div>
-      <div class="form-row" style="margin-bottom:8px;">
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇰🇷 한국어</label>
-          <input type="text" class="form-control" id="m-name-ko" value="${esc(nameKo)}" placeholder="제품명" />
-        </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇺🇸 English</label>
-          <input type="text" class="form-control" id="m-name-en" value="${esc(nameEn)}" placeholder="Product Name" />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇨🇳 中文</label>
-          <input type="text" class="form-control" id="m-name-zhcn" value="${esc(nameZhCN)}" placeholder="产品名称" />
-        </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇹🇭 ภาษาไทย</label>
-          <input type="text" class="form-control" id="m-name-th" value="${esc(nameTh)}" placeholder="ชื่อผลิตภัณฑ์" />
-        </div>
-      </div>
-    </div>
-
-    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
-
-    <!-- 상세 내용 (클릭 시 모달에 표시) -->
+    <!-- ③ 제품 이름 -->
+    ${SECTION('제품 이름')}
     <div style="margin-bottom:20px;">
-      <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">상세 내용 <span style="font-weight:400;text-transform:none;letter-spacing:0;">(제품 클릭 시 표시되는 설명)</span></div>
       <div class="form-row" style="margin-bottom:8px;">
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇰🇷 한국어</label>
-          <textarea class="form-control" id="m-detail-ko" rows="4" placeholder="제품 상세 설명을 입력하세요">${esc(detailKo)}</textarea>
-        </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇺🇸 English</label>
-          <textarea class="form-control" id="m-detail-en" rows="4" placeholder="Enter product detail">${esc(detailEn)}</textarea>
-        </div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇰🇷 한국어</label>
+          <input type="text" class="form-control" id="m-name-ko" value="${esc(nameKo)}" placeholder="제품명" /></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇺🇸 English</label>
+          <input type="text" class="form-control" id="m-name-en" value="${esc(nameEn)}" placeholder="Product Name" /></div>
       </div>
       <div class="form-row">
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇨🇳 中文</label>
-          <textarea class="form-control" id="m-detail-zhcn" rows="4" placeholder="产品详细说明">${esc(detailZhCN)}</textarea>
-        </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label class="form-label">🇹🇭 ภาษาไทย</label>
-          <textarea class="form-control" id="m-detail-th" rows="4" placeholder="รายละเอียดสินค้า">${esc(detailTh)}</textarea>
-        </div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇨🇳 中文</label>
+          <input type="text" class="form-control" id="m-name-zhcn" value="${esc(nameZhCN)}" placeholder="产品名称" /></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇹🇭 ภาษาไทย</label>
+          <input type="text" class="form-control" id="m-name-th" value="${esc(nameTh)}" placeholder="ชื่อผลิตภัณฑ์" /></div>
       </div>
     </div>
+    ${HR}
 
-    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
+    <!-- ④ 배지 (예: 의료기기, Single Use) -->
+    ${SECTION('배지 태그', '쉼표(,)로 구분 — 예: 의료기기, Medical Device, Single Use')}
+    <div class="form-group" style="margin-bottom:20px;">
+      <input type="text" class="form-control" id="m-badges" value="${esc(badgesStr)}" placeholder="의료기기, Medical Device, Single Use" />
+    </div>
+    ${HR}
 
-    <!-- 상세페이지 추가 이미지 -->
+    <!-- ⑤ 스펙 (용량, 원료) -->
+    ${SECTION('제품 스펙')}
+    <div class="form-row" style="margin-bottom:20px;">
+      <div class="form-group" style="margin-bottom:0;"><label class="form-label">용량 / 구성 (Composition)</label>
+        <input type="text" class="form-control" id="m-composition" value="${esc(composition)}" placeholder="2mL / Vial" /></div>
+      <div class="form-group" style="margin-bottom:0;"><label class="form-label">원료 (Raw Material)</label>
+        <input type="text" class="form-control" id="m-rawmaterial" value="${esc(rawMaterial)}" placeholder="Liquid PCL with HA" /></div>
+    </div>
+    ${HR}
+
+    <!-- ⑥ 제품 설명 (purpose) -->
+    ${SECTION('제품 설명', '상세페이지 메인 설명')}
+    <div style="margin-bottom:20px;">
+      <div class="form-row" style="margin-bottom:8px;">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇰🇷 한국어</label>
+          <textarea class="form-control" id="m-purpose-ko" rows="3" placeholder="제품 목적/설명">${esc(purposeKo)}</textarea></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇺🇸 English</label>
+          <textarea class="form-control" id="m-purpose-en" rows="3" placeholder="Product purpose/description">${esc(purposeEn)}</textarea></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇨🇳 中文</label>
+          <textarea class="form-control" id="m-purpose-zhcn" rows="3" placeholder="产品目的/说明">${esc(purposeZhCN)}</textarea></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇹🇭 ภาษาไทย</label>
+          <textarea class="form-control" id="m-purpose-th" rows="3" placeholder="วัตถุประสงค์ของผลิตภัณฑ์">${esc(purposeTh)}</textarea></div>
+      </div>
+    </div>
+    ${HR}
+
+    <!-- ⑦ 보관 방법 -->
+    ${SECTION('보관 방법')}
+    <div style="margin-bottom:20px;">
+      <div class="form-row" style="margin-bottom:8px;">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇰🇷 한국어</label>
+          <input type="text" class="form-control" id="m-storage-ko" value="${esc(storageKo)}" placeholder="직사광선을 피해 서늘하고 건조한 곳에 보관" /></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇺🇸 English</label>
+          <input type="text" class="form-control" id="m-storage-en" value="${esc(storageEn)}" placeholder="Store in a cool, dry place" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇨🇳 中文</label>
+          <input type="text" class="form-control" id="m-storage-zhcn" value="${esc(storageZhCN)}" placeholder="存放在阴凉干燥处" /></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">🇹🇭 ภาษาไทย</label>
+          <input type="text" class="form-control" id="m-storage-th" value="${esc(storageTh)}" placeholder="เก็บในที่เย็นและแห้ง" /></div>
+      </div>
+    </div>
+    ${HR}
+
+    <!-- ⑧ 카탈로그 이미지 -->
+    ${SECTION('카탈로그 이미지', '상세페이지 하단에 표시 · 최대 10장 · JPG, PNG, WebP')}
     <div>
-      <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">상세페이지 추가 이미지</div>
-      <div style="font-size:.72rem;color:var(--gray-400);margin-bottom:12px;">상세페이지 본문 아래에 표시되는 이미지 (최대 10장 · JPG, PNG, WebP)</div>
-
-      <!-- 추가된 이미지 목록 -->
       <div id="detail-img-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
         ${(p?.detailImages || []).map((src, idx) => `
         <div class="detail-img-row" data-idx="${idx}" style="display:flex;align-items:center;gap:10px;background:var(--gray-100);border-radius:var(--radius);padding:8px 10px;">
           <img src="${esc(src)}" style="width:60px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;" onerror="this.style.background='#ddd'" />
-          <span style="flex:1;font-size:.73rem;color:var(--gray-500);">이미지 ${idx + 1}</span>
+          <span style="flex:1;font-size:.73rem;color:var(--gray-500);">카탈로그 이미지 ${idx + 1}</span>
           <button type="button" onclick="removeDetailImg(${idx})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:1.1rem;padding:4px 6px;" title="삭제">✕</button>
         </div>`).join('')}
       </div>
-
-      <!-- 파일 업로드 드롭존 -->
       <label id="detail-img-dropzone" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:28px 20px;border:2px dashed var(--border);border-radius:var(--radius);cursor:pointer;transition:border-color .2s,background .2s;"
         onmouseover="this.style.borderColor='var(--accent)';this.style.background='#f0f4ff'"
         onmouseout="this.style.borderColor='var(--border)';this.style.background=''">
@@ -490,7 +511,6 @@ function buildProductModal(p) {
         </div>
         <input type="file" id="detail-img-file-input" accept="image/*" multiple style="display:none" onchange="addDetailImgFiles(this)" />
       </label>
-
       <input type="hidden" id="m-detail-images" value="${esc(JSON.stringify(p?.detailImages || []))}" />
     </div>
   `;
@@ -641,21 +661,33 @@ window.saveProductModal = function() {
     finalImg = ($('#modal-img-value') || {}).value || '';
   }
 
+  const gv = id => ($(`#${id}`) || {}).value?.trim() || '';
+  const badgesRaw = gv('m-badges');
+  const badges = badgesRaw ? badgesRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
+
   const obj = {
     id: modalProductIdx >= 0 ? (DATA.products[modalProductIdx]?.id || uid()) : uid(),
     image: finalImg,
+    category:    gv('m-category') || 'all',
+    badges,
+    composition: gv('m-composition'),
+    rawMaterial: gv('m-rawmaterial'),
     name: {
-      ko:      ($('#m-name-ko') || {}).value?.trim() || '',
-      en:      ($('#m-name-en') || {}).value?.trim() || '',
-      'zh-CN': ($('#m-name-zhcn') || {}).value?.trim() || '',
-      th:      ($('#m-name-th') || {}).value?.trim() || '',
+      ko: gv('m-name-ko'), en: gv('m-name-en'),
+      'zh-CN': gv('m-name-zhcn'), th: gv('m-name-th'),
     },
-    category: ($('#m-category') || {}).value || 'all',
+    purpose: {
+      ko: gv('m-purpose-ko'), en: gv('m-purpose-en'),
+      'zh-CN': gv('m-purpose-zhcn'), th: gv('m-purpose-th'),
+    },
+    /* detail = purpose 와 동기화 (기존 호환) */
     detail: {
-      ko:      ($('#m-detail-ko') || {}).value?.trim() || '',
-      en:      ($('#m-detail-en') || {}).value?.trim() || '',
-      'zh-CN': ($('#m-detail-zhcn') || {}).value?.trim() || '',
-      th:      ($('#m-detail-th') || {}).value?.trim() || '',
+      ko: gv('m-purpose-ko'), en: gv('m-purpose-en'),
+      'zh-CN': gv('m-purpose-zhcn'), th: gv('m-purpose-th'),
+    },
+    storage: {
+      ko: gv('m-storage-ko'), en: gv('m-storage-en'),
+      'zh-CN': gv('m-storage-zhcn'), th: gv('m-storage-th'),
     },
     detailImages: (() => { try { return JSON.parse($('#m-detail-images')?.value || '[]'); } catch(e) { return []; } })(),
   };
