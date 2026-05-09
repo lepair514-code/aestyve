@@ -226,7 +226,7 @@ function heroToggleMute(btn) {
 }
 window.heroToggleMute = heroToggleMute;
 
-/* ─── Products — 순수 이미지 수직 나열 ─── */
+/* ─── Products — reanzen 스타일 이미지 좌 + 스펙 우 ─── */
 function renderProducts(prods) {
   const grid = $('#product-grid');
   if (!grid) return;
@@ -236,30 +236,49 @@ function renderProducts(prods) {
     return;
   }
 
+  const labels = {
+    composition: { ko: 'Composition', en: 'Composition', 'zh-CN': 'Composition', th: 'Composition' },
+    rawMaterial: { ko: 'Raw Material', en: 'Raw Material', 'zh-CN': 'Raw Material', th: 'Raw Material' },
+    purpose:     { ko: 'Purpose',     en: 'Purpose',     'zh-CN': 'Purpose',     th: 'Purpose' },
+    storage:     { ko: 'Storage',     en: 'Storage',     'zh-CN': 'Storage',     th: 'Storage' },
+  };
+
   /* 섹션 헤딩 */
   const headingHtml = `
-    <div class="product-list-heading">
+    <div class="prod-section-heading">
       <h2>PRODUCTS</h2>
-      <p>${STATE.lang === 'ko' ? 'Aestyve 제품 라인업' :
-          STATE.lang === 'en' ? 'Aestyve Product Lineup' :
-          STATE.lang === 'zh-CN' ? 'Aestyve 产品系列' :
-          'ผลิตภัณฑ์ Aestyve'}</p>
     </div>`;
 
-  /* 제품 행 — 이미지 + 이름 + 설명만 */
-  const itemsHtml = prods.map((p, i) => {
-    const num = String(i + 1).padStart(2, '0');
+  /* 제품 행 */
+  const itemsHtml = prods.map((p) => {
     const imgHtml = p.image
       ? `<img src="${p.image}" alt="${t(p.name)}" loading="lazy" />`
-      : `<div style="width:100%;height:100%;background:#f0f0ee;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:2rem;">✦</div>`;
+      : `<div class="prod-img-placeholder">✦</div>`;
+
+    /* 뱃지 pills */
+    const badgesHtml = (p.badges && p.badges.length)
+      ? `<div class="prod-badges">${p.badges.map(b => `<span class="prod-badge">${b}</span>`).join('')}</div>`
+      : '';
+
+    /* 스펙 rows — labeled sections */
+    const specRows = [
+      { key: 'composition', val: p.composition },
+      { key: 'rawMaterial', val: p.rawMaterial },
+      { key: 'purpose',     val: t(p.purpose) },
+      { key: 'storage',     val: t(p.storage) },
+    ].filter(r => r.val).map(r => `
+      <div class="prod-spec-row">
+        <div class="prod-spec-label">${labels[r.key][STATE.lang] || labels[r.key]['en']}</div>
+        <div class="prod-spec-val">${r.val}</div>
+      </div>`).join('');
 
     return `
     <div class="prod-item">
       <div class="prod-img-wrap">${imgHtml}</div>
       <div class="prod-info">
-        <div class="prod-number">No. ${num}</div>
-        <div class="prod-name">${t(p.name) || ''}</div>
-        ${t(p.desc) ? `<div class="prod-desc">${t(p.desc)}</div>` : ''}
+        ${badgesHtml}
+        <h3 class="prod-name">${t(p.name) || ''}</h3>
+        <div class="prod-specs">${specRows}</div>
       </div>
     </div>`;
   }).join('');

@@ -60,74 +60,109 @@
       "btnHref": "#products"
     }
   ],
-  "categories": [
-    { "id": "cat1", "bgColor": "#E8ECF8", "accentColor": "#1A2755", "icon": "✨", "title": { "ko": "수분 & 보습", "en": "Hydration", "zh-CN": "补水保湿", "th": "ความชุ่มชื้น" }, "desc": { "ko": "건조한 피부를 위한 집중 수분 라인", "en": "Intensive hydration line for dry skin", "zh-CN": "针对干性肌肤的集中补水系列", "th": "ไลน์มอยส์เจอร์ไรเซอร์เข้มข้นสำหรับผิวแห้ง" } },
-    { "id": "cat2", "bgColor": "#1A2755", "accentColor": "#A8B9FF", "icon": "🔬", "title": { "ko": "안티에이징", "en": "Anti-Aging", "zh-CN": "抗衰老", "th": "แอนตี้เอจจิ้ง" }, "desc": { "ko": "피부과학 기반 노화 방지 솔루션", "en": "Derma-science based anti-aging solution", "zh-CN": "基于皮肤科学的抗衰老解决方案", "th": "โซลูชันต่อต้านการแก่ตัวบนพื้นฐานวิทยาศาสตร์ผิวหนัง" } },
-    { "id": "cat3", "bgColor": "#F0F4F8", "accentColor": "#2F3C86", "icon": "🌿", "title": { "ko": "민감성", "en": "Sensitive", "zh-CN": "敏感肌肤", "th": "ผิวแพ้ง่าย" }, "desc": { "ko": "자극 없는 저자극 포뮬러", "en": "Low-irritation formula without stimulation", "zh-CN": "无刺激低敏配方", "th": "สูตรที่ไม่ระคายเคืองสำหรับผิวบอบบาง" } },
-    { "id": "cat4", "bgColor": "#2F3C86", "accentColor": "#E8ECF8", "icon": "⚡", "title": { "ko": "브라이트닝", "en": "Brightening", "zh-CN": "美白提亮", "th": "เพิ่มความสว่าง" }, "desc": { "ko": "칙칙한 피부톤을 환하게 개선", "en": "Brighten dull skin tone effectively", "zh-CN": "有效改善暗沉肤色", "th": "ปรับโทนสีผิวที่หมองคล้ำให้สว่างขึ้น" } }
-  ],
   "products": [
     {
       "id": "p1",
       "image": "images/products/liquid-pcl.jpg",
-      "category": "best",
-      "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" },
-      "bgColor": "#f5f5f3",
-      "accentColor": "#1A2755",
-      "name": { "ko": "Aestyve Liquid PCL", "en": "Aestyve Liquid PCL", "zh-CN": "Aestyve Liquid PCL", "th": "Aestyve Liquid PCL" },
-      "price": "",
-      "desc": { "ko": "고순도 액상 PCL 기반 리프팅 솔루션", "en": "High-purity liquid PCL-based lifting solution", "zh-CN": "高纯度液态PCL提拉解决方案", "th": "โซลูชันลิฟติ้งจาก Liquid PCL บริสุทธิ์สูง" }
+      "name": { "ko": "Liquid PCL", "en": "Liquid PCL", "zh-CN": "Liquid PCL", "th": "Liquid PCL" },
+      "badges": ["Skin booster", "Cosmeceutical", "Single Use"],
+      "composition": "2mL / Vial",
+      "rawMaterial": "Liquid PCL with HA",
+      "purpose": {
+        "ko": "피부 리프팅 및 탄력 개선을 위한 고순도 액상 PCL 기반 스킨 부스터",
+        "en": "High-purity liquid PCL-based skin booster for lifting and elasticity improvement",
+        "zh-CN": "高纯度液态PCL基提拉弹力改善皮肤增效剂",
+        "th": "สกินบูสเตอร์ Liquid PCL บริสุทธิ์สูง เพื่อการยกกระชับและปรับปรุงความยืดหยุ่น"
+      },
+      "storage": {
+        "ko": "직사광선을 피해 서늘하고 건조한 곳에 보관 (1–25°C)",
+        "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
+        "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
+        "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
+      }
     },
     {
       "id": "p2",
-      "image": "images/products/ha-filler.jpg",
-      "category": "best",
-      "badge": { "ko": "피부과 추천", "en": "Derm Pick", "zh-CN": "皮肤科推荐", "th": "แนะนำโดยผู้เชี่ยวชาญ" },
-      "bgColor": "#f5f5f3",
-      "accentColor": "#1A2755",
-      "name": { "ko": "Aestyve HA FILLER Series", "en": "Aestyve HA FILLER Series", "zh-CN": "Aestyve HA FILLER Series", "th": "Aestyve HA FILLER Series" },
-      "price": "",
-      "desc": { "ko": "히알루론산 필러 시리즈 — 자연스러운 볼륨과 탄력", "en": "Hyaluronic Acid Filler Series — natural volume & elasticity", "zh-CN": "透明质酸填充剂系列 — 自然丰盈与弹性", "th": "ชุดฟิลเลอร์ HA — ปริมาตรและความยืดหยุ่นที่เป็นธรรมชาติ" }
+      "image": "images/products/revibe.jpg",
+      "name": { "ko": "Revibe", "en": "Revibe", "zh-CN": "Revibe", "th": "Revibe" },
+      "badges": ["의료기기", "Medical Device", "Single Use"],
+      "composition": "2mL × 1 Syringe",
+      "rawMaterial": "PolyNucleotide + HA",
+      "purpose": {
+        "ko": "폴리뉴클레오타이드와 히알루론산 복합 성분으로 피부 재생 및 활력 회복",
+        "en": "Skin regeneration and vitality restoration with PolyNucleotide and Hyaluronic Acid complex",
+        "zh-CN": "通过聚核苷酸和透明质酸复合成分实现皮肤再生和活力恢复",
+        "th": "ฟื้นฟูผิวและความมีชีวิตชีวาด้วยสารประกอบ PolyNucleotide และ Hyaluronic Acid"
+      },
+      "storage": {
+        "ko": "직사광선을 피해 서늘하고 건조한 곳에 보관 (1–25°C)",
+        "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
+        "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
+        "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
+      }
     },
     {
       "id": "p3",
-      "image": "images/products/revibe.jpg",
-      "category": "new",
-      "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" },
-      "bgColor": "#f5f5f3",
-      "accentColor": "#1A2755",
-      "name": { "ko": "Aestyve Revibe", "en": "Aestyve Revibe", "zh-CN": "Aestyve Revibe", "th": "Aestyve Revibe" },
-      "price": "",
-      "desc": { "ko": "피부 재생 & 활력 회복 솔루션", "en": "Skin regeneration & vitality restoration solution", "zh-CN": "皮肤再生与活力恢复解决方案", "th": "โซลูชันฟื้นฟูผิวและความมีชีวิตชีวา" }
+      "image": "images/products/ha-filler.jpg",
+      "name": { "ko": "HA FILLER Series", "en": "HA FILLER Series", "zh-CN": "HA FILLER Series", "th": "HA FILLER Series" },
+      "badges": ["의료기기", "Medical Device", "Single Use"],
+      "composition": "1.1mL × 1 Syringe / Needle / Canula",
+      "rawMaterial": "Advanced Cross-linked HA",
+      "purpose": {
+        "ko": "고급 가교 히알루론산 기반 필러로 자연스러운 볼륨 및 윤곽 개선",
+        "en": "Advanced cross-linked HA filler for natural volume enhancement and contouring",
+        "zh-CN": "高级交联透明质酸填充剂，实现自然丰盈与轮廓改善",
+        "th": "ฟิลเลอร์ HA แบบ Cross-linked ขั้นสูง สำหรับเพิ่มปริมาตรและปรับโครงหน้าอย่างเป็นธรรมชาติ"
+      },
+      "storage": {
+        "ko": "직사광선을 피해 서늘하고 건조한 곳에 보관 (1–25°C)",
+        "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
+        "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
+        "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
+      }
     },
     {
       "id": "p4",
       "image": "images/products/1906nad.jpg",
-      "category": "new",
-      "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" },
-      "bgColor": "#f5f5f3",
-      "accentColor": "#1A2755",
       "name": { "ko": "1906NAD+", "en": "1906NAD+", "zh-CN": "1906NAD+", "th": "1906NAD+" },
-      "price": "",
-      "desc": { "ko": "NAD+ 기반 세포 활성 & 안티에이징 솔루션", "en": "NAD+ based cellular activation & anti-aging solution", "zh-CN": "基于NAD+的细胞激活与抗衰老解决方案", "th": "โซลูชันกระตุ้นเซลล์และต่อต้านวัยด้วย NAD+" }
+      "badges": ["Skin booster", "Cosmeceutical", "Single Use"],
+      "composition": "5mL / 0.169oz / 25mg",
+      "rawMaterial": "Nicotinamide Mononucleotide",
+      "purpose": {
+        "ko": "니코틴아미드 모노뉴클레오타이드(NMN) 기반 세포 활성화 및 안티에이징 솔루션",
+        "en": "Nicotinamide Mononucleotide (NMN) based cellular activation and anti-aging solution",
+        "zh-CN": "基于烟酰胺单核苷酸（NMN）的细胞激活和抗衰老解决方案",
+        "th": "โซลูชันกระตุ้นเซลล์และต่อต้านวัยด้วย Nicotinamide Mononucleotide (NMN)"
+      },
+      "storage": {
+        "ko": "직사광선을 피해 서늘하고 건조한 곳에 보관 (1–25°C)",
+        "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
+        "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
+        "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
+      }
     },
     {
       "id": "p5",
       "image": "images/products/innofill-plla.jpg",
-      "category": "best",
-      "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" },
-      "bgColor": "#f5f5f3",
-      "accentColor": "#1A2755",
-      "name": { "ko": "INNOFILL Aestyve PLLA FILLER", "en": "INNOFILL Aestyve PLLA FILLER", "zh-CN": "INNOFILL Aestyve PLLA FILLER", "th": "INNOFILL Aestyve PLLA FILLER" },
-      "price": "",
-      "desc": { "ko": "PLLA 기반 생분해성 콜라겐 자극 필러", "en": "PLLA-based biodegradable collagen-stimulating filler", "zh-CN": "基于PLLA的可生物降解胶原蛋白刺激填充剂", "th": "ฟิลเลอร์กระตุ้นคอลลาเจนที่ย่อยสลายได้จาก PLLA" }
+      "name": { "ko": "INNOFill PLLA FILLER", "en": "INNOFill PLLA FILLER", "zh-CN": "INNOFill PLLA FILLER", "th": "INNOFill PLLA FILLER" },
+      "badges": ["의료기기", "Medical Device", "Single Use"],
+      "composition": "200mg / Vial",
+      "rawMaterial": "Poly-L-lactic Acid",
+      "purpose": {
+        "ko": "폴리-L-젖산(PLLA) 기반 생분해성 콜라겐 자극 필러로 장기적인 볼륨 및 리프팅 효과",
+        "en": "Poly-L-lactic Acid (PLLA) biodegradable collagen-stimulating filler for long-lasting volume and lifting",
+        "zh-CN": "聚左旋乳酸（PLLA）可生物降解胶原蛋白刺激填充剂，实现持久丰盈和提拉效果",
+        "th": "ฟิลเลอร์กระตุ้นคอลลาเจนที่ย่อยสลายได้จาก Poly-L-lactic Acid (PLLA) ให้ผลปริมาตรและยกกระชับที่ยาวนาน"
+      },
+      "storage": {
+        "ko": "직사광선을 피해 서늘하고 건조한 곳에 보관, 냉장 보관 금지 (15–25°C)",
+        "en": "Store in a cool, dry place away from direct sunlight. Do not refrigerate (15–25°C)",
+        "zh-CN": "避免阳光直射，存放在阴凉干燥处，请勿冷藏（15–25°C）",
+        "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง ห้ามแช่เย็น (15–25°C)"
+      }
     }
   ],
   "reviews": [
-    { "id": "r1", "rating": 5, "name": { "ko": "김지은", "en": "Jieun K.", "zh-CN": "金智恩", "th": "จีอึน เค." }, "text": { "ko": "딥 하이드레이션 세럼 사용 후 피부가 완전히 달라졌어요! 건조함이 사라지고 탄력도 생겼어요.", "en": "My skin completely changed after using Deep Hydration Serum! Dryness disappeared and elasticity improved.", "zh-CN": "使用深层补水精华后，我的皮肤完全变了！干燥消失了，弹性也增加了。", "th": "ผิวของฉันเปลี่ยนไปอย่างสิ้นเชิงหลังจากใช้เซรั่มไฮเดรชั่น!" } },
-    { "id": "r2", "rating": 5, "name": { "ko": "이서연", "en": "Seoyeon L.", "zh-CN": "李瑞妍", "th": "ซอยอน แอล." }, "text": { "ko": "민감성 피부인데 칼밍 선크림이 정말 잘 맞아요. 자극도 없고 촉촉해서 매일 사용 중이에요.", "en": "I have sensitive skin and the calming sunscreen fits perfectly. No irritation and moisturizing, using it daily.", "zh-CN": "我是敏感肌，舒缓防晒霜非常适合我。无刺激且保湿，每天使用中。", "th": "ฉันมีผิวแพ้ง่ายและครีมกันแดดกล่อมผิวเข้ากันได้ดีมาก ไม่ระคายเคืองและชุ่มชื้น" } },
-    { "id": "r3", "rating": 5, "name": { "ko": "박민준", "en": "Minjun P.", "zh-CN": "朴民俊", "th": "มินจุน พี." }, "text": { "ko": "레티놀 크림인데 자극이 전혀 없어서 놀랐어요. 2주 만에 피부 톤이 밝아지는 걸 느꼈어요.", "en": "I was surprised that the retinol cream had no irritation at all. I felt my skin tone brighten in just 2 weeks.", "zh-CN": "没想到视黄醇霜完全没有刺激感。两周内就感受到肤色变亮了。", "th": "ฉันแปลกใจที่ครีมเรตินอลไม่ระคายเคืองเลย รู้สึกว่าโทนสีผิวสว่างขึ้นภายใน 2 สัปดาห์" } },
-    { "id": "r4", "rating": 4, "name": { "ko": "최유나", "en": "Yuna C.", "zh-CN": "崔侑那", "th": "ยูนา ซี." }, "text": { "ko": "비타민C 앰플이 기대 이상이에요! 칙칙하던 피부가 밝아지고 전반적인 피부 상태도 좋아졌어요.", "en": "Vitamin C ampoule exceeded my expectations! My dull skin became brighter and overall skin condition improved.", "zh-CN": "维生素C安瓶超出了我的预期！暗沉的皮肤变亮了，整体状态也改善了。", "th": "แอมพูลวิตามินซีเกินความคาดหมายของฉัน ผิวที่หมองคล้ำสว่างขึ้นและสภาพผิวโดยรวมดีขึ้น" } },
-    { "id": "r5", "rating": 5, "name": { "ko": "한지수", "en": "Jisu H.", "zh-CN": "韩智秀", "th": "จีซู เอช." }, "text": { "ko": "Aestyve 제품은 정말 믿을 수 있어요. 피부과 추천 제품이라 더 믿고 사용했는데 효과가 확실해요!", "en": "Aestyve products are really trustworthy. I used it with more confidence as it was recommended by dermatologists and the effects are clear!", "zh-CN": "Aestyve的产品真的值得信赖。皮肤科推荐让我更放心使用，效果确实显著！", "th": "ผลิตภัณฑ์ Aestyve เชื่อถือได้จริงๆ ฉันใช้ด้วยความมั่นใจมากขึ้นเพราะผู้เชี่ยวชาญแนะนำ" } }
+    { "id": "r1", "rating": 5, "name": { "ko": "김지은", "en": "Jieun K.", "zh-CN": "金智恩", "th": "จีอึน เค." }, "text": { "ko": "딥 하이드레이션 세럼 사용 후 피부가 완전히 달라졌어요!", "en": "My skin completely changed after using Deep Hydration Serum!", "zh-CN": "使用深层补水精华后，我的皮肤完全变了！", "th": "ผิวของฉันเปลี่ยนไปอย่างสิ้นเชิงหลังจากใช้เซรั่มไฮเดรชั่น!" } }
   ]
 }
