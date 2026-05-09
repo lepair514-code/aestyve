@@ -67,12 +67,61 @@
     { "id": "cat4", "bgColor": "#2F3C86", "accentColor": "#E8ECF8", "icon": "⚡", "title": { "ko": "브라이트닝", "en": "Brightening", "zh-CN": "美白提亮", "th": "เพิ่มความสว่าง" }, "desc": { "ko": "칙칙한 피부톤을 환하게 개선", "en": "Brighten dull skin tone effectively", "zh-CN": "有效改善暗沉肤色", "th": "ปรับโทนสีผิวที่หมองคล้ำให้สว่างขึ้น" } }
   ],
   "products": [
-    { "id": "p1", "category": "best", "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" }, "bgColor": "#E8ECF8", "accentColor": "#1A2755", "name": { "ko": "딥 하이드레이션 세럼", "en": "Deep Hydration Serum", "zh-CN": "深层补水精华", "th": "เซรั่มไฮเดรชั่นเข้มข้น" }, "price": "₩48,000", "desc": { "ko": "72시간 수분 지속 하이알루론산 세럼", "en": "72-hour moisture retention hyaluronic acid serum", "zh-CN": "72小时持久保湿透明质酸精华", "th": "เซรั่มไฮยาลูโรนิกแอซิดที่คงความชุ่มชื้น 72 ชั่วโมง" } },
-    { "id": "p2", "category": "new", "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" }, "bgColor": "#1A2755", "accentColor": "#A8B9FF", "name": { "ko": "레티놀 나이트 크림", "en": "Retinol Night Cream", "zh-CN": "视黄醇晚霜", "th": "ครีมกลางคืนเรตินอล" }, "price": "₩65,000", "desc": { "ko": "0.3% 순수 레티놀 + 나이아신아마이드 탄력 크림", "en": "0.3% Pure Retinol + Niacinamide Firming Cream", "zh-CN": "0.3%纯视黄醇+烟酰胺紧致霜", "th": "ครีมกระชับผิวเรตินอล 0.3% + ไนอาซินาไมด์" } },
-    { "id": "p3", "category": "best", "badge": { "ko": "피부과 추천", "en": "Derm Pick", "zh-CN": "皮肤科推荐", "th": "แนะนำโดยผู้เชี่ยวชาญ" }, "bgColor": "#F0F4F8", "accentColor": "#2F3C86", "name": { "ko": "칼밍 선크림 SPF50+", "en": "Calming Sunscreen SPF50+", "zh-CN": "舒缓防晒霜 SPF50+", "th": "ครีมกันแดดกล่อมผิว SPF50+" }, "price": "₩32,000", "desc": { "ko": "민감성 피부 전용 물광 선크림", "en": "Dewy sunscreen specially for sensitive skin", "zh-CN": "专为敏感肌肤设计的水润防晒霜", "th": "ครีมกันแดดชุ่มชื้นสำหรับผิวบอบบางโดยเฉพาะ" } },
-    { "id": "p4", "category": "new", "badge": { "ko": "LIMITED", "en": "LIMITED", "zh-CN": "限量版", "th": "จำกัด" }, "bgColor": "#111827", "accentColor": "#F0B429", "name": { "ko": "비타민C 브라이트닝 앰플", "en": "Vitamin C Brightening Ampoule", "zh-CN": "维生素C美白安瓶", "th": "แอมพูลวิตามินซีเพิ่มความสว่าง" }, "price": "₩55,000", "desc": { "ko": "20% 비타민C 유도체 고농축 미백 앰플", "en": "20% Vitamin C Derivative High-Concentration Brightening Ampoule", "zh-CN": "20%维生素C衍生物高浓度美白安瓶", "th": "แอมพูลเพิ่มความสว่างความเข้มข้นสูงวิตามินซีเดริเวทีฟ 20%" } },
-    { "id": "p5", "category": "best", "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" }, "bgColor": "#2F3C86", "accentColor": "#E8ECF8", "name": { "ko": "펩타이드 아이크림", "en": "Peptide Eye Cream", "zh-CN": "肽眼霜", "th": "ครีมบำรุงรอบดวงตาเปปไทด์" }, "price": "₩42,000", "desc": { "ko": "5종 펩타이드 복합체 탄력 아이크림", "en": "5-Peptide Complex Firming Eye Cream", "zh-CN": "5种肽复合物紧致眼霜", "th": "ครีมกระชับรอบดวงตาสารประกอบเปปไทด์ 5 ชนิด" } },
-    { "id": "p6", "category": "new", "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" }, "bgColor": "#E8ECF8", "accentColor": "#1A2755", "name": { "ko": "AHA/BHA 클렌징 토너", "en": "AHA/BHA Cleansing Toner", "zh-CN": "AHA/BHA 洁肤爽肤水", "th": "โทนเนอร์ทำความสะอาด AHA/BHA" }, "price": "₩38,000", "desc": { "ko": "각질 제거 + 모공 케어 이중 기능 토너", "en": "Dual-function toner for exfoliation + pore care", "zh-CN": "去角质+毛孔护理双效爽肤水", "th": "โทนเนอร์สองหน้าที่สำหรับการขัดผิว + ดูแลรูขุมขน" } }
+    {
+      "id": "p1",
+      "image": "images/products/liquid-pcl.jpg",
+      "category": "best",
+      "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" },
+      "bgColor": "#f5f5f3",
+      "accentColor": "#1A2755",
+      "name": { "ko": "Aestyve Liquid PCL", "en": "Aestyve Liquid PCL", "zh-CN": "Aestyve Liquid PCL", "th": "Aestyve Liquid PCL" },
+      "price": "",
+      "desc": { "ko": "고순도 액상 PCL 기반 리프팅 솔루션", "en": "High-purity liquid PCL-based lifting solution", "zh-CN": "高纯度液态PCL提拉解决方案", "th": "โซลูชันลิฟติ้งจาก Liquid PCL บริสุทธิ์สูง" }
+    },
+    {
+      "id": "p2",
+      "image": "images/products/ha-filler.jpg",
+      "category": "best",
+      "badge": { "ko": "피부과 추천", "en": "Derm Pick", "zh-CN": "皮肤科推荐", "th": "แนะนำโดยผู้เชี่ยวชาญ" },
+      "bgColor": "#f5f5f3",
+      "accentColor": "#1A2755",
+      "name": { "ko": "Aestyve HA FILLER Series", "en": "Aestyve HA FILLER Series", "zh-CN": "Aestyve HA FILLER Series", "th": "Aestyve HA FILLER Series" },
+      "price": "",
+      "desc": { "ko": "히알루론산 필러 시리즈 — 자연스러운 볼륨과 탄력", "en": "Hyaluronic Acid Filler Series — natural volume & elasticity", "zh-CN": "透明质酸填充剂系列 — 自然丰盈与弹性", "th": "ชุดฟิลเลอร์ HA — ปริมาตรและความยืดหยุ่นที่เป็นธรรมชาติ" }
+    },
+    {
+      "id": "p3",
+      "image": "images/products/revibe.jpg",
+      "category": "new",
+      "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" },
+      "bgColor": "#f5f5f3",
+      "accentColor": "#1A2755",
+      "name": { "ko": "Aestyve Revibe", "en": "Aestyve Revibe", "zh-CN": "Aestyve Revibe", "th": "Aestyve Revibe" },
+      "price": "",
+      "desc": { "ko": "피부 재생 & 활력 회복 솔루션", "en": "Skin regeneration & vitality restoration solution", "zh-CN": "皮肤再生与活力恢复解决方案", "th": "โซลูชันฟื้นฟูผิวและความมีชีวิตชีวา" }
+    },
+    {
+      "id": "p4",
+      "image": "images/products/1906nad.jpg",
+      "category": "new",
+      "badge": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" },
+      "bgColor": "#f5f5f3",
+      "accentColor": "#1A2755",
+      "name": { "ko": "1906NAD+", "en": "1906NAD+", "zh-CN": "1906NAD+", "th": "1906NAD+" },
+      "price": "",
+      "desc": { "ko": "NAD+ 기반 세포 활성 & 안티에이징 솔루션", "en": "NAD+ based cellular activation & anti-aging solution", "zh-CN": "基于NAD+的细胞激活与抗衰老解决方案", "th": "โซลูชันกระตุ้นเซลล์และต่อต้านวัยด้วย NAD+" }
+    },
+    {
+      "id": "p5",
+      "image": "images/products/innofill-plla.jpg",
+      "category": "best",
+      "badge": { "ko": "베스트셀러", "en": "Best Seller", "zh-CN": "畅销品", "th": "ขายดีที่สุด" },
+      "bgColor": "#f5f5f3",
+      "accentColor": "#1A2755",
+      "name": { "ko": "INNOFILL Aestyve PLLA FILLER", "en": "INNOFILL Aestyve PLLA FILLER", "zh-CN": "INNOFILL Aestyve PLLA FILLER", "th": "INNOFILL Aestyve PLLA FILLER" },
+      "price": "",
+      "desc": { "ko": "PLLA 기반 생분해성 콜라겐 자극 필러", "en": "PLLA-based biodegradable collagen-stimulating filler", "zh-CN": "基于PLLA的可生物降解胶原蛋白刺激填充剂", "th": "ฟิลเลอร์กระตุ้นคอลลาเจนที่ย่อยสลายได้จาก PLLA" }
+    }
   ],
   "reviews": [
     { "id": "r1", "rating": 5, "name": { "ko": "김지은", "en": "Jieun K.", "zh-CN": "金智恩", "th": "จีอึน เค." }, "text": { "ko": "딥 하이드레이션 세럼 사용 후 피부가 완전히 달라졌어요! 건조함이 사라지고 탄력도 생겼어요.", "en": "My skin completely changed after using Deep Hydration Serum! Dryness disappeared and elasticity improved.", "zh-CN": "使用深层补水精华后，我的皮肤完全变了！干燥消失了，弹性也增加了。", "th": "ผิวของฉันเปลี่ยนไปอย่างสิ้นเชิงหลังจากใช้เซรั่มไฮเดรชั่น!" } },
