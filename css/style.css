@@ -295,16 +295,11 @@ img { display: block; max-width: 100%; }
 /* 이미지 영역 */
 .slide-img-wrap {
   background: #f8f8f6;
-  aspect-ratio: 1/1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 .slide-img-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
   transition: transform .5s cubic-bezier(.4,0,.2,1);
 }
