@@ -195,14 +195,13 @@
     .products-section {
       width: 100%;
       max-width: 680px;
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height .6s cubic-bezier(.4,0,.2,1), opacity .4s ease, margin .4s ease;
+      display: none;
       opacity: 0;
       margin-top: 0;
+      transition: opacity .4s ease, margin .4s ease;
     }
     .products-section.open {
-      max-height: 6000px;
+      display: block;
       opacity: 1;
       margin-top: 40px;
     }
@@ -363,10 +362,12 @@
     var sec = document.getElementById('productsSection');
     var isOpen = sec.classList.contains('open');
     if (isOpen) {
-      sec.classList.remove('open');
+      sec.style.opacity = '0';
+      setTimeout(function(){ sec.classList.remove('open'); }, 350);
       btn.classList.remove('open');
     } else {
       sec.classList.add('open');
+      setTimeout(function(){ sec.style.opacity = '1'; }, 10);
       btn.classList.add('open');
     }
   }
