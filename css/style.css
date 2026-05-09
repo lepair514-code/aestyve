@@ -259,145 +259,23 @@ img { display: block; max-width: 100%; }
 #hero-unmute-btn:hover { background: rgba(0,0,0,.6); transform: scale(1.08); }
 #hero-unmute-btn svg { width: 20px; height: 20px; pointer-events: none; }
 
-/* ---------- PRODUCTS — reanzen 스타일 이미지 좌 + 스펙 우 ---------- */
+/* ---------- PRODUCTS — 이미지 수직 나열 ---------- */
 #products {
   background: #ffffff;
-  padding: 0;
 }
 
-/* 전체 리스트 컨테이너 */
 .product-list {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 80px 24px 100px;
+  padding: 60px 24px 80px;
 }
 
-/* 섹션 헤딩 */
-.prod-section-heading {
-  text-align: center;
-  padding-bottom: 56px;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 0;
-}
-.prod-section-heading h2 {
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
-  font-weight: 300;
-  letter-spacing: .32em;
-  text-transform: uppercase;
-  color: var(--primary);
-}
-
-/* 개별 제품 행 */
-.prod-item {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  border-bottom: 1px solid #e0e0e0;
-  min-height: 440px;
-}
-.prod-item:first-of-type { border-top: none; }
-
-/* 이미지 래퍼 */
-.prod-img-wrap {
-  overflow: hidden;
-  background: #f5f5f3;
-  position: relative;
-  min-height: 400px;
-}
-.prod-img-wrap img {
+.prod-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
   display: block;
-  transition: transform .8s cubic-bezier(.4,0,.2,1);
-}
-.prod-item:hover .prod-img-wrap img { transform: scale(1.03); }
-.prod-img-placeholder {
-  width: 100%; height: 100%; min-height: 400px;
-  background: #f0f0ee;
-  display: flex; align-items: center; justify-content: center;
-  color: #ccc; font-size: 2.5rem;
-}
-
-/* 스펙 텍스트 영역 */
-.prod-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 52px 56px;
-  background: #ffffff;
-  gap: 0;
-}
-
-/* 뱃지 pills */
-.prod-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
-}
-.prod-badge {
-  display: inline-block;
-  font-size: .68rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--primary);
-  border: 1.5px solid var(--primary);
-  border-radius: 100px;
-  padding: 4px 14px;
-  line-height: 1.6;
-  white-space: nowrap;
-}
-
-/* 제품명 */
-.prod-name {
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: -.02em;
-  color: var(--primary);
-  line-height: 1.15;
-  margin-bottom: 32px;
-}
-
-/* 스펙 섹션들 */
-.prod-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 1px solid #e0e0e0;
-}
-
-/* 스펙 한 줄 */
-.prod-spec-row {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid #e0e0e0;
-  align-items: baseline;
-}
-
-/* 라벨 (Composition / Raw Material / …) */
-.prod-spec-label {
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--gray-400);
-  white-space: nowrap;
-  padding-top: 1px;
-}
-
-/* 값 */
-.prod-spec-val {
-  font-size: .9rem;
-  font-weight: 400;
-  color: var(--gray-900);
-  line-height: 1.65;
 }
 
 /* ---------- Section Header (Brand/Contact용) ---------- */
@@ -540,8 +418,6 @@ img { display: block; max-width: 100%; }
   .brand-grid { grid-template-columns: 1fr; gap: 48px; }
   .brand-visual { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-  .prod-item { grid-template-columns: 340px 1fr; }
-  .prod-info { padding: 40px 40px; }
 }
 
 @media (max-width: 768px) {
@@ -549,18 +425,7 @@ img { display: block; max-width: 100%; }
   .hamburger { display: flex; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-
-  /* 모바일: 이미지 상단, 스펙 하단 */
-  .prod-item {
-    grid-template-columns: 1fr;
-    min-height: unset;
-  }
-  .prod-img-wrap { min-height: 280px; }
-  .prod-info { padding: 32px 24px; }
-  .prod-name { font-size: 1.5rem; margin-bottom: 24px; }
-  .prod-spec-row { grid-template-columns: 110px 1fr; }
-  .product-list { padding: 56px 16px 80px; }
-  .prod-section-heading { padding-bottom: 40px; }
+  .product-list { padding: 40px 16px 60px; }
   #hero { min-height: 100svh; }
   .hero-overlay-inner { padding: 100px 0 80px; }
   .hero-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
@@ -570,9 +435,4 @@ img { display: block; max-width: 100%; }
   .header-inner { height: 56px; }
   .logo-wrap img { height: 32px; }
   .container { padding: 0 16px; }
-  .prod-info { padding: 24px 16px; }
-  .prod-name { font-size: 1.3rem; }
-  .prod-spec-label { font-size: .65rem; }
-  .prod-spec-val { font-size: .84rem; }
-  .prod-badge { font-size: .62rem; padding: 3px 10px; }
 }
