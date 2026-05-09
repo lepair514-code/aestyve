@@ -368,7 +368,7 @@
               <strong>🎬 메인 영상 변경</strong> — 사이드바 <strong>메인 영상</strong> 클릭 → YouTube URL 또는 직접 파일 업로드<br/>
               <strong>🖼️ 제품 이미지 변경</strong> — 사이드바 <strong>제품 이미지</strong> 클릭 → 각 제품의 이미지 업로드 또는 이름/설명 수정<br/>
               <strong>💾 저장 방법</strong> — 우측 상단 <strong>전체 저장</strong> 버튼 또는 각 섹션의 <strong>저장</strong> 버튼 클릭<br/>
-              <strong>🌐 영구 반영</strong> — <strong>Import/Export</strong> → JSON 다운로드 → GitHub <code>data/content.json</code> 교체
+              <strong>🚀 모바일 자동 반영</strong> — <strong>사이트 설정</strong> 탭에서 GitHub 설정 후, 저장 시 자동으로 모든 기기에 반영
             </p>
           </div>
         </div>
@@ -483,6 +483,55 @@
 
       <!-- SETTINGS -->
       <div class="section-view" id="section-settings">
+
+        <!-- ① GitHub 자동 배포 설정 -->
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fab fa-github"></i> GitHub 자동 배포 설정</span>
+            <span id="gh-status" style="font-size:.78rem;font-weight:600;">⚠️ GitHub 설정이 필요합니다</span>
+          </div>
+          <div class="panel-body">
+            <div style="background:#f0f7ff;border:1px solid #bfdbfe;border-radius:var(--radius);padding:14px 16px;margin-bottom:20px;font-size:.82rem;line-height:1.8;color:#1e40af;">
+              <strong>🚀 이 설정을 완료하면</strong> — 관리자에서 저장할 때마다 자동으로 GitHub에 배포되어<br/>
+              <strong>스마트폰·태블릿 등 모든 기기</strong>에서 변경 내용이 즉시 반영됩니다.<br/>
+              <span style="color:#6b7280;font-size:.77rem;">Personal Access Token은 이 브라우저에만 저장되며 외부로 전송되지 않습니다.</span>
+            </div>
+
+            <div class="form-row" style="margin-bottom:12px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">GitHub Owner (계정명 또는 조직명)</label>
+                <input type="text" class="form-control" id="gh-owner" placeholder="예: lepair514-code" autocomplete="off" />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Repository 이름</label>
+                <input type="text" class="form-control" id="gh-repo" placeholder="예: aestyve" autocomplete="off" />
+              </div>
+            </div>
+            <div class="form-row" style="margin-bottom:12px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">브랜치 (기본: main)</label>
+                <input type="text" class="form-control" id="gh-branch" placeholder="main" autocomplete="off" />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Personal Access Token (PAT)</label>
+                <input type="password" class="form-control" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+              </div>
+            </div>
+            <div class="form-note" style="margin-bottom:16px;">
+              👉 PAT 발급 방법: GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token<br/>
+              필요 권한: <code>repo</code> (Full control of private repositories) 또는 공개 저장소면 <code>public_repo</code>
+            </div>
+
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="saveGhConfig()"><i class="fas fa-save"></i> 설정 저장</button>
+              <button class="btn btn-outline" id="gh-test-btn" onclick="testGhConnection()">🔌 연결 테스트</button>
+              <button class="btn btn-success" id="gh-deploy-btn" onclick="deployToGitHub()"><i class="fas fa-rocket"></i> 지금 배포</button>
+            </div>
+            <div id="gh-deploy-status" style="margin-top:12px;font-size:.8rem;font-weight:600;min-height:20px;"></div>
+          </div>
+        </div>
+
+        <!-- ② 사이트 기본 설정 -->
         <div class="panel">
           <div class="panel-header">
             <span class="panel-title"><i class="fas fa-cog"></i> 사이트 기본 설정</span>

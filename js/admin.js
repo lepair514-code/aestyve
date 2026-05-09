@@ -131,8 +131,8 @@ function _saveSlimOnly() {
   }
 }
 
-/* 텍스트 데이터(slim) + 이미지(IndexedDB) 함께 저장 */
-function saveToStorage() {
+/* 텍스트 데이터(slim) + 이미지(IndexedDB) 함께 저장 + GitHub 자동 배포 */
+function saveToStorage({ deploy = true } = {}) {
   /* 1) detailImages → IndexedDB (용량 제한 없음) */
   const savePromises = (DATA.products || []).map(p => {
     if (!p.id) return Promise.resolve();
@@ -143,6 +143,13 @@ function saveToStorage() {
   );
   /* 2) 텍스트 데이터 → localStorage */
   _saveSlimOnly();
+  /* 3) GitHub 자동 배포 (설정이 있을 때만) */
+  if (deploy) {
+    const cfg = loadGhConfig();
+    if (cfg.owner && cfg.repo && cfg.token) {
+      pushToGitHub({ silent: false });
+    }
+  }
 }
 
 /* ─── 기본 데이터 ─── */
@@ -705,10 +712,18 @@ window.saveProductModal = function() {
   /* 텍스트 데이터 → localStorage */
   _saveSlimOnly();
 
+  /* GitHub 자동 배포 (설정이 있을 때만) */
+  const _ghCfg = loadGhConfig();
+  if (_ghCfg.owner && _ghCfg.repo && _ghCfg.token) {
+    pushToGitHub({ silent: false });
+    toast('✅ 제품이 저장되었습니다! GitHub에 배포 중… 잠시 후 모든 기기에 반영됩니다.');
+  } else {
+    toast('✅ 제품이 저장되었습니다! 모든 기기에 반영하려면 설정 탭에서 GitHub를 연결하세요.');
+  }
+
   closeModal();
   renderProductAdminList();
   renderDashboard();
-  toast('✅ 제품이 저장되었습니다! 홈페이지에 즉시 반영됩니다.');
 };
 
 window.closeModal = function() {
@@ -763,6 +778,177 @@ window.saveSettings = function() {
   toast('✅ 설정이 저장되었습니다.');
 };
 
+/* ─── GitHub 설정 키 ─── */
+const GH_KEY = 'aestyve_gh_cfg';
+
+function loadGhConfig() {
+  try { return JSON.parse(localStorage.getItem(GH_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveGhConfig(cfg) {
+  localStorage.setItem(GH_KEY, JSON.stringify(cfg));
+}
+
+/* GitHub 설정 폼 렌더 */
+function renderGhConfigForm() {
+  const cfg = loadGhConfig();
+  const set = (id, val) => { const el = $(id); if (el) el.value = val || ''; };
+  set('#gh-owner',  cfg.owner);
+  set('#gh-repo',   cfg.repo);
+  set('#gh-branch', cfg.branch || 'main');
+  set('#gh-token',  cfg.token);
+  _updateGhStatus();
+}
+
+function _updateGhStatus() {
+  const cfg = loadGhConfig();
+  const el = $('#gh-status');
+  if (!el) return;
+  const ok = cfg.owner && cfg.repo && cfg.token;
+  el.textContent = ok
+    ? `✅ 연결됨 — github.com/${cfg.owner}/${cfg.repo} (${cfg.branch || 'main'})`
+    : '⚠️ GitHub 설정이 필요합니다';
+  el.style.color = ok ? 'var(--success)' : '#d97706';
+}
+
+window.saveGhConfig = function() {
+  const get = id => ($(id) || {}).value?.trim() || '';
+  const cfg = {
+    owner:  get('#gh-owner'),
+    repo:   get('#gh-repo'),
+    branch: get('#gh-branch') || 'main',
+    token:  get('#gh-token'),
+  };
+  if (!cfg.owner || !cfg.repo || !cfg.token) {
+    toast('Owner, Repo, Token을 모두 입력해주세요.', 'error'); return;
+  }
+  saveGhConfig(cfg);
+  _updateGhStatus();
+  toast('✅ GitHub 설정이 저장되었습니다.');
+};
+
+window.testGhConnection = async function() {
+  const cfg = loadGhConfig();
+  if (!cfg.owner || !cfg.repo || !cfg.token) {
+    toast('먼저 GitHub 설정을 저장해주세요.', 'error'); return;
+  }
+  const btn = $('#gh-test-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '확인 중…'; }
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`,
+      { headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' } }
+    );
+    if (res.ok) {
+      toast('✅ 연결 성공! 저장소에 접근할 수 있습니다.');
+    } else {
+      const err = await res.json().catch(() => ({}));
+      toast(`❌ 연결 실패: ${err.message || res.status}`, 'error', 5000);
+    }
+  } catch(e) {
+    toast('❌ 네트워크 오류: ' + e.message, 'error', 5000);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '🔌 연결 테스트'; }
+  }
+};
+
+/* ─── GitHub API push ─── */
+/**
+ * DATA에서 detailImages(Base64)를 제거한 슬림 JSON을
+ * GitHub API로 data/content.json에 push한다.
+ * → Vercel 자동 배포 트리거 → 모든 기기에 즉시 반영
+ */
+async function pushToGitHub({ silent = false } = {}) {
+  const cfg = loadGhConfig();
+  if (!cfg.owner || !cfg.repo || !cfg.token) {
+    if (!silent) toast('GitHub 설정이 없습니다. 설정 탭에서 입력해주세요.', 'error', 4000);
+    return false;
+  }
+
+  /* 1) push할 JSON 생성 — detailImages(Base64) 제거 */
+  const slim = {
+    ...DATA,
+    products: (DATA.products || []).map(p => {
+      const { detailImages, ...rest } = p;
+      return rest;
+    }),
+  };
+  const content = JSON.stringify(slim, null, 2);
+  const contentB64 = btoa(unescape(encodeURIComponent(content)));
+
+  const branch = cfg.branch || 'main';
+  const apiBase = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`;
+  const filePath = 'data/content.json';
+  const headers = {
+    Authorization: `token ${cfg.token}`,
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+  };
+
+  try {
+    /* 2) 현재 파일 SHA 조회 (업데이트에 필요) */
+    let sha = null;
+    try {
+      const getRes = await fetch(`${apiBase}/contents/${filePath}?ref=${branch}`, { headers });
+      if (getRes.ok) {
+        const fileData = await getRes.json();
+        sha = fileData.sha;
+      }
+    } catch(e) {}
+
+    /* 3) 파일 push (PUT) */
+    const body = {
+      message: `chore: admin update content.json [${new Date().toISOString().slice(0,16).replace('T',' ')}]`,
+      content: contentB64,
+      branch,
+      ...(sha ? { sha } : {}),
+    };
+
+    const putRes = await fetch(`${apiBase}/contents/${filePath}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(body),
+    });
+
+    if (putRes.ok) {
+      if (!silent) toast('🚀 GitHub에 배포 완료! 1~2분 후 모든 기기에 반영됩니다.');
+      _updateGhDeployStatus('success');
+      return true;
+    } else {
+      const err = await putRes.json().catch(() => ({}));
+      if (!silent) toast(`❌ GitHub 배포 실패: ${err.message || putRes.status}`, 'error', 6000);
+      _updateGhDeployStatus('error', err.message || putRes.status);
+      return false;
+    }
+  } catch(e) {
+    if (!silent) toast('❌ 네트워크 오류로 배포 실패: ' + e.message, 'error', 6000);
+    _updateGhDeployStatus('error', e.message);
+    return false;
+  }
+}
+
+function _updateGhDeployStatus(state, msg) {
+  const el = $('#gh-deploy-status');
+  if (!el) return;
+  if (state === 'success') {
+    el.innerHTML = `✅ 마지막 배포: ${new Date().toLocaleString('ko-KR')} — 모든 기기에 반영 중`;
+    el.style.color = 'var(--success)';
+  } else if (state === 'error') {
+    el.innerHTML = `❌ 배포 실패: ${msg || '알 수 없는 오류'}`;
+    el.style.color = 'var(--danger)';
+  }
+}
+
+/* 수동 배포 버튼 */
+window.deployToGitHub = async function() {
+  const btn = $('#gh-deploy-btn');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 배포 중…'; }
+  try {
+    await pushToGitHub({ silent: false });
+  } finally {
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-rocket"></i> 지금 배포'; }
+  }
+};
+
 /* ─── Import / Export ─── */
 window.showJsonPreview = function() {
   const ta = $('#json-preview');
@@ -804,16 +990,6 @@ window.resetToDefault = function() {
   saveToStorage(); renderAll();
   toast('✅ 초기화 완료');
 };
-
-/* ─── 전체 저장 버튼 ─── */
-function initSaveAllBtn() {
-  const btn = $('#save-all-btn');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    saveToStorage();
-    toast('✅ 전체 저장 완료! 홈페이지를 새로고침하면 반영됩니다.');
-  });
-}
 
 /* ─── 카테고리 관리 ─── */
 function renderCategoryList() {
@@ -964,7 +1140,34 @@ window.closeCatModal = function() {
   document.body.style.overflow = '';
 };
 
-/* ─── Sidebar 내비게이션 ─── */
+/* ─── Modal 닫기 ─── */
+function initModal() {
+  const overlay = $('#modal-overlay');
+  if (!overlay) return;
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+}
+
+/* ─── 전체 저장 버튼 (GitHub 배포 포함) ─── */
+function initSaveAllBtn() {
+  const btn = $('#save-all-btn');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    saveToStorage({ deploy: false }); // 로컬 먼저 저장
+    const cfg = loadGhConfig();
+    if (cfg.owner && cfg.repo && cfg.token) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 배포 중…';
+      await pushToGitHub({ silent: false });
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-save"></i> 전체 저장';
+    } else {
+      toast('✅ 전체 저장 완료! (모든 기기 반영은 설정 탭에서 GitHub 연결 후 가능)');
+    }
+  });
+}
+
+/* ─── Sidebar 섹션 이동 시 GitHub 설정 폼 렌더 ─── */
 const SECTION_ICONS = {
   dashboard:  'fas fa-home',
   hero:       'fas fa-film',
@@ -997,16 +1200,10 @@ function initSidebar() {
         const icon = SECTION_ICONS[section] || 'fas fa-circle';
         titleEl.innerHTML = `<i class="${icon}" style="color:var(--accent)"></i> ${SECTION_TITLES[section] || section}`;
       }
+      /* 설정 섹션 진입 시 GitHub 설정 폼 렌더 */
+      if (section === 'settings') renderGhConfigForm();
     });
   });
-}
-
-/* ─── Modal 닫기 ─── */
-function initModal() {
-  const overlay = $('#modal-overlay');
-  if (!overlay) return;
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 }
 
 /* ─── Init ─── */
