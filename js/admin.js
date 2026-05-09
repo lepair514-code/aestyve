@@ -4,6 +4,21 @@
  */
 
 const STORAGE_KEY = 'aestyve_content';
+
+/* detailImages 별도 저장소 로드 헬퍼 */
+function _loadDetailImagesMap() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY + '_dimgs');
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return {};
+}
+function _restoreDetailImages(data) {
+  const imgMap = _loadDetailImagesMap();
+  (data.products || []).forEach(p => {
+    if (p.id) p.detailImages = imgMap[p.id] || p.detailImages || [];
+  });
+}
 const LANGS = ['ko', 'en', 'zh-CN', 'th'];
 const LANG_LABELS = { ko: '한국어', en: 'English', 'zh-CN': '中文', th: 'ภาษาไทย' };
 
@@ -52,6 +67,7 @@ async function loadData() {
       if (stored) {
         const cached = JSON.parse(stored);
         if (cached && typeof cached === 'object') {
+          const imgMap = _loadDetailImagesMap();
           DATA = {
             ...fresh,
             heroes:   cached.heroes   || fresh.heroes,
@@ -60,13 +76,13 @@ async function loadData() {
             /* products: 이미지/id는 content.json 기준, name·detail은 localStorage 유지 */
             products: (fresh.products || []).map(fp => {
               const cp = (cached.products || []).find(p => p.id === fp.id);
-              if (!cp) return fp;
+              if (!cp) return { ...fp, detailImages: imgMap[fp.id] || [] };
               return {
                 ...fp,
                 name:         cp.name         || fp.name,
                 detail:       cp.detail       || fp.detail,
                 category:     cp.category     || fp.category,
-                detailImages: cp.detailImages || fp.detailImages || [],
+                detailImages: imgMap[fp.id]   || cp.detailImages || [],
               };
             }),
             categories: fresh.categories || cached.categories,
@@ -78,7 +94,14 @@ async function loadData() {
       }
     } catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
     /* localStorage 없으면 fresh 그대로 사용 */
-    DATA = fresh;
+    const imgMap2 = _loadDetailImagesMap();
+    DATA = {
+      ...fresh,
+      products: (fresh.products || []).map(p => ({
+        ...p,
+        detailImages: imgMap2[p.id] || [],
+      })),
+    };
     saveToStorage();
     renderAll();
     return;
@@ -89,6 +112,7 @@ async function loadData() {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       DATA = JSON.parse(stored);
+      _restoreDetailImages(DATA);
       renderAll();
       return;
     }
@@ -102,7 +126,29 @@ async function loadData() {
 }
 
 function saveToStorage() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA));
+  /* detailImages(Base64)는 별도 키에 분리 저장 → 메인 key 용량 초과 방지 */
+  try {
+    /* 1) detailImages만 뽑아서 별도 저장 */
+    const imgMap = {};
+    (DATA.products || []).forEach(p => {
+      if (p.id && p.detailImages && p.detailImages.length) imgMap[p.id] = p.detailImages;
+    });
+    localStorage.setItem(STORAGE_KEY + '_dimgs', JSON.stringify(imgMap));
+  } catch(e) { console.warn('[Admin] detailImages 저장 실패', e); }
+  try {
+    /* 2) 메인 DATA는 detailImages 제외하고 저장 */
+    const slim = {
+      ...DATA,
+      products: (DATA.products || []).map(p => {
+        const { detailImages, ...rest } = p;
+        return rest;
+      }),
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(slim));
+  } catch(e) {
+    toast('저장 공간이 부족합니다. 이미지 크기를 줄여주세요.', 'error', 5000);
+    console.error('[Admin] localStorage 저장 실패', e);
+  }
 }
 
 /* ─── 기본 데이터 ─── */
@@ -598,7 +644,6 @@ window.saveProductModal = function() {
   const obj = {
     id: modalProductIdx >= 0 ? (DATA.products[modalProductIdx]?.id || uid()) : uid(),
     image: finalImg,
-    category: modalProductIdx >= 0 ? (DATA.products[modalProductIdx]?.category || 'all') : 'all',
     name: {
       ko:      ($('#m-name-ko') || {}).value?.trim() || '',
       en:      ($('#m-name-en') || {}).value?.trim() || '',
