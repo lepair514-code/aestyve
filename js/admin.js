@@ -254,28 +254,25 @@ function buildProductModal(p) {
     ? `<img src="${esc(currentImg)}" style="width:100%;max-height:180px;object-fit:cover;border-radius:6px;display:block;" />`
     : `<div class="upload-placeholder"><span class="icon">🖼️</span><p>이미지를 업로드하거나 URL을 입력하세요</p></div>`;
 
-  // 다국어 이름/설명 필드 (ko, en만 간소화)
-  const nameKo  = getLangStr(p?.name, 'ko');
-  const nameEn  = getLangStr(p?.name, 'en');
-  const descKo  = getLangStr(p?.desc, 'ko');
-  const descEn  = getLangStr(p?.desc, 'en');
+  const nameKo   = getLangStr(p?.name, 'ko');
+  const nameEn   = getLangStr(p?.name, 'en');
   const nameZhCN = (p?.name || {})['zh-CN'] || '';
   const nameTh   = (p?.name || {})['th'] || '';
-  const descZhCN = (p?.desc || {})['zh-CN'] || '';
-  const descTh   = (p?.desc || {})['th'] || '';
+
+  // 상세 내용 (모달에 표시되는 본문)
+  const detailKo   = getLangStr(p?.detail, 'ko');
+  const detailEn   = getLangStr(p?.detail, 'en');
+  const detailZhCN = (p?.detail || {})['zh-CN'] || '';
+  const detailTh   = (p?.detail || {})['th'] || '';
 
   body.innerHTML = `
-    <!-- 이미지 섹션 -->
+    <!-- 이미지 -->
     <div class="form-group" style="margin-bottom:20px;">
-      <label class="form-label">제품 이미지</label>
-
-      <!-- 탭 -->
+      <label class="form-label">제품 이미지 (썸네일)</label>
       <div class="media-tabs">
         <button type="button" class="media-tab active" id="modal-tab-file" onclick="switchModalTab('file')">📁 파일 업로드</button>
-        <button type="button" class="media-tab" id="modal-tab-url"  onclick="switchModalTab('url')">🔗 URL 입력</button>
+        <button type="button" class="media-tab" id="modal-tab-url" onclick="switchModalTab('url')">🔗 URL 입력</button>
       </div>
-
-      <!-- 파일 업로드 패널 -->
       <div id="modal-pane-file">
         <div class="upload-area" id="modal-img-upload-area" onclick="document.getElementById('modal-img-file').click()">
           <div class="upload-preview" id="modal-img-preview">${imgPreviewHtml}</div>
@@ -283,8 +280,6 @@ function buildProductModal(p) {
         </div>
         <input type="file" id="modal-img-file" accept="image/*" style="display:none" onchange="handleModalImage(this)" />
       </div>
-
-      <!-- URL 입력 패널 -->
       <div id="modal-pane-url" style="display:none;">
         <div class="url-row">
           <input type="url" class="form-control" id="modal-img-url" placeholder="https://example.com/product.jpg" value="${esc(currentImg.startsWith('http') ? currentImg : '')}" />
@@ -296,20 +291,18 @@ function buildProductModal(p) {
           </div>
         </div>
       </div>
-
-      <!-- 실제 이미지 경로를 담는 hidden -->
       <input type="hidden" id="modal-img-value" value="${esc(currentImg)}" />
     </div>
 
     <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
 
-    <!-- 이름 -->
+    <!-- 제품 이름 -->
     <div style="margin-bottom:16px;">
       <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">제품 이름</div>
       <div class="form-row" style="margin-bottom:8px;">
         <div class="form-group" style="margin-bottom:0;">
           <label class="form-label">🇰🇷 한국어</label>
-          <input type="text" class="form-control" id="m-name-ko" value="${esc(nameKo)}" placeholder="제품명 (한국어)" />
+          <input type="text" class="form-control" id="m-name-ko" value="${esc(nameKo)}" placeholder="제품명" />
         </div>
         <div class="form-group" style="margin-bottom:0;">
           <label class="form-label">🇺🇸 English</label>
@@ -328,27 +321,29 @@ function buildProductModal(p) {
       </div>
     </div>
 
-    <!-- 설명 -->
+    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
+
+    <!-- 상세 내용 (클릭 시 모달에 표시) -->
     <div>
-      <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">제품 설명</div>
+      <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">상세 내용 <span style="font-weight:400;text-transform:none;letter-spacing:0;">(제품 클릭 시 표시되는 설명)</span></div>
       <div class="form-row" style="margin-bottom:8px;">
         <div class="form-group" style="margin-bottom:0;">
           <label class="form-label">🇰🇷 한국어</label>
-          <textarea class="form-control" id="m-desc-ko" rows="2" placeholder="제품 설명">${esc(descKo)}</textarea>
+          <textarea class="form-control" id="m-detail-ko" rows="4" placeholder="제품 상세 설명을 입력하세요">${esc(detailKo)}</textarea>
         </div>
         <div class="form-group" style="margin-bottom:0;">
           <label class="form-label">🇺🇸 English</label>
-          <textarea class="form-control" id="m-desc-en" rows="2" placeholder="Product description">${esc(descEn)}</textarea>
+          <textarea class="form-control" id="m-detail-en" rows="4" placeholder="Enter product detail">${esc(detailEn)}</textarea>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group" style="margin-bottom:0;">
           <label class="form-label">🇨🇳 中文</label>
-          <textarea class="form-control" id="m-desc-zhcn" rows="2" placeholder="产品描述">${esc(descZhCN)}</textarea>
+          <textarea class="form-control" id="m-detail-zhcn" rows="4" placeholder="产品详细说明">${esc(detailZhCN)}</textarea>
         </div>
         <div class="form-group" style="margin-bottom:0;">
           <label class="form-label">🇹🇭 ภาษาไทย</label>
-          <textarea class="form-control" id="m-desc-th" rows="2" placeholder="คำอธิบายผลิตภัณฑ์">${esc(descTh)}</textarea>
+          <textarea class="form-control" id="m-detail-th" rows="4" placeholder="รายละเอียดสินค้า">${esc(detailTh)}</textarea>
         </div>
       </div>
     </div>
@@ -422,11 +417,11 @@ window.saveProductModal = function() {
       'zh-CN': ($('#m-name-zhcn') || {}).value?.trim() || '',
       th:      ($('#m-name-th') || {}).value?.trim() || '',
     },
-    desc: {
-      ko:      ($('#m-desc-ko') || {}).value?.trim() || '',
-      en:      ($('#m-desc-en') || {}).value?.trim() || '',
-      'zh-CN': ($('#m-desc-zhcn') || {}).value?.trim() || '',
-      th:      ($('#m-desc-th') || {}).value?.trim() || '',
+    detail: {
+      ko:      ($('#m-detail-ko') || {}).value?.trim() || '',
+      en:      ($('#m-detail-en') || {}).value?.trim() || '',
+      'zh-CN': ($('#m-detail-zhcn') || {}).value?.trim() || '',
+      th:      ($('#m-detail-th') || {}).value?.trim() || '',
     },
   };
 

@@ -1,14 +1,8 @@
 /**
  * Aestyve — main.js
- * Hero 비디오 + Products 이미지 수직 나열 + Brand/Contact/Footer
  */
 
-/* ─── 전역 상태 ─── */
-const STATE = {
-  lang: 'ko',
-  content: null,
-};
-
+const STATE = { lang: 'ko', content: null };
 const LANGS = [
   { code: 'ko', flag: '🇰🇷', label: '한국어' },
   { code: 'en', flag: '🇺🇸', label: 'English' },
@@ -16,7 +10,6 @@ const LANGS = [
   { code: 'th',   flag: '🇹🇭', label: 'ภาษาไทย' },
 ];
 
-/* ─── 유틸 ─── */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const t = (obj) => {
@@ -32,38 +25,30 @@ function showToast(msg, duration = 2400) {
   setTimeout(() => el.classList.remove('show'), duration);
 }
 
-/* ─── 언어 초기화 ─── */
+/* ─── 언어 ─── */
 function initLang() {
   const stored = localStorage.getItem('aestyve_lang');
-  if (stored && LANGS.find(l => l.code === stored)) {
-    STATE.lang = stored;
-  } else {
-    const nav = (navigator.language || '').toLowerCase();
-    if (nav.startsWith('zh')) STATE.lang = 'zh-CN';
-    else if (nav.startsWith('th')) STATE.lang = 'th';
-    else if (nav.startsWith('en')) STATE.lang = 'en';
-    else STATE.lang = 'ko';
-  }
-  const params = new URLSearchParams(location.search);
-  const lp = params.get('lang');
+  if (stored && LANGS.find(l => l.code === stored)) { STATE.lang = stored; return; }
+  const nav = (navigator.language || '').toLowerCase();
+  if (nav.startsWith('zh')) STATE.lang = 'zh-CN';
+  else if (nav.startsWith('th')) STATE.lang = 'th';
+  else if (nav.startsWith('en')) STATE.lang = 'en';
+  else STATE.lang = 'ko';
+  const lp = new URLSearchParams(location.search).get('lang');
   if (lp && LANGS.find(l => l.code === lp)) STATE.lang = lp;
 }
-
 function setLang(code) {
   STATE.lang = code;
   localStorage.setItem('aestyve_lang', code);
   document.documentElement.lang = code;
   if (STATE.content) renderAll();
 }
-
-/* ─── 언어 스위처 ─── */
 function renderLangSwitcher() {
   const wrap = $('#lang-switcher');
   const mobileWrap = $('#mobile-lang-switcher');
   if (!wrap) return;
   wrap.innerHTML = '';
   if (mobileWrap) mobileWrap.innerHTML = '';
-
   LANGS.forEach(({ code, flag, label }) => {
     const btn = document.createElement('button');
     btn.className = 'lang-btn' + (code === STATE.lang ? ' active' : '');
@@ -72,7 +57,6 @@ function renderLangSwitcher() {
     btn.setAttribute('aria-label', label);
     btn.addEventListener('click', () => { setLang(code); renderLangSwitcher(); });
     wrap.appendChild(btn);
-
     if (mobileWrap) {
       const btn2 = btn.cloneNode(true);
       btn2.addEventListener('click', () => { setLang(code); renderLangSwitcher(); });
@@ -83,21 +67,13 @@ function renderLangSwitcher() {
 
 /* ─── 콘텐츠 로드 ─── */
 async function loadContent() {
-  // localStorage 우선
   try {
     const stored = localStorage.getItem('aestyve_content');
     if (stored) {
       const parsed = JSON.parse(stored);
-      if (parsed && typeof parsed === 'object') {
-        STATE.content = parsed;
-        renderAll();
-        return;
-      }
+      if (parsed && typeof parsed === 'object') { STATE.content = parsed; renderAll(); return; }
     }
-  } catch (e) {
-    console.warn('[Aestyve] localStorage 파싱 오류');
-  }
-  // content.json fallback
+  } catch (e) {}
   try {
     const res = await fetch('data/content.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -133,128 +109,121 @@ function renderNav(navItems) {
     mLinks.innerHTML = navItems.map(item =>
       `<a href="${item.href}" class="mobile-nav-link">${t(item.label)}</a>`
     ).join('');
-    $$('.mobile-nav-link', mLinks).forEach(a => {
-      a.addEventListener('click', () => toggleMobileNav(false));
-    });
+    $$('.mobile-nav-link', mLinks).forEach(a =>
+      a.addEventListener('click', () => toggleMobileNav(false))
+    );
   }
 }
 
-/* ─── Hero 비디오 ─── */
+/* ─── Hero ─── */
 function renderHero(heroes) {
   const videoWrap = $('#hero-video-wrap');
   const overlay   = $('#hero-overlay');
   if (!videoWrap || !overlay) return;
-
   const h = (heroes && heroes.length > 0) ? heroes[0] : null;
-
   let bgHtml = '';
   if (h && h.bgVideo) {
-    const src = h.bgVideo;
-    const ytMatch = src.match(
-      /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
-    );
+    const ytMatch = h.bgVideo.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
     if (ytMatch) {
-      const videoId = ytMatch[1];
-      const embedSrc =
-        `https://www.youtube.com/embed/${videoId}` +
-        `?autoplay=1&mute=1&loop=1&playlist=${videoId}` +
-        `&controls=0&showinfo=0&rel=0&modestbranding=1` +
-        `&playsinline=1&enablejsapi=1&vq=hd1080` +
-        `&origin=${encodeURIComponent(location.origin)}`;
-
-      bgHtml = `<iframe
-          id="hero-yt-iframe"
-          class="hero-video-full"
-          src="${embedSrc}"
-          frameborder="0"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen
-          title="Aestyve Hero Video"></iframe>`;
-
-      bgHtml += `<button id="hero-unmute-btn" aria-label="소리 켜기" title="소리 켜기"
-          onclick="heroToggleMute(this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="yt-icon-poly"/>
-            <line x1="23" y1="9" x2="17" y2="15" class="yt-muted-line"/>
-            <line x1="17" y1="9" x2="23" y2="15" class="yt-muted-line"/>
-          </svg>
-        </button>`;
+      const vid = ytMatch[1];
+      const src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd1080&origin=${encodeURIComponent(location.origin)}`;
+      bgHtml = `<iframe id="hero-yt-iframe" class="hero-video-full" src="${src}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Aestyve Hero Video"></iframe>`;
+      bgHtml += `<button id="hero-unmute-btn" aria-label="소리 켜기" onclick="heroToggleMute(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="yt-icon-poly"/><line x1="23" y1="9" x2="17" y2="15" class="yt-muted-line"/><line x1="17" y1="9" x2="23" y2="15" class="yt-muted-line"/></svg></button>`;
     } else {
-      bgHtml = `<video id="hero-video" class="hero-video-full"
-          autoplay muted loop playsinline preload="auto" src="${src}"></video>`;
+      bgHtml = `<video id="hero-video" class="hero-video-full" autoplay muted loop playsinline preload="auto" src="${h.bgVideo}"></video>`;
     }
-  } else if (h && h.bgImage) {
-    bgHtml = `<img class="hero-video-full" src="${h.bgImage}" alt="" aria-hidden="true" />`;
   } else {
-    const bgColor = (h && h.bgColor) || '#1A2755';
-    bgHtml = `<div class="hero-video-full" style="background:${bgColor};"></div>`;
+    bgHtml = `<div class="hero-video-full" style="background:${(h && h.bgColor) || '#1A2755'};"></div>`;
   }
   videoWrap.innerHTML = bgHtml;
-
   if (h) {
     const accent = h.accentColor || '#A8B9FF';
     const titleLines = (t(h.title) || '').replace(/\n/g, '<br/>');
-    overlay.innerHTML = `
-      <div class="hero-overlay-inner">
-        ${t(h.label)    ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
-        ${titleLines    ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
-        ${t(h.subtitle) ? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
-        ${t(h.btnText)  ? `<a href="${h.btnHref||'#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
-      </div>`;
+    overlay.innerHTML = `<div class="hero-overlay-inner">
+      ${t(h.label)    ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
+      ${titleLines    ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
+      ${t(h.subtitle) ? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
+      ${t(h.btnText)  ? `<a href="${h.btnHref||'#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
+    </div>`;
     overlay.style.display = '';
   } else {
     overlay.style.display = 'none';
   }
 }
 
-/* ─── YouTube 음소거 토글 ─── */
 let _ytMuted = true;
 function heroToggleMute(btn) {
   const iframe = document.getElementById('hero-yt-iframe');
   if (!iframe) return;
   _ytMuted = !_ytMuted;
-  iframe.contentWindow.postMessage(
-    JSON.stringify({ event: 'command', func: _ytMuted ? 'mute' : 'unMute', args: [] }), '*'
-  );
+  iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func: _ytMuted ? 'mute' : 'unMute', args:[] }), '*');
   btn.querySelectorAll('.yt-muted-line').forEach(l => { l.style.display = _ytMuted ? '' : 'none'; });
-  if (!_ytMuted) {
-    iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*'
-    );
-  }
+  if (!_ytMuted) iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func:'setVolume', args:[100] }), '*');
 }
 window.heroToggleMute = heroToggleMute;
 
-/* ─── Products — 이미지 5장 수직 나열 ─── */
+/* ─── Products — 이미지 클릭 → 상세 모달 ─── */
 function renderProducts(prods) {
   const grid = $('#product-grid');
-  if (!grid) return;
-  if (!prods || !prods.length) { grid.innerHTML = ''; return; }
+  if (!grid || !prods || !prods.length) { if (grid) grid.innerHTML = ''; return; }
 
-  grid.innerHTML = prods.map(p =>
-    p.image ? `<img src="${p.image}" alt="${t(p.name)}" loading="lazy" class="prod-img" />` : ''
+  grid.innerHTML = prods.map((p, i) =>
+    `<div class="prod-thumb" data-idx="${i}">
+      <img src="${p.image || ''}" alt="${t(p.name)}" loading="lazy" />
+    </div>`
   ).join('');
+
+  $$('.prod-thumb', grid).forEach(el => {
+    el.addEventListener('click', () => openProductModal(parseInt(el.dataset.idx)));
+  });
 }
+
+/* ─── 상세 모달 ─── */
+function openProductModal(idx) {
+  const prods = STATE.content?.products;
+  if (!prods || !prods[idx]) return;
+  const p = prods[idx];
+
+  const modal = $('#prod-modal');
+  const modalImg  = $('#prod-modal-img');
+  const modalName = $('#prod-modal-name');
+  const modalDesc = $('#prod-modal-desc');
+
+  if (modalImg)  modalImg.src = p.image || '';
+  if (modalImg)  modalImg.alt = t(p.name);
+  if (modalName) modalName.textContent = t(p.name) || '';
+  if (modalDesc) modalDesc.textContent = t(p.detail) || t(p.desc) || '';
+
+  if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+
+function closeProductModal() {
+  const modal = $('#prod-modal');
+  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+function initProductModal() {
+  const overlay = $('#prod-modal');
+  if (!overlay) return;
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeProductModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProductModal(); });
+}
+
+window.closeProductModal = closeProductModal;
 
 /* ─── Brand ─── */
 function renderBrand(s) {
   if (!s) return;
   const descEl = $('#brand-desc');
   if (descEl && s.brandStory) descEl.textContent = t(s.brandStory);
-
   const statsEl = $('#brand-stats');
   if (statsEl && s.stats?.length) {
-    statsEl.innerHTML = s.stats.map(st => `
-      <div class="brand-stat">
-        <div class="stat-number">${st.number || '-'}</div>
-        <div class="stat-label">${t(st.label) || '-'}</div>
-      </div>`).join('');
+    statsEl.innerHTML = s.stats.map(st =>
+      `<div class="brand-stat"><div class="stat-number">${st.number||'-'}</div><div class="stat-label">${t(st.label)||'-'}</div></div>`
+    ).join('');
   }
-
   const tagEl = $('#brand-tag');
   if (tagEl) tagEl.textContent = { ko:'ABOUT AESTYVE', en:'ABOUT AESTYVE', 'zh-CN':'关于 AESTYVE', th:'เกี่ยวกับ AESTYVE' }[STATE.lang] || 'ABOUT AESTYVE';
-
   const titleEl = $('#brand-title');
   if (titleEl) titleEl.innerHTML = ({
     ko: '피부과학의 혁신,<br/>아름다움의 새 기준',
@@ -274,18 +243,16 @@ function renderContact(s) {
   set('#contact-email', s.contact?.email);
   set('#contact-address', s.contact?.address);
   set('#contact-map-text', s.contact?.address);
-
-  const socDefs = [
-    { key: 'instagram', icon: 'fab fa-instagram', label: 'Instagram' },
-    { key: 'youtube',   icon: 'fab fa-youtube',   label: 'YouTube' },
-    { key: 'facebook',  icon: 'fab fa-facebook',  label: 'Facebook' },
-    { key: 'tiktok',    icon: 'fab fa-tiktok',    label: 'TikTok' },
-  ];
   const sl = $('#social-links');
   if (sl) {
     const social = s.social || {};
-    sl.innerHTML = socDefs
-      .filter(d => social[d.key])
+    const defs = [
+      { key:'instagram', icon:'fab fa-instagram', label:'Instagram' },
+      { key:'youtube',   icon:'fab fa-youtube',   label:'YouTube'   },
+      { key:'facebook',  icon:'fab fa-facebook',  label:'Facebook'  },
+      { key:'tiktok',    icon:'fab fa-tiktok',    label:'TikTok'    },
+    ];
+    sl.innerHTML = defs.filter(d => social[d.key])
       .map(d => `<a href="${social[d.key]}" class="social-link" target="_blank" rel="noopener" aria-label="${d.label}"><i class="${d.icon}"></i></a>`)
       .join('');
   }
@@ -304,7 +271,7 @@ function renderFooter(s) {
 function initHeaderScroll() {
   const header = $('#site-header');
   if (!header) return;
-  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive:true });
 }
 
 /* ─── Hamburger ─── */
@@ -333,6 +300,7 @@ function init() {
   renderLangSwitcher();
   initHeaderScroll();
   initHamburger();
+  initProductModal();
   loadContent();
 }
 

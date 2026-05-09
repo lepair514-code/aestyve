@@ -259,24 +259,94 @@ img { display: block; max-width: 100%; }
 #hero-unmute-btn:hover { background: rgba(0,0,0,.6); transform: scale(1.08); }
 #hero-unmute-btn svg { width: 20px; height: 20px; pointer-events: none; }
 
-/* ---------- PRODUCTS — 이미지 수직 나열 ---------- */
-#products {
-  background: #ffffff;
-}
+/* ---------- PRODUCTS ---------- */
+#products { background: #fff; }
 
 .product-list {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 60px 24px 80px;
+  gap: 0;
 }
 
-.prod-img {
+/* 썸네일 */
+.prod-thumb {
+  cursor: pointer;
+  overflow: hidden;
+  line-height: 0;
+}
+.prod-thumb img {
   width: 100%;
   display: block;
+  transition: transform .5s ease;
 }
+.prod-thumb:hover img { transform: scale(1.02); }
+
+/* ─── 상세 모달 ─── */
+#prod-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#prod-modal.open { display: flex; }
+
+.prod-modal-box {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,.3);
+}
+.prod-modal-box img {
+  width: 100%;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
+.prod-modal-body {
+  padding: 28px 32px 36px;
+}
+.prod-modal-body h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+.prod-modal-body p {
+  font-size: .95rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.prod-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,.45);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  z-index: 10;
+}
+.prod-modal-close:hover { background: rgba(0,0,0,.7); }
 
 /* ---------- Section Header (Brand/Contact용) ---------- */
 .section-header { text-align: center; margin-bottom: 48px; }
@@ -425,7 +495,9 @@ img { display: block; max-width: 100%; }
   .hamburger { display: flex; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .product-list { padding: 40px 16px 60px; }
+  .product-list { padding: 40px 0 60px; }
+  .prod-modal-body { padding: 20px 20px 28px; }
+  .prod-modal-body h2 { font-size: 1.2rem; }
   #hero { min-height: 100svh; }
   .hero-overlay-inner { padding: 100px 0 80px; }
   .hero-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
@@ -435,4 +507,5 @@ img { display: block; max-width: 100%; }
   .header-inner { height: 56px; }
   .logo-wrap img { height: 32px; }
   .container { padding: 0 16px; }
+  .prod-modal-body { padding: 16px 16px 24px; }
 }
