@@ -81,12 +81,140 @@
       color: #bbb;
       font-style: italic;
     }
+
+    /* ─── 상세 이미지 갤러리 ─── */
+    .detail-images-outer {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .detail-images-title {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #9aa0b8;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    #detail-images-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .detail-gallery-item {
+      border-radius: 4px;
+      overflow: hidden;
+      background: #f8f8f6;
+      cursor: zoom-in;
+      aspect-ratio: 4 / 3;
+    }
+    .detail-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s ease;
+    }
+    .detail-gallery-item:hover img { transform: scale(1.04); }
+
+    /* ─── 라이트박스 ─── */
+    #lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.88);
+    }
+    #lightbox-img-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 90vw;
+      max-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 8px 48px rgba(0,0,0,.6);
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      z-index: 2;
+      background: rgba(255,255,255,.15);
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+    #lightbox-close:hover { background: rgba(255,255,255,.3); }
+    #lightbox-prev, #lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      background: rgba(255,255,255,.15);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+    #lightbox-prev { left: 16px; }
+    #lightbox-next { right: 16px; }
+    #lightbox-prev:hover, #lightbox-next:hover { background: rgba(255,255,255,.3); }
+    #lightbox-counter {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,.7);
+      font-size: .82rem;
+      letter-spacing: .06em;
+    }
+
     @media (max-width: 768px) {
       .detail-inner {
         grid-template-columns: 1fr;
         gap: 36px;
-        padding: 48px 20px 72px;
+        padding: 48px 20px 40px;
       }
+      .detail-images-outer {
+        padding: 0 20px 60px;
+      }
+      #detail-images-section {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+      }
+      #lightbox-prev { left: 8px; }
+      #lightbox-next { right: 8px; }
     }
   </style>
 </head>
@@ -125,6 +253,11 @@
       <div class="detail-divider"></div>
       <p class="detail-desc" id="detail-desc"></p>
     </div>
+  </div>
+
+  <!-- 상세 이미지 갤러리 -->
+  <div class="detail-images-outer">
+    <div id="detail-images-section" style="display:none;"></div>
   </div>
 </div>
 

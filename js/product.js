@@ -73,8 +73,51 @@ function renderNav(navItems) {
   }
 }
 
-/* ─── 콘텐츠 로드 ─── */
+/* ─── 콘텐츠 로드 (content.json 우선, localStorage fallback) ─── */
 async function loadContent() {
+  /* 1) content.json 항상 먼저 fetch */
+  let fresh = null;
+  try {
+    const res = await fetch('data/content.json?v=' + Date.now());
+    if (res.ok) fresh = await res.json();
+  } catch (e) {}
+
+  if (fresh) {
+    /* content.json 성공 → localStorage의 name·detail·detailImages 덮어쓰기 */
+    try {
+      const stored = localStorage.getItem('aestyve_content');
+      if (stored) {
+        const cached = JSON.parse(stored);
+        if (cached && typeof cached === 'object') {
+          STATE.content = {
+            ...fresh,
+            heroes:   cached.heroes   || fresh.heroes,
+            settings: cached.settings || fresh.settings,
+            nav:      cached.nav      || fresh.nav,
+            products: (fresh.products || []).map(fp => {
+              const cp = (cached.products || []).find(p => p.id === fp.id);
+              if (!cp) return fp;
+              return {
+                ...fp,
+                name:         cp.name         || fp.name,
+                detail:       cp.detail       || fp.detail,
+                category:     cp.category     || fp.category,
+                detailImages: cp.detailImages || fp.detailImages || [],
+              };
+            }),
+            categories: fresh.categories || cached.categories,
+          };
+          renderProduct();
+          return;
+        }
+      }
+    } catch (e) {}
+    STATE.content = fresh;
+    renderProduct();
+    return;
+  }
+
+  /* 2) fetch 실패 → localStorage 폴백 */
   try {
     const stored = localStorage.getItem('aestyve_content');
     if (stored) {
@@ -82,14 +125,8 @@ async function loadContent() {
       if (parsed && typeof parsed === 'object') { STATE.content = parsed; renderProduct(); return; }
     }
   } catch (e) {}
-  try {
-    const res = await fetch('data/content.json');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    STATE.content = await res.json();
-    renderProduct();
-  } catch (err) {
-    console.error('[Aestyve] content.json 로드 실패:', err);
-  }
+
+  console.error('[Aestyve] content.json 로드 실패 및 localStorage 없음');
 }
 
 /* ─── 제품 렌더 ─── */
@@ -111,7 +148,7 @@ function renderProduct() {
     return;
   }
 
-  const name = t(p.name) || '';
+  const name   = t(p.name)   || '';
   const detail = t(p.detail) || t(p.desc) || '';
 
   document.title = `Aestyve — ${name}`;
@@ -131,6 +168,78 @@ function renderProduct() {
       descEl.className = 'detail-empty';
     }
   }
+
+  /* ─── 상세 이미지 갤러리 ─── */
+  const section = $('#detail-images-section');
+  if (section) {
+    const imgs = p.detailImages || [];
+    if (imgs.length > 0) {
+      section.style.display = '';
+      section.innerHTML = imgs.map((src, i) => `
+        <div class="detail-gallery-item" onclick="openLightbox(${i})">
+          <img src="${src}" alt="${name} 상세 이미지 ${i + 1}"
+               onerror="this.closest('.detail-gallery-item').style.display='none'" />
+        </div>`).join('');
+      /* 라이트박스 데이터 저장 */
+      section._imgs = imgs;
+    } else {
+      section.style.display = 'none';
+      section.innerHTML = '';
+    }
+  }
+}
+
+/* ─── 라이트박스 ─── */
+window.openLightbox = function(idx) {
+  const section = $('#detail-images-section');
+  const imgs = section?._imgs || [];
+  if (!imgs.length) return;
+
+  let current = idx;
+  const overlay = document.createElement('div');
+  overlay.id = 'lightbox-overlay';
+  overlay.innerHTML = `
+    <div id="lightbox-bg"></div>
+    <button id="lightbox-close" aria-label="닫기">✕</button>
+    ${imgs.length > 1 ? `<button id="lightbox-prev" aria-label="이전">&#8249;</button>` : ''}
+    <div id="lightbox-img-wrap">
+      <img id="lightbox-img" src="${imgs[current]}" alt="" />
+    </div>
+    ${imgs.length > 1 ? `<button id="lightbox-next" aria-label="다음">&#8250;</button>` : ''}
+    ${imgs.length > 1 ? `<div id="lightbox-counter">${current + 1} / ${imgs.length}</div>` : ''}
+  `;
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+
+  const imgEl = overlay.querySelector('#lightbox-img');
+  const counter = overlay.querySelector('#lightbox-counter');
+
+  function goTo(i) {
+    current = (i + imgs.length) % imgs.length;
+    imgEl.src = imgs[current];
+    if (counter) counter.textContent = `${current + 1} / ${imgs.length}`;
+  }
+
+  overlay.querySelector('#lightbox-close').addEventListener('click', closeLightbox);
+  overlay.querySelector('#lightbox-bg').addEventListener('click', closeLightbox);
+  overlay.querySelector('#lightbox-prev')?.addEventListener('click', () => goTo(current - 1));
+  overlay.querySelector('#lightbox-next')?.addEventListener('click', () => goTo(current + 1));
+
+  document.addEventListener('keydown', _lbKeyHandler);
+  function _lbKeyHandler(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  }
+  overlay._keyHandler = _lbKeyHandler;
+};
+
+function closeLightbox() {
+  const overlay = $('#lightbox-overlay');
+  if (!overlay) return;
+  document.removeEventListener('keydown', overlay._keyHandler);
+  overlay.remove();
+  document.body.style.overflow = '';
 }
 
 /* ─── Header scroll ─── */
