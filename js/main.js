@@ -175,10 +175,6 @@ function renderProducts(prods) {
       <div class="slide-img-wrap">
         <img src="${p.image || ''}" alt="${t(p.name)}" loading="lazy" />
       </div>
-      <div class="slide-info">
-        <span class="slide-name">${t(p.name) || ''}</span>
-        <span class="slide-arrow">&#8594;</span>
-      </div>
     </a>`
   ).join('');
 
