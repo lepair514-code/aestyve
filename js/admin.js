@@ -87,13 +87,14 @@ async function loadData() {
             }),
             categories: fresh.categories || cached.categories,
           };
-          saveToStorage();
+          /* _dimgs는 건드리지 않고 slim 데이터만 갱신 */
+          _saveSlimOnly();
           renderAll();
           return;
         }
       }
     } catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
-    /* localStorage 없으면 fresh 그대로 사용 */
+    /* localStorage 없으면 fresh 그대로 사용 (detailImages는 _dimgs에서 복원) */
     const imgMap2 = _loadDetailImagesMap();
     DATA = {
       ...fresh,
@@ -102,7 +103,8 @@ async function loadData() {
         detailImages: imgMap2[p.id] || [],
       })),
     };
-    saveToStorage();
+    /* _dimgs는 건드리지 않고 slim 데이터만 갱신 */
+    _saveSlimOnly();
     renderAll();
     return;
   }
@@ -125,18 +127,9 @@ async function loadData() {
   toast('content.json을 찾을 수 없어 기본값으로 시작합니다.', 'error', 5000);
 }
 
-function saveToStorage() {
-  /* detailImages(Base64)는 별도 키에 분리 저장 → 메인 key 용량 초과 방지 */
+/* slim 저장: detailImages 제외한 메인 데이터만 저장 (_dimgs는 건드리지 않음) */
+function _saveSlimOnly() {
   try {
-    /* 1) detailImages만 뽑아서 별도 저장 */
-    const imgMap = {};
-    (DATA.products || []).forEach(p => {
-      if (p.id && p.detailImages && p.detailImages.length) imgMap[p.id] = p.detailImages;
-    });
-    localStorage.setItem(STORAGE_KEY + '_dimgs', JSON.stringify(imgMap));
-  } catch(e) { console.warn('[Admin] detailImages 저장 실패', e); }
-  try {
-    /* 2) 메인 DATA는 detailImages 제외하고 저장 */
     const slim = {
       ...DATA,
       products: (DATA.products || []).map(p => {
@@ -146,9 +139,30 @@ function saveToStorage() {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(slim));
   } catch(e) {
-    toast('저장 공간이 부족합니다. 이미지 크기를 줄여주세요.', 'error', 5000);
+    toast('저장 공간이 부족합니다.', 'error', 5000);
     console.error('[Admin] localStorage 저장 실패', e);
   }
+}
+
+function saveToStorage() {
+  /* detailImages(Base64)는 별도 키에 분리 저장 → 메인 key 용량 초과 방지 */
+  try {
+    /* 1) 기존 _dimgs를 읽어서 현재 DATA의 detailImages로 머지 저장
+          → DATA에 없는 제품의 이미지는 유지됨 */
+    const existing = _loadDetailImagesMap();
+    const imgMap = { ...existing };
+    (DATA.products || []).forEach(p => {
+      if (!p.id) return;
+      if (p.detailImages && p.detailImages.length) {
+        imgMap[p.id] = p.detailImages;
+      } else if (!(p.id in imgMap)) {
+        /* _dimgs에도 없으면 빈 배열 유지 (덮어쓰지 않음) */
+      }
+    });
+    localStorage.setItem(STORAGE_KEY + '_dimgs', JSON.stringify(imgMap));
+  } catch(e) { console.warn('[Admin] detailImages 저장 실패', e); }
+  /* 2) 메인 DATA는 detailImages 제외하고 저장 */
+  _saveSlimOnly();
 }
 
 /* ─── 기본 데이터 ─── */
@@ -550,24 +564,31 @@ window.addDetailImgFiles = function(input) {
 };
 function _processDetailImgFiles(files) {
   if (!files.length) return;
-  const arr = _getDetailImgs();
-  const slots = 10 - arr.length;
+  const existing = _getDetailImgs();
+  const slots = 10 - existing.length;
   if (slots <= 0) { toast('이미지는 최대 10장까지 추가할 수 있습니다.', 'error'); return; }
   const toLoad = files.slice(0, slots);
   if (files.length > slots) toast(`${files.length - slots}장은 한도 초과로 건너뜁니다.`, 'error');
-  let done = 0;
-  toLoad.forEach(file => {
-    if (!file.type.startsWith('image/')) { done++; return; }
+
+  /* Promise 기반으로 변환 — 모든 파일 로드 완료 후 한 번에 반영 */
+  const promises = toLoad.map(file => new Promise(resolve => {
+    if (!file.type.startsWith('image/')) { resolve(null); return; }
     if (file.size > 5 * 1024 * 1024) {
-      toast(`${file.name}: 5MB 이하만 가능합니다.`, 'error'); done++; return;
+      toast(`${file.name}: 5MB 이하만 가능합니다.`, 'error');
+      resolve(null); return;
     }
     const reader = new FileReader();
-    reader.onload = e => {
-      arr.push(e.target.result);
-      done++;
-      if (done === toLoad.length) _setDetailImgs([...arr]);
-    };
+    reader.onload  = e => resolve(e.target.result);
+    reader.onerror = () => resolve(null);
     reader.readAsDataURL(file);
+  }));
+
+  Promise.all(promises).then(results => {
+    const newImgs = results.filter(Boolean);
+    if (!newImgs.length) return;
+    /* 최신 상태를 다시 읽어 병합 (다른 Promise가 앞서 추가했을 경우 대비) */
+    const merged = [..._getDetailImgs(), ...newImgs].slice(0, 10);
+    _setDetailImgs(merged);
   });
 }
 /* 드롭존 초기화 (모달 열릴 때마다 호출) */

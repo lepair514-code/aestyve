@@ -270,6 +270,7 @@ function renderProductGrid(prods) {
       <div class="prod-card-img-wrap">
         <img src="${p.image || ''}" alt="${name}" loading="lazy"
              onerror="this.parentElement.innerHTML='<div class=prod-card-no-img>📦</div>'" />
+        <div class="prod-card-view"><span>VIEW</span></div>
       </div>
       <div class="prod-card-info">
         ${catLabel ? `<span class="prod-card-cat">${catLabel}</span>` : ''}
