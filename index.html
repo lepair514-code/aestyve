@@ -43,20 +43,13 @@
 
 <!-- ===== PRODUCTS ===== -->
 <section id="products" aria-label="제품">
-  <div class="product-list" id="product-grid"></div>
-</section>
-
-<!-- ===== PRODUCT DETAIL MODAL ===== -->
-<div id="prod-modal" role="dialog" aria-modal="true">
-  <div class="prod-modal-box">
-    <button class="prod-modal-close" onclick="closeProductModal()" aria-label="닫기">✕</button>
-    <img id="prod-modal-img" src="" alt="" />
-    <div class="prod-modal-body">
-      <h2 id="prod-modal-name"></h2>
-      <p id="prod-modal-desc"></p>
-    </div>
+  <div class="slider-wrap">
+    <div class="slider-track" id="slider-track"></div>
+    <button class="slider-btn slider-prev" id="slider-prev" aria-label="이전">&#8592;</button>
+    <button class="slider-btn slider-next" id="slider-next" aria-label="다음">&#8594;</button>
+    <div class="slider-dots" id="slider-dots"></div>
   </div>
-</div>
+</section>
 
 <!-- ===== BRAND ===== -->
 <section id="brand" aria-label="브랜드 스토리">

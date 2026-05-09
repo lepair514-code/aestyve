@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aestyve — Product</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .detail-wrap {
+      min-height: 100vh;
+      background: #fff;
+      padding-top: 64px; /* header height */
+    }
+    .detail-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 72px 32px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .detail-img-col img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+    }
+    .detail-info-col {
+      padding-top: 12px;
+    }
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #9aa0b8;
+      margin-bottom: 36px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .detail-back:hover { color: #1A2755; }
+    .detail-name {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: #1A2755;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      letter-spacing: -.02em;
+    }
+    .detail-divider {
+      width: 40px;
+      height: 2px;
+      background: #1A2755;
+      margin-bottom: 28px;
+    }
+    .detail-desc {
+      font-size: 1rem;
+      color: #555c78;
+      line-height: 1.9;
+      white-space: pre-line;
+    }
+    .detail-empty {
+      font-size: .9rem;
+      color: #bbb;
+      font-style: italic;
+    }
+    @media (max-width: 768px) {
+      .detail-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 48px 20px 72px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-wrap" aria-label="Aestyve 홈">
+        <img src="images/logo.png" alt="Aestyve" id="header-logo" />
+      </a>
+      <nav id="main-nav" aria-label="주 내비게이션"></nav>
+      <div class="header-actions">
+        <div id="lang-switcher" role="group" aria-label="언어 선택"></div>
+        <button class="hamburger" id="hamburger" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav id="mobile-nav" aria-label="모바일 내비게이션">
+    <div id="mobile-nav-links"></div>
+    <div class="mobile-lang-row" id="mobile-lang-switcher"></div>
+  </nav>
+</header>
+
+<div class="detail-wrap">
+  <div class="detail-inner">
+    <div class="detail-img-col">
+      <img id="detail-img" src="" alt="" />
+    </div>
+    <div class="detail-info-col">
+      <a href="index.html#products" class="detail-back">&#8592; Products</a>
+      <h1 class="detail-name" id="detail-name"></h1>
+      <div class="detail-divider"></div>
+      <p class="detail-desc" id="detail-desc"></p>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="alert" aria-live="polite"></div>
+<script src="js/product.js"></script>
+</body>
+</html>

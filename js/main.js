@@ -162,54 +162,86 @@ function heroToggleMute(btn) {
 }
 window.heroToggleMute = heroToggleMute;
 
-/* ─── Products — 이미지 클릭 → 상세 모달 ─── */
-function renderProducts(prods) {
-  const grid = $('#product-grid');
-  if (!grid || !prods || !prods.length) { if (grid) grid.innerHTML = ''; return; }
+/* ─── Products — 가로 슬라이더 ─── */
+let sliderIdx = 0;
 
-  grid.innerHTML = prods.map((p, i) =>
-    `<div class="prod-thumb" data-idx="${i}">
-      <img src="${p.image || ''}" alt="${t(p.name)}" loading="lazy" />
-    </div>`
+function renderProducts(prods) {
+  const track = $('#slider-track');
+  const dotsWrap = $('#slider-dots');
+  if (!track || !prods || !prods.length) return;
+
+  track.innerHTML = prods.map((p) =>
+    `<a class="slide-card" href="product.html?id=${p.id}">
+      <div class="slide-img-wrap">
+        <img src="${p.image || ''}" alt="${t(p.name)}" loading="lazy" />
+      </div>
+      <div class="slide-info">
+        <span class="slide-name">${t(p.name) || ''}</span>
+        <span class="slide-arrow">&#8594;</span>
+      </div>
+    </a>`
   ).join('');
 
-  $$('.prod-thumb', grid).forEach(el => {
-    el.addEventListener('click', () => openProductModal(parseInt(el.dataset.idx)));
+  /* dots */
+  dotsWrap.innerHTML = prods.map((_, i) =>
+    `<button class="slide-dot${i === 0 ? ' active' : ''}" data-i="${i}" aria-label="제품 ${i+1}"></button>`
+  ).join('');
+  $$('.slide-dot', dotsWrap).forEach(btn =>
+    btn.addEventListener('click', () => goSlide(parseInt(btn.dataset.i)))
+  );
+
+  sliderIdx = 0;
+  updateSlider(prods.length);
+}
+
+function goSlide(idx) {
+  const prods = STATE.content?.products || [];
+  sliderIdx = Math.max(0, Math.min(idx, prods.length - 1));
+  updateSlider(prods.length);
+}
+
+function updateSlider(total) {
+  const track = $('#slider-track');
+  if (!track) return;
+
+  /* 카드 너비 = 트랙 부모 기준으로 계산 */
+  const card = track.querySelector('.slide-card');
+  if (!card) return;
+  const gap = 24;
+  const cardW = card.getBoundingClientRect().width + gap;
+  track.style.transform = `translateX(-${sliderIdx * cardW}px)`;
+
+  /* dots */
+  $$('.slide-dot').forEach((d, i) => d.classList.toggle('active', i === sliderIdx));
+
+  /* 버튼 상태 */
+  const prev = $('#slider-prev');
+  const next = $('#slider-next');
+  if (prev) prev.style.opacity = sliderIdx === 0 ? '0.25' : '1';
+  if (next) next.style.opacity = sliderIdx >= total - 1 ? '0.25' : '1';
+}
+
+function initSlider() {
+  const prev = $('#slider-prev');
+  const next = $('#slider-next');
+  if (prev) prev.addEventListener('click', () => { const total = STATE.content?.products?.length || 0; goSlide(sliderIdx - 1); });
+  if (next) next.addEventListener('click', () => { const total = STATE.content?.products?.length || 0; goSlide(sliderIdx + 1); });
+
+  /* 드래그 */
+  const track = $('#slider-track');
+  if (!track) return;
+  let startX = 0, dragging = false, moved = 0;
+  track.addEventListener('pointerdown', e => { startX = e.clientX; dragging = true; moved = 0; track.setPointerCapture(e.pointerId); });
+  track.addEventListener('pointermove', e => { if (!dragging) return; moved = e.clientX - startX; });
+  track.addEventListener('pointerup', () => {
+    if (!dragging) return; dragging = false;
+    const total = STATE.content?.products?.length || 0;
+    if (moved < -50) goSlide(sliderIdx + 1);
+    else if (moved > 50) goSlide(sliderIdx - 1);
   });
+
+  window.addEventListener('resize', () => updateSlider(STATE.content?.products?.length || 0));
 }
-
-/* ─── 상세 모달 ─── */
-function openProductModal(idx) {
-  const prods = STATE.content?.products;
-  if (!prods || !prods[idx]) return;
-  const p = prods[idx];
-
-  const modal = $('#prod-modal');
-  const modalImg  = $('#prod-modal-img');
-  const modalName = $('#prod-modal-name');
-  const modalDesc = $('#prod-modal-desc');
-
-  if (modalImg)  modalImg.src = p.image || '';
-  if (modalImg)  modalImg.alt = t(p.name);
-  if (modalName) modalName.textContent = t(p.name) || '';
-  if (modalDesc) modalDesc.textContent = t(p.detail) || t(p.desc) || '';
-
-  if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-}
-
-function closeProductModal() {
-  const modal = $('#prod-modal');
-  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
-}
-
-function initProductModal() {
-  const overlay = $('#prod-modal');
-  if (!overlay) return;
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeProductModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProductModal(); });
-}
-
-window.closeProductModal = closeProductModal;
 
 /* ─── Brand ─── */
 function renderBrand(s) {
@@ -300,7 +332,7 @@ function init() {
   renderLangSwitcher();
   initHeaderScroll();
   initHamburger();
-  initProductModal();
+  initSlider();
   loadContent();
 }
 
