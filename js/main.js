@@ -220,20 +220,55 @@ function updateSlider(total) {
 function initSlider() {
   const prev = $('#slider-prev');
   const next = $('#slider-next');
-  if (prev) prev.addEventListener('click', () => { const total = STATE.content?.products?.length || 0; goSlide(sliderIdx - 1); });
-  if (next) next.addEventListener('click', () => { const total = STATE.content?.products?.length || 0; goSlide(sliderIdx + 1); });
+  if (prev) prev.addEventListener('click', () => goSlide(sliderIdx - 1));
+  if (next) next.addEventListener('click', () => goSlide(sliderIdx + 1));
 
-  /* 드래그 */
+  /* 드래그 vs 클릭 구분 */
   const track = $('#slider-track');
   if (!track) return;
-  let startX = 0, dragging = false, moved = 0;
-  track.addEventListener('pointerdown', e => { startX = e.clientX; dragging = true; moved = 0; track.setPointerCapture(e.pointerId); });
-  track.addEventListener('pointermove', e => { if (!dragging) return; moved = e.clientX - startX; });
-  track.addEventListener('pointerup', () => {
-    if (!dragging) return; dragging = false;
-    const total = STATE.content?.products?.length || 0;
-    if (moved < -50) goSlide(sliderIdx + 1);
-    else if (moved > 50) goSlide(sliderIdx - 1);
+
+  let startX = 0, startY = 0, moved = 0, isDragging = false;
+  const DRAG_THRESHOLD = 8; // px — 이 이상 움직여야 드래그로 판정
+
+  track.addEventListener('pointerdown', e => {
+    startX  = e.clientX;
+    startY  = e.clientY;
+    moved   = 0;
+    isDragging = false;
+    track.setPointerCapture(e.pointerId);
+  });
+
+  track.addEventListener('pointermove', e => {
+    moved = e.clientX - startX;
+    const movedY = Math.abs(e.clientY - startY);
+    /* 가로 이동이 세로보다 크고 임계값 넘으면 드래그로 전환 */
+    if (!isDragging && Math.abs(moved) > DRAG_THRESHOLD && Math.abs(moved) > movedY) {
+      isDragging = true;
+    }
+  });
+
+  track.addEventListener('pointerup', e => {
+    if (isDragging) {
+      /* 드래그: 슬라이드 이동 */
+      const total = STATE.content?.products?.length || 0;
+      if (moved < -50)      goSlide(sliderIdx + 1);
+      else if (moved > 50)  goSlide(sliderIdx - 1);
+    } else {
+      /* 클릭: 가장 가까운 <a> 를 찾아 바로 이동 */
+      const card = e.target.closest('.slide-card');
+      if (card && card.href) {
+        window.location.href = card.href;
+      }
+    }
+    isDragging = false;
+    moved = 0;
+  });
+
+  /* 드래그 중 <a> 기본 클릭 동작 차단 */
+  track.addEventListener('click', e => {
+    if (Math.abs(e.clientX - startX) > DRAG_THRESHOLD) {
+      e.preventDefault();
+    }
   });
 
   window.addEventListener('resize', () => updateSlider(STATE.content?.products?.length || 0));

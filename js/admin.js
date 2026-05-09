@@ -402,10 +402,22 @@ window.applyModalImgUrl = function() {
 
 /* Modal 저장 */
 window.saveProductModal = function() {
-  const imgVal  = ($('#modal-img-value') || {}).value || '';
-  // URL 탭에 직접 입력한 값이 있으면 우선 사용
-  const urlInput = ($('#modal-img-url') || {}).value?.trim() || '';
-  const finalImg = urlInput && urlInput.startsWith('http') ? urlInput : imgVal;
+  /* 활성 탭 기준으로 이미지 값 결정 */
+  const urlTabActive = $('#modal-tab-url')?.classList.contains('active');
+  let finalImg = '';
+  if (urlTabActive) {
+    /* URL 탭: 입력 필드 값 사용 */
+    const urlInput = ($('#modal-img-url') || {}).value?.trim() || '';
+    if (urlInput && (urlInput.startsWith('http') || urlInput.startsWith('/'))) {
+      finalImg = urlInput;
+    } else {
+      /* URL이 비어있으면 hidden value(기존 값) 유지 */
+      finalImg = ($('#modal-img-value') || {}).value || '';
+    }
+  } else {
+    /* 파일 탭: hidden value 사용 (base64 또는 기존 경로) */
+    finalImg = ($('#modal-img-value') || {}).value || '';
+  }
 
   const obj = {
     id: modalProductIdx >= 0 ? (DATA.products[modalProductIdx]?.id || uid()) : uid(),
