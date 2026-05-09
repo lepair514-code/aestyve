@@ -288,6 +288,8 @@ window.openProductModal = function(idx) {
   $('#modal-title').textContent = idx >= 0 ? '제품 편집' : '새 제품 추가';
   $('#modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  /* 드롭존 이벤트 바인딩 (innerHTML 교체 후 재등록 필요) */
+  requestAnimationFrame(_initDetailImgDropzone);
 };
 
 window.addProduct = function() {
@@ -419,26 +421,30 @@ function buildProductModal(p) {
     <!-- 상세페이지 추가 이미지 -->
     <div>
       <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">상세페이지 추가 이미지</div>
-      <div style="font-size:.72rem;color:var(--gray-400);margin-bottom:12px;">상세페이지 본문 아래에 표시되는 이미지 (최대 10장, 순서 드래그 가능)</div>
-      <div id="detail-img-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px;">
+      <div style="font-size:.72rem;color:var(--gray-400);margin-bottom:12px;">상세페이지 본문 아래에 표시되는 이미지 (최대 10장 · JPG, PNG, WebP)</div>
+
+      <!-- 추가된 이미지 목록 -->
+      <div id="detail-img-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
         ${(p?.detailImages || []).map((src, idx) => `
-        <div class="detail-img-row" data-idx="${idx}" style="display:flex;align-items:center;gap:8px;background:var(--gray-100);border-radius:var(--radius);padding:6px 10px;">
-          <img src="${esc(src)}" style="width:56px;height:56px;object-fit:cover;border-radius:4px;flex-shrink:0;" onerror="this.style.background='#ddd'" />
-          <span style="flex:1;font-size:.75rem;color:var(--gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(src.length > 60 ? src.slice(0,60)+'…' : src)}</span>
-          <button type="button" onclick="removeDetailImg(${idx})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:1rem;padding:4px;">✕</button>
+        <div class="detail-img-row" data-idx="${idx}" style="display:flex;align-items:center;gap:10px;background:var(--gray-100);border-radius:var(--radius);padding:8px 10px;">
+          <img src="${esc(src)}" style="width:60px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;" onerror="this.style.background='#ddd'" />
+          <span style="flex:1;font-size:.73rem;color:var(--gray-500);">이미지 ${idx + 1}</span>
+          <button type="button" onclick="removeDetailImg(${idx})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:1.1rem;padding:4px 6px;" title="삭제">✕</button>
         </div>`).join('')}
       </div>
-      <!-- 파일 추가 -->
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <label style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:var(--accent);color:#fff;border-radius:var(--radius);font-size:.78rem;font-weight:600;cursor:pointer;">
-          <i class="fas fa-plus"></i> 파일 추가
-          <input type="file" id="detail-img-file-input" accept="image/*" multiple style="display:none" onchange="addDetailImgFiles(this)" />
-        </label>
-        <div style="display:flex;gap:6px;flex:1;min-width:180px;">
-          <input type="url" id="detail-img-url-input" class="form-control" placeholder="이미지 URL 직접 입력" style="font-size:.8rem;" />
-          <button type="button" class="btn btn-outline btn-sm" onclick="addDetailImgUrl()">추가</button>
+
+      <!-- 파일 업로드 드롭존 -->
+      <label id="detail-img-dropzone" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:28px 20px;border:2px dashed var(--border);border-radius:var(--radius);cursor:pointer;transition:border-color .2s,background .2s;"
+        onmouseover="this.style.borderColor='var(--accent)';this.style.background='#f0f4ff'"
+        onmouseout="this.style.borderColor='var(--border)';this.style.background=''">
+        <i class="fas fa-cloud-upload-alt" style="font-size:2rem;color:var(--accent);"></i>
+        <div style="text-align:center;">
+          <div style="font-size:.85rem;font-weight:600;color:var(--gray-700);">클릭하거나 이미지를 여기에 끌어다 놓으세요</div>
+          <div style="font-size:.72rem;color:var(--gray-400);margin-top:4px;">JPG · PNG · WebP · 파일당 최대 5MB · 최대 10장</div>
         </div>
-      </div>
+        <input type="file" id="detail-img-file-input" accept="image/*" multiple style="display:none" onchange="addDetailImgFiles(this)" />
+      </label>
+
       <input type="hidden" id="m-detail-images" value="${esc(JSON.stringify(p?.detailImages || []))}" />
     </div>
   `;
@@ -456,11 +462,15 @@ function _setDetailImgs(arr) {
 function _renderDetailImgList(arr) {
   const list = $('#detail-img-list');
   if (!list) return;
+  if (!arr.length) {
+    list.innerHTML = '';
+    return;
+  }
   list.innerHTML = arr.map((src, idx) => `
-    <div class="detail-img-row" data-idx="${idx}" style="display:flex;align-items:center;gap:8px;background:var(--gray-100);border-radius:var(--radius);padding:6px 10px;">
-      <img src="${esc(src)}" style="width:56px;height:56px;object-fit:cover;border-radius:4px;flex-shrink:0;" onerror="this.style.background='#ddd'" />
-      <span style="flex:1;font-size:.75rem;color:var(--gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(src.length > 60 ? src.slice(0,60)+'…' : src)}</span>
-      <button type="button" onclick="removeDetailImg(${idx})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:1rem;padding:4px;">✕</button>
+    <div class="detail-img-row" data-idx="${idx}" style="display:flex;align-items:center;gap:10px;background:var(--gray-100);border-radius:var(--radius);padding:8px 10px;">
+      <img src="${esc(src)}" style="width:60px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;" onerror="this.style.background='#ddd'" />
+      <span style="flex:1;font-size:.73rem;color:var(--gray-500);">이미지 ${idx + 1}</span>
+      <button type="button" onclick="removeDetailImg(${idx})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:1.1rem;padding:4px 6px;" title="삭제">✕</button>
     </div>`).join('');
 }
 window.removeDetailImg = function(idx) {
@@ -469,38 +479,52 @@ window.removeDetailImg = function(idx) {
   _setDetailImgs(arr);
 };
 window.addDetailImgFiles = function(input) {
-  const files = [...(input.files || [])];
+  _processDetailImgFiles([...(input.files || [])]);
+  input.value = '';
+};
+function _processDetailImgFiles(files) {
+  if (!files.length) return;
   const arr = _getDetailImgs();
-  if (arr.length + files.length > 10) {
-    toast('이미지는 최대 10장까지 추가할 수 있습니다.', 'error'); return;
-  }
-  let loaded = 0;
-  files.forEach(file => {
+  const slots = 10 - arr.length;
+  if (slots <= 0) { toast('이미지는 최대 10장까지 추가할 수 있습니다.', 'error'); return; }
+  const toLoad = files.slice(0, slots);
+  if (files.length > slots) toast(`${files.length - slots}장은 한도 초과로 건너뜁니다.`, 'error');
+  let done = 0;
+  toLoad.forEach(file => {
+    if (!file.type.startsWith('image/')) { done++; return; }
     if (file.size > 5 * 1024 * 1024) {
-      toast(`${file.name}: 5MB 이하만 가능합니다.`, 'error'); loaded++; return;
+      toast(`${file.name}: 5MB 이하만 가능합니다.`, 'error'); done++; return;
     }
     const reader = new FileReader();
     reader.onload = e => {
       arr.push(e.target.result);
-      loaded++;
-      if (loaded === files.length) _setDetailImgs([...arr]);
+      done++;
+      if (done === toLoad.length) _setDetailImgs([...arr]);
     };
     reader.readAsDataURL(file);
   });
-  input.value = '';
-};
-window.addDetailImgUrl = function() {
-  const input = $('#detail-img-url-input');
-  const url = input?.value?.trim() || '';
-  if (!url || (!url.startsWith('http') && !url.startsWith('/'))) {
-    toast('올바른 URL을 입력해주세요.', 'error'); return;
-  }
-  const arr = _getDetailImgs();
-  if (arr.length >= 10) { toast('이미지는 최대 10장까지 추가할 수 있습니다.', 'error'); return; }
-  arr.push(url);
-  _setDetailImgs(arr);
-  if (input) input.value = '';
-};
+}
+/* 드롭존 초기화 (모달 열릴 때마다 호출) */
+function _initDetailImgDropzone() {
+  const zone = $('#detail-img-dropzone');
+  if (!zone) return;
+  zone.addEventListener('dragover', e => {
+    e.preventDefault();
+    zone.style.borderColor = 'var(--accent)';
+    zone.style.background = '#f0f4ff';
+  });
+  zone.addEventListener('dragleave', () => {
+    zone.style.borderColor = 'var(--border)';
+    zone.style.background = '';
+  });
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.style.borderColor = 'var(--border)';
+    zone.style.background = '';
+    const files = [...(e.dataTransfer.files || [])].filter(f => f.type.startsWith('image/'));
+    _processDetailImgFiles(files);
+  });
+}
 
 /* 탭 전환 */
 window.switchModalTab = function(tab) {
