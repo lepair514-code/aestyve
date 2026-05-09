@@ -709,38 +709,19 @@ img { display: block; max-width: 100%; }
   gap: 20px;
 }
 .detail-gallery-item {
-  position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
   background: #fff;
   cursor: zoom-in;
   box-shadow: var(--shadow-sm);
-  /* 원본 비율 유지 — aspect-ratio, height 강제 없음 */
 }
 .detail-gallery-item img {
   width: 100%;
-  height: auto;       /* 원본 비율 그대로 */
+  height: auto;
   display: block;
-  object-fit: unset;  /* cover/contain 없음 — 완전 원본 표시 */
-  transition: opacity .25s ease;
+  object-fit: unset;
 }
-.detail-gallery-item:hover img { opacity: .92; }
-.detail-gallery-zoom {
-  position: absolute;
-  inset: 0;
-  background: rgba(26,39,85,.0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1.5rem;
-  opacity: 0;
-  transition: opacity .3s, background .3s;
-}
-.detail-gallery-item:hover .detail-gallery-zoom {
-  opacity: 1;
-  background: rgba(26,39,85,.25);
-}
+.detail-gallery-zoom { display: none; }
 
 /* 라이트박스 */
 #lightbox {
