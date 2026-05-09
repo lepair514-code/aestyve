@@ -67,6 +67,50 @@ function renderLangSwitcher() {
 
 /* ─── 콘텐츠 로드 ─── */
 async function loadContent() {
+  /* 1) content.json 항상 먼저 fetch */
+  let fresh = null;
+  try {
+    const res = await fetch('data/content.json?v=' + Date.now()); // 캐시 무력화
+    if (res.ok) fresh = await res.json();
+  } catch (e) {}
+
+  /* 2) localStorage: 관리자가 저장한 hero·settings·nav 만 덮어씀
+        products / categories 는 content.json 값을 절대 우선 */
+  let merged = fresh;
+  if (fresh) {
+    try {
+      const stored = localStorage.getItem('aestyve_content');
+      if (stored) {
+        const cached = JSON.parse(stored);
+        if (cached && typeof cached === 'object') {
+          merged = {
+            ...fresh,                          // content.json 전체 베이스
+            /* 관리자 전용 필드만 localStorage 값으로 덮어씀 */
+            heroes:   cached.heroes   || fresh.heroes,
+            settings: cached.settings || fresh.settings,
+            nav:      cached.nav      || fresh.nav,
+            /* products·categories 는 항상 content.json 우선 —
+               단, 관리자가 detail/name 편집한 경우 id 매칭으로 병합 */
+            products: (fresh.products || []).map(fp => {
+              const cp = (cached.products || []).find(p => p.id === fp.id);
+              if (!cp) return fp;
+              return {
+                ...fp,                 // image, id, badges 등은 content.json 기준
+                name:   cp.name   || fp.name,
+                detail: cp.detail || fp.detail,
+              };
+            }),
+            categories: fresh.categories || cached.categories,
+          };
+        }
+      }
+    } catch (e) {}
+    STATE.content = merged;
+    renderAll();
+    return;
+  }
+
+  /* 3) fetch 완전 실패 시 localStorage 폴백 */
   try {
     const stored = localStorage.getItem('aestyve_content');
     if (stored) {
@@ -74,14 +118,7 @@ async function loadContent() {
       if (parsed && typeof parsed === 'object') { STATE.content = parsed; renderAll(); return; }
     }
   } catch (e) {}
-  try {
-    const res = await fetch('data/content.json');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    STATE.content = await res.json();
-    renderAll();
-  } catch (err) {
-    console.error('[Aestyve] content.json 로드 실패:', err);
-  }
+  console.error('[Aestyve] content.json 로드 실패');
 }
 
 /* ─── 전체 렌더 ─── */

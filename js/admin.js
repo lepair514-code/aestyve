@@ -91,6 +91,7 @@ function renderAll() {
   renderDashboard();
   renderHeroForm();
   renderProductAdminList();
+  renderCategoryList();
   renderSettingsForm();
 }
 
@@ -296,6 +297,23 @@ function buildProductModal(p) {
 
     <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
 
+    <!-- 카테고리 선택 -->
+    <div class="form-group" style="margin-bottom:20px;">
+      <label class="form-label">카테고리</label>
+      <div class="cat-select-wrap">
+        <select id="m-category">
+          ${(DATA.categories || []).map(c => {
+            const label = getLangStr(c.label, 'ko') || c.id;
+            const sel = (p?.category || 'all') === c.id ? 'selected' : '';
+            return `<option value="${esc(c.id)}" ${sel}>${esc(label)}</option>`;
+          }).join('')}
+        </select>
+        <span style="font-size:.75rem;color:var(--gray-600);">카테고리 관리는 사이드바 <strong>카테고리 관리</strong>에서</span>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 20px;" />
+
     <!-- 제품 이름 -->
     <div style="margin-bottom:16px;">
       <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">제품 이름</div>
@@ -429,6 +447,7 @@ window.saveProductModal = function() {
       'zh-CN': ($('#m-name-zhcn') || {}).value?.trim() || '',
       th:      ($('#m-name-th') || {}).value?.trim() || '',
     },
+    category: ($('#m-category') || {}).value || 'all',
     detail: {
       ko:      ($('#m-detail-ko') || {}).value?.trim() || '',
       en:      ($('#m-detail-en') || {}).value?.trim() || '',
@@ -556,20 +575,171 @@ function initSaveAllBtn() {
   });
 }
 
+/* ─── 카테고리 관리 ─── */
+function renderCategoryList() {
+  const list = $('#category-list');
+  if (!list) return;
+  const cats = DATA.categories || [];
+
+  if (!cats.length) {
+    list.innerHTML = `<div style="padding:24px;text-align:center;color:var(--gray-600);font-size:.84rem;">등록된 카테고리가 없습니다. <strong>카테고리 추가</strong> 버튼으로 추가하세요.</div>`;
+    return;
+  }
+
+  list.innerHTML = cats.map((c, i) => {
+    const labelKo = getLangStr(c.label, 'ko') || c.id;
+    const labelEn = getLangStr(c.label, 'en') || c.id;
+    const prodCount = (DATA.products || []).filter(p => p.category === c.id).length;
+    return `
+    <div class="cat-admin-row">
+      <div class="cat-admin-id">${esc(c.id)}</div>
+      <div class="cat-admin-labels">
+        <span class="cat-lbl-ko">${esc(labelKo)}</span>
+        <span class="cat-lbl-sep">·</span>
+        <span class="cat-lbl-en">${esc(labelEn)}</span>
+        <span class="cat-prod-badge">${prodCount}개 제품</span>
+      </div>
+      <div class="cat-admin-actions">
+        <button class="btn btn-outline btn-sm" onclick="openCatModal(${i})"><i class="fas fa-edit"></i> 편집</button>
+        ${c.id !== 'all' ? `<button class="btn btn-danger btn-sm" onclick="deleteCat(${i})"><i class="fas fa-trash"></i></button>` : ''}
+        ${i > 0              ? `<button class="btn btn-outline btn-sm" title="위로" onclick="moveCat(${i},-1)">▲</button>` : ''}
+        ${i < cats.length-1  ? `<button class="btn btn-outline btn-sm" title="아래로" onclick="moveCat(${i},1)">▼</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+window.addCategory = function() { openCatModal(-1); };
+
+window.openCatModal = function(idx) {
+  const c = idx >= 0 ? (DATA.categories || [])[idx] : null;
+  const body = $('#cat-modal-body');
+  if (!body) return;
+
+  const idVal   = c?.id || '';
+  const koVal   = getLangStr(c?.label, 'ko');
+  const enVal   = getLangStr(c?.label, 'en');
+  const zhVal   = (c?.label || {})['zh-CN'] || '';
+  const thVal   = (c?.label || {})['th'] || '';
+
+  body.innerHTML = `
+    <div class="form-group">
+      <label class="form-label">카테고리 ID <span style="color:var(--gray-400);font-weight:400;">(영문 소문자·숫자, 변경 불가)</span></label>
+      <input type="text" class="form-control" id="cat-id" value="${esc(idVal)}"
+        placeholder="예: filler, booster" ${idx >= 0 ? 'readonly style="background:var(--gray-100);color:var(--gray-600);"' : ''} />
+    </div>
+    <hr style="border:none;border-top:1px solid var(--border);margin:4px 0 16px;" />
+    <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">카테고리 이름 (다국어)</div>
+    <div class="form-row" style="margin-bottom:8px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">🇰🇷 한국어</label>
+        <input type="text" class="form-control" id="cat-ko" value="${esc(koVal)}" placeholder="전체" />
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">🇺🇸 English</label>
+        <input type="text" class="form-control" id="cat-en" value="${esc(enVal)}" placeholder="All" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">🇨🇳 中文</label>
+        <input type="text" class="form-control" id="cat-zhcn" value="${esc(zhVal)}" placeholder="全部" />
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">🇹🇭 ภาษาไทย</label>
+        <input type="text" class="form-control" id="cat-th" value="${esc(thVal)}" placeholder="ทั้งหมด" />
+      </div>
+    </div>`;
+
+  $('#cat-modal-title').textContent = idx >= 0 ? '카테고리 편집' : '카테고리 추가';
+  $('#cat-modal-save-btn').onclick = () => saveCatModal(idx);
+  $('#cat-modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+
+function saveCatModal(idx) {
+  const idVal = ($('#cat-id') || {}).value?.trim().toLowerCase().replace(/\s+/g, '-') || '';
+  const ko    = ($('#cat-ko') || {}).value?.trim() || '';
+  const en    = ($('#cat-en') || {}).value?.trim() || '';
+  const zhcn  = ($('#cat-zhcn') || {}).value?.trim() || '';
+  const th    = ($('#cat-th') || {}).value?.trim() || '';
+
+  if (!idVal) { toast('카테고리 ID를 입력해주세요.', 'error'); return; }
+  if (!ko && !en) { toast('카테고리 이름을 한 개 이상 입력해주세요.', 'error'); return; }
+
+  if (!DATA.categories) DATA.categories = [];
+
+  /* 신규 추가 시 ID 중복 체크 */
+  if (idx < 0) {
+    const dup = DATA.categories.find(c => c.id === idVal);
+    if (dup) { toast('이미 존재하는 카테고리 ID입니다.', 'error'); return; }
+  }
+
+  const obj = {
+    id: idx >= 0 ? DATA.categories[idx].id : idVal,
+    label: { ko, en, 'zh-CN': zhcn, th },
+  };
+
+  if (idx >= 0) {
+    DATA.categories[idx] = obj;
+  } else {
+    DATA.categories.push(obj);
+  }
+
+  saveToStorage();
+  closeCatModal();
+  renderCategoryList();
+  toast('✅ 카테고리가 저장되었습니다!');
+}
+
+window.deleteCat = function(idx) {
+  const cat = (DATA.categories || [])[idx];
+  if (!cat) return;
+  if (cat.id === 'all') { toast('"전체" 카테고리는 삭제할 수 없습니다.', 'error'); return; }
+  const usedBy = (DATA.products || []).filter(p => p.category === cat.id);
+  const msg = usedBy.length
+    ? `이 카테고리를 사용하는 제품이 ${usedBy.length}개 있습니다.\n삭제하면 해당 제품의 카테고리가 초기화됩니다.\n계속하시겠습니까?`
+    : '정말 삭제하시겠습니까?';
+  if (!confirm(msg)) return;
+  /* 해당 카테고리 제품 → all로 초기화 */
+  (DATA.products || []).forEach(p => { if (p.category === cat.id) p.category = 'all'; });
+  DATA.categories.splice(idx, 1);
+  saveToStorage();
+  renderCategoryList();
+  renderProductAdminList();
+  toast('🗑️ 카테고리 삭제 완료');
+};
+
+window.moveCat = function(idx, dir) {
+  const arr = DATA.categories;
+  const ni = idx + dir;
+  if (ni < 0 || ni >= arr.length) return;
+  [arr[idx], arr[ni]] = [arr[ni], arr[idx]];
+  saveToStorage();
+  renderCategoryList();
+};
+
+window.closeCatModal = function() {
+  $('#cat-modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+};
+
 /* ─── Sidebar 내비게이션 ─── */
 const SECTION_ICONS = {
-  dashboard: 'fas fa-home',
-  hero:      'fas fa-film',
-  products:  'fas fa-images',
-  settings:  'fas fa-cog',
-  data:      'fas fa-database',
+  dashboard:  'fas fa-home',
+  hero:       'fas fa-film',
+  products:   'fas fa-images',
+  categories: 'fas fa-tags',
+  settings:   'fas fa-cog',
+  data:       'fas fa-database',
 };
 const SECTION_TITLES = {
-  dashboard: '대시보드',
-  hero:      '메인 영상',
-  products:  '제품 이미지',
-  settings:  '사이트 설정',
-  data:      'Import / Export',
+  dashboard:  '대시보드',
+  hero:       '메인 영상',
+  products:   '제품 이미지',
+  categories: '카테고리 관리',
+  settings:   '사이트 설정',
+  data:       'Import / Export',
 };
 
 function initSidebar() {

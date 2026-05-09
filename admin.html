@@ -265,6 +265,47 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 3px; }
 
+    /* Category modal open state */
+    #cat-modal-overlay.open { display: flex !important; }
+
+    /* Category select in product modal */
+    .cat-select-wrap { display: flex; align-items: center; gap: 10px; }
+    .cat-select-wrap select { flex: 1; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: .85rem; color: var(--primary); background: var(--white); outline: none; cursor: pointer; }
+    .cat-select-wrap select:focus { border-color: var(--accent); }
+
+    /* Category list rows */
+    .cat-admin-row {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+    }
+    .cat-admin-row:last-child { border-bottom: none; }
+    .cat-admin-row:hover { background: #fafbff; }
+    .cat-admin-id {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: monospace;
+      background: #eef2ff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .cat-admin-labels { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .cat-lbl-ko { font-size: .88rem; font-weight: 700; color: var(--primary); }
+    .cat-lbl-sep { color: var(--gray-400); }
+    .cat-lbl-en { font-size: .82rem; color: var(--gray-600); }
+    .cat-prod-badge {
+      font-size: .7rem; font-weight: 600;
+      background: var(--gray-100); color: var(--gray-600);
+      border-radius: 20px; padding: 2px 8px;
+    }
+    .cat-admin-actions { display: flex; align-items: center; gap: 6px; }
+
     @media (max-width: 860px) {
       #sidebar { transform: translateX(-100%); transition: transform .3s; }
       #sidebar.open { transform: translateX(0); }
@@ -290,6 +331,7 @@
       <div class="nav-section-label" style="margin-top:8px;">콘텐츠 편집</div>
       <button class="sidebar-btn" data-section="hero"><i class="fas fa-film"></i> 메인 영상</button>
       <button class="sidebar-btn" data-section="products"><i class="fas fa-images"></i> 제품 이미지</button>
+      <button class="sidebar-btn" data-section="categories"><i class="fas fa-tags"></i> 카테고리 관리</button>
       <button class="sidebar-btn" data-section="settings"><i class="fas fa-cog"></i> 사이트 설정</button>
 
       <div class="nav-section-label" style="margin-top:8px;">데이터</div>
@@ -422,6 +464,23 @@
         </div>
       </div>
 
+      <!-- CATEGORIES -->
+      <div class="section-view" id="section-categories">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title"><i class="fas fa-tags"></i> 카테고리 관리</span>
+            <button class="btn btn-primary btn-sm" onclick="addCategory()"><i class="fas fa-plus"></i> 카테고리 추가</button>
+          </div>
+          <div class="panel-body" style="padding:0;">
+            <div class="form-note" style="padding:14px 20px 10px;border-bottom:1px solid var(--border);">
+              카테고리를 추가·편집·삭제하고 순서를 바꿀 수 있습니다. <strong>"전체"</strong> 카테고리는 삭제할 수 없습니다.
+              제품 편집 모달에서 각 제품의 카테고리를 지정할 수 있습니다.
+            </div>
+            <div id="category-list"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- SETTINGS -->
       <div class="section-view" id="section-settings">
         <div class="panel">
@@ -493,7 +552,7 @@
   </div><!-- /admin-main -->
 </div><!-- /admin-layout -->
 
-<!-- Modal -->
+<!-- 제품 편집 Modal -->
 <div id="modal-overlay">
   <div id="modal-box">
     <div id="modal-header">
@@ -504,6 +563,21 @@
     <div id="modal-footer">
       <button class="btn btn-outline" onclick="closeModal()">취소</button>
       <button class="btn btn-primary" id="modal-save-btn" onclick="saveProductModal()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- 카테고리 Modal -->
+<div id="cat-modal-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:300;display:none;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:12px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.22);">
+    <div style="padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+      <span id="cat-modal-title" style="font-size:.95rem;font-weight:700;">카테고리 편집</span>
+      <button onclick="closeCatModal()" style="background:none;border:none;font-size:1.2rem;color:var(--gray-600);cursor:pointer;padding:4px 8px;border-radius:4px;">✕</button>
+    </div>
+    <div id="cat-modal-body" style="padding:20px;"></div>
+    <div style="padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-outline" onclick="closeCatModal()">취소</button>
+      <button class="btn btn-primary" id="cat-modal-save-btn">저장</button>
     </div>
   </div>
 </div>

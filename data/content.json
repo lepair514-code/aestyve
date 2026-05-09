@@ -25,9 +25,33 @@
       "th": "Aestyve เกิดจากวิทยาศาสตร์ผิวหนังขั้นสูงและความเข้าใจอย่างลึกซึ้งเกี่ยวกับความงาม เราให้บริการโซลูชันสำหรับผิวทุกประเภท"
     },
     "stats": [
-      { "number": "500+", "label": { "ko": "임상 검증 성분", "en": "Clinically Tested Ingredients", "zh-CN": "临床验证成分", "th": "ส่วนผสมที่ผ่านการทดสอบ" } },
-      { "number": "98%", "label": { "ko": "고객 만족도", "en": "Customer Satisfaction", "zh-CN": "客户满意度", "th": "ความพึงพอใจของลูกค้า" } },
-      { "number": "30+", "label": { "ko": "피부과 전문의 검증", "en": "Dermatologist Verified", "zh-CN": "皮肤科医生认证", "th": "ได้รับการรับรองจากผู้เชี่ยวชาญ" } }
+      {
+        "number": "500+",
+        "label": {
+          "ko": "임상 검증 성분",
+          "en": "Clinically Tested Ingredients",
+          "zh-CN": "临床验证成分",
+          "th": "ส่วนผสมที่ผ่านการทดสอบ"
+        }
+      },
+      {
+        "number": "98%",
+        "label": {
+          "ko": "고객 만족도",
+          "en": "Customer Satisfaction",
+          "zh-CN": "客户满意度",
+          "th": "ความพึงพอใจของลูกค้า"
+        }
+      },
+      {
+        "number": "30+",
+        "label": {
+          "ko": "피부과 전문의 검증",
+          "en": "Dermatologist Verified",
+          "zh-CN": "皮肤科医生认证",
+          "th": "ได้รับการรับรองจากผู้เชี่ยวชาญ"
+        }
+      }
     ],
     "contact": {
       "phone": "+82-2-1234-5678",
@@ -42,10 +66,46 @@
     }
   },
   "nav": [
-    { "id": "nav1", "label": { "ko": "NEW", "en": "NEW", "zh-CN": "新品", "th": "ใหม่" }, "href": "#products" },
-    { "id": "nav2", "label": { "ko": "PRODUCTS", "en": "PRODUCTS", "zh-CN": "产品", "th": "สินค้า" }, "href": "#products" },
-    { "id": "nav3", "label": { "ko": "BRAND", "en": "BRAND", "zh-CN": "品牌", "th": "แบรนด์" }, "href": "#brand" },
-    { "id": "nav4", "label": { "ko": "CONTACT", "en": "CONTACT", "zh-CN": "联系", "th": "ติดต่อ" }, "href": "#contact" }
+    {
+      "id": "nav1",
+      "label": {
+        "ko": "NEW",
+        "en": "NEW",
+        "zh-CN": "新品",
+        "th": "ใหม่"
+      },
+      "href": "#products"
+    },
+    {
+      "id": "nav2",
+      "label": {
+        "ko": "PRODUCTS",
+        "en": "PRODUCTS",
+        "zh-CN": "产品",
+        "th": "สินค้า"
+      },
+      "href": "#products"
+    },
+    {
+      "id": "nav3",
+      "label": {
+        "ko": "BRAND",
+        "en": "BRAND",
+        "zh-CN": "品牌",
+        "th": "แบรนด์"
+      },
+      "href": "#brand"
+    },
+    {
+      "id": "nav4",
+      "label": {
+        "ko": "CONTACT",
+        "en": "CONTACT",
+        "zh-CN": "联系",
+        "th": "ติดต่อ"
+      },
+      "href": "#contact"
+    }
   ],
   "heroes": [
     {
@@ -53,10 +113,30 @@
       "bgVideo": "https://youtu.be/uRgcUCCeykk",
       "bgColor": "#0a0a0a",
       "accentColor": "#A8B9FF",
-      "label": { "ko": "AESTYVE", "en": "AESTYVE", "zh-CN": "AESTYVE", "th": "AESTYVE" },
-      "title": { "ko": "피부를 위한\n완벽한 솔루션", "en": "The Perfect\nSolution for Skin", "zh-CN": "皮肤的\n完美解决方案", "th": "โซลูชันที่สมบูรณ์แบบ\nสำหรับผิวของคุณ" },
-      "subtitle": { "ko": "과학적으로 검증된 성분, 혁신적인 뷰티 테크", "en": "Scientifically Verified Ingredients, Innovative Beauty Tech", "zh-CN": "科学验证成分，创新美容科技", "th": "ส่วนผสมที่ผ่านการตรวจสอบทางวิทยาศาสตร์" },
-      "btnText": { "ko": "지금 쇼핑하기", "en": "Shop Now", "zh-CN": "立即购买", "th": "ช้อปเลย" },
+      "label": {
+        "ko": "AESTYVE",
+        "en": "AESTYVE",
+        "zh-CN": "AESTYVE",
+        "th": "AESTYVE"
+      },
+      "title": {
+        "ko": "피부를 위한\n완벽한 솔루션",
+        "en": "The Perfect\nSolution for Skin",
+        "zh-CN": "皮肤的\n完美解决方案",
+        "th": "โซลูชันที่สมบูรณ์แบบ\nสำหรับผิวของคุณ"
+      },
+      "subtitle": {
+        "ko": "과학적으로 검증된 성분, 혁신적인 뷰티 테크",
+        "en": "Scientifically Verified Ingredients, Innovative Beauty Tech",
+        "zh-CN": "科学验证成分，创新美容科技",
+        "th": "ส่วนผสมที่ผ่านการตรวจสอบทางวิทยาศาสตร์"
+      },
+      "btnText": {
+        "ko": "지금 쇼핑하기",
+        "en": "Shop Now",
+        "zh-CN": "立即购买",
+        "th": "ช้อปเลย"
+      },
       "btnHref": "#products"
     }
   ],
@@ -64,8 +144,17 @@
     {
       "id": "p1",
       "image": "images/products/liquid-pcl.jpg",
-      "name": { "ko": "Liquid PCL", "en": "Liquid PCL", "zh-CN": "Liquid PCL", "th": "Liquid PCL" },
-      "badges": ["Skin booster", "Cosmeceutical", "Single Use"],
+      "name": {
+        "ko": "Liquid PCL",
+        "en": "Liquid PCL",
+        "zh-CN": "Liquid PCL",
+        "th": "Liquid PCL"
+      },
+      "badges": [
+        "Skin booster",
+        "Cosmeceutical",
+        "Single Use"
+      ],
       "composition": "2mL / Vial",
       "rawMaterial": "Liquid PCL with HA",
       "purpose": {
@@ -79,13 +168,23 @@
         "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
         "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
         "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
-      }
+      },
+      "category": "booster"
     },
     {
       "id": "p2",
       "image": "images/products/revibe.jpg",
-      "name": { "ko": "Revibe", "en": "Revibe", "zh-CN": "Revibe", "th": "Revibe" },
-      "badges": ["의료기기", "Medical Device", "Single Use"],
+      "name": {
+        "ko": "Revibe",
+        "en": "Revibe",
+        "zh-CN": "Revibe",
+        "th": "Revibe"
+      },
+      "badges": [
+        "의료기기",
+        "Medical Device",
+        "Single Use"
+      ],
       "composition": "2mL × 1 Syringe",
       "rawMaterial": "PolyNucleotide + HA",
       "purpose": {
@@ -99,13 +198,23 @@
         "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
         "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
         "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
-      }
+      },
+      "category": "regeneration"
     },
     {
       "id": "p3",
       "image": "images/products/ha-filler.jpg",
-      "name": { "ko": "HA FILLER Series", "en": "HA FILLER Series", "zh-CN": "HA FILLER Series", "th": "HA FILLER Series" },
-      "badges": ["의료기기", "Medical Device", "Single Use"],
+      "name": {
+        "ko": "HA FILLER Series",
+        "en": "HA FILLER Series",
+        "zh-CN": "HA FILLER Series",
+        "th": "HA FILLER Series"
+      },
+      "badges": [
+        "의료기기",
+        "Medical Device",
+        "Single Use"
+      ],
       "composition": "1.1mL × 1 Syringe / Needle / Canula",
       "rawMaterial": "Advanced Cross-linked HA",
       "purpose": {
@@ -119,13 +228,23 @@
         "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
         "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
         "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
-      }
+      },
+      "category": "filler"
     },
     {
       "id": "p4",
       "image": "images/products/1906nad.jpg",
-      "name": { "ko": "1906NAD+", "en": "1906NAD+", "zh-CN": "1906NAD+", "th": "1906NAD+" },
-      "badges": ["Skin booster", "Cosmeceutical", "Single Use"],
+      "name": {
+        "ko": "1906NAD+",
+        "en": "1906NAD+",
+        "zh-CN": "1906NAD+",
+        "th": "1906NAD+"
+      },
+      "badges": [
+        "Skin booster",
+        "Cosmeceutical",
+        "Single Use"
+      ],
       "composition": "5mL / 0.169oz / 25mg",
       "rawMaterial": "Nicotinamide Mononucleotide",
       "purpose": {
@@ -139,13 +258,23 @@
         "en": "Store in a cool, dry place away from direct sunlight (1–25°C)",
         "zh-CN": "避免阳光直射，存放在阴凉干燥处（1–25°C）",
         "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง (1–25°C)"
-      }
+      },
+      "category": "antiaging"
     },
     {
       "id": "p5",
       "image": "images/products/innofill-plla.jpg",
-      "name": { "ko": "INNOFill PLLA FILLER", "en": "INNOFill PLLA FILLER", "zh-CN": "INNOFill PLLA FILLER", "th": "INNOFill PLLA FILLER" },
-      "badges": ["의료기기", "Medical Device", "Single Use"],
+      "name": {
+        "ko": "INNOFill PLLA FILLER",
+        "en": "INNOFill PLLA FILLER",
+        "zh-CN": "INNOFill PLLA FILLER",
+        "th": "INNOFill PLLA FILLER"
+      },
+      "badges": [
+        "의료기기",
+        "Medical Device",
+        "Single Use"
+      ],
       "composition": "200mg / Vial",
       "rawMaterial": "Poly-L-lactic Acid",
       "purpose": {
@@ -159,10 +288,73 @@
         "en": "Store in a cool, dry place away from direct sunlight. Do not refrigerate (15–25°C)",
         "zh-CN": "避免阳光直射，存放在阴凉干燥处，请勿冷藏（15–25°C）",
         "th": "เก็บในที่เย็นและแห้ง หลีกเลี่ยงแสงแดดโดยตรง ห้ามแช่เย็น (15–25°C)"
-      }
+      },
+      "category": "filler"
     }
   ],
   "reviews": [
-    { "id": "r1", "rating": 5, "name": { "ko": "김지은", "en": "Jieun K.", "zh-CN": "金智恩", "th": "จีอึน เค." }, "text": { "ko": "딥 하이드레이션 세럼 사용 후 피부가 완전히 달라졌어요!", "en": "My skin completely changed after using Deep Hydration Serum!", "zh-CN": "使用深层补水精华后，我的皮肤完全变了！", "th": "ผิวของฉันเปลี่ยนไปอย่างสิ้นเชิงหลังจากใช้เซรั่มไฮเดรชั่น!" } }
+    {
+      "id": "r1",
+      "rating": 5,
+      "name": {
+        "ko": "김지은",
+        "en": "Jieun K.",
+        "zh-CN": "金智恩",
+        "th": "จีอึน เค."
+      },
+      "text": {
+        "ko": "딥 하이드레이션 세럼 사용 후 피부가 완전히 달라졌어요!",
+        "en": "My skin completely changed after using Deep Hydration Serum!",
+        "zh-CN": "使用深层补水精华后，我的皮肤完全变了！",
+        "th": "ผิวของฉันเปลี่ยนไปอย่างสิ้นเชิงหลังจากใช้เซรั่มไฮเดรชั่น!"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "all",
+      "label": {
+        "ko": "전체",
+        "en": "All",
+        "zh-CN": "全部",
+        "th": "ทั้งหมด"
+      }
+    },
+    {
+      "id": "filler",
+      "label": {
+        "ko": "필러",
+        "en": "Filler",
+        "zh-CN": "填充剂",
+        "th": "ฟิลเลอร์"
+      }
+    },
+    {
+      "id": "booster",
+      "label": {
+        "ko": "스킨부스터",
+        "en": "Skin Booster",
+        "zh-CN": "皮肤增效剂",
+        "th": "สกินบูสเตอร์"
+      }
+    },
+    {
+      "id": "antiaging",
+      "label": {
+        "ko": "안티에이징",
+        "en": "Anti-Aging",
+        "zh-CN": "抗衰老",
+        "th": "แอนตี้เอจจิ้ง"
+      }
+    },
+    {
+      "id": "regeneration",
+      "label": {
+        "ko": "재생",
+        "en": "Regeneration",
+        "zh-CN": "再生",
+        "th": "การฟื้นฟู"
+      }
+    }
   ]
 }
