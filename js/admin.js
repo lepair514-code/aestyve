@@ -37,24 +37,67 @@ function esc(s) {
 
 /* ─── 데이터 로드 ─── */
 async function loadData() {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored) {
-    try { DATA = JSON.parse(stored); renderAll(); return; }
-    catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
-  }
+  /* 1) content.json 항상 먼저 fetch (이미지 경로 최신값 보장) */
+  let fresh = null;
   try {
-    const res = await fetch('data/content.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    DATA = await res.json();
+    const res = await fetch('data/content.json?v=' + Date.now());
+    if (res.ok) fresh = await res.json();
+  } catch (e) {}
+
+  /* 2) localStorage: 관리자가 편집한 hero·settings·nav·detail·name 은 유지
+        products 이미지/id 는 항상 content.json 기준으로 덮어씀 */
+  if (fresh) {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const cached = JSON.parse(stored);
+        if (cached && typeof cached === 'object') {
+          DATA = {
+            ...fresh,
+            heroes:   cached.heroes   || fresh.heroes,
+            settings: cached.settings || fresh.settings,
+            nav:      cached.nav      || fresh.nav,
+            /* products: 이미지/id는 content.json 기준, name·detail은 localStorage 유지 */
+            products: (fresh.products || []).map(fp => {
+              const cp = (cached.products || []).find(p => p.id === fp.id);
+              if (!cp) return fp;
+              return {
+                ...fp,
+                name:     cp.name     || fp.name,
+                detail:   cp.detail   || fp.detail,
+                category: cp.category || fp.category,
+              };
+            }),
+            categories: fresh.categories || cached.categories,
+          };
+          saveToStorage();
+          renderAll();
+          return;
+        }
+      }
+    } catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
+    /* localStorage 없으면 fresh 그대로 사용 */
+    DATA = fresh;
     saveToStorage();
     renderAll();
-  } catch (err) {
-    console.error('[Admin] content.json 로드 실패:', err);
-    DATA = getDefaultData();
-    saveToStorage();
-    renderAll();
-    toast('content.json을 찾을 수 없어 기본값으로 시작합니다.', 'error', 5000);
+    return;
   }
+
+  /* 3) fetch 실패 → localStorage 폴백 */
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      DATA = JSON.parse(stored);
+      renderAll();
+      return;
+    }
+  } catch (e) {}
+
+  /* 4) 완전 실패 → 기본값 */
+  DATA = getDefaultData();
+  saveToStorage();
+  renderAll();
+  toast('content.json을 찾을 수 없어 기본값으로 시작합니다.', 'error', 5000);
 }
 
 function saveToStorage() {
@@ -204,9 +247,10 @@ function renderProductAdminList() {
 
   list.innerHTML = prods.map((p, i) => {
     const name = getLangStr(p.name, 'ko') || `제품 ${i + 1}`;
-    const desc = getLangStr(p.desc, 'ko') || '';
+    const catObj = (DATA.categories || []).find(c => c.id === p.category);
+    const catLabel = catObj ? (getLangStr(catObj.label, 'ko') || p.category) : (p.category || '-');
     const thumbHtml = p.image
-      ? `<img src="${esc(p.image)}" alt="${esc(name)}" />`
+      ? `<img src="${esc(p.image)}" alt="${esc(name)}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=no-img>📦</div>'" />`
       : `<div class="no-img">📦</div>`;
 
     return `
@@ -214,7 +258,10 @@ function renderProductAdminList() {
       <div class="prod-admin-thumb">${thumbHtml}</div>
       <div class="prod-admin-info">
         <div class="prod-admin-name">${esc(name)}</div>
-        <div class="prod-admin-desc">${esc(desc)}</div>
+        <div class="prod-admin-desc" style="display:flex;gap:6px;align-items:center;">
+          <span style="font-size:.7rem;font-weight:600;background:#eef2ff;color:var(--accent);padding:2px 7px;border-radius:10px;">${esc(catLabel)}</span>
+          <span style="color:var(--gray-400);font-size:.75rem;">${esc(p.id)}</span>
+        </div>
       </div>
       <div class="prod-admin-actions">
         <button class="btn btn-outline btn-sm" onclick="openProductModal(${i})"><i class="fas fa-edit"></i> 편집</button>
