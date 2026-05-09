@@ -501,7 +501,7 @@ function buildProductModal(p) {
         <i class="fas fa-cloud-upload-alt" style="font-size:2rem;color:var(--accent);"></i>
         <div style="text-align:center;">
           <div style="font-size:.85rem;font-weight:600;color:var(--gray-700);">클릭하거나 이미지를 여기에 끌어다 놓으세요</div>
-          <div style="font-size:.72rem;color:var(--gray-400);margin-top:4px;">JPG · PNG · WebP · 파일당 최대 5MB · 최대 10장</div>
+          <div style="font-size:.72rem;color:var(--gray-400);margin-top:4px;">JPG · PNG · WebP · 원본 화질 그대로 저장 · 최대 10장</div>
         </div>
         <input type="file" id="detail-img-file-input" accept="image/*" multiple style="display:none" onchange="addDetailImgFiles(this)" />
       </label>
@@ -553,13 +553,10 @@ function _processDetailImgFiles(files) {
   /* Promise 기반으로 변환 — 모든 파일 로드 완료 후 한 번에 반영 */
   const promises = toLoad.map(file => new Promise(resolve => {
     if (!file.type.startsWith('image/')) { resolve(null); return; }
-    if (file.size > 5 * 1024 * 1024) {
-      toast(`${file.name}: 5MB 이하만 가능합니다.`, 'error');
-      resolve(null); return;
-    }
+    /* 원본 화질 그대로 저장 — 크기 제한 없음 (IndexedDB는 수특 MB 가능) */
     const reader = new FileReader();
     reader.onload  = e => resolve(e.target.result);
-    reader.onerror = () => resolve(null);
+    reader.onerror = () => { toast(`${file.name} 읽기 실패`, 'error'); resolve(null); };
     reader.readAsDataURL(file);
   }));
 
