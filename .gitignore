@@ -1,0 +1,9 @@
+# 대용량 영상 파일 (Vercel 100MB 제한 초과)
+videos/hero.mp4
+videos/hero-hevc.mp4
+videos/hero-video-orig
+videos/segs/
+
+# 임시 파일
+*.tmp
+*.bak

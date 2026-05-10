@@ -163,6 +163,20 @@ function renderNav(navItems) {
 }
 
 /* ─── Hero ─── */
+const HERO_YT_FALLBACK = 'https://youtu.be/uRgcUCCeykk'; // YouTube fallback URL
+const HERO_POSTER      = 'images/hero-poster.jpg';
+
+function _buildYtEmbed(vid) {
+  const src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd1080&origin=${encodeURIComponent(location.origin)}`;
+  return `<iframe id="hero-yt-iframe" class="hero-video-full" src="${src}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Aestyve Hero Video"></iframe>`
+       + `<button id="hero-unmute-btn" aria-label="소리 켜기" onclick="heroToggleMute(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="yt-icon-poly"/><line x1="23" y1="9" x2="17" y2="15" class="yt-muted-line"/><line x1="17" y1="9" x2="23" y2="15" class="yt-muted-line"/></svg></button>`;
+}
+
+function _fallbackToYoutube(wrap) {
+  const m = HERO_YT_FALLBACK.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (m) wrap.innerHTML = _buildYtEmbed(m[1]);
+}
+
 function renderHero(heroes) {
   const videoWrap = $('#hero-video-wrap');
   const overlay   = $('#hero-overlay');
@@ -172,17 +186,37 @@ function renderHero(heroes) {
   if (h && h.bgVideo) {
     const ytMatch = h.bgVideo.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
     if (ytMatch) {
-      const vid = ytMatch[1];
-      const src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd1080&origin=${encodeURIComponent(location.origin)}`;
-      bgHtml = `<iframe id="hero-yt-iframe" class="hero-video-full" src="${src}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Aestyve Hero Video"></iframe>`;
-      bgHtml += `<button id="hero-unmute-btn" aria-label="소리 켜기" onclick="heroToggleMute(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="yt-icon-poly"/><line x1="23" y1="9" x2="17" y2="15" class="yt-muted-line"/><line x1="17" y1="9" x2="23" y2="15" class="yt-muted-line"/></svg></button>`;
+      /* ── YouTube URL ── */
+      bgHtml = _buildYtEmbed(ytMatch[1]);
     } else {
-      bgHtml = `<video id="hero-video" class="hero-video-full" autoplay muted loop playsinline preload="auto" src="${h.bgVideo}"></video>`;
+      /* ── 로컬/직접 MP4 URL ── poster + HEVC 지원 감지 + YouTube fallback ── */
+      bgHtml = `<video id="hero-video" class="hero-video-full"
+          autoplay muted loop playsinline preload="metadata"
+          poster="${HERO_POSTER}"
+          src="${h.bgVideo}"></video>`;
     }
   } else {
     bgHtml = `<div class="hero-video-full" style="background:${(h && h.bgColor) || '#1A2755'};"></div>`;
   }
   videoWrap.innerHTML = bgHtml;
+
+  /* 로컬 video 재생 실패 시 YouTube fallback */
+  const vid = videoWrap.querySelector('#hero-video');
+  if (vid) {
+    let fallbackTriggered = false;
+    const doFallback = () => {
+      if (fallbackTriggered) return;
+      fallbackTriggered = true;
+      console.warn('[Hero] 로컬 비디오 재생 불가 → YouTube fallback');
+      _fallbackToYoutube(videoWrap);
+    };
+    vid.addEventListener('error', doFallback);
+    /* 3초 후에도 재생 안 되면 fallback */
+    const fallbackTimer = setTimeout(() => {
+      if (vid.readyState < 2) doFallback(); // HAVE_CURRENT_DATA 미만
+    }, 3000);
+    vid.addEventListener('canplay', () => clearTimeout(fallbackTimer), { once: true });
+  }
   if (h) {
     const accent = h.accentColor || '#A8B9FF';
     const titleLines = (t(h.title) || '').replace(/\n/g, '<br/>');
