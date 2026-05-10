@@ -273,25 +273,30 @@ function renderProductGrid(prods) {
 }
 
 /* ─── Brand ─── */
-function renderBrand(s) {
-  if (!s) return;
-  const descEl = $('#brand-desc');
-  if (descEl && s.brandStory) descEl.textContent = t(s.brandStory);
-  const statsEl = $('#brand-stats');
-  if (statsEl && s.stats?.length) {
-    statsEl.innerHTML = s.stats.map(st =>
-      `<div class="brand-stat"><div class="stat-number">${st.number||'-'}</div><div class="stat-label">${t(st.label)||'-'}</div></div>`
-    ).join('');
-  }
-  const tagEl = $('#brand-tag');
-  if (tagEl) tagEl.textContent = { ko:'ABOUT AESTYVE', en:'ABOUT AESTYVE', 'zh-CN':'关于 AESTYVE', th:'เกี่ยวกับ AESTYVE' }[STATE.lang] || 'ABOUT AESTYVE';
-  const titleEl = $('#brand-title');
-  if (titleEl) titleEl.innerHTML = ({
-    ko: '피부과학의 혁신,<br/>아름다움의 새 기준',
-    en: 'Innovation in Dermatology,<br/>A New Standard of Beauty',
-    'zh-CN': '皮肤科学的创新，<br/>美丽的新标准',
-    th: 'นวัตกรรมผิวหนัง<br/>มาตรฐานความงามใหม่',
-  }[STATE.lang] || '');
+/* 언어별 브랜드 스토리 이미지
+ * ko / zh-CN / th → 한국어 버전
+ * en              → 영어 버전
+ */
+const BRAND_STORY_IMGS = {
+  ko:      'images/brand-story-ko.jpg',
+  en:      'images/brand-story-en.jpg',
+  'zh-CN': 'images/brand-story-ko.jpg',
+  th:      'images/brand-story-ko.jpg',
+};
+const BRAND_STORY_ALTS = {
+  ko:      'Aestyve 브랜드 스토리 — 미학과 재생의 만남',
+  en:      'Aestyve Brand Story — Where Aesthetics Meet Revival',
+  'zh-CN': 'Aestyve 品牌故事',
+  th:      'Aestyve แบรนด์สตอรี่',
+};
+
+function renderBrand() {
+  const imgEl = $('#brand-story-img');
+  if (!imgEl) return;
+  const src = BRAND_STORY_IMGS[STATE.lang] || BRAND_STORY_IMGS['ko'];
+  const alt = BRAND_STORY_ALTS[STATE.lang]  || BRAND_STORY_ALTS['ko'];
+  imgEl.src = src;
+  imgEl.alt = alt;
 }
 
 /* ─── Contact ─── */
