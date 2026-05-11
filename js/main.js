@@ -208,19 +208,8 @@ function renderHero(heroes) {
       _fallbackToYoutube(videoWrap);
     });
   }
-  if (h) {
-    const accent = h.accentColor || '#A8B9FF';
-    const titleLines = (t(h.title) || '').replace(/\n/g, '<br/>');
-    overlay.innerHTML = `<div class="hero-overlay-inner">
-      ${t(h.label)    ? `<span class="hero-label" style="background:${accent}22;color:${accent};">${t(h.label)}</span>` : ''}
-      ${titleLines    ? `<h1 class="hero-title" style="color:#fff;">${titleLines}</h1>` : ''}
-      ${t(h.subtitle) ? `<p class="hero-subtitle" style="color:rgba(255,255,255,.78);">${t(h.subtitle)}</p>` : ''}
-      ${t(h.btnText)  ? `<a href="${h.btnHref||'#'}" class="hero-btn" style="color:${accent};border-color:${accent};">${t(h.btnText)} <span>&#8594;</span></a>` : ''}
-    </div>`;
-    overlay.style.display = '';
-  } else {
-    overlay.style.display = 'none';
-  }
+  /* 동영상 위 텍스트 오버레이 없음 */
+  overlay.style.display = 'none';
 }
 
 let _ytMuted = true;
