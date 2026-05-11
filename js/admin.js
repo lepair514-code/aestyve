@@ -43,69 +43,79 @@ async function loadData() {
   /* 1) IndexedDB에서 detailImages 맵 로드 */
   const imgMap = await ImageStore.getAll();
 
-  /* 2) content.json fetch */
+  /* 2) content.json fetch (서버 원본) */
   let fresh = null;
   try {
     const res = await fetch('data/content.json?v=' + Date.now());
     if (res.ok) fresh = await res.json();
   } catch (e) {}
 
-  /* 3) localStorage slim 데이터 (이름·카테고리 등) 로드 */
+  /* 3) localStorage (관리자가 편집한 최신 데이터) */
+  let cached = null;
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) cached = JSON.parse(stored);
+  } catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
+
   if (fresh) {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const cached = JSON.parse(stored);
-        if (cached && typeof cached === 'object') {
-          DATA = {
-            ...fresh,
-            heroes:   cached.heroes   || fresh.heroes,
-            settings: cached.settings || fresh.settings,
-            nav:      cached.nav      || fresh.nav,
-            products: (fresh.products || []).map(fp => {
-              const cp = (cached.products || []).find(p => p.id === fp.id);
-              if (!cp) return { ...fp, detailImages: imgMap[fp.id] || [] };
-              return {
-                ...fp,
-                name:         cp.name         || fp.name,
-                detail:       cp.detail       || fp.detail,
-                category:     cp.category     || fp.category,
-                detailImages: imgMap[fp.id]   || [],
-              };
-            }),
-            categories: fresh.categories || cached.categories,
-          };
-          _saveSlimOnly();
-          renderAll();
-          return;
-        }
-      }
-    } catch (e) { console.warn('[Admin] localStorage 파싱 오류'); }
-    /* localStorage 없으면 fresh 그대로 */
-    DATA = {
-      ...fresh,
-      products: (fresh.products || []).map(p => ({
-        ...p, detailImages: imgMap[p.id] || [],
-      })),
-    };
+    if (cached && typeof cached === 'object') {
+      /*
+       * ★ 핵심 머지 규칙 ★
+       * localStorage(cached)가 관리자가 편집한 최신 진실(source of truth).
+       * - heroes / settings / nav / categories : cached 우선
+       * - products : cached를 기준으로 전체 유지
+       *   → fresh에만 있는 제품(서버 원본에만 있고 로컬에 없는 것)도 추가
+       *   → cached에만 있는 제품(관리자가 추가했지만 아직 GitHub 미배포)도 유지
+       */
+      const freshProdMap = Object.fromEntries((fresh.products || []).map(p => [p.id, p]));
+      const cachedProdMap = Object.fromEntries((cached.products || []).map(p => [p.id, p]));
+
+      /* cached 제품 전체를 기준으로, fresh의 원본 필드(image 등)를 보완 */
+      const mergedFromCached = (cached.products || []).map(cp => ({
+        ...(freshProdMap[cp.id] || {}), // fresh 원본 필드 (image URL 등)
+        ...cp,                           // cached(편집값)가 우선
+        detailImages: imgMap[cp.id] || [],
+      }));
+
+      /* fresh에는 있지만 cached에 없는 제품(서버 원본에만 존재하는 것) 추가 */
+      const cachedIds = new Set((cached.products || []).map(p => p.id));
+      const freshOnly = (fresh.products || [])
+        .filter(fp => !cachedIds.has(fp.id))
+        .map(fp => ({ ...fp, detailImages: imgMap[fp.id] || [] }));
+
+      DATA = {
+        ...fresh,
+        heroes:     cached.heroes     || fresh.heroes,
+        settings:   cached.settings   || fresh.settings,
+        nav:        cached.nav        || fresh.nav,
+        categories: cached.categories || fresh.categories,
+        products:   [...mergedFromCached, ...freshOnly],
+      };
+    } else {
+      /* localStorage 없으면 fresh 그대로 */
+      DATA = {
+        ...fresh,
+        products: (fresh.products || []).map(p => ({
+          ...p, detailImages: imgMap[p.id] || [],
+        })),
+      };
+    }
     _saveSlimOnly();
     renderAll();
+    _checkGhConfigOnLoad();
     return;
   }
 
   /* 4) fetch 실패 → localStorage 폴백 */
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      DATA = JSON.parse(stored);
-      /* detailImages를 IndexedDB에서 복원 */
-      (DATA.products || []).forEach(p => {
-        if (p.id) p.detailImages = imgMap[p.id] || [];
-      });
-      renderAll();
-      return;
-    }
-  } catch (e) {}
+  if (cached) {
+    DATA = cached;
+    (DATA.products || []).forEach(p => {
+      if (p.id) p.detailImages = imgMap[p.id] || [];
+    });
+    renderAll();
+    _checkGhConfigOnLoad();
+    return;
+  }
 
   /* 5) 완전 실패 → 기본값 */
   DATA = getDefaultData();
@@ -143,13 +153,43 @@ function saveToStorage({ deploy = true } = {}) {
   );
   /* 2) 텍스트 데이터 → localStorage */
   _saveSlimOnly();
-  /* 3) GitHub 자동 배포 (설정이 있을 때만) */
+  /* 3) GitHub 자동 배포 */
   if (deploy) {
     const cfg = loadGhConfig();
     if (cfg.owner && cfg.repo && cfg.token) {
       pushToGitHub({ silent: false });
+    } else {
+      /* GitHub 미설정 시 — 경고 배너 표시 */
+      _showNoGhWarning();
     }
   }
+}
+
+/* GitHub 미설정 경고 — 저장 시마다 상단에 표시 */
+function _showNoGhWarning() {
+  let banner = $('#no-gh-warning-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'no-gh-warning-banner';
+    banner.style.cssText = [
+      'position:fixed;top:54px;left:220px;right:0;z-index:999',
+      'background:#fef3c7;border-bottom:2px solid #f59e0b',
+      'padding:10px 20px;font-size:.82rem;font-weight:600;color:#92400e',
+      'display:flex;align-items:center;justify-content:space-between;gap:12px',
+    ].join(';');
+    banner.innerHTML = `
+      <span>⚠️ <strong>GitHub 미설정</strong> — 변경사항이 이 브라우저에만 저장됩니다. 모바일/다른 기기에는 반영되지 않습니다.</span>
+      <span style="display:flex;gap:8px;flex-shrink:0;">
+        <button onclick="document.querySelector('[data-section=settings]').click();document.getElementById('no-gh-warning-banner').remove()"
+          style="background:#f59e0b;color:#fff;border:none;padding:5px 12px;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer;">⚙️ GitHub 설정하기</button>
+        <button onclick="this.closest('#no-gh-warning-banner').remove()"
+          style="background:none;border:none;font-size:1rem;cursor:pointer;color:#92400e;">✕</button>
+      </span>`;
+    document.body.appendChild(banner);
+  }
+  /* 5초 후 자동 제거 */
+  clearTimeout(banner._timeout);
+  banner._timeout = setTimeout(() => banner.remove(), 8000);
 }
 
 /* ─── 기본 데이터 ─── */
@@ -712,13 +752,14 @@ window.saveProductModal = function() {
   /* 텍스트 데이터 → localStorage */
   _saveSlimOnly();
 
-  /* GitHub 자동 배포 (설정이 있을 때만) */
+  /* GitHub 자동 배포 */
   const _ghCfg = loadGhConfig();
   if (_ghCfg.owner && _ghCfg.repo && _ghCfg.token) {
     pushToGitHub({ silent: false });
     toast('✅ 제품이 저장되었습니다! GitHub에 배포 중… 잠시 후 모든 기기에 반영됩니다.');
   } else {
-    toast('✅ 제품이 저장되었습니다! 모든 기기에 반영하려면 설정 탭에서 GitHub를 연결하세요.');
+    _showNoGhWarning();
+    toast('✅ 제품이 이 브라우저에 저장되었습니다.');
   }
 
   closeModal();
@@ -951,6 +992,14 @@ window.testGhConnection = async function() {
     if (btn) { btn.disabled = false; btn.textContent = '🔌 연결 테스트'; }
   }
 };
+
+/* 로드 시 GitHub 미설정이면 상단에 한 번 안내 */
+function _checkGhConfigOnLoad() {
+  const cfg = loadGhConfig();
+  if (!cfg.owner || !cfg.repo || !cfg.token) {
+    _showNoGhWarning();
+  }
+}
 
 /* ─── GitHub API push ─── */
 /**

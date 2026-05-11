@@ -70,11 +70,18 @@ async function loadContent() {
   /* 1) IndexedDB에서 detailImages 맵 로드 */
   const imgMap = await ImageStore.getAll();
 
-  /* 2) content.json fetch */
+  /* 2) content.json fetch (서버 원본) */
   let fresh = null;
   try {
     const res = await fetch('data/content.json?v=' + Date.now());
     if (res.ok) fresh = await res.json();
+  } catch (e) {}
+
+  /* 3) localStorage (관리자가 편집한 최신 데이터) */
+  let cached = null;
+  try {
+    const stored = localStorage.getItem('aestyve_content');
+    if (stored) cached = JSON.parse(stored);
   } catch (e) {}
 
   function _applyImgMap(products) {
@@ -82,53 +89,52 @@ async function loadContent() {
   }
 
   if (fresh) {
-    try {
-      const stored = localStorage.getItem('aestyve_content');
-      if (stored) {
-        const cached = JSON.parse(stored);
-        if (cached && typeof cached === 'object') {
-          STATE.content = {
-            ...fresh,
-            heroes:   cached.heroes   || fresh.heroes,
-            settings: cached.settings || fresh.settings,
-            nav:      cached.nav      || fresh.nav,
-            products: (fresh.products || []).map(fp => {
-              const cp = (cached.products || []).find(p => p.id === fp.id);
-              if (!cp) return { ...fp, detailImages: imgMap[fp.id] || [] };
-              return {
-                ...fp,
-                name:     cp.name     || fp.name,
-                detail:   cp.detail   || fp.detail,
-                category: cp.category || fp.category,
-                detailImages: imgMap[fp.id] || [],
-              };
-            }),
-            categories: fresh.categories || cached.categories,
-          };
-          renderAll();
-          return;
-        }
-      }
-    } catch (e) {}
-    STATE.content = { ...fresh, products: _applyImgMap(fresh.products) };
+    if (cached && typeof cached === 'object') {
+      /*
+       * ★ 핵심 머지 규칙 ★  (admin.js와 동일 로직)
+       * localStorage(cached) = 관리자가 편집한 최신 진실(source of truth)
+       * - cached에 있는 제품 전체를 기준으로 유지
+       * - fresh에만 있는 제품(서버 원본에만 존재)도 추가
+       * - 둘 다 있으면 cached 값 우선 (관리자 편집 보존)
+       */
+      const freshProdMap = Object.fromEntries((fresh.products || []).map(p => [p.id, p]));
+      const cachedIds    = new Set((cached.products || []).map(p => p.id));
+
+      const mergedFromCached = (cached.products || []).map(cp => ({
+        ...(freshProdMap[cp.id] || {}),
+        ...cp,
+        detailImages: imgMap[cp.id] || [],
+      }));
+
+      const freshOnly = (fresh.products || [])
+        .filter(fp => !cachedIds.has(fp.id))
+        .map(fp => ({ ...fp, detailImages: imgMap[fp.id] || [] }));
+
+      STATE.content = {
+        ...fresh,
+        heroes:     cached.heroes     || fresh.heroes,
+        settings:   cached.settings   || fresh.settings,
+        nav:        cached.nav        || fresh.nav,
+        categories: cached.categories || fresh.categories,
+        products:   [...mergedFromCached, ...freshOnly],
+      };
+    } else {
+      /* localStorage 없으면 fresh 그대로 */
+      STATE.content = { ...fresh, products: _applyImgMap(fresh.products) };
+    }
     renderAll();
     return;
   }
 
-  /* 3) fetch 실패 → localStorage 폴백 */
-  try {
-    const stored = localStorage.getItem('aestyve_content');
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      if (parsed && typeof parsed === 'object') {
-        parsed.products = _applyImgMap(parsed.products);
-        STATE.content = parsed;
-        renderAll();
-        return;
-      }
-    }
-  } catch (e) {}
-  console.error('[Aestyve] content.json 로드 실패');
+  /* 4) fetch 실패 → localStorage 폴백 */
+  if (cached) {
+    cached.products = _applyImgMap(cached.products || []);
+    STATE.content = cached;
+    renderAll();
+    return;
+  }
+
+  console.error('[Aestyve] content.json 로드 실패 + localStorage 없음');
 }
 
 /* ─── 전체 렌더 ─── */
