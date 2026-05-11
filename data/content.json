@@ -110,7 +110,7 @@
   "heroes": [
     {
       "id": "h1",
-      "bgVideo": "https://youtu.be/uRgcUCCeykk",
+      "bgVideo": "videos/hero.mp4",
       "bgColor": "#0a0a0a",
       "accentColor": "#A8B9FF",
       "label": {
