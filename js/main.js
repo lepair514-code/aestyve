@@ -189,9 +189,9 @@ function renderHero(heroes) {
       /* ── YouTube URL ── */
       bgHtml = _buildYtEmbed(ytMatch[1]);
     } else {
-      /* ── 로컬/직접 MP4 URL ── poster + HEVC 지원 감지 + YouTube fallback ── */
+      /* ── 로컬 MP4 URL ── */
       bgHtml = `<video id="hero-video" class="hero-video-full"
-          autoplay muted loop playsinline preload="metadata"
+          autoplay muted loop playsinline preload="auto"
           poster="${HERO_POSTER}"
           src="${h.bgVideo}"></video>`;
     }
@@ -200,22 +200,13 @@ function renderHero(heroes) {
   }
   videoWrap.innerHTML = bgHtml;
 
-  /* 로컬 video 재생 실패 시 YouTube fallback */
+  /* error 시에만 fallback (타임아웃 제거 — 스트리밍 중 오탐 방지) */
   const vid = videoWrap.querySelector('#hero-video');
   if (vid) {
-    let fallbackTriggered = false;
-    const doFallback = () => {
-      if (fallbackTriggered) return;
-      fallbackTriggered = true;
-      console.warn('[Hero] 로컬 비디오 재생 불가 → YouTube fallback');
+    vid.addEventListener('error', () => {
+      console.warn('[Hero] 비디오 error → YouTube fallback');
       _fallbackToYoutube(videoWrap);
-    };
-    vid.addEventListener('error', doFallback);
-    /* 3초 후에도 재생 안 되면 fallback */
-    const fallbackTimer = setTimeout(() => {
-      if (vid.readyState < 2) doFallback(); // HAVE_CURRENT_DATA 미만
-    }, 3000);
-    vid.addEventListener('canplay', () => clearTimeout(fallbackTimer), { once: true });
+    });
   }
   if (h) {
     const accent = h.accentColor || '#A8B9FF';
