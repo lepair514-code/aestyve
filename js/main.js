@@ -322,7 +322,14 @@ function renderContact(s) {
   set('#contact-phone', s.contact?.phone);
   set('#contact-email', s.contact?.email);
   set('#contact-address', s.contact?.address);
-  set('#contact-map-text', s.contact?.address);
+
+  /* 지도 텍스트 */
+  const mapText = $('#contact-map-text');
+  if (mapText && s.contact?.address) {
+    mapText.innerHTML = s.contact.address.replace(/,\s*/g, ',<br/>');
+  }
+
+  /* 소셜 링크 */
   const sl = $('#social-links');
   if (sl) {
     const social = s.social || {};
@@ -332,10 +339,68 @@ function renderContact(s) {
       { key:'facebook',  icon:'fab fa-facebook',  label:'Facebook'  },
       { key:'tiktok',    icon:'fab fa-tiktok',    label:'TikTok'    },
     ];
-    sl.innerHTML = defs.filter(d => social[d.key])
+    const links = defs.filter(d => social[d.key])
       .map(d => `<a href="${social[d.key]}" class="social-link" target="_blank" rel="noopener" aria-label="${d.label}"><i class="${d.icon}"></i></a>`)
       .join('');
+
+    /* WeChat 버튼: social.wechat 값이 있거나 QR 이미지가 저장된 경우 표시 */
+    const wcQr = s.wechatQr || localStorage.getItem('aestyve_wechat_qr') || '';
+    const wcBtn = (social.wechat || wcQr)
+      ? `<button class="social-link wechat-btn" aria-label="WeChat" title="WeChat" onclick="openWechatModal()"><i class="fab fa-weixin"></i></button>`
+      : '';
+
+    sl.innerHTML = links + wcBtn;
   }
+}
+
+/* ─── WeChat 모달 ─── */
+function openWechatModal() {
+  const modal = $('#wechat-modal');
+  if (!modal) return;
+
+  /* QR 이미지: content.json wechatQr → localStorage 순으로 조회 */
+  const qrSrc = (STATE.content?.settings?.wechatQr)
+    || localStorage.getItem('aestyve_wechat_qr')
+    || '';
+
+  const img  = $('#wechat-qr-img');
+  const ph   = $('#wechat-qr-placeholder');
+  if (img && ph) {
+    if (qrSrc) {
+      img.src = qrSrc;
+      img.style.display = 'block';
+      ph.style.display  = 'none';
+    } else {
+      img.style.display = 'none';
+      ph.style.display  = 'flex';
+    }
+  }
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWechatModal() {
+  const modal = $('#wechat-modal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+window.openWechatModal  = openWechatModal;
+window.closeWechatModal = closeWechatModal;
+
+/* WeChat 모달 닫기 이벤트 초기화 */
+function initWechatModal() {
+  const closeBtn = $('#wechat-modal-close');
+  if (closeBtn) closeBtn.addEventListener('click', closeWechatModal);
+  const modal = $('#wechat-modal');
+  if (modal) {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeWechatModal();
+    });
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeWechatModal();
+  });
 }
 
 /* ─── Footer ─── */
@@ -380,6 +445,7 @@ function init() {
   renderLangSwitcher();
   initHeaderScroll();
   initHamburger();
+  initWechatModal();
   loadContent();
 }
 

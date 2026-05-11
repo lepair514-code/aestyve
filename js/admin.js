@@ -761,6 +761,8 @@ function renderSettingsForm() {
   set('#set-email',      s.contact?.email);
   set('#set-address',    s.contact?.address);
   set('#set-instagram',  s.social?.instagram);
+  /* WeChat QR 이미지 복원 */
+  _renderWechatQrPreview();
 }
 
 window.saveSettings = function() {
@@ -776,6 +778,105 @@ window.saveSettings = function() {
   s.social.instagram = $('#set-instagram')?.value || '';
   saveToStorage();
   toast('✅ 설정이 저장되었습니다.');
+};
+
+/* ─── WeChat QR 코드 관리 ─── */
+const WECHAT_QR_KEY = 'aestyve_wechat_qr';
+
+/** 현재 저장된 QR 이미지를 Admin UI에 렌더 */
+function _renderWechatQrPreview() {
+  const stored = DATA.settings?.wechatQr || localStorage.getItem(WECHAT_QR_KEY) || '';
+  const preview  = $('#wechat-qr-preview');
+  const ph       = $('#wechat-qr-ph');
+  const area     = $('#wechat-qr-upload-area');
+  const delBtn   = $('#wechat-qr-delete-btn');
+  const statusEl = $('#wechat-qr-status');
+
+  if (!preview) return;
+
+  if (stored) {
+    /* QR 이미지 존재 → 미리보기 표시 */
+    preview.innerHTML = `<img src="${stored}" alt="WeChat QR" style="width:100%;height:160px;object-fit:contain;display:block;padding:8px;" />`;
+    if (area) area.classList.add('has-media');
+    if (delBtn) delBtn.style.display = '';
+    if (statusEl) { statusEl.textContent = '✅ QR 이미지 저장됨'; statusEl.style.color = 'var(--success)'; }
+  } else {
+    /* QR 없음 → placeholder */
+    preview.innerHTML = `
+      <div class="upload-placeholder" id="wechat-qr-ph">
+        <span class="icon" style="font-size:2.4rem;">📱</span>
+        <p style="font-size:.74rem;text-align:center;">QR 이미지<br>클릭하여 업로드</p>
+      </div>`;
+    if (area) area.classList.remove('has-media');
+    if (delBtn) delBtn.style.display = 'none';
+    if (statusEl) { statusEl.textContent = ''; }
+  }
+}
+
+/** 파일 선택 → Base64 변환 → 미리보기 */
+window.handleWechatQr = function(input) {
+  const file = input.files?.[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) { toast('이미지 파일만 업로드 가능합니다.', 'error'); input.value = ''; return; }
+  if (file.size > 5 * 1024 * 1024) { toast('5MB 이하 이미지만 지원합니다.', 'error'); input.value = ''; return; }
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const b64 = e.target.result;
+    /* 임시 미리보기 표시 */
+    const preview = $('#wechat-qr-preview');
+    if (preview) preview.innerHTML = `<img src="${b64}" alt="WeChat QR" style="width:100%;height:160px;object-fit:contain;display:block;padding:8px;" />`;
+    const area = $('#wechat-qr-upload-area');
+    if (area) area.classList.add('has-media');
+    /* hidden 값에 임시 저장 */
+    const statusEl = $('#wechat-qr-status');
+    if (statusEl) { statusEl.textContent = '이미지 선택됨 — 저장 버튼을 눌러 반영하세요'; statusEl.style.color = '#d97706'; }
+    /* 데이터 속성으로 임시 보관 */
+    if (area) area.dataset.pendingQr = b64;
+    const delBtn = $('#wechat-qr-delete-btn');
+    if (delBtn) delBtn.style.display = '';
+    toast('✅ QR 이미지 선택 완료! "QR 저장" 버튼을 눌러주세요.');
+  };
+  reader.readAsDataURL(file);
+  input.value = '';
+};
+
+/** QR 저장 — localStorage + DATA.settings.wechatQr + GitHub 배포 */
+window.saveWechatQr = function() {
+  const area = $('#wechat-qr-upload-area');
+  const pendingQr = area?.dataset?.pendingQr || '';
+
+  /* 새 이미지가 선택된 경우 */
+  if (pendingQr) {
+    localStorage.setItem(WECHAT_QR_KEY, pendingQr);
+    if (!DATA.settings) DATA.settings = {};
+    DATA.settings.wechatQr = pendingQr;
+    if (area) delete area.dataset.pendingQr;
+    _renderWechatQrPreview();
+    saveToStorage();
+    toast('✅ WeChat QR 이미지가 저장되었습니다!');
+    return;
+  }
+
+  /* 이미 저장된 이미지가 있는 경우 */
+  const existing = DATA.settings?.wechatQr || localStorage.getItem(WECHAT_QR_KEY) || '';
+  if (existing) {
+    toast('✅ QR 이미지가 이미 저장되어 있습니다.');
+  } else {
+    toast('먼저 QR 이미지를 선택해주세요.', 'error');
+  }
+};
+
+/** QR 삭제 */
+window.deleteWechatQr = function() {
+  if (!confirm('WeChat QR 이미지를 삭제하시겠습니까?')) return;
+  localStorage.removeItem(WECHAT_QR_KEY);
+  if (DATA.settings) DATA.settings.wechatQr = '';
+  const area = $('#wechat-qr-upload-area');
+  if (area) delete area.dataset.pendingQr;
+  _renderWechatQrPreview();
+  saveToStorage();
+  toast('🗑️ WeChat QR 이미지가 삭제되었습니다.');
 };
 
 /* ─── GitHub 설정 키 ─── */

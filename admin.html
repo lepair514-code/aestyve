@@ -560,6 +560,46 @@
                 <input type="text" class="form-control" id="set-address" />
               </div>
             </div>
+
+            <hr style="border:none;border-top:1px solid var(--border);margin:8px 0 20px;" />
+
+            <!-- WeChat QR 코드 업로드 -->
+            <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">
+              <i class="fab fa-weixin" style="color:#07c160;margin-right:6px;"></i>WeChat QR 코드
+            </div>
+            <div style="display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:start;">
+              <!-- QR 미리보기 + 업로드 영역 -->
+              <div>
+                <div class="upload-area" id="wechat-qr-upload-area" onclick="document.getElementById('wechat-qr-file').click()" style="cursor:pointer;">
+                  <div class="upload-preview" id="wechat-qr-preview" style="min-height:160px;background:var(--gray-100);">
+                    <div class="upload-placeholder" id="wechat-qr-ph">
+                      <span class="icon" style="font-size:2.4rem;">📱</span>
+                      <p style="font-size:.74rem;text-align:center;">QR 이미지<br>클릭하여 업로드</p>
+                    </div>
+                  </div>
+                  <div class="upload-footer" style="font-size:.72rem;">PNG · JPG · WebP</div>
+                </div>
+                <input type="file" id="wechat-qr-file" accept="image/*" style="display:none" onchange="handleWechatQr(this)" />
+              </div>
+              <!-- 설명 + 삭제 버튼 -->
+              <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px;">
+                <p style="font-size:.8rem;color:var(--gray-600);line-height:1.7;">
+                  WeChat QR 코드 이미지를 업로드하면<br>
+                  홈페이지 Contact 섹션의<br>
+                  <strong style="color:var(--primary);">WeChat 버튼</strong>이 활성화되고,<br>
+                  클릭 시 QR 코드 팝업이 표시됩니다.
+                </p>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button class="btn btn-success btn-sm" onclick="saveWechatQr()">
+                    <i class="fas fa-save"></i> QR 저장
+                  </button>
+                  <button class="btn btn-danger btn-sm" id="wechat-qr-delete-btn" onclick="deleteWechatQr()" style="display:none;">
+                    <i class="fas fa-trash"></i> 삭제
+                  </button>
+                </div>
+                <div id="wechat-qr-status" style="font-size:.75rem;font-weight:600;color:var(--gray-400);min-height:18px;"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

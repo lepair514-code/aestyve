@@ -87,7 +87,17 @@
         <div class="social-links" id="social-links"></div>
       </div>
       <div class="contact-map-block">
-        <div class="contact-map-inner">MAP PLACEHOLDER</div>
+        <div class="contact-map-inner">
+          <iframe
+            id="contact-naver-map"
+            src="https://map.naver.com/p/entry/address/14140668.782,4514327.329,%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%ED%85%8C%ED%97%A4%EB%9E%80%EB%A1%9C%20123?c=15,0,0,0,dh&lang=ko"
+            width="100%" height="100%"
+            style="border:0;display:block;"
+            allowfullscreen
+            loading="lazy"
+            title="Aestyve 오시는 길"
+          ></iframe>
+        </div>
         <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;" id="contact-map-text">
           서울특별시 강남구 테헤란로 123<br/>에스티브 빌딩
         </p>
@@ -133,6 +143,26 @@
 </footer>
 
 <div id="toast" role="alert" aria-live="polite"></div>
+
+<!-- ===== WECHAT QR 모달 ===== -->
+<div id="wechat-modal" class="wechat-modal-overlay" role="dialog" aria-modal="true" aria-label="WeChat QR 코드" style="display:none;">
+  <div class="wechat-modal-box">
+    <button class="wechat-modal-close" id="wechat-modal-close" aria-label="닫기">✕</button>
+    <div class="wechat-modal-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.328.328 0 0 0 .168-.054l1.903-1.089a.854.854 0 0 1 .765-.092c.886.255 1.842.398 2.832.398C13.49 16.896 17.38 13.608 17.38 9.53c0-4.054-3.89-7.342-8.69-7.342zm-2.363 4.704c.522 0 .944.422.944.944s-.422.944-.944.944-.944-.422-.944-.944.422-.944.944-.944zm4.722 0c.522 0 .944.422.944.944s-.422.944-.944.944-.944-.422-.944-.944.422-.944.944-.944zM24 14.494c0-3.395-3.218-6.151-7.181-6.151-.226 0-.45.012-.673.031 1.065 1.19 1.69 2.664 1.69 4.278 0 3.727-3.462 6.766-7.918 7.101.846 1.79 2.842 3.03 5.145 3.03.828 0 1.614-.153 2.344-.432a.707.707 0 0 1 .634.077l1.575.902a.27.27 0 0 0 .138.044.244.244 0 0 0 .244-.244c0-.059-.024-.116-.04-.173l-.323-1.224a.49.49 0 0 1 .177-.551C23.044 18.043 24 16.343 24 14.494z"/></svg>
+    </div>
+    <h3 class="wechat-modal-title">WeChat으로 문의하기</h3>
+    <p class="wechat-modal-desc">QR 코드를 스캔하여 WeChat으로 연결하세요</p>
+    <div class="wechat-modal-qr" id="wechat-qr-wrap">
+      <div class="wechat-qr-placeholder" id="wechat-qr-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" opacity=".3"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3"/><rect x="19" y="14" width="2" height="2"/><rect x="14" y="19" width="2" height="2"/><rect x="18" y="18" width="3" height="3"/></svg>
+        <p>관리자에서 QR 코드를<br>업로드해 주세요</p>
+      </div>
+      <img id="wechat-qr-img" src="" alt="WeChat QR 코드" style="display:none; width:200px; height:200px; object-fit:contain; border-radius:8px;" />
+    </div>
+  </div>
+</div>
+
 <script src="js/imageStore.js"></script>
 <script src="js/main.js"></script>
 </body>
