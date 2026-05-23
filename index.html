@@ -40,13 +40,30 @@
 <section id="hero" aria-label="히어로 배너">
   <div id="hero-video-wrap"></div>
   <div id="hero-overlay" class="hero-overlay-content"></div>
+  <!-- 스크롤 힌트 -->
+  <div class="hero-scroll-hint" id="hero-scroll-hint" role="button" aria-label="아래로 스크롤">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
 <!-- ===== PRODUCTS ===== -->
 <section id="products" aria-label="제품">
   <div class="container">
+    <!-- 섹션 헤더 -->
+    <div class="products-header reveal">
+      <div>
+        <div class="section-eyebrow">PRODUCTS</div>
+        <h2 class="section-title-lg" id="products-title">제품 라인업</h2>
+        <p class="section-subtitle" id="products-subtitle">최첨단 피부과학으로 만든 프리미엄 제품</p>
+      </div>
+      <span class="prod-count-badge" id="prod-count-badge">
+        <i class="fas fa-layer-group" style="font-size:.65rem;"></i>
+        <span id="prod-count-num">0</span> 제품
+      </span>
+    </div>
     <!-- 카테고리 탭 -->
-    <div class="cat-tabs-wrap">
+    <div class="cat-tabs-wrap reveal reveal-delay-1">
       <div class="cat-tabs" id="cat-tabs"></div>
     </div>
     <!-- 제품 그리드 -->
@@ -70,23 +87,40 @@
 <!-- ===== CONTACT ===== -->
 <section id="contact" aria-label="연락처">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">CONTACT</span>
-      <h2 class="section-title">문의하기</h2>
-      <p class="section-desc">궁금한 점이 있으시면 언제든지 연락주세요</p>
+    <!-- 섹션 헤더 -->
+    <div class="contact-header reveal">
+      <div class="section-eyebrow">CONTACT</div>
+      <h2 class="section-title-lg">문의하기</h2>
+      <p class="section-subtitle" id="contact-section-desc">궁금한 점이 있으시면 언제든지 연락주세요</p>
     </div>
+
     <div class="contact-grid">
-      <div class="contact-info">
-        <h3 id="contact-brand-name">Aestyve</h3>
-        <p id="contact-slogan">피부과학의 혁신, 아름다움의 새 기준</p>
+      <!-- 정보 카드 -->
+      <div class="contact-info-card reveal reveal-delay-1">
+        <h3 class="contact-brand-name" id="contact-brand-name">Aestyve</h3>
+        <p class="contact-slogan" id="contact-slogan">피부과학의 혁신, 아름다움의 새 기준</p>
+
         <div class="contact-detail">
-          <div class="contact-row"><i class="fas fa-phone"></i><span id="contact-phone">-</span></div>
-          <div class="contact-row"><i class="fas fa-envelope"></i><span id="contact-email">-</span></div>
-          <div class="contact-row"><i class="fas fa-map-marker-alt"></i><span id="contact-address">-</span></div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-phone"></i></div>
+            <span id="contact-phone">-</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-envelope"></i></div>
+            <span id="contact-email">-</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <span id="contact-address">-</span>
+          </div>
         </div>
+
+        <hr class="contact-divider" />
         <div class="social-links" id="social-links"></div>
       </div>
-      <div class="contact-map-block">
+
+      <!-- 지도 카드 -->
+      <div class="contact-map-block reveal reveal-delay-2">
         <div class="contact-map-inner">
           <iframe
             id="contact-naver-map"
@@ -98,9 +132,10 @@
             title="Aestyve 오시는 길"
           ></iframe>
         </div>
-        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;" id="contact-map-text">
-          서울특별시 강남구 테헤란로 123<br/>에스티브 빌딩
-        </p>
+        <div class="contact-map-address">
+          <i class="fas fa-map-pin"></i>
+          <span id="contact-map-text">서울특별시 강남구 테헤란로 123<br/>에스티브 빌딩</span>
+        </div>
       </div>
     </div>
   </div>

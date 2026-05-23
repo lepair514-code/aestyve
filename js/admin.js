@@ -797,11 +797,21 @@ window.moveProduct = function(idx, dir) {
 function renderSettingsForm() {
   const s = DATA.settings || {};
   const set = (id, val) => { const el = $(id); if (el) el.value = val || ''; };
-  set('#set-brandName',  s.brandName);
-  set('#set-phone',      s.contact?.phone);
-  set('#set-email',      s.contact?.email);
-  set('#set-address',    s.contact?.address);
-  set('#set-instagram',  s.social?.instagram);
+  /* 브랜드 기본 */
+  set('#set-brandName',   s.brandName);
+  set('#set-slogan-ko',   s.slogan?.ko  || s.slogan || '');
+  set('#set-slogan-en',   s.slogan?.en  || '');
+  set('#set-slogan-zh',   s.slogan?.['zh-CN'] || '');
+  /* 연락처 */
+  set('#set-phone',       s.contact?.phone);
+  set('#set-email',       s.contact?.email);
+  set('#set-address',     s.contact?.address);
+  /* 소셜 */
+  set('#set-instagram',   s.social?.instagram);
+  set('#set-youtube',     s.social?.youtube);
+  set('#set-facebook',    s.social?.facebook);
+  set('#set-tiktok',      s.social?.tiktok);
+  set('#set-wechat',      s.social?.wechat);
   /* WeChat QR 이미지 복원 */
   _renderWechatQrPreview();
 }
@@ -809,14 +819,30 @@ function renderSettingsForm() {
 window.saveSettings = function() {
   if (!DATA.settings) DATA.settings = {};
   const s = DATA.settings;
+  /* 브랜드 기본 */
   s.brandName = $('#set-brandName')?.value || s.brandName;
+  const sloganKo = $('#set-slogan-ko')?.value || '';
+  const sloganEn = $('#set-slogan-en')?.value || '';
+  const sloganZh = $('#set-slogan-zh')?.value || '';
+  s.slogan = {
+    ko:      sloganKo,
+    en:      sloganEn,
+    'zh-CN': sloganZh,
+    th:      (typeof s.slogan === 'object' ? s.slogan?.th : '') || '',
+  };
+  /* 연락처 */
   s.contact = {
     phone:   $('#set-phone')?.value   || '',
     email:   $('#set-email')?.value   || '',
     address: $('#set-address')?.value || '',
   };
+  /* 소셜 */
   s.social = s.social || {};
   s.social.instagram = $('#set-instagram')?.value || '';
+  s.social.youtube   = $('#set-youtube')?.value   || '';
+  s.social.facebook  = $('#set-facebook')?.value  || '';
+  s.social.tiktok    = $('#set-tiktok')?.value    || '';
+  s.social.wechat    = $('#set-wechat')?.value    || '';
   saveToStorage();
   toast('✅ 설정이 저장되었습니다.');
 };

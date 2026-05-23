@@ -148,6 +148,8 @@ function renderAll() {
   renderContact(c.settings);
   renderFooter(c.settings);
   renderLangSwitcher();
+  /* 렌더 완료 후 reveal 재스캔 */
+  setTimeout(scanReveal, 100);
 }
 
 /* ─── Nav ─── */
@@ -202,11 +204,11 @@ function renderHero(heroes) {
           src="${h.bgVideo}"></video>`;
     }
   } else {
-    bgHtml = `<div class="hero-video-full" style="background:${(h && h.bgColor) || '#1A2755'};"></div>`;
+    bgHtml = `<div class="hero-video-full" style="background:${(h && h.bgColor) || '#0B1628'};"></div>`;
   }
   videoWrap.innerHTML = bgHtml;
 
-  /* error 시에만 fallback (타임아웃 제거 — 스트리밍 중 오탐 방지) */
+  /* error 시에만 fallback */
   const vid = videoWrap.querySelector('#hero-video');
   if (vid) {
     vid.addEventListener('error', () => {
@@ -228,6 +230,17 @@ function heroToggleMute(btn) {
   if (!_ytMuted) iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func:'setVolume', args:[100] }), '*');
 }
 window.heroToggleMute = heroToggleMute;
+
+/* ─── 히어로 스크롤 힌트 ─── */
+function initHeroScrollHint() {
+  const hint = $('#hero-scroll-hint');
+  if (!hint) return;
+  hint.style.cursor = 'pointer';
+  hint.addEventListener('click', () => {
+    const target = document.getElementById('products');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+}
 
 /* ─── 카테고리 탭 + 제품 그리드 ─── */
 function renderCategoryTabs(cats, prods) {
@@ -251,6 +264,10 @@ function renderCategoryTabs(cats, prods) {
     });
   });
 
+  /* 제품 수 배지 업데이트 */
+  const countNum = $('#prod-count-num');
+  if (countNum) countNum.textContent = (prods || []).length;
+
   renderProductGrid(prods);
 }
 
@@ -271,14 +288,16 @@ function renderProductGrid(prods) {
     return;
   }
 
-  grid.innerHTML = filtered.map(p => {
+  grid.innerHTML = filtered.map((p, i) => {
     const name = t(p.name) || '';
     const catLabel = (() => {
       const c = (STATE.content?.categories || []).find(c => c.id === p.category);
       return c ? (t(c.label) || p.category) : (p.category || '');
     })();
+    /* stagger delay: 4개씩 그룹, 최대 4단계 */
+    const delay = (i % 4) * 0.1;
     return `
-    <a class="prod-card" href="product.html?id=${p.id}">
+    <a class="prod-card reveal" href="product.html?id=${p.id}" style="transition-delay:${delay}s;">
       <div class="prod-card-img-wrap">
         <img src="${p.image || ''}" alt="${name}" loading="lazy"
              onerror="this.parentElement.innerHTML='<div class=prod-card-no-img>📦</div>'" />
@@ -290,13 +309,12 @@ function renderProductGrid(prods) {
       </div>
     </a>`;
   }).join('');
+
+  /* 새로 생긴 카드들도 IntersectionObserver 관찰 */
+  scanReveal();
 }
 
 /* ─── Brand ─── */
-/* 언어별 브랜드 스토리 이미지
- * ko / zh-CN / th → 한국어 버전
- * en              → 영어 버전
- */
 const BRAND_STORY_IMGS = {
   ko:      'images/brand-story-ko.jpg',
   en:      'images/brand-story-en.jpg',
@@ -322,14 +340,25 @@ function renderBrand() {
 /* ─── Contact ─── */
 function renderContact(s) {
   if (!s) return;
-  const set = (id, val) => { const el = $(id); if (el) el.textContent = val || '-'; };
-  set('#contact-brand-name', s.brandName);
-  set('#contact-slogan', t(s.slogan));
-  set('#contact-phone', s.contact?.phone);
-  set('#contact-email', s.contact?.email);
-  set('#contact-address', s.contact?.address);
 
-  /* 지도 텍스트 */
+  /* 브랜드명 & 슬로건 */
+  const brandEl = $('#contact-brand-name');
+  if (brandEl) brandEl.textContent = s.brandName || 'Aestyve';
+
+  const sloganEl = $('#contact-slogan');
+  if (sloganEl) sloganEl.textContent = t(s.slogan) || '';
+
+  /* 연락처 정보 */
+  const phoneEl = $('#contact-phone');
+  if (phoneEl) phoneEl.textContent = s.contact?.phone || '-';
+
+  const emailEl = $('#contact-email');
+  if (emailEl) emailEl.textContent = s.contact?.email || '-';
+
+  const addrEl = $('#contact-address');
+  if (addrEl) addrEl.textContent = s.contact?.address || '-';
+
+  /* 지도 주소 캡션 */
   const mapText = $('#contact-map-text');
   if (mapText && s.contact?.address) {
     mapText.innerHTML = s.contact.address.replace(/,\s*/g, ',<br/>');
@@ -418,6 +447,33 @@ function renderFooter(s) {
   if (fc) fc.textContent = `© ${new Date().getFullYear()} ${s.brandName || 'Aestyve'}. All rights reserved.`;
 }
 
+/* ─── 스크롤 등장 애니메이션 (IntersectionObserver) ─── */
+let _revealObserver = null;
+
+function initReveal() {
+  if (!('IntersectionObserver' in window)) {
+    /* 미지원 브라우저 fallback: 모두 보이게 */
+    $$('.reveal').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  _revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        _revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  $$('.reveal').forEach(el => _revealObserver.observe(el));
+}
+
+/* 새 요소가 DOM에 추가될 때 재스캔 */
+function scanReveal() {
+  if (!_revealObserver) return;
+  $$('.reveal:not(.visible)').forEach(el => _revealObserver.observe(el));
+}
+
 /* ─── Header scroll ─── */
 function initHeaderScroll() {
   const header = $('#site-header');
@@ -452,6 +508,8 @@ function init() {
   initHeaderScroll();
   initHamburger();
   initWechatModal();
+  initReveal();
+  initHeroScrollHint();
   loadContent();
 }
 

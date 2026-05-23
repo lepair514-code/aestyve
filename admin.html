@@ -538,26 +538,71 @@
             <button class="btn btn-primary btn-sm" onclick="saveSettings()"><i class="fas fa-save"></i> 저장</button>
           </div>
           <div class="panel-body">
+
+            <!-- ① 브랜드 기본 정보 -->
+            <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">🏷️ 브랜드 기본 정보</div>
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">브랜드명</label>
                 <input type="text" class="form-control" id="set-brandName" placeholder="Aestyve" />
               </div>
               <div class="form-group">
-                <label class="form-label">Instagram URL</label>
-                <input type="url" class="form-control" id="set-instagram" placeholder="https://instagram.com/aestyve" />
+                <label class="form-label">슬로건 (한국어)</label>
+                <input type="text" class="form-control" id="set-slogan-ko" placeholder="피부과학의 혁신, 아름다움의 새 기준" />
               </div>
               <div class="form-group">
-                <label class="form-label">연락처 전화번호</label>
+                <label class="form-label">슬로건 (English)</label>
+                <input type="text" class="form-control" id="set-slogan-en" placeholder="Innovation in Dermatology, A New Standard of Beauty" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">슬로건 (中文)</label>
+                <input type="text" class="form-control" id="set-slogan-zh" placeholder="皮肤科学的创新，美丽的新标准" />
+              </div>
+            </div>
+
+            <hr style="border:none;border-top:1px solid var(--border);margin:8px 0 20px;" />
+
+            <!-- ② 연락처 정보 -->
+            <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">📞 연락처 정보</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">전화번호</label>
                 <input type="text" class="form-control" id="set-phone" />
               </div>
               <div class="form-group">
-                <label class="form-label">연락처 이메일</label>
+                <label class="form-label">이메일</label>
                 <input type="email" class="form-control" id="set-email" />
               </div>
               <div class="form-group" style="grid-column:span 2;">
                 <label class="form-label">주소</label>
                 <input type="text" class="form-control" id="set-address" />
+              </div>
+            </div>
+
+            <hr style="border:none;border-top:1px solid var(--border);margin:8px 0 20px;" />
+
+            <!-- ③ 소셜 미디어 링크 -->
+            <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">🔗 소셜 미디어</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><i class="fab fa-instagram" style="color:#E1306C;margin-right:4px;"></i>Instagram URL</label>
+                <input type="url" class="form-control" id="set-instagram" placeholder="https://instagram.com/aestyve" />
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fab fa-youtube" style="color:#FF0000;margin-right:4px;"></i>YouTube URL</label>
+                <input type="url" class="form-control" id="set-youtube" placeholder="https://youtube.com/@aestyve" />
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fab fa-facebook" style="color:#1877F2;margin-right:4px;"></i>Facebook URL</label>
+                <input type="url" class="form-control" id="set-facebook" placeholder="https://facebook.com/aestyve" />
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fab fa-tiktok" style="color:#000;margin-right:4px;"></i>TikTok URL</label>
+                <input type="url" class="form-control" id="set-tiktok" placeholder="https://tiktok.com/@aestyve" />
+              </div>
+              <div class="form-group" style="grid-column:span 2;">
+                <label class="form-label"><i class="fab fa-weixin" style="color:#07c160;margin-right:4px;"></i>WeChat ID (텍스트) — QR 코드는 아래에서 별도 업로드</label>
+                <input type="text" class="form-control" id="set-wechat" placeholder="WeChat ID 또는 링크 (선택사항)" />
               </div>
             </div>
 
