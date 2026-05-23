@@ -587,6 +587,7 @@ function renderProductGrid(prods) {
         ${badges ? `<div class="prod-card-badge-wrap">${badges}</div>` : ''}
         <img src="${p.image||''}" alt="${name}" loading="lazy"
              onerror="this.parentElement.innerHTML='<div class=prod-card-no-img>📦</div>'" />
+        ${p.hoverImage ? `<img class="prod-card-hover-img" src="${p.hoverImage}" alt="${name} hover" loading="lazy" />` : ''}
         <div class="prod-card-view"><span>VIEW</span></div>
       </div>
       ${catLabel ? `<div class="prod-card-cat">${catLabel}</div>` : ''}

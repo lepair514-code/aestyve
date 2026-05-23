@@ -343,10 +343,13 @@ function renderProductAdminList() {
 
     return `
     <div class="prod-admin-card">
-      <div class="prod-admin-thumb">${thumbHtml}</div>
+      <div class="prod-admin-thumb" style="position:relative;">
+        ${thumbHtml}
+        ${p.hoverImage ? `<div title="호버 이미지 있음" style="position:absolute;bottom:2px;right:2px;background:rgba(0,0,0,.65);color:#fff;font-size:.55rem;padding:2px 5px;border-radius:4px;line-height:1.4;">🖱️ HOVER</div>` : ''}
+      </div>
       <div class="prod-admin-info">
         <div class="prod-admin-name">${esc(name)}</div>
-        <div class="prod-admin-desc" style="display:flex;gap:6px;align-items:center;">
+        <div class="prod-admin-desc" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
           <span style="font-size:.7rem;font-weight:600;background:#eef2ff;color:var(--accent);padding:2px 7px;border-radius:10px;">${esc(catLabel)}</span>
           <span style="color:var(--gray-400);font-size:.75rem;">${esc(p.id)}</span>
         </div>
@@ -388,9 +391,13 @@ function buildProductModal(p) {
   if (!body) return;
 
   const currentImg = p?.image || '';
+  const currentHoverImg = p?.hoverImage || '';
   const imgPreviewHtml = currentImg
     ? `<img src="${esc(currentImg)}" style="width:100%;max-height:180px;object-fit:cover;border-radius:6px;display:block;" />`
     : `<div class="upload-placeholder"><span class="icon">🖼️</span><p>이미지를 업로드하거나 URL을 입력하세요</p></div>`;
+  const hoverImgPreviewHtml = currentHoverImg
+    ? `<img src="${esc(currentHoverImg)}" style="width:100%;max-height:180px;object-fit:cover;border-radius:6px;display:block;" />`
+    : `<div class="upload-placeholder"><span class="icon">🖱️</span><p>마우스 올렸을 때 나타날 이미지</p></div>`;
 
   const nameKo   = getLangStr(p?.name, 'ko');
   const nameEn   = getLangStr(p?.name, 'en');
@@ -445,7 +452,37 @@ function buildProductModal(p) {
     </div>
     ${HR}
 
-    <!-- ② 카테고리 -->
+    <!-- ② 호버 이미지 -->
+    ${SECTION('호버 이미지 (마우스 올렸을 때)', '제품 목록에서 마우스를 올리면 이 이미지로 바뀝니다 · 선택사항')}
+    <div class="form-group" style="margin-bottom:20px;">
+      <div class="media-tabs">
+        <button type="button" class="media-tab active" id="modal-hover-tab-file" onclick="switchHoverTab('file')">📁 파일 업로드</button>
+        <button type="button" class="media-tab" id="modal-hover-tab-url" onclick="switchHoverTab('url')">🔗 URL 입력</button>
+        ${currentHoverImg ? `<button type="button" class="media-tab" id="modal-hover-tab-del" onclick="removeHoverImage()" style="margin-left:auto;color:var(--danger);border-color:var(--danger);">✕ 제거</button>` : ''}
+      </div>
+      <div id="modal-hover-pane-file">
+        <div class="upload-area" id="modal-hover-img-upload-area" onclick="document.getElementById('modal-hover-img-file').click()">
+          <div class="upload-preview" id="modal-hover-img-preview">${hoverImgPreviewHtml}</div>
+          <div class="upload-footer">JPG · PNG · WebP — 클릭하여 선택</div>
+        </div>
+        <input type="file" id="modal-hover-img-file" accept="image/*" style="display:none" onchange="handleHoverImage(this)" />
+      </div>
+      <div id="modal-hover-pane-url" style="display:none;">
+        <div class="url-row">
+          <input type="url" class="form-control" id="modal-hover-img-url" placeholder="https://example.com/product-hover.jpg" value="${esc(currentHoverImg.startsWith('http') ? currentHoverImg : '')}" />
+          <button type="button" class="btn btn-accent btn-sm" onclick="applyHoverImgUrl()">적용</button>
+        </div>
+        <div style="margin-top:8px;border-radius:var(--radius);overflow:hidden;background:var(--gray-100);">
+          <div id="modal-hover-img-url-preview" style="min-height:80px;display:flex;align-items:center;justify-content:center;">
+            ${currentHoverImg.startsWith('http') ? `<img src="${esc(currentHoverImg)}" style="width:100%;max-height:160px;object-fit:cover;display:block;" />` : `<span style="color:var(--gray-400);font-size:.8rem;">미리보기</span>`}
+          </div>
+        </div>
+      </div>
+      <input type="hidden" id="modal-hover-img-value" value="${esc(currentHoverImg)}" />
+    </div>
+    ${HR}
+
+    <!-- ③ 카테고리 -->
     ${SECTION('카테고리')}
     <div class="form-group" style="margin-bottom:20px;">
       <div class="cat-select-wrap">
@@ -653,6 +690,22 @@ window.switchModalTab = function(tab) {
   }
 };
 
+/* 호버 이미지 탭 전환 */
+window.switchHoverTab = function(tab) {
+  const fileTab  = $('#modal-hover-tab-file');
+  const urlTab   = $('#modal-hover-tab-url');
+  const filePane = $('#modal-hover-pane-file');
+  const urlPane  = $('#modal-hover-pane-url');
+  if (!fileTab) return;
+  if (tab === 'file') {
+    fileTab.classList.add('active'); urlTab.classList.remove('active');
+    filePane.style.display = ''; urlPane.style.display = 'none';
+  } else {
+    urlTab.classList.add('active'); fileTab.classList.remove('active');
+    urlPane.style.display = ''; filePane.style.display = 'none';
+  }
+};
+
 /* 파일 업로드 → Base64 */
 window.handleModalImage = function(input) {
   const file = input.files[0];
@@ -672,6 +725,38 @@ window.handleModalImage = function(input) {
   reader.readAsDataURL(file);
 };
 
+/* 호버 이미지 파일 업로드 → Base64 */
+window.handleHoverImage = function(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 10 * 1024 * 1024) { toast('10MB 이하 이미지만 지원합니다.', 'error'); input.value = ''; return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const b64 = e.target.result;
+    const preview = $('#modal-hover-img-preview');
+    if (preview) preview.innerHTML = `<img src="${b64}" style="width:100%;max-height:180px;object-fit:cover;display:block;" />`;
+    const hidden = $('#modal-hover-img-value');
+    if (hidden) hidden.value = b64;
+    const area = $('#modal-hover-img-upload-area');
+    if (area) area.classList.add('has-media');
+    toast('✅ 호버 이미지 업로드 완료! 저장 버튼을 눌러 반영하세요.');
+  };
+  reader.readAsDataURL(file);
+};
+
+/* 호버 이미지 제거 */
+window.removeHoverImage = function() {
+  const hidden = $('#modal-hover-img-value');
+  if (hidden) hidden.value = '';
+  const preview = $('#modal-hover-img-preview');
+  if (preview) preview.innerHTML = `<div class="upload-placeholder"><span class="icon">🖱️</span><p>마우스 올렸을 때 나타날 이미지</p></div>`;
+  const urlInput = $('#modal-hover-img-url');
+  if (urlInput) urlInput.value = '';
+  const urlPreview = $('#modal-hover-img-url-preview');
+  if (urlPreview) urlPreview.innerHTML = `<span style="color:var(--gray-400);font-size:.8rem;">미리보기</span>`;
+  toast('🗑️ 호버 이미지가 제거되었습니다.');
+};
+
 /* URL 적용 */
 window.applyModalImgUrl = function() {
   const urlInput = $('#modal-img-url');
@@ -685,6 +770,21 @@ window.applyModalImgUrl = function() {
   const hidden = $('#modal-img-value');
   if (hidden) hidden.value = url;
   toast('✅ URL 적용! 저장 버튼을 눌러 반영하세요.');
+};
+
+/* 호버 이미지 URL 적용 */
+window.applyHoverImgUrl = function() {
+  const urlInput = $('#modal-hover-img-url');
+  if (!urlInput) return;
+  const url = urlInput.value.trim();
+  if (!url || (!url.startsWith('http') && !url.startsWith('/'))) {
+    toast('올바른 URL을 입력해주세요.', 'error'); return;
+  }
+  const urlPreview = $('#modal-hover-img-url-preview');
+  if (urlPreview) urlPreview.innerHTML = `<img src="${esc(url)}" style="width:100%;max-height:160px;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<span style=color:var(--danger);padding:12px;font-size:.8rem;>이미지를 불러올 수 없습니다.</span>'" />`;
+  const hidden = $('#modal-hover-img-value');
+  if (hidden) hidden.value = url;
+  toast('✅ 호버 이미지 URL 적용! 저장 버튼을 눌러 반영하세요.');
 };
 
 /* Modal 저장 */
@@ -706,6 +806,20 @@ window.saveProductModal = function() {
     finalImg = ($('#modal-img-value') || {}).value || '';
   }
 
+  /* 호버 이미지 값 결정 */
+  const hoverUrlTabActive = $('#modal-hover-tab-url')?.classList.contains('active');
+  let finalHoverImg = '';
+  if (hoverUrlTabActive) {
+    const hoverUrlInput = ($('#modal-hover-img-url') || {}).value?.trim() || '';
+    if (hoverUrlInput && (hoverUrlInput.startsWith('http') || hoverUrlInput.startsWith('/'))) {
+      finalHoverImg = hoverUrlInput;
+    } else {
+      finalHoverImg = ($('#modal-hover-img-value') || {}).value || '';
+    }
+  } else {
+    finalHoverImg = ($('#modal-hover-img-value') || {}).value || '';
+  }
+
   const gv = id => ($(`#${id}`) || {}).value?.trim() || '';
   const badgesRaw = gv('m-badges');
   const badges = badgesRaw ? badgesRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
@@ -713,6 +827,7 @@ window.saveProductModal = function() {
   const obj = {
     id: modalProductIdx >= 0 ? (DATA.products[modalProductIdx]?.id || uid()) : uid(),
     image: finalImg,
+    hoverImage: finalHoverImg || undefined,
     category:    gv('m-category') || 'all',
     badges,
     composition: gv('m-composition'),
