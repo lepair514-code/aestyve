@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Debug — localStorage Inspector</title>
+<style>
+  body { font-family: monospace; padding: 20px; background: #111; color: #eee; }
+  h2 { color: #4F7EF7; }
+  pre { background: #1e1e1e; padding: 16px; border-radius: 6px; overflow: auto; font-size: .8rem; white-space: pre-wrap; word-break: break-all; }
+  .ok { color: #4ade80; }
+  .warn { color: #facc15; }
+  .err { color: #f87171; }
+  button { background: #4F7EF7; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 4px; font-family: monospace; }
+  button:hover { background: #3a6bd4; }
+  .section { border: 1px solid #333; border-radius: 6px; padding: 16px; margin-bottom: 20px; }
+  .label { color: #aaa; font-size: .75rem; margin-bottom: 6px; }
+  .img-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; display: inline-block; vertical-align: middle; margin: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+  td, th { border: 1px solid #333; padding: 6px 10px; text-align: left; }
+  th { background: #2a2a2a; color: #4F7EF7; }
+</style>
+</head>
+<body>
+<h2>🔍 Aestyve LocalStorage Inspector</h2>
+<button onclick="runDiag()">▶ 진단 실행</button>
+<button onclick="clearAll()">🗑 전체 초기화 (주의!)</button>
+<button onclick="clearDimgs()">🗑 _dimgs만 삭제</button>
+<button onclick="location.reload()">↺ 새로고침</button>
+
+<div id="out"></div>
+
+<script>
+const KEY = 'aestyve_content';
+const KEY_DIMGS = 'aestyve_content_dimgs';
+
+function runDiag() {
+  const out = document.getElementById('out');
+  let html = '';
+
+  // 1) Raw keys
+  html += `<div class="section">`;
+  html += `<div class="label">📦 localStorage 전체 키 목록</div>`;
+  const keys = [];
+  for (let i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i));
+  html += `<pre>${keys.join('\n') || '(비어있음)'}</pre>`;
+  html += `</div>`;
+
+  // 2) _dimgs 분석
+  html += `<div class="section">`;
+  html += `<div class="label">📸 aestyve_content_dimgs 분석</div>`;
+  const rawDimgs = localStorage.getItem(KEY_DIMGS);
+  if (!rawDimgs) {
+    html += `<pre class="err">❌ _dimgs 키 없음 → 이미지가 저장된 적 없거나 지워짐</pre>`;
+  } else {
+    let dimgs;
+    try { dimgs = JSON.parse(rawDimgs); } catch(e) { html += `<pre class="err">❌ JSON 파싱 오류: ${e}</pre>`; }
+    if (dimgs) {
+      const ids = Object.keys(dimgs);
+      if (!ids.length) {
+        html += `<pre class="warn">⚠️ _dimgs 키는 있지만 비어있음 ({})</pre>`;
+      } else {
+        html += `<table><tr><th>제품 ID</th><th>이미지 수</th><th>첫 이미지 (60px)</th><th>첫 이미지 앞 50자</th></tr>`;
+        ids.forEach(id => {
+          const imgs = dimgs[id];
+          const thumb = imgs[0] ? `<img class="img-thumb" src="${imgs[0]}" />` : '-';
+          const preview = imgs[0] ? imgs[0].substring(0, 50) + '...' : '-';
+          const countCls = imgs.length > 0 ? 'ok' : 'err';
+          html += `<tr><td>${id}</td><td class="${countCls}">${imgs.length}</td><td>${thumb}</td><td>${preview}</td></tr>`;
+        });
+        html += `</table>`;
+      }
+    }
+  }
+  html += `</div>`;
+
+  // 3) 메인 data 분석
+  html += `<div class="section">`;
+  html += `<div class="label">📋 aestyve_content (메인 데이터) 분석</div>`;
+  const rawMain = localStorage.getItem(KEY);
+  if (!rawMain) {
+    html += `<pre class="err">❌ 메인 데이터 없음</pre>`;
+  } else {
+    let main;
+    try { main = JSON.parse(rawMain); } catch(e) { html += `<pre class="err">❌ JSON 파싱 오류: ${e}</pre>`; }
+    if (main) {
+      const prods = main.products || [];
+      html += `<div class="label ok">✅ 제품 ${prods.length}개 로드됨</div>`;
+      html += `<table><tr><th>idx</th><th>id</th><th>name.ko</th><th>category</th><th>detailImages (slim에서)</th></tr>`;
+      prods.forEach((p, i) => {
+        const hasImgs = p.detailImages && p.detailImages.length > 0;
+        html += `<tr>
+          <td>${i}</td>
+          <td>${p.id || '<span class="err">없음</span>'}</td>
+          <td>${(p.name && p.name.ko) || p.name || '-'}</td>
+          <td>${p.category || '-'}</td>
+          <td class="${hasImgs ? 'warn' : 'ok'}">${hasImgs ? '⚠️ slim에 Base64 포함 (비정상)' : '✅ 없음 (정상 — _dimgs에 분리됨)'}</td>
+        </tr>`;
+      });
+      html += `</table>`;
+    }
+  }
+  html += `</div>`;
+
+  // 4) content.json fetch해서 id 비교
+  html += `<div class="section">`;
+  html += `<div class="label">🔄 content.json vs _dimgs ID 매칭 검사</div>`;
+  html += `<pre id="match-result">content.json 로딩 중...</pre>`;
+  html += `</div>`;
+
+  out.innerHTML = html;
+
+  // fetch content.json
+  fetch('data/content.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(fresh => {
+      const dimgsRaw = localStorage.getItem(KEY_DIMGS);
+      const dimgs = dimgsRaw ? JSON.parse(dimgsRaw) : {};
+      const dimgIds = Object.keys(dimgs);
+      const freshIds = (fresh.products || []).map(p => p.id);
+
+      let matchHtml = `<table><tr><th>content.json ID</th><th>_dimgs에 있음?</th><th>이미지 수</th></tr>`;
+      freshIds.forEach(id => {
+        const found = id in dimgs;
+        const cnt = found ? dimgs[id].length : 0;
+        matchHtml += `<tr><td>${id}</td><td class="${found && cnt > 0 ? 'ok' : 'err'}">${found && cnt > 0 ? `✅ 있음` : found ? '⚠️ 있지만 0장' : '❌ 없음'}</td><td>${cnt}</td></tr>`;
+      });
+
+      // _dimgs에만 있고 content.json에 없는 id
+      dimgIds.filter(id => !freshIds.includes(id)).forEach(id => {
+        matchHtml += `<tr><td class="warn">${id} (content.json에 없음!)</td><td class="warn">⚠️ 고아 데이터</td><td>${dimgs[id].length}</td></tr>`;
+      });
+      matchHtml += `</table>`;
+
+      matchHtml += `<br><div class="label">content.json 제품 ID 목록: <span class="ok">${freshIds.join(', ')}</span></div>`;
+      matchHtml += `<div class="label">_dimgs에 저장된 ID 목록: <span class="${dimgIds.length ? 'ok' : 'err'}">${dimgIds.join(', ') || '(없음)'}</span></div>`;
+
+      document.getElementById('match-result').outerHTML = matchHtml;
+    })
+    .catch(e => {
+      document.getElementById('match-result').textContent = '❌ content.json 로드 실패: ' + e;
+    });
+}
+
+function clearAll() {
+  if (confirm('localStorage 전체를 삭제합니다. 정말요?')) {
+    localStorage.clear();
+    alert('삭제 완료. 페이지 새로고침하세요.');
+    location.reload();
+  }
+}
+
+function clearDimgs() {
+  if (confirm('_dimgs 키만 삭제합니다. 업로드한 카탈로그 이미지가 사라집니다.')) {
+    localStorage.removeItem('aestyve_content_dimgs');
+    alert('삭제 완료');
+    runDiag();
+  }
+}
+
+// 자동 실행
+runDiag();
+</script>
+</body>
+</html>

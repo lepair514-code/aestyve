@@ -1,8 +1,22 @@
 /**
- * Aestyve — main.js
+ * Aestyve — main.js v4
+ * 3CE 모티브: 풀스크린 히어로 슬라이더 + 가로 드래그 스크롤 + 커스텀 커서
  */
 
-const STATE = { lang: 'ko', content: null, activeCat: 'all' };
+/* ══════════════════════════════════════
+   GLOBALS
+══════════════════════════════════════ */
+const STATE = {
+  lang: 'ko',
+  content: null,
+  activeCat: 'all',
+  heroIdx: 0,
+  heroTotal: 0,
+  heroPaused: false,
+  heroTimer: null,
+  heroDuration: 6000,
+};
+
 const LANGS = [
   { code: 'ko', flag: '🇰🇷', label: '한국어' },
   { code: 'en', flag: '🇺🇸', label: 'English' },
@@ -15,9 +29,10 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const t = (obj) => {
   if (!obj) return '';
   if (typeof obj === 'string') return obj;
-  return obj[STATE.lang] || obj['ko'] || obj['en'] || '';
+  return obj[STATE.lang] || obj.ko || obj.en || '';
 };
-function showToast(msg, duration = 2400) {
+
+function showToast(msg, duration = 2600) {
   const el = $('#toast');
   if (!el) return;
   el.textContent = msg;
@@ -25,7 +40,49 @@ function showToast(msg, duration = 2400) {
   setTimeout(() => el.classList.remove('show'), duration);
 }
 
-/* ─── 언어 ─── */
+/* ══════════════════════════════════════
+   CUSTOM CURSOR
+══════════════════════════════════════ */
+function initCursor() {
+  const dot  = $('#cursor-dot');
+  const ring = $('#cursor-ring');
+  if (!dot || !ring) return;
+  if (window.matchMedia('(hover: none)').matches) return; // 터치 기기
+
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform  = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+  });
+
+  /* ring은 부드럽게 따라옴 */
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  /* 호버 상태 */
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('a, button, [role=button], .prod-card, .cat-tab, .hero-dot');
+    if (el) { dot.classList.add('hover'); ring.classList.add('hover'); }
+    else     { dot.classList.remove('hover'); ring.classList.remove('hover'); }
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0'; ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1'; ring.style.opacity = '1';
+  });
+}
+
+/* ══════════════════════════════════════
+   LANG
+══════════════════════════════════════ */
 function initLang() {
   const stored = localStorage.getItem('aestyve_lang');
   if (stored && LANGS.find(l => l.code === stored)) { STATE.lang = stored; return; }
@@ -45,10 +102,9 @@ function setLang(code) {
 }
 function renderLangSwitcher() {
   const wrap = $('#lang-switcher');
-  const mobileWrap = $('#mobile-lang-switcher');
+  const mWrap = $('#mobile-lang-switcher');
   if (!wrap) return;
-  wrap.innerHTML = '';
-  if (mobileWrap) mobileWrap.innerHTML = '';
+  [wrap, mWrap].forEach(w => { if (w) w.innerHTML = ''; });
   LANGS.forEach(({ code, flag, label }) => {
     const btn = document.createElement('button');
     btn.className = 'lang-btn' + (code === STATE.lang ? ' active' : '');
@@ -57,55 +113,43 @@ function renderLangSwitcher() {
     btn.setAttribute('aria-label', label);
     btn.addEventListener('click', () => { setLang(code); renderLangSwitcher(); });
     wrap.appendChild(btn);
-    if (mobileWrap) {
-      const btn2 = btn.cloneNode(true);
-      btn2.addEventListener('click', () => { setLang(code); renderLangSwitcher(); });
-      mobileWrap.appendChild(btn2);
+    if (mWrap) {
+      const b2 = btn.cloneNode(true);
+      b2.addEventListener('click', () => { setLang(code); renderLangSwitcher(); });
+      mWrap.appendChild(b2);
     }
   });
 }
 
-/* ─── 콘텐츠 로드 (content.json + IndexedDB) ─── */
+/* ══════════════════════════════════════
+   CONTENT LOAD (cached-first merge)
+══════════════════════════════════════ */
 async function loadContent() {
-  /* 1) IndexedDB에서 detailImages 맵 로드 */
   const imgMap = await ImageStore.getAll();
 
-  /* 2) content.json fetch (서버 원본) */
   let fresh = null;
   try {
     const res = await fetch('data/content.json?v=' + Date.now());
     if (res.ok) fresh = await res.json();
   } catch (e) {}
 
-  /* 3) localStorage (관리자가 편집한 최신 데이터) */
   let cached = null;
   try {
-    const stored = localStorage.getItem('aestyve_content');
-    if (stored) cached = JSON.parse(stored);
+    const s = localStorage.getItem('aestyve_content');
+    if (s) cached = JSON.parse(s);
   } catch (e) {}
 
-  function _applyImgMap(products) {
-    return (products || []).map(p => ({ ...p, detailImages: imgMap[p.id] || [] }));
-  }
+  const _applyImg = prods => (prods || []).map(p => ({ ...p, detailImages: imgMap[p.id] || [] }));
 
   if (fresh) {
     if (cached && typeof cached === 'object') {
-      /*
-       * ★ 핵심 머지 규칙 ★  (admin.js와 동일 로직)
-       * localStorage(cached) = 관리자가 편집한 최신 진실(source of truth)
-       * - cached에 있는 제품 전체를 기준으로 유지
-       * - fresh에만 있는 제품(서버 원본에만 존재)도 추가
-       * - 둘 다 있으면 cached 값 우선 (관리자 편집 보존)
-       */
-      const freshProdMap = Object.fromEntries((fresh.products || []).map(p => [p.id, p]));
-      const cachedIds    = new Set((cached.products || []).map(p => p.id));
+      const freshMap  = Object.fromEntries((fresh.products || []).map(p => [p.id, p]));
+      const cachedIds = new Set((cached.products || []).map(p => p.id));
 
-      const mergedFromCached = (cached.products || []).map(cp => ({
-        ...(freshProdMap[cp.id] || {}),
-        ...cp,
+      const merged   = (cached.products || []).map(cp => ({
+        ...(freshMap[cp.id] || {}), ...cp,
         detailImages: imgMap[cp.id] || [],
       }));
-
       const freshOnly = (fresh.products || [])
         .filter(fp => !cachedIds.has(fp.id))
         .map(fp => ({ ...fp, detailImages: imgMap[fp.id] || [] }));
@@ -116,45 +160,43 @@ async function loadContent() {
         settings:   cached.settings   || fresh.settings,
         nav:        cached.nav        || fresh.nav,
         categories: cached.categories || fresh.categories,
-        products:   [...mergedFromCached, ...freshOnly],
+        products:   [...merged, ...freshOnly],
       };
     } else {
-      /* localStorage 없으면 fresh 그대로 */
-      STATE.content = { ...fresh, products: _applyImgMap(fresh.products) };
+      STATE.content = { ...fresh, products: _applyImg(fresh.products) };
     }
-    renderAll();
-    return;
+    renderAll(); return;
   }
-
-  /* 4) fetch 실패 → localStorage 폴백 */
   if (cached) {
-    cached.products = _applyImgMap(cached.products || []);
+    cached.products = _applyImg(cached.products || []);
     STATE.content = cached;
-    renderAll();
-    return;
+    renderAll(); return;
   }
-
-  console.error('[Aestyve] content.json 로드 실패 + localStorage 없음');
+  console.error('[Aestyve] 콘텐츠 로드 실패');
 }
 
-/* ─── 전체 렌더 ─── */
+/* ══════════════════════════════════════
+   RENDER ALL
+══════════════════════════════════════ */
 function renderAll() {
   const c = STATE.content;
   if (!c) return;
   renderNav(c.nav);
   renderHero(c.heroes);
+  renderMarquee(c.settings);
   renderCategoryTabs(c.categories, c.products);
   renderBrand(c.settings);
   renderContact(c.settings);
   renderFooter(c.settings);
   renderLangSwitcher();
-  /* 렌더 완료 후 reveal 재스캔 */
-  setTimeout(scanReveal, 100);
+  setTimeout(scanReveal, 120);
 }
 
-/* ─── Nav ─── */
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
 function renderNav(navItems) {
-  const nav = $('#main-nav');
+  const nav   = $('#main-nav');
   const mLinks = $('#mobile-nav-links');
   if (!nav || !navItems) return;
   nav.innerHTML = navItems.map(item =>
@@ -170,101 +212,279 @@ function renderNav(navItems) {
   }
 }
 
-/* ─── Hero ─── */
-const HERO_YT_FALLBACK = 'https://youtu.be/uRgcUCCeykk'; // YouTube fallback URL
+/* ══════════════════════════════════════
+   HERO SLIDER ENGINE
+══════════════════════════════════════ */
+const HERO_YT_FALLBACK = 'https://youtu.be/uRgcUCCeykk';
 const HERO_POSTER      = 'images/hero-poster.jpg';
 
-function _buildYtEmbed(vid) {
-  const src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd1080&origin=${encodeURIComponent(location.origin)}`;
-  return `<iframe id="hero-yt-iframe" class="hero-video-full" src="${src}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Aestyve Hero Video"></iframe>`
-       + `<button id="hero-unmute-btn" aria-label="소리 켜기" onclick="heroToggleMute(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="yt-icon-poly"/><line x1="23" y1="9" x2="17" y2="15" class="yt-muted-line"/><line x1="17" y1="9" x2="23" y2="15" class="yt-muted-line"/></svg></button>`;
-}
-
-function _fallbackToYoutube(wrap) {
-  const m = HERO_YT_FALLBACK.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-  if (m) wrap.innerHTML = _buildYtEmbed(m[1]);
-}
-
-function renderHero(heroes) {
-  const videoWrap = $('#hero-video-wrap');
-  const overlay   = $('#hero-overlay');
-  if (!videoWrap || !overlay) return;
-  const h = (heroes && heroes.length > 0) ? heroes[0] : null;
-  let bgHtml = '';
-  if (h && h.bgVideo) {
+/* ─ 슬라이드 HTML 생성 ─ */
+function _buildSlideHTML(h, idx) {
+  /* 배경 미디어 */
+  let mediaBg = '';
+  if (h.bgVideo) {
     const ytMatch = h.bgVideo.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-    if (ytMatch) {
-      /* ── YouTube URL ── */
-      bgHtml = _buildYtEmbed(ytMatch[1]);
+    if (ytMatch && idx === 0) {
+      /* 첫 슬라이드만 YouTube 자동재생 */
+      const vid = ytMatch[1];
+      const src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
+      mediaBg = `<div class="yt-wrap"><iframe src="${src}" frameborder="0" allow="autoplay;encrypted-media" title="Hero Video"></iframe></div>`;
+    } else if (!ytMatch) {
+      /* 로컬 MP4 */
+      mediaBg = `<video class="hero-slide-bg" autoplay muted loop playsinline preload="auto" poster="${HERO_POSTER}" src="${h.bgVideo}" id="hero-video-${idx}"></video>`;
     } else {
-      /* ── 로컬 MP4 URL ── */
-      bgHtml = `<video id="hero-video" class="hero-video-full"
-          autoplay muted loop playsinline preload="auto"
-          poster="${HERO_POSTER}"
-          src="${h.bgVideo}"></video>`;
+      /* YouTube 슬라이드지만 첫번째가 아닌 경우 → 포스터 이미지 */
+      mediaBg = `<div class="hero-slide-bg" style="background:#0B1628;"></div>`;
     }
+  } else if (h.bgImage) {
+    mediaBg = `<img class="hero-slide-bg" src="${h.bgImage}" alt="" loading="${idx === 0 ? 'eager' : 'lazy'}" />`;
   } else {
-    bgHtml = `<div class="hero-video-full" style="background:${(h && h.bgColor) || '#0B1628'};"></div>`;
+    mediaBg = `<div class="hero-slide-bg" style="background:${h.bgColor || '#0B1628'};"></div>`;
   }
-  videoWrap.innerHTML = bgHtml;
 
-  /* error 시에만 fallback */
-  const vid = videoWrap.querySelector('#hero-video');
-  if (vid) {
+  /* 텍스트 */
+  const eyebrow = t(h.label) || 'AESTYVE';
+  const title   = t(h.title)    || 'PREMIUM<br>BEAUTY SCIENCE';
+  const sub     = t(h.subtitle) || '';
+  const btn     = t(h.btnText)  || '';
+  const href    = h.btnHref     || '#products';
+
+  return `
+  <div class="hero-slide${idx === 0 ? ' active' : ''}" data-idx="${idx}">
+    ${mediaBg}
+    <div class="hero-slide-overlay"></div>
+    <div class="hero-slide-content">
+      <div class="hero-slide-eyebrow">${eyebrow}</div>
+      <h1 class="hero-slide-title">${title.replace(/\n/g, '<br>')}</h1>
+      ${sub ? `<p class="hero-slide-sub">${sub}</p>` : ''}
+      ${btn ? `<a href="${href}" class="hero-slide-btn">${btn} <i class="fas fa-arrow-right" style="font-size:.65rem;"></i></a>` : ''}
+    </div>
+  </div>`;
+}
+
+/* ─ 히어로 폴백 (슬라이드가 없을 때) ─ */
+function _buildFallbackSlide() {
+  const ytMatch = HERO_YT_FALLBACK.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (ytMatch) {
+    const vid = ytMatch[1];
+    const src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
+    return `<div class="hero-slide active" data-idx="0">
+      <div class="yt-wrap"><iframe src="${src}" frameborder="0" allow="autoplay;encrypted-media" title="Hero Video"></iframe></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-eyebrow">AESTYVE</div>
+        <h1 class="hero-slide-title">PREMIUM<br>BEAUTY</h1>
+      </div>
+    </div>`;
+  }
+  return `<div class="hero-slide active" data-idx="0">
+    <div class="hero-slide-bg" style="background:#0B1628;"></div>
+    <div class="hero-slide-overlay"></div>
+    <div class="hero-slide-content">
+      <div class="hero-slide-eyebrow">AESTYVE</div>
+      <h1 class="hero-slide-title">PREMIUM<br>BEAUTY</h1>
+    </div>
+  </div>`;
+}
+
+/* ─ 히어로 렌더 ─ */
+function renderHero(heroes) {
+  const track = $('#hero-slides');
+  const dotsEl = $('#hero-dots');
+  if (!track) return;
+
+  const list = (heroes && heroes.length) ? heroes : null;
+  STATE.heroTotal = list ? list.length : 1;
+  STATE.heroIdx   = 0;
+
+  /* 슬라이드 생성 */
+  if (list) {
+    track.innerHTML = list.map((h, i) => _buildSlideHTML(h, i)).join('');
+  } else {
+    track.innerHTML = _buildFallbackSlide();
+  }
+
+  /* 도트 생성 */
+  if (dotsEl) {
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < STATE.heroTotal; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `슬라이드 ${i + 1}`);
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsEl.appendChild(dot);
+    }
+  }
+
+  /* 카운터 */
+  _updateHeroUI();
+
+  /* 자동 재생 (슬라이드 2개 이상) */
+  if (STATE.heroTotal > 1) {
+    _startHeroTimer();
+    /* 마우스 진입 시 일시정지 */
+    const hero = $('#hero');
+    if (hero) {
+      hero.addEventListener('mouseenter', () => { STATE.heroPaused = true; _stopHeroTimer(); });
+      hero.addEventListener('mouseleave', () => { STATE.heroPaused = false; _startHeroTimer(); });
+    }
+  }
+
+  /* 음소거 버튼 제거 (슬라이더에서는 별도 처리) */
+  const muteBtn = $('#hero-unmute-btn');
+  if (muteBtn) muteBtn.style.display = 'none';
+
+  /* 로컬 비디오 error → fallback */
+  $$('.hero-slide video', track).forEach(vid => {
     vid.addEventListener('error', () => {
-      console.warn('[Hero] 비디오 error → YouTube fallback');
-      _fallbackToYoutube(videoWrap);
+      const slide = vid.closest('.hero-slide');
+      if (!slide) return;
+      const existing = slide.querySelector('.hero-slide-bg');
+      if (existing) existing.remove();
+      const overlay = document.createElement('div');
+      overlay.className = 'hero-slide-bg';
+      overlay.style.cssText = 'background:#0B1628;position:absolute;inset:0;';
+      slide.insertBefore(overlay, slide.firstChild);
     });
-  }
-  /* 동영상 위 텍스트 오버레이 없음 */
-  overlay.style.display = 'none';
-}
-
-let _ytMuted = true;
-function heroToggleMute(btn) {
-  const iframe = document.getElementById('hero-yt-iframe');
-  if (!iframe) return;
-  _ytMuted = !_ytMuted;
-  iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func: _ytMuted ? 'mute' : 'unMute', args:[] }), '*');
-  btn.querySelectorAll('.yt-muted-line').forEach(l => { l.style.display = _ytMuted ? '' : 'none'; });
-  if (!_ytMuted) iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func:'setVolume', args:[100] }), '*');
-}
-window.heroToggleMute = heroToggleMute;
-
-/* ─── 히어로 스크롤 힌트 ─── */
-function initHeroScrollHint() {
-  const hint = $('#hero-scroll-hint');
-  if (!hint) return;
-  hint.style.cursor = 'pointer';
-  hint.addEventListener('click', () => {
-    const target = document.getElementById('products');
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
 }
 
-/* ─── 카테고리 탭 + 제품 그리드 ─── */
+/* ─ 슬라이드 이동 ─ */
+function goToSlide(idx) {
+  const slides = $$('.hero-slide', $('#hero-slides'));
+  const dots   = $$('.hero-dot', $('#hero-dots'));
+  if (!slides.length) return;
+
+  idx = ((idx % STATE.heroTotal) + STATE.heroTotal) % STATE.heroTotal;
+
+  slides[STATE.heroIdx]?.classList.remove('active');
+  dots[STATE.heroIdx]?.classList.remove('active');
+  dots[STATE.heroIdx]?.setAttribute('aria-selected', 'false');
+
+  STATE.heroIdx = idx;
+  slides[STATE.heroIdx]?.classList.add('active');
+  dots[STATE.heroIdx]?.classList.add('active');
+  dots[STATE.heroIdx]?.setAttribute('aria-selected', 'true');
+
+  _updateHeroUI();
+  _resetHeroProgress();
+}
+
+function _updateHeroUI() {
+  const cur   = $('#hero-cur');
+  const total = $('#hero-total');
+  if (cur)   cur.textContent   = String(STATE.heroIdx + 1).padStart(2, '0');
+  if (total) total.textContent = String(STATE.heroTotal).padStart(2, '0');
+}
+
+/* ─ 자동 재생 타이머 + 프로그레스 바 ─ */
+let _progressRaf = null;
+let _progressStart = 0;
+
+function _startHeroTimer() {
+  _stopHeroTimer();
+  _progressStart = performance.now();
+  _animateProgress();
+  STATE.heroTimer = setTimeout(() => {
+    if (!STATE.heroPaused) goToSlide(STATE.heroIdx + 1);
+    if (!STATE.heroPaused) _startHeroTimer();
+  }, STATE.heroDuration);
+}
+
+function _stopHeroTimer() {
+  clearTimeout(STATE.heroTimer);
+  cancelAnimationFrame(_progressRaf);
+}
+
+function _resetHeroProgress() {
+  const fill = $('#hero-progress-fill');
+  if (fill) fill.style.width = '0%';
+  _progressStart = performance.now();
+}
+
+function _animateProgress() {
+  const fill = $('#hero-progress-fill');
+  if (!fill) return;
+  const elapsed = performance.now() - _progressStart;
+  const pct = Math.min((elapsed / STATE.heroDuration) * 100, 100);
+  fill.style.width = pct + '%';
+  if (pct < 100) _progressRaf = requestAnimationFrame(_animateProgress);
+}
+
+/* ─ 화살표 바인딩 ─ */
+function initHeroControls() {
+  const prev = $('#hero-prev');
+  const next = $('#hero-next');
+  if (prev) prev.addEventListener('click', () => { goToSlide(STATE.heroIdx - 1); _startHeroTimer(); });
+  if (next) next.addEventListener('click', () => { goToSlide(STATE.heroIdx + 1); _startHeroTimer(); });
+
+  /* 키보드 */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { goToSlide(STATE.heroIdx - 1); _startHeroTimer(); }
+    if (e.key === 'ArrowRight') { goToSlide(STATE.heroIdx + 1); _startHeroTimer(); }
+  });
+
+  /* 터치 스와이프 */
+  let touchX = 0;
+  const hero = $('#hero');
+  if (hero) {
+    hero.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    hero.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) {
+        goToSlide(STATE.heroIdx + (dx < 0 ? 1 : -1));
+        _startHeroTimer();
+      }
+    });
+  }
+
+  /* 스크롤 힌트 클릭 */
+  const hint = $('#hero-scroll-hint');
+  if (hint) {
+    hint.style.cursor = 'none';
+    hint.addEventListener('click', () => {
+      document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+}
+
+/* ══════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════ */
+function renderMarquee(settings) {
+  const track = $('#marquee-track');
+  if (!track) return;
+  const brand = settings?.brandName || 'AESTYVE';
+  const words = [brand, 'DERMATOLOGY', 'BEAUTY SCIENCE', 'PREMIUM CARE', brand, 'INNOVATION'];
+  /* 2배 반복으로 무한 루프 */
+  const repeated = [...words, ...words];
+  track.innerHTML = repeated.map(w => `<span>${w}</span>`).join('');
+}
+
+/* ══════════════════════════════════════
+   CATEGORY TABS + 가로 드래그 스크롤
+══════════════════════════════════════ */
 function renderCategoryTabs(cats, prods) {
   const tabsEl = $('#cat-tabs');
   if (!tabsEl) return;
 
-  const categories = cats || [];
-
-  tabsEl.innerHTML = categories.map(c => {
-    const label = t(c.label) || c.id;
-    const isActive = STATE.activeCat === c.id;
-    return `<button class="cat-tab${isActive ? ' active' : ''}" data-cat="${c.id}">${label}</button>`;
-  }).join('');
-
-  $$('.cat-tab', tabsEl).forEach(btn => {
+  (cats || []).forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-tab' + (STATE.activeCat === c.id ? ' active' : '');
+    btn.textContent = t(c.label) || c.id;
+    btn.dataset.cat = c.id;
     btn.addEventListener('click', () => {
-      STATE.activeCat = btn.dataset.cat;
+      STATE.activeCat = c.id;
       $$('.cat-tab', tabsEl).forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderProductGrid(prods);
     });
+    tabsEl.appendChild(btn);
   });
 
-  /* 제품 수 배지 업데이트 */
+  /* 제품 수 배지 */
   const countNum = $('#prod-count-num');
   if (countNum) countNum.textContent = (prods || []).length;
 
@@ -272,10 +492,13 @@ function renderCategoryTabs(cats, prods) {
 }
 
 function renderProductGrid(prods) {
-  const grid = $('#prod-grid');
+  const grid  = $('#prod-grid');
+  const track = $('#prod-scroll-track');
   if (!grid) return;
+
   if (!prods || !prods.length) {
     grid.innerHTML = `<div class="prod-empty">등록된 제품이 없습니다.</div>`;
+    _updateScrollThumb();
     return;
   }
 
@@ -285,80 +508,117 @@ function renderProductGrid(prods) {
 
   if (!filtered.length) {
     grid.innerHTML = `<div class="prod-empty">해당 카테고리에 제품이 없습니다.</div>`;
+    _updateScrollThumb();
     return;
   }
 
-  grid.innerHTML = filtered.map((p, i) => {
+  grid.innerHTML = filtered.map(p => {
     const name = t(p.name) || '';
     const catLabel = (() => {
       const c = (STATE.content?.categories || []).find(c => c.id === p.category);
       return c ? (t(c.label) || p.category) : (p.category || '');
     })();
-    /* stagger delay: 4개씩 그룹, 최대 4단계 */
-    const delay = (i % 4) * 0.1;
+    const badges = (p.badges || []).slice(0, 2)
+      .map(b => `<span class="prod-card-badge">${b}</span>`).join('');
+
     return `
-    <a class="prod-card reveal" href="product.html?id=${p.id}" style="transition-delay:${delay}s;">
+    <a class="prod-card" href="product.html?id=${p.id}">
       <div class="prod-card-img-wrap">
+        ${badges ? `<div class="prod-card-badge-wrap">${badges}</div>` : ''}
         <img src="${p.image || ''}" alt="${name}" loading="lazy"
              onerror="this.parentElement.innerHTML='<div class=prod-card-no-img>📦</div>'" />
         <div class="prod-card-view"><span>VIEW</span></div>
       </div>
-      <div class="prod-card-info">
-        ${catLabel ? `<span class="prod-card-cat">${catLabel}</span>` : ''}
-        <div class="prod-card-name">${name}</div>
-      </div>
+      ${catLabel ? `<div class="prod-card-cat">${catLabel}</div>` : ''}
+      <div class="prod-card-name">${name}</div>
     </a>`;
   }).join('');
 
-  /* 새로 생긴 카드들도 IntersectionObserver 관찰 */
   scanReveal();
+  _updateScrollThumb();
 }
 
-/* ─── Brand ─── */
-const BRAND_STORY_IMGS = {
-  ko:      'images/brand-story-ko.jpg',
-  en:      'images/brand-story-en.jpg',
+/* ── 가로 드래그 스크롤 ── */
+function initDragScroll() {
+  const track = $('#prod-scroll-track');
+  if (!track) return;
+
+  let isDown = false, startX = 0, scrollLeft = 0;
+
+  track.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    track.classList.add('dragging');
+  });
+  track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('dragging'); });
+  track.addEventListener('mouseup',    () => { isDown = false; track.classList.remove('dragging'); });
+  track.addEventListener('mousemove',  e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x  = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.4;
+    track.scrollLeft = scrollLeft - walk;
+    _updateScrollThumb();
+  });
+
+  /* 스크롤 이벤트로도 thumb 업데이트 */
+  track.addEventListener('scroll', _updateScrollThumb, { passive: true });
+}
+
+function _updateScrollThumb() {
+  const track = $('#prod-scroll-track');
+  const thumb = $('#prod-scroll-thumb');
+  if (!track || !thumb) return;
+  const ratio = track.scrollLeft / (track.scrollWidth - track.clientWidth || 1);
+  const trackW = track.parentElement?.querySelector('.prod-scroll-bar')?.clientWidth || 100;
+  const thumbW = Math.max(40, (track.clientWidth / track.scrollWidth) * trackW);
+  thumb.style.width = thumbW + 'px';
+  thumb.style.left  = (ratio * (trackW - thumbW)) + 'px';
+}
+
+/* ══════════════════════════════════════
+   BRAND
+══════════════════════════════════════ */
+const BRAND_IMGS = {
+  ko: 'images/brand-story-ko.jpg',
+  en: 'images/brand-story-en.jpg',
   'zh-CN': 'images/brand-story-ko.jpg',
-  th:      'images/brand-story-ko.jpg',
+  th: 'images/brand-story-ko.jpg',
 };
-const BRAND_STORY_ALTS = {
-  ko:      'Aestyve 브랜드 스토리 — 미학과 재생의 만남',
-  en:      'Aestyve Brand Story — Where Aesthetics Meet Revival',
+const BRAND_ALTS = {
+  ko: 'Aestyve 브랜드 스토리',
+  en: 'Aestyve Brand Story',
   'zh-CN': 'Aestyve 品牌故事',
-  th:      'Aestyve แบรนด์สตอรี่',
+  th: 'Aestyve แบรนด์สตอรี่',
 };
 
-function renderBrand() {
-  const imgEl = $('#brand-story-img');
-  if (!imgEl) return;
-  const src = BRAND_STORY_IMGS[STATE.lang] || BRAND_STORY_IMGS['ko'];
-  const alt = BRAND_STORY_ALTS[STATE.lang]  || BRAND_STORY_ALTS['ko'];
-  imgEl.src = src;
-  imgEl.alt = alt;
+function renderBrand(settings) {
+  const img = $('#brand-story-img');
+  if (img) { img.src = BRAND_IMGS[STATE.lang] || BRAND_IMGS.ko; img.alt = BRAND_ALTS[STATE.lang] || BRAND_ALTS.ko; }
+
+  /* 브랜드 오버레이 텍스트 */
+  const titleEl = $('#brand-overlay-title');
+  const descEl  = $('#brand-overlay-desc');
+  if (settings) {
+    if (titleEl) titleEl.innerHTML = (settings.brandName || 'AESTYVE').toUpperCase() + '<br>SCIENCE';
+    if (descEl) descEl.textContent = t(settings.brandStory) || t(settings.slogan) || '';
+  }
 }
 
-/* ─── Contact ─── */
+/* ══════════════════════════════════════
+   CONTACT
+══════════════════════════════════════ */
 function renderContact(s) {
   if (!s) return;
 
-  /* 브랜드명 & 슬로건 */
-  const brandEl = $('#contact-brand-name');
-  if (brandEl) brandEl.textContent = s.brandName || 'Aestyve';
+  const set = (id, val) => { const el = $(id); if (el) el.textContent = val || '-'; };
+  set('#contact-brand-name', (s.brandName || 'AESTYVE').toUpperCase());
+  set('#contact-slogan', t(s.slogan));
+  set('#contact-phone', s.contact?.phone);
+  set('#contact-email', s.contact?.email);
+  set('#contact-address', s.contact?.address);
 
-  const sloganEl = $('#contact-slogan');
-  if (sloganEl) sloganEl.textContent = t(s.slogan) || '';
-
-  /* 연락처 정보 */
-  const phoneEl = $('#contact-phone');
-  if (phoneEl) phoneEl.textContent = s.contact?.phone || '-';
-
-  const emailEl = $('#contact-email');
-  if (emailEl) emailEl.textContent = s.contact?.email || '-';
-
-  const addrEl = $('#contact-address');
-  if (addrEl) addrEl.textContent = s.contact?.address || '-';
-
-  /* 지도 주소 캡션 */
   const mapText = $('#contact-map-text');
   if (mapText && s.contact?.address) {
     mapText.innerHTML = s.contact.address.replace(/,\s*/g, ',<br/>');
@@ -369,119 +629,100 @@ function renderContact(s) {
   if (sl) {
     const social = s.social || {};
     const defs = [
-      { key:'instagram', icon:'fab fa-instagram', label:'Instagram' },
-      { key:'youtube',   icon:'fab fa-youtube',   label:'YouTube'   },
-      { key:'facebook',  icon:'fab fa-facebook',  label:'Facebook'  },
-      { key:'tiktok',    icon:'fab fa-tiktok',    label:'TikTok'    },
+      { key: 'instagram', icon: 'fab fa-instagram', label: 'Instagram' },
+      { key: 'youtube',   icon: 'fab fa-youtube',   label: 'YouTube' },
+      { key: 'facebook',  icon: 'fab fa-facebook',  label: 'Facebook' },
+      { key: 'tiktok',    icon: 'fab fa-tiktok',    label: 'TikTok' },
     ];
     const links = defs.filter(d => social[d.key])
       .map(d => `<a href="${social[d.key]}" class="social-link" target="_blank" rel="noopener" aria-label="${d.label}"><i class="${d.icon}"></i></a>`)
       .join('');
 
-    /* WeChat 버튼: social.wechat 값이 있거나 QR 이미지가 저장된 경우 표시 */
-    const wcQr = s.wechatQr || localStorage.getItem('aestyve_wechat_qr') || '';
+    const wcQr  = s.wechatQr || localStorage.getItem('aestyve_wechat_qr') || '';
     const wcBtn = (social.wechat || wcQr)
-      ? `<button class="social-link wechat-btn" aria-label="WeChat" title="WeChat" onclick="openWechatModal()"><i class="fab fa-weixin"></i></button>`
+      ? `<button class="social-link wechat-btn" aria-label="WeChat" onclick="openWechatModal()"><i class="fab fa-weixin"></i></button>`
       : '';
 
     sl.innerHTML = links + wcBtn;
   }
 }
 
-/* ─── WeChat 모달 ─── */
+/* ══════════════════════════════════════
+   WECHAT MODAL
+══════════════════════════════════════ */
 function openWechatModal() {
   const modal = $('#wechat-modal');
   if (!modal) return;
-
-  /* QR 이미지: content.json wechatQr → localStorage 순으로 조회 */
-  const qrSrc = (STATE.content?.settings?.wechatQr)
-    || localStorage.getItem('aestyve_wechat_qr')
-    || '';
-
-  const img  = $('#wechat-qr-img');
-  const ph   = $('#wechat-qr-placeholder');
+  const qrSrc = (STATE.content?.settings?.wechatQr) || localStorage.getItem('aestyve_wechat_qr') || '';
+  const img = $('#wechat-qr-img');
+  const ph  = $('#wechat-qr-placeholder');
   if (img && ph) {
-    if (qrSrc) {
-      img.src = qrSrc;
-      img.style.display = 'block';
-      ph.style.display  = 'none';
-    } else {
-      img.style.display = 'none';
-      ph.style.display  = 'flex';
-    }
+    if (qrSrc) { img.src = qrSrc; img.style.display = 'block'; ph.style.display = 'none'; }
+    else        { img.style.display = 'none'; ph.style.display = 'flex'; }
   }
-
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
-
 function closeWechatModal() {
   const modal = $('#wechat-modal');
   if (modal) modal.style.display = 'none';
   document.body.style.overflow = '';
 }
-window.openWechatModal  = openWechatModal;
-window.closeWechatModal = closeWechatModal;
-
-/* WeChat 모달 닫기 이벤트 초기화 */
 function initWechatModal() {
   const closeBtn = $('#wechat-modal-close');
   if (closeBtn) closeBtn.addEventListener('click', closeWechatModal);
   const modal = $('#wechat-modal');
-  if (modal) {
-    modal.addEventListener('click', e => {
-      if (e.target === modal) closeWechatModal();
-    });
-  }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeWechatModal();
-  });
+  if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeWechatModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeWechatModal(); });
 }
+window.openWechatModal  = openWechatModal;
+window.closeWechatModal = closeWechatModal;
 
-/* ─── Footer ─── */
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
 function renderFooter(s) {
   if (!s) return;
   const fd = $('#footer-desc');
-  if (fd) fd.textContent = t(s.slogan) || 'Aestyve';
+  if (fd) fd.textContent = t(s.slogan) || '';
   const fc = $('#footer-copyright');
   if (fc) fc.textContent = `© ${new Date().getFullYear()} ${s.brandName || 'Aestyve'}. All rights reserved.`;
 }
 
-/* ─── 스크롤 등장 애니메이션 (IntersectionObserver) ─── */
-let _revealObserver = null;
-
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+let _revealObs = null;
 function initReveal() {
   if (!('IntersectionObserver' in window)) {
-    /* 미지원 브라우저 fallback: 모두 보이게 */
     $$('.reveal').forEach(el => el.classList.add('visible'));
     return;
   }
-  _revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        _revealObserver.unobserve(entry.target);
-      }
+  _revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); _revealObs.unobserve(e.target); }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  $$('.reveal').forEach(el => _revealObserver.observe(el));
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  $$('.reveal').forEach(el => _revealObs.observe(el));
 }
-
-/* 새 요소가 DOM에 추가될 때 재스캔 */
 function scanReveal() {
-  if (!_revealObserver) return;
-  $$('.reveal:not(.visible)').forEach(el => _revealObserver.observe(el));
+  if (_revealObs) $$('.reveal:not(.visible)').forEach(el => _revealObs.observe(el));
 }
 
-/* ─── Header scroll ─── */
+/* ══════════════════════════════════════
+   HEADER SCROLL
+══════════════════════════════════════ */
 function initHeaderScroll() {
   const header = $('#site-header');
   if (!header) return;
-  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive:true });
+  window.addEventListener('scroll', () =>
+    header.classList.toggle('scrolled', window.scrollY > 40), { passive: true }
+  );
 }
 
-/* ─── Hamburger ─── */
+/* ══════════════════════════════════════
+   HAMBURGER
+══════════════════════════════════════ */
 function toggleMobileNav(force) {
   const btn = $('#hamburger');
   const nav = $('#mobile-nav');
@@ -489,27 +730,49 @@ function toggleMobileNav(force) {
   const isOpen = force !== undefined ? !force : nav.classList.contains('open');
   nav.classList.toggle('open', !isOpen);
   btn.classList.toggle('open', !isOpen);
-  btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+  btn.setAttribute('aria-expanded', !isOpen);
+  document.body.style.overflow = !isOpen ? 'hidden' : '';
 }
 function initHamburger() {
   const btn = $('#hamburger');
   if (btn) btn.addEventListener('click', () => toggleMobileNav());
   document.addEventListener('click', e => {
-    const nav = $('#mobile-nav');
+    const nav    = $('#mobile-nav');
     const header = $('#site-header');
     if (nav?.classList.contains('open') && !header?.contains(e.target)) toggleMobileNav(false);
   });
 }
 
-/* ─── Init ─── */
+/* ══════════════════════════════════════
+   PARALLAX (brand image on scroll)
+══════════════════════════════════════ */
+function initParallax() {
+  const img = $('#brand-story-img');
+  if (!img) return;
+  window.addEventListener('scroll', () => {
+    const brand = $('#brand');
+    if (!brand) return;
+    const rect = brand.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    const ratio = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+    img.style.transform = `translateY(${(ratio - 0.5) * 40}px) scale(1.05)`;
+  }, { passive: true });
+}
+
+/* ══════════════════════════════════════
+   INIT
+══════════════════════════════════════ */
 function init() {
   initLang();
   renderLangSwitcher();
+  initCursor();
   initHeaderScroll();
   initHamburger();
+  initHeroControls();
   initWechatModal();
   initReveal();
-  initHeroScrollHint();
+  initDragScroll();
+  initParallax();
   loadContent();
 }
 

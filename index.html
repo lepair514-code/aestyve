@@ -4,15 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aestyve</title>
-  <meta name="description" content="Aestyve - 최첨단 피부과학과 혁신적인 뷰티 테크놀로지" />
+  <meta name="description" content="Aestyve — 최첨단 피부과학과 혁신적인 뷰티 테크놀로지" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+<!-- ── 커스텀 커서 ── -->
+<div class="cursor-dot"  id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
 
 <!-- ===== HEADER ===== -->
 <header id="site-header">
@@ -30,45 +34,89 @@
       </div>
     </div>
   </div>
-  <nav id="mobile-nav" aria-label="모바일 내비게이션">
-    <div id="mobile-nav-links"></div>
-    <div class="mobile-lang-row" id="mobile-lang-switcher"></div>
-  </nav>
 </header>
 
-<!-- ===== HERO VIDEO ===== -->
+<!-- 모바일 풀스크린 메뉴 -->
+<nav id="mobile-nav" aria-label="모바일 내비게이션">
+  <div id="mobile-nav-links"></div>
+  <div class="mobile-lang-row" id="mobile-lang-switcher"></div>
+</nav>
+
+<!-- ===== HERO SLIDER ===== -->
 <section id="hero" aria-label="히어로 배너">
-  <div id="hero-video-wrap"></div>
-  <div id="hero-overlay" class="hero-overlay-content"></div>
-  <!-- 스크롤 힌트 -->
-  <div class="hero-scroll-hint" id="hero-scroll-hint" role="button" aria-label="아래로 스크롤">
-    <span>SCROLL</span>
-    <div class="scroll-line"></div>
+
+  <!-- 슬라이드 트랙 -->
+  <div class="hero-slides" id="hero-slides">
+    <!-- JS가 히어로 슬라이드를 동적 생성 -->
   </div>
+
+  <!-- 이전/다음 화살표 -->
+  <button class="hero-arrow hero-arrow-prev" id="hero-prev" aria-label="이전 슬라이드">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="hero-arrow hero-arrow-next" id="hero-next" aria-label="다음 슬라이드">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+
+  <!-- 도트 인디케이터 -->
+  <div class="hero-dots" id="hero-dots" role="tablist" aria-label="슬라이드 선택"></div>
+
+  <!-- 번호 카운터 -->
+  <div class="hero-counter">
+    <div class="hero-counter-nums">
+      <span id="hero-cur">01</span> / <span id="hero-total">01</span>
+    </div>
+    <div class="hero-progress">
+      <div class="hero-progress-fill" id="hero-progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- 스크롤 힌트 -->
+  <div class="hero-scroll-hint" id="hero-scroll-hint" role="button" tabindex="0" aria-label="아래로 스크롤">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+
 </section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track" id="marquee-track">
+    <!-- JS가 반복 텍스트 생성 -->
+  </div>
+</div>
 
 <!-- ===== PRODUCTS ===== -->
 <section id="products" aria-label="제품">
-  <div class="container">
-    <!-- 섹션 헤더 -->
-    <div class="products-header reveal">
-      <div>
-        <div class="section-eyebrow">PRODUCTS</div>
-        <h2 class="section-title-lg" id="products-title">제품 라인업</h2>
-        <p class="section-subtitle" id="products-subtitle">최첨단 피부과학으로 만든 프리미엄 제품</p>
-      </div>
-      <span class="prod-count-badge" id="prod-count-badge">
-        <i class="fas fa-layer-group" style="font-size:.65rem;"></i>
-        <span id="prod-count-num">0</span> 제품
-      </span>
+
+  <!-- 섹션 헤더 -->
+  <div class="products-top reveal">
+    <div class="products-top-left">
+      <div class="products-eyebrow">PRODUCTS</div>
+      <h2 class="products-title" id="products-title">LINEUP</h2>
     </div>
-    <!-- 카테고리 탭 -->
-    <div class="cat-tabs-wrap reveal reveal-delay-1">
-      <div class="cat-tabs" id="cat-tabs"></div>
-    </div>
-    <!-- 제품 그리드 -->
-    <div class="prod-grid" id="prod-grid"></div>
+    <span id="prod-count-badge" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;color:#888;text-transform:uppercase;">
+      <span id="prod-count-num">0</span> ITEMS
+    </span>
   </div>
+
+  <!-- 카테고리 탭 -->
+  <div class="cat-tabs-wrap reveal reveal-delay-1">
+    <div class="cat-tabs" id="cat-tabs"></div>
+  </div>
+
+  <!-- 가로 드래그 스크롤 제품 열 -->
+  <div class="prod-scroll-track" id="prod-scroll-track">
+    <div class="prod-row" id="prod-grid"></div>
+  </div>
+
+  <!-- 스크롤 진행 바 -->
+  <div class="prod-scroll-bar-wrap">
+    <div class="prod-scroll-bar">
+      <div class="prod-scroll-thumb" id="prod-scroll-thumb"></div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ===== BRAND ===== -->
@@ -77,67 +125,80 @@
     <img
       id="brand-story-img"
       src="images/brand-story-ko.jpg"
-      alt="Aestyve 브랜드 스토리 — 미학과 재생의 만남"
+      alt="Aestyve 브랜드 스토리"
       class="brand-story-img"
       loading="lazy"
     />
+    <!-- 브랜드 텍스트 오버레이 -->
+    <div class="brand-overlay">
+      <div class="brand-overlay-text reveal">
+        <div class="brand-overlay-eyebrow">BRAND STORY</div>
+        <h2 class="brand-overlay-title" id="brand-overlay-title">AESTYVE<br>SCIENCE</h2>
+        <p class="brand-overlay-desc" id="brand-overlay-desc">
+          최첨단 피부과학과 아름다움에 대한 깊은 이해를 바탕으로 탄생한 Aestyve.
+        </p>
+        <a href="#contact" class="brand-overlay-link">
+          LEARN MORE <i class="fas fa-arrow-right" style="font-size:.7rem;"></i>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ===== CONTACT ===== -->
 <section id="contact" aria-label="연락처">
+
   <div class="container">
     <!-- 섹션 헤더 -->
-    <div class="contact-header reveal">
-      <div class="section-eyebrow">CONTACT</div>
-      <h2 class="section-title-lg">문의하기</h2>
-      <p class="section-subtitle" id="contact-section-desc">궁금한 점이 있으시면 언제든지 연락주세요</p>
+    <div class="contact-head reveal">
+      <div class="contact-eyebrow">CONTACT</div>
+      <h2 class="contact-big-title">GET IN<br>TOUCH</h2>
+      <p class="contact-desc" id="contact-section-desc">궁금한 점이 있으시면 언제든지 연락주세요</p>
     </div>
+  </div>
 
-    <div class="contact-grid">
-      <!-- 정보 카드 -->
-      <div class="contact-info-card reveal reveal-delay-1">
-        <h3 class="contact-brand-name" id="contact-brand-name">Aestyve</h3>
-        <p class="contact-slogan" id="contact-slogan">피부과학의 혁신, 아름다움의 새 기준</p>
+  <!-- 컨택트 그리드 (full-bleed) -->
+  <div class="contact-grid">
 
-        <div class="contact-detail">
-          <div class="contact-row">
-            <div class="contact-row-icon"><i class="fas fa-phone"></i></div>
-            <span id="contact-phone">-</span>
-          </div>
-          <div class="contact-row">
-            <div class="contact-row-icon"><i class="fas fa-envelope"></i></div>
-            <span id="contact-email">-</span>
-          </div>
-          <div class="contact-row">
-            <div class="contact-row-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <span id="contact-address">-</span>
-          </div>
+    <!-- 정보 패널 -->
+    <div class="contact-info-panel reveal">
+      <h3 class="contact-brand-name" id="contact-brand-name">AESTYVE</h3>
+      <p class="contact-slogan" id="contact-slogan">피부과학의 혁신, 아름다움의 새 기준</p>
+
+      <div class="contact-detail">
+        <div class="contact-row">
+          <div class="contact-row-icon"><i class="fas fa-phone"></i></div>
+          <span id="contact-phone">-</span>
         </div>
-
-        <hr class="contact-divider" />
-        <div class="social-links" id="social-links"></div>
+        <div class="contact-row">
+          <div class="contact-row-icon"><i class="fas fa-envelope"></i></div>
+          <span id="contact-email">-</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <span id="contact-address">-</span>
+        </div>
       </div>
 
-      <!-- 지도 카드 -->
-      <div class="contact-map-block reveal reveal-delay-2">
-        <div class="contact-map-inner">
-          <iframe
-            id="contact-naver-map"
-            src="https://map.naver.com/p/entry/address/14140668.782,4514327.329,%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%ED%85%8C%ED%97%A4%EB%9E%80%EB%A1%9C%20123?c=15,0,0,0,dh&lang=ko"
-            width="100%" height="100%"
-            style="border:0;display:block;"
-            allowfullscreen
-            loading="lazy"
-            title="Aestyve 오시는 길"
-          ></iframe>
-        </div>
-        <div class="contact-map-address">
-          <i class="fas fa-map-pin"></i>
-          <span id="contact-map-text">서울특별시 강남구 테헤란로 123<br/>에스티브 빌딩</span>
-        </div>
+      <hr class="contact-divider" />
+      <div class="social-links" id="social-links"></div>
+    </div>
+
+    <!-- 지도 패널 -->
+    <div class="contact-map-panel reveal reveal-delay-2">
+      <div class="contact-map-inner">
+        <iframe
+          id="contact-naver-map"
+          src="https://map.naver.com/p/entry/address/14140668.782,4514327.329,%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%ED%85%8C%ED%97%A4%EB%9E%80%EB%A1%9C%20123?c=15,0,0,0,dh&lang=ko"
+          allowfullscreen loading="lazy" title="Aestyve 오시는 길"
+        ></iframe>
+      </div>
+      <div class="contact-map-addr">
+        <i class="fas fa-map-pin"></i>
+        <span id="contact-map-text">서울특별시 강남구 테헤란로 123, 에스티브 빌딩</span>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -147,13 +208,13 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo-wrap">
-          <img src="images/logo.png" alt="Aestyve" style="height:36px;" />
+          <img src="images/logo.png" alt="Aestyve" style="height:32px;" />
         </div>
         <p id="footer-desc">피부과학의 혁신으로 탄생한 프리미엄 뷰티 브랜드.</p>
       </div>
       <div class="footer-col">
         <h5>PRODUCTS</h5>
-        <ul><li><a href="#products">Products</a></li></ul>
+        <ul><li><a href="#products">All Products</a></li></ul>
       </div>
       <div class="footer-col">
         <h5>BRAND</h5>
@@ -172,7 +233,7 @@
     </div>
     <div class="footer-bottom">
       <span id="footer-copyright">© 2025 Aestyve. All rights reserved.</span>
-      <span>Made with ❤️ in Seoul</span>
+      <span style="opacity:.4;">Seoul, Korea</span>
     </div>
   </div>
 </footer>
@@ -184,7 +245,7 @@
   <div class="wechat-modal-box">
     <button class="wechat-modal-close" id="wechat-modal-close" aria-label="닫기">✕</button>
     <div class="wechat-modal-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.328.328 0 0 0 .168-.054l1.903-1.089a.854.854 0 0 1 .765-.092c.886.255 1.842.398 2.832.398C13.49 16.896 17.38 13.608 17.38 9.53c0-4.054-3.89-7.342-8.69-7.342zm-2.363 4.704c.522 0 .944.422.944.944s-.422.944-.944.944-.944-.422-.944-.944.422-.944.944-.944zm4.722 0c.522 0 .944.422.944.944s-.422.944-.944.944-.944-.422-.944-.944.422-.944.944-.944zM24 14.494c0-3.395-3.218-6.151-7.181-6.151-.226 0-.45.012-.673.031 1.065 1.19 1.69 2.664 1.69 4.278 0 3.727-3.462 6.766-7.918 7.101.846 1.79 2.842 3.03 5.145 3.03.828 0 1.614-.153 2.344-.432a.707.707 0 0 1 .634.077l1.575.902a.27.27 0 0 0 .138.044.244.244 0 0 0 .244-.244c0-.059-.024-.116-.04-.173l-.323-1.224a.49.49 0 0 1 .177-.551C23.044 18.043 24 16.343 24 14.494z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.328.328 0 0 0 .168-.054l1.903-1.089a.854.854 0 0 1 .765-.092c.886.255 1.842.398 2.832.398C13.49 16.896 17.38 13.608 17.38 9.53c0-4.054-3.89-7.342-8.69-7.342zm-2.363 4.704c.522 0 .944.422.944.944s-.422.944-.944.944-.944-.422-.944-.944.422-.944.944-.944zm4.722 0c.522 0 .944.422.944.944s-.422.944-.944.944-.944-.422-.944-.944.422-.944.944-.944zM24 14.494c0-3.395-3.218-6.151-7.181-6.151-.226 0-.45.012-.673.031 1.065 1.19 1.69 2.664 1.69 4.278 0 3.727-3.462 6.766-7.918 7.101.846 1.79 2.842 3.03 5.145 3.03.828 0 1.614-.153 2.344-.432a.707.707 0 0 1 .634.077l1.575.902a.27.27 0 0 0 .138.044.244.244 0 0 0 .244-.244c0-.059-.024-.116-.04-.173l-.323-1.224a.49.49 0 0 1 .177-.551C23.044 18.043 24 16.343 24 14.494z"/></svg>
     </div>
     <h3 class="wechat-modal-title">WeChat으로 문의하기</h3>
     <p class="wechat-modal-desc">QR 코드를 스캔하여 WeChat으로 연결하세요</p>
@@ -193,7 +254,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" opacity=".3"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3"/><rect x="19" y="14" width="2" height="2"/><rect x="14" y="19" width="2" height="2"/><rect x="18" y="18" width="3" height="3"/></svg>
         <p>관리자에서 QR 코드를<br>업로드해 주세요</p>
       </div>
-      <img id="wechat-qr-img" src="" alt="WeChat QR 코드" style="display:none; width:200px; height:200px; object-fit:contain; border-radius:8px;" />
+      <img id="wechat-qr-img" src="" alt="WeChat QR 코드" style="display:none;width:200px;height:200px;object-fit:contain;" />
     </div>
   </div>
 </div>
