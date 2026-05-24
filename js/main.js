@@ -653,32 +653,7 @@ function renderBrand(settings) {
     imgEl.alt = BRAND_ALTS[STATE.lang] || BRAND_ALTS.ko;
   }
 
-  /* 브랜드 타이틀을 .brand-line / .brand-line-inner 구조로 재구성 */
-  const titleEl = $('#brand-overlay-title');
-  const descEl  = $('#brand-overlay-desc');
-  if (titleEl && settings) {
-    const brandName = (settings.brandName || 'AESTYVE').toUpperCase();
-    titleEl.innerHTML = [brandName, 'SCIENCE'].map(line =>
-      `<span class="brand-line"><span class="brand-line-inner">${line}</span></span>`
-    ).join('');
-  }
-  if (descEl && settings) {
-    descEl.textContent = t(settings.brandStory) || t(settings.slogan) || '';
-  }
-
-  /* in-view 트리거 */
-  _initBrandInView();
-}
-
-function _initBrandInView() {
-  const text = $('.brand-overlay-text');
-  if (!text) return;
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.25 });
-  obs.observe(text);
+  /* 브랜드 오버레이 텍스트 제거됨 — 이미지만 표시 */
 }
 
 /* 패럴랙스 */
