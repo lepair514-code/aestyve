@@ -211,16 +211,27 @@ function renderNav(navItems) {
    - 배경: Ken Burns (CSS animation)
    - 텍스트: stagger anim-in (JS setTimeout)
 ══════════════════════════════════════ */
-/* 슬라이드 HTML 생성 — 배경 이미지 전용 */
+const HERO_POSTER = 'images/hero-poster.jpg';
+
+/* 슬라이드 HTML 생성 — 동영상(YouTube/MP4) 우선, 이미지 폴백 */
 function _buildSlideHTML(h, idx) {
   let mediaBg = '';
 
-  if (h.bgImage) {
-    /* 이미지 배경 (Base64 또는 URL) — Ken Burns CSS 애니메이션 적용 */
+  if (h.bgVideo) {
+    const ytMatch = h.bgVideo.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    if (ytMatch && idx === 0) {
+      const vid = ytMatch[1];
+      const src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
+      mediaBg = `<div class="yt-wrap"><iframe src="${src}" frameborder="0" allow="autoplay;encrypted-media" title="Hero Video"></iframe></div>`;
+    } else if (!ytMatch) {
+      mediaBg = `<video class="hero-slide-bg" autoplay muted loop playsinline preload="auto" poster="${HERO_POSTER}" src="${h.bgVideo}" id="hero-video-${idx}"></video>`;
+    } else {
+      mediaBg = `<div class="hero-slide-bg" style="background:${h.bgColor||'#0A0A0A'};position:absolute;inset:0;"></div>`;
+    }
+  } else if (h.bgImage) {
     mediaBg = `<img class="hero-slide-bg" src="${h.bgImage}" alt="" loading="${idx===0?'eager':'lazy'}" />`;
   } else {
-    /* 이미지 없으면 딥블루 단색 */
-    mediaBg = `<div class="hero-slide-bg" style="background:${h.bgColor||'#0E1A3A'};position:absolute;inset:0;"></div>`;
+    mediaBg = `<div class="hero-slide-bg" style="background:${h.bgColor||'#0A0A0A'};position:absolute;inset:0;"></div>`;
   }
 
   const eyebrow = t(h.label)    || 'AESTYVE';

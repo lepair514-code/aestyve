@@ -112,7 +112,7 @@
   "heroes": [
     {
       "id": "h1",
-      "bgColor": "#0E1A3A",
+      "bgColor": "#0a0a0a",
       "accentColor": "#A8B9FF",
       "label": {
         "ko": "AESTYVE",
@@ -139,7 +139,8 @@
         "th": "ช้อปเลย"
       },
       "btnHref": "#products",
-      "bgImage": ""
+      "bgImage": "",
+      "bgVideo": "videos/hero.mp4"
     }
   ],
   "products": [
