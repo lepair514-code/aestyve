@@ -346,7 +346,7 @@
     <div id="topbar">
       <div id="topbar-title"><i class="fas fa-home" style="color:var(--accent)"></i> 대시보드</div>
       <div class="topbar-actions">
-        <a href="index.html" target="_blank" class="btn btn-outline"><i class="fas fa-external-link-alt"></i> 홈페이지 보기</a>
+        <a href="https://aestyve.com" target="_blank" class="btn btn-outline"><i class="fas fa-external-link-alt"></i> 홈페이지 보기</a>
         <button class="btn btn-success" id="save-all-btn"><i class="fas fa-save"></i> 전체 저장</button>
       </div>
     </div>
@@ -432,19 +432,12 @@
                 <label class="form-label">부제목 (한국어)</label>
                 <input type="text" class="form-control" id="hero-subtitle-ko" placeholder="과학적으로 검증된 성분, 혁신적인 뷰티 테크" />
               </div>
-              <div style="margin-top:12px;display:flex;gap:12px;align-items:flex-end;">
-                <div class="form-group" style="flex:1;margin-bottom:0;">
-                  <label class="form-label">버튼 텍스트 (한국어)</label>
-                  <input type="text" class="form-control" id="hero-btn-ko" placeholder="지금 쇼핑하기" />
-                </div>
-                <div class="form-group" style="flex:1;margin-bottom:0;">
-                  <label class="form-label">버튼 링크</label>
-                  <input type="text" class="form-control" id="hero-btn-href" placeholder="#products" />
-                </div>
-              </div>
               <div style="margin-top:8px;">
                 <div class="form-note">텍스트를 모두 비워두면 영상만 전체화면으로 표시됩니다.</div>
               </div>
+              <!-- 버튼 필드: 현재 홈페이지에서 버튼 숨김 처리됨 (hidden 유지) -->
+              <input type="hidden" id="hero-btn-ko" value="" />
+              <input type="hidden" id="hero-btn-href" value="" />
             </div>
 
           </div>
@@ -723,7 +716,7 @@
     location.replace('manage-aestyve-2025.html');
   }
 </script>
-<script src="js/imageStore.js?v=501"></script>
-<script src="js/admin.js?v=501"></script>
+<script src="js/imageStore.js?v=502"></script>
+<script src="js/admin.js?v=502"></script>
 </body>
 </html>

@@ -394,7 +394,7 @@ img { display: block; max-width: 100%; }
    MARQUEE STRIP
    ============================================================ */
 .marquee-strip {
-  background: var(--gold); overflow: hidden;
+  background: #0E1A3A; overflow: hidden;
   height: 40px; display: flex; align-items: center;
   position: relative; z-index: 5;
 }
@@ -405,9 +405,9 @@ img { display: block; max-width: 100%; }
 .marquee-track span {
   font-size: .58rem; font-weight: 800;
   letter-spacing: .3em; text-transform: uppercase;
-  color: var(--bg); padding: 0 44px;
+  color: #FFFFFF; padding: 0 44px;
 }
-.marquee-track span::before { content: '✦'; margin-right: 44px; opacity: .45; }
+.marquee-track span::before { content: '✦'; margin-right: 44px; opacity: .35; }
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 /* ============================================================

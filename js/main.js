@@ -237,8 +237,6 @@ function _buildSlideHTML(h, idx) {
   const eyebrow = t(h.label)    || 'AESTYVE';
   const title   = t(h.title)    || 'PREMIUM<br>BEAUTY SCIENCE';
   const sub     = t(h.subtitle) || '';
-  const btn     = t(h.btnText)  || '';
-  const href    = h.btnHref     || '#products';
 
   /* 타이틀 라인 분리 */
   const titleLines = title.replace(/\\n/g, '\n').split(/\n|<br\s*\/?>/i);
@@ -254,7 +252,6 @@ function _buildSlideHTML(h, idx) {
       <div class="hero-slide-eyebrow">${eyebrow}</div>
       <h1 class="hero-slide-title">${titleHTML}</h1>
       ${sub ? `<p class="hero-slide-sub">${sub}</p>` : ''}
-      ${btn ? `<a href="${href}" class="hero-slide-btn">${btn}<span class="hero-slide-btn-arrow"> →</span></a>` : ''}
     </div>
   </div>`;
 }

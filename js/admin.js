@@ -1065,7 +1065,16 @@ window.deleteWechatQr = function() {
 const GH_KEY = 'aestyve_gh_cfg';
 
 function loadGhConfig() {
-  try { return JSON.parse(localStorage.getItem(GH_KEY) || '{}'); } catch(e) { return {}; }
+  try {
+    const saved = JSON.parse(localStorage.getItem(GH_KEY) || '{}');
+    /* 기본값: aestyve.com 레포 */
+    return {
+      owner:  saved.owner  || 'lepair514-code',
+      repo:   saved.repo   || 'aestyve',
+      branch: saved.branch || 'main',
+      token:  saved.token  || '',
+    };
+  } catch(e) { return { owner: 'lepair514-code', repo: 'aestyve', branch: 'main', token: '' }; }
 }
 function saveGhConfig(cfg) {
   localStorage.setItem(GH_KEY, JSON.stringify(cfg));
