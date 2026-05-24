@@ -378,46 +378,60 @@
       <div class="section-view" id="section-hero">
         <div class="panel">
           <div class="panel-header">
-            <span class="panel-title"><i class="fas fa-film"></i> 메인 영상 설정</span>
+            <span class="panel-title"><i class="fas fa-image"></i> 메인 배경 이미지 설정</span>
             <button class="btn btn-primary btn-sm" onclick="saveHero()"><i class="fas fa-save"></i> 저장</button>
           </div>
           <div class="panel-body">
 
-            <!-- YouTube URL (권장) -->
-            <div class="form-group">
-              <label class="form-label">🎬 YouTube URL (권장 — 영구 저장됨)</label>
-              <div class="url-row">
-                <input type="url" class="form-control" id="hero-yt-url" placeholder="https://www.youtube.com/watch?v=VIDEO_ID 또는 https://youtu.be/VIDEO_ID" />
-                <button class="btn btn-accent btn-sm" onclick="previewYoutube()"><i class="fas fa-play"></i> 미리보기</button>
+            <!-- 권장 사이즈 안내 -->
+            <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;font-size:.82rem;line-height:1.9;color:#3730a3;">
+              <div style="font-weight:700;margin-bottom:4px;">📐 권장 이미지 사이즈</div>
+              <div>• <strong>가로 × 세로: 1920 × 1080px</strong> (Full HD 16:9)</div>
+              <div>• 모바일 대응: <strong>1080 × 1920px</strong> 세로형도 가능 (자동 크롭)</div>
+              <div>• 형식: <strong>JPG / PNG / WebP</strong> — 파일 크기 <strong>5MB 이하</strong> 권장</div>
+              <div style="color:#6b7280;font-size:.75rem;margin-top:4px;">이미지는 화면 전체를 꽉 채우며, 느린 Ken Burns(줌인) 효과가 자동 적용됩니다.</div>
+            </div>
+
+            <!-- 이미지 업로드 탭 -->
+            <div style="font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">배경 이미지</div>
+            <div class="form-group" style="margin-bottom:20px;">
+              <div class="media-tabs">
+                <button type="button" class="media-tab active" id="hero-img-tab-file" onclick="switchHeroImgTab('file')">📁 파일 업로드</button>
+                <button type="button" class="media-tab" id="hero-img-tab-url" onclick="switchHeroImgTab('url')">🔗 URL 입력</button>
               </div>
-              <div class="form-note">YouTube에 동영상 업로드 후 URL을 붙여넣으세요. 저장 후 홈페이지 메인 화면에 전체 화면으로 재생됩니다.</div>
-            </div>
 
-            <!-- YouTube 미리보기 -->
-            <div id="hero-yt-preview" style="display:none;margin-bottom:20px;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;background:#000;">
-              <iframe id="hero-yt-iframe-preview" width="100%" height="100%" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-            </div>
-
-            <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;" />
-
-            <!-- 직접 파일 업로드 -->
-            <div class="form-group">
-              <label class="form-label">📁 동영상 직접 업로드 (MP4 — 새로고침 시 소멸, 임시 미리보기용)</label>
-              <div class="upload-area" id="hero-video-upload-area" onclick="document.getElementById('hero-video-file').click()">
-                <div class="upload-preview" id="hero-video-preview">
-                  <div class="upload-placeholder"><span class="icon">🎬</span><p>클릭하여 MP4/WebM 선택</p></div>
+              <!-- 파일 업로드 탭 -->
+              <div id="hero-img-pane-file">
+                <div class="upload-area" id="hero-img-upload-area" onclick="document.getElementById('hero-img-file').click()">
+                  <div class="upload-preview" id="hero-img-preview">
+                    <div class="upload-placeholder"><span class="icon">🖼️</span><p>클릭하여 이미지 선택</p><p style="font-size:.7rem;color:#aaa;margin-top:4px;">JPG · PNG · WebP · 1920×1080px 권장</p></div>
+                  </div>
+                  <div class="upload-footer">JPG · PNG · WebP — 최대 10MB · 1920×1080px 권장</div>
                 </div>
-                <div class="upload-footer">MP4 / WebM — 최대 500MB</div>
+                <input type="file" id="hero-img-file" accept="image/*" style="display:none" onchange="handleHeroImage(this)" />
               </div>
-              <input type="file" id="hero-video-file" accept="video/mp4,video/webm" style="display:none" onchange="handleHeroVideo(this)" />
-              <div class="form-note">⚠️ 파일 업로드는 현재 브라우저 세션에서만 미리보기 가능합니다. 영구 적용은 YouTube URL을 사용하세요.</div>
+
+              <!-- URL 입력 탭 -->
+              <div id="hero-img-pane-url" style="display:none;">
+                <div class="url-row">
+                  <input type="url" class="form-control" id="hero-img-url" placeholder="https://example.com/hero-image.jpg" />
+                  <button type="button" class="btn btn-accent btn-sm" onclick="applyHeroImgUrl()">적용</button>
+                </div>
+                <div style="margin-top:8px;border-radius:var(--radius);overflow:hidden;background:var(--gray-100);">
+                  <div id="hero-img-url-preview" style="min-height:80px;display:flex;align-items:center;justify-content:center;">
+                    <span style="color:var(--gray-400);font-size:.8rem;">미리보기</span>
+                  </div>
+                </div>
+              </div>
+
+              <input type="hidden" id="hero-img-value" value="" />
             </div>
 
             <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;" />
 
             <!-- 오버레이 텍스트 -->
             <div style="background:#f8faff;border-radius:var(--radius);padding:16px 20px;margin-bottom:4px;">
-              <div style="font-size:.82rem;font-weight:700;color:var(--primary);margin-bottom:12px;">📝 오버레이 텍스트 (영상 위에 표시, 선택사항)</div>
+              <div style="font-size:.82rem;font-weight:700;color:var(--primary);margin-bottom:12px;">📝 오버레이 텍스트 (이미지 위에 표시, 선택사항)</div>
               <div class="form-row">
                 <div class="form-group" style="margin-bottom:0;">
                   <label class="form-label">제목 (한국어)</label>
@@ -433,9 +447,8 @@
                 <input type="text" class="form-control" id="hero-subtitle-ko" placeholder="과학적으로 검증된 성분, 혁신적인 뷰티 테크" />
               </div>
               <div style="margin-top:8px;">
-                <div class="form-note">텍스트를 모두 비워두면 영상만 전체화면으로 표시됩니다.</div>
+                <div class="form-note">텍스트를 모두 비워두면 이미지만 전체화면으로 표시됩니다.</div>
               </div>
-              <!-- 버튼 필드: 현재 홈페이지에서 버튼 숨김 처리됨 (hidden 유지) -->
               <input type="hidden" id="hero-btn-ko" value="" />
               <input type="hidden" id="hero-btn-href" value="" />
             </div>
@@ -716,7 +729,7 @@
     location.replace('manage-aestyve-2025.html');
   }
 </script>
-<script src="js/imageStore.js?v=502"></script>
-<script src="js/admin.js?v=502"></script>
+<script src="js/imageStore.js?v=503"></script>
+<script src="js/admin.js?v=503"></script>
 </body>
 </html>

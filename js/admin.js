@@ -242,83 +242,127 @@ function renderDashboard() {
 function renderHeroForm() {
   const h = DATA.heroes?.[0] || {};
 
-  // YouTube URL
-  const ytInput = $('#hero-yt-url');
-  if (ytInput) ytInput.value = h.bgVideo || '';
+  // 배경 이미지 — 파일 업로드 미리보기 또는 URL 복원
+  const bgImg = h.bgImage || '';
+  const hidden = $('#hero-img-value');
+  if (hidden) hidden.value = bgImg;
 
-  // YouTube 미리보기 (저장된 URL이 있으면 표시)
-  if (h.bgVideo) {
-    showYoutubePreview(h.bgVideo);
+  if (bgImg) {
+    const preview = $('#hero-img-preview');
+    if (preview) preview.innerHTML = `<img src="${esc(bgImg)}" style="width:100%;max-height:220px;object-fit:cover;display:block;border-radius:6px;" />`;
+    const area = $('#hero-img-upload-area');
+    if (area) area.classList.add('has-media');
+    // URL 탭 input에도 채움 (URL이면)
+    if (bgImg.startsWith('http')) {
+      const urlInput = $('#hero-img-url');
+      if (urlInput) urlInput.value = bgImg;
+      const urlPreview = $('#hero-img-url-preview');
+      if (urlPreview) urlPreview.innerHTML = `<img src="${esc(bgImg)}" style="width:100%;max-height:160px;object-fit:cover;display:block;" />`;
+    }
   }
 
   // 텍스트 오버레이
   const setVal = (id, val) => { const el = $(id); if (el) el.value = val || ''; };
-  setVal('#hero-title-ko',   (h.title    || {}).ko   || '');
-  setVal('#hero-title-en',   (h.title    || {}).en   || '');
-  setVal('#hero-subtitle-ko',(h.subtitle || {}).ko   || '');
-  setVal('#hero-btn-ko',     (h.btnText  || {}).ko   || '');
-  setVal('#hero-btn-href',   h.btnHref                || '#products');
+  setVal('#hero-title-ko',    (h.title    || {}).ko  || '');
+  setVal('#hero-title-en',    (h.title    || {}).en  || '');
+  setVal('#hero-subtitle-ko', (h.subtitle || {}).ko  || '');
 }
 
-/* YouTube 미리보기 */
-function showYoutubePreview(url) {
-  if (!url) return;
-  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-  if (!ytMatch) { toast('올바른 YouTube URL을 입력해주세요.', 'error'); return; }
-  const videoId = ytMatch[1];
-  const wrap = $('#hero-yt-preview');
-  const iframe = $('#hero-yt-iframe-preview');
-  if (wrap && iframe) {
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0&modestbranding=1`;
-    wrap.style.display = '';
+/* Hero 이미지 탭 전환 */
+window.switchHeroImgTab = function(tab) {
+  const fileTab  = $('#hero-img-tab-file');
+  const urlTab   = $('#hero-img-tab-url');
+  const filePane = $('#hero-img-pane-file');
+  const urlPane  = $('#hero-img-pane-url');
+  if (!fileTab) return;
+  if (tab === 'file') {
+    fileTab.classList.add('active'); urlTab.classList.remove('active');
+    filePane.style.display = ''; urlPane.style.display = 'none';
+  } else {
+    urlTab.classList.add('active'); fileTab.classList.remove('active');
+    urlPane.style.display = ''; filePane.style.display = 'none';
   }
-}
-window.previewYoutube = function() {
-  const url = ($('#hero-yt-url') || {}).value?.trim() || '';
-  if (!url) { toast('YouTube URL을 입력해주세요.', 'error'); return; }
-  showYoutubePreview(url);
 };
 
-/* Hero 동영상 파일 업로드 (ObjectURL — 임시) */
-window.handleHeroVideo = function(input) {
+/* Hero 배경 이미지 파일 업로드 → Base64 */
+window.handleHeroImage = function(input) {
   const file = input.files[0];
   if (!file) return;
-  if (file.size > 500 * 1024 * 1024) { toast('500MB 이하 파일만 지원합니다.', 'error'); input.value = ''; return; }
-  const url = URL.createObjectURL(file);
-  const preview = $('#hero-video-preview');
-  if (preview) preview.innerHTML = `<video src="${url}" style="width:100%;max-height:200px;object-fit:cover;" controls muted playsinline></video>`;
-  const area = $('#hero-video-upload-area');
-  if (area) area.classList.add('has-media');
-  // ObjectURL은 임시 — hero bgVideo는 YouTube URL만 영구 저장
-  toast('✅ 미리보기 완료! 영구 적용은 YouTube URL을 사용하세요.', 'success', 4000);
+  if (file.size > 10 * 1024 * 1024) { toast('10MB 이하 이미지만 지원합니다.', 'error'); input.value = ''; return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const b64 = e.target.result;
+    const preview = $('#hero-img-preview');
+    if (preview) preview.innerHTML = `<img src="${b64}" style="width:100%;max-height:220px;object-fit:cover;display:block;border-radius:6px;" />`;
+    const hidden = $('#hero-img-value');
+    if (hidden) hidden.value = b64;
+    const area = $('#hero-img-upload-area');
+    if (area) area.classList.add('has-media');
+    toast('✅ 이미지 업로드 완료! 저장 버튼을 눌러 반영하세요.');
+  };
+  reader.readAsDataURL(file);
+};
+
+/* Hero 배경 이미지 URL 적용 */
+window.applyHeroImgUrl = function() {
+  const urlInput = $('#hero-img-url');
+  if (!urlInput) return;
+  const url = urlInput.value.trim();
+  if (!url || (!url.startsWith('http') && !url.startsWith('/'))) {
+    toast('올바른 URL을 입력해주세요.', 'error'); return;
+  }
+  const urlPreview = $('#hero-img-url-preview');
+  if (urlPreview) urlPreview.innerHTML = `<img src="${esc(url)}" style="width:100%;max-height:160px;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<span style=color:var(--danger);padding:12px;font-size:.8rem;>이미지를 불러올 수 없습니다.</span>'" />`;
+  const hidden = $('#hero-img-value');
+  if (hidden) hidden.value = url;
+  toast('✅ URL 적용! 저장 버튼을 눌러 반영하세요.');
 };
 
 /* Hero 저장 */
 window.saveHero = function() {
-  const ytUrl   = ($('#hero-yt-url') || {}).value?.trim() || '';
+  /* 활성 탭 기준으로 이미지 값 결정 */
+  const urlTabActive = $('#hero-img-tab-url')?.classList.contains('active');
+  let finalBgImg = '';
+  if (urlTabActive) {
+    const urlInput = ($('#hero-img-url') || {}).value?.trim() || '';
+    if (urlInput && (urlInput.startsWith('http') || urlInput.startsWith('/'))) {
+      finalBgImg = urlInput;
+    } else {
+      finalBgImg = ($('#hero-img-value') || {}).value || '';
+    }
+  } else {
+    finalBgImg = ($('#hero-img-value') || {}).value || '';
+  }
+
   const titleKo = ($('#hero-title-ko') || {}).value?.trim() || '';
   const titleEn = ($('#hero-title-en') || {}).value?.trim() || '';
   const subKo   = ($('#hero-subtitle-ko') || {}).value?.trim() || '';
-  const btnKo   = ($('#hero-btn-ko') || {}).value?.trim() || '';
-  const btnHref = ($('#hero-btn-href') || {}).value?.trim() || '#products';
 
   const hero = {
     id: 'h1',
-    bgVideo:     ytUrl,
-    bgImage:     DATA.heroes?.[0]?.bgImage || '',
-    bgColor:     DATA.heroes?.[0]?.bgColor || '#1A2755',
+    bgImage:     finalBgImg,
+    bgColor:     DATA.heroes?.[0]?.bgColor || '#0E1A3A',
     accentColor: DATA.heroes?.[0]?.accentColor || '#A8B9FF',
     label:    { ko: 'AESTYVE', en: 'AESTYVE', 'zh-CN': 'AESTYVE', th: 'AESTYVE' },
     title:    { ko: titleKo, en: titleEn, 'zh-CN': titleKo, th: titleKo },
     subtitle: { ko: subKo,  en: subKo,  'zh-CN': subKo,  th: subKo  },
-    btnText:  { ko: btnKo,  en: btnKo || 'Shop Now', 'zh-CN': btnKo || '立即购买', th: btnKo || 'ช้อปเลย' },
-    btnHref,
+    btnText:  { ko: '', en: '', 'zh-CN': '', th: '' },
+    btnHref:  '#products',
   };
 
   DATA.heroes = [hero];
   saveToStorage();
+
+  /* GitHub 자동 배포 */
+  const _ghCfg = loadGhConfig();
+  if (_ghCfg.owner && _ghCfg.repo && _ghCfg.token) {
+    pushToGitHub({ silent: false });
+    toast('✅ 메인 이미지가 저장되었습니다! GitHub에 배포 중…');
+  } else {
+    _showNoGhWarning();
+    toast('✅ 메인 이미지가 이 브라우저에 저장되었습니다.');
+  }
   renderDashboard();
-  toast('✅ 메인 영상 설정이 저장되었습니다! 홈페이지를 새로고침하면 반영됩니다.');
 };
 
 /* ─── Products 관리자 리스트 렌더 ─── */
