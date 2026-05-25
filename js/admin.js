@@ -1,11 +1,16 @@
 /**
- * Aestyve — admin.js v3
- * Hero 비디오 URL + Products 이미지/이름/설명 직접 수정
+ * Aestyve — admin.js v4
+ * Hero 이미지/동영상 + Products + Settings 관리자
+ * 저장 → GitHub push → Vercel 자동 배포 → 모든 기기 즉각 반영
  */
 
 const STORAGE_KEY = 'aestyve_content';
 const LANGS = ['ko', 'en', 'zh-CN', 'th'];
 const LANG_LABELS = { ko: '한국어', en: 'English', 'zh-CN': '中文', th: 'ภาษาไทย' };
+
+/* ── BroadcastChannel: 같은 브라우저 내 탭 간 즉시 동기화 ── */
+const _bc = (typeof BroadcastChannel !== 'undefined')
+  ? new BroadcastChannel('aestyve_sync') : null;
 
 let DATA = null;
 let modalProductIdx = -1; // -1 = 신규
@@ -153,13 +158,16 @@ function saveToStorage({ deploy = true } = {}) {
   );
   /* 2) 텍스트 데이터 → localStorage */
   _saveSlimOnly();
-  /* 3) GitHub 자동 배포 */
+  /* 3) BroadcastChannel — 같은 브라우저의 다른 탭(홈페이지) 즉시 갱신 */
+  if (_bc) {
+    try { _bc.postMessage({ type: 'CONTENT_UPDATED', ts: Date.now() }); } catch(e) {}
+  }
+  /* 4) GitHub 자동 배포 → Vercel → 모든 기기 반영 */
   if (deploy) {
     const cfg = loadGhConfig();
     if (cfg.owner && cfg.repo && cfg.token) {
       pushToGitHub({ silent: false });
     } else {
-      /* GitHub 미설정 시 — 경고 배너 표시 */
       _showNoGhWarning();
     }
   }
@@ -1208,6 +1216,11 @@ async function pushToGitHub({ silent = false } = {}) {
     return false;
   }
 
+  /* 배포 중 상태 표시 */
+  _updateGhDeployStatus('deploying');
+  const deployBtn = $('#gh-deploy-btn');
+  if (deployBtn) { deployBtn.disabled = true; deployBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 배포 중…'; }
+
   /* 1) push할 JSON 생성 — detailImages(Base64) 제거 */
   const slim = {
     ...DATA,
@@ -1229,32 +1242,27 @@ async function pushToGitHub({ silent = false } = {}) {
   };
 
   try {
-    /* 2) 현재 파일 SHA 조회 (업데이트에 필요) */
+    /* 2) 현재 파일 SHA 조회 */
     let sha = null;
     try {
       const getRes = await fetch(`${apiBase}/contents/${filePath}?ref=${branch}`, { headers });
-      if (getRes.ok) {
-        const fileData = await getRes.json();
-        sha = fileData.sha;
-      }
+      if (getRes.ok) { const fd = await getRes.json(); sha = fd.sha; }
     } catch(e) {}
 
     /* 3) 파일 push (PUT) */
     const body = {
-      message: `chore: admin update content.json [${new Date().toISOString().slice(0,16).replace('T',' ')}]`,
+      message: `chore: admin update [${new Date().toISOString().slice(0,16).replace('T',' ')}]`,
       content: contentB64,
       branch,
       ...(sha ? { sha } : {}),
     };
 
     const putRes = await fetch(`${apiBase}/contents/${filePath}`, {
-      method: 'PUT',
-      headers,
-      body: JSON.stringify(body),
+      method: 'PUT', headers, body: JSON.stringify(body),
     });
 
     if (putRes.ok) {
-      if (!silent) toast('🚀 GitHub에 배포 완료! 1~2분 후 모든 기기에 반영됩니다.');
+      if (!silent) toast('✅ 저장 완료! GitHub 배포 중 — 30초~1분 후 모든 기기에 반영됩니다.', 'success', 5000);
       _updateGhDeployStatus('success');
       return true;
     } else {
@@ -1264,21 +1272,24 @@ async function pushToGitHub({ silent = false } = {}) {
       return false;
     }
   } catch(e) {
-    if (!silent) toast('❌ 네트워크 오류로 배포 실패: ' + e.message, 'error', 6000);
+    if (!silent) toast('❌ 네트워크 오류: ' + e.message, 'error', 6000);
     _updateGhDeployStatus('error', e.message);
     return false;
+  } finally {
+    if (deployBtn) { deployBtn.disabled = false; deployBtn.innerHTML = '<i class="fas fa-rocket"></i> 지금 배포'; }
   }
 }
 
 function _updateGhDeployStatus(state, msg) {
   const el = $('#gh-deploy-status');
   if (!el) return;
-  if (state === 'success') {
-    el.innerHTML = `✅ 마지막 배포: ${new Date().toLocaleString('ko-KR')} — 모든 기기에 반영 중`;
-    el.style.color = 'var(--success)';
+  const now = new Date().toLocaleString('ko-KR');
+  if (state === 'deploying') {
+    el.innerHTML = `<span style="color:#d97706;">⏳ GitHub에 배포 중… 잠시만 기다려주세요</span>`;
+  } else if (state === 'success') {
+    el.innerHTML = `<span style="color:var(--success);">✅ ${now} 배포 완료 — Vercel 자동 빌드 후 <strong>모든 기기</strong>에 반영됩니다 (30초~1분)</span>`;
   } else if (state === 'error') {
-    el.innerHTML = `❌ 배포 실패: ${msg || '알 수 없는 오류'}`;
-    el.style.color = 'var(--danger)';
+    el.innerHTML = `<span style="color:var(--danger);">❌ 배포 실패: ${msg || '알 수 없는 오류'} — PAT 만료 여부 확인</span>`;
   }
 }
 

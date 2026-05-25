@@ -128,12 +128,16 @@ function renderLangSwitcher() {
 async function loadContent() {
   const imgMap = await ImageStore.getAll();
 
+  /* ── 서버(GitHub) content.json 항상 최신으로 fetch ── */
   let fresh = null;
   try {
-    const res = await fetch('data/content.json?v=' + Date.now());
+    const res = await fetch('data/content.json?_=' + Date.now(), {
+      cache: 'no-store',   /* CDN/브라우저 캐시 완전 우회 */
+    });
     if (res.ok) fresh = await res.json();
   } catch (e) {}
 
+  /* ── localStorage: 이미지(Base64) 보조 저장소로만 사용 ── */
   let cached = null;
   try {
     const s = localStorage.getItem('aestyve_content');
@@ -143,24 +147,44 @@ async function loadContent() {
   const _applyImg = prods => (prods || []).map(p => ({ ...p, detailImages: imgMap[p.id] || [] }));
 
   if (fresh) {
+    /*
+     * fresh(서버) 우선 — cached는 hoverImage·detailImages 보존에만 사용
+     * 관리자에서 저장 → GitHub push → Vercel 배포 → fresh에 반영
+     * → 모든 기기가 최신 서버 데이터를 받음
+     */
     if (cached && typeof cached === 'object') {
-      const freshMap  = Object.fromEntries((fresh.products || []).map(p => [p.id, p]));
-      const cachedIds = new Set((cached.products || []).map(p => p.id));
-      const merged    = (cached.products || []).map(cp => ({ ...(freshMap[cp.id] || {}), ...cp, detailImages: imgMap[cp.id] || [] }));
-      const freshOnly = (fresh.products || []).filter(fp => !cachedIds.has(fp.id)).map(fp => ({ ...fp, detailImages: imgMap[fp.id] || [] }));
+      const cachedMap = Object.fromEntries((cached.products || []).map(p => [p.id, p]));
+      /* fresh 제품 기준으로 hoverImage / detailImages만 cached에서 보완 */
+      const mergedProds = (fresh.products || []).map(fp => {
+        const cp = cachedMap[fp.id] || {};
+        return {
+          ...fp,
+          hoverImage:   fp.hoverImage   || cp.hoverImage   || '',
+          detailImages: imgMap[fp.id]   || cp.detailImages  || [],
+        };
+      });
       STATE.content = {
         ...fresh,
-        heroes:     cached.heroes     || fresh.heroes,
-        settings:   cached.settings   || fresh.settings,
-        nav:        cached.nav        || fresh.nav,
-        categories: cached.categories || fresh.categories,
-        products:   [...merged, ...freshOnly],
+        products: mergedProds,
       };
     } else {
       STATE.content = { ...fresh, products: _applyImg(fresh.products) };
     }
+    /* localStorage를 fresh 기준으로 갱신 (hoverImage 포함) */
+    try {
+      const slim = {
+        ...STATE.content,
+        products: (STATE.content.products || []).map(p => {
+          const { detailImages, ...rest } = p;
+          return rest;
+        }),
+      };
+      localStorage.setItem('aestyve_content', JSON.stringify(slim));
+    } catch(e) {}
     renderAll(); return;
   }
+
+  /* fresh 실패 시 cached 폴백 */
   if (cached) {
     cached.products = _applyImg(cached.products || []);
     STATE.content = cached; renderAll(); return;
@@ -882,3 +906,14 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', init);
 window.showToast = showToast;
+
+/* ── BroadcastChannel: 관리자 탭 저장 시 홈페이지 탭 즉시 갱신 ── */
+if (typeof BroadcastChannel !== 'undefined') {
+  const _bc = new BroadcastChannel('aestyve_sync');
+  _bc.onmessage = e => {
+    if (e.data?.type === 'CONTENT_UPDATED') {
+      /* 서버에서 최신 데이터 다시 로드 후 렌더 */
+      loadContent();
+    }
+  };
+}
