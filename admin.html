@@ -3,747 +3,608 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aestyve Admin — 관리자 페이지</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy: #1a1a2e;
-      --navy2: #16213e;
-      --gold: #c8a97e;
-      --white: #fff;
-      --gray-50: #f9fafb;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-300: #d1d5db;
-      --gray-400: #9ca3af;
-      --gray-500: #6b7280;
-      --gray-700: #374151;
-      --gray-900: #111827;
-      --red: #ef4444;
-      --green: #22c55e;
-      --blue: #3b82f6;
-      --sidebar-w: 260px;
-      --header-h: 60px;
-    }
-    body { font-family: 'Noto Sans KR', sans-serif; background: var(--gray-100); color: var(--gray-900); display: flex; flex-direction: column; min-height: 100vh; }
-
-    /* ── ADMIN HEADER ── */
-    .admin-header {
-      height: var(--header-h);
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px;
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    .admin-header-left { display: flex; align-items: center; gap: 16px; }
-    .admin-logo { font-size: 18px; font-weight: 800; letter-spacing: 0.1em; color: var(--white); }
-    .admin-badge {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-      background: var(--gold); color: var(--white);
-      padding: 3px 10px; border-radius: 12px; text-transform: uppercase;
-    }
-    .admin-header-right { display: flex; align-items: center; gap: 12px; }
-    .preview-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 16px; font-size: 12px; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      background: transparent; color: rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.25); border-radius: 4px;
-      cursor: pointer; transition: all 0.2s;
-      text-decoration: none;
-    }
-    .preview-btn:hover { color: var(--white); border-color: var(--white); }
-    .save-all-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 20px; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      background: var(--gold); color: var(--white);
-      border: none; border-radius: 4px; cursor: pointer; transition: all 0.2s;
-    }
-    .save-all-btn:hover { background: #a8824f; transform: translateY(-1px); }
-
-    /* ── SIDEBAR ── */
-    .admin-sidebar {
-      width: var(--sidebar-w);
-      background: var(--navy2);
-      position: fixed; top: var(--header-h); left: 0; bottom: 0;
-      overflow-y: auto;
-      padding: 24px 0;
-      z-index: 90;
-    }
-    .sidebar-section { padding: 0 16px 8px; }
-    .sidebar-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(255,255,255,0.3);
-      padding: 12px 8px 6px; display: block;
-    }
-    .sidebar-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 12px; border-radius: 6px; cursor: pointer;
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6);
-      transition: all 0.2s; margin-bottom: 2px; text-decoration: none;
-    }
-    .sidebar-item i { width: 16px; text-align: center; font-size: 12px; }
-    .sidebar-item:hover { background: rgba(255,255,255,0.07); color: var(--white); }
-    .sidebar-item.active { background: rgba(200,169,126,0.15); color: var(--gold); }
-    .sidebar-item .badge {
-      margin-left: auto; font-size: 9px; font-weight: 700;
-      background: var(--gold); color: var(--white);
-      padding: 1px 7px; border-radius: 10px;
-    }
-
-    /* ── MAIN CONTENT ── */
-    .admin-main {
-      margin-left: var(--sidebar-w);
-      margin-top: var(--header-h);
-      padding: 32px;
-      flex: 1;
-      min-height: calc(100vh - var(--header-h));
-    }
-
-    /* ── PANELS ── */
-    .panel { display: none; }
-    .panel.active { display: block; }
-
-    .panel-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 28px;
-    }
-    .panel-title {
-      font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: -0.02em;
-    }
-    .panel-actions { display: flex; gap: 8px; }
-
-    /* ── CARD ── */
-    .card {
-      background: var(--white); border-radius: 8px;
-      border: 1px solid var(--gray-200); padding: 28px;
-      margin-bottom: 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .card-title {
-      font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
-      text-transform: uppercase; color: var(--gray-500);
-      margin-bottom: 20px; padding-bottom: 12px;
-      border-bottom: 1px solid var(--gray-100);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .card-title i { color: var(--gold); }
-
-    /* ── FORM ELEMENTS ── */
-    .form-grid { display: grid; gap: 16px; }
-    .form-grid-2 { grid-template-columns: 1fr 1fr; }
-    .form-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
-
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--gray-500);
-    }
-    .form-label span { color: var(--red); margin-left: 2px; }
-    .form-input, .form-select, .form-textarea {
-      padding: 9px 12px; font-size: 14px; font-family: inherit;
-      color: var(--gray-900); background: var(--gray-50);
-      border: 1px solid var(--gray-200); border-radius: 6px;
-      outline: none; transition: border-color 0.2s, background 0.2s;
-      width: 100%;
-    }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--navy); background: var(--white);
-    }
-    .form-textarea { min-height: 80px; resize: vertical; }
-    .form-hint { font-size: 11px; color: var(--gray-400); }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 16px; font-size: 12px; font-weight: 600;
-      letter-spacing: 0.05em; border-radius: 6px;
-      cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
-      font-family: inherit;
-    }
-    .btn-sm { padding: 5px 12px; font-size: 11px; }
-    .btn-primary { background: var(--navy); color: var(--white); }
-    .btn-primary:hover { background: #0d0d1a; }
-    .btn-gold { background: var(--gold); color: var(--white); border-color: var(--gold); }
-    .btn-gold:hover { background: #a8824f; }
-    .btn-outline { background: transparent; color: var(--gray-700); border-color: var(--gray-300); }
-    .btn-outline:hover { border-color: var(--navy); color: var(--navy); }
-    .btn-danger { background: transparent; color: var(--red); border-color: #fecaca; }
-    .btn-danger:hover { background: var(--red); color: var(--white); }
-    .btn-green { background: var(--green); color: var(--white); }
-    .btn-blue { background: var(--blue); color: var(--white); }
-
-    /* ── ITEM CARDS (products, news etc) ── */
-    .items-list { display: flex; flex-direction: column; gap: 12px; }
-    .item-card {
-      background: var(--gray-50); border: 1px solid var(--gray-200);
-      border-radius: 8px; padding: 16px 20px;
-      display: flex; align-items: flex-start; gap: 16px;
-    }
-    .item-card-thumb {
-      width: 72px; height: 72px; border-radius: 6px;
-      background: var(--gray-200); overflow: hidden; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; color: var(--gray-400);
-    }
-    .item-card-thumb img { width: 100%; height: 100%; object-fit: contain; }
-    .item-card-body { flex: 1; }
-    .item-card-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-    .item-card-desc { font-size: 13px; color: var(--gray-500); line-height: 1.5; }
-    .item-card-meta { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-    .tag {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-      padding: 2px 8px; border-radius: 10px; text-transform: uppercase;
-    }
-    .tag-navy { background: var(--navy); color: var(--white); }
-    .tag-gold { background: var(--gold); color: var(--white); }
-    .tag-green { background: var(--green); color: var(--white); }
-    .tag-blue { background: var(--blue); color: var(--white); }
-    .item-card-actions { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
-
-    /* ── MODAL ── */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.45);
-      z-index: 200; display: flex; align-items: center; justify-content: center;
-      padding: 24px; opacity: 0; visibility: hidden; transition: all 0.25s;
-    }
-    .modal-overlay.open { opacity: 1; visibility: visible; }
-    .modal {
-      background: var(--white); border-radius: 12px; width: 100%; max-width: 640px;
-      max-height: 90vh; overflow-y: auto;
-      transform: translateY(16px); transition: transform 0.25s;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    }
-    .modal-overlay.open .modal { transform: translateY(0); }
-    .modal-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 24px; border-bottom: 1px solid var(--gray-200);
-    }
-    .modal-title { font-size: 16px; font-weight: 700; color: var(--navy); }
-    .modal-close {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: var(--gray-100); border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; color: var(--gray-500); transition: all 0.2s;
-    }
-    .modal-close:hover { background: var(--gray-200); color: var(--gray-900); }
-    .modal-body { padding: 24px; }
-    .modal-footer {
-      padding: 16px 24px; border-top: 1px solid var(--gray-200);
-      display: flex; gap: 8px; justify-content: flex-end;
-    }
-
-    /* ── TABS ── */
-    .tab-nav {
-      display: flex; gap: 4px; border-bottom: 2px solid var(--gray-200);
-      margin-bottom: 20px;
-    }
-    .tab-nav-btn {
-      padding: 8px 16px; font-size: 12px; font-weight: 600;
-      letter-spacing: 0.05em; cursor: pointer; border: none;
-      background: transparent; color: var(--gray-500);
-      border-bottom: 2px solid transparent; margin-bottom: -2px;
-      transition: all 0.2s; font-family: inherit;
-    }
-    .tab-nav-btn.active { color: var(--navy); border-bottom-color: var(--navy); }
-    .tab-pane { display: none; }
-    .tab-pane.active { display: block; }
-
-    /* ── TOAST ── */
-    .toast {
-      position: fixed; bottom: 32px; right: 32px; z-index: 999;
-      background: var(--gray-900); color: var(--white);
-      padding: 12px 20px; border-radius: 8px; font-size: 13px; font-weight: 500;
-      display: flex; align-items: center; gap: 8px;
-      transform: translateY(80px); opacity: 0; transition: all 0.3s;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    .toast.success { background: var(--green); }
-    .toast.error { background: var(--red); }
-
-    /* ── STATS WIDGET ── */
-    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
-    .stat-widget {
-      background: var(--white); border: 1px solid var(--gray-200);
-      border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .stat-widget-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px; }
-    .stat-widget-num { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; }
-    .stat-widget-icon { font-size: 20px; margin-bottom: 8px; }
-
-    /* ── IMAGE PREVIEW ── */
-    .img-preview-wrap { position: relative; margin-top: 8px; }
-    .img-preview {
-      width: 100%; height: 160px; border-radius: 6px;
-      background: var(--gray-100); border: 1px solid var(--gray-200);
-      object-fit: contain; display: none;
-    }
-    .img-preview.show { display: block; }
-    .img-no-preview {
-      width: 100%; height: 80px; border-radius: 6px;
-      background: var(--gray-100); border: 1px dashed var(--gray-300);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; color: var(--gray-400);
-    }
-
-    /* ── JSON EDITOR ── */
-    .json-editor {
-      width: 100%; min-height: 400px; font-family: 'Courier New', monospace;
-      font-size: 12px; line-height: 1.6; background: #1e1e2e;
-      color: #cdd6f4; border: 1px solid #313244; border-radius: 6px;
-      padding: 16px; outline: none; resize: vertical;
-    }
-
-    /* ── DIVIDER ── */
-    .divider { height: 1px; background: var(--gray-200); margin: 20px 0; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .admin-sidebar { transform: translateX(-100%); transition: transform 0.3s; }
-      .admin-sidebar.open { transform: translateX(0); }
-      .admin-main { margin-left: 0; padding: 20px 16px; }
-      .stats-row { grid-template-columns: 1fr 1fr; }
-      .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
-    }
-  </style>
+  <title>Aestyve Admin — 관리자 패널</title>
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
-<!-- ADMIN HEADER -->
-<header class="admin-header">
-  <div class="admin-header-left">
-    <span class="admin-logo">AESTYVE</span>
-    <span class="admin-badge">Admin</span>
-  </div>
-  <div class="admin-header-right">
-    <a href="index.html" target="_blank" class="preview-btn">
-      <i class="fas fa-external-link-alt"></i> 사이트 미리보기
-    </a>
-    <button class="save-all-btn" onclick="downloadJSON()">
-      <i class="fas fa-download"></i> JSON 다운로드
-    </button>
-  </div>
-</header>
+<div class="admin-wrap">
 
-<!-- SIDEBAR -->
-<aside class="admin-sidebar" id="admin-sidebar">
-  <div class="sidebar-section">
-    <span class="sidebar-label">대시보드</span>
-    <a class="sidebar-item active" onclick="showPanel('dashboard')">
-      <i class="fas fa-tachometer-alt"></i> 대시보드
-    </a>
-  </div>
-  <div class="sidebar-section">
-    <span class="sidebar-label">콘텐츠 관리</span>
-    <a class="sidebar-item" onclick="showPanel('site')">
-      <i class="fas fa-cog"></i> 사이트 설정
-    </a>
-    <a class="sidebar-item" onclick="showPanel('hero')">
-      <i class="fas fa-images"></i> 히어로 슬라이더
-    </a>
-    <a class="sidebar-item" onclick="showPanel('about')">
-      <i class="fas fa-building"></i> 회사 소개
-    </a>
-    <a class="sidebar-item" onclick="showPanel('products')">
-      <i class="fas fa-box"></i> 제품 관리
-      <span class="badge" id="product-badge">5</span>
-    </a>
-    <a class="sidebar-item" onclick="showPanel('science')">
-      <i class="fas fa-flask"></i> 과학/기술
-    </a>
-    <a class="sidebar-item" onclick="showPanel('academy')">
-      <i class="fas fa-graduation-cap"></i> 아카데미
-    </a>
-    <a class="sidebar-item" onclick="showPanel('news')">
-      <i class="fas fa-newspaper"></i> 뉴스 관리
-      <span class="badge" id="news-badge">4</span>
-    </a>
-    <a class="sidebar-item" onclick="showPanel('footer')">
-      <i class="fas fa-layer-group"></i> 푸터
-    </a>
-  </div>
-  <div class="sidebar-section">
-    <span class="sidebar-label">데이터</span>
-    <a class="sidebar-item" onclick="showPanel('json')">
-      <i class="fas fa-code"></i> JSON 직접 편집
-    </a>
-    <a class="sidebar-item" onclick="importJSON()">
-      <i class="fas fa-upload"></i> JSON 가져오기
-    </a>
-    <a class="sidebar-item" onclick="confirmReset()">
-      <i class="fas fa-undo"></i> 초기화
-    </a>
-  </div>
-</aside>
+  <!-- ═══════ SIDEBAR ═══════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">AESTYVE</div>
+      <div class="sidebar-subtitle">Admin Dashboard</div>
+    </div>
 
-<!-- MAIN -->
-<main class="admin-main">
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">대시보드</div>
+      <button class="sidebar-btn active" data-panel="dashboard">
+        <span class="icon">📊</span> 대시보드
+      </button>
 
-  <!-- ── DASHBOARD ── -->
-  <div class="panel active" id="panel-dashboard">
-    <div class="panel-header">
-      <h1 class="panel-title">대시보드</h1>
-      <div class="panel-actions">
-        <a href="index.html" target="_blank" class="btn btn-outline"><i class="fas fa-eye"></i> 사이트 보기</a>
-        <button class="btn btn-gold" onclick="downloadJSON()"><i class="fas fa-download"></i> 저장</button>
+      <div class="nav-section-label">콘텐츠 관리</div>
+      <button class="sidebar-btn" data-panel="site">
+        <span class="icon">⚙️</span> 사이트 설정
+      </button>
+      <button class="sidebar-btn" data-panel="hero">
+        <span class="icon">🎯</span> 히어로 슬라이더
+      </button>
+      <button class="sidebar-btn" data-panel="about">
+        <span class="icon">🏢</span> 브랜드 소개
+      </button>
+      <button class="sidebar-btn" data-panel="products">
+        <span class="icon">📦</span> 제품 관리
+      </button>
+      <button class="sidebar-btn" data-panel="science">
+        <span class="icon">🔬</span> 과학/기술
+      </button>
+      <button class="sidebar-btn" data-panel="academy">
+        <span class="icon">🎓</span> 아카데미
+      </button>
+      <button class="sidebar-btn" data-panel="news">
+        <span class="icon">📰</span> 뉴스
+      </button>
+
+      <div class="nav-section-label">데이터</div>
+      <button class="sidebar-btn" data-panel="json">
+        <span class="icon">🗃️</span> JSON 편집기
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html">← 홈페이지로 이동</a>
+    </div>
+  </aside>
+
+  <!-- ═══════ MAIN ═══════ -->
+  <main class="admin-main">
+
+    <!-- 상단 바 -->
+    <div class="admin-topbar">
+      <div class="topbar-title" id="topbarTitle">대시보드</div>
+      <div class="topbar-actions">
+        <button class="btn-sm btn-outline-sm" id="btnExport">📥 JSON 내보내기</button>
+        <button class="btn-sm btn-outline-sm" id="btnImport">📤 JSON 가져오기</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none;">
+        <button class="btn-sm btn-danger-sm" id="btnReset">🔄 초기화</button>
+        <a href="index.html" class="btn-sm btn-primary-sm">🌐 홈페이지 보기</a>
       </div>
     </div>
 
-    <div class="stats-row">
-      <div class="stat-widget">
-        <div class="stat-widget-icon">📦</div>
-        <div class="stat-widget-label">총 제품</div>
-        <div class="stat-widget-num" id="dash-products">5</div>
+    <!-- ────── 대시보드 ────── -->
+    <div class="admin-panel active" id="panel-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-num">5</div>
+          <div class="stat-card-label">등록된 제품</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">3</div>
+          <div class="stat-card-label">히어로 슬라이드</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">4</div>
+          <div class="stat-card-label">뉴스 기사</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">3</div>
+          <div class="stat-card-label">아카데미 프로그램</div>
+        </div>
       </div>
-      <div class="stat-widget">
-        <div class="stat-widget-icon">🎠</div>
-        <div class="stat-widget-label">히어로 슬라이드</div>
-        <div class="stat-widget-num" id="dash-hero">3</div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">빠른 관리</span>
+        </div>
+        <div class="card-body">
+          <p style="font-size:0.9rem; color:var(--gray-700); line-height:1.8; margin-bottom:20px;">
+            좌측 메뉴에서 편집할 섹션을 선택하세요.<br>
+            변경사항은 <strong>JSON 내보내기</strong>로 저장하고 <code>data/content.json</code>을 교체하세요.
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn-sm btn-primary-sm" onclick="switchPanel('products')">📦 제품 관리</button>
+            <button class="btn-sm btn-primary-sm" onclick="switchPanel('news')">📰 뉴스 관리</button>
+            <button class="btn-sm btn-primary-sm" onclick="switchPanel('hero')">🎯 슬라이더 관리</button>
+            <button class="btn-sm btn-outline-sm" onclick="switchPanel('site')">⚙️ 사이트 설정</button>
+          </div>
+        </div>
       </div>
-      <div class="stat-widget">
-        <div class="stat-widget-icon">📰</div>
-        <div class="stat-widget-label">뉴스</div>
-        <div class="stat-widget-num" id="dash-news">4</div>
-      </div>
-      <div class="stat-widget">
-        <div class="stat-widget-icon">🎓</div>
-        <div class="stat-widget-label">아카데미</div>
-        <div class="stat-widget-num" id="dash-academy">3</div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">🖋️ 에스코어 드림 폰트 굵기 가이드</span></div>
+        <div class="card-body">
+          <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--gray-200);">
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">요소</th>
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">굵기</th>
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">값</th>
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">미리보기</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">대제목 (Hero, Section)</td>
+                <td style="padding:8px 12px;">Bold</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">700</td>
+                <td style="padding:8px 12px; font-weight:700; font-family:'S-CoreDream',sans-serif;">에스티브 타이틀</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">중제목 (Card, Nav)</td>
+                <td style="padding:8px 12px;">SemiBold</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">600</td>
+                <td style="padding:8px 12px; font-weight:600; font-family:'S-CoreDream',sans-serif;">섹션 서브타이틀</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">헤더 / 버튼</td>
+                <td style="padding:8px 12px;">Medium</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">500</td>
+                <td style="padding:8px 12px; font-weight:500; font-family:'S-CoreDream',sans-serif;">네비게이션 링크</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">본문 / 설명</td>
+                <td style="padding:8px 12px;">Regular</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">400</td>
+                <td style="padding:8px 12px; font-weight:400; font-family:'S-CoreDream',sans-serif;">본문 내용 텍스트</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 12px; color:var(--gray-700);">푸터 / 보조</td>
+                <td style="padding:8px 12px;">Light</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">300</td>
+                <td style="padding:8px 12px; font-weight:300; font-family:'S-CoreDream',sans-serif;">부가 정보 텍스트</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title"><i class="fas fa-info-circle"></i> 관리자 안내</div>
-      <p style="font-size:14px;color:#6b7280;line-height:1.75">
-        좌측 메뉴에서 편집할 섹션을 선택하세요.<br>
-        수정 후 <strong>「JSON 다운로드」</strong> 버튼을 클릭하면 <code>content.json</code> 파일이 생성됩니다.<br>
-        다운로드된 파일을 <code>data/content.json</code>으로 저장하면 사이트에 즉시 반영됩니다.
-      </p>
-      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
-        <a href="index.html" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> 사이트 확인</a>
-        <button class="btn btn-gold" onclick="downloadJSON()"><i class="fas fa-download"></i> JSON 다운로드</button>
-        <button class="btn btn-outline" onclick="importJSON()"><i class="fas fa-upload"></i> JSON 업로드</button>
+    <!-- ────── 사이트 설정 ────── -->
+    <div class="admin-panel" id="panel-site">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">⚙️ 사이트 기본 설정</span>
+          <button class="btn-sm btn-primary-sm" onclick="saveSite()">저장</button>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">브랜드명 (한국어)</label>
+              <input type="text" class="form-input" id="site_name_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">브랜드명 (영어)</label>
+              <input type="text" class="form-input" id="site_name_en">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">전화번호</label>
+            <input type="text" class="form-input" id="site_phone">
+          </div>
+          <div class="form-group">
+            <label class="form-label">이메일</label>
+            <input type="email" class="form-input" id="site_email">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">주소 (한국어)</label>
+              <input type="text" class="form-input" id="site_address_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">주소 (영어)</label>
+              <input type="text" class="form-input" id="site_address_en">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">운영 시간 (한국어)</label>
+              <input type="text" class="form-input" id="site_hours_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">운영 시간 (영어)</label>
+              <input type="text" class="form-input" id="site_hours_en">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Primary Color</label>
+              <input type="color" class="form-input" id="site_primary_color" style="height:44px; padding:4px;">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Accent Color</label>
+              <input type="color" class="form-input" id="site_accent_color" style="height:44px; padding:4px;">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title"><i class="fas fa-bolt"></i> 빠른 편집</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-        <button class="btn btn-outline" onclick="showPanel('hero')"><i class="fas fa-images"></i> 히어로</button>
-        <button class="btn btn-outline" onclick="showPanel('products')"><i class="fas fa-box"></i> 제품</button>
-        <button class="btn btn-outline" onclick="showPanel('news')"><i class="fas fa-newspaper"></i> 뉴스</button>
-        <button class="btn btn-outline" onclick="showPanel('site')"><i class="fas fa-cog"></i> 설정</button>
+    <!-- ────── 히어로 ────── -->
+    <div class="admin-panel" id="panel-hero">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🎯 히어로 슬라이더</span>
+          <button class="btn-sm btn-success-sm" onclick="openHeroModal()">+ 슬라이드 추가</button>
+        </div>
+        <div class="card-body" id="heroList"></div>
       </div>
     </div>
-  </div>
 
-  <!-- ── SITE SETTINGS ── -->
-  <div class="panel" id="panel-site">
-    <div class="panel-header">
-      <h1 class="panel-title">사이트 설정</h1>
-      <button class="btn btn-gold" onclick="saveSite()"><i class="fas fa-save"></i> 저장</button>
+    <!-- ────── 브랜드 소개 ────── -->
+    <div class="admin-panel" id="panel-about">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🏢 브랜드 소개</span>
+          <button class="btn-sm btn-primary-sm" onclick="saveAbout()">저장</button>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">제목 (한국어)</label>
+              <input type="text" class="form-input" id="about_title_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">제목 (영어)</label>
+              <input type="text" class="form-input" id="about_title_en">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">설명 (한국어)</label>
+              <textarea class="form-textarea" id="about_desc_ko"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">설명 (영어)</label>
+              <textarea class="form-textarea" id="about_desc_en"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">이미지 URL</label>
+            <input type="text" class="form-input" id="about_image" placeholder="https://...">
+            <div class="img-preview" id="about_img_preview">
+              <span class="img-preview-empty">이미지 URL 입력 후 미리보기</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">통계 수치</span></div>
+        <div class="card-body" id="aboutStatsList"></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-id-card"></i> 브랜드 정보</div>
-      <div class="form-grid form-grid-2">
+
+    <!-- ────── 제품 관리 ────── -->
+    <div class="admin-panel" id="panel-products">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">⭐ Featured 제품 (1906NAD+)</span>
+          <button class="btn-sm btn-primary-sm" onclick="openProductModal('featured')">수정</button>
+        </div>
+        <div class="card-body" id="featuredProductView"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📦 제품 목록</span>
+          <button class="btn-sm btn-success-sm" onclick="openProductModal('new')">+ 제품 추가</button>
+        </div>
+        <div class="card-body" id="productList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 과학/기술 ────── -->
+    <div class="admin-panel" id="panel-science">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🔬 과학/기술 섹션</span>
+          <button class="btn-sm btn-success-sm" onclick="openScienceModal()">+ 항목 추가</button>
+        </div>
+        <div class="card-body" id="scienceList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 아카데미 ────── -->
+    <div class="admin-panel" id="panel-academy">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🎓 아카데미 프로그램</span>
+          <button class="btn-sm btn-success-sm" onclick="openAcademyModal()">+ 추가</button>
+        </div>
+        <div class="card-body" id="academyList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 뉴스 ────── -->
+    <div class="admin-panel" id="panel-news">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📰 뉴스 관리</span>
+          <button class="btn-sm btn-success-sm" onclick="openNewsModal()">+ 뉴스 추가</button>
+        </div>
+        <div class="card-body" id="newsList"></div>
+      </div>
+    </div>
+
+    <!-- ────── JSON 편집기 ────── -->
+    <div class="admin-panel" id="panel-json">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🗃️ JSON 직접 편집</span>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-sm btn-outline-sm" onclick="refreshJsonEditor()">새로고침</button>
+            <button class="btn-sm btn-primary-sm" onclick="applyJsonEditor()">적용</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <p style="font-size:0.82rem; color:var(--gray-500); margin-bottom:12px; font-weight:400;">
+            JSON을 직접 편집한 후 [적용] 버튼을 누르세요. 잘못된 JSON은 적용되지 않습니다.
+          </p>
+          <textarea class="json-editor" id="jsonEditor"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- /.admin-main -->
+</div><!-- /.admin-wrap -->
+
+<!-- ═══════ 제품 모달 ═══════ -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="productModalTitle">제품 추가</span>
+      <button class="modal-close" onclick="closeModal('productModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="product_id">
+      <div class="form-group">
+        <label class="form-label">제품명 <span class="required">*</span></label>
+        <input type="text" class="form-input" id="product_name">
+      </div>
+      <div class="form-row">
         <div class="form-group">
-          <label class="form-label">브랜드명 (한국어)</label>
-          <input type="text" class="form-input" id="site-name-ko">
+          <label class="form-label">배지 (한국어)</label>
+          <input type="text" class="form-input" id="product_badge_ko" placeholder="예: NEW, BEST">
         </div>
         <div class="form-group">
-          <label class="form-label">브랜드명 (영어)</label>
-          <input type="text" class="form-input" id="site-name-en">
-        </div>
-        <div class="form-group" style="grid-column:1/-1">
-          <label class="form-label">로고 URL</label>
-          <input type="url" class="form-input" id="site-logo" placeholder="https://" oninput="previewImg('site-logo','site-logo-preview')">
-          <div class="img-preview-wrap">
-            <img id="site-logo-preview" class="img-preview" alt="로고 미리보기">
-            <div id="site-logo-nopreview" class="img-no-preview">로고 URL을 입력하면 미리보기가 나타납니다</div>
-          </div>
-        </div>
-        <div class="form-group" style="grid-column:1/-1">
-          <label class="form-label">미션 메시지 (한국어)</label>
-          <input type="text" class="form-input" id="site-mission-ko">
-        </div>
-        <div class="form-group" style="grid-column:1/-1">
-          <label class="form-label">미션 메시지 (영어)</label>
-          <input type="text" class="form-input" id="site-mission-en">
+          <label class="form-label">배지 (영어)</label>
+          <input type="text" class="form-input" id="product_badge_en">
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-address-book"></i> 연락처 정보</div>
-      <div class="form-grid form-grid-2">
-        <div class="form-group">
-          <label class="form-label">전화번호</label>
-          <input type="text" class="form-input" id="site-phone">
-        </div>
-        <div class="form-group">
-          <label class="form-label">이메일</label>
-          <input type="email" class="form-input" id="site-email">
-        </div>
-        <div class="form-group" style="grid-column:1/-1">
-          <label class="form-label">주소 (한국어)</label>
-          <input type="text" class="form-input" id="site-address-ko">
-        </div>
-        <div class="form-group" style="grid-column:1/-1">
-          <label class="form-label">주소 (영어)</label>
-          <input type="text" class="form-input" id="site-address-en">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── HERO ── -->
-  <div class="panel" id="panel-hero">
-    <div class="panel-header">
-      <h1 class="panel-title">히어로 슬라이더</h1>
-      <div class="panel-actions">
-        <button class="btn btn-outline" onclick="addHeroSlide()"><i class="fas fa-plus"></i> 슬라이드 추가</button>
-        <button class="btn btn-gold" onclick="saveHero()"><i class="fas fa-save"></i> 저장</button>
-      </div>
-    </div>
-    <div id="hero-slides-list"></div>
-  </div>
-
-  <!-- ── ABOUT ── -->
-  <div class="panel" id="panel-about">
-    <div class="panel-header">
-      <h1 class="panel-title">회사 소개</h1>
-      <button class="btn btn-gold" onclick="saveAbout()"><i class="fas fa-save"></i> 저장</button>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-building"></i> 소개 텍스트</div>
-      <div class="form-grid">
-        <div class="form-grid form-grid-2">
-          <div class="form-group">
-            <label class="form-label">제목 (한국어)</label>
-            <input type="text" class="form-input" id="about-title-ko">
-          </div>
-          <div class="form-group">
-            <label class="form-label">제목 (영어)</label>
-            <input type="text" class="form-input" id="about-title-en">
-          </div>
-          <div class="form-group">
-            <label class="form-label">부제 (한국어)</label>
-            <input type="text" class="form-input" id="about-subtitle-ko">
-          </div>
-          <div class="form-group">
-            <label class="form-label">부제 (영어)</label>
-            <input type="text" class="form-input" id="about-subtitle-en">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">본문 (한국어)</label>
-          <textarea class="form-textarea" id="about-text-ko"></textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-label">본문 (영어)</label>
-          <textarea class="form-textarea" id="about-text-en"></textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-label">이미지 URL</label>
-          <input type="url" class="form-input" id="about-image" placeholder="https://" oninput="previewImg('about-image','about-img-preview')">
-          <div class="img-preview-wrap">
-            <img id="about-img-preview" class="img-preview" alt="미리보기">
-            <div id="about-image-nopreview" class="img-no-preview">이미지 URL 입력 시 미리보기</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-chart-bar"></i> 통계 수치</div>
-      <div id="about-stats-list"></div>
-      <button class="btn btn-outline btn-sm" style="margin-top:12px" onclick="addStat()"><i class="fas fa-plus"></i> 항목 추가</button>
-    </div>
-  </div>
-
-  <!-- ── PRODUCTS ── -->
-  <div class="panel" id="panel-products">
-    <div class="panel-header">
-      <h1 class="panel-title">제품 관리</h1>
-      <div class="panel-actions">
-        <button class="btn btn-outline" onclick="addProduct()"><i class="fas fa-plus"></i> 제품 추가</button>
-        <button class="btn btn-gold" onclick="saveProducts()"><i class="fas fa-save"></i> 저장</button>
-      </div>
-    </div>
-
-    <!-- Featured Product -->
-    <div class="card">
-      <div class="card-title"><i class="fas fa-star"></i> Featured 제품 (메인 강조)</div>
-      <div class="form-grid">
-        <div class="form-grid form-grid-2">
-          <div class="form-group">
-            <label class="form-label">제품명 (한국어)</label>
-            <input type="text" class="form-input" id="feat-name-ko">
-          </div>
-          <div class="form-group">
-            <label class="form-label">제품명 (영어)</label>
-            <input type="text" class="form-input" id="feat-name-en">
-          </div>
-          <div class="form-group">
-            <label class="form-label">배지 (한국어)</label>
-            <input type="text" class="form-input" id="feat-badge-ko" placeholder="BEST, NEW 등">
-          </div>
-          <div class="form-group">
-            <label class="form-label">카테고리</label>
-            <input type="text" class="form-input" id="feat-category" placeholder="new, best, new,best">
-          </div>
-        </div>
+      <div class="form-row">
         <div class="form-group">
           <label class="form-label">설명 (한국어)</label>
-          <textarea class="form-textarea" id="feat-desc-ko"></textarea>
+          <textarea class="form-textarea" id="product_desc_ko"></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">설명 (영어)</label>
-          <textarea class="form-textarea" id="feat-desc-en"></textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-label">이미지 URL</label>
-          <input type="url" class="form-input" id="feat-image" placeholder="https://" oninput="previewImg('feat-image','feat-img-preview')">
-          <div class="img-preview-wrap">
-            <img id="feat-img-preview" class="img-preview" alt="미리보기">
-            <div id="feat-image-nopreview" class="img-no-preview">이미지 URL 입력 시 미리보기</div>
-          </div>
+          <textarea class="form-textarea" id="product_desc_en"></textarea>
         </div>
       </div>
-    </div>
-
-    <!-- Product List -->
-    <div class="card">
-      <div class="card-title"><i class="fas fa-list"></i> 제품 목록</div>
-      <div class="items-list" id="products-list"></div>
-    </div>
-  </div>
-
-  <!-- ── SCIENCE ── -->
-  <div class="panel" id="panel-science">
-    <div class="panel-header">
-      <h1 class="panel-title">과학/기술</h1>
-      <div class="panel-actions">
-        <button class="btn btn-outline" onclick="addScienceItem()"><i class="fas fa-plus"></i> 항목 추가</button>
-        <button class="btn btn-gold" onclick="saveScience()"><i class="fas fa-save"></i> 저장</button>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-flask"></i> 항목 목록</div>
-      <div id="science-list"></div>
-    </div>
-  </div>
-
-  <!-- ── ACADEMY ── -->
-  <div class="panel" id="panel-academy">
-    <div class="panel-header">
-      <h1 class="panel-title">아카데미</h1>
-      <div class="panel-actions">
-        <button class="btn btn-outline" onclick="addAcademyItem()"><i class="fas fa-plus"></i> 항목 추가</button>
-        <button class="btn btn-gold" onclick="saveAcademy()"><i class="fas fa-save"></i> 저장</button>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-graduation-cap"></i> 아카데미 프로그램</div>
-      <div id="academy-list"></div>
-    </div>
-  </div>
-
-  <!-- ── NEWS ── -->
-  <div class="panel" id="panel-news">
-    <div class="panel-header">
-      <h1 class="panel-title">뉴스 관리</h1>
-      <div class="panel-actions">
-        <button class="btn btn-outline" onclick="addNews()"><i class="fas fa-plus"></i> 뉴스 추가</button>
-        <button class="btn btn-gold" onclick="saveNews()"><i class="fas fa-save"></i> 저장</button>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-newspaper"></i> 뉴스 목록</div>
-      <div class="items-list" id="news-list"></div>
-    </div>
-  </div>
-
-  <!-- ── FOOTER ── -->
-  <div class="panel" id="panel-footer">
-    <div class="panel-header">
-      <h1 class="panel-title">푸터</h1>
-      <button class="btn btn-gold" onclick="saveFooter()"><i class="fas fa-save"></i> 저장</button>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-share-alt"></i> SNS 링크</div>
-      <div class="form-grid form-grid-2">
-        <div class="form-group">
-          <label class="form-label"><i class="fab fa-instagram" style="color:#e1306c"></i> Instagram</label>
-          <input type="url" class="form-input" id="sns-instagram" placeholder="https://instagram.com/...">
-        </div>
-        <div class="form-group">
-          <label class="form-label"><i class="fab fa-youtube" style="color:#ff0000"></i> YouTube</label>
-          <input type="url" class="form-input" id="sns-youtube" placeholder="https://youtube.com/...">
-        </div>
-        <div class="form-group">
-          <label class="form-label"><i class="fab fa-facebook-f" style="color:#1877f2"></i> Facebook</label>
-          <input type="url" class="form-input" id="sns-facebook" placeholder="https://facebook.com/...">
-        </div>
-        <div class="form-group">
-          <label class="form-label"><i class="fab fa-linkedin-in" style="color:#0077b5"></i> LinkedIn</label>
-          <input type="url" class="form-input" id="sns-linkedin" placeholder="https://linkedin.com/...">
+      <div class="form-group">
+        <label class="form-label">이미지 URL</label>
+        <input type="text" class="form-input" id="product_image" placeholder="https://..." oninput="previewImg(this.value, 'product_img_preview')">
+        <div class="img-preview" id="product_img_preview">
+          <span class="img-preview-empty">URL 입력 시 미리보기</span>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-copyright"></i> 저작권</div>
-      <div class="form-grid form-grid-2">
-        <div class="form-group">
-          <label class="form-label">저작권 (한국어)</label>
-          <input type="text" class="form-input" id="footer-copy-ko">
-        </div>
-        <div class="form-group">
-          <label class="form-label">저작권 (영어)</label>
-          <input type="text" class="form-input" id="footer-copy-en">
-        </div>
+      <div class="form-group">
+        <label class="form-label">카테고리</label>
+        <select class="form-select" id="product_category">
+          <option value="new">NEW</option>
+          <option value="best">BEST</option>
+          <option value="new,best">NEW + BEST</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">링크 URL</label>
+        <input type="text" class="form-input" id="product_link" placeholder="#">
       </div>
     </div>
-  </div>
-
-  <!-- ── JSON EDITOR ── -->
-  <div class="panel" id="panel-json">
-    <div class="panel-header">
-      <h1 class="panel-title">JSON 직접 편집</h1>
-      <div class="panel-actions">
-        <button class="btn btn-outline" onclick="formatJSON()"><i class="fas fa-code"></i> 포맷</button>
-        <button class="btn btn-gold" onclick="applyJSON()"><i class="fas fa-check"></i> 적용</button>
-      </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('productModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveProduct()">저장</button>
     </div>
-    <div class="card">
-      <div class="card-title"><i class="fas fa-code"></i> content.json 편집</div>
-      <p style="font-size:12px;color:#6b7280;margin-bottom:12px">⚠️ JSON 형식이 정확해야 합니다. 편집 후 「적용」을 클릭하면 관리자에 반영됩니다.</p>
-      <textarea class="json-editor" id="json-editor"></textarea>
-    </div>
-  </div>
-
-</main>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnOutside(event)">
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <h3 class="modal-title" id="modal-title">편집</h3>
-      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="modal-body" id="modal-body"></div>
-    <div class="modal-footer" id="modal-footer"></div>
   </div>
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
+<!-- ═══════ 히어로 모달 ═══════ -->
+<div class="modal-overlay" id="heroModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="heroModalTitle">슬라이드 추가</span>
+      <button class="modal-close" onclick="closeModal('heroModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="hero_id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">배지 (한국어)</label>
+          <input type="text" class="form-input" id="hero_badge_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">배지 (영어)</label>
+          <input type="text" class="form-input" id="hero_badge_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <textarea class="form-textarea" id="hero_title_ko" style="min-height:70px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <textarea class="form-textarea" id="hero_title_en" style="min-height:70px;"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">설명 (한국어)</label>
+          <textarea class="form-textarea" id="hero_desc_ko"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">설명 (영어)</label>
+          <textarea class="form-textarea" id="hero_desc_en"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">배경 이미지 URL</label>
+        <input type="text" class="form-input" id="hero_image" placeholder="https://...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('heroModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveHero()">저장</button>
+    </div>
+  </div>
+</div>
 
-<!-- Hidden file input for import -->
-<input type="file" id="file-import" accept=".json" style="display:none" onchange="handleImport(event)">
+<!-- ═══════ 뉴스 모달 ═══════ -->
+<div class="modal-overlay" id="newsModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="newsModalTitle">뉴스 추가</span>
+      <button class="modal-close" onclick="closeModal('newsModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="news_id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">카테고리 (한국어)</label>
+          <input type="text" class="form-input" id="news_category_ko" placeholder="예: 제품, 이벤트">
+        </div>
+        <div class="form-group">
+          <label class="form-label">카테고리 (영어)</label>
+          <input type="text" class="form-input" id="news_category_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <input type="text" class="form-input" id="news_title_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <input type="text" class="form-input" id="news_title_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">날짜</label>
+          <input type="text" class="form-input" id="news_date" placeholder="2026. 08. 01">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Featured 뉴스</label>
+          <select class="form-select" id="news_featured">
+            <option value="false">일반 뉴스</option>
+            <option value="true">Featured (대형 카드)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">썸네일 이미지 URL</label>
+        <input type="text" class="form-input" id="news_image" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">링크 URL</label>
+        <input type="text" class="form-input" id="news_link" placeholder="#">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('newsModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveNews()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 과학 모달 ═══════ -->
+<div class="modal-overlay" id="scienceModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="scienceModalTitle">항목 추가</span>
+      <button class="modal-close" onclick="closeModal('scienceModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="science_id">
+      <div class="form-group">
+        <label class="form-label">아이콘 (이모지)</label>
+        <input type="text" class="form-input" id="science_icon" placeholder="예: 🔬 🧬 🛡️">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <input type="text" class="form-input" id="science_title_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <input type="text" class="form-input" id="science_title_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">설명 (한국어)</label>
+          <textarea class="form-textarea" id="science_desc_ko"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">설명 (영어)</label>
+          <textarea class="form-textarea" id="science_desc_en"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('scienceModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveScience()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 아카데미 모달 ═══════ -->
+<div class="modal-overlay" id="academyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="academyModalTitle">아카데미 추가</span>
+      <button class="modal-close" onclick="closeModal('academyModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="academy_id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">번호 (예: 01)</label>
+          <input type="text" class="form-input" id="academy_num">
+        </div>
+        <div class="form-group">
+          <label class="form-label">이미지 URL</label>
+          <input type="text" class="form-input" id="academy_image" placeholder="https://...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <input type="text" class="form-input" id="academy_title_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <input type="text" class="form-input" id="academy_title_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">설명 (한국어)</label>
+          <textarea class="form-textarea" id="academy_desc_ko"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">설명 (영어)</label>
+          <textarea class="form-textarea" id="academy_desc_en"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('academyModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveAcademy()">저장</button>
+    </div>
+  </div>
+</div>
 
 <script src="js/admin.js"></script>
 </body>

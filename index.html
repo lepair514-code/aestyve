@@ -3,389 +3,639 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aestyve - Look Better, Feel Better, Live Better. 혁신적인 에스테틱 솔루션을 통해 당신만의 아름다움을 찾아보세요.">
-  <title>Aestyve | 에스티브</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <title>Aestyve | Aesthetic Solutions for Confidence</title>
+  <meta name="description" content="에스티브는 혁신적인 에스테틱 솔루션을 제공하는 글로벌 기업입니다.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header id="site-header" class="transparent">
-  <div class="header-inner">
-    <!-- Logo -->
-    <a href="index.html" class="site-logo" aria-label="Aestyve 홈">
-      <img id="header-logo-img" src="" alt="Aestyve" onerror="this.style.display='none'">
-      <span class="logo-text" id="header-logo-text">AESTYVE</span>
-    </a>
-
-    <!-- Desktop Nav -->
-    <nav class="main-nav" aria-label="주요 메뉴">
-      <div class="nav-item">
-        <a href="#about" class="nav-link">
-          <span class="nav-label-ko">회사 소개</span>
-          <span class="nav-label-en" style="display:none">ABOUT</span>
-          <i class="fas fa-chevron-down nav-arrow" style="font-size:9px"></i>
+  <!-- ===================== HEADER ===================== -->
+  <header id="header" class="header transparent">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <span class="logo-text">AESTYVE</span>
         </a>
-        <div class="nav-dropdown">
-          <a href="#about" class="nav-label-ko">에스티브 소개</a>
-          <a href="#about" class="nav-label-en" style="display:none">About Aestyve</a>
-          <a href="#" class="nav-label-ko">연혁</a>
-          <a href="#" class="nav-label-en" style="display:none">History</a>
-          <a href="#" class="nav-label-ko">파트너십</a>
-          <a href="#" class="nav-label-en" style="display:none">Partnership</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="#products" class="nav-link">
-          <span class="nav-label-ko">제품</span>
-          <span class="nav-label-en" style="display:none">PRODUCTS</span>
-          <i class="fas fa-chevron-down nav-arrow" style="font-size:9px"></i>
-        </a>
-        <div class="nav-dropdown">
-          <a href="#products" class="nav-label-ko">전체 제품</a>
-          <a href="#products" class="nav-label-en" style="display:none">All Products</a>
-          <a href="#products" class="nav-label-ko">신제품</a>
-          <a href="#products" class="nav-label-en" style="display:none">New</a>
-          <a href="#products" class="nav-label-ko">베스트</a>
-          <a href="#products" class="nav-label-en" style="display:none">Best</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="#science" class="nav-link">
-          <span class="nav-label-ko">과학/기술</span>
-          <span class="nav-label-en" style="display:none">SCIENCE</span>
-        </a>
-      </div>
-      <div class="nav-item">
-        <a href="#academy" class="nav-link">
-          <span class="nav-label-ko">아카데미</span>
-          <span class="nav-label-en" style="display:none">ACADEMY</span>
-        </a>
-      </div>
-      <div class="nav-item">
-        <a href="#news" class="nav-link">
-          <span class="nav-label-ko">뉴스</span>
-          <span class="nav-label-en" style="display:none">NEWS</span>
-        </a>
-      </div>
-      <div class="nav-item">
-        <a href="#contact" class="nav-link">
-          <span class="nav-label-ko">문의</span>
-          <span class="nav-label-en" style="display:none">CONTACT</span>
-        </a>
-      </div>
-    </nav>
 
-    <!-- Header Right -->
-    <div class="header-right">
-      <div class="lang-toggle">
-        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KOR</button>
-        <button class="lang-btn" id="btn-en" onclick="setLang('en')">ENG</button>
-      </div>
-      <a href="admin.html" class="admin-link">
-        <i class="fas fa-cog"></i>
-        <span>ADMIN</span>
-      </a>
-      <button class="hamburger" id="hamburger" aria-label="메뉴 열기" onclick="toggleMobile()">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
+        <nav class="nav-desktop">
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="#about" class="nav-link" data-ko="회사 소개" data-en="ABOUT">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a href="#products" class="nav-link" data-ko="제품" data-en="PRODUCTS">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+              <a href="#science" class="nav-link" data-ko="기술" data-en="SCIENCE">SCIENCE</a>
+            </li>
+            <li class="nav-item">
+              <a href="#academy" class="nav-link" data-ko="아카데미" data-en="ACADEMY">ACADEMY</a>
+            </li>
+            <li class="nav-item">
+              <a href="#news" class="nav-link" data-ko="뉴스" data-en="NEWS">NEWS</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact" class="nav-link" data-ko="문의" data-en="CONTACT">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
 
-<!-- Mobile Nav -->
-<nav class="mobile-nav" id="mobile-nav" aria-label="모바일 메뉴">
-  <div class="mobile-nav-item">
-    <a href="#about" class="mobile-nav-link lang-ko">회사 소개</a>
-    <a href="#about" class="mobile-nav-link lang-en" style="display:none">ABOUT</a>
-    <div class="mobile-nav-sub">
-      <a href="#about" class="lang-ko">에스티브 소개</a>
-      <a href="#about" class="lang-en" style="display:none">About Aestyve</a>
-    </div>
-  </div>
-  <div class="mobile-nav-item">
-    <a href="#products" class="mobile-nav-link lang-ko">제품</a>
-    <a href="#products" class="mobile-nav-link lang-en" style="display:none">PRODUCTS</a>
-  </div>
-  <div class="mobile-nav-item">
-    <a href="#science" class="mobile-nav-link lang-ko">과학/기술</a>
-    <a href="#science" class="mobile-nav-link lang-en" style="display:none">SCIENCE</a>
-  </div>
-  <div class="mobile-nav-item">
-    <a href="#academy" class="mobile-nav-link lang-ko">아카데미</a>
-    <a href="#academy" class="mobile-nav-link lang-en" style="display:none">ACADEMY</a>
-  </div>
-  <div class="mobile-nav-item">
-    <a href="#news" class="mobile-nav-link lang-ko">뉴스</a>
-    <a href="#news" class="mobile-nav-link lang-en" style="display:none">NEWS</a>
-  </div>
-  <div class="mobile-nav-item">
-    <a href="#contact" class="mobile-nav-link lang-ko">문의</a>
-    <a href="#contact" class="mobile-nav-link lang-en" style="display:none">CONTACT</a>
-  </div>
-  <div class="mobile-nav-footer">
-    <a href="admin.html" class="mobile-admin-btn">
-      <i class="fas fa-cog"></i>
-      <span>ADMIN</span>
-    </a>
-  </div>
-</nav>
-
-<!-- ===== HERO ===== -->
-<section id="hero" aria-label="메인 히어로">
-  <div class="hero-slider" id="hero-slider">
-    <!-- Slides rendered by JS -->
-  </div>
-  <div class="hero-controls" id="hero-dots" role="tablist" aria-label="슬라이드 컨트롤"></div>
-  <div class="hero-scroll" aria-hidden="true">
-    <div class="scroll-line"></div>
-    <span>SCROLL</span>
-  </div>
-</section>
-
-<!-- ===== MISSION TICKER ===== -->
-<section id="mission-ticker" aria-label="미션 메시지" aria-hidden="true">
-  <div class="ticker-track" id="ticker-track">
-    <!-- rendered by JS -->
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section id="about" class="section">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-image fade-up" id="about-image-wrap">
-        <div class="about-placeholder">
-          <span class="ph-icon">🖼</span>
-          <span class="ph-text">IMAGE PLACEHOLDER</span>
-        </div>
-      </div>
-      <div class="about-content fade-up delay-2">
-        <span class="section-label lang-ko">회사 소개</span>
-        <span class="section-label lang-en" style="display:none">About Us</span>
-        <h2 class="about-title" id="about-title">에스티브 소개</h2>
-        <p class="about-subtitle" id="about-subtitle">아름다움의 본질을 탐구하다</p>
-        <p class="about-text" id="about-text">에스티브는 혁신적인 에스테틱 솔루션을 통해 전 세계 사람들이 더 나은 삶을 살아갈 수 있도록 돕는 글로벌 기업입니다.</p>
-        <div class="stats-grid" id="stats-grid">
-          <!-- rendered by JS -->
+        <div class="header-actions">
+          <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="ko">KOR</button>
+            <span>/</span>
+            <button class="lang-btn" data-lang="en">ENG</button>
+          </div>
+          <a href="admin.html" class="admin-btn">ADMIN</a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ===== PRODUCTS ===== -->
-<section id="products" class="section">
-  <div class="container">
-    <div class="section-header fade-up">
-      <span class="section-label lang-ko">제품 라인업</span>
-      <span class="section-label lang-en" style="display:none">Products</span>
-      <h2 class="section-title lang-ko">에스티브 제품</h2>
-      <h2 class="section-title lang-en" style="display:none">Aestyve Products</h2>
-    </div>
-
-    <!-- Tabs -->
-    <div class="product-tabs fade-up delay-1">
-      <button class="tab-btn active" onclick="filterProducts('all')" data-tab="all">
-        <span class="lang-ko">전체</span><span class="lang-en" style="display:none">ALL</span>
-      </button>
-      <button class="tab-btn" onclick="filterProducts('new')" data-tab="new">
-        <span class="lang-ko">신제품</span><span class="lang-en" style="display:none">NEW</span>
-      </button>
-      <button class="tab-btn" onclick="filterProducts('best')" data-tab="best">
-        <span class="lang-ko">베스트</span><span class="lang-en" style="display:none">BEST</span>
-      </button>
-    </div>
-
-    <!-- Featured Product -->
-    <div id="featured-product" class="product-featured fade-up"></div>
-
-    <!-- Product Grid -->
-    <div id="product-grid" class="product-grid"></div>
-
-    <div class="view-all-wrap fade-up">
-      <a href="#" class="btn-outline">
-        <span class="lang-ko">전체 제품 보기</span>
-        <span class="lang-en" style="display:none">View All Products</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
+  <!-- ===================== MOBILE MENU ===================== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav">
+      <li><a href="#about" data-ko="회사 소개" data-en="ABOUT">ABOUT</a></li>
+      <li><a href="#products" data-ko="제품" data-en="PRODUCTS">PRODUCTS</a></li>
+      <li><a href="#science" data-ko="기술" data-en="SCIENCE">SCIENCE</a></li>
+      <li><a href="#academy" data-ko="아카데미" data-en="ACADEMY">ACADEMY</a></li>
+      <li><a href="#news" data-ko="뉴스" data-en="NEWS">NEWS</a></li>
+      <li><a href="#contact" data-ko="문의" data-en="CONTACT">CONTACT</a></li>
+    </ul>
+    <div class="mobile-admin-link">
+      <a href="admin.html">ADMIN PAGE</a>
     </div>
   </div>
-</section>
 
-<!-- ===== SCIENCE ===== -->
-<section id="science" class="section">
-  <div class="container">
-    <div class="section-header center fade-up">
-      <span class="section-label lang-ko">과학과 기술</span>
-      <span class="section-label lang-en" style="display:none">Science &amp; Technology</span>
-      <h2 class="section-title lang-ko">검증된 기술, 신뢰할 수 있는 솔루션</h2>
-      <h2 class="section-title lang-en" style="display:none">Proven Technology, Trusted Solutions</h2>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-slider" id="heroSlider">
+
+      <!-- Slide 1 -->
+      <div class="hero-slide active">
+        <div class="hero-bg">
+          <div class="hero-bg-placeholder"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-badge">Aesthetic Innovation</span>
+          <h1 class="hero-title">
+            <span data-ko="자신감을 채우는" data-en="Feel Better,">자신감을 채우는</span>
+            <span data-ko-raw data-en-raw style="display:block;" class="title-main-ko">에스테틱 솔루션</span>
+            <span style="display:none;" class="title-main-en">Live Better</span>
+          </h1>
+          <p class="hero-desc"
+            data-ko="에스티브와 함께 당신만의 아름다움을 찾아보세요. 혁신적인 기술과 검증된 솔루션으로 더 나은 삶을 만들어 드립니다."
+            data-en="Discover your unique beauty with Aestyve. Innovative technology and proven solutions for a better life.">
+            에스티브와 함께 당신만의 아름다움을 찾아보세요. 혁신적인 기술과 검증된 솔루션으로 더 나은 삶을 만들어 드립니다.
+          </p>
+          <div class="hero-cta">
+            <a href="#products" class="btn-primary" data-ko="제품 보기" data-en="View Products">제품 보기</a>
+            <a href="#about" class="btn-secondary" data-ko="브랜드 소개" data-en="About Us">브랜드 소개</a>
+          </div>
+        </div>
+        <div class="hero-scroll-indicator">
+          <span>SCROLL</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide">
+        <div class="hero-bg">
+          <div class="hero-bg-placeholder" style="background: linear-gradient(135deg, #1A2755 0%, #0D3366 50%, #0D1B3E 100%);"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-badge">Clinical Excellence</span>
+          <h1 class="hero-title">
+            <span data-ko="혁신적인" data-en="Innovation in">혁신적인</span>
+            <span style="display:block;" class="title-main-ko" data-ko-raw>에스테틱 기술</span>
+            <span style="display:none;" class="title-main-en" data-en-raw>Aesthetic Science</span>
+          </h1>
+          <p class="hero-desc"
+            data-ko="글로벌 표준을 만드는 프리미엄 솔루션. 10년 이상의 연구개발로 안전하고 효과적인 제품을 제공합니다."
+            data-en="Premium solutions setting global standards. 10+ years of R&D for safe and effective products.">
+            글로벌 표준을 만드는 프리미엄 솔루션. 10년 이상의 연구개발로 안전하고 효과적인 제품을 제공합니다.
+          </p>
+          <div class="hero-cta">
+            <a href="#science" class="btn-primary" data-ko="기술 보기" data-en="Our Science">기술 보기</a>
+            <a href="#academy" class="btn-secondary" data-ko="아카데미" data-en="Academy">아카데미</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide">
+        <div class="hero-bg">
+          <div class="hero-bg-placeholder" style="background: linear-gradient(135deg, #243570 0%, #1A2755 50%, #0D1B3E 100%);"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-badge">Global Partnership</span>
+          <h1 class="hero-title">
+            <span data-ko="전문가와 함께하는" data-en="Your Beauty Journey">전문가와 함께하는</span>
+            <span style="display:block;" class="title-main-ko" data-ko-raw>뷰티 여정</span>
+            <span style="display:none;" class="title-main-en" data-en-raw>With Professionals</span>
+          </h1>
+          <p class="hero-desc"
+            data-ko="전 세계 의료진이 신뢰하는 브랜드, 에스티브. 30개국 500개 이상의 파트너 병원과 함께합니다."
+            data-en="Trusted by medical professionals worldwide. 500+ partner clinics in 30+ countries.">
+            전 세계 의료진이 신뢰하는 브랜드, 에스티브. 30개국 500개 이상의 파트너 병원과 함께합니다.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn-primary" data-ko="문의하기" data-en="Contact Us">문의하기</a>
+            <a href="#academy" class="btn-secondary" data-ko="아카데미 보기" data-en="Academy">아카데미 보기</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="science-grid" id="science-grid"></div>
-  </div>
-</section>
 
-<!-- ===== ACADEMY ===== -->
-<section id="academy">
-  <div class="container">
-    <div class="section-header fade-up" style="padding-top:100px">
-      <span class="section-label">ACADEMY</span>
-      <h2 class="section-title light lang-ko">에스티브 아카데미</h2>
-      <h2 class="section-title light lang-en" style="display:none">Aestyve Academy</h2>
-      <p class="section-desc fade-up delay-1 lang-ko" style="color:rgba(255,255,255,0.6)">전문가를 위한 교육 프로그램</p>
-      <p class="section-desc fade-up delay-1 lang-en" style="display:none;color:rgba(255,255,255,0.6)">Education Programs for Professionals</p>
+    <!-- 슬라이더 컨트롤 -->
+    <div class="hero-controls">
+      <button class="hero-dot active" data-index="0"></button>
+      <button class="hero-dot" data-index="1"></button>
+      <button class="hero-dot" data-index="2"></button>
+    </div>
+  </section>
+
+  <!-- ===================== MISSION TICKER ===================== -->
+  <div class="mission-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Look Better</span>
+      <span class="ticker-item">Feel Better</span>
+      <span class="ticker-item">Live Better</span>
+      <span class="ticker-item">Aesthetic Innovation</span>
+      <span class="ticker-item">Clinical Excellence</span>
+      <span class="ticker-item">Global Partnership</span>
+      <span class="ticker-item">Look Better</span>
+      <span class="ticker-item">Feel Better</span>
+      <span class="ticker-item">Live Better</span>
+      <span class="ticker-item">Aesthetic Innovation</span>
+      <span class="ticker-item">Clinical Excellence</span>
+      <span class="ticker-item">Global Partnership</span>
     </div>
   </div>
-  <div class="academy-grid" id="academy-grid"></div>
-</section>
 
-<!-- ===== NEWS ===== -->
-<section id="news" class="section">
-  <div class="container">
-    <div class="news-layout">
-      <div class="news-sticky fade-up">
-        <span class="section-label lang-ko">최신 소식</span>
-        <span class="section-label lang-en" style="display:none">Latest News</span>
-        <h2 class="section-title lang-ko">뉴스 &amp; 공지</h2>
-        <h2 class="section-title lang-en" style="display:none">News &amp; Notice</h2>
-        <p class="section-desc" style="margin-top:16px;margin-bottom:36px">
-          <span class="lang-ko">에스티브의 최신 소식과 연구 결과를 확인하세요.</span>
-          <span class="lang-en" style="display:none">Stay updated with Aestyve's latest news and research.</span>
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-content">
+          <div class="section-header">
+            <span class="section-label" data-ko="브랜드 소개" data-en="About Aestyve">브랜드 소개</span>
+            <h2 class="section-title" data-ko="10년 이상의 혁신으로 만들어진 에스테틱의 미래" data-en="The Future of Aesthetics Built on 10+ Years of Innovation">
+              10년 이상의 혁신으로<br>만들어진 에스테틱의 미래
+            </h2>
+            <p class="section-desc"
+              data-ko="에스티브는 혁신적인 에스테틱 솔루션을 제공하는 글로벌 기업입니다. 10년 이상의 연구개발 경험과 글로벌 파트너십을 바탕으로 안전하고 효과적인 제품을 제공합니다. 에스티브는 에스테틱이 미용과 성형이라는 지엽적인 분야에 국한되지 않는다고 생각합니다. 에스테틱이란 자신을 돌보는 시간이자, 가장 나다운 아름다움을 찾아가는 여정입니다."
+              data-en="Aestyve is a global leader in innovative aesthetic solutions. With over 10 years of R&D experience and global partnerships, we deliver safe and effective products to help everyone look, feel, and live better.">
+              에스티브는 혁신적인 에스테틱 솔루션을 제공하는 글로벌 기업입니다. 10년 이상의 연구개발 경험과 글로벌 파트너십을 바탕으로 안전하고 효과적인 제품을 제공합니다. 에스티브는 에스테틱이 미용과 성형이라는 지엽적인 분야에 국한되지 않는다고 생각합니다. 에스테틱이란 자신을 돌보는 시간이자, 가장 나다운 아름다움을 찾아가는 여정입니다.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-num">10+</div>
+              <div class="stat-label" data-ko="연구개발 경력" data-en="Years of R&D">연구개발 경력</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">30+</div>
+              <div class="stat-label" data-ko="글로벌 국가" data-en="Global Countries">글로벌 국가</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">500+</div>
+              <div class="stat-label" data-ko="파트너 병원" data-en="Partner Clinics">파트너 병원</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">1M+</div>
+              <div class="stat-label" data-ko="시술 건수" data-en="Procedures">시술 건수</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="about-image-placeholder">
+            <span data-ko="이미지 준비 중" data-en="Image Coming Soon">이미지 준비 중</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRODUCTS ===================== -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-ko="제품 라인업" data-en="Product Lineup">제품 라인업</span>
+        <h2 class="section-title" data-ko="에스티브의 혁신적인 에스테틱 솔루션" data-en="Aestyve's Innovative Aesthetic Solutions">
+          에스티브의 혁신적인 에스테틱 솔루션
+        </h2>
+      </div>
+
+      <!-- Featured 제품: 1906NAD+ -->
+      <div class="product-featured">
+        <div class="product-featured-img">
+          <img src="https://www.genspark.ai/api/files/s/68YDgq7B" alt="1906NAD+" onerror="this.parentElement.innerHTML='<div class=\'product-featured-img-placeholder\'>IMAGE</div>'">
+        </div>
+        <div class="product-featured-content">
+          <span class="product-badge">BEST · FEATURED</span>
+          <h3 class="product-featured-name">1906NAD+</h3>
+          <p class="product-featured-desc"
+            data-ko="맑고 탄탄한 피부 리듬을 채우는 NAD+ 컨센트레이트. 피부의 에너지를 깨우고 데일리 리뉴얼을 통해 광채 있는 피부로 가꾸어 드립니다."
+            data-en="NAD+ concentrate for clear and firm skin rhythm. Awakens skin energy and provides daily renewal for radiant skin.">
+            맑고 탄탄한 피부 리듬을 채우는 NAD+ 컨센트레이트. 피부의 에너지를 깨우고 데일리 리뉴얼을 통해 광채 있는 피부로 가꾸어 드립니다.
+          </p>
+          <a href="#" class="product-link" data-ko="자세히 보기" data-en="Learn More">자세히 보기</a>
+        </div>
+      </div>
+
+      <!-- 탭 필터 -->
+      <div class="product-tabs">
+        <button class="product-tab active" data-filter="all" data-ko="전체" data-en="ALL">전체</button>
+        <button class="product-tab" data-filter="new" data-ko="신제품" data-en="NEW">신제품</button>
+        <button class="product-tab" data-filter="best" data-ko="베스트" data-en="BEST">베스트</button>
+      </div>
+
+      <!-- 제품 그리드 -->
+      <div class="product-grid">
+
+        <!-- Liquid PCL -->
+        <div class="product-card" data-category="new">
+          <div class="product-card-img">
+            <img src="https://www.genspark.ai/api/files/s/6cpItebx" alt="Liquid PCL" onerror="this.parentElement.innerHTML='<div class=\'product-card-img-placeholder\'>IMAGE</div>'">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-badge">NEW</div>
+            <h4 class="product-card-name">Liquid PCL</h4>
+            <p class="product-card-desc"
+              data-ko="결을 채우고 탄력을 더하는 리퀴드 PCL. Polycaprolactone 기반의 프리미엄 스킨 부스터."
+              data-en="Liquid PCL for improved skin texture and elasticity. Premium skin booster based on Polycaprolactone.">
+              결을 채우고 탄력을 더하는 리퀴드 PCL. Polycaprolactone 기반의 프리미엄 스킨 부스터.
+            </p>
+          </div>
+        </div>
+
+        <!-- Revibe -->
+        <div class="product-card" data-category="new">
+          <div class="product-card-img">
+            <img src="https://www.genspark.ai/api/files/s/pQDECzpb" alt="Revibe" onerror="this.parentElement.innerHTML='<div class=\'product-card-img-placeholder\'>IMAGE</div>'">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-badge">NEW</div>
+            <h4 class="product-card-name">Revibe</h4>
+            <p class="product-card-desc"
+              data-ko="피부 본연의 리듬을 깨우는 리바이브 케어. 피부 재생과 리쥬버네이션을 위한 Medical Device."
+              data-en="Revibe care that awakens skin's natural rhythm. Medical device for skin regeneration and rejuvenation.">
+              피부 본연의 리듬을 깨우는 리바이브 케어. 피부 재생과 리쥬버네이션을 위한 Medical Device.
+            </p>
+          </div>
+        </div>
+
+        <!-- HA FILLER Series -->
+        <div class="product-card" data-category="best">
+          <div class="product-card-img">
+            <img src="https://www.genspark.ai/api/files/s/kuvuKo9K" alt="HA FILLER Series" onerror="this.parentElement.innerHTML='<div class=\'product-card-img-placeholder\'>IMAGE</div>'">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-badge" style="color: var(--color-accent);">BEST</div>
+            <h4 class="product-card-name">HA FILLER Series</h4>
+            <p class="product-card-desc"
+              data-ko="볼륨은 자연스럽게, 라인은 정교하게. Advanced Cross-linked HA 기반의 프리미엄 필러 시리즈."
+              data-en="Natural volume, precise lines. Premium filler series based on Advanced Cross-linked HA.">
+              볼륨은 자연스럽게, 라인은 정교하게. Advanced Cross-linked HA 기반의 프리미엄 필러 시리즈.
+            </p>
+          </div>
+        </div>
+
+        <!-- INNOFILL PLLA -->
+        <div class="product-card" data-category="new">
+          <div class="product-card-img">
+            <img src="https://www.genspark.ai/api/files/s/kyWBJBlj" alt="INNOFILL PLLA FILLER" onerror="this.parentElement.innerHTML='<div class=\'product-card-img-placeholder\'>IMAGE</div>'">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-badge">NEW</div>
+            <h4 class="product-card-name">INNOFILL PLLA</h4>
+            <p class="product-card-desc"
+              data-ko="자연스러운 볼륨을 채우는 정교한 리프팅 케어. PLLA 200mg/vial의 전문 의료용 볼륨 필러."
+              data-en="Precise lifting care for natural volume. Professional medical volume filler with PLLA 200mg/vial.">
+              자연스러운 볼륨을 채우는 정교한 리프팅 케어. PLLA 200mg/vial의 전문 의료용 볼륨 필러.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /.product-grid -->
+    </div>
+  </section>
+
+  <!-- ===================== SCIENCE ===================== -->
+  <section class="science" id="science">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label" data-ko="연구 &amp; 기술" data-en="Research &amp; Technology">연구 &amp; 기술</span>
+        <h2 class="section-title" data-ko="과학이 뒷받침하는 에스테틱 혁신" data-en="Aesthetic Innovation Backed by Science">
+          과학이 뒷받침하는 에스테틱 혁신
+        </h2>
+        <p class="section-desc"
+          data-ko="에스티브의 모든 제품은 엄격한 임상시험과 최첨단 바이오 기술을 바탕으로 개발됩니다."
+          data-en="All Aestyve products are developed based on rigorous clinical trials and cutting-edge biotechnology.">
+          에스티브의 모든 제품은 엄격한 임상시험과 최첨단 바이오 기술을 바탕으로 개발됩니다.
         </p>
-        <a href="#" class="btn-primary">
-          <span class="lang-ko">전체 뉴스</span>
-          <span class="lang-en" style="display:none">All News</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
       </div>
-      <div class="news-list fade-up delay-2" id="news-list"></div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="section">
-  <div class="container">
-    <div class="section-header fade-up">
-      <span class="section-label lang-ko">문의하기</span>
-      <span class="section-label lang-en" style="display:none">Contact Us</span>
-      <h2 class="section-title lang-ko">함께 시작하세요</h2>
-      <h2 class="section-title lang-en" style="display:none">Let's Get Started</h2>
+      <div class="science-grid">
+        <div class="science-card">
+          <div class="science-icon">🔬</div>
+          <h3 class="science-card-title" data-ko="임상 연구" data-en="Clinical Research">임상 연구</h3>
+          <p class="science-card-desc"
+            data-ko="30건 이상의 임상 시험으로 입증된 안전성과 효과. 모든 제품은 국제 기준의 엄격한 임상 검증을 통과합니다."
+            data-en="Safety and efficacy proven by 30+ clinical trials. All products pass rigorous international clinical validation.">
+            30건 이상의 임상 시험으로 입증된 안전성과 효과. 모든 제품은 국제 기준의 엄격한 임상 검증을 통과합니다.
+          </p>
+        </div>
+        <div class="science-card">
+          <div class="science-icon">🧬</div>
+          <h3 class="science-card-title" data-ko="바이오 기술" data-en="Biotechnology">바이오 기술</h3>
+          <p class="science-card-desc"
+            data-ko="차세대 생체 적합 소재 개발. PCL, HA, PLLA 등 검증된 성분으로 최적의 에스테틱 효과를 구현합니다."
+            data-en="Next-generation biocompatible materials. Optimal aesthetic effects using proven ingredients like PCL, HA, and PLLA.">
+            차세대 생체 적합 소재 개발. PCL, HA, PLLA 등 검증된 성분으로 최적의 에스테틱 효과를 구현합니다.
+          </p>
+        </div>
+        <div class="science-card">
+          <div class="science-icon">🛡️</div>
+          <h3 class="science-card-title" data-ko="안전성" data-en="Safety">안전성</h3>
+          <p class="science-card-desc"
+            data-ko="국제 안전 기준 충족 및 CE, ISO 인증 획득. 엄격한 품질 관리로 의료진과 환자 모두의 안전을 최우선으로 합니다."
+            data-en="International safety standards, CE and ISO certified. Strict quality control prioritizing safety for both practitioners and patients.">
+            국제 안전 기준 충족 및 CE, ISO 인증 획득. 엄격한 품질 관리로 의료진과 환자 모두의 안전을 최우선으로 합니다.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="contact-grid">
-      <div class="contact-info fade-up">
-        <div class="contact-info-item">
-          <div class="contact-icon"><i class="fas fa-phone"></i></div>
-          <div>
-            <div class="contact-label lang-ko">전화</div>
-            <div class="contact-label lang-en" style="display:none">Phone</div>
-            <div class="contact-value" id="contact-phone">080-855-4567</div>
+  </section>
+
+  <!-- ===================== ACADEMY ===================== -->
+  <section class="academy" id="academy">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-ko="아카데미" data-en="Academy">아카데미</span>
+        <h2 class="section-title" data-ko="에스티브 아카데미와 함께하는 전문가 교육" data-en="Professional Training with Aestyve Academy">
+          에스티브 아카데미와<br>함께하는 전문가 교육
+        </h2>
+        <p class="section-desc"
+          data-ko="글로벌 전문가들과 함께 에스테틱의 미래를 선도하는 교육 프로그램."
+          data-en="Educational programs leading the future of aesthetics with global experts.">
+          글로벌 전문가들과 함께 에스테틱의 미래를 선도하는 교육 프로그램.
+        </p>
+      </div>
+
+      <div class="academy-grid">
+        <div class="academy-card">
+          <div class="academy-card-placeholder"></div>
+          <div class="academy-card-body">
+            <div class="academy-card-num">01</div>
+            <h3 class="academy-card-title" data-ko="마스터 클래스" data-en="Master Class">마스터 클래스</h3>
+            <p class="academy-card-desc"
+              data-ko="세계적인 전문가와 함께하는 심화 교육 프로그램"
+              data-en="Advanced training program with world-class experts">
+              세계적인 전문가와 함께하는 심화 교육 프로그램
+            </p>
           </div>
         </div>
-        <div class="contact-info-item">
-          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-          <div>
-            <div class="contact-label lang-ko">이메일</div>
-            <div class="contact-label lang-en" style="display:none">Email</div>
-            <div class="contact-value" id="contact-email">info@aestyve.com</div>
+        <div class="academy-card">
+          <div class="academy-card-placeholder" style="background: linear-gradient(135deg, #243570, #1A2755);"></div>
+          <div class="academy-card-body">
+            <div class="academy-card-num">02</div>
+            <h3 class="academy-card-title" data-ko="국제 심포지엄" data-en="International Symposium">국제 심포지엄</h3>
+            <p class="academy-card-desc"
+              data-ko="최신 트렌드와 기술을 공유하는 글로벌 행사"
+              data-en="Global event sharing latest trends and techniques">
+              최신 트렌드와 기술을 공유하는 글로벌 행사
+            </p>
           </div>
         </div>
-        <div class="contact-info-item">
-          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div>
-            <div class="contact-label lang-ko">주소</div>
-            <div class="contact-label lang-en" style="display:none">Address</div>
-            <div class="contact-value lang-ko" id="contact-address-ko">서울특별시 강남구 청담동 420 청담스퀘어</div>
-            <div class="contact-value lang-en" id="contact-address-en" style="display:none">Cheongdam Square, 420 Cheongdam-dong, Gangnam-gu, Seoul</div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-icon"><i class="fas fa-clock"></i></div>
-          <div>
-            <div class="contact-label lang-ko">운영시간</div>
-            <div class="contact-label lang-en" style="display:none">Hours</div>
-            <div class="contact-value lang-ko">평일 09:00 – 18:00</div>
-            <div class="contact-value lang-en" style="display:none">Mon–Fri 09:00 – 18:00</div>
+        <div class="academy-card">
+          <div class="academy-card-placeholder" style="background: linear-gradient(135deg, #0D3366, #243570);"></div>
+          <div class="academy-card-body">
+            <div class="academy-card-num">03</div>
+            <h3 class="academy-card-title" data-ko="웨비나" data-en="Webinar">웨비나</h3>
+            <p class="academy-card-desc"
+              data-ko="온라인으로 참여하는 실시간 전문 교육 세션"
+              data-en="Real-time professional training sessions online">
+              온라인으로 참여하는 실시간 전문 교육 세션
+            </p>
           </div>
         </div>
       </div>
-      <div class="contact-form fade-up delay-2">
-        <form onsubmit="handleContactSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label lang-ko">이름</label>
-              <label class="form-label lang-en" style="display:none">Name</label>
-              <input type="text" class="form-input" placeholder="홍길동" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label lang-ko">연락처</label>
-              <label class="form-label lang-en" style="display:none">Phone</label>
-              <input type="tel" class="form-input" placeholder="010-0000-0000">
+    </div>
+  </section>
+
+  <!-- ===================== NEWS ===================== -->
+  <section class="news" id="news">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-ko="최신 소식" data-en="Latest News">최신 소식</span>
+        <h2 class="section-title" data-ko="에스티브 뉴스" data-en="Aestyve News">에스티브 뉴스</h2>
+      </div>
+
+      <div class="news-layout">
+        <!-- Featured 뉴스 -->
+        <div class="news-featured">
+          <div class="news-featured-placeholder"></div>
+          <div class="news-featured-body">
+            <div class="news-category" data-ko="제품" data-en="Product">제품</div>
+            <h3 class="news-featured-title"
+              data-ko="에스티브, 신제품 1906NAD+ 공식 출시"
+              data-en="Aestyve Officially Launches New Product 1906NAD+">
+              에스티브, 신제품 1906NAD+ 공식 출시
+            </h3>
+            <span class="news-featured-date">2026. 08. 01</span>
+          </div>
+        </div>
+
+        <!-- 뉴스 리스트 -->
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-item-category" data-ko="이벤트" data-en="Event">이벤트</div>
+            <h4 class="news-item-title"
+              data-ko="에스티브 국제 심포지엄 성공적 개최"
+              data-en="Aestyve International Symposium Successfully Held">
+              에스티브 국제 심포지엄 성공적 개최
+            </h4>
+            <span class="news-item-date">2026. 07. 15</span>
+          </div>
+          <div class="news-item">
+            <div class="news-item-category" data-ko="트렌드" data-en="Trend">트렌드</div>
+            <h4 class="news-item-title"
+              data-ko="에스테틱 트렌드 2026: 자연스러운 아름다움의 시대"
+              data-en="Aesthetic Trends 2026: The Era of Natural Beauty">
+              에스테틱 트렌드 2026: 자연스러운 아름다움의 시대
+            </h4>
+            <span class="news-item-date">2026. 06. 20</span>
+          </div>
+          <div class="news-item">
+            <div class="news-item-category" data-ko="파트너십" data-en="Partnership">파트너십</div>
+            <h4 class="news-item-title"
+              data-ko="에스티브, 글로벌 파트너십 50개 신규 체결"
+              data-en="Aestyve Signs 50 New Global Partnerships">
+              에스티브, 글로벌 파트너십 50개 신규 체결
+            </h4>
+            <span class="news-item-date">2026. 05. 28</span>
+          </div>
+          <div class="news-item">
+            <div class="news-item-category" data-ko="연구" data-en="Research">연구</div>
+            <h4 class="news-item-title"
+              data-ko="INNOFILL PLLA 임상시험 결과 발표 - 안전성 및 효과 입증"
+              data-en="INNOFILL PLLA Clinical Trial Results Released - Safety and Efficacy Proven">
+              INNOFILL PLLA 임상시험 결과 발표 - 안전성 및 효과 입증
+            </h4>
+            <span class="news-item-date">2026. 04. 10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-ko="문의하기" data-en="Contact Us">문의하기</span>
+        <h2 class="section-title" data-ko="에스티브와 함께하세요" data-en="Connect with Aestyve">에스티브와 함께하세요</h2>
+        <p class="section-desc"
+          data-ko="제품 문의, 파트너십, 아카데미 참가 등 에스티브에 대해 궁금하신 것이 있으시면 언제든지 연락해 주세요."
+          data-en="For product inquiries, partnerships, academy participation or any questions about Aestyve, please contact us anytime.">
+          제품 문의, 파트너십, 아카데미 참가 등 에스티브에 대해 궁금하신 것이 있으시면 언제든지 연락해 주세요.
+        </p>
+      </div>
+
+      <div class="contact-inner">
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <div class="contact-info-label" data-ko="주소" data-en="Address">주소</div>
+              <div class="contact-info-value"
+                data-ko="서울시 강남구 테헤란로 123, 에스티브빌딩"
+                data-en="Aestyve Building, 123 Teheran-ro, Gangnam-gu, Seoul">
+                서울시 강남구 테헤란로 123, 에스티브빌딩
+              </div>
             </div>
           </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <div class="contact-info-label" data-ko="전화" data-en="Phone">전화</div>
+              <div class="contact-info-value">080-855-4567</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div>
+              <div class="contact-info-label" data-ko="이메일" data-en="Email">이메일</div>
+              <div class="contact-info-value">info@aestyve.com</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🕐</div>
+            <div>
+              <div class="contact-info-label" data-ko="운영 시간" data-en="Business Hours">운영 시간</div>
+              <div class="contact-info-value"
+                data-ko="평일 09:00 - 18:00 (주말 및 공휴일 휴무)"
+                data-en="Weekdays 09:00 - 18:00 (Closed on weekends and holidays)">
+                평일 09:00 - 18:00 (주말 및 공휴일 휴무)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
           <div class="form-group">
-            <label class="form-label lang-ko">이메일</label>
-            <label class="form-label lang-en" style="display:none">Email</label>
-            <input type="email" class="form-input" placeholder="email@example.com" required>
+            <label class="form-label" data-ko="이름" data-en="Name">이름</label>
+            <input type="text" class="form-input" placeholder="홍길동" data-placeholder-ko="홍길동" data-placeholder-en="John Doe">
           </div>
           <div class="form-group">
-            <label class="form-label lang-ko">문의 유형</label>
-            <label class="form-label lang-en" style="display:none">Inquiry Type</label>
-            <select class="form-select">
-              <option class="lang-ko">제품 문의</option>
-              <option class="lang-ko">파트너십</option>
-              <option class="lang-ko">아카데미</option>
-              <option class="lang-ko">기타</option>
+            <label class="form-label" data-ko="이메일" data-en="Email">이메일</label>
+            <input type="email" class="form-input" placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-ko="문의 유형" data-en="Inquiry Type">문의 유형</label>
+            <select class="form-input">
+              <option data-ko="제품 문의" data-en="Product Inquiry">제품 문의</option>
+              <option data-ko="파트너십" data-en="Partnership">파트너십</option>
+              <option data-ko="아카데미" data-en="Academy">아카데미</option>
+              <option data-ko="기타" data-en="Other">기타</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label lang-ko">문의 내용</label>
-            <label class="form-label lang-en" style="display:none">Message</label>
-            <textarea class="form-textarea" placeholder="문의 내용을 입력해주세요" required></textarea>
+            <label class="form-label" data-ko="내용" data-en="Message">내용</label>
+            <textarea class="form-textarea" placeholder="문의 내용을 입력해 주세요." data-placeholder-ko="문의 내용을 입력해 주세요." data-placeholder-en="Please enter your message."></textarea>
           </div>
-          <button type="submit" class="form-submit">
-            <span class="lang-ko">문의 보내기</span>
-            <span class="lang-en" style="display:none">Send Message</span>
-          </button>
+          <button type="submit" class="form-submit" data-ko="문의 보내기" data-en="Send Message">문의 보내기</button>
         </form>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== FOOTER ===== -->
-<footer id="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="logo-text" id="footer-brand-name">AESTYVE</span>
-        <p class="footer-tagline" id="footer-tagline">Look Better, Feel Better, Live Better</p>
-        <div class="footer-sns" id="footer-sns">
-          <a href="#" class="sns-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="sns-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" class="sns-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="sns-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">AESTYVE</div>
+          <p class="footer-desc"
+            data-ko="에스티브는 혁신적인 에스테틱 솔루션으로 더 나은 삶을 만들어 갑니다. Look Better, Feel Better, Live Better."
+            data-en="Aestyve creates a better life with innovative aesthetic solutions. Look Better, Feel Better, Live Better.">
+            에스티브는 혁신적인 에스테틱 솔루션으로 더 나은 삶을 만들어 갑니다. Look Better, Feel Better, Live Better.
+          </p>
+          <div class="footer-sns">
+            <a href="#" class="footer-sns-link" aria-label="Instagram">ig</a>
+            <a href="#" class="footer-sns-link" aria-label="YouTube">yt</a>
+            <a href="#" class="footer-sns-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="footer-sns-link" aria-label="Facebook">fb</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title" data-ko="회사 소개" data-en="About">회사 소개</h5>
+          <nav class="footer-links">
+            <a href="#about" data-ko="브랜드 소개" data-en="About Us">브랜드 소개</a>
+            <a href="#" data-ko="연혁" data-en="History">연혁</a>
+            <a href="#" data-ko="파트너십" data-en="Partnership">파트너십</a>
+            <a href="#contact" data-ko="채용" data-en="Careers">채용</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title" data-ko="제품" data-en="Products">제품</h5>
+          <nav class="footer-links">
+            <a href="#products" data-ko="전체 제품" data-en="All Products">전체 제품</a>
+            <a href="#products" data-ko="신제품" data-en="New">신제품</a>
+            <a href="#products" data-ko="베스트" data-en="Best">베스트</a>
+            <a href="#" data-ko="제품 카탈로그" data-en="Catalog">제품 카탈로그</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title" data-ko="지원" data-en="Support">지원</h5>
+          <nav class="footer-links">
+            <a href="#academy" data-ko="아카데미" data-en="Academy">아카데미</a>
+            <a href="#contact" data-ko="문의하기" data-en="Contact">문의하기</a>
+            <a href="#" data-ko="개인정보처리방침" data-en="Privacy Policy">개인정보처리방침</a>
+            <a href="#" data-ko="이용약관" data-en="Terms">이용약관</a>
+          </nav>
         </div>
       </div>
-      <div class="footer-links" id="footer-links">
-        <!-- rendered by JS -->
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Aestyve. All Rights Reserved.</p>
+        <a href="admin.html" class="footer-admin-link">ADMIN</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy" id="footer-copy">© 2026 Aestyve. All Rights Reserved.</p>
-      <a href="admin.html" class="footer-admin-link">
-        <i class="fas fa-cog"></i>
-        <span>Admin</span>
-      </a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
