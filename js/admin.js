@@ -1,812 +1,702 @@
-/**
- * Aestyve Admin JavaScript
- * 에스코어 드림 폰트 기반 관리자 패널
- */
+/* ============================================================
+   Aestyve – admin.js
+   Full CMS: Site / Hero / About / Products / Science / Academy / News
+============================================================ */
+(function () {
+  'use strict';
 
-/* ─────────────────────────────────────
-   기본 데이터 (content.json 초기값)
-───────────────────────────────────── */
-const DEFAULT_DATA = {
-  site: {
-    name_ko: "에스티브", name_en: "Aestyve",
-    tagline_ko: "Aesthetic Solutions for Confidence",
-    tagline_en: "Aesthetic Solutions for Confidence",
-    phone: "080-855-4567", email: "info@aestyve.com",
-    address_ko: "서울시 강남구 테헤란로 123, 에스티브빌딩",
-    address_en: "Aestyve Building, 123 Teheran-ro, Gangnam-gu, Seoul",
-    business_hours_ko: "평일 09:00 - 18:00 (주말 및 공휴일 휴무)",
-    business_hours_en: "Weekdays 09:00 - 18:00 (Closed on weekends and holidays)",
-    primary_color: "#0D1B3E", accent_color: "#C8A97A"
-  },
-  hero: [
-    { id:"h1", badge_ko:"Aesthetic Innovation", badge_en:"Aesthetic Innovation",
-      title_ko:"자신감을 채우는\n에스테틱 솔루션", title_en:"Feel Better,\nLive Better",
-      desc_ko:"에스티브와 함께 당신만의 아름다움을 찾아보세요.", desc_en:"Discover your unique beauty with Aestyve.",
-      btn1_ko:"제품 보기", btn1_en:"View Products", btn1_link:"#products",
-      btn2_ko:"브랜드 소개", btn2_en:"About Us", btn2_link:"#about", image:"" },
-    { id:"h2", badge_ko:"Clinical Excellence", badge_en:"Clinical Excellence",
-      title_ko:"혁신적인\n에스테틱 기술", title_en:"Innovation in\nAesthetic Science",
-      desc_ko:"글로벌 표준을 만드는 프리미엄 솔루션.", desc_en:"Premium solutions setting global standards.",
-      btn1_ko:"기술 보기", btn1_en:"Our Science", btn1_link:"#science",
-      btn2_ko:"아카데미", btn2_en:"Academy", btn2_link:"#academy", image:"" },
-    { id:"h3", badge_ko:"Global Partnership", badge_en:"Global Partnership",
-      title_ko:"전문가와 함께하는\n뷰티 여정", title_en:"Your Beauty Journey\nWith Professionals",
-      desc_ko:"전 세계 의료진이 신뢰하는 브랜드, 에스티브.", desc_en:"Trusted by medical professionals worldwide.",
-      btn1_ko:"문의하기", btn1_en:"Contact Us", btn1_link:"#contact",
-      btn2_ko:"아카데미 보기", btn2_en:"Academy", btn2_link:"#academy", image:"" }
-  ],
-  about: {
-    label_ko:"브랜드 소개", label_en:"About Aestyve",
-    title_ko:"10년 이상의 혁신으로 만들어진 에스테틱의 미래",
-    title_en:"The Future of Aesthetics Built on 10+ Years of Innovation",
-    desc_ko:"에스티브는 혁신적인 에스테틱 솔루션을 제공하는 글로벌 기업입니다.",
-    desc_en:"Aestyve is a global leader in innovative aesthetic solutions.", image:"",
-    stats:[
-      { num:"10+", label_ko:"연구개발 경력", label_en:"Years of R&D" },
-      { num:"30+", label_ko:"글로벌 국가", label_en:"Global Countries" },
-      { num:"500+", label_ko:"파트너 병원", label_en:"Partner Clinics" },
-      { num:"1M+", label_ko:"시술 건수", label_en:"Procedures" }
-    ]
-  },
-  products: {
-    featured: {
-      id:"p0", name:"1906NAD+",
-      badge_ko:"BEST · FEATURED", badge_en:"BEST · FEATURED",
-      desc_ko:"맑고 탄탄한 피부 리듬을 채우는 NAD+ 컨센트레이트.",
-      desc_en:"NAD+ concentrate for clear and firm skin rhythm.",
-      image:"https://www.genspark.ai/api/files/s/68YDgq7B",
-      link:"#", category:"best"
-    },
-    list: [
-      { id:"p1", name:"Liquid PCL", badge_ko:"NEW", badge_en:"NEW",
-        desc_ko:"결을 채우고 탄력을 더하는 리퀴드 PCL.",
-        desc_en:"Liquid PCL for improved skin texture and elasticity.",
-        image:"https://www.genspark.ai/api/files/s/6cpItebx", link:"#", category:"new" },
-      { id:"p2", name:"Revibe", badge_ko:"NEW", badge_en:"NEW",
-        desc_ko:"피부 본연의 리듬을 깨우는 리바이브 케어.",
-        desc_en:"Revibe care that awakens skin's natural rhythm.",
-        image:"https://www.genspark.ai/api/files/s/pQDECzpb", link:"#", category:"new" },
-      { id:"p3", name:"HA FILLER Series", badge_ko:"BEST", badge_en:"BEST",
-        desc_ko:"볼륨은 자연스럽게, 라인은 정교하게.",
-        desc_en:"Natural volume, precise lines.",
-        image:"https://www.genspark.ai/api/files/s/kuvuKo9K", link:"#", category:"best" },
-      { id:"p4", name:"INNOFILL PLLA", badge_ko:"NEW", badge_en:"NEW",
-        desc_ko:"자연스러운 볼륨을 채우는 정교한 리프팅 케어.",
-        desc_en:"Precise lifting care for natural volume.",
-        image:"https://www.genspark.ai/api/files/s/kyWBJBlj", link:"#", category:"new" }
-    ]
-  },
-  science: [
-    { id:"s1", icon:"🔬", title_ko:"임상 연구", title_en:"Clinical Research",
-      desc_ko:"30건 이상의 임상 시험으로 입증된 안전성과 효과.",
-      desc_en:"Safety and efficacy proven by 30+ clinical trials." },
-    { id:"s2", icon:"🧬", title_ko:"바이오 기술", title_en:"Biotechnology",
-      desc_ko:"차세대 생체 적합 소재 개발.",
-      desc_en:"Next-generation biocompatible materials." },
-    { id:"s3", icon:"🛡️", title_ko:"안전성", title_en:"Safety",
-      desc_ko:"국제 안전 기준 충족 및 CE, ISO 인증 획득.",
-      desc_en:"International safety standards, CE and ISO certified." }
-  ],
-  academy: [
-    { id:"a1", num:"01", title_ko:"마스터 클래스", title_en:"Master Class",
-      desc_ko:"세계적인 전문가와 함께하는 심화 교육 프로그램", desc_en:"Advanced training program with world-class experts", image:"", link:"#" },
-    { id:"a2", num:"02", title_ko:"국제 심포지엄", title_en:"International Symposium",
-      desc_ko:"최신 트렌드와 기술을 공유하는 글로벌 행사", desc_en:"Global event sharing latest trends and techniques", image:"", link:"#" },
-    { id:"a3", num:"03", title_ko:"웨비나", title_en:"Webinar",
-      desc_ko:"온라인으로 참여하는 실시간 전문 교육 세션", desc_en:"Real-time professional training sessions online", image:"", link:"#" }
-  ],
-  news: [
-    { id:"n1", category_ko:"제품", category_en:"Product",
-      title_ko:"에스티브, 신제품 1906NAD+ 공식 출시",
-      title_en:"Aestyve Officially Launches New Product 1906NAD+",
-      date:"2026. 08. 01", image:"", link:"#", featured:true },
-    { id:"n2", category_ko:"이벤트", category_en:"Event",
-      title_ko:"에스티브 국제 심포지엄 성공적 개최",
-      title_en:"Aestyve International Symposium Successfully Held",
-      date:"2026. 07. 15", image:"", link:"#", featured:false },
-    { id:"n3", category_ko:"트렌드", category_en:"Trend",
-      title_ko:"에스테틱 트렌드 2026: 자연스러운 아름다움의 시대",
-      title_en:"Aesthetic Trends 2026: The Era of Natural Beauty",
-      date:"2026. 06. 20", image:"", link:"#", featured:false },
-    { id:"n4", category_ko:"파트너십", category_en:"Partnership",
-      title_ko:"에스티브, 글로벌 파트너십 50개 신규 체결",
-      title_en:"Aestyve Signs 50 New Global Partnerships",
-      date:"2026. 05. 28", image:"", link:"#", featured:false }
-  ]
-};
+  /* ── State ───────────────────────────────────────────── */
+  let data = null;
+  const DEFAULT_DATA_URL = 'data/content.json';
 
-/* ─────────────────────────────────────
-   상태 관리
-───────────────────────────────────── */
-let DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
-let editingProductId = null;
-let editingHeroId = null;
-let editingNewsId = null;
-let editingScienceId = null;
-let editingAcademyId = null;
+  /* ── Helpers ─────────────────────────────────────────── */
+  const qs  = (sel, ctx) => (ctx || document).querySelector(sel);
+  const qsa = (sel, ctx) => [...(ctx || document).querySelectorAll(sel)];
+  const uid = () => 'id-' + Math.random().toString(36).slice(2, 9);
 
-function loadData() {
-  const saved = localStorage.getItem('aestyve_admin_data');
-  if (saved) {
-    try { DATA = JSON.parse(saved); } catch(e) { DATA = JSON.parse(JSON.stringify(DEFAULT_DATA)); }
-  }
-  renderAll();
-}
-
-function saveData() {
-  localStorage.setItem('aestyve_admin_data', JSON.stringify(DATA));
-  showToast('저장되었습니다.', 'success');
-}
-
-function genId(prefix) {
-  return prefix + '_' + Date.now();
-}
-
-/* ─────────────────────────────────────
-   패널 전환
-───────────────────────────────────── */
-function switchPanel(name) {
-  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-  const panel = document.getElementById('panel-' + name);
-  if (panel) panel.classList.add('active');
-  const btn = document.querySelector('[data-panel="' + name + '"]');
-  if (btn) btn.classList.add('active');
-  const titles = {
-    dashboard:'대시보드', site:'사이트 설정', hero:'히어로 슬라이더', about:'브랜드 소개',
-    products:'제품 관리', science:'과학/기술', academy:'아카데미', news:'뉴스 관리', json:'JSON 편집기'
-  };
-  document.getElementById('topbarTitle').textContent = titles[name] || name;
-  if (name === 'json') refreshJsonEditor();
-  if (name === 'site') populateSiteForm();
-  if (name === 'about') populateAboutForm();
-}
-
-window.switchPanel = switchPanel;
-
-document.querySelectorAll('.sidebar-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    switchPanel(this.dataset.panel);
-  });
-});
-
-/* ─────────────────────────────────────
-   렌더링
-───────────────────────────────────── */
-function renderAll() {
-  renderProducts();
-  renderHero();
-  renderAbout();
-  renderScience();
-  renderAcademy();
-  renderNews();
-}
-
-/* ── 제품 ── */
-function renderProducts() {
-  const f = DATA.products.featured;
-  const fv = document.getElementById('featuredProductView');
-  if (fv) {
-    fv.innerHTML = `
-      <div class="list-item">
-        <img class="list-item-img" src="${f.image || ''}" alt="${f.name}" onerror="this.style.background='#f0f2f5';this.src='';">
-        <div class="list-item-body">
-          <div class="list-item-name">${f.name} <span class="badge badge-best">FEATURED</span></div>
-          <div class="list-item-meta">${f.desc_ko}</div>
-        </div>
-        <div class="list-item-actions">
-          <button class="btn-edit" onclick="openProductModal('featured')">수정</button>
-        </div>
-      </div>`;
+  function toast(msg, type = 'success') {
+    const el = qs('#toast');
+    if (!el) return;
+    el.textContent = msg;
+    el.className = 'toast show ' + type;
+    setTimeout(() => el.classList.remove('show'), 3000);
   }
 
-  const list = document.getElementById('productList');
-  if (!list) return;
-  list.innerHTML = DATA.products.list.map((p, i) => `
-    <div class="list-item">
-      <img class="list-item-img" src="${p.image || ''}" alt="${p.name}" onerror="this.style.background='#f0f2f5';this.src='';">
-      <div class="list-item-body">
-        <div class="list-item-name">${p.name}
-          ${p.category.includes('new') ? '<span class="badge badge-new">NEW</span>' : ''}
-          ${p.category.includes('best') ? '<span class="badge badge-best">BEST</span>' : ''}
-        </div>
-        <div class="list-item-meta">${p.desc_ko}</div>
-      </div>
-      <div class="list-item-actions">
-        <button class="btn-edit" onclick="openProductModal('${p.id}')">수정</button>
-        <button class="btn-delete" onclick="deleteProduct('${p.id}')">삭제</button>
-      </div>
-    </div>`).join('');
-}
-
-/* ── 히어로 ── */
-function renderHero() {
-  const list = document.getElementById('heroList');
-  if (!list) return;
-  list.innerHTML = DATA.hero.map((h, i) => `
-    <div class="list-item">
-      <div class="list-item-body">
-        <div class="list-item-name">슬라이드 ${i+1}: ${h.badge_ko}</div>
-        <div class="list-item-meta">${(h.title_ko || '').replace(/\n/g, ' ')}</div>
-      </div>
-      <div class="list-item-actions">
-        <button class="btn-edit" onclick="openHeroModal('${h.id}')">수정</button>
-        <button class="btn-delete" onclick="deleteHero('${h.id}')">삭제</button>
-      </div>
-    </div>`).join('');
-}
-
-/* ── About ── */
-function renderAbout() {
-  populateAboutForm();
-  const sl = document.getElementById('aboutStatsList');
-  if (!sl) return;
-  const stats = DATA.about.stats || [];
-  sl.innerHTML = stats.map((s, i) => `
-    <div class="list-item">
-      <div class="list-item-body">
-        <div class="list-item-name">${s.num} <span style="font-weight:400; color:var(--gray-500);">${s.label_ko}</span></div>
-        <div class="list-item-meta">${s.label_en}</div>
-      </div>
-      <div class="list-item-actions">
-        <button class="btn-edit" onclick="editStat(${i})">수정</button>
-      </div>
-    </div>`).join('');
-}
-
-/* ── Science ── */
-function renderScience() {
-  const list = document.getElementById('scienceList');
-  if (!list) return;
-  list.innerHTML = DATA.science.map(s => `
-    <div class="list-item">
-      <div style="font-size:1.8rem; margin-right:8px;">${s.icon}</div>
-      <div class="list-item-body">
-        <div class="list-item-name">${s.title_ko}</div>
-        <div class="list-item-meta">${s.desc_ko}</div>
-      </div>
-      <div class="list-item-actions">
-        <button class="btn-edit" onclick="openScienceModal('${s.id}')">수정</button>
-        <button class="btn-delete" onclick="deleteScience('${s.id}')">삭제</button>
-      </div>
-    </div>`).join('');
-}
-
-/* ── Academy ── */
-function renderAcademy() {
-  const list = document.getElementById('academyList');
-  if (!list) return;
-  list.innerHTML = DATA.academy.map(a => `
-    <div class="list-item">
-      <div class="list-item-body">
-        <div class="list-item-name">${a.num}. ${a.title_ko}</div>
-        <div class="list-item-meta">${a.desc_ko}</div>
-      </div>
-      <div class="list-item-actions">
-        <button class="btn-edit" onclick="openAcademyModal('${a.id}')">수정</button>
-        <button class="btn-delete" onclick="deleteAcademy('${a.id}')">삭제</button>
-      </div>
-    </div>`).join('');
-}
-
-/* ── News ── */
-function renderNews() {
-  const list = document.getElementById('newsList');
-  if (!list) return;
-  list.innerHTML = DATA.news.map(n => `
-    <div class="list-item">
-      <div class="list-item-body">
-        <div class="list-item-name">
-          ${n.featured ? '<span class="badge badge-best">FEATURED</span>' : ''}
-          ${n.title_ko}
-        </div>
-        <div class="list-item-meta">${n.category_ko} · ${n.date}</div>
-      </div>
-      <div class="list-item-actions">
-        <button class="btn-edit" onclick="openNewsModal('${n.id}')">수정</button>
-        <button class="btn-delete" onclick="deleteNews('${n.id}')">삭제</button>
-      </div>
-    </div>`).join('');
-}
-
-/* ─────────────────────────────────────
-   폼 채우기
-───────────────────────────────────── */
-function populateSiteForm() {
-  const s = DATA.site;
-  setVal('site_name_ko', s.name_ko);
-  setVal('site_name_en', s.name_en);
-  setVal('site_phone', s.phone);
-  setVal('site_email', s.email);
-  setVal('site_address_ko', s.address_ko);
-  setVal('site_address_en', s.address_en);
-  setVal('site_hours_ko', s.business_hours_ko);
-  setVal('site_hours_en', s.business_hours_en);
-  setVal('site_primary_color', s.primary_color);
-  setVal('site_accent_color', s.accent_color);
-}
-
-function populateAboutForm() {
-  const a = DATA.about;
-  setVal('about_title_ko', a.title_ko);
-  setVal('about_title_en', a.title_en);
-  setVal('about_desc_ko', a.desc_ko);
-  setVal('about_desc_en', a.desc_en);
-  setVal('about_image', a.image);
-  updateImgPreview('about_image', 'about_img_preview');
-}
-
-/* ─────────────────────────────────────
-   사이트 설정 저장
-───────────────────────────────────── */
-function saveSite() {
-  DATA.site.name_ko = getVal('site_name_ko');
-  DATA.site.name_en = getVal('site_name_en');
-  DATA.site.phone = getVal('site_phone');
-  DATA.site.email = getVal('site_email');
-  DATA.site.address_ko = getVal('site_address_ko');
-  DATA.site.address_en = getVal('site_address_en');
-  DATA.site.business_hours_ko = getVal('site_hours_ko');
-  DATA.site.business_hours_en = getVal('site_hours_en');
-  DATA.site.primary_color = getVal('site_primary_color');
-  DATA.site.accent_color = getVal('site_accent_color');
-  saveData();
-}
-window.saveSite = saveSite;
-
-/* ─────────────────────────────────────
-   About 저장
-───────────────────────────────────── */
-function saveAbout() {
-  DATA.about.title_ko = getVal('about_title_ko');
-  DATA.about.title_en = getVal('about_title_en');
-  DATA.about.desc_ko = getVal('about_desc_ko');
-  DATA.about.desc_en = getVal('about_desc_en');
-  DATA.about.image = getVal('about_image');
-  saveData();
-  renderAbout();
-}
-window.saveAbout = saveAbout;
-
-/* ─────────────────────────────────────
-   통계 수정
-───────────────────────────────────── */
-function editStat(i) {
-  const s = DATA.about.stats[i];
-  const num = prompt('숫자 (예: 10+):', s.num);
-  if (!num) return;
-  const labelKo = prompt('라벨 (한국어):', s.label_ko);
-  const labelEn = prompt('라벨 (영어):', s.label_en);
-  DATA.about.stats[i] = { num, label_ko: labelKo || s.label_ko, label_en: labelEn || s.label_en };
-  saveData();
-  renderAbout();
-}
-window.editStat = editStat;
-
-/* ─────────────────────────────────────
-   제품 모달
-───────────────────────────────────── */
-function openProductModal(id) {
-  editingProductId = id;
-  const isFeatured = id === 'featured';
-  document.getElementById('productModalTitle').textContent = isFeatured ? 'Featured 제품 수정' : (id === 'new' ? '제품 추가' : '제품 수정');
-
-  let p = {};
-  if (isFeatured) {
-    p = DATA.products.featured;
-  } else if (id !== 'new') {
-    p = DATA.products.list.find(x => x.id === id) || {};
+  function previewImg(inputId, previewId) {
+    const src  = qs('#' + inputId)?.value.trim();
+    const wrap = qs('#' + previewId);
+    if (!wrap) return;
+    wrap.innerHTML = src
+      ? `<img src="${src}" alt="preview" onerror="this.parentElement.innerHTML='<span class=\\'img-preview-placeholder\\'>이미지 없음</span>'" />`
+      : '<span class="img-preview-placeholder">미리보기</span>';
   }
+  window.previewImg = previewImg;
 
-  setVal('product_id', p.id || '');
-  setVal('product_name', p.name || '');
-  setVal('product_badge_ko', p.badge_ko || '');
-  setVal('product_badge_en', p.badge_en || '');
-  setVal('product_desc_ko', p.desc_ko || '');
-  setVal('product_desc_en', p.desc_en || '');
-  setVal('product_image', p.image || '');
-  setVal('product_category', p.category || 'new');
-  setVal('product_link', p.link || '#');
-  updateImgPreview('product_image', 'product_img_preview');
-  openModal('productModal');
-}
-window.openProductModal = openProductModal;
-
-function saveProduct() {
-  const p = {
-    id: getVal('product_id') || genId('p'),
-    name: getVal('product_name'),
-    badge_ko: getVal('product_badge_ko'),
-    badge_en: getVal('product_badge_en'),
-    desc_ko: getVal('product_desc_ko'),
-    desc_en: getVal('product_desc_en'),
-    image: getVal('product_image'),
-    category: getVal('product_category'),
-    link: getVal('product_link') || '#'
-  };
-  if (!p.name) { showToast('제품명을 입력해주세요.', 'error'); return; }
-
-  if (editingProductId === 'featured') {
-    DATA.products.featured = p;
-  } else if (editingProductId === 'new') {
-    DATA.products.list.push(p);
-  } else {
-    const idx = DATA.products.list.findIndex(x => x.id === editingProductId);
-    if (idx > -1) DATA.products.list[idx] = p;
-  }
-
-  saveData();
-  renderProducts();
-  closeModal('productModal');
-}
-window.saveProduct = saveProduct;
-
-function deleteProduct(id) {
-  if (!confirm('삭제하시겠습니까?')) return;
-  DATA.products.list = DATA.products.list.filter(p => p.id !== id);
-  saveData();
-  renderProducts();
-}
-window.deleteProduct = deleteProduct;
-
-/* ─────────────────────────────────────
-   히어로 모달
-───────────────────────────────────── */
-function openHeroModal(id) {
-  editingHeroId = id || 'new';
-  document.getElementById('heroModalTitle').textContent = id ? '슬라이드 수정' : '슬라이드 추가';
-
-  let h = {};
-  if (id && id !== 'new') {
-    h = DATA.hero.find(x => x.id === id) || {};
-  }
-
-  setVal('hero_id', h.id || '');
-  setVal('hero_badge_ko', h.badge_ko || '');
-  setVal('hero_badge_en', h.badge_en || '');
-  setVal('hero_title_ko', h.title_ko || '');
-  setVal('hero_title_en', h.title_en || '');
-  setVal('hero_desc_ko', h.desc_ko || '');
-  setVal('hero_desc_en', h.desc_en || '');
-  setVal('hero_image', h.image || '');
-  openModal('heroModal');
-}
-window.openHeroModal = openHeroModal;
-
-function saveHero() {
-  const h = {
-    id: getVal('hero_id') || genId('h'),
-    badge_ko: getVal('hero_badge_ko'),
-    badge_en: getVal('hero_badge_en'),
-    title_ko: getVal('hero_title_ko'),
-    title_en: getVal('hero_title_en'),
-    desc_ko: getVal('hero_desc_ko'),
-    desc_en: getVal('hero_desc_en'),
-    image: getVal('hero_image')
-  };
-
-  if (editingHeroId === 'new') {
-    DATA.hero.push(h);
-  } else {
-    const idx = DATA.hero.findIndex(x => x.id === editingHeroId);
-    if (idx > -1) DATA.hero[idx] = h;
-  }
-
-  saveData();
-  renderHero();
-  closeModal('heroModal');
-}
-window.saveHero = saveHero;
-
-function deleteHero(id) {
-  if (DATA.hero.length <= 1) { showToast('슬라이드는 최소 1개 이상 필요합니다.', 'error'); return; }
-  if (!confirm('삭제하시겠습니까?')) return;
-  DATA.hero = DATA.hero.filter(h => h.id !== id);
-  saveData();
-  renderHero();
-}
-window.deleteHero = deleteHero;
-
-/* ─────────────────────────────────────
-   뉴스 모달
-───────────────────────────────────── */
-function openNewsModal(id) {
-  editingNewsId = id || 'new';
-  document.getElementById('newsModalTitle').textContent = id ? '뉴스 수정' : '뉴스 추가';
-
-  let n = {};
-  if (id && id !== 'new') {
-    n = DATA.news.find(x => x.id === id) || {};
-  }
-
-  setVal('news_id', n.id || '');
-  setVal('news_category_ko', n.category_ko || '');
-  setVal('news_category_en', n.category_en || '');
-  setVal('news_title_ko', n.title_ko || '');
-  setVal('news_title_en', n.title_en || '');
-  setVal('news_date', n.date || '');
-  setVal('news_image', n.image || '');
-  setVal('news_link', n.link || '#');
-  setVal('news_featured', n.featured ? 'true' : 'false');
-  openModal('newsModal');
-}
-window.openNewsModal = openNewsModal;
-
-function saveNews() {
-  const n = {
-    id: getVal('news_id') || genId('n'),
-    category_ko: getVal('news_category_ko'),
-    category_en: getVal('news_category_en'),
-    title_ko: getVal('news_title_ko'),
-    title_en: getVal('news_title_en'),
-    date: getVal('news_date'),
-    image: getVal('news_image'),
-    link: getVal('news_link') || '#',
-    featured: getVal('news_featured') === 'true'
-  };
-  if (!n.title_ko) { showToast('제목을 입력해주세요.', 'error'); return; }
-
-  if (editingNewsId === 'new') {
-    DATA.news.unshift(n);
-  } else {
-    const idx = DATA.news.findIndex(x => x.id === editingNewsId);
-    if (idx > -1) DATA.news[idx] = n;
-  }
-
-  saveData();
-  renderNews();
-  closeModal('newsModal');
-}
-window.saveNews = saveNews;
-
-function deleteNews(id) {
-  if (!confirm('삭제하시겠습니까?')) return;
-  DATA.news = DATA.news.filter(n => n.id !== id);
-  saveData();
-  renderNews();
-}
-window.deleteNews = deleteNews;
-
-/* ─────────────────────────────────────
-   과학 모달
-───────────────────────────────────── */
-function openScienceModal(id) {
-  editingScienceId = id || 'new';
-  document.getElementById('scienceModalTitle').textContent = id ? '항목 수정' : '항목 추가';
-  let s = {};
-  if (id && id !== 'new') s = DATA.science.find(x => x.id === id) || {};
-  setVal('science_id', s.id || '');
-  setVal('science_icon', s.icon || '');
-  setVal('science_title_ko', s.title_ko || '');
-  setVal('science_title_en', s.title_en || '');
-  setVal('science_desc_ko', s.desc_ko || '');
-  setVal('science_desc_en', s.desc_en || '');
-  openModal('scienceModal');
-}
-window.openScienceModal = openScienceModal;
-
-function saveScience() {
-  const s = {
-    id: getVal('science_id') || genId('s'),
-    icon: getVal('science_icon'),
-    title_ko: getVal('science_title_ko'),
-    title_en: getVal('science_title_en'),
-    desc_ko: getVal('science_desc_ko'),
-    desc_en: getVal('science_desc_en')
-  };
-  if (!s.title_ko) { showToast('제목을 입력해주세요.', 'error'); return; }
-  if (editingScienceId === 'new') {
-    DATA.science.push(s);
-  } else {
-    const idx = DATA.science.findIndex(x => x.id === editingScienceId);
-    if (idx > -1) DATA.science[idx] = s;
-  }
-  saveData(); renderScience(); closeModal('scienceModal');
-}
-window.saveScience = saveScience;
-
-function deleteScience(id) {
-  if (!confirm('삭제하시겠습니까?')) return;
-  DATA.science = DATA.science.filter(s => s.id !== id);
-  saveData(); renderScience();
-}
-window.deleteScience = deleteScience;
-
-/* ─────────────────────────────────────
-   아카데미 모달
-───────────────────────────────────── */
-function openAcademyModal(id) {
-  editingAcademyId = id || 'new';
-  document.getElementById('academyModalTitle').textContent = id ? '아카데미 수정' : '아카데미 추가';
-  let a = {};
-  if (id && id !== 'new') a = DATA.academy.find(x => x.id === id) || {};
-  setVal('academy_id', a.id || '');
-  setVal('academy_num', a.num || '');
-  setVal('academy_title_ko', a.title_ko || '');
-  setVal('academy_title_en', a.title_en || '');
-  setVal('academy_desc_ko', a.desc_ko || '');
-  setVal('academy_desc_en', a.desc_en || '');
-  setVal('academy_image', a.image || '');
-  openModal('academyModal');
-}
-window.openAcademyModal = openAcademyModal;
-
-function saveAcademy() {
-  const a = {
-    id: getVal('academy_id') || genId('a'),
-    num: getVal('academy_num'),
-    title_ko: getVal('academy_title_ko'),
-    title_en: getVal('academy_title_en'),
-    desc_ko: getVal('academy_desc_ko'),
-    desc_en: getVal('academy_desc_en'),
-    image: getVal('academy_image'),
-    link: '#'
-  };
-  if (!a.title_ko) { showToast('제목을 입력해주세요.', 'error'); return; }
-  if (editingAcademyId === 'new') {
-    DATA.academy.push(a);
-  } else {
-    const idx = DATA.academy.findIndex(x => x.id === editingAcademyId);
-    if (idx > -1) DATA.academy[idx] = a;
-  }
-  saveData(); renderAcademy(); closeModal('academyModal');
-}
-window.saveAcademy = saveAcademy;
-
-function deleteAcademy(id) {
-  if (!confirm('삭제하시겠습니까?')) return;
-  DATA.academy = DATA.academy.filter(a => a.id !== id);
-  saveData(); renderAcademy();
-}
-window.deleteAcademy = deleteAcademy;
-
-/* ─────────────────────────────────────
-   JSON 편집기
-───────────────────────────────────── */
-function refreshJsonEditor() {
-  const el = document.getElementById('jsonEditor');
-  if (el) el.value = JSON.stringify(DATA, null, 2);
-}
-
-function applyJsonEditor() {
-  try {
-    const val = document.getElementById('jsonEditor').value;
-    DATA = JSON.parse(val);
-    saveData();
-    renderAll();
-    showToast('JSON이 적용되었습니다.', 'success');
-  } catch(e) {
-    showToast('JSON 형식이 잘못되었습니다: ' + e.message, 'error');
-  }
-}
-window.refreshJsonEditor = refreshJsonEditor;
-window.applyJsonEditor = applyJsonEditor;
-
-/* ─────────────────────────────────────
-   Export / Import / Reset
-───────────────────────────────────── */
-document.getElementById('btnExport').addEventListener('click', function() {
-  const blob = new Blob([JSON.stringify(DATA, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'content.json';
-  a.click();
-  URL.revokeObjectURL(url);
-  showToast('content.json이 다운로드되었습니다.', 'success');
-});
-
-document.getElementById('btnImport').addEventListener('click', function() {
-  document.getElementById('importFileInput').click();
-});
-
-document.getElementById('importFileInput').addEventListener('change', function(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(ev) {
+  /* ── Load Data ───────────────────────────────────────── */
+  async function loadData() {
+    // Try localStorage first, then server
+    const saved = localStorage.getItem('aestyve-admin-data');
+    if (saved) {
+      try { data = JSON.parse(saved); renderAll(); return; } catch (e) { /* fallthrough */ }
+    }
     try {
-      DATA = JSON.parse(ev.target.result);
-      saveData();
+      const r = await fetch(DEFAULT_DATA_URL + '?v=' + Date.now());
+      data = r.ok ? await r.json() : getDefaultData();
+    } catch (e) {
+      data = getDefaultData();
+    }
+    renderAll();
+  }
+
+  function saveToStorage() {
+    localStorage.setItem('aestyve-admin-data', JSON.stringify(data, null, 2));
+  }
+
+  /* ── Default Data (fallback) ─────────────────────────── */
+  function getDefaultData() {
+    return {
+      site: {
+        brandKo: '에스티브', brandEn: 'Aestyve',
+        logo: 'images/logo.png',
+        phone: '080-855-4567', email: 'info@aestyve.com',
+        addressKo: '서울시 강남구 도산대로 420', addressEn: '420 Dosan-daero, Gangnam-gu, Seoul',
+        hoursKo: '평일 09:00 – 18:00', hoursEn: 'Mon–Fri 09:00–18:00'
+      },
+      hero: [
+        { id: uid(), eyebrow: 'Innovation in Aesthetics',
+          titleKo: '자신감을 채우는<br>에스테틱 솔루션', titleEn: 'Aesthetic Solutions<br>for Confidence',
+          descKo: '에스티브와 함께 당신만의 아름다움을 찾아보세요', descEn: 'Discover your unique beauty with Aestyve',
+          ctaKo: '제품 보기', ctaEn: 'View Products', ctaLink: '#products', image: '', bgColor: '#1a2755' }
+      ],
+      about: {
+        eyebrow: 'About Aestyve',
+        titleKo: '에스티브 소개', titleEn: 'About Us',
+        bodyKo: '에스티브는 혁신적인 에스테틱 솔루션을 제공하는 글로벌 기업입니다.',
+        bodyEn: 'Aestyve is a global leader in innovative aesthetic solutions.',
+        image: '',
+        stats: [
+          { number: '10+', labelKo: '연구개발 경력', labelEn: 'Years of R&D' },
+          { number: '30+', labelKo: '글로벌 국가',   labelEn: 'Global Countries' },
+          { number: '500+', labelKo: '파트너 병원',  labelEn: 'Partner Clinics' },
+          { number: '1M+',  labelKo: '시술 건수',    labelEn: 'Procedures' }
+        ]
+      },
+      products: [
+        { id: uid(), nameKo: '1906NAD+', nameEn: '1906NAD+', subKo: 'Skin Booster · Cosmeceutical', subEn: 'Skin Booster · Cosmeceutical',
+          descKo: '맑고 탄탄한 피부 리듬을 채우는 NAD+ 컨센트레이트', descEn: 'NAD+ concentrate for clear and firm skin rhythm',
+          image: 'images/products/1906nad.jpg', badge: 'best', badgeKo: 'BEST', badgeEn: 'BEST', category: 'new best', featured: true, order: 1 },
+        { id: uid(), nameKo: 'Liquid PCL', nameEn: 'Liquid PCL', subKo: 'Skin Booster · Single Use', subEn: 'Skin Booster · Single Use',
+          descKo: '결을 채우고 탄력을 더하는 리퀴드 PCL', descEn: 'Liquid PCL that fills texture and adds elasticity',
+          image: 'images/products/liquid-pcl.jpg', badge: 'new', badgeKo: 'NEW', badgeEn: 'NEW', category: 'new', featured: false, order: 2 },
+        { id: uid(), nameKo: 'Revibe', nameEn: 'Revibe', subKo: 'Medical Device · Single Use', subEn: 'Medical Device · Single Use',
+          descKo: '피부 본연의 리듬을 깨우는 리바이브 케어', descEn: "Revive care that awakens the skin's natural rhythm",
+          image: 'images/products/revibe.jpg', badge: 'new', badgeKo: 'NEW', badgeEn: 'NEW', category: 'new', featured: false, order: 3 },
+        { id: uid(), nameKo: 'HA FILLER Series', nameEn: 'HA FILLER Series', subKo: 'Medical Device · Advanced Cross-linked HA', subEn: 'Medical Device · Advanced Cross-linked HA',
+          descKo: '볼륨은 자연스럽게, 라인은 정교하게', descEn: 'Natural volume, precise contour',
+          image: 'images/products/ha-filler.jpg', badge: 'best', badgeKo: 'BEST', badgeEn: 'BEST', category: 'best', featured: false, order: 4 },
+        { id: uid(), nameKo: 'INNOFILL PLLA', nameEn: 'INNOFILL PLLA', subKo: 'PLLA Filler · 200mg/vial', subEn: 'PLLA Filler · 200mg/vial',
+          descKo: '자연스러운 볼륨을 채우는 정교한 리프팅 케어', descEn: 'Precise lifting care for natural volume',
+          image: 'images/products/innofill-plla.jpg', badge: 'new', badgeKo: 'NEW', badgeEn: 'NEW', category: 'new', featured: false, order: 5 }
+      ],
+      science: [
+        { id: uid(), icon: '🔬', titleKo: '임상 연구', titleEn: 'Clinical Research', descKo: '30+ 임상 시험으로 입증된 안전성과 효과', descEn: 'Safety and efficacy proven by 30+ clinical trials' },
+        { id: uid(), icon: '🧬', titleKo: '바이오 기술', titleEn: 'Biotechnology', descKo: '차세대 생체 적합 소재 개발 및 적용', descEn: 'Next-generation biocompatible material development' },
+        { id: uid(), icon: '✅', titleKo: '안전성', titleEn: 'Safety', descKo: '국제 안전 기준 충족 및 글로벌 인증', descEn: 'International safety standards and global certification' }
+      ],
+      academy: [
+        { id: uid(), titleKo: '마스터 클래스', titleEn: 'Master Class', descKo: '세계적인 전문가와 함께하는 심화 교육', descEn: 'Advanced training with global experts', image: '', link: '#contact' },
+        { id: uid(), titleKo: '국제 심포지엄', titleEn: 'International Symposium', descKo: '최신 트렌드와 기술을 공유하는 글로벌 행사', descEn: 'Global event sharing latest trends and techniques', image: '', link: '#contact' },
+        { id: uid(), titleKo: '웨비나', titleEn: 'Webinar', descKo: '온라인으로 참여하는 실시간 교육 프로그램', descEn: 'Real-time online training sessions', image: '', link: '#contact' }
+      ],
+      news: [
+        { id: uid(), catKo: '제품', catEn: 'Product', date: '2026. 08. 01', titleKo: '신제품 1906NAD+ 공식 출시', titleEn: 'New Product 1906NAD+ Official Launch', link: '#' },
+        { id: uid(), catKo: '이벤트', catEn: 'Event', date: '2026. 07. 15', titleKo: '국제 에스테틱 심포지엄 성공적 개최', titleEn: 'International Aesthetic Symposium Successfully Held', link: '#' },
+        { id: uid(), catKo: '트렌드', catEn: 'Trend', date: '2026. 06. 20', titleKo: '2026 에스테틱 트렌드 리포트', titleEn: '2026 Aesthetic Trend Report', link: '#' },
+        { id: uid(), catKo: '파트너십', catEn: 'Partnership', date: '2026. 05. 30', titleKo: '아시아 주요 병원 파트너십 체결', titleEn: 'Partnership with Major Asian Hospitals', link: '#' }
+      ]
+    };
+  }
+
+  /* ── Render All ──────────────────────────────────────── */
+  function renderAll() {
+    renderSite();
+    renderHero();
+    renderAbout();
+    renderProducts();
+    renderScience();
+    renderAcademy();
+    renderNews();
+    updateDashboard();
+  }
+
+  /* ── Dashboard Stats ─────────────────────────────────── */
+  function updateDashboard() {
+    if (!data) return;
+    const nums = [
+      (data.products || []).length,
+      (data.hero || []).length,
+      (data.news || []).length,
+      (data.academy || []).length
+    ];
+    qsa('#dashboard-stats .stat-box-num').forEach((el, i) => {
+      el.textContent = nums[i] || 0;
+    });
+  }
+
+  /* ── Site ────────────────────────────────────────────── */
+  function renderSite() {
+    if (!data?.site) return;
+    const s = data.site;
+    const fields = ['brandKo','brandEn','logo','phone','email','addressKo','addressEn','hoursKo','hoursEn'];
+    fields.forEach(f => {
+      const el = qs('#site-' + f);
+      if (el) el.value = s[f] || '';
+    });
+    previewImg('site-logo', 'site-logo-preview');
+  }
+
+  window.saveSite = function () {
+    if (!data) return;
+    data.site = data.site || {};
+    const fields = ['brandKo','brandEn','logo','phone','email','addressKo','addressEn','hoursKo','hoursEn'];
+    fields.forEach(f => {
+      const el = qs('#site-' + f);
+      if (el) data.site[f] = el.value.trim();
+    });
+    saveToStorage();
+    toast('사이트 설정이 저장되었습니다.');
+  };
+
+  /* ── Hero ────────────────────────────────────────────── */
+  function renderHero() {
+    const list = qs('#hero-list');
+    if (!list || !data?.hero) return;
+    list.innerHTML = '';
+    data.hero.forEach((slide, idx) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.dataset.id = slide.id;
+      row.innerHTML = `
+        <div class="item-row-header">
+          <span class="item-row-title">슬라이드 ${idx + 1} – ${slide.titleKo || ''}</span>
+          <div class="item-row-actions">
+            <button class="btn btn-secondary btn-sm" onclick="toggleRow(this)">편집</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteHero('${slide.id}')">삭제</button>
+          </div>
+        </div>
+        <div class="item-row-body">
+          <div class="form-grid-2">
+            <div class="form-group"><label>아이콘 레이블</label><input class="form-control" data-field="eyebrow" value="${esc(slide.eyebrow || '')}" /></div>
+            <div class="form-group"><label>배경 색상</label><input class="form-control" type="color" data-field="bgColor" value="${slide.bgColor || '#1a2755'}" /></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>제목 (한국어)</label><input class="form-control" data-field="titleKo" value="${esc(slide.titleKo || '')}" /></div>
+            <div class="form-group"><label>제목 (영어)</label><input class="form-control" data-field="titleEn" value="${esc(slide.titleEn || '')}" /></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>설명 (한국어)</label><input class="form-control" data-field="descKo" value="${esc(slide.descKo || '')}" /></div>
+            <div class="form-group"><label>설명 (영어)</label><input class="form-control" data-field="descEn" value="${esc(slide.descEn || '')}" /></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>버튼 텍스트 (한국어)</label><input class="form-control" data-field="ctaKo" value="${esc(slide.ctaKo || '')}" /></div>
+            <div class="form-group"><label>버튼 텍스트 (영어)</label><input class="form-control" data-field="ctaEn" value="${esc(slide.ctaEn || '')}" /></div>
+          </div>
+          <div class="form-group"><label>버튼 링크</label><input class="form-control" data-field="ctaLink" value="${esc(slide.ctaLink || '#')}" /></div>
+          <div class="form-group">
+            <label>이미지 URL (비워두면 색상 배경)</label>
+            <input class="form-control" data-field="image" value="${esc(slide.image || '')}" oninput="previewImg(this.id,'hero-preview-${slide.id}')" id="hero-img-${slide.id}" />
+            <div class="img-preview-wrap"><div class="img-preview" id="hero-preview-${slide.id}">${slide.image ? '<img src="' + esc(slide.image) + '" />' : '<span class="img-preview-placeholder">미리보기</span>'}</div></div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="saveHeroSlide('${slide.id}', this)">저장</button>
+        </div>`;
+      list.appendChild(row);
+    });
+  }
+
+  window.addHeroSlide = function () {
+    if (!data) return;
+    data.hero = data.hero || [];
+    data.hero.push({
+      id: uid(), eyebrow: 'New Slide',
+      titleKo: '새 슬라이드', titleEn: 'New Slide',
+      descKo: '설명을 입력하세요', descEn: 'Enter description',
+      ctaKo: '자세히 보기', ctaEn: 'Learn More',
+      ctaLink: '#', image: '', bgColor: '#1a2755'
+    });
+    renderHero(); updateDashboard();
+  };
+
+  window.deleteHero = function (id) {
+    if (!data?.hero) return;
+    if (!confirm('슬라이드를 삭제하시겠습니까?')) return;
+    data.hero = data.hero.filter(h => h.id !== id);
+    saveToStorage(); renderHero(); updateDashboard();
+    toast('슬라이드가 삭제되었습니다.');
+  };
+
+  window.saveHeroSlide = function (id, btn) {
+    if (!data?.hero) return;
+    const row = btn.closest('.item-row');
+    const slide = data.hero.find(h => h.id === id);
+    if (!slide || !row) return;
+    row.querySelectorAll('[data-field]').forEach(el => {
+      slide[el.dataset.field] = el.value;
+    });
+    saveToStorage(); renderHero();
+    toast('슬라이드가 저장되었습니다.');
+  };
+
+  /* ── About ───────────────────────────────────────────── */
+  function renderAbout() {
+    if (!data?.about) return;
+    const a = data.about;
+    qs('#about-eyebrow').value  = a.eyebrow  || '';
+    qs('#about-titleKo').value  = a.titleKo  || '';
+    qs('#about-titleEn').value  = a.titleEn  || '';
+    qs('#about-bodyKo').value   = a.bodyKo   || '';
+    qs('#about-bodyEn').value   = a.bodyEn   || '';
+    qs('#about-image').value    = a.image    || '';
+    previewImg('about-image', 'about-img-preview');
+
+    // Stats
+    const statsEl = qs('#about-stats-list');
+    if (statsEl) {
+      statsEl.innerHTML = '';
+      (a.stats || []).forEach((st, i) => {
+        const div = document.createElement('div');
+        div.style = 'display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;align-items:center';
+        div.innerHTML = `
+          <input class="form-control form-control-sm" placeholder="숫자 (예: 10+)" value="${esc(st.number || '')}" data-stat-idx="${i}" data-stat-field="number" />
+          <input class="form-control form-control-sm" placeholder="라벨 (한국어)" value="${esc(st.labelKo || '')}" data-stat-idx="${i}" data-stat-field="labelKo" />
+          <input class="form-control form-control-sm" placeholder="라벨 (영어)" value="${esc(st.labelEn || '')}" data-stat-idx="${i}" data-stat-field="labelEn" />`;
+        statsEl.appendChild(div);
+      });
+    }
+  }
+
+  window.saveAbout = function () {
+    if (!data) return;
+    data.about = data.about || {};
+    data.about.eyebrow = qs('#about-eyebrow')?.value.trim() || '';
+    data.about.titleKo = qs('#about-titleKo')?.value.trim() || '';
+    data.about.titleEn = qs('#about-titleEn')?.value.trim() || '';
+    data.about.bodyKo  = qs('#about-bodyKo')?.value.trim()  || '';
+    data.about.bodyEn  = qs('#about-bodyEn')?.value.trim()  || '';
+    data.about.image   = qs('#about-image')?.value.trim()   || '';
+    // stats
+    qsa('[data-stat-idx]').forEach(el => {
+      const idx = +el.dataset.statIdx;
+      const field = el.dataset.statField;
+      if (data.about.stats?.[idx]) data.about.stats[idx][field] = el.value.trim();
+    });
+    saveToStorage();
+    toast('회사 소개가 저장되었습니다.');
+  };
+
+  /* ── Products ────────────────────────────────────────── */
+  function renderProducts() {
+    const list = qs('#products-list');
+    if (!list || !data?.products) return;
+    list.innerHTML = '';
+    [...data.products].sort((a, b) => (a.order || 0) - (b.order || 0)).forEach((p, idx) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.dataset.id = p.id;
+      row.innerHTML = `
+        <div class="item-row-header">
+          <span class="item-row-title">${idx + 1}. ${p.nameKo || 'Unnamed'} ${p.featured ? '⭐ Featured' : ''}</span>
+          <div class="item-row-actions">
+            <button class="btn btn-secondary btn-sm" onclick="toggleRow(this)">편집</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">삭제</button>
+          </div>
+        </div>
+        <div class="item-row-body">
+          <div class="form-grid-2">
+            <div class="form-group"><label>제품명 (한국어)</label><input class="form-control" data-field="nameKo" value="${esc(p.nameKo || '')}" /></div>
+            <div class="form-group"><label>제품명 (영어)</label><input class="form-control" data-field="nameEn" value="${esc(p.nameEn || '')}" /></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>서브타이틀 (한국어)</label><input class="form-control" data-field="subKo" value="${esc(p.subKo || '')}" /></div>
+            <div class="form-group"><label>서브타이틀 (영어)</label><input class="form-control" data-field="subEn" value="${esc(p.subEn || '')}" /></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>설명 (한국어)</label><textarea class="form-control" data-field="descKo" rows="3">${esc(p.descKo || '')}</textarea></div>
+            <div class="form-group"><label>설명 (영어)</label><textarea class="form-control" data-field="descEn" rows="3">${esc(p.descEn || '')}</textarea></div>
+          </div>
+          <div class="form-group">
+            <label>이미지 URL</label>
+            <input class="form-control" data-field="image" id="prod-img-${p.id}" value="${esc(p.image || '')}" oninput="previewImg('prod-img-${p.id}','prod-preview-${p.id}')" />
+            <div class="img-preview-wrap"><div class="img-preview" id="prod-preview-${p.id}">${p.image ? '<img src="' + esc(p.image) + '" />' : '<span class="img-preview-placeholder">미리보기</span>'}</div></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>배지</label>
+              <select class="form-control" data-field="badge">
+                <option value=""${p.badge===''?' selected':''}>없음</option>
+                <option value="new"${p.badge==='new'?' selected':''}>NEW</option>
+                <option value="best"${p.badge==='best'?' selected':''}>BEST</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>카테고리 (all / new / best 조합)</label>
+              <input class="form-control" data-field="category" value="${esc(p.category || 'new')}" />
+              <div class="form-hint">예: "new" / "best" / "new best"</div>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>표시 순서</label>
+              <input class="form-control" type="number" data-field="order" value="${p.order || idx + 1}" />
+            </div>
+            <div class="form-group">
+              <label>Featured (상단 강조)</label>
+              <select class="form-control" data-field="featured">
+                <option value="false"${!p.featured?' selected':''}>일반 카드</option>
+                <option value="true"${p.featured?' selected':''}>Featured ⭐</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="saveProduct('${p.id}', this)">저장</button>
+        </div>`;
+      list.appendChild(row);
+    });
+  }
+
+  window.addProduct = function () {
+    if (!data) return;
+    data.products = data.products || [];
+    data.products.push({
+      id: uid(), nameKo: '새 제품', nameEn: 'New Product',
+      subKo: '', subEn: '', descKo: '', descEn: '',
+      image: '', badge: 'new', badgeKo: 'NEW', badgeEn: 'NEW',
+      category: 'new', featured: false,
+      order: data.products.length + 1
+    });
+    renderProducts(); updateDashboard();
+  };
+
+  window.deleteProduct = function (id) {
+    if (!data?.products) return;
+    if (!confirm('제품을 삭제하시겠습니까?')) return;
+    data.products = data.products.filter(p => p.id !== id);
+    saveToStorage(); renderProducts(); updateDashboard();
+    toast('제품이 삭제되었습니다.');
+  };
+
+  window.saveProduct = function (id, btn) {
+    if (!data?.products) return;
+    const row = btn.closest('.item-row');
+    const prod = data.products.find(p => p.id === id);
+    if (!prod || !row) return;
+    row.querySelectorAll('[data-field]').forEach(el => {
+      const val = el.tagName === 'SELECT' ? el.value : el.value.trim();
+      if (el.dataset.field === 'featured') {
+        prod.featured = val === 'true';
+      } else if (el.dataset.field === 'order') {
+        prod.order = parseInt(val) || 1;
+      } else {
+        prod[el.dataset.field] = val;
+      }
+    });
+    // sync badge labels
+    if (prod.badge === 'new')  { prod.badgeKo = 'NEW';  prod.badgeEn = 'NEW'; }
+    if (prod.badge === 'best') { prod.badgeKo = 'BEST'; prod.badgeEn = 'BEST'; }
+    saveToStorage(); renderProducts();
+    toast('제품이 저장되었습니다.');
+  };
+
+  /* ── Science ─────────────────────────────────────────── */
+  function renderScience() {
+    const list = qs('#science-list');
+    if (!list || !data?.science) return;
+    list.innerHTML = '';
+    data.science.forEach((s, idx) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-row-header">
+          <span class="item-row-title">${s.icon || ''} ${s.titleKo || ''}</span>
+          <div class="item-row-actions">
+            <button class="btn btn-secondary btn-sm" onclick="toggleRow(this)">편집</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteScience(${idx})">삭제</button>
+          </div>
+        </div>
+        <div class="item-row-body">
+          <div class="form-grid-2">
+            <div class="form-group"><label>아이콘 (이모지)</label><input class="form-control" data-field="icon" value="${esc(s.icon || '')}" /></div>
+            <div class="form-group"><label>제목 (한국어)</label><input class="form-control" data-field="titleKo" value="${esc(s.titleKo || '')}" /></div>
+          </div>
+          <div class="form-group"><label>제목 (영어)</label><input class="form-control" data-field="titleEn" value="${esc(s.titleEn || '')}" /></div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>설명 (한국어)</label><textarea class="form-control" data-field="descKo" rows="2">${esc(s.descKo || '')}</textarea></div>
+            <div class="form-group"><label>설명 (영어)</label><textarea class="form-control" data-field="descEn" rows="2">${esc(s.descEn || '')}</textarea></div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="saveScience(${idx}, this)">저장</button>
+        </div>`;
+      list.appendChild(row);
+    });
+  }
+
+  window.addScience = function () {
+    if (!data) return;
+    data.science = data.science || [];
+    data.science.push({ id: uid(), icon: '🔬', titleKo: '새 항목', titleEn: 'New Item', descKo: '', descEn: '' });
+    renderScience();
+  };
+
+  window.deleteScience = function (idx) {
+    if (!data?.science) return;
+    data.science.splice(idx, 1);
+    saveToStorage(); renderScience();
+    toast('항목이 삭제되었습니다.');
+  };
+
+  window.saveScience = function (idx, btn) {
+    if (!data?.science) return;
+    const row = btn.closest('.item-row');
+    row.querySelectorAll('[data-field]').forEach(el => {
+      data.science[idx][el.dataset.field] = el.tagName === 'TEXTAREA' ? el.value : el.value.trim();
+    });
+    saveToStorage(); renderScience();
+    toast('과학/기술 항목이 저장되었습니다.');
+  };
+
+  /* ── Academy ─────────────────────────────────────────── */
+  function renderAcademy() {
+    const list = qs('#academy-list');
+    if (!list || !data?.academy) return;
+    list.innerHTML = '';
+    data.academy.forEach((a, idx) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-row-header">
+          <span class="item-row-title">${a.titleKo || ''}</span>
+          <div class="item-row-actions">
+            <button class="btn btn-secondary btn-sm" onclick="toggleRow(this)">편집</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteAcademy(${idx})">삭제</button>
+          </div>
+        </div>
+        <div class="item-row-body">
+          <div class="form-grid-2">
+            <div class="form-group"><label>제목 (한국어)</label><input class="form-control" data-field="titleKo" value="${esc(a.titleKo || '')}" /></div>
+            <div class="form-group"><label>제목 (영어)</label><input class="form-control" data-field="titleEn" value="${esc(a.titleEn || '')}" /></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>설명 (한국어)</label><textarea class="form-control" data-field="descKo" rows="2">${esc(a.descKo || '')}</textarea></div>
+            <div class="form-group"><label>설명 (영어)</label><textarea class="form-control" data-field="descEn" rows="2">${esc(a.descEn || '')}</textarea></div>
+          </div>
+          <div class="form-group">
+            <label>이미지 URL</label>
+            <input class="form-control" data-field="image" id="aca-img-${idx}" value="${esc(a.image || '')}" oninput="previewImg('aca-img-${idx}','aca-preview-${idx}')" />
+            <div class="img-preview-wrap"><div class="img-preview" id="aca-preview-${idx}">${a.image ? '<img src="' + esc(a.image) + '" />' : '<span class="img-preview-placeholder">미리보기</span>'}</div></div>
+          </div>
+          <div class="form-group"><label>링크</label><input class="form-control" data-field="link" value="${esc(a.link || '#')}" /></div>
+          <button class="btn btn-primary btn-sm" onclick="saveAcademy(${idx}, this)">저장</button>
+        </div>`;
+      list.appendChild(row);
+    });
+  }
+
+  window.addAcademy = function () {
+    if (!data) return;
+    data.academy = data.academy || [];
+    data.academy.push({ id: uid(), titleKo: '새 프로그램', titleEn: 'New Program', descKo: '', descEn: '', image: '', link: '#' });
+    renderAcademy(); updateDashboard();
+  };
+
+  window.deleteAcademy = function (idx) {
+    if (!data?.academy) return;
+    data.academy.splice(idx, 1);
+    saveToStorage(); renderAcademy(); updateDashboard();
+    toast('항목이 삭제되었습니다.');
+  };
+
+  window.saveAcademy = function (idx, btn) {
+    if (!data?.academy) return;
+    const row = btn.closest('.item-row');
+    row.querySelectorAll('[data-field]').forEach(el => {
+      data.academy[idx][el.dataset.field] = el.tagName === 'TEXTAREA' ? el.value : el.value.trim();
+    });
+    saveToStorage(); renderAcademy();
+    toast('아카데미 항목이 저장되었습니다.');
+  };
+
+  /* ── News ────────────────────────────────────────────── */
+  function renderNews() {
+    const list = qs('#news-list');
+    if (!list || !data?.news) return;
+    list.innerHTML = '';
+    data.news.forEach((n, idx) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-row-header">
+          <span class="item-row-title">${n.catKo || ''} – ${n.titleKo || ''}</span>
+          <div class="item-row-actions">
+            <button class="btn btn-secondary btn-sm" onclick="toggleRow(this)">편집</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteNews(${idx})">삭제</button>
+          </div>
+        </div>
+        <div class="item-row-body">
+          <div class="form-grid-2">
+            <div class="form-group"><label>카테고리 (한국어)</label><input class="form-control" data-field="catKo" value="${esc(n.catKo || '')}" /></div>
+            <div class="form-group"><label>카테고리 (영어)</label><input class="form-control" data-field="catEn" value="${esc(n.catEn || '')}" /></div>
+          </div>
+          <div class="form-group"><label>날짜</label><input class="form-control" data-field="date" value="${esc(n.date || '')}" /></div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>제목 (한국어)</label><input class="form-control" data-field="titleKo" value="${esc(n.titleKo || '')}" /></div>
+            <div class="form-group"><label>제목 (영어)</label><input class="form-control" data-field="titleEn" value="${esc(n.titleEn || '')}" /></div>
+          </div>
+          <div class="form-group"><label>링크</label><input class="form-control" data-field="link" value="${esc(n.link || '#')}" /></div>
+          <button class="btn btn-primary btn-sm" onclick="saveNews(${idx}, this)">저장</button>
+        </div>`;
+      list.appendChild(row);
+    });
+  }
+
+  window.addNews = function () {
+    if (!data) return;
+    data.news = data.news || [];
+    data.news.unshift({ id: uid(), catKo: '새소식', catEn: 'News', date: new Date().toLocaleDateString('ko-KR'), titleKo: '새 뉴스 제목', titleEn: 'New Article', link: '#' });
+    renderNews(); updateDashboard();
+  };
+
+  window.deleteNews = function (idx) {
+    if (!data?.news) return;
+    data.news.splice(idx, 1);
+    saveToStorage(); renderNews(); updateDashboard();
+    toast('뉴스가 삭제되었습니다.');
+  };
+
+  window.saveNews = function (idx, btn) {
+    if (!data?.news) return;
+    const row = btn.closest('.item-row');
+    row.querySelectorAll('[data-field]').forEach(el => {
+      data.news[idx][el.dataset.field] = el.value.trim();
+    });
+    saveToStorage(); renderNews();
+    toast('뉴스가 저장되었습니다.');
+  };
+
+  /* ── JSON Editor ──────────────────────────────────────── */
+  window.loadJsonEditor = function () {
+    const ed = qs('#json-editor');
+    if (ed) ed.value = JSON.stringify(data, null, 2);
+  };
+
+  window.applyJsonEditor = function () {
+    const ed = qs('#json-editor');
+    if (!ed) return;
+    try {
+      data = JSON.parse(ed.value);
+      saveToStorage();
       renderAll();
-      showToast('데이터가 가져와졌습니다.', 'success');
-    } catch(err) {
-      showToast('파일 형식이 잘못되었습니다.', 'error');
+      toast('JSON이 적용되었습니다.');
+    } catch (e) {
+      toast('JSON 형식 오류: ' + e.message, 'error');
     }
   };
-  reader.readAsText(file);
-  e.target.value = '';
-});
 
-document.getElementById('btnReset').addEventListener('click', function() {
-  if (!confirm('모든 데이터를 초기 상태로 돌리겠습니까?')) return;
-  DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
-  localStorage.removeItem('aestyve_admin_data');
-  renderAll();
-  showToast('초기화 완료', 'success');
-});
-
-/* ─────────────────────────────────────
-   모달 열기/닫기
-───────────────────────────────────── */
-function openModal(id) {
-  const m = document.getElementById(id);
-  if (m) m.classList.add('open');
-}
-function closeModal(id) {
-  const m = document.getElementById(id);
-  if (m) m.classList.remove('open');
-}
-window.closeModal = closeModal;
-
-// 오버레이 클릭 시 닫기
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('open');
+  /* ── Export / Import / Reset ─────────────────────────── */
+  qs('#btn-export')?.addEventListener('click', () => {
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'content.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast('content.json 파일이 다운로드됩니다.');
   });
-});
 
-/* ─────────────────────────────────────
-   이미지 미리보기
-───────────────────────────────────── */
-function previewImg(url, previewId) {
-  updateImgPreview(null, previewId, url);
-}
+  qs('#btn-import')?.addEventListener('click', () => qs('#import-file')?.click());
+  qs('#import-file')?.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        data = JSON.parse(ev.target.result);
+        saveToStorage(); renderAll();
+        toast('데이터를 가져왔습니다.');
+      } catch (err) {
+        toast('파일 형식 오류입니다.', 'error');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
 
-function updateImgPreview(inputId, previewId, forcedUrl) {
-  const preview = document.getElementById(previewId);
-  if (!preview) return;
-  const url = forcedUrl || (inputId ? getVal(inputId) : '');
-  if (url) {
-    preview.innerHTML = '<img src="' + url + '" onerror="this.parentElement.innerHTML=\'<span class=\\\'img-preview-empty\\\'>이미지를 불러올 수 없습니다.</span>\'">';
-  } else {
-    preview.innerHTML = '<span class="img-preview-empty">이미지 URL 입력 후 미리보기</span>';
+  qs('#btn-reset')?.addEventListener('click', () => {
+    if (!confirm('모든 편집 내용이 초기화됩니다. 계속하시겠습니까?')) return;
+    localStorage.removeItem('aestyve-admin-data');
+    loadData();
+    toast('초기화되었습니다.');
+  });
+
+  /* ── Panel Switch ─────────────────────────────────────── */
+  const panelTitles = {
+    dashboard: '대시보드', site: '사이트 설정', hero: '히어로 슬라이더',
+    about: '회사 소개', products: '제품 관리', science: '과학/기술',
+    academy: '아카데미', news: '뉴스', contact: '연락처', jsonEdit: 'JSON 직접 편집'
+  };
+
+  window.switchPanel = function (panelId) {
+    qsa('.admin-panel').forEach(p => p.classList.remove('active'));
+    qsa('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    const panel = qs('#panel-' + panelId);
+    if (panel) panel.classList.add('active');
+    const link = qs(`.sidebar-nav a[data-panel="${panelId}"]`);
+    if (link) link.classList.add('active');
+    const titleEl = qs('#topbar-title');
+    if (titleEl) titleEl.textContent = panelTitles[panelId] || panelId;
+    // JSON editor auto-load
+    if (panelId === 'jsonEdit') window.loadJsonEditor();
+  };
+
+  qsa('.sidebar-nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      window.switchPanel(a.dataset.panel);
+      // Close mobile sidebar
+      qs('#sidebar')?.classList.remove('open');
+      qs('#sidebar-overlay')?.classList.remove('visible');
+    });
+  });
+
+  /* ── Row Toggle ──────────────────────────────────────── */
+  window.toggleRow = function (btn) {
+    const body = btn.closest('.item-row')?.querySelector('.item-row-body');
+    if (!body) return;
+    body.classList.toggle('open');
+    btn.textContent = body.classList.contains('open') ? '닫기' : '편집';
+  };
+
+  /* ── Mobile Sidebar ──────────────────────────────────── */
+  const sidebarToggle  = qs('#sidebar-toggle');
+  const sidebarOverlay = qs('#sidebar-overlay');
+  const sidebar        = qs('#sidebar');
+
+  sidebarToggle?.addEventListener('click', () => {
+    sidebar?.classList.toggle('open');
+    sidebarOverlay?.classList.toggle('visible');
+  });
+  sidebarOverlay?.addEventListener('click', () => {
+    sidebar?.classList.remove('open');
+    sidebarOverlay?.classList.remove('visible');
+  });
+
+  /* ── Escape HTML ─────────────────────────────────────── */
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
   }
-}
 
-window.previewImg = previewImg;
+  /* ── Init ────────────────────────────────────────────── */
+  loadData();
 
-// About 이미지 URL 변경 감지
-const aboutImgInput = document.getElementById('about_image');
-if (aboutImgInput) {
-  aboutImgInput.addEventListener('input', function() {
-    updateImgPreview('about_image', 'about_img_preview');
-  });
-}
-
-/* ─────────────────────────────────────
-   유틸리티
-───────────────────────────────────── */
-function getVal(id) {
-  const el = document.getElementById(id);
-  return el ? el.value : '';
-}
-
-function setVal(id, val) {
-  const el = document.getElementById(id);
-  if (el) el.value = val || '';
-}
-
-function showToast(msg, type) {
-  const existing = document.querySelector('.toast');
-  if (existing) existing.remove();
-
-  const el = document.createElement('div');
-  el.className = 'toast' + (type ? ' ' + type : '');
-  el.textContent = msg;
-  document.body.appendChild(el);
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => { el.classList.add('show'); });
-  });
-
-  setTimeout(() => {
-    el.classList.remove('show');
-    setTimeout(() => el.remove(), 400);
-  }, 3000);
-}
-
-/* ─────────────────────────────────────
-   초기화
-───────────────────────────────────── */
-loadData();
+})();
