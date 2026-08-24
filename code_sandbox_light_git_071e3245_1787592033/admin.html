@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aestyve Admin — 관리자 패널</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-wrap">
+
+  <!-- ═══════ SIDEBAR ═══════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">AESTYVE</div>
+      <div class="sidebar-subtitle">Admin Dashboard</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">대시보드</div>
+      <button class="sidebar-btn active" data-panel="dashboard">
+        <span class="icon">📊</span> 대시보드
+      </button>
+
+      <div class="nav-section-label">콘텐츠 관리</div>
+      <button class="sidebar-btn" data-panel="site">
+        <span class="icon">⚙️</span> 사이트 설정
+      </button>
+      <button class="sidebar-btn" data-panel="hero">
+        <span class="icon">🎯</span> 히어로 슬라이더
+      </button>
+      <button class="sidebar-btn" data-panel="about">
+        <span class="icon">🏢</span> 브랜드 소개
+      </button>
+      <button class="sidebar-btn" data-panel="products">
+        <span class="icon">📦</span> 제품 관리
+      </button>
+      <button class="sidebar-btn" data-panel="science">
+        <span class="icon">🔬</span> 과학/기술
+      </button>
+      <button class="sidebar-btn" data-panel="academy">
+        <span class="icon">🎓</span> 아카데미
+      </button>
+      <button class="sidebar-btn" data-panel="news">
+        <span class="icon">📰</span> 뉴스
+      </button>
+
+      <div class="nav-section-label">미디어</div>
+      <button class="sidebar-btn" data-panel="media">
+        <span class="icon">🖼️</span> 미디어 라이브러리
+      </button>
+
+      <div class="nav-section-label">데이터</div>
+      <button class="sidebar-btn" data-panel="json">
+        <span class="icon">🗃️</span> JSON 편집기
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html">← 홈페이지로 이동</a>
+    </div>
+  </aside>
+
+  <!-- ═══════ MAIN ═══════ -->
+  <main class="admin-main">
+
+    <!-- 상단 바 -->
+    <div class="admin-topbar">
+      <div class="topbar-title" id="topbarTitle">대시보드</div>
+      <div class="topbar-actions">
+        <button class="btn-sm btn-outline-sm" id="btnExport">📥 JSON 내보내기</button>
+        <button class="btn-sm btn-outline-sm" id="btnImport">📤 JSON 가져오기</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none;">
+        <button class="btn-sm btn-danger-sm" id="btnReset">🔄 초기화</button>
+        <a href="index.html" class="btn-sm btn-primary-sm">🌐 홈페이지 보기</a>
+      </div>
+    </div>
+
+    <!-- ────── 대시보드 ────── -->
+    <div class="admin-panel active" id="panel-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-num">5</div>
+          <div class="stat-card-label">등록된 제품</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">3</div>
+          <div class="stat-card-label">히어로 슬라이드</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">4</div>
+          <div class="stat-card-label">뉴스 기사</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">3</div>
+          <div class="stat-card-label">아카데미 프로그램</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">빠른 관리</span>
+        </div>
+        <div class="card-body">
+          <p style="font-size:0.9rem; color:var(--gray-700); line-height:1.8; margin-bottom:20px;">
+            좌측 메뉴에서 편집할 섹션을 선택하세요.<br>
+            변경사항은 <strong>JSON 내보내기</strong>로 저장하고 <code>data/content.json</code>을 교체하세요.
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn-sm btn-primary-sm" onclick="switchPanel('products')">📦 제품 관리</button>
+            <button class="btn-sm btn-primary-sm" onclick="switchPanel('news')">📰 뉴스 관리</button>
+            <button class="btn-sm btn-primary-sm" onclick="switchPanel('hero')">🎯 슬라이더 관리</button>
+            <button class="btn-sm btn-outline-sm" onclick="switchPanel('site')">⚙️ 사이트 설정</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">🖋️ 에스코어 드림 폰트 굵기 가이드</span></div>
+        <div class="card-body">
+          <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--gray-200);">
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">요소</th>
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">굵기</th>
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">값</th>
+                <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--navy);">미리보기</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">대제목 (Hero, Section)</td>
+                <td style="padding:8px 12px;">Bold</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">700</td>
+                <td style="padding:8px 12px; font-weight:700; font-family:'S-CoreDream',sans-serif;">에스티브 타이틀</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">중제목 (Card, Nav)</td>
+                <td style="padding:8px 12px;">SemiBold</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">600</td>
+                <td style="padding:8px 12px; font-weight:600; font-family:'S-CoreDream',sans-serif;">섹션 서브타이틀</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">헤더 / 버튼</td>
+                <td style="padding:8px 12px;">Medium</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">500</td>
+                <td style="padding:8px 12px; font-weight:500; font-family:'S-CoreDream',sans-serif;">네비게이션 링크</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-200);">
+                <td style="padding:8px 12px; color:var(--gray-700);">본문 / 설명</td>
+                <td style="padding:8px 12px;">Regular</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">400</td>
+                <td style="padding:8px 12px; font-weight:400; font-family:'S-CoreDream',sans-serif;">본문 내용 텍스트</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 12px; color:var(--gray-700);">푸터 / 보조</td>
+                <td style="padding:8px 12px;">Light</td>
+                <td style="padding:8px 12px; color:var(--gray-500);">300</td>
+                <td style="padding:8px 12px; font-weight:300; font-family:'S-CoreDream',sans-serif;">부가 정보 텍스트</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ────── 사이트 설정 ────── -->
+    <div class="admin-panel" id="panel-site">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">⚙️ 사이트 기본 설정</span>
+          <button class="btn-sm btn-primary-sm" onclick="saveSite()">저장</button>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">브랜드명 (한국어)</label>
+              <input type="text" class="form-input" id="site_name_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">브랜드명 (영어)</label>
+              <input type="text" class="form-input" id="site_name_en">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">전화번호</label>
+            <input type="text" class="form-input" id="site_phone">
+          </div>
+          <div class="form-group">
+            <label class="form-label">이메일</label>
+            <input type="email" class="form-input" id="site_email">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">주소 (한국어)</label>
+              <input type="text" class="form-input" id="site_address_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">주소 (영어)</label>
+              <input type="text" class="form-input" id="site_address_en">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">운영 시간 (한국어)</label>
+              <input type="text" class="form-input" id="site_hours_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">운영 시간 (영어)</label>
+              <input type="text" class="form-input" id="site_hours_en">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Primary Color</label>
+              <input type="color" class="form-input" id="site_primary_color" style="height:44px; padding:4px;">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Accent Color</label>
+              <input type="color" class="form-input" id="site_accent_color" style="height:44px; padding:4px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ────── 히어로 ────── -->
+    <div class="admin-panel" id="panel-hero">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🎯 히어로 슬라이더</span>
+          <button class="btn-sm btn-success-sm" onclick="openHeroModal()">+ 슬라이드 추가</button>
+        </div>
+        <div class="card-body" id="heroList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 브랜드 소개 ────── -->
+    <div class="admin-panel" id="panel-about">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🏢 브랜드 소개</span>
+          <button class="btn-sm btn-primary-sm" onclick="saveAbout()">저장</button>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">제목 (한국어)</label>
+              <input type="text" class="form-input" id="about_title_ko">
+            </div>
+            <div class="form-group">
+              <label class="form-label">제목 (영어)</label>
+              <input type="text" class="form-input" id="about_title_en">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">설명 (한국어)</label>
+              <textarea class="form-textarea" id="about_desc_ko"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">설명 (영어)</label>
+              <textarea class="form-textarea" id="about_desc_en"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">이미지 URL</label>
+            <input type="text" class="form-input" id="about_image" placeholder="https://...">
+            <div class="img-preview" id="about_img_preview">
+              <span class="img-preview-empty">이미지 URL 입력 후 미리보기</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">통계 수치</span></div>
+        <div class="card-body" id="aboutStatsList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 제품 관리 ────── -->
+    <div class="admin-panel" id="panel-products">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">⭐ Featured 제품 (1906NAD+)</span>
+          <button class="btn-sm btn-primary-sm" onclick="openProductModal('featured')">수정</button>
+        </div>
+        <div class="card-body" id="featuredProductView"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📦 제품 목록</span>
+          <button class="btn-sm btn-success-sm" onclick="openProductModal('new')">+ 제품 추가</button>
+        </div>
+        <div class="card-body" id="productList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 과학/기술 ────── -->
+    <div class="admin-panel" id="panel-science">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🔬 과학/기술 섹션</span>
+          <button class="btn-sm btn-success-sm" onclick="openScienceModal()">+ 항목 추가</button>
+        </div>
+        <div class="card-body" id="scienceList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 아카데미 ────── -->
+    <div class="admin-panel" id="panel-academy">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🎓 아카데미 프로그램</span>
+          <button class="btn-sm btn-success-sm" onclick="openAcademyModal()">+ 추가</button>
+        </div>
+        <div class="card-body" id="academyList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 뉴스 ────── -->
+    <div class="admin-panel" id="panel-news">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📰 뉴스 관리</span>
+          <button class="btn-sm btn-success-sm" onclick="openNewsModal()">+ 뉴스 추가</button>
+        </div>
+        <div class="card-body" id="newsList"></div>
+      </div>
+    </div>
+
+    <!-- ────── 미디어 라이브러리 ────── -->
+    <div class="admin-panel" id="panel-media">
+
+      <!-- 업로드 영역 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📤 사진 / 동영상 업로드</span>
+          <div style="display:flex;gap:8px;">
+            <label class="btn-sm btn-success-sm" style="cursor:pointer;" for="mediaFileInput">+ 파일 선택</label>
+            <input type="file" id="mediaFileInput" multiple accept="image/*,video/*" style="display:none;">
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- 드래그앤드롭 존 -->
+          <div class="upload-drop-zone" id="uploadDropZone">
+            <div class="upload-drop-icon">📁</div>
+            <p class="upload-drop-title">파일을 여기에 끌어다 놓거나<br>클릭해서 선택하세요</p>
+            <p class="upload-drop-sub">JPG · PNG · GIF · WEBP · MP4 · MOV · AVI<br>파일당 최대 100MB</p>
+            <label class="btn-sm btn-primary-sm" style="cursor:pointer;margin-top:16px;" for="mediaFileInput">파일 선택</label>
+          </div>
+
+          <!-- 업로드 진행 목록 -->
+          <div id="uploadProgressList" style="margin-top:20px;"></div>
+        </div>
+      </div>
+
+      <!-- 미디어 필터 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🗂️ 미디어 라이브러리</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select class="form-select" id="mediaFilter" style="width:120px;padding:6px 10px;font-size:0.8rem;">
+              <option value="all">전체</option>
+              <option value="image">사진</option>
+              <option value="video">동영상</option>
+            </select>
+            <button class="btn-sm btn-danger-sm" onclick="clearAllMedia()">전체 삭제</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="media-count-info" id="mediaCountInfo" style="font-size:0.8rem;color:var(--gray-500);margin-bottom:16px;"></p>
+          <div class="media-grid" id="mediaGrid">
+            <div class="media-empty" id="mediaEmpty">
+              <span style="font-size:2.5rem;">🖼️</span>
+              <p>아직 업로드된 미디어가 없습니다.<br>위에서 파일을 업로드해주세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 사용 방법 안내 -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">💡 사용 방법</span></div>
+        <div class="card-body">
+          <ol style="font-size:0.85rem;color:var(--gray-700);line-height:2;padding-left:20px;">
+            <li>위에서 사진/동영상 파일을 업로드합니다.</li>
+            <li>라이브러리에서 원하는 미디어의 <strong>🔗 URL 복사</strong> 버튼을 클릭합니다.</li>
+            <li>복사된 URL을 각 콘텐츠 섹션(제품, 히어로, 뉴스 등)의 이미지 URL 입력란에 붙여넣습니다.</li>
+          </ol>
+          <div style="margin-top:16px;padding:14px 16px;background:var(--gray-100);border-radius:6px;font-size:0.8rem;color:var(--gray-500);">
+            ⚠️ <strong>안내:</strong> 업로드된 파일은 이 기기의 브라우저(로컬 저장소)에 보관됩니다.
+            JSON 내보내기 시 이미지 URL이 포함됩니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ────── JSON 편집기 ────── -->
+    <div class="admin-panel" id="panel-json">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🗃️ JSON 직접 편집</span>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-sm btn-outline-sm" onclick="refreshJsonEditor()">새로고침</button>
+            <button class="btn-sm btn-primary-sm" onclick="applyJsonEditor()">적용</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <p style="font-size:0.82rem; color:var(--gray-500); margin-bottom:12px; font-weight:400;">
+            JSON을 직접 편집한 후 [적용] 버튼을 누르세요. 잘못된 JSON은 적용되지 않습니다.
+          </p>
+          <textarea class="json-editor" id="jsonEditor"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- /.admin-main -->
+</div><!-- /.admin-wrap -->
+
+<!-- ═══════ 제품 모달 ═══════ -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="productModalTitle">제품 추가</span>
+      <button class="modal-close" onclick="closeModal('productModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="product_id">
+      <div class="form-group">
+        <label class="form-label">제품명 <span class="required">*</span></label>
+        <input type="text" class="form-input" id="product_name">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">배지 (한국어)</label>
+          <input type="text" class="form-input" id="product_badge_ko" placeholder="예: NEW, BEST">
+        </div>
+        <div class="form-group">
+          <label class="form-label">배지 (영어)</label>
+          <input type="text" class="form-input" id="product_badge_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">설명 (한국어)</label>
+          <textarea class="form-textarea" id="product_desc_ko"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">설명 (영어)</label>
+          <textarea class="form-textarea" id="product_desc_en"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">이미지 URL</label>
+        <input type="text" class="form-input" id="product_image" placeholder="https://..." oninput="previewImg(this.value, 'product_img_preview')">
+        <div class="img-preview" id="product_img_preview">
+          <span class="img-preview-empty">URL 입력 시 미리보기</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">카테고리</label>
+        <select class="form-select" id="product_category">
+          <option value="new">NEW</option>
+          <option value="best">BEST</option>
+          <option value="new,best">NEW + BEST</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">링크 URL</label>
+        <input type="text" class="form-input" id="product_link" placeholder="#">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('productModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveProduct()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 히어로 모달 ═══════ -->
+<div class="modal-overlay" id="heroModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="heroModalTitle">슬라이드 추가</span>
+      <button class="modal-close" onclick="closeModal('heroModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="hero_id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">배지 (한국어)</label>
+          <input type="text" class="form-input" id="hero_badge_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">배지 (영어)</label>
+          <input type="text" class="form-input" id="hero_badge_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <textarea class="form-textarea" id="hero_title_ko" style="min-height:70px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <textarea class="form-textarea" id="hero_title_en" style="min-height:70px;"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">설명 (한국어)</label>
+          <textarea class="form-textarea" id="hero_desc_ko"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">설명 (영어)</label>
+          <textarea class="form-textarea" id="hero_desc_en"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">배경 이미지 URL</label>
+        <input type="text" class="form-input" id="hero_image" placeholder="https://...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('heroModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveHero()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 뉴스 모달 ═══════ -->
+<div class="modal-overlay" id="newsModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="newsModalTitle">뉴스 추가</span>
+      <button class="modal-close" onclick="closeModal('newsModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="news_id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">카테고리 (한국어)</label>
+          <input type="text" class="form-input" id="news_category_ko" placeholder="예: 제품, 이벤트">
+        </div>
+        <div class="form-group">
+          <label class="form-label">카테고리 (영어)</label>
+          <input type="text" class="form-input" id="news_category_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <input type="text" class="form-input" id="news_title_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <input type="text" class="form-input" id="news_title_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">날짜</label>
+          <input type="text" class="form-input" id="news_date" placeholder="2026. 08. 01">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Featured 뉴스</label>
+          <select class="form-select" id="news_featured">
+            <option value="false">일반 뉴스</option>
+            <option value="true">Featured (대형 카드)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">썸네일 이미지 URL</label>
+        <input type="text" class="form-input" id="news_image" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">링크 URL</label>
+        <input type="text" class="form-input" id="news_link" placeholder="#">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('newsModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveNews()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 과학 모달 ═══════ -->
+<div class="modal-overlay" id="scienceModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="scienceModalTitle">항목 추가</span>
+      <button class="modal-close" onclick="closeModal('scienceModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="science_id">
+      <div class="form-group">
+        <label class="form-label">아이콘 (이모지)</label>
+        <input type="text" class="form-input" id="science_icon" placeholder="예: 🔬 🧬 🛡️">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <input type="text" class="form-input" id="science_title_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <input type="text" class="form-input" id="science_title_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">설명 (한국어)</label>
+          <textarea class="form-textarea" id="science_desc_ko"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">설명 (영어)</label>
+          <textarea class="form-textarea" id="science_desc_en"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('scienceModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveScience()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 아카데미 모달 ═══════ -->
+<div class="modal-overlay" id="academyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="academyModalTitle">아카데미 추가</span>
+      <button class="modal-close" onclick="closeModal('academyModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="academy_id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">번호 (예: 01)</label>
+          <input type="text" class="form-input" id="academy_num">
+        </div>
+        <div class="form-group">
+          <label class="form-label">이미지 URL</label>
+          <input type="text" class="form-input" id="academy_image" placeholder="https://...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">제목 (한국어)</label>
+          <input type="text" class="form-input" id="academy_title_ko">
+        </div>
+        <div class="form-group">
+          <label class="form-label">제목 (영어)</label>
+          <input type="text" class="form-input" id="academy_title_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">설명 (한국어)</label>
+          <textarea class="form-textarea" id="academy_desc_ko"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">설명 (영어)</label>
+          <textarea class="form-textarea" id="academy_desc_en"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-outline-sm" onclick="closeModal('academyModal')">취소</button>
+      <button class="btn-sm btn-primary-sm" onclick="saveAcademy()">저장</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
