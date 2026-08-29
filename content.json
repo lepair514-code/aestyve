@@ -897,14 +897,14 @@
  },
  "product-ha.info-label.2": {
   "type": "plain",
-  "value": "3 mg/mL",
+  "value": "Lidociane",
   "label": "3 mg/mL",
   "page": "product-ha.html",
   "group": "info"
  },
  "product-ha.info-desc.2": {
   "type": "plain",
-  "value": "Lidocaine HCl",
+  "value": "HCl 0.3mL",
   "label": "Lidocaine HCl",
   "page": "product-ha.html",
   "group": "info"
@@ -931,19 +931,19 @@
  },
  "product-ha.h3.1": {
   "type": "rich",
-  "value": "Ep. α Alpha",
+  "value": "Ep.αlpha",
   "label": "Ep. α Alpha",
   "page": "product-ha.html"
  },
  "product-ha.h3.2": {
   "type": "rich",
-  "value": "Ep. β Beta",
+  "value": "Ep.βeta",
   "label": "Ep. β Beta",
   "page": "product-ha.html"
  },
  "product-ha.h3.3": {
   "type": "rich",
-  "value": "Ep. γ Gamma",
+  "value": "Ep.Gamma",
   "label": "Ep. γ Gamma",
   "page": "product-ha.html"
  },
@@ -979,13 +979,13 @@
  },
  "product-ha.p.6": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-ha.html"
  },
  "product-ha.p.7": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "aestyve@naver.com",
   "label": "info@aestyve.com",
   "page": "product-ha.html"
  },
