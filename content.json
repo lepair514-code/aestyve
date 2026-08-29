@@ -272,7 +272,7 @@
  },
  "contact.contact-desc.1": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "aestyve@naver.com",
   "label": "info@aestyve.com",
   "page": "contact.html",
   "group": "contact"
