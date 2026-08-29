@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Aestyve 관리자 설정</title>
+<style>
+:root{--navy:#27293d;--apricot:#d8956f;--cream:#fbfaf7;--ink:#102331;--muted:#6d777d;--line:#e4dfd8;--danger:#c0503f;--ok:#2f7a4f}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+.wrap{max-width:520px;margin:50px auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px}
+h1{font-size:19px;margin:0 0 6px}
+p{font-size:12px;color:var(--muted);margin:0 0 8px;line-height:1.6}
+label{display:block;font-size:11px;color:var(--muted);margin:14px 0 5px}
+input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#fff;font-family:inherit}
+button.primary{background:var(--navy);color:#fff;border:0;padding:11px 16px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;margin-top:18px;width:100%}
+button.primary:disabled{opacity:.5}
+.err{color:var(--danger);font-size:12px;margin-top:10px;min-height:14px}
+.help-box{background:#f6f2ed;border-radius:10px;padding:12px 14px;font-size:11px;color:var(--muted);margin-top:18px;line-height:1.7}
+.help-box b{color:var(--ink)}
+.result{display:none;margin-top:20px;border-top:1px solid var(--line);padding-top:20px}
+.result textarea{width:100%;height:120px;font-family:monospace;font-size:11px;padding:10px;border:1px solid var(--line);border-radius:10px;resize:vertical}
+.result .btns{display:flex;gap:8px;margin-top:10px}
+.result button{flex:1;border:1px solid var(--navy);background:#fff;color:var(--navy);padding:9px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.warn{background:#fff7f2;border-left:3px solid var(--apricot);padding:10px 13px;font-size:11px;color:#7c706a;margin-top:14px;border-radius:6px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Aestyve 관리자 최초 설정</h1>
+  <p>여기서 입력하는 내용은 <b>이 브라우저 안에서만</b> 계산되며, 어디로도 전송되지 않습니다. 결과로 나오는 파일 하나만 저장소에 커밋하면 됩니다.</p>
+
+  <label>GitHub 저장소 (예: myaccount/aestyve-site)</label>
+  <input type="text" id="repo" placeholder="owner/repo">
+
+  <label>브랜치</label>
+  <input type="text" id="branch" value="main">
+
+  <label>GitHub Personal Access Token</label>
+  <input type="password" id="token" placeholder="github_pat_...">
+
+  <label>관리자 페이지에서 사용할 비밀번호</label>
+  <input type="password" id="pw1" placeholder="8자 이상 권장">
+
+  <label>비밀번호 확인</label>
+  <input type="password" id="pw2" placeholder="다시 입력">
+
+  <button class="primary" id="genBtn">설정 파일 생성</button>
+  <div class="err" id="err"></div>
+
+  <div class="help-box">
+    <b>토큰 만드는 방법</b><br>
+    GitHub 로그인 → Settings → Developer settings → Personal access tokens → Fine-grained tokens →
+    Generate new token → Repository access에서 이 저장소만 선택 → Permissions → Contents를
+    "Read and write"로 설정 → 생성된 토큰(github_pat_로 시작) 복사
+  </div>
+
+  <div class="result" id="result">
+    <p><b>1.</b> 아래 내용을 <code>admin/config.enc.json</code> 파일로 저장소에 커밋해 주세요.</p>
+    <textarea id="output" readonly></textarea>
+    <div class="btns">
+      <button id="copyBtn">복사하기</button>
+      <button id="downloadBtn">파일로 다운로드</button>
+    </div>
+    <div class="warn">
+      <b>2.</b> 다운로드한 <code>config.enc.json</code> 파일을 저장소의 <code>admin</code> 폴더 안에 넣고 커밋/푸시하세요.<br>
+      <b>3.</b> 이후에는 <a href="index.html">admin/index.html</a> (관리자 페이지)에서 방금 설정한 <b>비밀번호만</b> 입력하면 로그인됩니다.<br>
+      <b>4.</b> 이 설정 파일에는 GitHub 토큰이 비밀번호로 암호화되어 들어있습니다. 방금 만든 비밀번호를 잊지 마세요 — 잊으면 이 페이지에서 새로 생성해 config.enc.json을 교체해야 합니다.
+    </div>
+  </div>
+</div>
+
+<script>
+function bufToB64(buf){ return btoa(String.fromCharCode(...new Uint8Array(buf))); }
+
+async function deriveKey(password, saltBytes){
+  const enc = new TextEncoder();
+  const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(password), {name:'PBKDF2'}, false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    {name:'PBKDF2', salt: saltBytes, iterations: 250000, hash:'SHA-256'},
+    keyMaterial,
+    {name:'AES-GCM', length:256},
+    false,
+    ['encrypt']
+  );
+}
+
+async function encryptConfig(password, obj){
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await deriveKey(password, salt);
+  const enc = new TextEncoder();
+  const ciphertext = await crypto.subtle.encrypt({name:'AES-GCM', iv}, key, enc.encode(JSON.stringify(obj)));
+  return { v: 1, salt: bufToB64(salt), iv: bufToB64(iv), data: bufToB64(new Uint8Array(ciphertext)) };
+}
+
+document.getElementById('genBtn').addEventListener('click', async () => {
+  const errEl = document.getElementById('err');
+  errEl.textContent = '';
+
+  const repo = document.getElementById('repo').value.trim();
+  const branch = document.getElementById('branch').value.trim() || 'main';
+  const token = document.getElementById('token').value.trim();
+  const pw1 = document.getElementById('pw1').value;
+  const pw2 = document.getElementById('pw2').value;
+
+  const parts = repo.split('/');
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    errEl.textContent = '저장소 형식이 올바르지 않습니다. "owner/repo" 형태로 입력해 주세요.';
+    return;
+  }
+  if (!token) { errEl.textContent = '토큰을 입력해 주세요.'; return; }
+  if (pw1.length < 6) { errEl.textContent = '비밀번호는 6자 이상으로 설정해 주세요.'; return; }
+  if (pw1 !== pw2) { errEl.textContent = '비밀번호가 서로 일치하지 않습니다.'; return; }
+
+  const btn = document.getElementById('genBtn');
+  btn.disabled = true;
+  btn.textContent = '생성 중...';
+
+  try {
+    const blob = await encryptConfig(pw1, {owner: parts[0], repo: parts[1], branch, token});
+    const json = JSON.stringify(blob, null, 1);
+    document.getElementById('output').value = json;
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('result').scrollIntoView({behavior:'smooth'});
+  } catch(e) {
+    errEl.textContent = '생성 실패: ' + e.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '설정 파일 생성';
+  }
+});
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+  const ta = document.getElementById('output');
+  ta.select();
+  document.execCommand('copy');
+  const b = document.getElementById('copyBtn');
+  const old = b.textContent;
+  b.textContent = '복사됨!';
+  setTimeout(() => b.textContent = old, 1500);
+});
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const text = document.getElementById('output').value;
+  const blob = new Blob([text], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'config.enc.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>

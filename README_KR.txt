@@ -35,29 +35,30 @@ SEO 수정
 - Exosome / NAD+ 등은 국가별 제품 분류와 허용 표현이 다를 수 있습니다.
 
 =========================
-관리자 페이지 (GitHub Pages용, 2026-08-30 재구성)
+관리자 페이지 (GitHub Pages용, 비밀번호 로그인)
 =========================
-이 사이트는 GitHub Pages(정적 호스팅)에서 운영되고 있어, 서버(PHP 등)를 실행할 수
-없습니다. 그래서 관리자 페이지는 서버 없이 "브라우저 -> GitHub API"로 직접 저장소에
-커밋하는 방식으로 다시 만들었습니다.
+이 사이트는 GitHub Pages(정적 호스팅)라 서버(PHP 등)를 실행할 수 없습니다. 그래서
+"브라우저가 GitHub API에 직접 저장"하는 방식으로 만들었고, 매번 GitHub 토큰을 입력하지
+않도록 최초 1회만 설정해두면 이후에는 비밀번호만으로 로그인됩니다.
 
 접속: https://aestyve.com/admin
 
-[최초 1회 연결 설정]
-1. GitHub에 로그인 → 우측 상단 프로필 → Settings
-2. 왼쪽 메뉴 맨 아래 Developer settings → Personal access tokens → Fine-grained tokens
-3. "Generate new token" 클릭
-4. Repository access에서 이 사이트가 들어있는 저장소만 선택 (전체 저장소 접근 금지)
-5. Permissions → Repository permissions → Contents를 "Read and write"로 설정
-6. 생성된 토큰(github_pat_로 시작하는 문자열)을 복사
-7. https://aestyve.com/admin 접속 → 저장소(owner/repo), 브랜치명(보통 main), 위 토큰을
-   입력하고 "연결하기" 클릭
+[최초 1회 설정 — admin/setup.html]
+1. https://aestyve.com/admin/setup.html 접속
+2. GitHub 저장소(owner/repo), 브랜치(보통 main), GitHub Personal Access Token,
+   그리고 앞으로 관리자 페이지에서 사용할 "비밀번호"를 입력하고 "설정 파일 생성" 클릭
+   (토큰 만드는 방법은 setup.html 화면 안내 참고: GitHub → Settings → Developer settings
+   → Personal access tokens → Fine-grained tokens → 이 저장소만 선택 → Contents를
+   "Read and write"로 설정)
+3. 생성된 결과(config.enc.json 내용)를 "파일로 다운로드" 또는 "복사하기"로 저장
+4. 이 config.enc.json 파일을 저장소의 admin 폴더 안에 넣고 커밋/푸시
+   (admin/index.html, admin/setup.html과 같은 위치)
+5. 이후로는 https://aestyve.com/admin 에서 방금 정한 "비밀번호만" 입력하면 로그인됩니다.
 
-이 토큰은 접속한 "브라우저에만" 저장되며(localStorage), 별도 서버나 Anthropic 등
-어디로도 전송되지 않고 GitHub API로만 직접 전송됩니다. 다만 이 브라우저에 접근할 수
-있는 사람은 누구나 이 저장소에 커밋할 수 있게 되므로, 공용 컴퓨터에서는 로그인하지
-마시고, 사용하지 않는 토큰은 GitHub의 Personal access tokens 설정에서 삭제(revoke)해
-주세요.
+이 config.enc.json 안에는 GitHub 토큰이 비밀번호로 암호화되어 저장되어 있어, 파일 자체가
+공개 저장소에 있어도 비밀번호를 모르면 열어볼 수 없습니다(AES-256 암호화). 다만 이
+비밀번호를 잊어버리면 setup.html에서 새로 만들어 config.enc.json을 다시 교체해야 합니다
+(토큰을 다시 알고 있어야 하므로, GitHub에서 새 토큰을 새로 발급받아도 됩니다).
 
 [텍스트 편집]
 - 페이지별로 제목/본문/연락처/통계 문구 등 총 241개 항목을 수정할 수 있습니다.
@@ -73,10 +74,19 @@ SEO 수정
   브라우저에서 자동으로 기존 파일과 같은 형식(webp 등)으로 변환한 뒤 GitHub 저장소에
   같은 파일명으로 바로 커밋됩니다. (역시 실제 반영까지 30초~2분 정도 소요)
 
-[설정]
-- 현재 연결된 저장소/브랜치를 확인할 수 있습니다.
-- "연결 해제"를 누르면 이 브라우저에 저장된 토큰이 삭제됩니다(토큰 자체를 완전히
-  없애려면 GitHub 설정에서 직접 삭제해야 합니다).
+[로그인 유지 / 잠금]
+- 로그인 상태는 브라우저 탭을 닫으면 자동으로 사라집니다(sessionStorage 사용).
+- 우측 상단 "잠금" 버튼을 누르면 즉시 로그아웃되고, 다시 비밀번호를 입력해야 합니다.
+- "설정" 탭의 "잠금(로그아웃)" 버튼도 동일하게 동작합니다.
+
+[주의사항]
+- 아이디는 따로 없고 비밀번호 하나만 사용하는 구조입니다(관리자가 한 명인 소규모
+  사이트에 맞춘 단순화입니다).
+- config.enc.json은 GitHub 저장소(공개 저장소라면 누구나 파일 자체는 볼 수 있음)에
+  올라가지만, 비밀번호를 모르면 안의 내용(토큰 등)을 해독할 수 없습니다. 그래도
+  비밀번호는 충분히 길고 다른 곳과 겹치지 않게 설정해 주세요.
+- 비밀번호나 GitHub 토큰, 저장소 정보를 바꾸고 싶으면 setup.html에서 다시 생성해
+  config.enc.json을 덮어쓰면 됩니다.
 
 =========================
 폰트 / 로고 (변경됨)
