@@ -15,6 +15,7 @@ $ROOT       = dirname(__DIR__);              // 웹 루트 (site/)
 $ADMIN_DIR  = __DIR__;                        // site/admin
 $AUTH_FILE  = $ADMIN_DIR . '/auth.json';
 $CONTENT_FILE = $ROOT . '/content.json';
+$CONTENT_FILE_EN = $ROOT . '/content-en.json';
 $ASSETS_DIR = $ROOT . '/assets';
 
 $MAX_UPLOAD_BYTES = 12 * 1024 * 1024; // 12MB
@@ -153,9 +154,12 @@ if ($action === 'images') {
 if ($action === 'save_text' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     require_login();
     require_csrf();
+    $lang = ($_GET['lang'] ?? 'ko') === 'en' ? 'en' : 'ko';
+    $file = $lang === 'en' ? $CONTENT_FILE_EN : $CONTENT_FILE;
+
     $updates = read_json_body(); // { key: newValue, ... }
 
-    $current = json_decode(@file_get_contents($CONTENT_FILE), true);
+    $current = json_decode(@file_get_contents($file), true);
     if (!is_array($current)) $current = [];
 
     foreach ($updates as $key => $val) {
@@ -166,7 +170,7 @@ if ($action === 'save_text' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $current[$key]['value'] = $val;
     }
 
-    file_lock_write($CONTENT_FILE, json_encode($current, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    file_lock_write($file, json_encode($current, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
     respond(true);
 }
 

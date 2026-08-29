@@ -54,6 +54,9 @@ button.primary:hover{opacity:.92}
 .toast{position:fixed;right:18px;bottom:18px;background:var(--ok);color:#fff;padding:11px 16px;border-radius:10px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);transition:.25s;pointer-events:none;z-index:80}
 .toast.err{background:var(--danger)}
 .toast.show{opacity:1;transform:none}
+.lang-toggle{display:flex;gap:8px;margin-bottom:16px}
+.lt-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;color:var(--muted)}
+.lt-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 .settings-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;max-width:420px}
 .settings-box h3{margin-top:0;font-size:14px}
 .settings-box input{margin-bottom:10px}
@@ -82,7 +85,13 @@ button.primary:hover{opacity:.92}
   </div>
 
   <div class="wrap">
-    <div id="tab-text"></div>
+    <div id="tab-text">
+      <div class="lang-toggle" id="langToggle">
+        <button type="button" class="lt-btn active" data-lang="ko">한국어 (KO)</button>
+        <button type="button" class="lt-btn" data-lang="en">English (EN)</button>
+      </div>
+      <div id="textFields"></div>
+    </div>
     <div id="tab-images" style="display:none">
       <p class="hint" style="margin-bottom:16px">이미지를 클릭하거나 파일을 끌어다 놓으면 즉시 실제 홈페이지 이미지가 교체됩니다. (같은 파일명을 그대로 유지하며 내용만 바뀝니다)</p>
       <div class="img-grid" id="imgGrid"></div>
@@ -109,8 +118,9 @@ button.primary:hover{opacity:.92}
 <script>
 const API = 'api.php';
 let CSRF = '';
-let CONTENT = {};
-let CHANGES = {};
+let CONTENT = {ko:{}, en:{}};
+let CHANGES = {ko:{}, en:{}};
+let CUR_LANG = 'ko';
 
 function toast(msg, isErr){
   const t = document.getElementById('toast');
@@ -154,11 +164,28 @@ document.getElementById('logoutBtn').onclick = async () => {
 async function showApp(){
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('app').style.display = 'block';
-  const res = await fetch('/content.json?t=' + Date.now());
-  CONTENT = await res.json();
+  const [koRes, enRes] = await Promise.all([
+    fetch('/content.json?t=' + Date.now()),
+    fetch('/content-en.json?t=' + Date.now())
+  ]);
+  CONTENT.ko = await koRes.json();
+  CONTENT.en = await enRes.json();
   renderText();
   loadImages();
 }
+
+document.getElementById('langToggle').addEventListener('click', (e) => {
+  const btn = e.target.closest('.lt-btn');
+  if (!btn) return;
+  if (Object.keys(CHANGES[CUR_LANG]).length > 0) {
+    if (!confirm('저장하지 않은 변경사항이 있습니다. 언어를 전환하면 해당 변경사항은 사라집니다. 계속할까요?')) return;
+    CHANGES[CUR_LANG] = {};
+  }
+  CUR_LANG = btn.dataset.lang;
+  document.querySelectorAll('.lt-btn').forEach(b => b.classList.toggle('active', b === btn));
+  renderText();
+  updateSavebar();
+});
 
 document.querySelectorAll('.tab').forEach(btn => {
   btn.onclick = () => {
@@ -178,12 +205,13 @@ function pageLabel(fname){
 }
 
 function renderText(){
+  const data = CONTENT[CUR_LANG];
   const groups = {};
-  Object.entries(CONTENT).forEach(([key, item]) => {
+  Object.entries(data).forEach(([key, item]) => {
     (groups[item.page] = groups[item.page] || []).push([key, item]);
   });
   const order = Object.keys(groups).sort();
-  const el = document.getElementById('tab-text');
+  const el = document.getElementById('textFields');
   el.innerHTML = order.map(page => {
     const items = groups[page];
     const rows = items.map(([key, item]) => `
@@ -201,7 +229,7 @@ function renderText(){
   el.querySelectorAll('textarea').forEach(ta => {
     ta.addEventListener('input', () => {
       const key = ta.dataset.key;
-      CHANGES[key] = ta.value;
+      CHANGES[CUR_LANG][key] = ta.value;
       ta.closest('.field').classList.add('changed');
       updateSavebar();
     });
@@ -228,20 +256,21 @@ function escapeHtml(s){
 }
 
 function updateSavebar(){
-  const n = Object.keys(CHANGES).length;
-  document.getElementById('changeCount').textContent = n + '개 항목 변경됨';
+  const n = Object.keys(CHANGES[CUR_LANG]).length;
+  document.getElementById('changeCount').textContent = n + '개 항목 변경됨 (' + (CUR_LANG === 'ko' ? '한국어' : 'English') + ')';
   document.getElementById('savebar').classList.toggle('show', n > 0);
 }
 
 document.getElementById('saveBtn').onclick = async () => {
-  const r = await api('save_text', {
+  const lang = CUR_LANG;
+  const r = await api('save_text&lang=' + lang, {
     method:'POST',
     headers:{'Content-Type':'application/json','X-CSRF-Token':CSRF},
-    body: JSON.stringify(CHANGES)
+    body: JSON.stringify(CHANGES[lang])
   });
   if(r.ok){
-    Object.keys(CHANGES).forEach(k => CONTENT[k].value = CHANGES[k]);
-    CHANGES = {};
+    Object.keys(CHANGES[lang]).forEach(k => CONTENT[lang][k].value = CHANGES[lang][k]);
+    CHANGES[lang] = {};
     document.querySelectorAll('.field.changed').forEach(f=>f.classList.remove('changed'));
     updateSavebar();
     toast('저장되었습니다. 홈페이지에 즉시 반영됩니다.');

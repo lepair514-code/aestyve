@@ -1,5 +1,7 @@
 (function(){
-  fetch('/content.json', {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(data){
+  var isEn = location.pathname.indexOf('/en/') === 0 || location.pathname === '/en';
+  var url = isEn ? '/content-en.json' : '/content.json';
+  fetch(url, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(data){
     document.querySelectorAll('[data-cms]').forEach(function(el){
       var item = data[el.getAttribute('data-cms')];
       if(!item) return;

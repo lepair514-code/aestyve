@@ -7,14 +7,14 @@
  },
  "404.p.1": {
   "type": "plain",
-  "value": "요청하신 페이지를 찾을 수 없습니다.",
-  "label": "요청하신 페이지를 찾을 수 없습니다.",
+  "value": "The page you requested could not be found.",
+  "label": "The page you requested could not be found.",
   "page": "404.html"
  },
  "404.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "404.html"
  },
  "404.p.3": {
@@ -73,8 +73,8 @@
  },
  "brands.p.1": {
   "type": "plain",
-  "value": "HA, PN, PCL, PLLA, Exosome, Advanced Solutions를 목적별로 구분하고, Aestyve라는 하나의 브랜드 기준으로 연결합니다.",
-  "label": "HA, PN, PCL, PLLA, Exosome, Advanced Solutions…",
+  "value": "We organize HA, PN, PCL, PLLA, Exosome, and Advanced Solutions by purpose, unified under one brand standard: Aestyve.",
+  "label": "We organize HA, PN, PCL, PLLA, Exosome, and Ad…",
   "page": "brands.html"
  },
  "brands.p.2": {
@@ -109,8 +109,8 @@
  },
  "brands.p.7": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "brands.html"
  },
  "brands.p.8": {
@@ -140,8 +140,8 @@
  },
  "company.info-desc.1": {
   "type": "plain",
-  "value": "근거 있는 기술과 제품 정보",
-  "label": "근거 있는 기술과 제품 정보",
+  "value": "Evidence-based technology and product information",
+  "label": "Evidence-based technology and product informat…",
   "page": "company.html",
   "group": "info"
  },
@@ -154,8 +154,8 @@
  },
  "company.info-desc.2": {
   "type": "plain",
-  "value": "세부 품질과 커뮤니케이션의 정밀함",
-  "label": "세부 품질과 커뮤니케이션의 정밀함",
+  "value": "Precision in quality detail and communication",
+  "label": "Precision in quality detail and communication",
   "page": "company.html",
   "group": "info"
  },
@@ -168,8 +168,8 @@
  },
  "company.info-desc.3": {
   "type": "plain",
-  "value": "가격보다 기준을 우선하는 철학",
-  "label": "가격보다 기준을 우선하는 철학",
+  "value": "A philosophy that prioritizes standards over price",
+  "label": "A philosophy that prioritizes standards over p…",
   "page": "company.html",
   "group": "info"
  },
@@ -196,8 +196,8 @@
  },
  "company.info-desc.5": {
   "type": "plain",
-  "value": "글로벌 시장과 함께 성장하는 관계",
-  "label": "글로벌 시장과 함께 성장하는 관계",
+  "value": "Relationships that grow together with the global market",
+  "label": "Relationships that grow together with the glob…",
   "page": "company.html",
   "group": "info"
  },
@@ -210,15 +210,15 @@
  },
  "company.info-desc.6": {
   "type": "plain",
-  "value": "한국 메디컬 에스테틱 전문성",
-  "label": "한국 메디컬 에스테틱 전문성",
+  "value": "Korean medical aesthetics expertise",
+  "label": "Korean medical aesthetics expertise",
   "page": "company.html",
   "group": "info"
  },
  "company.h1.1": {
   "type": "rich",
-  "value": "브랜드를 만들고,<br>기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands,<br>distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "company.html"
  },
  "company.h2.1": {
@@ -229,20 +229,20 @@
  },
  "company.p.1": {
   "type": "plain",
-  "value": "Aestyve는 한국의 메디컬 에스테틱 기술과 전문적인 품질 기준을 기반으로 자체 브랜드를 개발하고, 글로벌 파트너에게 엄선된 솔루션을 제공합니다.",
-  "label": "Aestyve는 한국의 메디컬 에스테틱 기술과 전문적인 품질 기준을 기반으로 자체 …",
+  "value": "Aestyve develops its own brands on the foundation of Korean medical aesthetics technology and rigorous quality standards, delivering curated solutions to global partners.",
+  "label": "Aestyve develops its own brands on the foundat…",
   "page": "company.html"
  },
  "company.p.2": {
   "type": "plain",
-  "value": "화장품 중심의 K-Beauty가 아니라 의료미용 전문가와 유통 파트너를 위한 Medical Aesthetics 기업으로 포지셔닝합니다.",
-  "label": "화장품 중심의 K-Beauty가 아니라 의료미용 전문가와 유통 파트너를 위한 Med…",
+  "value": "We position ourselves not as a cosmetics-driven K-Beauty brand, but as a Medical Aesthetics company built for clinical professionals and distribution partners.",
+  "label": "We position ourselves not as a cosmetics-drive…",
   "page": "company.html"
  },
  "company.p.3": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "company.html"
  },
  "company.p.4": {
@@ -327,14 +327,14 @@
  },
  "contact.p.1": {
   "type": "plain",
-  "value": "제품, 지역 유통, 신규 파트너십, 전시 협업 등 문의 목적을 알려주시면 적합한 방식으로 안내할 수 있습니다.",
-  "label": "제품, 지역 유통, 신규 파트너십, 전시 협업 등 문의 목적을 알려주시면 적합한 방…",
+  "value": "Let us know your purpose — product inquiries, regional distribution, new partnerships, or exhibition collaboration — and we'll guide you to the right next step.",
+  "label": "Let us know your purpose — product inquiries, …",
   "page": "contact.html"
  },
  "contact.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "contact.html"
  },
  "contact.p.3": {
@@ -381,32 +381,32 @@
  },
  "distribution.p.1": {
   "type": "plain",
-  "value": "Aestyve 자체 제품과 외부 브랜드 유통은 명확하게 구분합니다. 우리는 모든 제품을 취급하기보다 시장성과 브랜드 가치, 파트너의 실제 수요를 고려합니다.",
-  "label": "Aestyve 자체 제품과 외부 브랜드 유통은 명확하게 구분합니다. 우리는 모든 제…",
+  "value": "We draw a clear line between Aestyve's own products and third-party brand distribution. Rather than carrying everything, we select for market viability, brand value, and our partners' real needs.",
+  "label": "We draw a clear line between Aestyve's own pro…",
   "page": "distribution.html"
  },
  "distribution.p.2": {
   "type": "plain",
-  "value": "글로벌 주사제 및 바이오스티뮬레이터 포트폴리오",
-  "label": "글로벌 주사제 및 바이오스티뮬레이터 포트폴리오",
+  "value": "A global portfolio of injectables and biostimulators",
+  "label": "A global portfolio of injectables and biostimu…",
   "page": "distribution.html"
  },
  "distribution.p.3": {
   "type": "plain",
-  "value": "스킨 리제너레이션과 콜라겐 기반 카테고리",
-  "label": "스킨 리제너레이션과 콜라겐 기반 카테고리",
+  "value": "Skin regeneration and collagen-based categories",
+  "label": "Skin regeneration and collagen-based categorie…",
   "page": "distribution.html"
  },
  "distribution.p.4": {
   "type": "plain",
-  "value": "의료기기 및 전문 스킨 솔루션",
-  "label": "의료기기 및 전문 스킨 솔루션",
+  "value": "Medical devices and professional skin solutions",
+  "label": "Medical devices and professional skin solution…",
   "page": "distribution.html"
  },
  "distribution.p.5": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "distribution.html"
  },
  "distribution.p.6": {
@@ -436,8 +436,8 @@
  },
  "index.qrow-desc.1": {
   "type": "plain",
-  "value": "명확한 타깃과 포트폴리오 전략을 기반으로 자체 브랜드를 설계합니다.",
-  "label": "명확한 타깃과 포트폴리오 전략을 기반으로 자체 브랜드를 설계합니다.",
+  "value": "We design our own brands based on clear targeting and portfolio strategy.",
+  "label": "We design our own brands based on clear target…",
   "page": "index.html",
   "group": "qrow"
  },
@@ -450,22 +450,22 @@
  },
  "index.qrow-desc.2": {
   "type": "plain",
-  "value": "실제 제품 자료와 품질 문서를 기준으로 필요한 정보를 투명하게 제공합니다.",
-  "label": "실제 제품 자료와 품질 문서를 기준으로 필요한 정보를 투명하게 제공합니다.",
+  "value": "We provide the information partners need transparently, grounded in real product data and quality documentation.",
+  "label": "We provide the information partners need trans…",
   "page": "index.html",
   "group": "qrow"
  },
  "index.qrow-label.3": {
   "type": "plain",
   "value": "Professional Communication",
-  "label": "Professional Communicati…",
+  "label": "Professional Communication",
   "page": "index.html",
   "group": "qrow"
  },
  "index.qrow-desc.3": {
   "type": "plain",
-  "value": "과장된 표현보다 의료진과 파트너가 이해하기 쉬운 전문 언어를 선택합니다.",
-  "label": "과장된 표현보다 의료진과 파트너가 이해하기 쉬운 전문 언어를 선택합니다.",
+  "value": "We choose clear professional language that clinicians and partners can understand, rather than exaggerated claims.",
+  "label": "We choose clear professional language that cli…",
   "page": "index.html",
   "group": "qrow"
  },
@@ -478,8 +478,8 @@
  },
  "index.qrow-desc.4": {
   "type": "plain",
-  "value": "국가별 등록·표현 범위를 고려해 글로벌 커뮤니케이션을 관리합니다.",
-  "label": "국가별 등록·표현 범위를 고려해 글로벌 커뮤니케이션을 관리합니다.",
+  "value": "We manage global communication with each country's registration and claims regulations in mind.",
+  "label": "We manage global communication with each count…",
   "page": "index.html",
   "group": "qrow"
  },
@@ -541,14 +541,14 @@
  },
  "index.h1.1": {
   "type": "rich",
-  "value": "브랜드를 만들고,<br><em>기준을 유통합니다.</em>",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands.<br><em>Distributing standards.</em>",
+  "label": "Building brands. Distributing standards.",
   "page": "index.html"
  },
  "index.h2.1": {
   "type": "rich",
-  "value": "제품 하나가 아니라,<br><em>에스테틱 시장을 보는 관점을 만듭니다.</em>",
-  "label": "제품 하나가 아니라, 에스테틱 시장을 보는 관점을 만듭니다.",
+  "value": "Not just a single product —<br><em>we shape a perspective on the aesthetics market.</em>",
+  "label": "Not just a single product — we shape a perspec…",
   "page": "index.html"
  },
  "index.h2.2": {
@@ -559,20 +559,20 @@
  },
  "index.h2.3": {
   "type": "rich",
-  "value": "엄선된 브랜드,<br>신뢰할 수 있는 파트너십",
-  "label": "엄선된 브랜드, 신뢰할 수 있는 파트너십",
+  "value": "Curated brands,<br>trusted partnerships",
+  "label": "Curated brands, trusted partnerships",
   "page": "index.html"
  },
  "index.h2.4": {
   "type": "rich",
-  "value": "신뢰는<br><em>원칙 위에서</em><br>완성됩니다.",
-  "label": "신뢰는 원칙 위에서 완성됩니다.",
+  "value": "Trust<br><em>is built on principle,</em><br>and made whole.",
+  "label": "Trust is built on principle, and made whole.",
   "page": "index.html"
  },
  "index.h2.5": {
   "type": "rich",
-  "value": "제품을 넘어,<br>시장에서 가치를 함께 만듭니다.",
-  "label": "제품을 넘어, 시장에서 가치를 함께 만듭니다.",
+  "value": "Beyond the product,<br>we create value together in the market.",
+  "label": "Beyond the product, we create value together i…",
   "page": "index.html"
  },
  "index.h3.1": {
@@ -643,32 +643,32 @@
  },
  "index.p.1": {
   "type": "plain",
-  "value": "Aestyve는 한국의 메디컬 에스테틱 기술과 정밀한 품질 기준을 바탕으로 자체 브랜드를 개발하고, 엄선된 전문 제품을 글로벌 시장에 연결합니다.",
-  "label": "Aestyve는 한국의 메디컬 에스테틱 기술과 정밀한 품질 기준을 바탕으로 자체 브…",
+  "value": "Aestyve develops its own brands on the foundation of Korean medical aesthetics technology and precise quality standards, connecting curated professional products to the global market.",
+  "label": "Aestyve develops its own brands on the foundat…",
   "page": "index.html"
  },
  "index.p.2": {
   "type": "plain",
-  "value": "Aestyve는 브랜드 기획부터 제품 포트폴리오, 품질 커뮤니케이션, 글로벌 유통까지 하나의 기준으로 연결합니다. 신뢰할 수 있는 솔루션과 오래가는 파트너십이 우리의 핵심입니다.",
-  "label": "Aestyve는 브랜드 기획부터 제품 포트폴리오, 품질 커뮤니케이션, 글로벌 유통까…",
+  "value": "From brand planning to product portfolio, quality communication, and global distribution, Aestyve connects every step under one standard. Trustworthy solutions and lasting partnerships are at our core.",
+  "label": "From brand planning to product portfolio, qual…",
   "page": "index.html"
  },
  "index.p.3": {
   "type": "plain",
-  "value": "사용 목적과 기술을 명확하게 구분한 자체 메디컬 에스테틱 포트폴리오를 개발합니다.",
-  "label": "사용 목적과 기술을 명확하게 구분한 자체 메디컬 에스테틱 포트폴리오를 개발합니다.",
+  "value": "We develop our own medical aesthetics portfolio, clearly organized by purpose and technology.",
+  "label": "We develop our own medical aesthetics portfoli…",
   "page": "index.html"
  },
  "index.p.4": {
   "type": "plain",
-  "value": "검증된 시장성과 전문성을 고려해 글로벌 파트너에게 필요한 브랜드를 선별합니다.",
-  "label": "검증된 시장성과 전문성을 고려해 글로벌 파트너에게 필요한 브랜드를 선별합니다.",
+  "value": "We select the brands our global partners need, based on proven market fit and expertise.",
+  "label": "We select the brands our global partners need,…",
   "page": "index.html"
  },
  "index.p.5": {
   "type": "plain",
-  "value": "의료진의 경험을 확장하고 환자의 결과를 향상시키는 방향으로 각 기술의 역할을 명확하게 정의합니다.",
-  "label": "의료진의 경험을 확장하고 환자의 결과를 향상시키는 방향으로 각 기술의 역할을 명확하…",
+  "value": "We clearly define the role of each technology to expand clinical experience and improve patient outcomes.",
+  "label": "We clearly define the role of each technology …",
   "page": "index.html"
  },
  "index.p.6": {
@@ -703,44 +703,44 @@
  },
  "index.p.11": {
   "type": "plain",
-  "value": "Aestyve는 글로벌 시장에서 검증된 에스테틱 브랜드를 실영업에 필요한 관점으로 선별하고 연결합니다.",
-  "label": "Aestyve는 글로벌 시장에서 검증된 에스테틱 브랜드를 실영업에 필요한 관점으로 …",
+  "value": "Aestyve selects and connects proven aesthetic brands from the global market with a perspective grounded in real sales needs.",
+  "label": "Aestyve selects and connects proven aesthetic …",
   "page": "index.html"
  },
  "index.p.12": {
   "type": "rich",
-  "value": "Injectables & Biostimulators<br>글로벌 트렌드 중심의 주사제 포트폴리오",
-  "label": "Injectables & Biostimulators 글로벌 트렌드 중심의 주사제 포…",
+  "value": "Injectables & Biostimulators<br>An injectable portfolio built around global trends",
+  "label": "Injectables & Biostimulators An injectable por…",
   "page": "index.html"
  },
  "index.p.13": {
   "type": "rich",
-  "value": "Skin Regeneration & Collagen Stimulators<br>재생 및 콜라겐 자극 솔루션",
-  "label": "Skin Regeneration & Collagen Stimulators 재생 및 …",
+  "value": "Skin Regeneration & Collagen Stimulators<br>Regeneration and collagen-stimulating solutions",
+  "label": "Skin Regeneration & Collagen Stimulators Regen…",
   "page": "index.html"
  },
  "index.p.14": {
   "type": "rich",
-  "value": "Medical Devices & Skincare<br>메디컬 디바이스 및 스킨케어 솔루션",
-  "label": "Medical Devices & Skincare 메디컬 디바이스 및 스킨케어 솔루션",
+  "value": "Medical Devices & Skincare<br>Medical device and skincare solutions",
+  "label": "Medical Devices & Skincare Medical device and …",
   "page": "index.html"
  },
  "index.p.15": {
   "type": "plain",
-  "value": "가격이 아니라 기술, 품질, 일관성, 전문성으로 선택받는 브랜드를 지향합니다.",
-  "label": "가격이 아니라 기술, 품질, 일관성, 전문성으로 선택받는 브랜드를 지향합니다.",
+  "value": "We aim to be chosen for technology, quality, consistency, and expertise — not price.",
+  "label": "We aim to be chosen for technology, quality, c…",
   "page": "index.html"
  },
  "index.p.16": {
   "type": "plain",
-  "value": "Aestyve는 유통부터 파트너십, 마케팅 자료, 전시 협업까지 함께 성장하는 비즈니스를 구축합니다.",
-  "label": "Aestyve는 유통부터 파트너십, 마케팅 자료, 전시 협업까지 함께 성장하는 비즈…",
+  "value": "From distribution to partnership, marketing materials, and exhibition collaboration, Aestyve builds a business that grows together with you.",
+  "label": "From distribution to partnership, marketing ma…",
   "page": "index.html"
  },
  "index.p.17": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "index.html"
  },
  "index.p.18": {
@@ -770,8 +770,8 @@
  },
  "partnership.info-desc.1": {
   "type": "plain",
-  "value": "시장에 맞는 제품 조합 제안",
-  "label": "시장에 맞는 제품 조합 제안",
+  "value": "Product combinations tailored to your market",
+  "label": "Product combinations tailored to your market",
   "page": "partnership.html",
   "group": "info"
  },
@@ -784,8 +784,8 @@
  },
  "partnership.info-desc.2": {
   "type": "plain",
-  "value": "카탈로그·전시·영업 자료 지원",
-  "label": "카탈로그·전시·영업 자료 지원",
+  "value": "Support with catalogs, exhibition, and sales materials",
+  "label": "Support with catalogs, exhibition, and sales m…",
   "page": "partnership.html",
   "group": "info"
  },
@@ -798,8 +798,8 @@
  },
  "partnership.info-desc.3": {
   "type": "plain",
-  "value": "현지 언어와 시장 상황에 맞춘 커뮤니케이션",
-  "label": "현지 언어와 시장 상황에 맞춘 커뮤니케이션",
+  "value": "Communication adapted to local language and market conditions",
+  "label": "Communication adapted to local language and ma…",
   "page": "partnership.html",
   "group": "info"
  },
@@ -812,8 +812,8 @@
  },
  "partnership.info-desc.4": {
   "type": "plain",
-  "value": "주문·출고·리드타임의 명확한 소통",
-  "label": "주문·출고·리드타임의 명확한 소통",
+  "value": "Clear communication on orders, shipping, and lead times",
+  "label": "Clear communication on orders, shipping, and l…",
   "page": "partnership.html",
   "group": "info"
  },
@@ -826,8 +826,8 @@
  },
  "partnership.info-desc.5": {
   "type": "plain",
-  "value": "현장 브랜드 경험과 전시 협업",
-  "label": "현장 브랜드 경험과 전시 협업",
+  "value": "On-site brand experience and exhibition collaboration",
+  "label": "On-site brand experience and exhibition collab…",
   "page": "partnership.html",
   "group": "info"
  },
@@ -840,8 +840,8 @@
  },
  "partnership.info-desc.6": {
   "type": "plain",
-  "value": "단일 거래보다 지속 가능한 파트너 관계",
-  "label": "단일 거래보다 지속 가능한 파트너 관계",
+  "value": "Sustainable partnerships over one-off transactions",
+  "label": "Sustainable partnerships over one-off transact…",
   "page": "partnership.html",
   "group": "info"
  },
@@ -853,14 +853,14 @@
  },
  "partnership.p.1": {
   "type": "plain",
-  "value": "Aestyve는 제품 공급, 마케팅 자료, 전시 협업, 현지화, 포트폴리오 제안까지 함께 움직이는 장기 파트너십을 지향합니다.",
-  "label": "Aestyve는 제품 공급, 마케팅 자료, 전시 협업, 현지화, 포트폴리오 제안까지…",
+  "value": "Aestyve aims for long-term partnerships that move together — from product supply and marketing materials to exhibition collaboration, localization, and portfolio proposals.",
+  "label": "Aestyve aims for long-term partnerships that m…",
   "page": "partnership.html"
  },
  "partnership.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "partnership.html"
  },
  "partnership.p.3": {
@@ -949,32 +949,32 @@
  },
  "product-ha.p.1": {
   "type": "plain",
-  "value": "Cross-linked HA 24 mg/mL과 Lidocaine HCl 3 mg/mL을 기반으로 α, β, γ 세 가지 물성 방향을 구성한 Aestyve HA 포트폴리오입니다.",
-  "label": "Cross-linked HA 24 mg/mL과 Lidocaine HCl 3 mg/m…",
+  "value": "The Aestyve HA portfolio is built on Cross-linked HA 24 mg/mL and Lidocaine HCl 3 mg/mL, structured into three rheological directions: α, β, and γ.",
+  "label": "The Aestyve HA portfolio is built on Cross-lin…",
   "page": "product-ha.html"
  },
  "product-ha.p.2": {
   "type": "plain",
-  "value": "섬세한 표현과 자연스러운 밸런스를 고려한 타입.",
-  "label": "섬세한 표현과 자연스러운 밸런스를 고려한 타입.",
+  "value": "A type designed for delicate expression and natural balance.",
+  "label": "A type designed for delicate expression and na…",
   "page": "product-ha.html"
  },
  "product-ha.p.3": {
   "type": "plain",
-  "value": "균형 잡힌 점탄성과 형태 유지 방향을 고려한 타입.",
-  "label": "균형 잡힌 점탄성과 형태 유지 방향을 고려한 타입.",
+  "value": "A type designed for balanced viscoelasticity and shape retention.",
+  "label": "A type designed for balanced viscoelasticity a…",
   "page": "product-ha.html"
  },
  "product-ha.p.4": {
   "type": "plain",
-  "value": "보다 구조적인 지지와 윤곽 표현 방향을 고려한 타입.",
-  "label": "보다 구조적인 지지와 윤곽 표현 방향을 고려한 타입.",
+  "value": "A type designed for more structural support and contour definition.",
+  "label": "A type designed for more structural support an…",
   "page": "product-ha.html"
  },
  "product-ha.p.5": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "product-ha.html"
  },
  "product-ha.p.6": {
@@ -1045,14 +1045,14 @@
  },
  "product-nad.p.1": {
   "type": "plain",
-  "value": "Aestyve의 Advanced Aesthetic Solutions 카테고리 제품입니다. 최종 카피는 실제 등록 분류와 성분 자료를 기준으로 운영하도록 설계했습니다.",
-  "label": "Aestyve의 Advanced Aesthetic Solutions 카테고리 제품입…",
+  "value": "This product belongs to Aestyve's Advanced Aesthetic Solutions category. Final copy is designed to be governed by actual registration classification and ingredient documentation.",
+  "label": "This product belongs to Aestyve's Advanced Aes…",
   "page": "product-nad.html"
  },
  "product-nad.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "product-nad.html"
  },
  "product-nad.p.3": {
@@ -1123,14 +1123,14 @@
  },
  "product-pcl.p.1": {
   "type": "plain",
-  "value": "Liquid PCL을 기반으로 콜라겐 중심의 피부 탄력·리모델링 방향을 제안하는 Aestyve 전문 솔루션입니다.",
-  "label": "Liquid PCL을 기반으로 콜라겐 중심의 피부 탄력·리모델링 방향을 제안하는 A…",
+  "value": "An Aestyve professional solution built on Liquid PCL, proposing a collagen-centered approach to skin elasticity and remodeling.",
+  "label": "An Aestyve professional solution built on Liqu…",
   "page": "product-pcl.html"
  },
  "product-pcl.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "product-pcl.html"
  },
  "product-pcl.p.3": {
@@ -1188,8 +1188,8 @@
  },
  "product-plla.info-desc.3": {
   "type": "plain",
-  "value": "공식 제품 사진 수령 후 교체",
-  "label": "공식 제품 사진 수령 후 교체",
+  "value": "To be replaced once official product photography is received",
+  "label": "To be replaced once official product photograp…",
   "page": "product-plla.html",
   "group": "info"
  },
@@ -1201,14 +1201,14 @@
  },
  "product-plla.p.1": {
   "type": "plain",
-  "value": "PLLA 기반의 바이오스티뮬레이션 카테고리로, PCL과 별도의 역할과 메시지를 갖는 전문 포트폴리오입니다.",
-  "label": "PLLA 기반의 바이오스티뮬레이션 카테고리로, PCL과 별도의 역할과 메시지를 갖는…",
+  "value": "A PLLA-based biostimulation category, with a professional portfolio carrying a distinct role and message from PCL.",
+  "label": "A PLLA-based biostimulation category, with a p…",
   "page": "product-plla.html"
  },
  "product-plla.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "product-plla.html"
  },
  "product-plla.p.3": {
@@ -1279,14 +1279,14 @@
  },
  "product-revibe.p.1": {
   "type": "plain",
-  "value": "PN 85% + HA 15% 조합, Physiological Balance와 Osmolality Balance 접근을 바탕으로 피부 컨디셔닝을 위한 전문 PN 포트폴리오입니다.",
-  "label": "PN 85% + HA 15% 조합, Physiological Balance와 Osm…",
+  "value": "A professional PN portfolio for skin conditioning, combining PN 85% + HA 15% with a Physiological Balance and Osmolality Balance approach.",
+  "label": "A professional PN portfolio for skin condition…",
   "page": "product-revibe.html"
  },
  "product-revibe.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "product-revibe.html"
  },
  "product-revibe.p.3": {
@@ -1357,14 +1357,14 @@
  },
  "product-rvsc.p.1": {
   "type": "plain",
-  "value": "Exosome 기반 기술을 활용한 전문 스킨 솔루션 카테고리입니다. 효능 표현은 실제 제품 자료와 국가별 허용 범위에 맞춰 관리합니다.",
-  "label": "Exosome 기반 기술을 활용한 전문 스킨 솔루션 카테고리입니다. 효능 표현은 실…",
+  "value": "A professional skin solution category built on exosome-based technology. Efficacy claims are managed in line with actual product data and each country's permitted scope.",
+  "label": "A professional skin solution category built on…",
   "page": "product-rvsc.html"
  },
  "product-rvsc.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "product-rvsc.html"
  },
  "product-rvsc.p.3": {
@@ -1394,8 +1394,8 @@
  },
  "science.qrow-desc.1": {
   "type": "plain",
-  "value": "HA의 경우 Sterility, Endotoxin, Residual BDDE, Cross-linking, pH, Osmolality, Gel Uniformity 등 실제 자료로 확인 가능한 품질 항목을 중심으로 설명합니다.",
-  "label": "HA의 경우 Sterility, Endotoxin, Residual BDDE, Cr…",
+  "value": "For HA, we focus on quality parameters verifiable with real data — Sterility, Endotoxin, Residual BDDE, Cross-linking, pH, Osmolality, and Gel Uniformity.",
+  "label": "For HA, we focus on quality parameters verifia…",
   "page": "science.html",
   "group": "qrow"
  },
@@ -1408,8 +1408,8 @@
  },
  "science.qrow-desc.2": {
   "type": "plain",
-  "value": "제품 간 일관성과 완성도를 중요한 품질 언어로 사용합니다.",
-  "label": "제품 간 일관성과 완성도를 중요한 품질 언어로 사용합니다.",
+  "value": "Consistency and completeness across products are treated as core quality language.",
+  "label": "Consistency and completeness across products a…",
   "page": "science.html",
   "group": "qrow"
  },
@@ -1422,8 +1422,8 @@
  },
  "science.qrow-desc.3": {
   "type": "plain",
-  "value": "Grand Hive, Physiological Balance, Liquid PCL 등 각 제품의 설계 논리를 이해하기 쉬운 구조로 전달합니다.",
-  "label": "Grand Hive, Physiological Balance, Liquid PCL …",
+  "value": "We communicate the design logic behind each product — Grand Hive, Physiological Balance, Liquid PCL, and more — in an easy-to-follow structure.",
+  "label": "We communicate the design logic behind each pr…",
   "page": "science.html",
   "group": "qrow"
  },
@@ -1436,8 +1436,8 @@
  },
  "science.qrow-desc.4": {
   "type": "plain",
-  "value": "‘최고’, ‘완전 안전’, ‘부작용 없음’ 같은 과도한 표현보다 실제 증빙과 국가별 규정을 우선합니다.",
-  "label": "‘최고’, ‘완전 안전’, ‘부작용 없음’ 같은 과도한 표현보다 실제 증빙과 국가별…",
+  "value": "We prioritize real evidence and country-specific regulations over exaggerated claims like ‘the best,’ ‘completely safe,’ or ‘no side effects.’",
+  "label": "We prioritize real evidence and country-specif…",
   "page": "science.html",
   "group": "qrow"
  },
@@ -1449,20 +1449,20 @@
  },
  "science.h2.1": {
   "type": "rich",
-  "value": "기술을 설명하고,<br><em>수치를 검증하며,</em><br>표현을 관리합니다.",
-  "label": "기술을 설명하고, 수치를 검증하며, 표현을 관리합니다.",
+  "value": "We explain the technology,<br><em>verify the numbers,</em><br>and manage the claims.",
+  "label": "We explain the technology, verify the numbers,…",
   "page": "science.html"
  },
  "science.p.1": {
   "type": "plain",
-  "value": "제품의 성능은 하나의 수식어가 아니라 원료, 공정, 물성, 품질 문서, 일관성 등 여러 요소가 함께 만드는 결과라고 생각합니다.",
-  "label": "제품의 성능은 하나의 수식어가 아니라 원료, 공정, 물성, 품질 문서, 일관성 등 …",
+  "value": "We believe product performance isn't defined by a single claim, but by the combined result of raw materials, process, physical properties, quality documentation, and consistency.",
+  "label": "We believe product performance isn't defined b…",
   "page": "science.html"
  },
  "science.p.2": {
   "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
   "page": "science.html"
  },
  "science.p.3": {
@@ -1485,56 +1485,56 @@
  },
  "product-revibe.notice.1": {
   "type": "plain",
-  "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-  "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
   "page": "product-revibe.html"
  },
  "distribution.notice.1": {
   "type": "plain",
-  "value": "Restylane, Replengen, Juvéderm 등 외부 브랜드의 상표권은 각 권리자에게 있으며 Aestyve 자체 브랜드 제품이 아닙니다. 실제 취급 품목과 공급 국가는 문의 시 확인하도록 구성했습니다.",
-  "label": "Restylane, Replengen, Juvéderm 등 외부 브랜드의 상표권은 …",
+  "value": "Trademarks of third-party brands such as Restylane, Replengen, and Juvéderm belong to their respective owners and are not Aestyve's own branded products. Actual items carried and supply countries are configured to be confirmed upon inquiry.",
+  "label": "Trademarks of third-party brands such as Resty…",
   "page": "distribution.html"
  },
  "contact.notice.1": {
   "type": "plain",
-  "value": "정적 HTML 환경에서 서버 없이 작동하도록 이메일 링크로 구성했습니다. 실제 운영 이메일로 수정해 주세요.",
-  "label": "정적 HTML 환경에서 서버 없이 작동하도록 이메일 링크로 구성했습니다. 실제 운영…",
+  "value": "Configured with a direct email link so it works in a static HTML environment without a server. Please update it with your actual operating email.",
+  "label": "Configured with a direct email link so it work…",
   "page": "contact.html"
  },
  "science.notice.1": {
   "type": "plain",
-  "value": "인증, 제조공정, 시험 수치, 승인기관 표기는 실제 증빙 문서와 일치하는 경우에만 공개 페이지에 기재해야 합니다.",
-  "label": "인증, 제조공정, 시험 수치, 승인기관 표기는 실제 증빙 문서와 일치하는 경우에만 …",
+  "value": "Certifications, manufacturing processes, test figures, and approving-body references should only be listed on public pages when they match actual supporting documentation.",
+  "label": "Certifications, manufacturing processes, test …",
   "page": "science.html"
  },
  "product-plla.notice.1": {
   "type": "plain",
-  "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-  "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
   "page": "product-plla.html"
  },
  "product-ha.notice.1": {
   "type": "plain",
-  "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-  "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
   "page": "product-ha.html"
  },
  "product-pcl.notice.1": {
   "type": "plain",
-  "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-  "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
   "page": "product-pcl.html"
  },
  "product-rvsc.notice.1": {
   "type": "plain",
-  "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-  "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
   "page": "product-rvsc.html"
  },
  "product-nad.notice.1": {
   "type": "plain",
-  "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-  "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
   "page": "product-nad.html"
  }
 }
