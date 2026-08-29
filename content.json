@@ -43,13 +43,13 @@
  },
  "brands.h3.1": {
   "type": "rich",
-  "value": "Aestyve HA",
+  "value": "Aestyve HA Dermal Filler ",
   "label": "Aestyve HA",
   "page": "brands.html"
  },
  "brands.h3.2": {
   "type": "rich",
-  "value": "Revibe PN",
+  "value": "Revibe PN Skinbooster",
   "label": "Revibe PN",
   "page": "brands.html"
  },
@@ -61,7 +61,7 @@
  },
  "brands.h3.4": {
   "type": "rich",
-  "value": "Innofill PLLA",
+  "value": "INNOFILL PLLA 200mg",
   "label": "Innofill PLLA",
   "page": "brands.html"
  },
@@ -79,13 +79,13 @@
  },
  "brands.p.2": {
   "type": "plain",
-  "value": "α · β · γ / Cross-linked HA",
+  "value": "Dermal Filler / Cross-linked HA",
   "label": "α · β · γ / Cross-linked HA",
   "page": "brands.html"
  },
  "brands.p.3": {
   "type": "plain",
-  "value": "PN 85% + HA 15%",
+  "value": "PN 1.5mL% + HA 0.5mL",
   "label": "PN 85% + HA 15%",
   "page": "brands.html"
  },
@@ -97,7 +97,7 @@
  },
  "brands.p.5": {
   "type": "plain",
-  "value": "PLLA-based biostimulation category",
+  "value": "PLLA 200mg / based biostimulation category",
   "label": "PLLA-based biostimulation category",
   "page": "brands.html"
  },
