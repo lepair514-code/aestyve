@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1040">
+<defs>
+<linearGradient id="b" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f7eee7"/><stop offset="1" stop-color="#e7c3ab"/></linearGradient>
+<radialGradient id="o"><stop stop-color="#fff" stop-opacity=".9"/><stop offset=".55" stop-color="#e4cdbd" stop-opacity=".6"/><stop offset="1" stop-color="#c6825d" stop-opacity=".08"/></radialGradient>
+</defs>
+<rect width="900" height="1040" fill="url(#b)"/>
+<circle cx="650" cy="285" r="245" fill="url(#o)"/>
+<circle cx="184" cy="760" r="126" fill="#fff" opacity=".46"/>
+<path d="M120 770 C350 560 540 520 790 600" fill="none" stroke="#0a3048" stroke-width="3" opacity=".22"/>
+<text x="86" y="170" fill="#0a3048" font-size="22" font-family="Arial" letter-spacing="6">INNOFILL</text>
+<text x="82" y="255" fill="#0a3048" font-size="72" font-family="Georgia">PLLA</text>
+<text x="86" y="310" fill="#6d5a51" font-size="17" font-family="Arial" letter-spacing="3">BIOSTIMULATION SERIES</text>
+<text x="86" y="945" fill="#7a675c" font-size="15" font-family="Arial">Official product image placeholder</text>
+</svg>

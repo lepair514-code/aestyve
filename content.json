@@ -1,0 +1,1486 @@
+{
+ "404.h1.1": {
+  "type": "rich",
+  "value": "Page not found.",
+  "label": "Page not found.",
+  "page": "404.html"
+ },
+ "404.p.1": {
+  "type": "plain",
+  "value": "요청하신 페이지를 찾을 수 없습니다.",
+  "label": "요청하신 페이지를 찾을 수 없습니다.",
+  "page": "404.html"
+ },
+ "404.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "404.html"
+ },
+ "404.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "404.html"
+ },
+ "404.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "404.html"
+ },
+ "404.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "404.html"
+ },
+ "brands.h1.1": {
+  "type": "rich",
+  "value": "One standard.<br>Multiple technologies.",
+  "label": "One standard. Multiple technologies.",
+  "page": "brands.html"
+ },
+ "brands.h3.1": {
+  "type": "rich",
+  "value": "Aestyve HA",
+  "label": "Aestyve HA",
+  "page": "brands.html"
+ },
+ "brands.h3.2": {
+  "type": "rich",
+  "value": "Revibe PN",
+  "label": "Revibe PN",
+  "page": "brands.html"
+ },
+ "brands.h3.3": {
+  "type": "rich",
+  "value": "Liquid PCL",
+  "label": "Liquid PCL",
+  "page": "brands.html"
+ },
+ "brands.h3.4": {
+  "type": "rich",
+  "value": "Innofill PLLA",
+  "label": "Innofill PLLA",
+  "page": "brands.html"
+ },
+ "brands.h3.5": {
+  "type": "rich",
+  "value": "RVSC Exosome",
+  "label": "RVSC Exosome",
+  "page": "brands.html"
+ },
+ "brands.p.1": {
+  "type": "plain",
+  "value": "HA, PN, PCL, PLLA, Exosome, Advanced Solutions를 목적별로 구분하고, Aestyve라는 하나의 브랜드 기준으로 연결합니다.",
+  "label": "HA, PN, PCL, PLLA, Exosome, Advanced Solutions…",
+  "page": "brands.html"
+ },
+ "brands.p.2": {
+  "type": "plain",
+  "value": "α · β · γ / Cross-linked HA",
+  "label": "α · β · γ / Cross-linked HA",
+  "page": "brands.html"
+ },
+ "brands.p.3": {
+  "type": "plain",
+  "value": "PN 85% + HA 15%",
+  "label": "PN 85% + HA 15%",
+  "page": "brands.html"
+ },
+ "brands.p.4": {
+  "type": "plain",
+  "value": "Liquid PCL · 2.0mL/Vial",
+  "label": "Liquid PCL · 2.0mL/Vial",
+  "page": "brands.html"
+ },
+ "brands.p.5": {
+  "type": "plain",
+  "value": "PLLA-based biostimulation category",
+  "label": "PLLA-based biostimulation category",
+  "page": "brands.html"
+ },
+ "brands.p.6": {
+  "type": "plain",
+  "value": "Exosome-based professional solution",
+  "label": "Exosome-based professional solution",
+  "page": "brands.html"
+ },
+ "brands.p.7": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "brands.html"
+ },
+ "brands.p.8": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "brands.html"
+ },
+ "brands.p.9": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "brands.html"
+ },
+ "brands.p.10": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "brands.html"
+ },
+ "company.info-label.1": {
+  "type": "plain",
+  "value": "Science",
+  "label": "Science",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.1": {
+  "type": "plain",
+  "value": "근거 있는 기술과 제품 정보",
+  "label": "근거 있는 기술과 제품 정보",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.2": {
+  "type": "plain",
+  "value": "Precision",
+  "label": "Precision",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.2": {
+  "type": "plain",
+  "value": "세부 품질과 커뮤니케이션의 정밀함",
+  "label": "세부 품질과 커뮤니케이션의 정밀함",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.3": {
+  "type": "plain",
+  "value": "Quality",
+  "label": "Quality",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.3": {
+  "type": "plain",
+  "value": "가격보다 기준을 우선하는 철학",
+  "label": "가격보다 기준을 우선하는 철학",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.4": {
+  "type": "plain",
+  "value": "Innovation",
+  "label": "Innovation",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.4": {
+  "type": "plain",
+  "value": "HA · PN · PCL · PLLA · Exosome",
+  "label": "HA · PN · PCL · PLLA · Exosome",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.5": {
+  "type": "plain",
+  "value": "Partnership",
+  "label": "Partnership",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.5": {
+  "type": "plain",
+  "value": "글로벌 시장과 함께 성장하는 관계",
+  "label": "글로벌 시장과 함께 성장하는 관계",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.6": {
+  "type": "plain",
+  "value": "Korea",
+  "label": "Korea",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.6": {
+  "type": "plain",
+  "value": "한국 메디컬 에스테틱 전문성",
+  "label": "한국 메디컬 에스테틱 전문성",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.h1.1": {
+  "type": "rich",
+  "value": "브랜드를 만들고,<br>기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "company.html"
+ },
+ "company.h2.1": {
+  "type": "rich",
+  "value": "Korean Medical Aesthetics,<br><em>built for the global market.</em>",
+  "label": "Korean Medical Aesthetics, built for the globa…",
+  "page": "company.html"
+ },
+ "company.p.1": {
+  "type": "plain",
+  "value": "Aestyve는 한국의 메디컬 에스테틱 기술과 전문적인 품질 기준을 기반으로 자체 브랜드를 개발하고, 글로벌 파트너에게 엄선된 솔루션을 제공합니다.",
+  "label": "Aestyve는 한국의 메디컬 에스테틱 기술과 전문적인 품질 기준을 기반으로 자체 …",
+  "page": "company.html"
+ },
+ "company.p.2": {
+  "type": "plain",
+  "value": "화장품 중심의 K-Beauty가 아니라 의료미용 전문가와 유통 파트너를 위한 Medical Aesthetics 기업으로 포지셔닝합니다.",
+  "label": "화장품 중심의 K-Beauty가 아니라 의료미용 전문가와 유통 파트너를 위한 Med…",
+  "page": "company.html"
+ },
+ "company.p.3": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "company.html"
+ },
+ "company.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "company.html"
+ },
+ "company.p.5": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "company.html"
+ },
+ "company.p.6": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "company.html"
+ },
+ "contact.contact-label.1": {
+  "type": "plain",
+  "value": "EMAIL",
+  "label": "EMAIL",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.1": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-label.2": {
+  "type": "plain",
+  "value": "LOCATION",
+  "label": "LOCATION",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.2": {
+  "type": "plain",
+  "value": "Seoul · Republic of Korea",
+  "label": "Seoul · Republic of Korea",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-label.3": {
+  "type": "plain",
+  "value": "BUSINESS",
+  "label": "BUSINESS",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.3": {
+  "type": "plain",
+  "value": "Brand · Distribution · Global Partnership",
+  "label": "Brand · Distribution · Global Partnership",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-label.4": {
+  "type": "plain",
+  "value": "LANGUAGE",
+  "label": "LANGUAGE",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.4": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.h2.1": {
+  "type": "rich",
+  "value": "Tell us where<br>you want to grow.",
+  "label": "Tell us where you want to grow.",
+  "page": "contact.html"
+ },
+ "contact.p.1": {
+  "type": "plain",
+  "value": "제품, 지역 유통, 신규 파트너십, 전시 협업 등 문의 목적을 알려주시면 적합한 방식으로 안내할 수 있습니다.",
+  "label": "제품, 지역 유통, 신규 파트너십, 전시 협업 등 문의 목적을 알려주시면 적합한 방…",
+  "page": "contact.html"
+ },
+ "contact.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "contact.html"
+ },
+ "contact.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "contact.html"
+ },
+ "contact.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "contact.html"
+ },
+ "contact.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "contact.html"
+ },
+ "distribution.h1.1": {
+  "type": "rich",
+  "value": "Selected brands.<br>Clear positioning.",
+  "label": "Selected brands. Clear positioning.",
+  "page": "distribution.html"
+ },
+ "distribution.h3.1": {
+  "type": "rich",
+  "value": "Global Injectables",
+  "label": "Global Injectables",
+  "page": "distribution.html"
+ },
+ "distribution.h3.2": {
+  "type": "rich",
+  "value": "Regenerative Aesthetics",
+  "label": "Regenerative Aesthetics",
+  "page": "distribution.html"
+ },
+ "distribution.h3.3": {
+  "type": "rich",
+  "value": "Skin & Device Solutions",
+  "label": "Skin & Device Solutions",
+  "page": "distribution.html"
+ },
+ "distribution.p.1": {
+  "type": "plain",
+  "value": "Aestyve 자체 제품과 외부 브랜드 유통은 명확하게 구분합니다. 우리는 모든 제품을 취급하기보다 시장성과 브랜드 가치, 파트너의 실제 수요를 고려합니다.",
+  "label": "Aestyve 자체 제품과 외부 브랜드 유통은 명확하게 구분합니다. 우리는 모든 제…",
+  "page": "distribution.html"
+ },
+ "distribution.p.2": {
+  "type": "plain",
+  "value": "글로벌 주사제 및 바이오스티뮬레이터 포트폴리오",
+  "label": "글로벌 주사제 및 바이오스티뮬레이터 포트폴리오",
+  "page": "distribution.html"
+ },
+ "distribution.p.3": {
+  "type": "plain",
+  "value": "스킨 리제너레이션과 콜라겐 기반 카테고리",
+  "label": "스킨 리제너레이션과 콜라겐 기반 카테고리",
+  "page": "distribution.html"
+ },
+ "distribution.p.4": {
+  "type": "plain",
+  "value": "의료기기 및 전문 스킨 솔루션",
+  "label": "의료기기 및 전문 스킨 솔루션",
+  "page": "distribution.html"
+ },
+ "distribution.p.5": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "distribution.html"
+ },
+ "distribution.p.6": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "distribution.html"
+ },
+ "distribution.p.7": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "distribution.html"
+ },
+ "distribution.p.8": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "distribution.html"
+ },
+ "index.qrow-label.1": {
+  "type": "plain",
+  "value": "Brand Development",
+  "label": "Brand Development",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.1": {
+  "type": "plain",
+  "value": "명확한 타깃과 포트폴리오 전략을 기반으로 자체 브랜드를 설계합니다.",
+  "label": "명확한 타깃과 포트폴리오 전략을 기반으로 자체 브랜드를 설계합니다.",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-label.2": {
+  "type": "plain",
+  "value": "Quality Documentation",
+  "label": "Quality Documentation",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.2": {
+  "type": "plain",
+  "value": "실제 제품 자료와 품질 문서를 기준으로 필요한 정보를 투명하게 제공합니다.",
+  "label": "실제 제품 자료와 품질 문서를 기준으로 필요한 정보를 투명하게 제공합니다.",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-label.3": {
+  "type": "plain",
+  "value": "Professional Communication",
+  "label": "Professional Communicati…",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.3": {
+  "type": "plain",
+  "value": "과장된 표현보다 의료진과 파트너가 이해하기 쉬운 전문 언어를 선택합니다.",
+  "label": "과장된 표현보다 의료진과 파트너가 이해하기 쉬운 전문 언어를 선택합니다.",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-label.4": {
+  "type": "plain",
+  "value": "Global Compliance",
+  "label": "Global Compliance",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.4": {
+  "type": "plain",
+  "value": "국가별 등록·표현 범위를 고려해 글로벌 커뮤니케이션을 관리합니다.",
+  "label": "국가별 등록·표현 범위를 고려해 글로벌 커뮤니케이션을 관리합니다.",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.partner-label.1": {
+  "type": "plain",
+  "value": "Brand",
+  "label": "Brand",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.1": {
+  "type": "plain",
+  "value": "Brand development",
+  "label": "Brand development",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-label.2": {
+  "type": "plain",
+  "value": "Portfolio",
+  "label": "Portfolio",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.2": {
+  "type": "plain",
+  "value": "Curated distribution",
+  "label": "Curated distribution",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-label.3": {
+  "type": "plain",
+  "value": "Market",
+  "label": "Market",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.3": {
+  "type": "plain",
+  "value": "Market support",
+  "label": "Market support",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-label.4": {
+  "type": "plain",
+  "value": "Global",
+  "label": "Global",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.4": {
+  "type": "plain",
+  "value": "Global network",
+  "label": "Global network",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.h1.1": {
+  "type": "rich",
+  "value": "브랜드를 만들고,<br><em>기준을 유통합니다.</em>",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "index.html"
+ },
+ "index.h2.1": {
+  "type": "rich",
+  "value": "제품 하나가 아니라,<br><em>에스테틱 시장을 보는 관점을 만듭니다.</em>",
+  "label": "제품 하나가 아니라, 에스테틱 시장을 보는 관점을 만듭니다.",
+  "page": "index.html"
+ },
+ "index.h2.2": {
+  "type": "rich",
+  "value": "Designed with a clear purpose.",
+  "label": "Designed with a clear purpose.",
+  "page": "index.html"
+ },
+ "index.h2.3": {
+  "type": "rich",
+  "value": "엄선된 브랜드,<br>신뢰할 수 있는 파트너십",
+  "label": "엄선된 브랜드, 신뢰할 수 있는 파트너십",
+  "page": "index.html"
+ },
+ "index.h2.4": {
+  "type": "rich",
+  "value": "신뢰는<br><em>원칙 위에서</em><br>완성됩니다.",
+  "label": "신뢰는 원칙 위에서 완성됩니다.",
+  "page": "index.html"
+ },
+ "index.h2.5": {
+  "type": "rich",
+  "value": "제품을 넘어,<br>시장에서 가치를 함께 만듭니다.",
+  "label": "제품을 넘어, 시장에서 가치를 함께 만듭니다.",
+  "page": "index.html"
+ },
+ "index.h3.1": {
+  "type": "rich",
+  "value": "AESTYVE OWN BRANDS",
+  "label": "AESTYVE OWN BRANDS",
+  "page": "index.html"
+ },
+ "index.h3.2": {
+  "type": "rich",
+  "value": "CURATED DISTRIBUTION",
+  "label": "CURATED DISTRIBUTION",
+  "page": "index.html"
+ },
+ "index.h3.3": {
+  "type": "rich",
+  "value": "Revibe PN",
+  "label": "Revibe PN",
+  "page": "index.html"
+ },
+ "index.h3.4": {
+  "type": "rich",
+  "value": "Liquid PCL",
+  "label": "Liquid PCL",
+  "page": "index.html"
+ },
+ "index.h3.5": {
+  "type": "rich",
+  "value": "HA Filler Series",
+  "label": "HA Filler Series",
+  "page": "index.html"
+ },
+ "index.h3.6": {
+  "type": "rich",
+  "value": "Innofill PLLA",
+  "label": "Innofill PLLA",
+  "page": "index.html"
+ },
+ "index.h3.7": {
+  "type": "rich",
+  "value": "RVSC Exosome",
+  "label": "RVSC Exosome",
+  "page": "index.html"
+ },
+ "index.h3.8": {
+  "type": "rich",
+  "value": "Global Injectables",
+  "label": "Global Injectables",
+  "page": "index.html"
+ },
+ "index.h3.9": {
+  "type": "rich",
+  "value": "Regenerative Aesthetics",
+  "label": "Regenerative Aesthetics",
+  "page": "index.html"
+ },
+ "index.h3.10": {
+  "type": "rich",
+  "value": "Skin & Device Solutions",
+  "label": "Skin & Device Solutions",
+  "page": "index.html"
+ },
+ "index.h3.11": {
+  "type": "rich",
+  "value": "We don't compete on price.<br><em>We compete on standards.</em>",
+  "label": "We don't compete on price. We compete on stand…",
+  "page": "index.html"
+ },
+ "index.p.1": {
+  "type": "plain",
+  "value": "Aestyve는 한국의 메디컬 에스테틱 기술과 정밀한 품질 기준을 바탕으로 자체 브랜드를 개발하고, 엄선된 전문 제품을 글로벌 시장에 연결합니다.",
+  "label": "Aestyve는 한국의 메디컬 에스테틱 기술과 정밀한 품질 기준을 바탕으로 자체 브…",
+  "page": "index.html"
+ },
+ "index.p.2": {
+  "type": "plain",
+  "value": "Aestyve는 브랜드 기획부터 제품 포트폴리오, 품질 커뮤니케이션, 글로벌 유통까지 하나의 기준으로 연결합니다. 신뢰할 수 있는 솔루션과 오래가는 파트너십이 우리의 핵심입니다.",
+  "label": "Aestyve는 브랜드 기획부터 제품 포트폴리오, 품질 커뮤니케이션, 글로벌 유통까…",
+  "page": "index.html"
+ },
+ "index.p.3": {
+  "type": "plain",
+  "value": "사용 목적과 기술을 명확하게 구분한 자체 메디컬 에스테틱 포트폴리오를 개발합니다.",
+  "label": "사용 목적과 기술을 명확하게 구분한 자체 메디컬 에스테틱 포트폴리오를 개발합니다.",
+  "page": "index.html"
+ },
+ "index.p.4": {
+  "type": "plain",
+  "value": "검증된 시장성과 전문성을 고려해 글로벌 파트너에게 필요한 브랜드를 선별합니다.",
+  "label": "검증된 시장성과 전문성을 고려해 글로벌 파트너에게 필요한 브랜드를 선별합니다.",
+  "page": "index.html"
+ },
+ "index.p.5": {
+  "type": "plain",
+  "value": "의료진의 경험을 확장하고 환자의 결과를 향상시키는 방향으로 각 기술의 역할을 명확하게 정의합니다.",
+  "label": "의료진의 경험을 확장하고 환자의 결과를 향상시키는 방향으로 각 기술의 역할을 명확하…",
+  "page": "index.html"
+ },
+ "index.p.6": {
+  "type": "plain",
+  "value": "Premium PN Skin Booster · PN + HA",
+  "label": "Premium PN Skin Booster · PN + HA",
+  "page": "index.html"
+ },
+ "index.p.7": {
+  "type": "plain",
+  "value": "Liquid PCL · Collagen-oriented solution",
+  "label": "Liquid PCL · Collagen-oriented solution",
+  "page": "index.html"
+ },
+ "index.p.8": {
+  "type": "plain",
+  "value": "Advanced Cross-linked HA · α / β / γ",
+  "label": "Advanced Cross-linked HA · α / β / γ",
+  "page": "index.html"
+ },
+ "index.p.9": {
+  "type": "plain",
+  "value": "PLLA-based progressive aesthetic solution",
+  "label": "PLLA-based progressive aesthetic solution",
+  "page": "index.html"
+ },
+ "index.p.10": {
+  "type": "plain",
+  "value": "Exosome-based professional skin solution",
+  "label": "Exosome-based professional skin solution",
+  "page": "index.html"
+ },
+ "index.p.11": {
+  "type": "plain",
+  "value": "Aestyve는 글로벌 시장에서 검증된 에스테틱 브랜드를 실영업에 필요한 관점으로 선별하고 연결합니다.",
+  "label": "Aestyve는 글로벌 시장에서 검증된 에스테틱 브랜드를 실영업에 필요한 관점으로 …",
+  "page": "index.html"
+ },
+ "index.p.12": {
+  "type": "rich",
+  "value": "Injectables & Biostimulators<br>글로벌 트렌드 중심의 주사제 포트폴리오",
+  "label": "Injectables & Biostimulators 글로벌 트렌드 중심의 주사제 포…",
+  "page": "index.html"
+ },
+ "index.p.13": {
+  "type": "rich",
+  "value": "Skin Regeneration & Collagen Stimulators<br>재생 및 콜라겐 자극 솔루션",
+  "label": "Skin Regeneration & Collagen Stimulators 재생 및 …",
+  "page": "index.html"
+ },
+ "index.p.14": {
+  "type": "rich",
+  "value": "Medical Devices & Skincare<br>메디컬 디바이스 및 스킨케어 솔루션",
+  "label": "Medical Devices & Skincare 메디컬 디바이스 및 스킨케어 솔루션",
+  "page": "index.html"
+ },
+ "index.p.15": {
+  "type": "plain",
+  "value": "가격이 아니라 기술, 품질, 일관성, 전문성으로 선택받는 브랜드를 지향합니다.",
+  "label": "가격이 아니라 기술, 품질, 일관성, 전문성으로 선택받는 브랜드를 지향합니다.",
+  "page": "index.html"
+ },
+ "index.p.16": {
+  "type": "plain",
+  "value": "Aestyve는 유통부터 파트너십, 마케팅 자료, 전시 협업까지 함께 성장하는 비즈니스를 구축합니다.",
+  "label": "Aestyve는 유통부터 파트너십, 마케팅 자료, 전시 협업까지 함께 성장하는 비즈…",
+  "page": "index.html"
+ },
+ "index.p.17": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "index.html"
+ },
+ "index.p.18": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "index.html"
+ },
+ "index.p.19": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "index.html"
+ },
+ "index.p.20": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "index.html"
+ },
+ "partnership.info-label.1": {
+  "type": "plain",
+  "value": "Portfolio",
+  "label": "Portfolio",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.1": {
+  "type": "plain",
+  "value": "시장에 맞는 제품 조합 제안",
+  "label": "시장에 맞는 제품 조합 제안",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.2": {
+  "type": "plain",
+  "value": "Marketing",
+  "label": "Marketing",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.2": {
+  "type": "plain",
+  "value": "카탈로그·전시·영업 자료 지원",
+  "label": "카탈로그·전시·영업 자료 지원",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.3": {
+  "type": "plain",
+  "value": "Localization",
+  "label": "Localization",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.3": {
+  "type": "plain",
+  "value": "현지 언어와 시장 상황에 맞춘 커뮤니케이션",
+  "label": "현지 언어와 시장 상황에 맞춘 커뮤니케이션",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.4": {
+  "type": "plain",
+  "value": "Supply",
+  "label": "Supply",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.4": {
+  "type": "plain",
+  "value": "주문·출고·리드타임의 명확한 소통",
+  "label": "주문·출고·리드타임의 명확한 소통",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.5": {
+  "type": "plain",
+  "value": "Exhibition",
+  "label": "Exhibition",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.5": {
+  "type": "plain",
+  "value": "현장 브랜드 경험과 전시 협업",
+  "label": "현장 브랜드 경험과 전시 협업",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.6": {
+  "type": "plain",
+  "value": "Long-term",
+  "label": "Long-term",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.6": {
+  "type": "plain",
+  "value": "단일 거래보다 지속 가능한 파트너 관계",
+  "label": "단일 거래보다 지속 가능한 파트너 관계",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.h1.1": {
+  "type": "rich",
+  "value": "More than supply.<br>Build the market together.",
+  "label": "More than supply. Build the market together.",
+  "page": "partnership.html"
+ },
+ "partnership.p.1": {
+  "type": "plain",
+  "value": "Aestyve는 제품 공급, 마케팅 자료, 전시 협업, 현지화, 포트폴리오 제안까지 함께 움직이는 장기 파트너십을 지향합니다.",
+  "label": "Aestyve는 제품 공급, 마케팅 자료, 전시 협업, 현지화, 포트폴리오 제안까지…",
+  "page": "partnership.html"
+ },
+ "partnership.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "partnership.html"
+ },
+ "partnership.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "partnership.html"
+ },
+ "partnership.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "partnership.html"
+ },
+ "partnership.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "partnership.html"
+ },
+ "product-ha.info-label.1": {
+  "type": "plain",
+  "value": "24 mg/mL",
+  "label": "24 mg/mL",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-desc.1": {
+  "type": "plain",
+  "value": "Cross-linked Hyaluronic Acid",
+  "label": "Cross-linked Hyaluronic Acid",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-label.2": {
+  "type": "plain",
+  "value": "3 mg/mL",
+  "label": "3 mg/mL",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-desc.2": {
+  "type": "plain",
+  "value": "Lidocaine HCl",
+  "label": "Lidocaine HCl",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-label.3": {
+  "type": "plain",
+  "value": "1.1 mL",
+  "label": "1.1 mL",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-desc.3": {
+  "type": "plain",
+  "value": "Pre-filled syringe",
+  "label": "Pre-filled syringe",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.h1.1": {
+  "type": "rich",
+  "value": "Aestyve HA",
+  "label": "Aestyve HA",
+  "page": "product-ha.html"
+ },
+ "product-ha.h3.1": {
+  "type": "rich",
+  "value": "Ep. α Alpha",
+  "label": "Ep. α Alpha",
+  "page": "product-ha.html"
+ },
+ "product-ha.h3.2": {
+  "type": "rich",
+  "value": "Ep. β Beta",
+  "label": "Ep. β Beta",
+  "page": "product-ha.html"
+ },
+ "product-ha.h3.3": {
+  "type": "rich",
+  "value": "Ep. γ Gamma",
+  "label": "Ep. γ Gamma",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.1": {
+  "type": "plain",
+  "value": "Cross-linked HA 24 mg/mL과 Lidocaine HCl 3 mg/mL을 기반으로 α, β, γ 세 가지 물성 방향을 구성한 Aestyve HA 포트폴리오입니다.",
+  "label": "Cross-linked HA 24 mg/mL과 Lidocaine HCl 3 mg/m…",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.2": {
+  "type": "plain",
+  "value": "섬세한 표현과 자연스러운 밸런스를 고려한 타입.",
+  "label": "섬세한 표현과 자연스러운 밸런스를 고려한 타입.",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.3": {
+  "type": "plain",
+  "value": "균형 잡힌 점탄성과 형태 유지 방향을 고려한 타입.",
+  "label": "균형 잡힌 점탄성과 형태 유지 방향을 고려한 타입.",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.4": {
+  "type": "plain",
+  "value": "보다 구조적인 지지와 윤곽 표현 방향을 고려한 타입.",
+  "label": "보다 구조적인 지지와 윤곽 표현 방향을 고려한 타입.",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.5": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.6": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.7": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.8": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-ha.html"
+ },
+ "product-nad.info-label.1": {
+  "type": "plain",
+  "value": "NAD+",
+  "label": "NAD+",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-desc.1": {
+  "type": "plain",
+  "value": "Package-labeled ingredient",
+  "label": "Package-labeled ingredient",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-label.2": {
+  "type": "plain",
+  "value": "NMN",
+  "label": "NMN",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-desc.2": {
+  "type": "plain",
+  "value": "Package-labeled ingredient",
+  "label": "Package-labeled ingredient",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-label.3": {
+  "type": "plain",
+  "value": "Compliance",
+  "label": "Compliance",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-desc.3": {
+  "type": "plain",
+  "value": "Registration-first communication",
+  "label": "Registration-first communication",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.h1.1": {
+  "type": "rich",
+  "value": "1906NAD+",
+  "label": "1906NAD+",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.1": {
+  "type": "plain",
+  "value": "Aestyve의 Advanced Aesthetic Solutions 카테고리 제품입니다. 최종 카피는 실제 등록 분류와 성분 자료를 기준으로 운영하도록 설계했습니다.",
+  "label": "Aestyve의 Advanced Aesthetic Solutions 카테고리 제품입…",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-nad.html"
+ },
+ "product-pcl.info-label.1": {
+  "type": "plain",
+  "value": "Liquid PCL",
+  "label": "Liquid PCL",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-desc.1": {
+  "type": "plain",
+  "value": "Liquid PCL formulation",
+  "label": "Liquid PCL formulation",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-label.2": {
+  "type": "plain",
+  "value": "2.0 mL",
+  "label": "2.0 mL",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-desc.2": {
+  "type": "plain",
+  "value": "Vial specification",
+  "label": "Vial specification",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-label.3": {
+  "type": "plain",
+  "value": "Collagen",
+  "label": "Collagen",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-desc.3": {
+  "type": "plain",
+  "value": "Collagen-oriented positioning",
+  "label": "Collagen-oriented positioning",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.h1.1": {
+  "type": "rich",
+  "value": "Aestyve Liquid PCL",
+  "label": "Aestyve Liquid PCL",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.1": {
+  "type": "plain",
+  "value": "Liquid PCL을 기반으로 콜라겐 중심의 피부 탄력·리모델링 방향을 제안하는 Aestyve 전문 솔루션입니다.",
+  "label": "Liquid PCL을 기반으로 콜라겐 중심의 피부 탄력·리모델링 방향을 제안하는 A…",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-pcl.html"
+ },
+ "product-plla.info-label.1": {
+  "type": "plain",
+  "value": "PLLA",
+  "label": "PLLA",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-desc.1": {
+  "type": "plain",
+  "value": "Poly-L-Lactic Acid",
+  "label": "Poly-L-Lactic Acid",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-label.2": {
+  "type": "plain",
+  "value": "Biostimulation",
+  "label": "Biostimulation",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-desc.2": {
+  "type": "plain",
+  "value": "Progressive aesthetic approach",
+  "label": "Progressive aesthetic approach",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-label.3": {
+  "type": "plain",
+  "value": "Photo Pending",
+  "label": "Photo Pending",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-desc.3": {
+  "type": "plain",
+  "value": "공식 제품 사진 수령 후 교체",
+  "label": "공식 제품 사진 수령 후 교체",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.h1.1": {
+  "type": "rich",
+  "value": "Innofill PLLA",
+  "label": "Innofill PLLA",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.1": {
+  "type": "plain",
+  "value": "PLLA 기반의 바이오스티뮬레이션 카테고리로, PCL과 별도의 역할과 메시지를 갖는 전문 포트폴리오입니다.",
+  "label": "PLLA 기반의 바이오스티뮬레이션 카테고리로, PCL과 별도의 역할과 메시지를 갖는…",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-plla.html"
+ },
+ "product-revibe.info-label.1": {
+  "type": "plain",
+  "value": "PN 85%",
+  "label": "PN 85%",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-desc.1": {
+  "type": "plain",
+  "value": "Polynucleotide",
+  "label": "Polynucleotide",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-label.2": {
+  "type": "plain",
+  "value": "HA 15%",
+  "label": "HA 15%",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-desc.2": {
+  "type": "plain",
+  "value": "Hyaluronic Acid",
+  "label": "Hyaluronic Acid",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-label.3": {
+  "type": "plain",
+  "value": "Balance",
+  "label": "Balance",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-desc.3": {
+  "type": "plain",
+  "value": "Physiological / Osmolality",
+  "label": "Physiological / Osmolality",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.h1.1": {
+  "type": "rich",
+  "value": "Revibe PN",
+  "label": "Revibe PN",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.1": {
+  "type": "plain",
+  "value": "PN 85% + HA 15% 조합, Physiological Balance와 Osmolality Balance 접근을 바탕으로 피부 컨디셔닝을 위한 전문 PN 포트폴리오입니다.",
+  "label": "PN 85% + HA 15% 조합, Physiological Balance와 Osm…",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-revibe.html"
+ },
+ "product-rvsc.info-label.1": {
+  "type": "plain",
+  "value": "Exosome",
+  "label": "Exosome",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-desc.1": {
+  "type": "plain",
+  "value": "Exosome-based category",
+  "label": "Exosome-based category",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-label.2": {
+  "type": "plain",
+  "value": "2 Vials",
+  "label": "2 Vials",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-desc.2": {
+  "type": "plain",
+  "value": "Attached package configuration",
+  "label": "Attached package configuration",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-label.3": {
+  "type": "plain",
+  "value": "Made in Korea",
+  "label": "Made in Korea",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-desc.3": {
+  "type": "plain",
+  "value": "Package labeling",
+  "label": "Package labeling",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.h1.1": {
+  "type": "rich",
+  "value": "RVSC Exosome",
+  "label": "RVSC Exosome",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.1": {
+  "type": "plain",
+  "value": "Exosome 기반 기술을 활용한 전문 스킨 솔루션 카테고리입니다. 효능 표현은 실제 제품 자료와 국가별 허용 범위에 맞춰 관리합니다.",
+  "label": "Exosome 기반 기술을 활용한 전문 스킨 솔루션 카테고리입니다. 효능 표현은 실…",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-rvsc.html"
+ },
+ "science.qrow-label.1": {
+  "type": "plain",
+  "value": "Critical Parameters",
+  "label": "Critical Parameters",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.1": {
+  "type": "plain",
+  "value": "HA의 경우 Sterility, Endotoxin, Residual BDDE, Cross-linking, pH, Osmolality, Gel Uniformity 등 실제 자료로 확인 가능한 품질 항목을 중심으로 설명합니다.",
+  "label": "HA의 경우 Sterility, Endotoxin, Residual BDDE, Cr…",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-label.2": {
+  "type": "plain",
+  "value": "Batch Consistency",
+  "label": "Batch Consistency",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.2": {
+  "type": "plain",
+  "value": "제품 간 일관성과 완성도를 중요한 품질 언어로 사용합니다.",
+  "label": "제품 간 일관성과 완성도를 중요한 품질 언어로 사용합니다.",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-label.3": {
+  "type": "plain",
+  "value": "Technology Story",
+  "label": "Technology Story",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.3": {
+  "type": "plain",
+  "value": "Grand Hive, Physiological Balance, Liquid PCL 등 각 제품의 설계 논리를 이해하기 쉬운 구조로 전달합니다.",
+  "label": "Grand Hive, Physiological Balance, Liquid PCL …",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-label.4": {
+  "type": "plain",
+  "value": "Responsible Claims",
+  "label": "Responsible Claims",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.4": {
+  "type": "plain",
+  "value": "‘최고’, ‘완전 안전’, ‘부작용 없음’ 같은 과도한 표현보다 실제 증빙과 국가별 규정을 우선합니다.",
+  "label": "‘최고’, ‘완전 안전’, ‘부작용 없음’ 같은 과도한 표현보다 실제 증빙과 국가별…",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.h1.1": {
+  "type": "rich",
+  "value": "Quality begins<br>with discipline.",
+  "label": "Quality begins with discipline.",
+  "page": "science.html"
+ },
+ "science.h2.1": {
+  "type": "rich",
+  "value": "기술을 설명하고,<br><em>수치를 검증하며,</em><br>표현을 관리합니다.",
+  "label": "기술을 설명하고, 수치를 검증하며, 표현을 관리합니다.",
+  "page": "science.html"
+ },
+ "science.p.1": {
+  "type": "plain",
+  "value": "제품의 성능은 하나의 수식어가 아니라 원료, 공정, 물성, 품질 문서, 일관성 등 여러 요소가 함께 만드는 결과라고 생각합니다.",
+  "label": "제품의 성능은 하나의 수식어가 아니라 원료, 공정, 물성, 품질 문서, 일관성 등 …",
+  "page": "science.html"
+ },
+ "science.p.2": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "science.html"
+ },
+ "science.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "science.html"
+ },
+ "science.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "science.html"
+ },
+ "science.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "science.html"
+ }
+}
