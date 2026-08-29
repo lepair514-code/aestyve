@@ -1491,7 +1491,7 @@
  },
  "distribution.notice.1": {
   "type": "plain",
-  "value": "Restylane, Replengen, Juvéderm 등 외부 브랜드의 상표권은 각 권리자에게 있으며 Aestyve 자체 브랜드 제품이 아닙니다. 실제 취급 품목과 공급 국가는 문의 시 확인하도록 구성했습니다.",
+  "value": "외부 브랜드의 상표권은 각 권리자에게 있으며 Aestyve 자체 브랜드 제품이 아닙니다. 실제 취급 품목과 공급 국가는 문의 시 확인하도록 구성했습니다.",
   "label": "Restylane, Replengen, Juvéderm 등 외부 브랜드의 상표권은 …",
   "page": "distribution.html"
  },
