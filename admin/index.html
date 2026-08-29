@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Aestyve 관리자</title>
+<style>
+:root{--navy:#27293d;--apricot:#d8956f;--cream:#fbfaf7;--ink:#102331;--muted:#6d777d;--line:#e4dfd8;--danger:#c0503f;--ok:#2f7a4f}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+.topbar{background:var(--navy);color:#fff;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;flex-wrap:wrap;gap:10px}
+.topbar b{font-size:15px;letter-spacing:.02em}
+.topbar .tabs{display:flex;gap:6px}
+.topbar button.tab{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 14px;border-radius:999px;font-size:12px;cursor:pointer}
+.topbar button.tab.active{background:#fff;color:var(--navy);font-weight:700}
+.topbar .repo-badge{font-size:11px;opacity:.75}
+.wrap{max-width:960px;margin:0 auto;padding:26px 18px 120px}
+.setup-wrap{max-width:460px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px}
+.setup-wrap h1{font-size:19px;margin:0 0 6px}
+.setup-wrap p{font-size:12px;color:var(--muted);margin:0 0 8px;line-height:1.6}
+.setup-wrap label{display:block;font-size:11px;color:var(--muted);margin:14px 0 5px}
+input[type=password],input[type=text]{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#fff}
+button.primary{background:var(--navy);color:#fff;border:0;padding:11px 16px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;margin-top:16px;width:100%}
+button.primary:hover{opacity:.92}
+button.primary:disabled{opacity:.5;cursor:default}
+.err{color:var(--danger);font-size:12px;margin-top:10px;min-height:14px}
+.help-box{background:#f6f2ed;border-radius:10px;padding:12px 14px;font-size:11px;color:var(--muted);margin-top:16px;line-height:1.7}
+.help-box a{color:var(--navy)}
+.page-group{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden}
+.page-group summary{padding:14px 18px;cursor:pointer;font-weight:700;font-size:13px;display:flex;justify-content:space-between;background:#faf7f3}
+.page-group summary .count{color:var(--muted);font-weight:400;font-size:11px}
+.field{padding:14px 18px;border-top:1px solid var(--line)}
+.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:.02em}
+.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:13px;font-family:inherit;resize:vertical;min-height:44px}
+.field .tools{display:flex;gap:6px;margin-top:6px}
+.field .tools button{font-size:11px;border:1px solid var(--line);background:#fff;border-radius:7px;padding:4px 9px;cursor:pointer}
+.field.changed textarea{border-color:var(--apricot);background:#fffaf5}
+.savebar{position:fixed;left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:13px 22px;display:none;align-items:center;justify-content:space-between;gap:14px;z-index:60}
+.savebar.show{display:flex}
+.savebar button{background:#fff;color:var(--navy);border:0;padding:10px 18px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer}
+.savebar button:disabled{opacity:.6}
+.savebar span{font-size:12px;opacity:.85}
+.lang-toggle{display:flex;gap:8px;margin-bottom:16px}
+.lt-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;color:var(--muted)}
+.lt-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.img-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative}
+.img-card .thumb{height:130px;background:#f2ede7;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.img-card .thumb img{max-width:100%;max-height:100%;object-fit:contain}
+.img-card .meta{padding:10px 12px;font-size:11px;color:var(--muted);word-break:break-all}
+.img-card .drop{position:absolute;inset:0;background:rgba(39,41,61,.85);color:#fff;display:none;align-items:center;justify-content:center;font-size:12px;text-align:center;padding:10px}
+.img-card.dragover .drop{display:flex}
+.img-card.uploading .drop{display:flex}
+.img-card label.upbtn{position:absolute;right:8px;bottom:44px;background:var(--navy);color:#fff;font-size:10px;padding:6px 10px;border-radius:999px;cursor:pointer}
+.img-card input[type=file]{display:none}
+.toast{position:fixed;right:18px;bottom:18px;background:var(--ok);color:#fff;padding:11px 16px;border-radius:10px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);transition:.25s;pointer-events:none;z-index:80;max-width:320px}
+.toast.err{background:var(--danger)}
+.toast.show{opacity:1;transform:none}
+.settings-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;max-width:460px}
+.settings-box h3{margin-top:0;font-size:14px}
+.settings-box .row{display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.settings-box .row b{color:var(--muted);font-weight:600}
+.settings-box button.danger{background:#fff;color:var(--danger);border:1px solid var(--danger);padding:9px 14px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;margin-top:16px}
+.hint{font-size:11px;color:var(--muted);margin:10px 0 0}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="setup-screen" class="setup-wrap" style="display:none">
+  <h1>Aestyve 관리자 연결</h1>
+  <p>이 사이트는 GitHub Pages에서 호스팅되고 있어, 별도 서버 없이 GitHub 저장소에 직접 저장하는 방식으로 동작합니다.</p>
+  <label>GitHub 저장소 (예: myaccount/aestyve-site)</label>
+  <input type="text" id="s-repo" placeholder="owner/repo">
+  <label>브랜치</label>
+  <input type="text" id="s-branch" value="main">
+  <label>Personal Access Token</label>
+  <input type="password" id="s-token" placeholder="github_pat_...">
+  <button class="primary" id="connectBtn">연결하기</button>
+  <div class="err" id="setupErr"></div>
+  <div class="help-box">
+    <b>토큰 만드는 방법 (최초 1회만)</b><br>
+    1. GitHub 로그인 → 우측 상단 프로필 → Settings<br>
+    2. 왼쪽 메뉴 맨 아래 Developer settings → Personal access tokens → Fine-grained tokens<br>
+    3. "Generate new token" 클릭<br>
+    4. Repository access에서 이 사이트의 저장소만 선택<br>
+    5. Permissions → Contents를 "Read and write"로 설정<br>
+    6. 생성된 토큰(github_pat_로 시작)을 복사해 위에 붙여넣기<br><br>
+    이 토큰은 <b>이 브라우저에만</b> 저장되며 Anthropic이나 다른 어떤 곳으로도 전송되지 않습니다.
+    공용 컴퓨터에서는 사용을 피해주세요.
+  </div>
+</div>
+
+<div id="app" style="display:none">
+  <div class="topbar">
+    <b>Aestyve 관리자</b>
+    <div class="tabs">
+      <button class="tab active" data-tab="text">텍스트 편집</button>
+      <button class="tab" data-tab="images">이미지 관리</button>
+      <button class="tab" data-tab="settings">설정</button>
+    </div>
+    <span class="repo-badge" id="repoBadge"></span>
+  </div>
+
+  <div class="wrap">
+    <div id="tab-text">
+      <div class="lang-toggle" id="langToggle">
+        <button type="button" class="lt-btn active" data-lang="ko">한국어 (KO)</button>
+        <button type="button" class="lt-btn" data-lang="en">English (EN)</button>
+      </div>
+      <p class="hint" id="loadingHint">불러오는 중...</p>
+      <div id="textFields"></div>
+    </div>
+    <div id="tab-images" style="display:none">
+      <p class="hint" style="margin-bottom:16px">이미지를 클릭하거나 파일을 끌어다 놓으면 GitHub 저장소에 바로 커밋됩니다. GitHub Pages 특성상 실제 사이트 반영까지 보통 30초~2분 정도 걸립니다.</p>
+      <div class="img-grid" id="imgGrid"></div>
+    </div>
+    <div id="tab-settings">
+      <div class="settings-box">
+        <h3>연결 정보</h3>
+        <div class="row"><span>저장소</span><b id="set-repo"></b></div>
+        <div class="row"><span>브랜치</span><b id="set-branch"></b></div>
+        <div class="row"><span>토큰</span><b>•••••••• (저장됨)</b></div>
+        <button class="danger" id="disconnectBtn">연결 해제 (토큰 삭제)</button>
+        <p class="hint">연결을 해제해도 GitHub 저장소의 토큰 자체가 취소되는 것은 아닙니다. 토큰을 완전히 폐기하려면 GitHub의 Personal access tokens 설정에서 직접 삭제(revoke)해 주세요.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="savebar" id="savebar">
+    <span id="changeCount">0개 항목 변경됨</span>
+    <button id="saveBtn">변경사항 저장</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const LS_KEY = 'aestyve_admin_gh';
+let CFG = null;           // {owner, repo, branch, token}
+let CONTENT = {ko:{}, en:{}};
+let SHAS = {ko:null, en:null};
+let CHANGES = {ko:{}, en:{}};
+let CUR_LANG = 'ko';
+
+function toast(msg, isErr){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isErr ? ' err' : '');
+  setTimeout(()=> t.className = 'toast', 3200);
+}
+
+function b64EncodeUnicode(str){
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(_, p1){
+    return String.fromCharCode('0x' + p1);
+  }));
+}
+function b64DecodeUnicode(str){
+  return decodeURIComponent(atob(str.replace(/\n/g,'')).split('').map(function(c){
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+}
+
+function ghHeaders(extra){
+  return Object.assign({
+    'Authorization': 'token ' + CFG.token,
+    'Accept': 'application/vnd.github+json'
+  }, extra || {});
+}
+
+async function ghGetFile(path){
+  const url = `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${path}?ref=${encodeURIComponent(CFG.branch)}&t=${Date.now()}`;
+  const res = await fetch(url, {headers: ghHeaders()});
+  if(!res.ok) throw new Error('GET ' + path + ' failed: ' + res.status);
+  return res.json(); // {content, sha, ...} or array if dir
+}
+
+async function ghPutFile(path, contentStr, sha, message){
+  const url = `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${path}`;
+  const body = {
+    message: message || ('Update ' + path + ' via admin panel'),
+    content: b64EncodeUnicode(contentStr),
+    branch: CFG.branch
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: ghHeaders({'Content-Type':'application/json'}),
+    body: JSON.stringify(body)
+  });
+  const data = await res.json();
+  if(!res.ok) throw new Error(data.message || ('PUT ' + path + ' failed: ' + res.status));
+  return data; // {content:{sha,...}, commit:{...}}
+}
+
+async function ghPutBinaryFile(path, base64Content, sha, message){
+  const url = `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${path}`;
+  const body = {
+    message: message || ('Update ' + path + ' via admin panel'),
+    content: base64Content,
+    branch: CFG.branch
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: ghHeaders({'Content-Type':'application/json'}),
+    body: JSON.stringify(body)
+  });
+  const data = await res.json();
+  if(!res.ok) throw new Error(data.message || ('PUT ' + path + ' failed: ' + res.status));
+  return data;
+}
+
+// ---------------- Setup / connection ----------------
+
+function loadCfg(){
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (raw) CFG = JSON.parse(raw);
+  } catch(e) {}
+}
+function saveCfg(){
+  localStorage.setItem(LS_KEY, JSON.stringify(CFG));
+}
+
+async function tryConnect(){
+  const repo = document.getElementById('s-repo').value.trim();
+  const branch = document.getElementById('s-branch').value.trim() || 'main';
+  const token = document.getElementById('s-token').value.trim();
+  const errEl = document.getElementById('setupErr');
+  errEl.textContent = '';
+
+  const parts = repo.split('/');
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    errEl.textContent = '저장소 형식이 올바르지 않습니다. "owner/repo" 형태로 입력해 주세요.';
+    return;
+  }
+  if (!token) {
+    errEl.textContent = 'Personal Access Token을 입력해 주세요.';
+    return;
+  }
+
+  const btn = document.getElementById('connectBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>연결 확인 중...';
+
+  CFG = {owner: parts[0], repo: parts[1], branch, token};
+  try {
+    const res = await fetch(`https://api.github.com/repos/${CFG.owner}/${CFG.repo}`, {headers: ghHeaders()});
+    if (res.status === 401) throw new Error('토큰이 올바르지 않습니다.');
+    if (res.status === 404) throw new Error('저장소를 찾을 수 없습니다. 이름과 토큰 권한을 확인해 주세요.');
+    if (!res.ok) throw new Error('연결 실패 (' + res.status + ')');
+    saveCfg();
+    showApp();
+  } catch(e) {
+    errEl.textContent = e.message;
+    CFG = null;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '연결하기';
+  }
+}
+
+document.getElementById('connectBtn').addEventListener('click', tryConnect);
+
+document.getElementById('disconnectBtn').addEventListener('click', () => {
+  if (!confirm('연결을 해제하시겠습니까? 저장된 토큰이 이 브라우저에서 삭제됩니다.')) return;
+  localStorage.removeItem(LS_KEY);
+  location.reload();
+});
+
+// ---------------- App shell ----------------
+
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    ['text','images','settings'].forEach(t => {
+      document.getElementById('tab-'+t).style.display = (t === btn.dataset.tab) ? 'block' : 'none';
+    });
+    if (btn.dataset.tab === 'images') loadImages();
+  };
+});
+
+async function showApp(){
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('repoBadge').textContent = `${CFG.owner}/${CFG.repo} (${CFG.branch})`;
+  document.getElementById('set-repo').textContent = `${CFG.owner}/${CFG.repo}`;
+  document.getElementById('set-branch').textContent = CFG.branch;
+
+  try {
+    const [ko, en] = await Promise.all([ghGetFile('content.json'), ghGetFile('content-en.json')]);
+    CONTENT.ko = JSON.parse(b64DecodeUnicode(ko.content));
+    CONTENT.en = JSON.parse(b64DecodeUnicode(en.content));
+    SHAS.ko = ko.sha;
+    SHAS.en = en.sha;
+    document.getElementById('loadingHint').style.display = 'none';
+    renderText();
+  } catch(e) {
+    document.getElementById('loadingHint').textContent = '콘텐츠를 불러오지 못했습니다: ' + e.message;
+  }
+}
+
+document.getElementById('langToggle').addEventListener('click', (e) => {
+  const btn = e.target.closest('.lt-btn');
+  if (!btn) return;
+  if (Object.keys(CHANGES[CUR_LANG]).length > 0) {
+    if (!confirm('저장하지 않은 변경사항이 있습니다. 언어를 전환하면 해당 변경사항은 사라집니다. 계속할까요?')) return;
+    CHANGES[CUR_LANG] = {};
+  }
+  CUR_LANG = btn.dataset.lang;
+  document.querySelectorAll('.lt-btn').forEach(b => b.classList.toggle('active', b === btn));
+  renderText();
+  updateSavebar();
+});
+
+function pageLabel(fname){
+  const map = {'index.html':'홈 (index)','company.html':'회사소개','brands.html':'브랜드','science.html':'사이언스',
+  'distribution.html':'유통','partnership.html':'파트너십','contact.html':'문의','404.html':'404 페이지'};
+  if(map[fname]) return map[fname];
+  return fname.replace('.html','');
+}
+
+function escapeHtml(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function renderText(){
+  const data = CONTENT[CUR_LANG];
+  const groups = {};
+  Object.entries(data).forEach(([key, item]) => {
+    (groups[item.page] = groups[item.page] || []).push([key, item]);
+  });
+  const order = Object.keys(groups).sort();
+  const el = document.getElementById('textFields');
+  el.innerHTML = order.map(page => {
+    const items = groups[page];
+    const rows = items.map(([key, item]) => `
+      <div class="field" data-key="${key}">
+        <label>${item.label || key}</label>
+        <textarea data-key="${key}">${escapeHtml(item.value)}</textarea>
+        ${item.type === 'rich' ? `<div class="tools">
+          <button type="button" data-act="br">줄바꿈 추가</button>
+          <button type="button" data-act="em">선택 강조색 적용</button>
+        </div>` : ''}
+      </div>`).join('');
+    return `<details class="page-group"><summary>${pageLabel(page)} <span class="count">${items.length}개 항목</span></summary>${rows}</details>`;
+  }).join('');
+
+  el.querySelectorAll('textarea').forEach(ta => {
+    ta.addEventListener('input', () => {
+      const key = ta.dataset.key;
+      CHANGES[CUR_LANG][key] = ta.value;
+      ta.closest('.field').classList.add('changed');
+      updateSavebar();
+    });
+  });
+  el.querySelectorAll('button[data-act]').forEach(btn => {
+    btn.onclick = () => {
+      const ta = btn.closest('.field').querySelector('textarea');
+      const s = ta.selectionStart, e = ta.selectionEnd;
+      if(btn.dataset.act === 'br'){
+        ta.value = ta.value.slice(0,s) + '<br>' + ta.value.slice(e);
+      } else {
+        const sel = ta.value.slice(s,e) || '강조할 텍스트';
+        ta.value = ta.value.slice(0,s) + '<em>' + sel + '</em>' + ta.value.slice(e);
+      }
+      ta.dispatchEvent(new Event('input'));
+    };
+  });
+}
+
+function updateSavebar(){
+  const n = Object.keys(CHANGES[CUR_LANG]).length;
+  document.getElementById('changeCount').textContent = n + '개 항목 변경됨 (' + (CUR_LANG === 'ko' ? '한국어' : 'English') + ')';
+  document.getElementById('savebar').classList.toggle('show', n > 0);
+}
+
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  const lang = CUR_LANG;
+  const path = lang === 'en' ? 'content-en.json' : 'content.json';
+  const btn = document.getElementById('saveBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>저장 중...';
+  try {
+    Object.keys(CHANGES[lang]).forEach(k => { CONTENT[lang][k].value = CHANGES[lang][k]; });
+    const newContentStr = JSON.stringify(CONTENT[lang], null, 1);
+    const result = await ghPutFile(path, newContentStr, SHAS[lang], `Update ${lang.toUpperCase()} text content via admin panel`);
+    SHAS[lang] = result.content.sha;
+    CHANGES[lang] = {};
+    document.querySelectorAll('.field.changed').forEach(f=>f.classList.remove('changed'));
+    updateSavebar();
+    toast('저장되었습니다. GitHub Pages 배포까지 보통 30초~2분 정도 걸립니다.');
+  } catch(e) {
+    toast('저장 실패: ' + e.message, true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '변경사항 저장';
+  }
+});
+
+// ---------------- Images ----------------
+
+let IMG_DIR_CACHE = null;
+
+async function loadImages(){
+  const grid = document.getElementById('imgGrid');
+  grid.innerHTML = '<p class="hint">불러오는 중...</p>';
+  try {
+    const files = await ghGetFile('assets');
+    IMG_DIR_CACHE = {};
+    const exts = ['webp','png','jpg','jpeg','svg'];
+    const imgFiles = files.filter(f => f.type === 'file' && exts.includes(f.name.split('.').pop().toLowerCase()));
+    imgFiles.forEach(f => IMG_DIR_CACHE[f.name] = f);
+
+    grid.innerHTML = imgFiles.map(f => `
+      <div class="img-card" data-name="${f.name}">
+        <div class="thumb"><img src="${f.download_url}" alt="${f.name}"></div>
+        <div class="meta">${f.name}<br>${(f.size/1024).toFixed(0)} KB</div>
+        <label class="upbtn">교체
+          <input type="file" accept="image/*,.svg">
+        </label>
+        <div class="drop">업로드 중...</div>
+      </div>`).join('');
+
+    grid.querySelectorAll('.img-card').forEach(card => {
+      const name = card.dataset.name;
+      const fileInput = card.querySelector('input[type=file]');
+      fileInput.addEventListener('change', () => {
+        if(fileInput.files[0]) doUpload(card, name, fileInput.files[0]);
+      });
+      card.addEventListener('dragover', e => { e.preventDefault(); card.classList.add('dragover'); });
+      card.addEventListener('dragleave', () => card.classList.remove('dragover'));
+      card.addEventListener('drop', e => {
+        e.preventDefault();
+        card.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if(file) doUpload(card, name, file);
+      });
+    });
+  } catch(e) {
+    grid.innerHTML = '<p class="hint">이미지 목록을 불러오지 못했습니다: ' + e.message + '</p>';
+  }
+}
+
+function fileToDataURL(file){
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+// Convert an uploaded image to match the target file's format (so the existing
+// <img src="assets/x.webp"> reference keeps working), using the Canvas API.
+function convertImage(dataUrl, targetExt){
+  return new Promise((resolve, reject) => {
+    const mimeMap = {webp:'image/webp', png:'image/png', jpg:'image/jpeg', jpeg:'image/jpeg'};
+    const mime = mimeMap[targetExt];
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob(blob => {
+        if (!blob) { reject(new Error('이미지 변환 실패 (이 브라우저는 ' + targetExt + ' 인코딩을 지원하지 않을 수 있습니다)')); return; }
+        const r = new FileReader();
+        r.onload = () => resolve(r.result.split(',')[1]); // base64 only
+        r.onerror = reject;
+        r.readAsDataURL(blob);
+      }, mime, 0.92);
+    };
+    img.onerror = reject;
+    img.src = dataUrl;
+  });
+}
+
+async function doUpload(card, target, file){
+  card.classList.add('uploading');
+  try {
+    const targetExt = target.split('.').pop().toLowerCase();
+    let base64;
+    if (targetExt === 'svg') {
+      const text = await file.text();
+      if (text.indexOf('<svg') === -1) throw new Error('SVG 파일이 아닙니다.');
+      base64 = b64EncodeUnicode(text);
+    } else {
+      const dataUrl = await fileToDataURL(file);
+      base64 = await convertImage(dataUrl, targetExt);
+    }
+    const existing = IMG_DIR_CACHE[target];
+    const result = await ghPutBinaryFile('assets/' + target, base64, existing ? existing.sha : undefined, `Replace assets/${target} via admin panel`);
+    IMG_DIR_CACHE[target] = {name: target, sha: result.content.sha, download_url: result.content.download_url, size: result.content.size};
+    card.querySelector('.thumb img').src = result.content.download_url + '?t=' + Date.now();
+    toast(target + ' 이미지가 저장소에 반영되었습니다. 사이트 적용까지 잠시 걸릴 수 있어요.');
+  } catch(e) {
+    toast('업로드 실패: ' + e.message, true);
+  } finally {
+    card.classList.remove('uploading');
+  }
+}
+
+// ---------------- Boot ----------------
+
+loadCfg();
+if (CFG && CFG.owner && CFG.token) {
+  showApp();
+} else {
+  document.getElementById('setup-screen').style.display = 'block';
+}
+</script>
+</body>
+</html>
