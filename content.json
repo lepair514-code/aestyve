@@ -1195,7 +1195,7 @@
  },
  "product-plla.h1.1": {
   "type": "rich",
-  "value": "Innofill PLLA",
+  "value": "Innofill PLLA 200mg",
   "label": "Innofill PLLA",
   "page": "product-plla.html"
  },
@@ -1213,13 +1213,13 @@
  },
  "product-plla.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-plla.html"
  },
  "product-plla.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "aestyve@naver.com",
   "label": "info@aestyve.com",
   "page": "product-plla.html"
  },
