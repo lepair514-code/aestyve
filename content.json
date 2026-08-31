@@ -49,19 +49,19 @@
  },
  "brands.h3.2": {
   "type": "rich",
-  "value": "Revibe PN Skinbooster",
+  "value": "Revibe PN",
   "label": "Revibe PN",
   "page": "brands.html"
  },
  "brands.h3.3": {
   "type": "rich",
-  "value": "Liquid PCL 2mL",
+  "value": "Liquid PCL",
   "label": "Liquid PCL",
   "page": "brands.html"
  },
  "brands.h3.4": {
   "type": "rich",
-  "value": "INNOFILL PLLA 200mg",
+  "value": "Innofill PLLA",
   "label": "Innofill PLLA",
   "page": "brands.html"
  },
@@ -79,13 +79,13 @@
  },
  "brands.p.2": {
   "type": "plain",
-  "value": "Dermal Filler / Cross-linked HA",
+  "value": "α · β · γ / Cross-linked HA",
   "label": "α · β · γ / Cross-linked HA",
   "page": "brands.html"
  },
  "brands.p.3": {
   "type": "plain",
-  "value": "PN 1.5mL + HA 0.5mL",
+  "value": "PN 85% + HA 15%",
   "label": "PN 85% + HA 15%",
   "page": "brands.html"
  },
@@ -115,13 +115,13 @@
  },
  "brands.p.8": {
   "type": "plain",
-  "value": "Aestyve · Seoul, Republic of Korea",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "brands.html"
  },
  "brands.p.9": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "brands.html"
  },
@@ -247,13 +247,13 @@
  },
  "company.p.4": {
   "type": "plain",
-  "value": "Aestyve · Seoul, Republic of Korea",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "company.html"
  },
  "company.p.5": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "company.html"
  },
@@ -272,7 +272,7 @@
  },
  "contact.contact-desc.1": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "contact.html",
   "group": "contact"
@@ -417,7 +417,7 @@
  },
  "distribution.p.7": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "distribution.html"
  },
@@ -897,14 +897,14 @@
  },
  "product-ha.info-label.2": {
   "type": "plain",
-  "value": "Lidociane",
+  "value": "3 mg/mL",
   "label": "3 mg/mL",
   "page": "product-ha.html",
   "group": "info"
  },
  "product-ha.info-desc.2": {
   "type": "plain",
-  "value": "HCl 0.3mL",
+  "value": "Lidocaine HCl",
   "label": "Lidocaine HCl",
   "page": "product-ha.html",
   "group": "info"
@@ -931,19 +931,19 @@
  },
  "product-ha.h3.1": {
   "type": "rich",
-  "value": "Ep.αlpha",
+  "value": "Ep. α Alpha",
   "label": "Ep. α Alpha",
   "page": "product-ha.html"
  },
  "product-ha.h3.2": {
   "type": "rich",
-  "value": "Ep.βeta",
+  "value": "Ep. β Beta",
   "label": "Ep. β Beta",
   "page": "product-ha.html"
  },
  "product-ha.h3.3": {
   "type": "rich",
-  "value": "Ep.Gamma",
+  "value": "Ep. γ Gamma",
   "label": "Ep. γ Gamma",
   "page": "product-ha.html"
  },
@@ -979,13 +979,13 @@
  },
  "product-ha.p.6": {
   "type": "plain",
-  "value": "Aestyve · Seoul, Republic of Korea",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-ha.html"
  },
  "product-ha.p.7": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-ha.html"
  },
@@ -1063,7 +1063,7 @@
  },
  "product-nad.p.4": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-nad.html"
  },
@@ -1135,13 +1135,13 @@
  },
  "product-pcl.p.3": {
   "type": "plain",
-  "value": "Aestyve · Seoul, Republic of Korea",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-pcl.html"
  },
  "product-pcl.p.4": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-pcl.html"
  },
@@ -1195,7 +1195,7 @@
  },
  "product-plla.h1.1": {
   "type": "rich",
-  "value": "Innofill PLLA 200mg",
+  "value": "Innofill PLLA",
   "label": "Innofill PLLA",
   "page": "product-plla.html"
  },
@@ -1213,13 +1213,13 @@
  },
  "product-plla.p.3": {
   "type": "plain",
-  "value": "Aestyve · Seoul, Republic of Korea",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-plla.html"
  },
  "product-plla.p.4": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-plla.html"
  },
@@ -1231,7 +1231,7 @@
  },
  "product-revibe.info-label.1": {
   "type": "plain",
-  "value": "PN 1.5mL",
+  "value": "PN 85%",
   "label": "PN 85%",
   "page": "product-revibe.html",
   "group": "info"
@@ -1245,7 +1245,7 @@
  },
  "product-revibe.info-label.2": {
   "type": "plain",
-  "value": "HA 0.5mL",
+  "value": "HA 15%",
   "label": "HA 15%",
   "page": "product-revibe.html",
   "group": "info"
@@ -1279,7 +1279,7 @@
  },
  "product-revibe.p.1": {
   "type": "plain",
-  "value": "PN 1.5mL + HA 0.5mL조합, Physiological Balance와 Osmolality Balance 접근을 바탕으로 피부 컨디셔닝을 위한 전문 PN 포트폴리오입니다.",
+  "value": "PN 85% + HA 15% 조합, Physiological Balance와 Osmolality Balance 접근을 바탕으로 피부 컨디셔닝을 위한 전문 PN 포트폴리오입니다.",
   "label": "PN 85% + HA 15% 조합, Physiological Balance와 Osm…",
   "page": "product-revibe.html"
  },
@@ -1291,13 +1291,13 @@
  },
  "product-revibe.p.3": {
   "type": "plain",
-  "value": "Aestyve · Seoul, Republic of Korea",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-revibe.html"
  },
  "product-revibe.p.4": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-revibe.html"
  },
@@ -1369,13 +1369,13 @@
  },
  "product-rvsc.p.3": {
   "type": "plain",
-  "value": "Aestyve · Seoul, Republic of Korea",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-rvsc.html"
  },
  "product-rvsc.p.4": {
   "type": "plain",
-  "value": "aestyve@naver.com",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-rvsc.html"
  },
@@ -1491,7 +1491,7 @@
  },
  "distribution.notice.1": {
   "type": "plain",
-  "value": "유통중인 외부 브랜드의 상표권은 각 권리자에게 있으며 Aestyve 자체 브랜드 제품이 아닙니다. 실제 취급 품목과 공급 국가는 문의 시 확인하도록 구성했습니다.",
+  "value": "Restylane, Replengen, Juvéderm 등 외부 브랜드의 상표권은 각 권리자에게 있으며 Aestyve 자체 브랜드 제품이 아닙니다. 실제 취급 품목과 공급 국가는 문의 시 확인하도록 구성했습니다.",
   "label": "Restylane, Replengen, Juvéderm 등 외부 브랜드의 상표권은 …",
   "page": "distribution.html"
  },

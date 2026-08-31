@@ -1,6 +1,8 @@
 (function(){
-  var isEn = location.pathname.indexOf('/en/') === 0 || location.pathname === '/en';
-  var url = isEn ? '/content-en.json' : '/content.json';
+  var path = location.pathname;
+  var url = '/content.json';
+  if (path.indexOf('/en/') === 0 || path === '/en') url = '/content-en.json';
+  else if (path.indexOf('/zh/') === 0 || path === '/zh') url = '/content-zh.json';
   fetch(url, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(data){
     document.querySelectorAll('[data-cms]').forEach(function(el){
       var item = data[el.getAttribute('data-cms')];

@@ -100,6 +100,7 @@ button.primary:disabled{opacity:.5;cursor:default}
       <div class="lang-toggle" id="langToggle">
         <button type="button" class="lt-btn active" data-lang="ko">한국어 (KO)</button>
         <button type="button" class="lt-btn" data-lang="en">English (EN)</button>
+        <button type="button" class="lt-btn" data-lang="zh">中文 (ZH)</button>
       </div>
       <p class="hint" id="loadingHint">불러오는 중...</p>
       <div id="textFields"></div>
@@ -134,9 +135,9 @@ const LS_KEY = 'aestyve_admin_gh';
 const SS_KEY = 'aestyve_admin_gh_session';
 let CFG = null;           // {owner, repo, branch, token}
 let CONFIG_BLOB = null;   // encrypted blob loaded from config.enc.json
-let CONTENT = {ko:{}, en:{}};
-let SHAS = {ko:null, en:null};
-let CHANGES = {ko:{}, en:{}};
+let CONTENT = {ko:{}, en:{}, zh:{}};
+let SHAS = {ko:null, en:null, zh:null};
+let CHANGES = {ko:{}, en:{}, zh:{}};
 let CUR_LANG = 'ko';
 
 function toast(msg, isErr){
@@ -300,11 +301,13 @@ async function showApp(){
   document.getElementById('set-branch').textContent = CFG.branch;
 
   try {
-    const [ko, en] = await Promise.all([ghGetFile('content.json'), ghGetFile('content-en.json')]);
+    const [ko, en, zh] = await Promise.all([ghGetFile('content.json'), ghGetFile('content-en.json'), ghGetFile('content-zh.json')]);
     CONTENT.ko = JSON.parse(b64DecodeUnicode(ko.content));
     CONTENT.en = JSON.parse(b64DecodeUnicode(en.content));
+    CONTENT.zh = JSON.parse(b64DecodeUnicode(zh.content));
     SHAS.ko = ko.sha;
     SHAS.en = en.sha;
+    SHAS.zh = zh.sha;
     document.getElementById('loadingHint').style.display = 'none';
     renderText();
   } catch(e) {
@@ -385,13 +388,13 @@ function renderText(){
 
 function updateSavebar(){
   const n = Object.keys(CHANGES[CUR_LANG]).length;
-  document.getElementById('changeCount').textContent = n + '개 항목 변경됨 (' + (CUR_LANG === 'ko' ? '한국어' : 'English') + ')';
+  document.getElementById('changeCount').textContent = n + '개 항목 변경됨 (' + ({ko:'한국어', en:'English', zh:'中文'}[CUR_LANG]) + ')';
   document.getElementById('savebar').classList.toggle('show', n > 0);
 }
 
 document.getElementById('saveBtn').addEventListener('click', async () => {
   const lang = CUR_LANG;
-  const path = lang === 'en' ? 'content-en.json' : 'content.json';
+  const path = {ko:'content.json', en:'content-en.json', zh:'content-zh.json'}[lang];
   const btn = document.getElementById('saveBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>저장 중...';
