@@ -1,1540 +1,1540 @@
 {
-  "404.h1.1": {
-    "type": "rich",
-    "value": "Page not found.",
-    "label": "Page not found.",
-    "page": "404.html"
-  },
-  "404.p.1": {
-    "type": "plain",
-    "value": "The page you requested could not be found.",
-    "label": "The page you requested could not be found.",
-    "page": "404.html"
-  },
-  "404.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "404.html"
-  },
-  "404.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "404.html"
-  },
-  "404.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "404.html"
-  },
-  "404.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "404.html"
-  },
-  "brands.h1.1": {
-    "type": "rich",
-    "value": "One standard.<br>Multiple technologies.",
-    "label": "One standard. Multiple technologies.",
-    "page": "brands.html"
-  },
-  "brands.h3.1": {
-    "type": "rich",
-    "value": "Aestyve HA",
-    "label": "Aestyve HA",
-    "page": "brands.html"
-  },
-  "brands.h3.2": {
-    "type": "rich",
-    "value": "Revibe PN",
-    "label": "Revibe PN",
-    "page": "brands.html"
-  },
-  "brands.h3.3": {
-    "type": "rich",
-    "value": "Liquid PCL",
-    "label": "Liquid PCL",
-    "page": "brands.html"
-  },
-  "brands.h3.4": {
-    "type": "rich",
-    "value": "Innofill PLLA",
-    "label": "Innofill PLLA",
-    "page": "brands.html"
-  },
-  "brands.h3.5": {
-    "type": "rich",
-    "value": "RVSC Exosome",
-    "label": "RVSC Exosome",
-    "page": "brands.html"
-  },
-  "brands.p.1": {
-    "type": "plain",
-    "value": "We organize HA, PN, PCL, PLLA, Exosome, and Advanced Solutions by purpose, unified under one brand standard: Aestyve.",
-    "label": "We organize HA, PN, PCL, PLLA, Exosome, and Ad…",
-    "page": "brands.html"
-  },
-  "brands.p.2": {
-    "type": "plain",
-    "value": "α · β · γ / Cross-linked HA",
-    "label": "α · β · γ / Cross-linked HA",
-    "page": "brands.html"
-  },
-  "brands.p.3": {
-    "type": "plain",
-    "value": "PN 1.5 mL + HA 0.5 mL",
-    "label": "PN 85% + HA 15%",
-    "page": "brands.html"
-  },
-  "brands.p.4": {
-    "type": "plain",
-    "value": "Liquid PCL · 2.0mL/Vial",
-    "label": "Liquid PCL · 2.0mL/Vial",
-    "page": "brands.html"
-  },
-  "brands.p.5": {
-    "type": "plain",
-    "value": "PLLA-based biostimulation category",
-    "label": "PLLA-based biostimulation category",
-    "page": "brands.html"
-  },
-  "brands.p.6": {
-    "type": "plain",
-    "value": "Exosome-based professional solution",
-    "label": "Exosome-based professional solution",
-    "page": "brands.html"
-  },
-  "brands.p.7": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "brands.html"
-  },
-  "brands.p.8": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "brands.html"
-  },
-  "brands.p.9": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "brands.html"
-  },
-  "brands.p.10": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "brands.html"
-  },
-  "company.info-label.1": {
-    "type": "plain",
-    "value": "Science",
-    "label": "Science",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-desc.1": {
-    "type": "plain",
-    "value": "Evidence-based technology and product information",
-    "label": "Evidence-based technology and product informat…",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-label.2": {
-    "type": "plain",
-    "value": "Precision",
-    "label": "Precision",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-desc.2": {
-    "type": "plain",
-    "value": "Precision in quality detail and communication",
-    "label": "Precision in quality detail and communication",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-label.3": {
-    "type": "plain",
-    "value": "Quality",
-    "label": "Quality",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-desc.3": {
-    "type": "plain",
-    "value": "A philosophy that prioritizes standards over price",
-    "label": "A philosophy that prioritizes standards over p…",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-label.4": {
-    "type": "plain",
-    "value": "Innovation",
-    "label": "Innovation",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-desc.4": {
-    "type": "plain",
-    "value": "HA · PN · PCL · PLLA · Exosome",
-    "label": "HA · PN · PCL · PLLA · Exosome",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-label.5": {
-    "type": "plain",
-    "value": "Partnership",
-    "label": "Partnership",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-desc.5": {
-    "type": "plain",
-    "value": "Relationships that grow together with the global market",
-    "label": "Relationships that grow together with the glob…",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-label.6": {
-    "type": "plain",
-    "value": "Korea",
-    "label": "Korea",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.info-desc.6": {
-    "type": "plain",
-    "value": "Korean medical aesthetics expertise",
-    "label": "Korean medical aesthetics expertise",
-    "page": "company.html",
-    "group": "info"
-  },
-  "company.h1.1": {
-    "type": "rich",
-    "value": "Building brands,<br>distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "company.html"
-  },
-  "company.h2.1": {
-    "type": "rich",
-    "value": "Korean Medical Aesthetics,<br><em>built for the global market.</em>",
-    "label": "Korean Medical Aesthetics, built for the globa…",
-    "page": "company.html"
-  },
-  "company.p.1": {
-    "type": "plain",
-    "value": "Aestyve develops its own brands on the foundation of Korean medical aesthetics technology and rigorous quality standards, delivering curated solutions to global partners.",
-    "label": "Aestyve develops its own brands on the foundat…",
-    "page": "company.html"
-  },
-  "company.p.2": {
-    "type": "plain",
-    "value": "We position ourselves not as a cosmetics-driven K-Beauty brand, but as a Medical Aesthetics company built for clinical professionals and distribution partners.",
-    "label": "We position ourselves not as a cosmetics-drive…",
-    "page": "company.html"
-  },
-  "company.p.3": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "company.html"
-  },
-  "company.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "company.html"
-  },
-  "company.p.5": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "company.html"
-  },
-  "company.p.6": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "company.html"
-  },
-  "contact.contact-label.1": {
-    "type": "plain",
-    "value": "EMAIL",
-    "label": "EMAIL",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.contact-desc.1": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.contact-label.2": {
-    "type": "plain",
-    "value": "LOCATION",
-    "label": "LOCATION",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.contact-desc.2": {
-    "type": "plain",
-    "value": "Seoul · Republic of Korea",
-    "label": "Seoul · Republic of Korea",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.contact-label.3": {
-    "type": "plain",
-    "value": "BUSINESS",
-    "label": "BUSINESS",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.contact-desc.3": {
-    "type": "plain",
-    "value": "Brand · Distribution · Global Partnership",
-    "label": "Brand · Distribution · Global Partnership",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.contact-label.4": {
-    "type": "plain",
-    "value": "LANGUAGE",
-    "label": "LANGUAGE",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.contact-desc.4": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "contact.html",
-    "group": "contact"
-  },
-  "contact.h2.1": {
-    "type": "rich",
-    "value": "Tell us where<br>you want to grow.",
-    "label": "Tell us where you want to grow.",
-    "page": "contact.html"
-  },
-  "contact.p.1": {
-    "type": "plain",
-    "value": "Let us know your purpose — product inquiries, regional distribution, new partnerships, or exhibition collaboration — and we'll guide you to the right next step.",
-    "label": "Let us know your purpose — product inquiries, …",
-    "page": "contact.html"
-  },
-  "contact.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "contact.html"
-  },
-  "contact.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "contact.html"
-  },
-  "contact.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "contact.html"
-  },
-  "contact.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "contact.html"
-  },
-  "distribution.h1.1": {
-    "type": "rich",
-    "value": "Selected brands.<br>Clear positioning.",
-    "label": "Selected brands. Clear positioning.",
-    "page": "distribution.html"
-  },
-  "distribution.h3.1": {
-    "type": "rich",
-    "value": "Global Injectables",
-    "label": "Global Injectables",
-    "page": "distribution.html"
-  },
-  "distribution.h3.2": {
-    "type": "rich",
-    "value": "Regenerative Aesthetics",
-    "label": "Regenerative Aesthetics",
-    "page": "distribution.html"
-  },
-  "distribution.h3.3": {
-    "type": "rich",
-    "value": "Skin & Device Solutions",
-    "label": "Skin & Device Solutions",
-    "page": "distribution.html"
-  },
-  "distribution.p.1": {
-    "type": "plain",
-    "value": "We draw a clear line between Aestyve's own products and third-party brand distribution. Rather than carrying everything, we select for market viability, brand value, and our partners' real needs.",
-    "label": "We draw a clear line between Aestyve's own pro…",
-    "page": "distribution.html"
-  },
-  "distribution.p.2": {
-    "type": "plain",
-    "value": "A global portfolio of injectables and biostimulators",
-    "label": "A global portfolio of injectables and biostimu…",
-    "page": "distribution.html"
-  },
-  "distribution.p.3": {
-    "type": "plain",
-    "value": "Skin regeneration and collagen-based categories",
-    "label": "Skin regeneration and collagen-based categorie…",
-    "page": "distribution.html"
-  },
-  "distribution.p.4": {
-    "type": "plain",
-    "value": "Medical devices and professional skin solutions",
-    "label": "Medical devices and professional skin solution…",
-    "page": "distribution.html"
-  },
-  "distribution.p.5": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "distribution.html"
-  },
-  "distribution.p.6": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "distribution.html"
-  },
-  "distribution.p.7": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "distribution.html"
-  },
-  "distribution.p.8": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "distribution.html"
-  },
-  "index.qrow-label.1": {
-    "type": "plain",
-    "value": "Brand Development",
-    "label": "Brand Development",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.qrow-desc.1": {
-    "type": "plain",
-    "value": "We design our own brands based on clear targeting and portfolio strategy.",
-    "label": "We design our own brands based on clear target…",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.qrow-label.2": {
-    "type": "plain",
-    "value": "Quality Documentation",
-    "label": "Quality Documentation",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.qrow-desc.2": {
-    "type": "plain",
-    "value": "We provide the information partners need transparently, grounded in real product data and quality documentation.",
-    "label": "We provide the information partners need trans…",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.qrow-label.3": {
-    "type": "plain",
-    "value": "Professional Communication",
-    "label": "Professional Communication",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.qrow-desc.3": {
-    "type": "plain",
-    "value": "We choose clear professional language that clinicians and partners can understand, rather than exaggerated claims.",
-    "label": "We choose clear professional language that cli…",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.qrow-label.4": {
-    "type": "plain",
-    "value": "Global Compliance",
-    "label": "Global Compliance",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.qrow-desc.4": {
-    "type": "plain",
-    "value": "We manage global communication with each country's registration and claims regulations in mind.",
-    "label": "We manage global communication with each count…",
-    "page": "index.html",
-    "group": "qrow"
-  },
-  "index.partner-label.1": {
-    "type": "plain",
-    "value": "Brand",
-    "label": "Brand",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.partner-desc.1": {
-    "type": "plain",
-    "value": "Brand development",
-    "label": "Brand development",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.partner-label.2": {
-    "type": "plain",
-    "value": "Portfolio",
-    "label": "Portfolio",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.partner-desc.2": {
-    "type": "plain",
-    "value": "Curated distribution",
-    "label": "Curated distribution",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.partner-label.3": {
-    "type": "plain",
-    "value": "Market",
-    "label": "Market",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.partner-desc.3": {
-    "type": "plain",
-    "value": "Market support",
-    "label": "Market support",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.partner-label.4": {
-    "type": "plain",
-    "value": "Global",
-    "label": "Global",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.partner-desc.4": {
-    "type": "plain",
-    "value": "Global network",
-    "label": "Global network",
-    "page": "index.html",
-    "group": "partner"
-  },
-  "index.h1.1": {
-    "type": "rich",
-    "value": "Building brands.<br><em>Distributing standards.</em>",
-    "label": "Building brands. Distributing standards.",
-    "page": "index.html"
-  },
-  "index.h2.1": {
-    "type": "rich",
-    "value": "Not just a single product —<br><em>we shape a perspective on the aesthetics market.</em>",
-    "label": "Not just a single product — we shape a perspec…",
-    "page": "index.html"
-  },
-  "index.h2.2": {
-    "type": "rich",
-    "value": "Designed with a clear purpose.",
-    "label": "Designed with a clear purpose.",
-    "page": "index.html"
-  },
-  "index.h2.3": {
-    "type": "rich",
-    "value": "Curated brands,<br>trusted partnerships",
-    "label": "Curated brands, trusted partnerships",
-    "page": "index.html"
-  },
-  "index.h2.4": {
-    "type": "rich",
-    "value": "Trust<br><em>is built on principle,</em><br>and made whole.",
-    "label": "Trust is built on principle, and made whole.",
-    "page": "index.html"
-  },
-  "index.h2.5": {
-    "type": "rich",
-    "value": "Beyond the product,<br>we create value together in the market.",
-    "label": "Beyond the product, we create value together i…",
-    "page": "index.html"
-  },
-  "index.h3.1": {
-    "type": "rich",
-    "value": "AESTYVE OWN BRANDS",
-    "label": "AESTYVE OWN BRANDS",
-    "page": "index.html"
-  },
-  "index.h3.2": {
-    "type": "rich",
-    "value": "CURATED DISTRIBUTION",
-    "label": "CURATED DISTRIBUTION",
-    "page": "index.html"
-  },
-  "index.h3.3": {
-    "type": "rich",
-    "value": "Revibe PN",
-    "label": "Revibe PN",
-    "page": "index.html"
-  },
-  "index.h3.4": {
-    "type": "rich",
-    "value": "Liquid PCL",
-    "label": "Liquid PCL",
-    "page": "index.html"
-  },
-  "index.h3.5": {
-    "type": "rich",
-    "value": "HA Filler Series",
-    "label": "HA Filler Series",
-    "page": "index.html"
-  },
-  "index.h3.6": {
-    "type": "rich",
-    "value": "Innofill PLLA",
-    "label": "Innofill PLLA",
-    "page": "index.html"
-  },
-  "index.h3.7": {
-    "type": "rich",
-    "value": "RVSC Exosome",
-    "label": "RVSC Exosome",
-    "page": "index.html"
-  },
-  "index.h3.8": {
-    "type": "rich",
-    "value": "Global Injectables",
-    "label": "Global Injectables",
-    "page": "index.html"
-  },
-  "index.h3.9": {
-    "type": "rich",
-    "value": "Regenerative Aesthetics",
-    "label": "Regenerative Aesthetics",
-    "page": "index.html"
-  },
-  "index.h3.10": {
-    "type": "rich",
-    "value": "Skin & Device Solutions",
-    "label": "Skin & Device Solutions",
-    "page": "index.html"
-  },
-  "index.h3.11": {
-    "type": "rich",
-    "value": "We don't compete on price.<br><em>We compete on standards.</em>",
-    "label": "We don't compete on price. We compete on stand…",
-    "page": "index.html"
-  },
-  "index.p.1": {
-    "type": "plain",
-    "value": "Aestyve develops its own brands on the foundation of Korean medical aesthetics technology and precise quality standards, connecting curated professional products to the global market.",
-    "label": "Aestyve develops its own brands on the foundat…",
-    "page": "index.html"
-  },
-  "index.p.2": {
-    "type": "plain",
-    "value": "From brand planning to product portfolio, quality communication, and global distribution, Aestyve connects every step under one standard. Trustworthy solutions and lasting partnerships are at our core.",
-    "label": "From brand planning to product portfolio, qual…",
-    "page": "index.html"
-  },
-  "index.p.3": {
-    "type": "plain",
-    "value": "We develop our own medical aesthetics portfolio, clearly organized by purpose and technology.",
-    "label": "We develop our own medical aesthetics portfoli…",
-    "page": "index.html"
-  },
-  "index.p.4": {
-    "type": "plain",
-    "value": "We select the brands our global partners need, based on proven market fit and expertise.",
-    "label": "We select the brands our global partners need,…",
-    "page": "index.html"
-  },
-  "index.p.5": {
-    "type": "plain",
-    "value": "We clearly define the role of each technology to expand clinical experience and improve patient outcomes.",
-    "label": "We clearly define the role of each technology …",
-    "page": "index.html"
-  },
-  "index.p.6": {
-    "type": "plain",
-    "value": "Premium PN Skin Booster · PN + HA",
-    "label": "Premium PN Skin Booster · PN + HA",
-    "page": "index.html"
-  },
-  "index.p.7": {
-    "type": "plain",
-    "value": "Liquid PCL · Collagen-oriented solution",
-    "label": "Liquid PCL · Collagen-oriented solution",
-    "page": "index.html"
-  },
-  "index.p.8": {
-    "type": "plain",
-    "value": "Advanced Cross-linked HA · α / β / γ",
-    "label": "Advanced Cross-linked HA · α / β / γ",
-    "page": "index.html"
-  },
-  "index.p.9": {
-    "type": "plain",
-    "value": "PLLA-based progressive aesthetic solution",
-    "label": "PLLA-based progressive aesthetic solution",
-    "page": "index.html"
-  },
-  "index.p.10": {
-    "type": "plain",
-    "value": "Exosome-based professional skin solution",
-    "label": "Exosome-based professional skin solution",
-    "page": "index.html"
-  },
-  "index.p.11": {
-    "type": "plain",
-    "value": "Aestyve selects and connects proven aesthetic brands from the global market with a perspective grounded in real sales needs.",
-    "label": "Aestyve selects and connects proven aesthetic …",
-    "page": "index.html"
-  },
-  "index.p.12": {
-    "type": "rich",
-    "value": "Injectables & Biostimulators<br>An injectable portfolio built around global trends",
-    "label": "Injectables & Biostimulators An injectable por…",
-    "page": "index.html"
-  },
-  "index.p.13": {
-    "type": "rich",
-    "value": "Skin Regeneration & Collagen Stimulators<br>Regeneration and collagen-stimulating solutions",
-    "label": "Skin Regeneration & Collagen Stimulators Regen…",
-    "page": "index.html"
-  },
-  "index.p.14": {
-    "type": "rich",
-    "value": "Medical Devices & Skincare<br>Medical device and skincare solutions",
-    "label": "Medical Devices & Skincare Medical device and …",
-    "page": "index.html"
-  },
-  "index.p.15": {
-    "type": "plain",
-    "value": "We aim to be chosen for technology, quality, consistency, and expertise — not price.",
-    "label": "We aim to be chosen for technology, quality, c…",
-    "page": "index.html"
-  },
-  "index.p.16": {
-    "type": "plain",
-    "value": "From distribution to partnership, marketing materials, and exhibition collaboration, Aestyve builds a business that grows together with you.",
-    "label": "From distribution to partnership, marketing ma…",
-    "page": "index.html"
-  },
-  "index.p.17": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "index.html"
-  },
-  "index.p.18": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "index.html"
-  },
-  "index.p.19": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "index.html"
-  },
-  "index.p.20": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "index.html"
-  },
-  "partnership.info-label.1": {
-    "type": "plain",
-    "value": "Portfolio",
-    "label": "Portfolio",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-desc.1": {
-    "type": "plain",
-    "value": "Product combinations tailored to your market",
-    "label": "Product combinations tailored to your market",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-label.2": {
-    "type": "plain",
-    "value": "Marketing",
-    "label": "Marketing",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-desc.2": {
-    "type": "plain",
-    "value": "Support with catalogs, exhibition, and sales materials",
-    "label": "Support with catalogs, exhibition, and sales m…",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-label.3": {
-    "type": "plain",
-    "value": "Localization",
-    "label": "Localization",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-desc.3": {
-    "type": "plain",
-    "value": "Communication adapted to local language and market conditions",
-    "label": "Communication adapted to local language and ma…",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-label.4": {
-    "type": "plain",
-    "value": "Supply",
-    "label": "Supply",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-desc.4": {
-    "type": "plain",
-    "value": "Clear communication on orders, shipping, and lead times",
-    "label": "Clear communication on orders, shipping, and l…",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-label.5": {
-    "type": "plain",
-    "value": "Exhibition",
-    "label": "Exhibition",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-desc.5": {
-    "type": "plain",
-    "value": "On-site brand experience and exhibition collaboration",
-    "label": "On-site brand experience and exhibition collab…",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-label.6": {
-    "type": "plain",
-    "value": "Long-term",
-    "label": "Long-term",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.info-desc.6": {
-    "type": "plain",
-    "value": "Sustainable partnerships over one-off transactions",
-    "label": "Sustainable partnerships over one-off transact…",
-    "page": "partnership.html",
-    "group": "info"
-  },
-  "partnership.h1.1": {
-    "type": "rich",
-    "value": "More than supply.<br>Build the market together.",
-    "label": "More than supply. Build the market together.",
-    "page": "partnership.html"
-  },
-  "partnership.p.1": {
-    "type": "plain",
-    "value": "Aestyve aims for long-term partnerships that move together — from product supply and marketing materials to exhibition collaboration, localization, and portfolio proposals.",
-    "label": "Aestyve aims for long-term partnerships that m…",
-    "page": "partnership.html"
-  },
-  "partnership.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "partnership.html"
-  },
-  "partnership.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "partnership.html"
-  },
-  "partnership.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "partnership.html"
-  },
-  "partnership.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "partnership.html"
-  },
-  "product-ha.info-label.1": {
-    "type": "plain",
-    "value": "24 mg/mL",
-    "label": "24 mg/mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.1": {
-    "type": "plain",
-    "value": "Cross-linked Hyaluronic Acid",
-    "label": "Cross-linked Hyaluronic Acid",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-label.2": {
-    "type": "plain",
-    "value": "3 mg/mL",
-    "label": "3 mg/mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.2": {
-    "type": "plain",
-    "value": "Lidocaine HCl",
-    "label": "Lidocaine HCl",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-label.3": {
-    "type": "plain",
-    "value": "1.1 mL",
-    "label": "1.1 mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.3": {
-    "type": "plain",
-    "value": "Pre-filled syringe",
-    "label": "Pre-filled syringe",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.h1.1": {
-    "type": "rich",
-    "value": "Aestyve HA",
-    "label": "Aestyve HA",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.1": {
-    "type": "rich",
-    "value": "Ep. α Alpha",
-    "label": "Ep. α Alpha",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.2": {
-    "type": "rich",
-    "value": "Ep. β Beta",
-    "label": "Ep. β Beta",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.3": {
-    "type": "rich",
-    "value": "Ep. γ Gamma",
-    "label": "Ep. γ Gamma",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.1": {
-    "type": "plain",
-    "value": "The Aestyve HA portfolio is built on Cross-linked HA 24 mg/mL and Lidocaine HCl 3 mg/mL, structured into three rheological directions: α, β, and γ.",
-    "label": "The Aestyve HA portfolio is built on Cross-lin…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.2": {
-    "type": "plain",
-    "value": "A type designed for delicate expression and natural balance.",
-    "label": "A type designed for delicate expression and na…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.3": {
-    "type": "plain",
-    "value": "A type designed for balanced viscoelasticity and shape retention.",
-    "label": "A type designed for balanced viscoelasticity a…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.4": {
-    "type": "plain",
-    "value": "A type designed for more structural support and contour definition.",
-    "label": "A type designed for more structural support an…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.5": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.6": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.7": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.8": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "product-ha.html"
-  },
-  "product-nad.info-label.1": {
-    "type": "plain",
-    "value": "NAD+",
-    "label": "NAD+",
-    "page": "product-nad.html",
-    "group": "info"
-  },
-  "product-nad.info-desc.1": {
-    "type": "plain",
-    "value": "Package-labeled ingredient",
-    "label": "Package-labeled ingredient",
-    "page": "product-nad.html",
-    "group": "info"
-  },
-  "product-nad.info-label.2": {
-    "type": "plain",
-    "value": "NMN",
-    "label": "NMN",
-    "page": "product-nad.html",
-    "group": "info"
-  },
-  "product-nad.info-desc.2": {
-    "type": "plain",
-    "value": "Package-labeled ingredient",
-    "label": "Package-labeled ingredient",
-    "page": "product-nad.html",
-    "group": "info"
-  },
-  "product-nad.info-label.3": {
-    "type": "plain",
-    "value": "Compliance",
-    "label": "Compliance",
-    "page": "product-nad.html",
-    "group": "info"
-  },
-  "product-nad.info-desc.3": {
-    "type": "plain",
-    "value": "Registration-first communication",
-    "label": "Registration-first communication",
-    "page": "product-nad.html",
-    "group": "info"
-  },
-  "product-nad.h1.1": {
-    "type": "rich",
-    "value": "1906NAD+",
-    "label": "1906NAD+",
-    "page": "product-nad.html"
-  },
-  "product-nad.p.1": {
-    "type": "plain",
-    "value": "This product belongs to Aestyve's Advanced Aesthetic Solutions category. Final copy is designed to be governed by actual registration classification and ingredient documentation.",
-    "label": "This product belongs to Aestyve's Advanced Aes…",
-    "page": "product-nad.html"
-  },
-  "product-nad.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "product-nad.html"
-  },
-  "product-nad.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "product-nad.html"
-  },
-  "product-nad.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-nad.html"
-  },
-  "product-nad.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "product-nad.html"
-  },
-  "product-pcl.info-label.1": {
-    "type": "plain",
-    "value": "Liquid PCL",
-    "label": "Liquid PCL",
-    "page": "product-pcl.html",
-    "group": "info"
-  },
-  "product-pcl.info-desc.1": {
-    "type": "plain",
-    "value": "Liquid PCL formulation",
-    "label": "Liquid PCL formulation",
-    "page": "product-pcl.html",
-    "group": "info"
-  },
-  "product-pcl.info-label.2": {
-    "type": "plain",
-    "value": "2.0 mL",
-    "label": "2.0 mL",
-    "page": "product-pcl.html",
-    "group": "info"
-  },
-  "product-pcl.info-desc.2": {
-    "type": "plain",
-    "value": "Vial specification",
-    "label": "Vial specification",
-    "page": "product-pcl.html",
-    "group": "info"
-  },
-  "product-pcl.info-label.3": {
-    "type": "plain",
-    "value": "Collagen",
-    "label": "Collagen",
-    "page": "product-pcl.html",
-    "group": "info"
-  },
-  "product-pcl.info-desc.3": {
-    "type": "plain",
-    "value": "Collagen-oriented positioning",
-    "label": "Collagen-oriented positioning",
-    "page": "product-pcl.html",
-    "group": "info"
-  },
-  "product-pcl.h1.1": {
-    "type": "rich",
-    "value": "Aestyve Liquid PCL",
-    "label": "Aestyve Liquid PCL",
-    "page": "product-pcl.html"
-  },
-  "product-pcl.p.1": {
-    "type": "plain",
-    "value": "An Aestyve professional solution built on Liquid PCL, proposing a collagen-centered approach to skin elasticity and remodeling.",
-    "label": "An Aestyve professional solution built on Liqu…",
-    "page": "product-pcl.html"
-  },
-  "product-pcl.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "product-pcl.html"
-  },
-  "product-pcl.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "product-pcl.html"
-  },
-  "product-pcl.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-pcl.html"
-  },
-  "product-pcl.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "product-pcl.html"
-  },
-  "product-plla.info-label.1": {
-    "type": "plain",
-    "value": "PLLA",
-    "label": "PLLA",
-    "page": "product-plla.html",
-    "group": "info"
-  },
-  "product-plla.info-desc.1": {
-    "type": "plain",
-    "value": "Poly-L-Lactic Acid",
-    "label": "Poly-L-Lactic Acid",
-    "page": "product-plla.html",
-    "group": "info"
-  },
-  "product-plla.info-label.2": {
-    "type": "plain",
-    "value": "Biostimulation",
-    "label": "Biostimulation",
-    "page": "product-plla.html",
-    "group": "info"
-  },
-  "product-plla.info-desc.2": {
-    "type": "plain",
-    "value": "Progressive aesthetic approach",
-    "label": "Progressive aesthetic approach",
-    "page": "product-plla.html",
-    "group": "info"
-  },
-  "product-plla.info-label.3": {
-    "type": "plain",
-    "value": "Photo Pending",
-    "label": "Photo Pending",
-    "page": "product-plla.html",
-    "group": "info"
-  },
-  "product-plla.info-desc.3": {
-    "type": "plain",
-    "value": "To be replaced once official product photography is received",
-    "label": "To be replaced once official product photograp…",
-    "page": "product-plla.html",
-    "group": "info"
-  },
-  "product-plla.h1.1": {
-    "type": "rich",
-    "value": "Innofill PLLA",
-    "label": "Innofill PLLA",
-    "page": "product-plla.html"
-  },
-  "product-plla.p.1": {
-    "type": "plain",
-    "value": "A PLLA-based biostimulation category, with a professional portfolio carrying a distinct role and message from PCL.",
-    "label": "A PLLA-based biostimulation category, with a p…",
-    "page": "product-plla.html"
-  },
-  "product-plla.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "product-plla.html"
-  },
-  "product-plla.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "product-plla.html"
-  },
-  "product-plla.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-plla.html"
-  },
-  "product-plla.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "product-plla.html"
-  },
-  "product-revibe.info-label.1": {
-    "type": "plain",
-    "value": "PN 1.5 mL",
-    "label": "PN 85%",
-    "page": "product-revibe.html",
-    "group": "info"
-  },
-  "product-revibe.info-desc.1": {
-    "type": "plain",
-    "value": "Polynucleotide",
-    "label": "Polynucleotide",
-    "page": "product-revibe.html",
-    "group": "info"
-  },
-  "product-revibe.info-label.2": {
-    "type": "plain",
-    "value": "HA 0.5 mL",
-    "label": "HA 15%",
-    "page": "product-revibe.html",
-    "group": "info"
-  },
-  "product-revibe.info-desc.2": {
-    "type": "plain",
-    "value": "Hyaluronic Acid",
-    "label": "Hyaluronic Acid",
-    "page": "product-revibe.html",
-    "group": "info"
-  },
-  "product-revibe.info-label.3": {
-    "type": "plain",
-    "value": "Balance",
-    "label": "Balance",
-    "page": "product-revibe.html",
-    "group": "info"
-  },
-  "product-revibe.info-desc.3": {
-    "type": "plain",
-    "value": "Physiological / Osmolality",
-    "label": "Physiological / Osmolality",
-    "page": "product-revibe.html",
-    "group": "info"
-  },
-  "product-revibe.h1.1": {
-    "type": "rich",
-    "value": "Revibe PN",
-    "label": "Revibe PN",
-    "page": "product-revibe.html"
-  },
-  "product-revibe.p.1": {
-    "type": "plain",
-    "value": "A professional PN portfolio for skin conditioning, combining PN 30 mg / 1.5 mL with HA 10 mg / 0.5 mL through a Physiological Balance and Osmolality Balance approach.",
-    "label": "A professional PN portfolio for skin condition…",
-    "page": "product-revibe.html"
-  },
-  "product-revibe.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "product-revibe.html"
-  },
-  "product-revibe.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "product-revibe.html"
-  },
-  "product-revibe.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-revibe.html"
-  },
-  "product-revibe.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "product-revibe.html"
-  },
-  "product-rvsc.info-label.1": {
-    "type": "plain",
-    "value": "Exosome",
-    "label": "Exosome",
-    "page": "product-rvsc.html",
-    "group": "info"
-  },
-  "product-rvsc.info-desc.1": {
-    "type": "plain",
-    "value": "Exosome-based category",
-    "label": "Exosome-based category",
-    "page": "product-rvsc.html",
-    "group": "info"
-  },
-  "product-rvsc.info-label.2": {
-    "type": "plain",
-    "value": "2 Vials",
-    "label": "2 Vials",
-    "page": "product-rvsc.html",
-    "group": "info"
-  },
-  "product-rvsc.info-desc.2": {
-    "type": "plain",
-    "value": "Attached package configuration",
-    "label": "Attached package configuration",
-    "page": "product-rvsc.html",
-    "group": "info"
-  },
-  "product-rvsc.info-label.3": {
-    "type": "plain",
-    "value": "Made in Korea",
-    "label": "Made in Korea",
-    "page": "product-rvsc.html",
-    "group": "info"
-  },
-  "product-rvsc.info-desc.3": {
-    "type": "plain",
-    "value": "Package labeling",
-    "label": "Package labeling",
-    "page": "product-rvsc.html",
-    "group": "info"
-  },
-  "product-rvsc.h1.1": {
-    "type": "rich",
-    "value": "RVSC Exosome",
-    "label": "RVSC Exosome",
-    "page": "product-rvsc.html"
-  },
-  "product-rvsc.p.1": {
-    "type": "plain",
-    "value": "A professional skin solution category built on exosome-based technology. Efficacy claims are managed in line with actual product data and each country's permitted scope.",
-    "label": "A professional skin solution category built on…",
-    "page": "product-rvsc.html"
-  },
-  "product-rvsc.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "product-rvsc.html"
-  },
-  "product-rvsc.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "product-rvsc.html"
-  },
-  "product-rvsc.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-rvsc.html"
-  },
-  "product-rvsc.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "product-rvsc.html"
-  },
-  "science.qrow-label.1": {
-    "type": "plain",
-    "value": "Critical Parameters",
-    "label": "Critical Parameters",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.qrow-desc.1": {
-    "type": "plain",
-    "value": "For HA, we focus on quality parameters verifiable with real data — Sterility, Endotoxin, Residual BDDE, Cross-linking, pH, Osmolality, and Gel Uniformity.",
-    "label": "For HA, we focus on quality parameters verifia…",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.qrow-label.2": {
-    "type": "plain",
-    "value": "Batch Consistency",
-    "label": "Batch Consistency",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.qrow-desc.2": {
-    "type": "plain",
-    "value": "Consistency and completeness across products are treated as core quality language.",
-    "label": "Consistency and completeness across products a…",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.qrow-label.3": {
-    "type": "plain",
-    "value": "Technology Story",
-    "label": "Technology Story",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.qrow-desc.3": {
-    "type": "plain",
-    "value": "We communicate the design logic behind each product — Grand Hive, Physiological Balance, Liquid PCL, and more — in an easy-to-follow structure.",
-    "label": "We communicate the design logic behind each pr…",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.qrow-label.4": {
-    "type": "plain",
-    "value": "Responsible Claims",
-    "label": "Responsible Claims",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.qrow-desc.4": {
-    "type": "plain",
-    "value": "We prioritize real evidence and country-specific regulations over exaggerated claims like ‘the best,’ ‘completely safe,’ or ‘no side effects.’",
-    "label": "We prioritize real evidence and country-specif…",
-    "page": "science.html",
-    "group": "qrow"
-  },
-  "science.h1.1": {
-    "type": "rich",
-    "value": "Quality begins<br>with discipline.",
-    "label": "Quality begins with discipline.",
-    "page": "science.html"
-  },
-  "science.h2.1": {
-    "type": "rich",
-    "value": "We explain the technology,<br><em>verify the numbers,</em><br>and manage the claims.",
-    "label": "We explain the technology, verify the numbers,…",
-    "page": "science.html"
-  },
-  "science.p.1": {
-    "type": "plain",
-    "value": "We believe product performance isn't defined by a single claim, but by the combined result of raw materials, process, physical properties, quality documentation, and consistency.",
-    "label": "We believe product performance isn't defined b…",
-    "page": "science.html"
-  },
-  "science.p.2": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "science.html"
-  },
-  "science.p.3": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "science.html"
-  },
-  "science.p.4": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "science.html"
-  },
-  "science.p.5": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "science.html"
-  },
-  "product-revibe.notice.1": {
-    "type": "plain",
-    "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
-    "page": "product-revibe.html"
-  },
-  "distribution.notice.1": {
-    "type": "plain",
-    "value": "Trademarks of third-party brands such as Restylane, Replengen, and Juvéderm belong to their respective owners and are not Aestyve's own branded products. Actual items carried and supply countries are configured to be confirmed upon inquiry.",
-    "label": "Trademarks of third-party brands such as Resty…",
-    "page": "distribution.html"
-  },
-  "contact.notice.1": {
-    "type": "plain",
-    "value": "Configured with a direct email link so it works in a static HTML environment without a server. Please update it with your actual operating email.",
-    "label": "Configured with a direct email link so it work…",
-    "page": "contact.html"
-  },
-  "science.notice.1": {
-    "type": "plain",
-    "value": "Certifications, manufacturing processes, test figures, and approving-body references should only be listed on public pages when they match actual supporting documentation.",
-    "label": "Certifications, manufacturing processes, test …",
-    "page": "science.html"
-  },
-  "product-plla.notice.1": {
-    "type": "plain",
-    "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
-    "page": "product-plla.html"
-  },
-  "product-ha.notice.1": {
-    "type": "plain",
-    "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
-    "page": "product-ha.html"
-  },
-  "product-pcl.notice.1": {
-    "type": "plain",
-    "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
-    "page": "product-pcl.html"
-  },
-  "product-rvsc.notice.1": {
-    "type": "plain",
-    "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
-    "page": "product-rvsc.html"
-  },
-  "product-nad.notice.1": {
-    "type": "plain",
-    "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
-    "page": "product-nad.html"
-  }
+ "404.h1.1": {
+  "type": "rich",
+  "value": "Page not found.",
+  "label": "Page not found.",
+  "page": "404.html"
+ },
+ "404.p.1": {
+  "type": "plain",
+  "value": "The page you requested could not be found.",
+  "label": "The page you requested could not be found.",
+  "page": "404.html"
+ },
+ "404.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "404.html"
+ },
+ "404.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "404.html"
+ },
+ "404.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "404.html"
+ },
+ "404.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "404.html"
+ },
+ "brands.h1.1": {
+  "type": "rich",
+  "value": "One standard.<br>Multiple technologies.",
+  "label": "One standard. Multiple technologies.",
+  "page": "brands.html"
+ },
+ "brands.h3.1": {
+  "type": "rich",
+  "value": "Aestyve HA",
+  "label": "Aestyve HA",
+  "page": "brands.html"
+ },
+ "brands.h3.2": {
+  "type": "rich",
+  "value": "Revibe PN",
+  "label": "Revibe PN",
+  "page": "brands.html"
+ },
+ "brands.h3.3": {
+  "type": "rich",
+  "value": "Liquid PCL",
+  "label": "Liquid PCL",
+  "page": "brands.html"
+ },
+ "brands.h3.4": {
+  "type": "rich",
+  "value": "Innofill PLLA",
+  "label": "Innofill PLLA",
+  "page": "brands.html"
+ },
+ "brands.h3.5": {
+  "type": "rich",
+  "value": "RVSC Exosome",
+  "label": "RVSC Exosome",
+  "page": "brands.html"
+ },
+ "brands.p.1": {
+  "type": "plain",
+  "value": "We organize HA, PN, PCL, PLLA, Exosome, and Advanced Solutions by purpose, unified under one brand standard: Aestyve.",
+  "label": "We organize HA, PN, PCL, PLLA, Exosome, and Ad…",
+  "page": "brands.html"
+ },
+ "brands.p.2": {
+  "type": "plain",
+  "value": "α · β · γ / Cross-linked HA",
+  "label": "α · β · γ / Cross-linked HA",
+  "page": "brands.html"
+ },
+ "brands.p.3": {
+  "type": "plain",
+  "value": "PN 1.5 mL + HA 0.5 mL",
+  "label": "PN 85% + HA 15%",
+  "page": "brands.html"
+ },
+ "brands.p.4": {
+  "type": "plain",
+  "value": "Liquid PCL · 2.0mL/Vial",
+  "label": "Liquid PCL · 2.0mL/Vial",
+  "page": "brands.html"
+ },
+ "brands.p.5": {
+  "type": "plain",
+  "value": "PLLA-based biostimulation category",
+  "label": "PLLA-based biostimulation category",
+  "page": "brands.html"
+ },
+ "brands.p.6": {
+  "type": "plain",
+  "value": "Exosome-based professional solution",
+  "label": "Exosome-based professional solution",
+  "page": "brands.html"
+ },
+ "brands.p.7": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "brands.html"
+ },
+ "brands.p.8": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "brands.html"
+ },
+ "brands.p.9": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "brands.html"
+ },
+ "brands.p.10": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "brands.html"
+ },
+ "company.info-label.1": {
+  "type": "plain",
+  "value": "Science",
+  "label": "Science",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.1": {
+  "type": "plain",
+  "value": "Evidence-based technology and product information",
+  "label": "Evidence-based technology and product informat…",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.2": {
+  "type": "plain",
+  "value": "Precision",
+  "label": "Precision",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.2": {
+  "type": "plain",
+  "value": "Precision in quality detail and communication",
+  "label": "Precision in quality detail and communication",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.3": {
+  "type": "plain",
+  "value": "Quality",
+  "label": "Quality",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.3": {
+  "type": "plain",
+  "value": "A philosophy that prioritizes standards over price",
+  "label": "A philosophy that prioritizes standards over p…",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.4": {
+  "type": "plain",
+  "value": "Innovation",
+  "label": "Innovation",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.4": {
+  "type": "plain",
+  "value": "HA · PN · PCL · PLLA · Exosome",
+  "label": "HA · PN · PCL · PLLA · Exosome",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.5": {
+  "type": "plain",
+  "value": "Partnership",
+  "label": "Partnership",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.5": {
+  "type": "plain",
+  "value": "Relationships that grow together with the global market",
+  "label": "Relationships that grow together with the glob…",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-label.6": {
+  "type": "plain",
+  "value": "Korea",
+  "label": "Korea",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.info-desc.6": {
+  "type": "plain",
+  "value": "Korean medical aesthetics expertise",
+  "label": "Korean medical aesthetics expertise",
+  "page": "company.html",
+  "group": "info"
+ },
+ "company.h1.1": {
+  "type": "rich",
+  "value": "Building brands,<br>distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "company.html"
+ },
+ "company.h2.1": {
+  "type": "rich",
+  "value": "Korean Medical Aesthetics,<br><em>built for the global market.</em>",
+  "label": "Korean Medical Aesthetics, built for the globa…",
+  "page": "company.html"
+ },
+ "company.p.1": {
+  "type": "plain",
+  "value": "Aestyve develops its own brands on the foundation of Korean medical aesthetics technology and rigorous quality standards, delivering curated solutions to global partners.",
+  "label": "Aestyve develops its own brands on the foundat…",
+  "page": "company.html"
+ },
+ "company.p.2": {
+  "type": "plain",
+  "value": "We position ourselves not as a cosmetics-driven K-Beauty brand, but as a Medical Aesthetics company built for clinical professionals and distribution partners.",
+  "label": "We position ourselves not as a cosmetics-drive…",
+  "page": "company.html"
+ },
+ "company.p.3": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "company.html"
+ },
+ "company.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "company.html"
+ },
+ "company.p.5": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "company.html"
+ },
+ "company.p.6": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "company.html"
+ },
+ "contact.contact-label.1": {
+  "type": "plain",
+  "value": "EMAIL",
+  "label": "EMAIL",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.1": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-label.2": {
+  "type": "plain",
+  "value": "LOCATION",
+  "label": "LOCATION",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.2": {
+  "type": "plain",
+  "value": "Seoul · Republic of Korea",
+  "label": "Seoul · Republic of Korea",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-label.3": {
+  "type": "plain",
+  "value": "BUSINESS",
+  "label": "BUSINESS",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.3": {
+  "type": "plain",
+  "value": "Brand · Distribution · Global Partnership",
+  "label": "Brand · Distribution · Global Partnership",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-label.4": {
+  "type": "plain",
+  "value": "LANGUAGE",
+  "label": "LANGUAGE",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.contact-desc.4": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "contact.html",
+  "group": "contact"
+ },
+ "contact.h2.1": {
+  "type": "rich",
+  "value": "Tell us where<br>you want to grow.",
+  "label": "Tell us where you want to grow.",
+  "page": "contact.html"
+ },
+ "contact.p.1": {
+  "type": "plain",
+  "value": "Let us know your purpose — product inquiries, regional distribution, new partnerships, or exhibition collaboration — and we'll guide you to the right next step.",
+  "label": "Let us know your purpose — product inquiries, …",
+  "page": "contact.html"
+ },
+ "contact.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "contact.html"
+ },
+ "contact.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "contact.html"
+ },
+ "contact.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "contact.html"
+ },
+ "contact.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "contact.html"
+ },
+ "distribution.h1.1": {
+  "type": "rich",
+  "value": "Selected brands.<br>Clear positioning.",
+  "label": "Selected brands. Clear positioning.",
+  "page": "distribution.html"
+ },
+ "distribution.h3.1": {
+  "type": "rich",
+  "value": "Global Injectables",
+  "label": "Global Injectables",
+  "page": "distribution.html"
+ },
+ "distribution.h3.2": {
+  "type": "rich",
+  "value": "Regenerative Aesthetics",
+  "label": "Regenerative Aesthetics",
+  "page": "distribution.html"
+ },
+ "distribution.h3.3": {
+  "type": "rich",
+  "value": "Skin & Device Solutions",
+  "label": "Skin & Device Solutions",
+  "page": "distribution.html"
+ },
+ "distribution.p.1": {
+  "type": "plain",
+  "value": "We draw a clear line between Aestyve's own products and third-party brand distribution. Rather than carrying everything, we select for market viability, brand value, and our partners' real needs.",
+  "label": "We draw a clear line between Aestyve's own pro…",
+  "page": "distribution.html"
+ },
+ "distribution.p.2": {
+  "type": "plain",
+  "value": "A global portfolio of injectables and biostimulators",
+  "label": "A global portfolio of injectables and biostimu…",
+  "page": "distribution.html"
+ },
+ "distribution.p.3": {
+  "type": "plain",
+  "value": "Skin regeneration and collagen-based categories",
+  "label": "Skin regeneration and collagen-based categorie…",
+  "page": "distribution.html"
+ },
+ "distribution.p.4": {
+  "type": "plain",
+  "value": "Medical devices and professional skin solutions",
+  "label": "Medical devices and professional skin solution…",
+  "page": "distribution.html"
+ },
+ "distribution.p.5": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "distribution.html"
+ },
+ "distribution.p.6": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "distribution.html"
+ },
+ "distribution.p.7": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "distribution.html"
+ },
+ "distribution.p.8": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "distribution.html"
+ },
+ "index.qrow-label.1": {
+  "type": "plain",
+  "value": "Brand Development",
+  "label": "Brand Development",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.1": {
+  "type": "plain",
+  "value": "We design our own brands based on clear targeting and portfolio strategy.",
+  "label": "We design our own brands based on clear target…",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-label.2": {
+  "type": "plain",
+  "value": "Quality Documentation",
+  "label": "Quality Documentation",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.2": {
+  "type": "plain",
+  "value": "We provide the information partners need transparently, grounded in real product data and quality documentation.",
+  "label": "We provide the information partners need trans…",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-label.3": {
+  "type": "plain",
+  "value": "Professional Communication",
+  "label": "Professional Communication",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.3": {
+  "type": "plain",
+  "value": "We choose clear professional language that clinicians and partners can understand, rather than exaggerated claims.",
+  "label": "We choose clear professional language that cli…",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-label.4": {
+  "type": "plain",
+  "value": "Global Compliance",
+  "label": "Global Compliance",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.qrow-desc.4": {
+  "type": "plain",
+  "value": "We manage global communication with each country's registration and claims regulations in mind.",
+  "label": "We manage global communication with each count…",
+  "page": "index.html",
+  "group": "qrow"
+ },
+ "index.partner-label.1": {
+  "type": "plain",
+  "value": "Brand",
+  "label": "Brand",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.1": {
+  "type": "plain",
+  "value": "Brand development",
+  "label": "Brand development",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-label.2": {
+  "type": "plain",
+  "value": "Portfolio",
+  "label": "Portfolio",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.2": {
+  "type": "plain",
+  "value": "Curated distribution",
+  "label": "Curated distribution",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-label.3": {
+  "type": "plain",
+  "value": "Market",
+  "label": "Market",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.3": {
+  "type": "plain",
+  "value": "Market support",
+  "label": "Market support",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-label.4": {
+  "type": "plain",
+  "value": "Global",
+  "label": "Global",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.partner-desc.4": {
+  "type": "plain",
+  "value": "Global network",
+  "label": "Global network",
+  "page": "index.html",
+  "group": "partner"
+ },
+ "index.h1.1": {
+  "type": "rich",
+  "value": "Building brands.<br><em>Distributing standards.</em>",
+  "label": "Building brands. Distributing standards.",
+  "page": "index.html"
+ },
+ "index.h2.1": {
+  "type": "rich",
+  "value": "Not just a single product —<br><em>we shape a perspective on the aesthetics market.</em>",
+  "label": "Not just a single product — we shape a perspec…",
+  "page": "index.html"
+ },
+ "index.h2.2": {
+  "type": "rich",
+  "value": "Designed with a clear purpose.",
+  "label": "Designed with a clear purpose.",
+  "page": "index.html"
+ },
+ "index.h2.3": {
+  "type": "rich",
+  "value": "Curated brands,<br>trusted partnerships",
+  "label": "Curated brands, trusted partnerships",
+  "page": "index.html"
+ },
+ "index.h2.4": {
+  "type": "rich",
+  "value": "Trust<br><em>is built on principle,</em><br>and made whole.",
+  "label": "Trust is built on principle, and made whole.",
+  "page": "index.html"
+ },
+ "index.h2.5": {
+  "type": "rich",
+  "value": "Beyond the product,<br>we create value together in the market.",
+  "label": "Beyond the product, we create value together i…",
+  "page": "index.html"
+ },
+ "index.h3.1": {
+  "type": "rich",
+  "value": "AESTYVE OWN BRANDS",
+  "label": "AESTYVE OWN BRANDS",
+  "page": "index.html"
+ },
+ "index.h3.2": {
+  "type": "rich",
+  "value": "CURATED DISTRIBUTION",
+  "label": "CURATED DISTRIBUTION",
+  "page": "index.html"
+ },
+ "index.h3.3": {
+  "type": "rich",
+  "value": "Revibe PN",
+  "label": "Revibe PN",
+  "page": "index.html"
+ },
+ "index.h3.4": {
+  "type": "rich",
+  "value": "Liquid PCL",
+  "label": "Liquid PCL",
+  "page": "index.html"
+ },
+ "index.h3.5": {
+  "type": "rich",
+  "value": "HA Filler Series",
+  "label": "HA Filler Series",
+  "page": "index.html"
+ },
+ "index.h3.6": {
+  "type": "rich",
+  "value": "Innofill PLLA",
+  "label": "Innofill PLLA",
+  "page": "index.html"
+ },
+ "index.h3.7": {
+  "type": "rich",
+  "value": "RVSC Exosome",
+  "label": "RVSC Exosome",
+  "page": "index.html"
+ },
+ "index.h3.8": {
+  "type": "rich",
+  "value": "Global Injectables",
+  "label": "Global Injectables",
+  "page": "index.html"
+ },
+ "index.h3.9": {
+  "type": "rich",
+  "value": "Regenerative Aesthetics",
+  "label": "Regenerative Aesthetics",
+  "page": "index.html"
+ },
+ "index.h3.10": {
+  "type": "rich",
+  "value": "Skin & Device Solutions",
+  "label": "Skin & Device Solutions",
+  "page": "index.html"
+ },
+ "index.h3.11": {
+  "type": "rich",
+  "value": "We don't compete on price.<br><em>We compete on standards.</em>",
+  "label": "We don't compete on price. We compete on stand…",
+  "page": "index.html"
+ },
+ "index.p.1": {
+  "type": "plain",
+  "value": "Aestyve develops its own brands on the foundation of Korean medical aesthetics technology and precise quality standards, connecting curated professional products to the global market.",
+  "label": "Aestyve develops its own brands on the foundat…",
+  "page": "index.html"
+ },
+ "index.p.2": {
+  "type": "plain",
+  "value": "From brand planning to product portfolio, quality communication, and global distribution, Aestyve connects every step under one standard. Trustworthy solutions and lasting partnerships are at our core.",
+  "label": "From brand planning to product portfolio, qual…",
+  "page": "index.html"
+ },
+ "index.p.3": {
+  "type": "plain",
+  "value": "We develop our own medical aesthetics portfolio, clearly organized by purpose and technology.",
+  "label": "We develop our own medical aesthetics portfoli…",
+  "page": "index.html"
+ },
+ "index.p.4": {
+  "type": "plain",
+  "value": "We select the brands our global partners need, based on proven market fit and expertise.",
+  "label": "We select the brands our global partners need,…",
+  "page": "index.html"
+ },
+ "index.p.5": {
+  "type": "plain",
+  "value": "We clearly define the role of each technology to expand clinical experience and improve patient outcomes.",
+  "label": "We clearly define the role of each technology …",
+  "page": "index.html"
+ },
+ "index.p.6": {
+  "type": "plain",
+  "value": "Premium PN Skin Booster · PN + HA",
+  "label": "Premium PN Skin Booster · PN + HA",
+  "page": "index.html"
+ },
+ "index.p.7": {
+  "type": "plain",
+  "value": "Liquid PCL · Collagen-oriented solution",
+  "label": "Liquid PCL · Collagen-oriented solution",
+  "page": "index.html"
+ },
+ "index.p.8": {
+  "type": "plain",
+  "value": "Advanced Cross-linked HA · α / β / γ",
+  "label": "Advanced Cross-linked HA · α / β / γ",
+  "page": "index.html"
+ },
+ "index.p.9": {
+  "type": "plain",
+  "value": "PLLA-based progressive aesthetic solution",
+  "label": "PLLA-based progressive aesthetic solution",
+  "page": "index.html"
+ },
+ "index.p.10": {
+  "type": "plain",
+  "value": "Exosome-based professional skin solution",
+  "label": "Exosome-based professional skin solution",
+  "page": "index.html"
+ },
+ "index.p.11": {
+  "type": "plain",
+  "value": "Aestyve selects and connects proven aesthetic brands from the global market with a perspective grounded in real sales needs.",
+  "label": "Aestyve selects and connects proven aesthetic …",
+  "page": "index.html"
+ },
+ "index.p.12": {
+  "type": "rich",
+  "value": "Injectables & Biostimulators<br>An injectable portfolio built around global trends",
+  "label": "Injectables & Biostimulators An injectable por…",
+  "page": "index.html"
+ },
+ "index.p.13": {
+  "type": "rich",
+  "value": "Skin Regeneration & Collagen Stimulators<br>Regeneration and collagen-stimulating solutions",
+  "label": "Skin Regeneration & Collagen Stimulators Regen…",
+  "page": "index.html"
+ },
+ "index.p.14": {
+  "type": "rich",
+  "value": "Medical Devices & Skincare<br>Medical device and skincare solutions",
+  "label": "Medical Devices & Skincare Medical device and …",
+  "page": "index.html"
+ },
+ "index.p.15": {
+  "type": "plain",
+  "value": "We aim to be chosen for technology, quality, consistency, and expertise — not price.",
+  "label": "We aim to be chosen for technology, quality, c…",
+  "page": "index.html"
+ },
+ "index.p.16": {
+  "type": "plain",
+  "value": "From distribution to partnership, marketing materials, and exhibition collaboration, Aestyve builds a business that grows together with you.",
+  "label": "From distribution to partnership, marketing ma…",
+  "page": "index.html"
+ },
+ "index.p.17": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "index.html"
+ },
+ "index.p.18": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "index.html"
+ },
+ "index.p.19": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "index.html"
+ },
+ "index.p.20": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "index.html"
+ },
+ "partnership.info-label.1": {
+  "type": "plain",
+  "value": "Portfolio",
+  "label": "Portfolio",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.1": {
+  "type": "plain",
+  "value": "Product combinations tailored to your market",
+  "label": "Product combinations tailored to your market",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.2": {
+  "type": "plain",
+  "value": "Marketing",
+  "label": "Marketing",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.2": {
+  "type": "plain",
+  "value": "Support with catalogs, exhibition, and sales materials",
+  "label": "Support with catalogs, exhibition, and sales m…",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.3": {
+  "type": "plain",
+  "value": "Localization",
+  "label": "Localization",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.3": {
+  "type": "plain",
+  "value": "Communication adapted to local language and market conditions",
+  "label": "Communication adapted to local language and ma…",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.4": {
+  "type": "plain",
+  "value": "Supply",
+  "label": "Supply",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.4": {
+  "type": "plain",
+  "value": "Clear communication on orders, shipping, and lead times",
+  "label": "Clear communication on orders, shipping, and l…",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.5": {
+  "type": "plain",
+  "value": "Exhibition",
+  "label": "Exhibition",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.5": {
+  "type": "plain",
+  "value": "On-site brand experience and exhibition collaboration",
+  "label": "On-site brand experience and exhibition collab…",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-label.6": {
+  "type": "plain",
+  "value": "Long-term",
+  "label": "Long-term",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.info-desc.6": {
+  "type": "plain",
+  "value": "Sustainable partnerships over one-off transactions",
+  "label": "Sustainable partnerships over one-off transact…",
+  "page": "partnership.html",
+  "group": "info"
+ },
+ "partnership.h1.1": {
+  "type": "rich",
+  "value": "More than supply.<br>Build the market together.",
+  "label": "More than supply. Build the market together.",
+  "page": "partnership.html"
+ },
+ "partnership.p.1": {
+  "type": "plain",
+  "value": "Aestyve aims for long-term partnerships that move together — from product supply and marketing materials to exhibition collaboration, localization, and portfolio proposals.",
+  "label": "Aestyve aims for long-term partnerships that m…",
+  "page": "partnership.html"
+ },
+ "partnership.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "partnership.html"
+ },
+ "partnership.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "partnership.html"
+ },
+ "partnership.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "partnership.html"
+ },
+ "partnership.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "partnership.html"
+ },
+ "product-ha.info-label.1": {
+  "type": "plain",
+  "value": "24 mg/mL",
+  "label": "24 mg/mL",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-desc.1": {
+  "type": "plain",
+  "value": "Cross-linked Hyaluronic Acid",
+  "label": "Cross-linked Hyaluronic Acid",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-label.2": {
+  "type": "plain",
+  "value": "3 mg/mL",
+  "label": "3 mg/mL",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-desc.2": {
+  "type": "plain",
+  "value": "Lidocaine HCl",
+  "label": "Lidocaine HCl",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-label.3": {
+  "type": "plain",
+  "value": "1.1 mL",
+  "label": "1.1 mL",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.info-desc.3": {
+  "type": "plain",
+  "value": "Pre-filled syringe",
+  "label": "Pre-filled syringe",
+  "page": "product-ha.html",
+  "group": "info"
+ },
+ "product-ha.h1.1": {
+  "type": "rich",
+  "value": "Aestyve HA",
+  "label": "Aestyve HA",
+  "page": "product-ha.html"
+ },
+ "product-ha.h3.1": {
+  "type": "rich",
+  "value": "Ep. α Alpha",
+  "label": "Ep. α Alpha",
+  "page": "product-ha.html"
+ },
+ "product-ha.h3.2": {
+  "type": "rich",
+  "value": "Ep. β Beta",
+  "label": "Ep. β Beta",
+  "page": "product-ha.html"
+ },
+ "product-ha.h3.3": {
+  "type": "rich",
+  "value": "Ep. γ Gamma",
+  "label": "Ep. γ Gamma",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.1": {
+  "type": "plain",
+  "value": "The Aestyve HA portfolio is built on Cross-linked HA 24 mg/mL and Lidocaine HCl 3 mg/mL, structured into three rheological directions: α, β, and γ.",
+  "label": "The Aestyve HA portfolio is built on Cross-lin…",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.2": {
+  "type": "plain",
+  "value": "A type designed for delicate expression and natural balance.",
+  "label": "A type designed for delicate expression and na…",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.3": {
+  "type": "plain",
+  "value": "A type designed for balanced viscoelasticity and shape retention.",
+  "label": "A type designed for balanced viscoelasticity a…",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.4": {
+  "type": "plain",
+  "value": "A type designed for more structural support and contour definition.",
+  "label": "A type designed for more structural support an…",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.5": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.6": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.7": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-ha.html"
+ },
+ "product-ha.p.8": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-ha.html"
+ },
+ "product-nad.info-label.1": {
+  "type": "plain",
+  "value": "NAD+",
+  "label": "NAD+",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-desc.1": {
+  "type": "plain",
+  "value": "Package-labeled ingredient",
+  "label": "Package-labeled ingredient",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-label.2": {
+  "type": "plain",
+  "value": "NMN",
+  "label": "NMN",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-desc.2": {
+  "type": "plain",
+  "value": "Package-labeled ingredient",
+  "label": "Package-labeled ingredient",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-label.3": {
+  "type": "plain",
+  "value": "Compliance",
+  "label": "Compliance",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.info-desc.3": {
+  "type": "plain",
+  "value": "Registration-first communication",
+  "label": "Registration-first communication",
+  "page": "product-nad.html",
+  "group": "info"
+ },
+ "product-nad.h1.1": {
+  "type": "rich",
+  "value": "1906NAD+",
+  "label": "1906NAD+",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.1": {
+  "type": "plain",
+  "value": "This product belongs to Aestyve's Advanced Aesthetic Solutions category. Final copy is designed to be governed by actual registration classification and ingredient documentation.",
+  "label": "This product belongs to Aestyve's Advanced Aes…",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-nad.html"
+ },
+ "product-nad.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-nad.html"
+ },
+ "product-pcl.info-label.1": {
+  "type": "plain",
+  "value": "Liquid PCL",
+  "label": "Liquid PCL",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-desc.1": {
+  "type": "plain",
+  "value": "Liquid PCL formulation",
+  "label": "Liquid PCL formulation",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-label.2": {
+  "type": "plain",
+  "value": "2.0 mL",
+  "label": "2.0 mL",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-desc.2": {
+  "type": "plain",
+  "value": "Vial specification",
+  "label": "Vial specification",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-label.3": {
+  "type": "plain",
+  "value": "Collagen",
+  "label": "Collagen",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.info-desc.3": {
+  "type": "plain",
+  "value": "Collagen-oriented positioning",
+  "label": "Collagen-oriented positioning",
+  "page": "product-pcl.html",
+  "group": "info"
+ },
+ "product-pcl.h1.1": {
+  "type": "rich",
+  "value": "Aestyve Liquid PCL",
+  "label": "Aestyve Liquid PCL",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.1": {
+  "type": "plain",
+  "value": "An Aestyve professional solution built on Liquid PCL, proposing a collagen-centered approach to skin elasticity and remodeling.",
+  "label": "An Aestyve professional solution built on Liqu…",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-pcl.html"
+ },
+ "product-pcl.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-pcl.html"
+ },
+ "product-plla.info-label.1": {
+  "type": "plain",
+  "value": "PLLA",
+  "label": "PLLA",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-desc.1": {
+  "type": "plain",
+  "value": "Poly-L-Lactic Acid",
+  "label": "Poly-L-Lactic Acid",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-label.2": {
+  "type": "plain",
+  "value": "Biostimulation",
+  "label": "Biostimulation",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-desc.2": {
+  "type": "plain",
+  "value": "Progressive aesthetic approach",
+  "label": "Progressive aesthetic approach",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-label.3": {
+  "type": "plain",
+  "value": "Photo Pending",
+  "label": "Photo Pending",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.info-desc.3": {
+  "type": "plain",
+  "value": "To be replaced once official product photography is received",
+  "label": "To be replaced once official product photograp…",
+  "page": "product-plla.html",
+  "group": "info"
+ },
+ "product-plla.h1.1": {
+  "type": "rich",
+  "value": "Innofill PLLA",
+  "label": "Innofill PLLA",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.1": {
+  "type": "plain",
+  "value": "A PLLA-based biostimulation category, with a professional portfolio carrying a distinct role and message from PCL.",
+  "label": "A PLLA-based biostimulation category, with a p…",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-plla.html"
+ },
+ "product-plla.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-plla.html"
+ },
+ "product-revibe.info-label.1": {
+  "type": "plain",
+  "value": "PN 1.5 mL",
+  "label": "PN 85%",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-desc.1": {
+  "type": "plain",
+  "value": "Polynucleotide",
+  "label": "Polynucleotide",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-label.2": {
+  "type": "plain",
+  "value": "HA 0.5 mL",
+  "label": "HA 15%",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-desc.2": {
+  "type": "plain",
+  "value": "Hyaluronic Acid",
+  "label": "Hyaluronic Acid",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-label.3": {
+  "type": "plain",
+  "value": "Balance",
+  "label": "Balance",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.info-desc.3": {
+  "type": "plain",
+  "value": "Physiological / Osmolality",
+  "label": "Physiological / Osmolality",
+  "page": "product-revibe.html",
+  "group": "info"
+ },
+ "product-revibe.h1.1": {
+  "type": "rich",
+  "value": "Revibe PN",
+  "label": "Revibe PN",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.1": {
+  "type": "plain",
+  "value": "A professional PN portfolio for skin conditioning, combining PN 30 mg / 1.5 mL with HA 10 mg / 0.5 mL through a Physiological Balance and Osmolality Balance approach.",
+  "label": "A professional PN portfolio for skin condition…",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.3": {
+  "type": "plain",
+  "value": "Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.4": {
+  "type": "plain",
+  "value": "aestyve@naver.com",
+  "label": "info@aestyve.com",
+  "page": "product-revibe.html"
+ },
+ "product-revibe.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-revibe.html"
+ },
+ "product-rvsc.info-label.1": {
+  "type": "plain",
+  "value": "Exosome",
+  "label": "Exosome",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-desc.1": {
+  "type": "plain",
+  "value": "Exosome-based category",
+  "label": "Exosome-based category",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-label.2": {
+  "type": "plain",
+  "value": "2 Vials",
+  "label": "2 Vials",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-desc.2": {
+  "type": "plain",
+  "value": "Attached package configuration",
+  "label": "Attached package configuration",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-label.3": {
+  "type": "plain",
+  "value": "Made in Korea",
+  "label": "Made in Korea",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.info-desc.3": {
+  "type": "plain",
+  "value": "Package labeling",
+  "label": "Package labeling",
+  "page": "product-rvsc.html",
+  "group": "info"
+ },
+ "product-rvsc.h1.1": {
+  "type": "rich",
+  "value": "RVSC Exosome",
+  "label": "RVSC Exosome",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.1": {
+  "type": "plain",
+  "value": "A professional skin solution category built on exosome-based technology. Efficacy claims are managed in line with actual product data and each country's permitted scope.",
+  "label": "A professional skin solution category built on…",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "product-rvsc.html"
+ },
+ "product-rvsc.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "product-rvsc.html"
+ },
+ "science.qrow-label.1": {
+  "type": "plain",
+  "value": "Critical Parameters",
+  "label": "Critical Parameters",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.1": {
+  "type": "plain",
+  "value": "For HA, we focus on quality parameters verifiable with real data — Sterility, Endotoxin, Residual BDDE, Cross-linking, pH, Osmolality, and Gel Uniformity.",
+  "label": "For HA, we focus on quality parameters verifia…",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-label.2": {
+  "type": "plain",
+  "value": "Batch Consistency",
+  "label": "Batch Consistency",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.2": {
+  "type": "plain",
+  "value": "Consistency and completeness across products are treated as core quality language.",
+  "label": "Consistency and completeness across products a…",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-label.3": {
+  "type": "plain",
+  "value": "Technology Story",
+  "label": "Technology Story",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.3": {
+  "type": "plain",
+  "value": "We communicate the design logic behind each product — Grand Hive, Physiological Balance, Liquid PCL, and more — in an easy-to-follow structure.",
+  "label": "We communicate the design logic behind each pr…",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-label.4": {
+  "type": "plain",
+  "value": "Responsible Claims",
+  "label": "Responsible Claims",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.qrow-desc.4": {
+  "type": "plain",
+  "value": "We prioritize real evidence and country-specific regulations over exaggerated claims like ‘the best,’ ‘completely safe,’ or ‘no side effects.’",
+  "label": "We prioritize real evidence and country-specif…",
+  "page": "science.html",
+  "group": "qrow"
+ },
+ "science.h1.1": {
+  "type": "rich",
+  "value": "Quality begins<br>with discipline.",
+  "label": "Quality begins with discipline.",
+  "page": "science.html"
+ },
+ "science.h2.1": {
+  "type": "rich",
+  "value": "We explain the technology,<br><em>verify the numbers,</em><br>and manage the claims.",
+  "label": "We explain the technology, verify the numbers,…",
+  "page": "science.html"
+ },
+ "science.p.1": {
+  "type": "plain",
+  "value": "We believe product performance isn't defined by a single claim, but by the combined result of raw materials, process, physical properties, quality documentation, and consistency.",
+  "label": "We believe product performance isn't defined b…",
+  "page": "science.html"
+ },
+ "science.p.2": {
+  "type": "plain",
+  "value": "Building brands, distributing standards.",
+  "label": "Building brands, distributing standards.",
+  "page": "science.html"
+ },
+ "science.p.3": {
+  "type": "plain",
+  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "label": "Aestyve · Seoul, Republic of Korea",
+  "page": "science.html"
+ },
+ "science.p.4": {
+  "type": "plain",
+  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "label": "info@aestyve.com",
+  "page": "science.html"
+ },
+ "science.p.5": {
+  "type": "plain",
+  "value": "Korean · English · Chinese",
+  "label": "Korean · English · Chinese",
+  "page": "science.html"
+ },
+ "product-revibe.notice.1": {
+  "type": "plain",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
+  "page": "product-revibe.html"
+ },
+ "distribution.notice.1": {
+  "type": "plain",
+  "value": "Trademarks of third-party brands such as Restylane, Replengen, and Juvéderm belong to their respective owners and are not Aestyve's own branded products. Actual items carried and supply countries are configured to be confirmed upon inquiry.",
+  "label": "Trademarks of third-party brands such as Resty…",
+  "page": "distribution.html"
+ },
+ "contact.notice.1": {
+  "type": "plain",
+  "value": "Configured with a direct email link so it works in a static HTML environment without a server. Please update it with your actual operating email.",
+  "label": "Configured with a direct email link so it work…",
+  "page": "contact.html"
+ },
+ "science.notice.1": {
+  "type": "plain",
+  "value": "Certifications, manufacturing processes, test figures, and approving-body references should only be listed on public pages when they match actual supporting documentation.",
+  "label": "Certifications, manufacturing processes, test …",
+  "page": "science.html"
+ },
+ "product-plla.notice.1": {
+  "type": "plain",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
+  "page": "product-plla.html"
+ },
+ "product-ha.notice.1": {
+  "type": "plain",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
+  "page": "product-ha.html"
+ },
+ "product-pcl.notice.1": {
+  "type": "plain",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
+  "page": "product-pcl.html"
+ },
+ "product-rvsc.notice.1": {
+  "type": "plain",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
+  "page": "product-rvsc.html"
+ },
+ "product-nad.notice.1": {
+  "type": "plain",
+  "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
+  "label": "The intended use, claims, and supply scope of …",
+  "page": "product-nad.html"
+ }
 }
