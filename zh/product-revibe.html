@@ -71,15 +71,560 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
 .detail-stack{display:block}
 .detail-stack img{display:block;width:100%;height:auto;margin:0}
 @media(max-width:820px){.detail-section{padding-bottom:56px}}
-</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/product-revibe.html"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/zh/product-revibe.html"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/product-revibe.html"></head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="active" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><a class="lang-switch" href="/en/product-revibe.html">EN</a></nav><button class="menu-btn">MENU</button></div></header><main><section class="page-hero"><div class="container page-hero-box"><div class="page-hero-copy"><span class="eyebrow">REVITALIZE · PN</span><h1>Revibe PN</h1><p>结合 PN 30 mg / 1.5 mL 与 HA 10 mg / 0.5 mL，以 Physiological Balance 与 Osmolality Balance 方案为基础的专业 PN 产品组合。</p><div class="notice">本产品的用途、表述及供应范围可能因各国法规与实际产品资料而有所不同。</div></div><div class="page-visual"><img src="/assets/revibe_pack.webp" alt="Revibe PN"></div></div></section><section class="section white"><div class="container"><div class="info-grid"><div class="info"><b>PN 1.5 mL</b><span>多核苷酸 Polynucleotide</span></div><div class="info"><b>HA 0.5 mL</b><span>透明质酸 Hyaluronic Acid</span></div><div class="info"><b>Balance</b><span>生理平衡 / 渗透压平衡</span></div></div></div></section><section class="section detail-section"><div class="container"><div class="detail-stack">
-<img src="/assets/pn-detail-zh-01.webp" alt="Aestyve Revibe PN 产品介绍" width="2000" height="2952">
-<img src="/assets/pn-detail-zh-02.webp" alt="PN 30 mg + HA 10 mg 高端配方" width="2000" height="2920" loading="lazy">
-<img src="/assets/pn-detail-zh-03.webp" alt="PN 再生机制" width="2000" height="2270" loading="lazy">
-<img src="/assets/pn-detail-zh-04.webp" alt="临床预期效果与治疗前后对比" width="2000" height="1940" loading="lazy">
-<img src="/assets/pn-detail-zh-05.webp" alt="Revibe PN 适用肌肤" width="2000" height="2154" loading="lazy">
-<img src="/assets/pn-detail-zh-06.webp" alt="推荐应用部位" width="2000" height="2120" loading="lazy">
-<img src="/assets/pn-detail-zh-07.webp" alt="Revibe PN 产品信息与构成" width="2000" height="2806" loading="lazy">
-</div></div></section></main><footer class="footer"><div class="container">
+</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/product-revibe.html"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/zh/product-revibe.html"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/product-revibe.html"><style>
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+#rvd{--paper:#FFFDFC;
+  --peach:#FAEBE3;
+  --peach-d:#F3DCD1;
+  --coral:#E2977B;
+  --coral-d:#B9663F;
+  --rose:#DE8B93;
+  --ink:#241E1B;
+  --body:#5E524D;
+  --line:#EBDCD4;
+  --pad:clamp(20px,5vw,64px);}
+#rvd, #rvd *{box-sizing:border-box}
+#rvd{margin:0;background:var(--paper);color:var(--body);
+  font-family:'SCDream','S-Core Dream','Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  font-weight:300;font-size:17px;line-height:1.9;letter-spacing:-.015em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+#rvd img{display:block;max-width:100%}
+#rvd p{margin:0}
+#rvd .wrap{width:100%;max-width:1240px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+#rvd .sec{padding:clamp(72px,10vw,140px) 0}
+#rvd .mark{font-size:10.5px;font-weight:400;letter-spacing:.28em;color:var(--coral-d);margin:0 0 18px}
+#rvd h1, #rvd h2, #rvd h3, #rvd h4{margin:0;color:var(--ink);font-weight:500;letter-spacing:-.03em;line-height:1.42}
+#rvd h2{font-size:clamp(22px,2.5vw,33px);font-weight:500}
+#rvd h3{font-size:clamp(17px,1.7vw,21px)}
+#rvd .lead{font-size:clamp(15.5px,1.35vw,17.5px);line-height:2.05;max-width:58ch}
+#rvd .thin{font-weight:200}
+#rvd .rule{width:44px;height:2px;background:var(--coral);margin:26px 0 0}
+#rvd .intro{background:var(--peach) url("/assets/revibe_bgpeach.jpg") center/cover;position:relative}
+#rvd .intro::before{content:"";position:absolute;inset:0;background:rgba(255,250,247,.72)}
+#rvd .intro .wrap{position:relative}
+#rvd .intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,6vw,90px);align-items:end}
+#rvd .axis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--peach-d);border:1px solid var(--peach-d);margin-top:clamp(44px,6vw,72px)}
+#rvd .axis div{background:rgba(255,252,250,.9);padding:30px 24px}
+#rvd .axis h4{font-size:14.5px;font-weight:500;margin-bottom:10px}
+#rvd .axis p{font-size:13.5px;line-height:1.85;color:#7A6A62}
+#rvd .axis span{display:block;font-size:10px;letter-spacing:.22em;color:var(--coral);margin-bottom:14px}
+#rvd .form-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+#rvd .total{text-align:right}
+#rvd .total .cube{width:min(300px,78%);margin:0 0 0 auto;mix-blend-mode:multiply}
+#rvd .total b{display:block;font-size:clamp(46px,7vw,86px);font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.05em}
+#rvd .total b i{font-style:normal;font-size:.35em;font-weight:500;color:var(--coral-d);margin-left:6px;letter-spacing:0}
+#rvd .total p{font-size:13px;color:#8A7A72;margin-top:14px}
+#rvd .comp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);margin-top:clamp(40px,5vw,64px)}
+#rvd .card{border:1px solid var(--line);background:#fff;padding:clamp(28px,3.2vw,42px)}
+#rvd .card .tag{display:inline-block;font-size:10.5px;letter-spacing:.22em;padding:6px 12px;border-radius:2px;color:#fff;margin-bottom:22px}
+#rvd .card.pn .tag{background:var(--coral)}
+#rvd .card.ha .tag{background:var(--rose)}
+#rvd .card h3{font-size:clamp(18px,1.8vw,22px);font-weight:500;letter-spacing:-.03em}
+#rvd .card .en{font-size:12px;letter-spacing:.12em;color:#A2908A;margin-top:8px}
+#rvd .card .dose{display:flex;align-items:baseline;gap:10px;margin:22px 0 24px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+#rvd .card .dose strong{font-size:clamp(21px,2.2vw,27px);font-weight:600;color:var(--ink);letter-spacing:-.03em}
+#rvd .card .dose em{font-style:normal;font-size:15px;font-weight:500;color:var(--coral-d)}
+#rvd .card ul{margin:0;padding:0;list-style:none}
+#rvd .card li{position:relative;padding-left:18px;font-size:14.5px;line-height:2;color:#6D5F59}
+#rvd .card li::before{content:"";position:absolute;left:0;top:14px;width:6px;height:1px;background:var(--coral)}
+#rvd .note{margin-top:26px;font-size:12.5px;color:#95837B;line-height:1.9}
+#rvd .tech{background:#FBF4F1}
+#rvd .band{width:100%;height:clamp(240px,34vw,460px);object-fit:cover;object-position:center 55%}
+#rvd .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,3vw,52px);margin-top:clamp(46px,6vw,74px)}
+#rvd .tech-grid section{border-top:2px solid var(--coral);padding-top:26px}
+#rvd .tech-grid .en{font-size:10.5px;letter-spacing:.2em;color:var(--coral-d);margin-bottom:12px}
+#rvd .tech-grid h3{font-size:17px;font-weight:500;margin-bottom:14px}
+#rvd .tech-grid p{font-size:14px;line-height:1.95;color:#6D5F59}
+#rvd .checks{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(44px,5vw,64px)}
+#rvd .checks div{background:#fff;padding:26px 24px;font-size:13.5px;line-height:1.8;color:#5E524D}
+#rvd .checks svg{display:block;margin-bottom:14px}
+#rvd .mech-intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,5vw,80px);align-items:end}
+#rvd .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,24px);margin-top:clamp(50px,6vw,80px)}
+#rvd .step figure{margin:0;overflow:hidden;background:#F6E9E4}
+#rvd .step img{width:100%;aspect-ratio:404/824;object-fit:cover}
+#rvd .step .no{display:flex;align-items:center;gap:10px;margin:20px 0 10px}
+#rvd .step .no b{font-size:13px;font-weight:700;color:var(--coral-d);letter-spacing:.06em}
+#rvd .step .no i{flex:1;height:1px;background:var(--line)}
+#rvd .step h4{font-size:15.5px;font-weight:500;margin-bottom:8px}
+#rvd .step p{font-size:13.5px;line-height:1.85;color:#7A6A62}
+#rvd .ben{background:var(--peach) url("/assets/revibe_oil.jpg") center/cover;position:relative}
+#rvd .ben::before{content:"";position:absolute;inset:0;background:rgba(255,247,243,.82)}
+#rvd .ben .wrap{position:relative}
+#rvd .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--peach-d);border:1px solid var(--peach-d);margin-top:clamp(40px,5vw,64px)}
+#rvd .ben-grid div{background:#FFFBF9;padding:clamp(28px,3vw,40px)}
+#rvd .ben-grid h4{font-size:15px;font-weight:500;margin:18px 0 10px}
+#rvd .ben-grid p{font-size:13.5px;line-height:1.85;color:#7A6A62}
+#rvd .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,48px);margin-top:clamp(38px,5vw,60px)}
+#rvd .ba-grid figure{margin:0}
+#rvd .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#rvd .pair span{display:block}
+#rvd .pair img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#F6E9E4}
+#rvd .pair i{display:block;font-style:normal;text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.2em;color:#A2908A}
+#rvd .ba-grid figcaption{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:14.5px;font-weight:500;color:var(--ink)}
+#rvd .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,30px);margin-top:clamp(40px,5vw,64px)}
+#rvd .ind-grid article{border-top:1px solid var(--line);padding-top:24px}
+#rvd .ind-grid b{display:block;font-size:11px;letter-spacing:.2em;color:var(--coral);margin-bottom:14px;font-weight:500}
+#rvd .ind-grid h4{font-size:16px;font-weight:500;margin-bottom:12px}
+#rvd .ind-grid p{font-size:13.5px;line-height:1.9;color:#7A6A62}
+#rvd .area{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;margin-top:clamp(56px,7vw,96px);background:#FBF4F1;border:1px solid var(--line)}
+#rvd .area-shot img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+#rvd .area-txt{padding:clamp(30px,4vw,60px);display:flex;flex-direction:column;justify-content:center}
+#rvd .area-txt>p{font-size:14.5px;line-height:1.95;color:#7A6A62;margin-top:14px;max-width:44ch}
+#rvd .area-row{margin-top:26px;padding-left:20px;position:relative}
+#rvd .area-row::before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--coral);background:#fff}
+#rvd .area-row.on::before{background:var(--coral)}
+#rvd .area-row b{display:block;font-size:15.5px;font-weight:500;color:var(--ink);letter-spacing:-.02em}
+#rvd .area-row span{display:block;font-size:13px;color:#8A7A72;margin-top:2px}
+#rvd .fine{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.9;color:#95837B}
+#rvd .area h3{font-size:clamp(17px,1.8vw,21px);font-weight:500}
+#rvd .area .sub{text-align:center;font-size:13.5px;color:#8A7A72;margin-top:12px}
+#rvd .area svg{width:100%;max-width:720px;margin:clamp(20px,3vw,36px) auto 0;height:auto;display:block}
+#rvd .spec-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,80px);align-items:center}
+#rvd .spec-shot{background:#FBF4F1;display:flex;align-items:center;justify-content:center;padding:clamp(24px,4vw,52px)}
+#rvd .spec-shot img{width:78%;mix-blend-mode:multiply}
+#rvd table{width:100%;border-collapse:collapse;margin-top:8px}
+#rvd th, #rvd td{text-align:left;padding:16px 0;border-bottom:1px solid var(--line);font-size:14.5px;vertical-align:top}
+#rvd th{width:34%;font-weight:500;color:#8A7A72;letter-spacing:-.01em}
+#rvd td{font-weight:400;color:var(--ink)}
+#rvd td b{font-weight:600}
+#rvd .badges{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+#rvd .badges span{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:12.5px;color:#7A6A62}
+#rvd .pack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,36px);margin-top:clamp(46px,6vw,72px)}
+#rvd .pack figure{margin:0}
+#rvd .pack .ph{background:#FBF4F1;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#rvd .pack .ph img{max-height:100%;object-fit:contain}
+#rvd .pack .ph img.b{width:44%;mix-blend-mode:multiply}
+#rvd .pack .ph img.s{width:98%;mix-blend-mode:multiply}
+#rvd .pack .ph img.d{width:86%;object-fit:contain;box-shadow:0 6px 24px rgba(120,80,60,.1)}
+#rvd .pack figcaption{margin-top:16px;font-size:14px;font-weight:500;color:var(--ink)}
+#rvd .pack small{display:block;font-size:12.5px;color:#8A7A72;margin-top:4px;font-weight:300}
+#rvd .use{background:#FBF4F1}
+#rvd .cau{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);margin-top:clamp(38px,5vw,60px)}
+#rvd .cau h4{font-size:15px;font-weight:500;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+#rvd .cau ul{margin:0;padding:0;list-style:none}
+#rvd .cau li{position:relative;padding-left:16px;font-size:14px;line-height:1.95;color:#6D5F59;margin-bottom:8px}
+#rvd .cau li::before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--peach-d)}
+@media (max-width:1024px){
+  #rvd .intro-grid, #rvd .form-head, #rvd .mech-intro, #rvd .spec-grid, #rvd .cau, #rvd .area{grid-template-columns:1fr}
+  #rvd .area-shot img{max-height:56vw}
+  #rvd .total{text-align:left;margin-top:26px}
+  #rvd .total .cube{margin:0 0 22px;width:min(220px,55%)}
+  #rvd .tech-grid, #rvd .ben-grid{grid-template-columns:1fr 1fr}
+  #rvd .checks{grid-template-columns:1fr 1fr}
+  #rvd .ind-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  #rvd{font-size:15.5px}
+  #rvd .axis, #rvd .comp, #rvd .tech-grid, #rvd .ben-grid, #rvd .ind-grid, #rvd .pack, #rvd .ba-grid{grid-template-columns:1fr}
+  #rvd .steps{grid-template-columns:1fr 1fr}
+  #rvd .checks{grid-template-columns:1fr}
+  #rvd .ba-grid{gap:34px}
+  #rvd .spec-shot img{width:62%}
+}
+@media (prefers-reduced-motion:reduce){
+  #rvd, #rvd *{animation:none!important;transition:none!important}
+}
+#rvd{display:block;background:var(--paper);font-size:16.5px}
+#rvd .sec:first-of-type{border-top:1px solid var(--line)}
+#rvd .rvd-disc{background:#F7F1ED;border-top:1px solid var(--line);padding:34px var(--pad)}
+#rvd .rvd-disc p{max-width:84ch;margin:0 auto;text-align:center;font-size:12px;line-height:1.95;color:#8B7A72}
+@media (max-width:680px){#rvd{font-size:15.5px}}
+</style>
+</head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="active" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><a class="lang-switch" href="/en/product-revibe.html">EN</a></nav><button class="menu-btn">MENU</button></div></header><main><section class="page-hero"><div class="container page-hero-box"><div class="page-hero-copy"><span class="eyebrow">REVITALIZE · PN</span><h1>Revibe PN</h1><p>结合 PN 30 mg / 1.5 mL 与 HA 10 mg / 0.5 mL，以 Physiological Balance 与 Osmolality Balance 方案为基础的专业 PN 产品组合。</p><div class="notice">本产品的用途、表述及供应范围可能因各国法规与实际产品资料而有所不同。</div></div><div class="page-visual"><img src="/assets/revibe_pack.webp" alt="Revibe PN"></div></div></section><section class="section white"><div class="container"><div class="info-grid"><div class="info"><b>PN 1.5 mL</b><span>多核苷酸 Polynucleotide</span></div><div class="info"><b>HA 0.5 mL</b><span>透明质酸 Hyaluronic Acid</span></div><div class="info"><b>Balance</b><span>生理平衡 / 渗透压平衡</span></div></div></div></section><div id="rvd">
+<!-- ══ INTRO ══ -->
+<section class="sec intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div>
+        <p class="mark">ABOUT REVIBE PN</p>
+        <h2>从敏感肌到弹力下降，<br>一支即可应对。</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="lead">Revibe PN 是将三文鱼来源的高纯度多核苷酸（PN）与透明质酸（HA）装入同一支预充式注射器的高端水光针。同时考虑水分留存环境与肌肤本身的修护节奏，广泛应对敏感疲惫肌肤、干燥、肤质粗糙与弹力下降等困扰。</p>
+    </div>
+    <div class="axis">
+      <div><span>WATER</span><h4>水分环境</h4><p>HA 提供即时水分，并营造让水分停留在肌底的环境。</p></div>
+      <div><span>TEXTURE</span><h4>肤质纹理</h4><p>低黏度配方均匀铺展，引导肤质与毛孔观感趋于平整。</p></div>
+      <div><span>FIRMNESS</span><h4>弹力观感</h4><p>支持真皮环境，改善因细纹与弹力下降而显得暗沉的观感。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORMULA ══ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="form-head">
+      <div>
+        <p class="mark">PREMIUM FORMULA</p>
+        <h2>互不排斥的<br>两种成分平衡</h2>
+        <div class="rule"></div>
+        <p class="lead" style="margin-top:30px">PN 与 HA 并非彼此的替代品。营造修护环境的成分与锁住水分的成分，各自需要与其作用相匹配的用量。Revibe PN 在两者互不干扰的平衡点上完成配比。</p>
+      </div>
+      <div class="total">
+        <img class="cube" src="/assets/revibe_cube.jpg" alt="肌肤结构示意">
+      </div>
+    </div>
+
+    <div class="barrel">
+      <svg viewBox="0 0 1000 250" role="img" aria-label="PN 1.5 mL 30 mg 与 HA 0.5 mL 10 mg 的配比">
+        <defs>
+          <linearGradient id="gpn" x1="0" x2="1"><stop offset="0" stop-color="#EFB79E"/><stop offset="1" stop-color="#E2977B"/></linearGradient>
+          <linearGradient id="gha" x1="0" x2="1"><stop offset="0" stop-color="#EBB4B8"/><stop offset="1" stop-color="#DE8B93"/></linearGradient>
+        </defs>
+        <!-- labels -->
+        <text x="60" y="46" fill="#B9663F" font-size="15" font-weight="600" letter-spacing="0.02em">POLYNUCLEOTIDE (PN)</text>
+        <text x="60" y="74" fill="#241E1B" font-size="21" font-weight="700" letter-spacing="-0.02em">1.5 mL · 30 mg</text>
+        <text x="940" y="46" text-anchor="end" fill="#C06A73" font-size="15" font-weight="600" letter-spacing="0.02em">HYALURONIC ACID (HA)</text>
+        <text x="940" y="74" text-anchor="end" fill="#241E1B" font-size="21" font-weight="700" letter-spacing="-0.02em">0.5 mL · 10 mg</text>
+        <!-- barrel -->
+        <rect x="58" y="104" width="884" height="62" rx="6" fill="#FBF1EC"/>
+        <path d="M64 104h657v62H64a6 6 0 0 1-6-6v-50a6 6 0 0 1 6-6z" fill="url(#gpn)"/>
+        <path d="M721 104h215a6 6 0 0 1 6 6v50a6 6 0 0 1-6 6H721z" fill="url(#gha)"/>
+        <line x1="721" y1="104" x2="721" y2="166" stroke="#FBF1EC" stroke-width="2"/>
+        <rect x="58" y="104" width="884" height="62" rx="6" fill="none" stroke="#E4CDC2"/>
+        <!-- plunger + tip -->
+        <rect x="30" y="96" width="18" height="78" rx="4" fill="#E4CDC2"/>
+        <rect x="0" y="126" width="32" height="18" rx="4" fill="#EFDFD7"/>
+        <rect x="950" y="122" width="26" height="26" rx="4" fill="#E4CDC2"/>
+        <rect x="976" y="130" width="24" height="10" rx="4" fill="#EFDFD7"/>
+        <!-- ticks -->
+        <g stroke="#D8BFB2" stroke-width="1">
+          <line x1="58" y1="176" x2="58" y2="196"/><line x1="279" y1="176" x2="279" y2="190"/>
+          <line x1="500" y1="176" x2="500" y2="196"/><line x1="721" y1="176" x2="721" y2="196"/>
+          <line x1="942" y1="176" x2="942" y2="196"/>
+          <line x1="168" y1="176" x2="168" y2="186"/><line x1="389" y1="176" x2="389" y2="186"/>
+          <line x1="610" y1="176" x2="610" y2="186"/><line x1="831" y1="176" x2="831" y2="186"/>
+        </g>
+        <g fill="#A2908A" font-size="12.5">
+          <text x="58" y="216" text-anchor="middle">0</text>
+          <text x="500" y="216" text-anchor="middle">1.0</text>
+          <text x="721" y="216" text-anchor="middle">1.5</text>
+          <text x="942" y="216" text-anchor="middle">2.0 mL</text>
+        </g>
+        <line x1="58" y1="240" x2="721" y2="240" stroke="#E2977B" stroke-width="2"/>
+        <line x1="721" y1="240" x2="942" y2="240" stroke="#DE8B93" stroke-width="2"/>
+        <text x="389" y="234" text-anchor="middle" fill="#B9663F" font-size="12" letter-spacing="0.16em">75%</text>
+        <text x="831" y="234" text-anchor="middle" fill="#C06A73" font-size="12" letter-spacing="0.16em">25%</text>
+      </svg>
+    </div>
+
+    <div class="comp">
+      <article class="card pn">
+        <span class="tag">PN</span>
+        <h3>聚脱氧核糖核苷酸钠</h3>
+        <p class="en">Sodium Polynucleotide</p>
+        <div class="dose"><strong>1.5 mL</strong><em>30 mg</em></div>
+        <ul>
+          <li>自三文鱼生殖细胞精制的高纯度原料</li>
+          <li>支持真皮环境的物理修复基础</li>
+          <li>针对肌肤自身修护节奏的设计</li>
+          <li>具备结构稳定性的高分子量 PN</li>
+        </ul>
+      </article>
+      <article class="card ha">
+        <span class="tag">HA</span>
+        <h3>透明质酸</h3>
+        <p class="en">Hyaluronic Acid</p>
+        <div class="dose"><strong>0.5 mL</strong><em>10 mg</em></div>
+        <ul>
+          <li>注射后即刻开始并持续的水分供给</li>
+          <li>低黏度带来均匀铺展的注射感</li>
+          <li>帮助 PN 稳定扩散的介质环境</li>
+          <li>降低施术部位负担的柔和配方</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note">※ 标示含量以每支预充式注射器为准，详细内容请参照产品使用说明书。</p>
+  </div>
+</section>
+
+<!-- ══ TECHNOLOGY ══ -->
+<section class="tech">
+  <img class="band" src="/assets/revibe_syringe.jpg" alt="Revibe PN 预充式注射器">
+  <div class="wrap" style="padding-top:clamp(58px,7vw,96px);padding-bottom:clamp(72px,9vw,130px)">
+    <p class="mark">PHYSIOBALANCE TECHNOLOGY</p>
+    <h2>降低痛感，<br>提升平衡的技术</h2>
+    <div class="rule"></div>
+    <div class="tech-grid">
+      <section>
+        <p class="en">PHYSIOBALANCE</p>
+        <h3>生理平衡</h3>
+        <p>以接近体内环境的条件进行设计，最大限度减少注射时的刺激与异物感。</p>
+      </section>
+      <section>
+        <p class="en">OSMOTIC BALANCE</p>
+        <h3>渗透压平衡</h3>
+        <p>针对肿胀与泛红残留时间调整渗透压，减轻术后回归日常的负担。</p>
+      </section>
+      <section>
+        <p class="en">STRUCTURAL STABILITY</p>
+        <h3>结构稳定性</h3>
+        <p>稳定维持高纯度 PN 的分子结构，提供均一品质与可预期的使用感。</p>
+      </section>
+    </div>
+    <div class="checks">
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        PN 与 HA 的均衡配方
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        低黏度配方带来自然舒适的注射感
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        同时兼顾水分、弹力与肤质的护理
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        韩国食药处许可医疗器械（许可号 22-561）
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MECHANISM ══ -->
+<img class="band" src="/assets/revibe_bubble.jpg" alt="肌底有效成分示意">
+<section class="sec">
+  <div class="wrap">
+    <div class="mech-intro">
+      <div>
+        <p class="mark">MECHANISM OF ACTION</p>
+        <h2>始于肌底深层的<br>修护流程</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="lead">PN 是被设计在真皮层而非表皮层发挥作用的成分。注入后，有效成分均匀分布于周围组织，吸引水分并营造成纤维细胞得以活动的环境。在可见变化之前，先为肌肤自我调理创造条件。</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <figure><img src="/assets/revibe_step1.jpg" alt="注入后有效成分在真皮层均匀分布"></figure>
+        <div class="no"><b>01</b><i></i></div>
+        <h4>注入即刻</h4>
+        <p>注入真皮层的有效成分均匀扩散至周围组织并定位。</p>
+      </article>
+      <article class="step">
+        <figure><img src="/assets/revibe_step2.jpg" alt="吸引水分构建保湿环境的阶段"></figure>
+        <div class="no"><b>02</b><i></i></div>
+        <h4>构建水分环境</h4>
+        <p>HA 吸引肌底水分，提升保湿力并调理屏障环境。</p>
+      </article>
+      <article class="step">
+        <figure><img src="/assets/revibe_step3.jpg" alt="成纤维细胞活跃阶段"></figure>
+        <div class="no"><b>03</b><i></i></div>
+        <h4>支持细胞活性</h4>
+        <p>形成有利于成纤维细胞活动的条件，支持胶原蛋白与弹性蛋白生成。</p>
+      </article>
+      <article class="step">
+        <figure><img src="/assets/revibe_step4.jpg" alt="肌肤密度与弹力改善后的状态"></figure>
+        <div class="no"><b>04</b><i></i></div>
+        <h4>肌肤状态改善</h4>
+        <p>真皮密度得到填充，细纹、肤质与光泽的观感同步趋于平整。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENEFITS ══ -->
+<section class="sec ben">
+  <div class="wrap">
+    <p class="mark">EXPECTED CHANGES</p>
+    <h2>一次施术所覆盖的<br>六项肌肤状态</h2>
+    <div class="rule"></div>
+    <div class="ben-grid">
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M13 3.5s7 7.6 7 12a7 7 0 1 1-14 0c0-4.4 7-12 7-12z"/></svg>
+        <h4>水分供给与保持</h4><p>补充肌底水分并使其停留。</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><circle cx="13" cy="13" r="9"/><circle cx="13" cy="13" r="3.4"/></svg>
+        <h4>构建修护环境</h4><p>支持肌肤自我调理的条件。</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M13 3.5l8 3.6v6.4c0 4.6-3.4 7.6-8 8.9-4.6-1.3-8-4.3-8-8.9V7.1z"/></svg>
+        <h4>强化肌肤屏障</h4><p>构建不易受外界刺激影响的肤质。</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M3.5 16c4-6 6.5-6 9.5 0s5.5 6 9.5 0"/><path d="M3.5 9.5c4-6 6.5-6 9.5 0"/></svg>
+        <h4>细纹与弹力观感</h4><p>改善浅层皱纹与松弛观感。</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><circle cx="8" cy="9" r="2.2"/><circle cx="16.5" cy="7.5" r="1.6"/><circle cx="13" cy="15.5" r="2.6"/><circle cx="19" cy="16" r="1.8"/></svg>
+        <h4>肤质与毛孔观感</h4><p>调理粗糙松弛的表面观感。</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M13 4l1.9 5.1L20 11l-5.1 1.9L13 18l-1.9-5.1L6 11l5.1-1.9z"/><path d="M19.5 17.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+        <h4>光泽与活力</h4><p>增添仿佛由内充盈的透亮观感。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BEFORE & AFTER ══ -->
+<section class="sec ba">
+  <div class="wrap">
+    <p class="mark">BEFORE &amp; AFTER</p>
+    <h2>施术前后对比</h2>
+    <div class="rule"></div>
+    <div class="ba-grid">
+      <figure>
+        <div class="pair">
+          <span><img src="/assets/revibe_ba1b.jpg" alt="施术前的毛孔与肤质"><i>BEFORE</i></span>
+          <span><img src="/assets/revibe_ba1a.jpg" alt="施术后的毛孔与肤质"><i>AFTER</i></span>
+        </div>
+        <figcaption>毛孔与肤质</figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <span><img src="/assets/revibe_ba2b.jpg" alt="施术前的水润感与光泽"><i>BEFORE</i></span>
+          <span><img src="/assets/revibe_ba2a.jpg" alt="施术后的水润感与光泽"><i>AFTER</i></span>
+        </div>
+        <figcaption>水润感与光泽</figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <span><img src="/assets/revibe_ba3b.jpg" alt="施术前的细纹与弹力"><i>BEFORE</i></span>
+          <span><img src="/assets/revibe_ba3a.jpg" alt="施术后的细纹与弹力"><i>AFTER</i></span>
+        </div>
+        <figcaption>细纹与弹力</figcaption>
+      </figure>
+    </div>
+    <p class="note" style="text-align:right">※ 结果与维持时间可能因个人肤质状态及施术环境而异。</p>
+  </div>
+</section>
+
+<!-- ══ INDICATIONS ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="mark">INDICATIONS &amp; TARGETS</p>
+    <h2>Revibe PN 适合的肌肤</h2>
+    <div class="rule"></div>
+    <div class="ind-grid">
+      <article>
+        <b>01 PORE</b>
+        <h4>毛孔与肤质</h4>
+        <p>轻盈均匀铺展的配方，引导松弛毛孔与粗糙肤质趋于平整。</p>
+      </article>
+      <article>
+        <b>02 SENSITIVE</b>
+        <h4>敏感与泛红</h4>
+        <p>帮助易泛红、易敏感的肌肤回到稳定状态。</p>
+      </article>
+      <article>
+        <b>03 FIRMNESS</b>
+        <h4>细纹与弹力</h4>
+        <p>针对真皮环境变薄所产生的细纹与弹力下降，以更具密度的观感进行处理。</p>
+      </article>
+      <article>
+        <b>04 DRYNESS</b>
+        <h4>干燥与光泽下降</h4>
+        <p>为反复紧绷、妆感浮于表面的肌肤创造水分留存的条件。</p>
+      </article>
+    </div>
+
+    <div class="area">
+      <div class="area-shot"><img src="/assets/revibe_model.jpg" alt="Revibe PN 应用形象"></div>
+      <div class="area-txt">
+        <h3>施术部位说明</h3>
+        <p>分别标示已获许可的使用目的部位，以及需由医疗专业人员判断后考量的部位。</p>
+        <div class="area-row on"><b>眼周 · 眼尾细纹</b><span>已获许可的使用目的部位</span></div>
+        <div class="area-row"><b>额头 · 眉间 · 面颊 · 法令纹 · 嘴角 · 下颌线 · 颈部</b><span>由医疗专业人员判断并负责考量的部位</span></div>
+        <p class="fine">施术部位、深度与用量须遵循医疗专业人员的判断，详细内容请参照产品使用说明书。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPECIFICATION ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="mark">PRODUCT SPECIFICATIONS</p>
+    <h2>产品规格</h2>
+    <div class="rule" style="margin-bottom:clamp(40px,5vw,64px)"></div>
+    <div class="spec-grid">
+      <div class="spec-shot"><img src="/assets/revibe_box.jpg" alt="Revibe PN 外盒"></div>
+      <div>
+        <table>
+          <tbody>
+            <tr><th>产品名称</th><td><b>Aestyve Revibe</b></td></tr>
+            <tr><th>品目名称</th><td>组织修复用生物材料</td></tr>
+            <tr><th>许可编号</th><td>许可第 22-561 号</td></tr>
+            <tr><th>组成成分</th><td>聚脱氧核糖核苷酸钠 1.5 mL / 30 mg<br>透明质酸 0.5 mL / 10 mg</td></tr>
+            <tr><th>总容量</th><td>2 mL × 1 支预充式注射器</td></tr>
+            <tr><th>包装单位</th><td>1 支 / 盒</td></tr>
+            <tr><th>保存方法</th><td>1~30&nbsp;°C，避光并避免阳光直射保存</td></tr>
+            <tr><th>有效期限</th><td>自生产日起 3 年</td></tr>
+          </tbody>
+        </table>
+        <div class="badges">
+          <span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#E2977B" stroke-width="1.3"><path d="M8 2v12M2 8h12"/></svg>医疗器械</span>
+          <span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#E2977B" stroke-width="1.3"><circle cx="8" cy="8" r="6"/></svg>一次性使用</span>
+          <span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#E2977B" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M3.8 12.2 12.2 3.8"/></svg>禁止重复使用</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pack">
+      <figure>
+        <div class="ph"><img class="b" src="/assets/revibe_box.jpg" alt="外盒"></div>
+        <figcaption>外盒</figcaption><small>产品信息与批号标示</small>
+      </figure>
+      <figure>
+        <div class="ph"><img class="s" src="/assets/revibe_syringe.jpg" alt="预充式注射器"></div>
+        <figcaption>预充式注射器</figcaption><small>2 mL × 1 支，无菌包装</small>
+      </figure>
+      <figure>
+        <div class="ph"><img class="d" src="/assets/revibe_ifu1.jpg" alt="使用说明书"></div>
+        <figcaption>使用说明书</figcaption><small>使用目的、注意事项及标签贴纸</small>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══ USAGE ══ -->
+<section class="sec use">
+  <div class="wrap">
+    <p class="mark">INSTRUCTIONS FOR USE</p>
+    <h2>使用信息与注意事项</h2>
+    <div class="rule"></div>
+    <div class="cau">
+      <div>
+        <h4>使用前确认</h4>
+        <ul>
+          <li>本品为医疗器械，必须在具备资格的专科医师或医师负责下施术。</li>
+          <li>使用前确认包装有无破损，仅使用无破损的产品。</li>
+          <li>本品以无菌状态供应，请勿使用超过有效期的产品。</li>
+          <li>于常温（1~30&nbsp;°C）避光保存，使用前确认产品状态。</li>
+          <li>完整阅读使用说明书后再开始施术。</li>
+        </ul>
+      </div>
+      <div>
+        <h4>注意与禁忌</h4>
+        <ul>
+          <li>请勿在使用说明书所载许可部位以外的区域施术。</li>
+          <li>请勿注入血管内，或有感染、炎症的部位。</li>
+          <li>请勿对增生性瘢痕、自身免疫疾病、凝血功能障碍患者，孕妇及哺乳期女性、儿童与未成年人施术。</li>
+          <li>对产品成分（聚脱氧核糖核苷酸钠）过敏者请勿使用。</li>
+          <li>请勿与激光治疗、化学换肤等其他治疗并用。</li>
+          <li>本品为一次性无菌医疗器械，禁止重复使用与再灭菌。</li>
+          <li>术后 24 小时内避免化妆，两周内避免桑拿、汗蒸、紫外线照射及极端寒冷环境。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="rvd-disc"><p>本页面为面向医疗专业人员的产品信息资料。施术结果与维持时间可能因个人肤质状态及施术环境而异，是否施术及施术方式请务必在咨询医疗专业人员后决定。产品标示的使用目的与许可事项以使用说明书为准。</p></div>
+</div>
+</main><footer class="footer"><div class="container">
     <div class="footer-grid">
       <div><img class="footer-logo" src="/assets/logo.webp" alt="Aestyve"><p>创建品牌，流通标准。</p><p><!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea</p></div>
       <div><h4>COMPANY</h4><a href="company.html">About</a><a href="science.html">Science & Quality</a></div>
