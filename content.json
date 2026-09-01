@@ -1231,7 +1231,7 @@
  },
  "product-revibe.info-label.1": {
   "type": "plain",
-  "value": "PN 85%",
+  "value": "PN 1.5mL/30mg",
   "label": "PN 85%",
   "page": "product-revibe.html",
   "group": "info"
@@ -1245,7 +1245,7 @@
  },
  "product-revibe.info-label.2": {
   "type": "plain",
-  "value": "HA 15%",
+  "value": "HA 0.5mL/10mg",
   "label": "HA 15%",
   "page": "product-revibe.html",
   "group": "info"
