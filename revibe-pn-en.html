@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revibe PN | Aestyve</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDream';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+
+:root{
+  --paper:#FFFDFC;
+  --peach:#FAEBE3;
+  --peach-d:#F3DCD1;
+  --coral:#E2977B;
+  --coral-d:#B9663F;
+  --rose:#DE8B93;
+  --ink:#241E1B;
+  --body:#5E524D;
+  --line:#EBDCD4;
+  --pad:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--body);
+  font-family:'SCDream','S-Core Dream','Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  font-weight:300;font-size:17px;line-height:1.9;letter-spacing:-.015em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+p{margin:0}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.sec{padding:clamp(72px,10vw,140px) 0}
+.mark{font-size:10.5px;font-weight:400;letter-spacing:.28em;color:var(--coral-d);margin:0 0 18px}
+h1,h2,h3,h4{margin:0;color:var(--ink);font-weight:500;letter-spacing:-.03em;line-height:1.42}
+h2{font-size:clamp(22px,2.5vw,33px);font-weight:500}
+h3{font-size:clamp(17px,1.7vw,21px)}
+.lead{font-size:clamp(15.5px,1.35vw,17.5px);line-height:2.05;max-width:58ch}
+.thin{font-weight:200}
+.rule{width:44px;height:2px;background:var(--coral);margin:26px 0 0}
+
+/* ── running bar ───────────────────────────── */
+.bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+  padding:14px var(--pad);background:rgba(255,253,252,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);transform:translateY(-105%);transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.bar.on{transform:none}
+.bar img{height:19px;opacity:.9}
+.bar span{font-size:11.5px;font-weight:400;letter-spacing:.24em;color:var(--coral-d)}
+
+/* ── hero ──────────────────────────────────── */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+  background:#F8DFD8 url("assets/revibe_hero.jpg") center right/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(255,244,239,.95) 0%,rgba(255,244,239,.82) 30%,rgba(255,238,232,.18) 56%,rgba(255,238,232,0) 72%)}
+.hero-top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:30px var(--pad) 0}
+.hero-top img{height:26px}
+.hero-top .code{font-size:11px;letter-spacing:.26em;color:#8B6B5D;font-weight:400}
+.hero-in{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:0 var(--pad) 96px}
+.hero-col{max-width:600px}
+.logo-lock{display:flex;align-items:flex-end;gap:8px;margin-bottom:30px}
+.logo-lock img{width:clamp(196px,22vw,270px)}
+.logo-lock em{font-style:normal;font-size:clamp(15px,1.5vw,19px);font-weight:600;color:var(--ink);letter-spacing:.06em;padding-bottom:clamp(10px,1.6vw,16px)}
+.hero h1{font-size:clamp(25px,3.1vw,40px);font-weight:300;line-height:1.55;letter-spacing:-.035em}
+.hero h1 b{font-weight:600}
+.hero-desc{margin-top:26px;max-width:44ch;font-size:clamp(14.5px,1.2vw,16.5px);line-height:2;color:#6B5B53}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+.chip{border:1px solid rgba(185,102,63,.35);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:400;color:var(--coral-d);background:rgba(255,255,255,.5)}
+.chip b{font-weight:700}
+
+.topright{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.lang{display:flex;gap:14px}
+.lang a{font-size:11px;letter-spacing:.14em;color:#A58374;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
+.lang a:hover{color:#B9663F}
+.lang a.on{color:#B9663F;border-bottom-color:#B9663F}
+.lang a:focus-visible{outline:2px solid #B9663F;outline-offset:3px}
+.scroll{position:absolute;left:var(--pad);bottom:34px;z-index:2;display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.24em;color:#A58374}
+.scroll i{display:block;width:52px;height:1px;background:linear-gradient(90deg,var(--coral),rgba(226,151,123,0));animation:sl 2.6s infinite}
+@keyframes sl{0%{transform:scaleX(.2);transform-origin:left}55%{transform:scaleX(1);transform-origin:left}56%{transform:scaleX(1);transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
+
+/* ── intro ─────────────────────────────────── */
+.intro{background:var(--peach) url("assets/revibe_bgpeach.jpg") center/cover;position:relative}
+.intro::before{content:"";position:absolute;inset:0;background:rgba(255,250,247,.72)}
+.intro .wrap{position:relative}
+.intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,6vw,90px);align-items:end}
+.axis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--peach-d);border:1px solid var(--peach-d);margin-top:clamp(44px,6vw,72px)}
+.axis div{background:rgba(255,252,250,.9);padding:30px 24px}
+.axis h4{font-size:14.5px;font-weight:500;margin-bottom:10px}
+.axis p{font-size:13.5px;line-height:1.85;color:#7A6A62}
+.axis span{display:block;font-size:10px;letter-spacing:.22em;color:var(--coral);margin-bottom:14px}
+
+/* ── formula ───────────────────────────────── */
+.form-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.total{text-align:right}
+.total .cube{width:min(300px,78%);margin:0 0 0 auto;mix-blend-mode:multiply}
+.total b{display:block;font-size:clamp(46px,7vw,86px);font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.05em}
+.total b i{font-style:normal;font-size:.35em;font-weight:500;color:var(--coral-d);margin-left:6px;letter-spacing:0}
+.total p{font-size:13px;color:#8A7A72;margin-top:14px}
+
+.barrel{margin:clamp(48px,7vw,86px) 0 0}
+.barrel svg{width:100%;height:auto;display:block}
+
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);margin-top:clamp(40px,5vw,64px)}
+.card{border:1px solid var(--line);background:#fff;padding:clamp(28px,3.2vw,42px)}
+.card .tag{display:inline-block;font-size:10.5px;letter-spacing:.22em;padding:6px 12px;border-radius:2px;color:#fff;margin-bottom:22px}
+.card.pn .tag{background:var(--coral)}
+.card.ha .tag{background:var(--rose)}
+.card h3{font-size:clamp(18px,1.8vw,22px);font-weight:500;letter-spacing:-.03em}
+.card .en{font-size:12px;letter-spacing:.12em;color:#A2908A;margin-top:8px}
+.card .dose{display:flex;align-items:baseline;gap:10px;margin:22px 0 24px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.card .dose strong{font-size:clamp(21px,2.2vw,27px);font-weight:600;color:var(--ink);letter-spacing:-.03em}
+.card .dose em{font-style:normal;font-size:15px;font-weight:500;color:var(--coral-d)}
+.card ul{margin:0;padding:0;list-style:none}
+.card li{position:relative;padding-left:18px;font-size:14.5px;line-height:2;color:#6D5F59}
+.card li::before{content:"";position:absolute;left:0;top:14px;width:6px;height:1px;background:var(--coral)}
+.note{margin-top:26px;font-size:12.5px;color:#95837B;line-height:1.9}
+
+/* ── tech ──────────────────────────────────── */
+.tech{background:#FBF4F1}
+.band{width:100%;height:clamp(240px,34vw,460px);object-fit:cover;object-position:center 55%}
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,3vw,52px);margin-top:clamp(46px,6vw,74px)}
+.tech-grid section{border-top:2px solid var(--coral);padding-top:26px}
+.tech-grid .en{font-size:10.5px;letter-spacing:.2em;color:var(--coral-d);margin-bottom:12px}
+.tech-grid h3{font-size:17px;font-weight:500;margin-bottom:14px}
+.tech-grid p{font-size:14px;line-height:1.95;color:#6D5F59}
+.checks{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(44px,5vw,64px)}
+.checks div{background:#fff;padding:26px 24px;font-size:13.5px;line-height:1.8;color:#5E524D}
+.checks svg{display:block;margin-bottom:14px}
+
+/* ── mechanism ─────────────────────────────── */
+.mech-intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,5vw,80px);align-items:end}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,24px);margin-top:clamp(50px,6vw,80px)}
+.step figure{margin:0;overflow:hidden;background:#F6E9E4}
+.step img{width:100%;aspect-ratio:404/824;object-fit:cover}
+.step .no{display:flex;align-items:center;gap:10px;margin:20px 0 10px}
+.step .no b{font-size:13px;font-weight:700;color:var(--coral-d);letter-spacing:.06em}
+.step .no i{flex:1;height:1px;background:var(--line)}
+.step h4{font-size:15.5px;font-weight:500;margin-bottom:8px}
+.step p{font-size:13.5px;line-height:1.85;color:#7A6A62}
+
+/* ── benefits ──────────────────────────────── */
+.ben{background:var(--peach) url("assets/revibe_oil.jpg") center/cover;position:relative}
+.ben::before{content:"";position:absolute;inset:0;background:rgba(255,247,243,.82)}
+.ben .wrap{position:relative}
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--peach-d);border:1px solid var(--peach-d);margin-top:clamp(40px,5vw,64px)}
+.ben-grid div{background:#FFFBF9;padding:clamp(28px,3vw,40px)}
+.ben-grid h4{font-size:15px;font-weight:500;margin:18px 0 10px}
+.ben-grid p{font-size:13.5px;line-height:1.85;color:#7A6A62}
+
+/* ── before & after ────────────────────────── */
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,48px);margin-top:clamp(38px,5vw,60px)}
+.ba-grid figure{margin:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair span{display:block}
+.pair img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#F6E9E4}
+.pair i{display:block;font-style:normal;text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.2em;color:#A2908A}
+.ba-grid figcaption{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:14.5px;font-weight:500;color:var(--ink)}
+
+/* ── indication ────────────────────────────── */
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,30px);margin-top:clamp(40px,5vw,64px)}
+.ind-grid article{border-top:1px solid var(--line);padding-top:24px}
+.ind-grid b{display:block;font-size:11px;letter-spacing:.2em;color:var(--coral);margin-bottom:14px;font-weight:500}
+.ind-grid h4{font-size:16px;font-weight:500;margin-bottom:12px}
+.ind-grid p{font-size:13.5px;line-height:1.9;color:#7A6A62}
+.area{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;margin-top:clamp(56px,7vw,96px);background:#FBF4F1;border:1px solid var(--line)}
+.area-shot img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.area-txt{padding:clamp(30px,4vw,60px);display:flex;flex-direction:column;justify-content:center}
+.area-txt>p{font-size:14.5px;line-height:1.95;color:#7A6A62;margin-top:14px;max-width:44ch}
+.area-row{margin-top:26px;padding-left:20px;position:relative}
+.area-row::before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--coral);background:#fff}
+.area-row.on::before{background:var(--coral)}
+.area-row b{display:block;font-size:15.5px;font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.area-row span{display:block;font-size:13px;color:#8A7A72;margin-top:2px}
+.fine{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.9;color:#95837B}
+.area h3{font-size:clamp(17px,1.8vw,21px);font-weight:500}
+.area .sub{text-align:center;font-size:13.5px;color:#8A7A72;margin-top:12px}
+.area svg{width:100%;max-width:720px;margin:clamp(20px,3vw,36px) auto 0;height:auto;display:block}
+
+/* ── spec ──────────────────────────────────── */
+.spec-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,80px);align-items:center}
+.spec-shot{background:#FBF4F1;display:flex;align-items:center;justify-content:center;padding:clamp(24px,4vw,52px)}
+.spec-shot img{width:78%;mix-blend-mode:multiply}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th,td{text-align:left;padding:16px 0;border-bottom:1px solid var(--line);font-size:14.5px;vertical-align:top}
+th{width:34%;font-weight:500;color:#8A7A72;letter-spacing:-.01em}
+td{font-weight:400;color:var(--ink)}
+td b{font-weight:600}
+.badges{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.badges span{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:12.5px;color:#7A6A62}
+
+.pack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,36px);margin-top:clamp(46px,6vw,72px)}
+.pack figure{margin:0}
+.pack .ph{background:#FBF4F1;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pack .ph img{max-height:100%;object-fit:contain}
+.pack .ph img.b{width:44%;mix-blend-mode:multiply}
+.pack .ph img.s{width:98%;mix-blend-mode:multiply}
+.pack .ph img.d{width:86%;object-fit:contain;box-shadow:0 6px 24px rgba(120,80,60,.1)}
+.pack figcaption{margin-top:16px;font-size:14px;font-weight:500;color:var(--ink)}
+.pack small{display:block;font-size:12.5px;color:#8A7A72;margin-top:4px;font-weight:300}
+
+/* ── usage ─────────────────────────────────── */
+.use{background:#FBF4F1}
+.cau{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);margin-top:clamp(38px,5vw,60px)}
+.cau h4{font-size:15px;font-weight:500;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.cau ul{margin:0;padding:0;list-style:none}
+.cau li{position:relative;padding-left:16px;font-size:14px;line-height:1.95;color:#6D5F59;margin-bottom:8px}
+.cau li::before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--peach-d)}
+
+/* ── closing ───────────────────────────────── */
+.closing{text-align:center;border-top:1px solid var(--line)}
+.closing-mark{width:40px;margin:0 auto clamp(26px,3vw,38px)}
+.closing h2{font-size:clamp(26px,3vw,40px);font-weight:400;letter-spacing:-.02em}
+.closing-lead{margin:20px auto 0;font-size:clamp(14.5px,1.2vw,16.5px);line-height:2;color:#6B5B53;max-width:46ch}
+.closing-fine{margin-top:14px;font-size:12.5px;color:#A2908A}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(48px,6vw,80px)}
+.stats div{background:var(--paper);padding:30px 20px}
+.stats b{display:block;font-size:clamp(17px,1.8vw,21px);font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.stats span{display:block;margin-top:8px;font-size:11.5px;letter-spacing:.16em;color:#A2908A}
+
+/* ── footer ────────────────────────────────── */
+footer{background:#2A2320;color:#C9BBB4;padding:clamp(52px,6vw,80px) 0 44px;font-size:13px;line-height:2}
+footer .fgrid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+footer img{height:22px;filter:brightness(0) invert(1);opacity:.86}
+footer .pn{font-size:10.5px;letter-spacing:.3em;color:#8E7C74;margin-top:16px}
+footer .fnav{align-self:flex-end;font-size:12px;letter-spacing:.06em;color:#8E7C74}
+footer b{display:block;color:#EADFD9;font-weight:500;margin-bottom:4px}
+footer .disc{margin-top:40px;padding-top:26px;border-top:1px solid #3E3531;font-size:11.5px;line-height:1.95;color:#8E7C74;max-width:78ch}
+
+@media (max-width:1024px){
+  .intro-grid,.form-head,.mech-intro,.spec-grid,.cau,.area{grid-template-columns:1fr}
+  .area-shot img{max-height:56vw}
+  .total{text-align:left;margin-top:26px}
+  .total .cube{margin:0 0 22px;width:min(220px,55%)}
+  .tech-grid,.ben-grid{grid-template-columns:1fr 1fr}
+  .checks{grid-template-columns:1fr 1fr}
+  .ind-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  body{font-size:15.5px}
+  .hero{background-position:78% center}
+  .hero::after{background:linear-gradient(180deg,rgba(255,246,242,.96) 0%,rgba(255,246,242,.9) 46%,rgba(255,240,234,.55) 72%,rgba(255,240,234,.25) 100%)}
+  .hero-in{align-items:flex-start;padding-top:38px}
+  .axis,.comp,.tech-grid,.ben-grid,.ind-grid,.pack,.ba-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .checks{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr;gap:0}
+  .stats div{border-bottom:1px solid var(--line)}
+  .stats div:last-child{border-bottom:0}
+  .ba-grid{gap:34px}
+  .spec-shot img{width:62%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<style>
+body{letter-spacing:0;font-weight:300}
+h1,h2,h3,h4{letter-spacing:-.012em}
+.lead,.card li,.cau li{max-width:64ch}
+.hero h1{line-height:1.4}
+.mark{letter-spacing:.24em}
+.axis span,.card .en{display:none}
+.card h3{margin-bottom:2px}
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar">
+  <img src="assets/revibe_aestyve.png" alt="Aestyve">
+  <span>REVIBE PN</span>
+</div>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-top">
+    <img src="assets/revibe_aestyve.png" alt="Aestyve">
+    <div class="topright"><div class="code">PREMIUM MEDICAL AESTHETICS</div><nav class="lang"><a href="revibe-pn.html">KO</a><a href="revibe-pn-en.html" class="on">EN</a><a href="revibe-pn-zh.html">中文</a></nav></div>
+  </div>
+  <div class="hero-in">
+    <div class="hero-col">
+      <div class="logo-lock">
+        <img src="assets/revibe_revibe.png" alt="Revibe">
+        <em>PN</em>
+      </div>
+      <h1>Designed around the skin's own recovery environment<br><b>Premium PN Skin Booster</b></h1>
+      <p class="hero-desc">High-purity polynucleotide and hyaluronic acid in a single syringe, addressing both moisture retention and overall skin condition.</p>
+      <div class="chips">
+        <span class="chip">PN <b>1.5 mL / 30 mg</b></span>
+        <span class="chip">HA <b>0.5 mL / 10 mg</b></span>
+        <span class="chip">2 mL × 1 prefilled syringe</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll"><i></i>SCROLL</div>
+</header>
+
+<!-- ══ INTRO ══ -->
+<section class="sec intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div>
+        <p class="mark">ABOUT REVIBE PN</p>
+        <h2>From sensitive skin to loss of firmness —<br>one syringe.</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="lead">Revibe PN is a premium skin booster combining salmon-derived high-purity polynucleotide (PN) and hyaluronic acid (HA) in one prefilled syringe. By considering both moisture retention and the skin's own recovery process, it addresses a broad range of concerns — from sensitive, tired skin to dryness, uneven texture and loss of firmness.</p>
+    </div>
+    <div class="axis">
+      <div><span>WATER</span><h4>Moisture</h4><p>HA delivers immediate hydration and helps build an environment where moisture stays in the skin.</p></div>
+      <div><span>TEXTURE</span><h4>Texture</h4><p>A low-viscosity formula spreads evenly, guiding texture and pore appearance in a refined direction.</p></div>
+      <div><span>FIRMNESS</span><h4>Firmness</h4><p>Supports the dermal environment to compensate for the dulled look caused by fine lines and reduced firmness.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORMULA ══ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="form-head">
+      <div>
+        <p class="mark">PREMIUM FORMULA</p>
+        <h2>Two ingredients that<br>do not crowd each other out</h2>
+        <div class="rule"></div>
+        <p class="lead" style="margin-top:30px">PN and HA do not replace one another. The ingredient that builds the recovery environment and the ingredient that holds moisture each need a volume suited to their role. In Revibe PN, the two are blended at a balance point where neither interferes with the other.</p>
+      </div>
+      <div class="total">
+        <img class="cube" src="assets/revibe_cube.jpg" alt="Skin structure visual">
+      </div>
+    </div>
+
+    <div class="barrel">
+      <svg viewBox="0 0 1000 250" role="img" aria-label="Blend ratio of PN 1.5 mL 30 mg and HA 0.5 mL 10 mg">
+        <defs>
+          <linearGradient id="gpn" x1="0" x2="1"><stop offset="0" stop-color="#EFB79E"/><stop offset="1" stop-color="#E2977B"/></linearGradient>
+          <linearGradient id="gha" x1="0" x2="1"><stop offset="0" stop-color="#EBB4B8"/><stop offset="1" stop-color="#DE8B93"/></linearGradient>
+        </defs>
+        <!-- labels -->
+        <text x="60" y="46" fill="#B9663F" font-size="15" font-weight="600" letter-spacing="0.02em">POLYNUCLEOTIDE (PN)</text>
+        <text x="60" y="74" fill="#241E1B" font-size="21" font-weight="700" letter-spacing="-0.02em">1.5 mL · 30 mg</text>
+        <text x="940" y="46" text-anchor="end" fill="#C06A73" font-size="15" font-weight="600" letter-spacing="0.02em">HYALURONIC ACID (HA)</text>
+        <text x="940" y="74" text-anchor="end" fill="#241E1B" font-size="21" font-weight="700" letter-spacing="-0.02em">0.5 mL · 10 mg</text>
+        <!-- barrel -->
+        <rect x="58" y="104" width="884" height="62" rx="6" fill="#FBF1EC"/>
+        <path d="M64 104h657v62H64a6 6 0 0 1-6-6v-50a6 6 0 0 1 6-6z" fill="url(#gpn)"/>
+        <path d="M721 104h215a6 6 0 0 1 6 6v50a6 6 0 0 1-6 6H721z" fill="url(#gha)"/>
+        <line x1="721" y1="104" x2="721" y2="166" stroke="#FBF1EC" stroke-width="2"/>
+        <rect x="58" y="104" width="884" height="62" rx="6" fill="none" stroke="#E4CDC2"/>
+        <!-- plunger + tip -->
+        <rect x="30" y="96" width="18" height="78" rx="4" fill="#E4CDC2"/>
+        <rect x="0" y="126" width="32" height="18" rx="4" fill="#EFDFD7"/>
+        <rect x="950" y="122" width="26" height="26" rx="4" fill="#E4CDC2"/>
+        <rect x="976" y="130" width="24" height="10" rx="4" fill="#EFDFD7"/>
+        <!-- ticks -->
+        <g stroke="#D8BFB2" stroke-width="1">
+          <line x1="58" y1="176" x2="58" y2="196"/><line x1="279" y1="176" x2="279" y2="190"/>
+          <line x1="500" y1="176" x2="500" y2="196"/><line x1="721" y1="176" x2="721" y2="196"/>
+          <line x1="942" y1="176" x2="942" y2="196"/>
+          <line x1="168" y1="176" x2="168" y2="186"/><line x1="389" y1="176" x2="389" y2="186"/>
+          <line x1="610" y1="176" x2="610" y2="186"/><line x1="831" y1="176" x2="831" y2="186"/>
+        </g>
+        <g fill="#A2908A" font-size="12.5">
+          <text x="58" y="216" text-anchor="middle">0</text>
+          <text x="500" y="216" text-anchor="middle">1.0</text>
+          <text x="721" y="216" text-anchor="middle">1.5</text>
+          <text x="942" y="216" text-anchor="middle">2.0 mL</text>
+        </g>
+        <line x1="58" y1="240" x2="721" y2="240" stroke="#E2977B" stroke-width="2"/>
+        <line x1="721" y1="240" x2="942" y2="240" stroke="#DE8B93" stroke-width="2"/>
+        <text x="389" y="234" text-anchor="middle" fill="#B9663F" font-size="12" letter-spacing="0.16em">75%</text>
+        <text x="831" y="234" text-anchor="middle" fill="#C06A73" font-size="12" letter-spacing="0.16em">25%</text>
+      </svg>
+    </div>
+
+    <div class="comp">
+      <article class="card pn">
+        <span class="tag">PN</span>
+        <h3>Sodium Polynucleotide</h3>
+        <p class="en">Sodium Polynucleotide</p>
+        <div class="dose"><strong>1.5 mL</strong><em>30 mg</em></div>
+        <ul>
+          <li>High-purity material refined from salmon germ cells</li>
+          <li>A physical foundation supporting the dermal environment</li>
+          <li>Designed around the skin's own recovery process</li>
+          <li>High-molecular-weight PN with secured structural stability</li>
+        </ul>
+      </article>
+      <article class="card ha">
+        <span class="tag">HA</span>
+        <h3>Hyaluronic Acid</h3>
+        <p class="en">Hyaluronic Acid</p>
+        <div class="dose"><strong>0.5 mL</strong><em>10 mg</em></div>
+        <ul>
+          <li>Hydration that begins on injection and continues</li>
+          <li>Even, low-viscosity spread on injection</li>
+          <li>A medium that supports stable diffusion of PN</li>
+          <li>A gentle formula that eases the burden on the treated area</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note">※ Stated contents are per prefilled syringe. Please refer to the instructions for use for full details.</p>
+  </div>
+</section>
+
+<!-- ══ TECHNOLOGY ══ -->
+<section class="tech">
+  <img class="band" src="assets/revibe_syringe.jpg" alt="Revibe PN prefilled syringe">
+  <div class="wrap" style="padding-top:clamp(58px,7vw,96px);padding-bottom:clamp(72px,9vw,130px)">
+    <p class="mark">PHYSIOBALANCE TECHNOLOGY</p>
+    <h2>Less discomfort,<br>more balance</h2>
+    <div class="rule"></div>
+    <div class="tech-grid">
+      <section>
+        <p class="en">PHYSIOBALANCE</p>
+        <h3>Physiological balance</h3>
+        <p>Formulated close to physiological conditions to minimise irritation and foreign-body sensation on injection.</p>
+      </section>
+      <section>
+        <p class="en">OSMOTIC BALANCE</p>
+        <h3>Osmotic balance</h3>
+        <p>Osmotic pressure is tuned with swelling and redness duration in mind, easing the return to daily life after treatment.</p>
+      </section>
+      <section>
+        <p class="en">STRUCTURAL STABILITY</p>
+        <h3>Structural stability</h3>
+        <p>The molecular structure of high-purity PN is held stable, giving consistent quality and predictable handling.</p>
+      </section>
+    </div>
+    <div class="checks">
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        A balanced PN and HA formula
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        Natural, comfortable injection with a low-viscosity formula
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        Moisture, firmness and texture addressed together
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#E2977B" stroke-width="1.4"><path d="M4 10.5l4 4 8-9"/></svg>
+        MFDS-approved medical device (No. 22-561)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MECHANISM ══ -->
+<img class="band" src="assets/revibe_bubble.jpg" alt="Active ingredient within the skin">
+<section class="sec">
+  <div class="wrap">
+    <div class="mech-intro">
+      <div>
+        <p class="mark">MECHANISM OF ACTION</p>
+        <h2>Recovery that begins<br>deep in the skin</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="lead">PN is designed to act in the dermis rather than the epidermis. Once injected, the active ingredient distributes evenly through the surrounding tissue, draws in moisture and helps create an environment in which fibroblasts can work. Before any visible change, the conditions for the skin to settle itself are put in place.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <figure><img src="assets/revibe_step1.jpg" alt="Active ingredient distributing evenly in the dermis"></figure>
+        <div class="no"><b>01</b><i></i></div>
+        <h4>On injection</h4>
+        <p>The active ingredient injected into the dermis spreads evenly through surrounding tissue and settles.</p>
+      </article>
+      <article class="step">
+        <figure><img src="assets/revibe_step2.jpg" alt="Drawing in moisture to build a hydrating environment"></figure>
+        <div class="no"><b>02</b><i></i></div>
+        <h4>Moisture environment</h4>
+        <p>HA draws moisture into the skin, raising hydration and settling the barrier environment.</p>
+      </article>
+      <article class="step">
+        <figure><img src="assets/revibe_step3.jpg" alt="Fibroblast activity stage"></figure>
+        <div class="no"><b>03</b><i></i></div>
+        <h4>Cell activity support</h4>
+        <p>Conditions favourable to fibroblast activity are created, supporting collagen and elastin production.</p>
+      </article>
+      <article class="step">
+        <figure><img src="assets/revibe_step4.jpg" alt="Improved skin density and firmness"></figure>
+        <div class="no"><b>04</b><i></i></div>
+        <h4>Improved skin condition</h4>
+        <p>Dermal density is replenished, refining the appearance of fine lines, texture and radiance together.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENEFITS ══ -->
+<section class="sec ben">
+  <div class="wrap">
+    <p class="mark">EXPECTED CHANGES</p>
+    <h2>Six conditions addressed<br>in a single treatment</h2>
+    <div class="rule"></div>
+    <div class="ben-grid">
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M13 3.5s7 7.6 7 12a7 7 0 1 1-14 0c0-4.4 7-12 7-12z"/></svg>
+        <h4>Hydration and retention</h4><p>Replenishes moisture in the skin and helps it stay.</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><circle cx="13" cy="13" r="9"/><circle cx="13" cy="13" r="3.4"/></svg>
+        <h4>Recovery environment</h4><p>Supports the conditions for skin to settle itself.</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M13 3.5l8 3.6v6.4c0 4.6-3.4 7.6-8 8.9-4.6-1.3-8-4.3-8-8.9V7.1z"/></svg>
+        <h4>Barrier support</h4><p>Builds texture that holds up against external stress.</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M3.5 16c4-6 6.5-6 9.5 0s5.5 6 9.5 0"/><path d="M3.5 9.5c4-6 6.5-6 9.5 0"/></svg>
+        <h4>Fine lines and firmness</h4><p>Compensates for shallow lines and a sagging look.</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><circle cx="8" cy="9" r="2.2"/><circle cx="16.5" cy="7.5" r="1.6"/><circle cx="13" cy="15.5" r="2.6"/><circle cx="19" cy="16" r="1.8"/></svg>
+        <h4>Texture and pores</h4><p>Refines a rough, slackened surface appearance.</p>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#E2977B" stroke-width="1.2"><path d="M13 4l1.9 5.1L20 11l-5.1 1.9L13 18l-1.9-5.1L6 11l5.1-1.9z"/><path d="M19.5 17.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+        <h4>Radiance and vitality</h4><p>Adds a clear look, as if filled from within.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BEFORE & AFTER ══ -->
+<section class="sec ba">
+  <div class="wrap">
+    <p class="mark">BEFORE &amp; AFTER</p>
+    <h2>Before and after treatment</h2>
+    <div class="rule"></div>
+    <div class="ba-grid">
+      <figure>
+        <div class="pair">
+          <span><img src="assets/revibe_ba1b.jpg" alt="Pores and texture before treatment"><i>BEFORE</i></span>
+          <span><img src="assets/revibe_ba1a.jpg" alt="Pores and texture after treatment"><i>AFTER</i></span>
+        </div>
+        <figcaption>Pores &amp; texture</figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <span><img src="assets/revibe_ba2b.jpg" alt="Hydration and radiance before treatment"><i>BEFORE</i></span>
+          <span><img src="assets/revibe_ba2a.jpg" alt="Hydration and radiance after treatment"><i>AFTER</i></span>
+        </div>
+        <figcaption>Hydration &amp; radiance</figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <span><img src="assets/revibe_ba3b.jpg" alt="Fine lines and firmness before treatment"><i>BEFORE</i></span>
+          <span><img src="assets/revibe_ba3a.jpg" alt="Fine lines and firmness after treatment"><i>AFTER</i></span>
+        </div>
+        <figcaption>Fine lines &amp; firmness</figcaption>
+      </figure>
+    </div>
+    <p class="note" style="text-align:right">※ Results and duration may vary with individual skin condition and treatment setting.</p>
+  </div>
+</section>
+
+<!-- ══ INDICATIONS ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="mark">INDICATIONS &amp; TARGETS</p>
+    <h2>Revibe PN is for</h2>
+    <div class="rule"></div>
+    <div class="ind-grid">
+      <article>
+        <b>01 PORE</b>
+        <h4>Pores and texture</h4>
+        <p>A light, evenly spreading formula guides slackened pores and rough texture in a refined direction.</p>
+      </article>
+      <article>
+        <b>02 SENSITIVE</b>
+        <h4>Sensitivity and redness</h4>
+        <p>Helps bring easily reddened, reactive skin back to a stable condition.</p>
+      </article>
+      <article>
+        <b>03 FIRMNESS</b>
+        <h4>Fine lines and firmness</h4>
+        <p>Approaches fine lines and lost firmness — the result of a thinning dermal environment — with a denser appearance.</p>
+      </article>
+      <article>
+        <b>04 DRYNESS</b>
+        <h4>Dryness and dullness</h4>
+        <p>Creates conditions for moisture to stay in skin that feels tight and where make-up sits poorly.</p>
+      </article>
+    </div>
+
+    <div class="area">
+      <div class="area-shot"><img src="assets/revibe_model.jpg" alt="Revibe PN treatment visual"></div>
+      <div class="area-txt">
+        <h3>Treatment areas</h3>
+        <p>The approved indication area and areas considered at the discretion of a medical professional are shown separately.</p>
+        <div class="area-row on"><b>Eye area · lateral canthal lines</b><span>Approved indication area</span></div>
+        <div class="area-row"><b>Forehead · glabella · cheeks · nasolabial folds · mouth corners · jawline · neck</b><span>Areas considered under the judgement and responsibility of a medical professional</span></div>
+        <p class="fine">Treatment site, depth and volume must follow the judgement of a medical professional. Please refer to the instructions for use for full details.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPECIFICATION ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="mark">PRODUCT SPECIFICATIONS</p>
+    <h2>Product specifications</h2>
+    <div class="rule" style="margin-bottom:clamp(40px,5vw,64px)"></div>
+    <div class="spec-grid">
+      <div class="spec-shot"><img src="assets/revibe_box.jpg" alt="Revibe PN outer carton"></div>
+      <div>
+        <table>
+          <tbody>
+            <tr><th>Product name</th><td><b>Aestyve Revibe</b></td></tr>
+            <tr><th>Category</th><td>Tissue-repair biomaterial</td></tr>
+            <tr><th>Approval no.</th><td>No. 22-561</td></tr>
+            <tr><th>Composition</th><td>Sodium polynucleotide 1.5 mL / 30 mg<br>Hyaluronic acid 0.5 mL / 10 mg</td></tr>
+            <tr><th>Total volume</th><td>2 mL × 1 prefilled syringe</td></tr>
+            <tr><th>Packaging</th><td>1 unit per box</td></tr>
+            <tr><th>Storage</th><td>1–30&nbsp;°C, protected from light and direct sunlight</td></tr>
+            <tr><th>Shelf life</th><td>3 years from date of manufacture</td></tr>
+          </tbody>
+        </table>
+        <div class="badges">
+          <span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#E2977B" stroke-width="1.3"><path d="M8 2v12M2 8h12"/></svg>Medical device</span>
+          <span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#E2977B" stroke-width="1.3"><circle cx="8" cy="8" r="6"/></svg>Single use</span>
+          <span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#E2977B" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M3.8 12.2 12.2 3.8"/></svg>Do not reuse</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pack">
+      <figure>
+        <div class="ph"><img class="b" src="assets/revibe_box.jpg" alt="Outer carton"></div>
+        <figcaption>Outer carton</figcaption><small>Product information and lot marking</small>
+      </figure>
+      <figure>
+        <div class="ph"><img class="s" src="assets/revibe_syringe.jpg" alt="Prefilled syringe"></div>
+        <figcaption>Prefilled syringe</figcaption><small>2 mL × 1, sterile packaging</small>
+      </figure>
+      <figure>
+        <div class="ph"><img class="d" src="assets/revibe_ifu1.jpg" alt="Instructions for use"></div>
+        <figcaption>Instructions for use</figcaption><small>Indications, precautions and label stickers</small>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══ USAGE ══ -->
+<section class="sec use">
+  <div class="wrap">
+    <p class="mark">INSTRUCTIONS FOR USE</p>
+    <h2>Usage information and precautions</h2>
+    <div class="rule"></div>
+    <div class="cau">
+      <div>
+        <h4>Before use</h4>
+        <ul>
+          <li>As a medical device, treatment must be carried out under the responsibility of a licensed specialist or physician.</li>
+          <li>Check the packaging for damage before use and use only undamaged product.</li>
+          <li>Supplied sterile; do not use beyond the expiry date.</li>
+          <li>Store at room temperature (1–30&nbsp;°C) protected from light, and check product condition before use.</li>
+          <li>Read the instructions for use in full before beginning treatment.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Precautions and contraindications</h4>
+        <ul>
+          <li>Do not treat areas other than the approved site stated in the instructions for use.</li>
+          <li>Do not inject intravascularly or into infected or inflamed areas.</li>
+          <li>Do not treat patients with hypertrophic scarring, autoimmune disease or coagulation disorders, pregnant or breastfeeding women, children or minors.</li>
+          <li>Do not use in cases of hypersensitivity to the product ingredient (sodium polynucleotide).</li>
+          <li>Do not combine with other treatments such as laser procedures or chemical peels.</li>
+          <li>A single-use sterile medical device: do not reuse or re-sterilise.</li>
+          <li>Avoid make-up for 24 hours after treatment, and avoid saunas, steam rooms, UV exposure and extreme cold for two weeks.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING ══ -->
+<section class="sec closing">
+  <div class="wrap">
+    <img class="closing-mark" src="assets/revibe_aemark.png" alt="">
+    <p class="mark">SKIN QUALITY · PN</p>
+    <h2>Aestyve Revibe PN</h2>
+    <p class="closing-lead">A premium PN skin booster designed around the skin's own recovery environment.</p>
+    <p class="closing-fine">Intended use, claims and availability may vary by country regulation and actual product documentation.</p>
+    <div class="stats">
+      <div><b>PN + HA</b><span>Formulation</span></div>
+      <div><b>2.0 mL</b><span>Prefilled syringe</span></div>
+      <div><b>Skin Quality</b><span>Positioning</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <img src="assets/revibe_aestyve.png" alt="Aestyve">
+      <p class="pn">POLYNUCLEOTIDE TECHNOLOGY</p>
+    </div>
+    <div class="fnav">Aestyve · Seoul, Republic of Korea</div>
+  </div>
+  <div class="wrap">
+    <p class="disc">This page is product information intended for medical professionals. Treatment results and duration may vary with individual skin condition and treatment setting; whether and how to proceed should be decided after consulting a medical professional. The stated intended use and approval details follow the product instructions for use.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  var t=false;
+  window.addEventListener('scroll',function(){
+    if(t)return; t=true;
+    requestAnimationFrame(function(){
+      bar.classList.toggle('on', window.scrollY>window.innerHeight*0.9);
+      t=false;
+    });
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
