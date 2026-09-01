@@ -247,13 +247,13 @@
  },
  "company.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "company.html"
  },
  "company.p.5": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "aestyve@naver.com",
   "label": "info@aestyve.com",
   "page": "company.html"
  },
