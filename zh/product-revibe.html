@@ -237,6 +237,112 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
 #rvd .rvd-disc p{max-width:84ch;margin:0 auto;text-align:center;font-size:12px;line-height:1.95;color:#8B7A72}
 @media (max-width:680px){#rvd{font-size:15.5px}}
 </style>
+
+<!-- ZH TYPOGRAPHY : 三极萧宋简体 (라이선스 폰트 — /assets/fonts/ 업로드 필요) -->
+<style>
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-light.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-light.woff') format('woff');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-regular.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-medium.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-bold.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+:root{
+ --zh-song:'SanJi XiaoSong','三极萧宋简体','SanJiXiaoSongJianTi',"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",serif;
+ --zh-sans:"PingFang SC","HarmonyOS Sans SC","Noto Sans SC","Source Han Sans SC","Microsoft YaHei","Heiti SC",sans-serif;
+}
+body{font-family:var(--zh-sans);font-weight:400;font-size:15px;line-height:1.9;letter-spacing:.012em}
+em{font-style:normal}
+.menu{font-size:11.5px;font-weight:500;letter-spacing:.06em}
+.eyebrow{font-family:var(--zh-sans);font-size:10.5px;font-weight:600;letter-spacing:.2em}
+
+/* 한자는 1글자 = 1em → em 단위로 줄폭을 고정해 어절 중간 끊김 방지 */
+.hero h1{font-family:var(--zh-song);font-weight:300;font-size:clamp(31px,3.5vw,48px);
+ line-height:1.5;letter-spacing:.04em;max-width:9.6em;margin:24px 0 26px}
+.hero h1 em{font-weight:500}
+.hero p{font-size:14.5px;line-height:2.05;max-width:30em;color:rgba(255,255,255,.72)}
+.btn{font-family:var(--zh-sans);font-size:11.5px;font-weight:500;letter-spacing:.06em;padding:12px 19px}
+
+.page-hero h1{font-family:var(--zh-song);font-weight:300;font-size:clamp(29px,3.4vw,44px);
+ line-height:1.5;letter-spacing:.04em;max-width:9.6em}
+.page-hero p{font-size:13.5px;line-height:2;max-width:32em}
+
+.split-title h2,.distrib-head h2,.quality-title h2,.partner h2,.contact-left h2{
+ font-family:var(--zh-song);font-weight:300;font-size:clamp(24px,2.8vw,36px);
+ line-height:1.55;letter-spacing:.035em;max-width:13.5em}
+.split-title h2 em,.quality-title h2 em,.partner h2 em,.contact-left h2 em{font-weight:500}
+.split-title p{font-size:14px;line-height:2;margin-top:16px;max-width:34em}
+
+.duo-card h3,.dcard h3,.qrow b,.partner-item b,.info b,.product-card h3{font-family:var(--zh-song)}
+.duo-card h3{font-size:17px;font-weight:500;letter-spacing:.04em;margin-bottom:10px}
+.duo-card p{font-size:13px;line-height:1.95;opacity:.78;max-width:30em}
+.duo-card .num{font-size:26px}
+.small-link{font-size:11px;font-weight:500;letter-spacing:.06em}
+
+.solution .index{font-size:10px;font-weight:600;letter-spacing:.14em}
+.solution h3{font-family:var(--zh-song);font-weight:400;font-size:24px;letter-spacing:.03em;margin:6px 0}
+.solution p{font-size:12.5px;line-height:1.85}
+
+.distrib-head p{font-size:13.5px;line-height:2;max-width:30em}
+.dcard h3{font-size:15.5px;font-weight:500;letter-spacing:.04em;margin-bottom:7px}
+.dcard p{font-size:12px;line-height:1.9}
+
+.info b{font-size:19px;font-weight:500;letter-spacing:.04em}
+.info span{font-size:12.5px;line-height:1.85}
+.product-card h3{font-size:21px;font-weight:500}
+.product-card p{font-size:12px;line-height:1.85}
+.notice{font-size:11.5px;line-height:1.9}
+
+.qrow{grid-template-columns:54px 180px 1fr;padding:20px 0}
+.qrow .n{font-size:21px}
+.qrow b{font-size:13.5px;font-weight:500;letter-spacing:.04em}
+.qrow span{font-size:12.5px;line-height:1.9}
+.statement-copy h3{font-family:var(--zh-song);font-weight:300;font-size:clamp(24px,2.7vw,34px);
+ line-height:1.55;letter-spacing:.04em;max-width:11em}
+.statement-copy h3 em{font-weight:500}
+.statement-copy p{font-size:13px;line-height:1.95}
+
+.partner p{font-size:13px;line-height:1.95;max-width:32em}
+.partner-item b{font-size:13px;font-weight:500}
+.partner-item span{font-size:11px;opacity:.72}
+.contact-left p{font-size:13px;line-height:2}
+.contact-row b{font-size:10px;letter-spacing:.14em}
+.contact-row span{font-size:13px}
+
+.footer h4{font-size:10px;font-weight:600;letter-spacing:.16em}
+.footer a,.footer p{font-size:11.5px;line-height:1.95}
+.footer-bottom{font-size:10px;line-height:1.8}
+
+.brand{display:flex;align-items:center;gap:11px}
+.brand-cn{font-family:var(--zh-song);font-size:15px;font-weight:400;letter-spacing:.16em;color:#fff;
+ opacity:.94;white-space:nowrap;padding-left:11px;border-left:1px solid rgba(255,255,255,.3)}
+.brand-cn sup{font-family:var(--zh-sans);font-size:.44em;font-weight:500;letter-spacing:.04em;
+ vertical-align:super;opacity:.68;margin-left:2px}
+.footer-brand{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.footer-brand .footer-logo{margin-bottom:0}
+
+.hero-wrap{min-height:min(86vh,780px)}
+.hero-left{padding:clamp(60px,6.5vw,104px) clamp(30px,3.6vw,76px) clamp(56px,6vw,88px)
+  max(30px,calc((100vw - 1220px)/2))}
+.hero-left:before{font-size:clamp(200px,24vw,340px);top:8px}
+.hero .actions{margin-top:clamp(26px,3vw,40px)}
+.section{padding:clamp(64px,7vw,104px) 0}
+.split-title{margin-bottom:clamp(30px,3.8vw,50px);align-items:end}
+.page-hero{padding:clamp(34px,4vw,56px) 0}
+.page-hero-copy{padding:clamp(34px,4vw,56px)}
+.duo,.solutions,.distrib-cards,.info-grid,.product-grid,.contact{gap:clamp(12px,1.4vw,18px)}
+.statement{margin-top:clamp(40px,5vw,64px)}
+.statement-copy{padding:clamp(32px,3.6vw,52px)}
+.partner{padding:clamp(32px,3.6vw,46px) clamp(30px,3.6vw,50px)}
+.qrows{border-top:1px solid var(--line)}
+.footer{padding:clamp(46px,5vw,64px) 0 26px}
+h1,h2,h3{text-wrap:balance}
+
+@media(max-width:960px){
+ .hero h1{font-size:clamp(27px,6.6vw,36px);line-height:1.55;max-width:none}
+ .split-title h2,.distrib-head h2,.quality-title h2,.partner h2{font-size:clamp(22px,5.2vw,29px);max-width:none}
+ .brand-cn{font-size:13.5px;letter-spacing:.12em;padding-left:9px}
+ .qrow{grid-template-columns:44px 1fr;row-gap:4px}
+ .qrow span{grid-column:2}
+}
+</style>
 </head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="active" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><a class="lang-switch" href="/en/product-revibe.html">EN</a></nav><button class="menu-btn">MENU</button></div></header><main><section class="page-hero"><div class="container page-hero-box"><div class="page-hero-copy"><span class="eyebrow">REVITALIZE · PN</span><h1>Revibe PN</h1><p>结合 PN 30 mg / 1.5 mL 与 HA 10 mg / 0.5 mL，以 Physiological Balance 与 Osmolality Balance 方案为基础的专业 PN 产品组合。</p><div class="notice">本产品的用途、表述及供应范围可能因各国法规与实际产品资料而有所不同。</div></div><div class="page-visual"><img src="/assets/revibe_pack.webp" alt="Revibe PN"></div></div></section><div id="rvd">
 <!-- ══ INTRO ══ -->
 <section class="sec intro">
