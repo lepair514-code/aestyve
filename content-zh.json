@@ -1,1540 +1,1540 @@
 {
- "404.h1.1": {
-  "type": "rich",
-  "value": "未找到页面。",
-  "label": "未找到页面。",
-  "page": "404.html"
- },
- "404.p.1": {
-  "type": "plain",
-  "value": "抱歉，未找到您请求的页面。",
-  "label": "抱歉，未找到您请求的页面。",
-  "page": "404.html"
- },
- "404.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "404.html"
- },
- "404.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "404.html"
- },
- "404.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "404.html"
- },
- "404.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "404.html"
- },
- "brands.h1.1": {
-  "type": "rich",
-  "value": "统一标准，<br>多元技术。",
-  "label": "统一标准， 多元技术。",
-  "page": "brands.html"
- },
- "brands.h3.1": {
-  "type": "rich",
-  "value": "Aestyve HA",
-  "label": "Aestyve HA",
-  "page": "brands.html"
- },
- "brands.h3.2": {
-  "type": "rich",
-  "value": "Revibe PN",
-  "label": "Revibe PN",
-  "page": "brands.html"
- },
- "brands.h3.3": {
-  "type": "rich",
-  "value": "Liquid PCL",
-  "label": "Liquid PCL",
-  "page": "brands.html"
- },
- "brands.h3.4": {
-  "type": "rich",
-  "value": "Innofill PLLA",
-  "label": "Innofill PLLA",
-  "page": "brands.html"
- },
- "brands.h3.5": {
-  "type": "rich",
-  "value": "RVSC Exosome",
-  "label": "RVSC Exosome",
-  "page": "brands.html"
- },
- "brands.p.1": {
-  "type": "plain",
-  "value": "我们按用途区分HA、PN、PCL、PLLA、外泌体（Exosome）及高阶解决方案（Advanced Solutions），并以Aestyve这一统一品牌标准将其连接。",
-  "label": "我们按用途区分HA、PN、PCL、PLLA、外泌体（Exosome）及高阶解决方案（Adva…",
-  "page": "brands.html"
- },
- "brands.p.2": {
-  "type": "plain",
-  "value": "α · β · γ / Cross-linked HA",
-  "label": "α · β · γ / Cross-linked HA",
-  "page": "brands.html"
- },
- "brands.p.3": {
-  "type": "plain",
-  "value": "PN 85% + HA 15%",
-  "label": "PN 85% + HA 15%",
-  "page": "brands.html"
- },
- "brands.p.4": {
-  "type": "plain",
-  "value": "Liquid PCL · 2.0mL/Vial",
-  "label": "Liquid PCL · 2.0mL/Vial",
-  "page": "brands.html"
- },
- "brands.p.5": {
-  "type": "plain",
-  "value": "基于PLLA的生物刺激类别",
-  "label": "基于PLLA的生物刺激类别",
-  "page": "brands.html"
- },
- "brands.p.6": {
-  "type": "plain",
-  "value": "基于外泌体的专业解决方案",
-  "label": "基于外泌体的专业解决方案",
-  "page": "brands.html"
- },
- "brands.p.7": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "brands.html"
- },
- "brands.p.8": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "brands.html"
- },
- "brands.p.9": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "brands.html"
- },
- "brands.p.10": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "brands.html"
- },
- "company.info-label.1": {
-  "type": "plain",
-  "value": "科学",
-  "label": "科学",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-desc.1": {
-  "type": "plain",
-  "value": "有据可查的技术与产品信息",
-  "label": "有据可查的技术与产品信息",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-label.2": {
-  "type": "plain",
-  "value": "精准",
-  "label": "精准",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-desc.2": {
-  "type": "plain",
-  "value": "细节品质与沟通的精准度",
-  "label": "细节品质与沟通的精准度",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-label.3": {
-  "type": "plain",
-  "value": "品质",
-  "label": "品质",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-desc.3": {
-  "type": "plain",
-  "value": "以标准优先于价格的理念",
-  "label": "以标准优先于价格的理念",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-label.4": {
-  "type": "plain",
-  "value": "创新",
-  "label": "创新",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-desc.4": {
-  "type": "plain",
-  "value": "HA · PN · PCL · PLLA · Exosome",
-  "label": "HA · PN · PCL · PLLA · Exosome",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-label.5": {
-  "type": "plain",
-  "value": "合作",
-  "label": "合作",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-desc.5": {
-  "type": "plain",
-  "value": "与全球市场共同成长的关系",
-  "label": "与全球市场共同成长的关系",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-label.6": {
-  "type": "plain",
-  "value": "韩国",
-  "label": "韩国",
-  "page": "company.html",
-  "group": "info"
- },
- "company.info-desc.6": {
-  "type": "plain",
-  "value": "韩国医学美容专业实力",
-  "label": "韩国医学美容专业实力",
-  "page": "company.html",
-  "group": "info"
- },
- "company.h1.1": {
-  "type": "rich",
-  "value": "打造品牌，<br>传递标准。",
-  "label": "打造品牌， 传递标准。",
-  "page": "company.html"
- },
- "company.h2.1": {
-  "type": "rich",
-  "value": "韩国医学美容，<br><em>为全球市场而生。</em>",
-  "label": "韩国医学美容， 为全球市场而生。",
-  "page": "company.html"
- },
- "company.p.1": {
-  "type": "plain",
-  "value": "Aestyve以韩国医学美容技术与专业品质标准为基础打造自主品牌，为全球合作伙伴提供精选解决方案。",
-  "label": "Aestyve以韩国医学美容技术与专业品质标准为基础打造自主品牌，为全球合作伙伴提供精选解决…",
-  "page": "company.html"
- },
- "company.p.2": {
-  "type": "plain",
-  "value": "我们的定位并非以化妆品为中心的K-Beauty，而是面向医美专业人士与经销合作伙伴的医学美容（Medical Aesthetics）企业。",
-  "label": "我们的定位并非以化妆品为中心的K-Beauty，而是面向医美专业人士与经销合作伙伴的医学美容…",
-  "page": "company.html"
- },
- "company.p.3": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "company.html"
- },
- "company.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "company.html"
- },
- "company.p.5": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "company.html"
- },
- "company.p.6": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "company.html"
- },
- "contact.contact-label.1": {
-  "type": "plain",
-  "value": "邮箱",
-  "label": "邮箱",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.contact-desc.1": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.contact-label.2": {
-  "type": "plain",
-  "value": "所在地",
-  "label": "所在地",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.contact-desc.2": {
-  "type": "plain",
-  "value": "首尔 · 大韩民国",
-  "label": "首尔 · 大韩民国",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.contact-label.3": {
-  "type": "plain",
-  "value": "业务范围",
-  "label": "业务范围",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.contact-desc.3": {
-  "type": "plain",
-  "value": "品牌 · 经销 · 全球合作",
-  "label": "品牌 · 经销 · 全球合作",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.contact-label.4": {
-  "type": "plain",
-  "value": "语言",
-  "label": "语言",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.contact-desc.4": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "contact.html",
-  "group": "contact"
- },
- "contact.h2.1": {
-  "type": "rich",
-  "value": "告诉我们，<br>您想在哪里发展。",
-  "label": "告诉我们， 您想在哪里发展。",
-  "page": "contact.html"
- },
- "contact.p.1": {
-  "type": "plain",
-  "value": "请告知您的咨询目的——产品、区域经销、新合作伙伴关系或展会合作等，我们将为您提供相应指引。",
-  "label": "请告知您的咨询目的——产品、区域经销、新合作伙伴关系或展会合作等，我们将为您提供相应指引。",
-  "page": "contact.html"
- },
- "contact.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "contact.html"
- },
- "contact.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "contact.html"
- },
- "contact.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "contact.html"
- },
- "contact.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "contact.html"
- },
- "distribution.h1.1": {
-  "type": "rich",
-  "value": "精选品牌，<br>清晰定位。",
-  "label": "精选品牌， 清晰定位。",
-  "page": "distribution.html"
- },
- "distribution.h3.1": {
-  "type": "rich",
-  "value": "全球注射类产品",
-  "label": "全球注射类产品",
-  "page": "distribution.html"
- },
- "distribution.h3.2": {
-  "type": "rich",
-  "value": "再生美容技术",
-  "label": "再生美容技术",
-  "page": "distribution.html"
- },
- "distribution.h3.3": {
-  "type": "rich",
-  "value": "皮肤及医疗器械解决方案",
-  "label": "皮肤及医疗器械解决方案",
-  "page": "distribution.html"
- },
- "distribution.p.1": {
-  "type": "plain",
-  "value": "我们明确区分Aestyve自有产品与外部品牌经销业务。相较于经营所有产品，我们更注重市场潜力、品牌价值及合作伙伴的实际需求。",
-  "label": "我们明确区分Aestyve自有产品与外部品牌经销业务。相较于经营所有产品，我们更注重市场潜力…",
-  "page": "distribution.html"
- },
- "distribution.p.2": {
-  "type": "plain",
-  "value": "全球注射剂与生物刺激剂产品组合",
-  "label": "全球注射剂与生物刺激剂产品组合",
-  "page": "distribution.html"
- },
- "distribution.p.3": {
-  "type": "plain",
-  "value": "皮肤再生与胶原蛋白类别",
-  "label": "皮肤再生与胶原蛋白类别",
-  "page": "distribution.html"
- },
- "distribution.p.4": {
-  "type": "plain",
-  "value": "医疗器械与专业皮肤解决方案",
-  "label": "医疗器械与专业皮肤解决方案",
-  "page": "distribution.html"
- },
- "distribution.p.5": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "distribution.html"
- },
- "distribution.p.6": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "distribution.html"
- },
- "distribution.p.7": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "distribution.html"
- },
- "distribution.p.8": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "distribution.html"
- },
- "index.qrow-label.1": {
-  "type": "plain",
-  "value": "品牌开发",
-  "label": "品牌开发",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.qrow-desc.1": {
-  "type": "plain",
-  "value": "基于明确的目标客群与产品组合策略，打造自主品牌。",
-  "label": "基于明确的目标客群与产品组合策略，打造自主品牌。",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.qrow-label.2": {
-  "type": "plain",
-  "value": "品质文档",
-  "label": "品质文档",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.qrow-desc.2": {
-  "type": "plain",
-  "value": "以真实的产品资料与品质文件为依据，透明地提供所需信息。",
-  "label": "以真实的产品资料与品质文件为依据，透明地提供所需信息。",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.qrow-label.3": {
-  "type": "plain",
-  "value": "专业沟通",
-  "label": "专业沟通",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.qrow-desc.3": {
-  "type": "plain",
-  "value": "相较于夸大宣传，我们选择医护人员与合作伙伴易于理解的专业表达。",
-  "label": "相较于夸大宣传，我们选择医护人员与合作伙伴易于理解的专业表达。",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.qrow-label.4": {
-  "type": "plain",
-  "value": "全球合规",
-  "label": "全球合规",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.qrow-desc.4": {
-  "type": "plain",
-  "value": "充分考虑各国注册与宣称范围的差异，统筹管理全球化沟通。",
-  "label": "充分考虑各国注册与宣称范围的差异，统筹管理全球化沟通。",
-  "page": "index.html",
-  "group": "qrow"
- },
- "index.partner-label.1": {
-  "type": "plain",
-  "value": "品牌",
-  "label": "品牌",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.partner-desc.1": {
-  "type": "plain",
-  "value": "品牌开发",
-  "label": "品牌开发",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.partner-label.2": {
-  "type": "plain",
-  "value": "产品组合",
-  "label": "产品组合",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.partner-desc.2": {
-  "type": "plain",
-  "value": "精选经销",
-  "label": "精选经销",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.partner-label.3": {
-  "type": "plain",
-  "value": "市场",
-  "label": "市场",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.partner-desc.3": {
-  "type": "plain",
-  "value": "市场支持",
-  "label": "市场支持",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.partner-label.4": {
-  "type": "plain",
-  "value": "全球",
-  "label": "全球",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.partner-desc.4": {
-  "type": "plain",
-  "value": "全球网络",
-  "label": "全球网络",
-  "page": "index.html",
-  "group": "partner"
- },
- "index.h1.1": {
-  "type": "rich",
-  "value": "打造品牌，<br><em>传递标准。</em>",
-  "label": "打造品牌， 传递标准。",
-  "page": "index.html"
- },
- "index.h2.1": {
-  "type": "rich",
-  "value": "不止于单一产品，<br><em>更塑造审视美容市场的视角。</em>",
-  "label": "不止于单一产品， 更塑造审视美容市场的视角。",
-  "page": "index.html"
- },
- "index.h2.2": {
-  "type": "rich",
-  "value": "因明确目标而生。",
-  "label": "因明确目标而生。",
-  "page": "index.html"
- },
- "index.h2.3": {
-  "type": "rich",
-  "value": "精选品牌，<br>值得信赖的合作关系",
-  "label": "精选品牌， 值得信赖的合作关系",
-  "page": "index.html"
- },
- "index.h2.4": {
-  "type": "rich",
-  "value": "信任，<br><em>建立于原则之上，</em><br>方能成就。",
-  "label": "信任， 建立于原则之上， 方能成就。",
-  "page": "index.html"
- },
- "index.h2.5": {
-  "type": "rich",
-  "value": "超越产品本身，<br>与市场共创价值。",
-  "label": "超越产品本身， 与市场共创价值。",
-  "page": "index.html"
- },
- "index.h3.1": {
-  "type": "rich",
-  "value": "AESTYVE 自有品牌",
-  "label": "AESTYVE 自有品牌",
-  "page": "index.html"
- },
- "index.h3.2": {
-  "type": "rich",
-  "value": "精选经销",
-  "label": "精选经销",
-  "page": "index.html"
- },
- "index.h3.3": {
-  "type": "rich",
-  "value": "Revibe PN",
-  "label": "Revibe PN",
-  "page": "index.html"
- },
- "index.h3.4": {
-  "type": "rich",
-  "value": "Liquid PCL",
-  "label": "Liquid PCL",
-  "page": "index.html"
- },
- "index.h3.5": {
-  "type": "rich",
-  "value": "HA Filler Series",
-  "label": "HA Filler Series",
-  "page": "index.html"
- },
- "index.h3.6": {
-  "type": "rich",
-  "value": "Innofill PLLA",
-  "label": "Innofill PLLA",
-  "page": "index.html"
- },
- "index.h3.7": {
-  "type": "rich",
-  "value": "RVSC Exosome",
-  "label": "RVSC Exosome",
-  "page": "index.html"
- },
- "index.h3.8": {
-  "type": "rich",
-  "value": "全球注射类产品",
-  "label": "全球注射类产品",
-  "page": "index.html"
- },
- "index.h3.9": {
-  "type": "rich",
-  "value": "再生美容技术",
-  "label": "再生美容技术",
-  "page": "index.html"
- },
- "index.h3.10": {
-  "type": "rich",
-  "value": "皮肤及医疗器械解决方案",
-  "label": "皮肤及医疗器械解决方案",
-  "page": "index.html"
- },
- "index.h3.11": {
-  "type": "rich",
-  "value": "我们不以价格竞争，<br><em>我们以标准竞争。</em>",
-  "label": "我们不以价格竞争， 我们以标准竞争。",
-  "page": "index.html"
- },
- "index.p.1": {
-  "type": "plain",
-  "value": "Aestyve以韩国医学美容技术与精密品质标准为基础打造自主品牌，将精选专业产品连接至全球市场。",
-  "label": "Aestyve以韩国医学美容技术与精密品质标准为基础打造自主品牌，将精选专业产品连接至全球市…",
-  "page": "index.html"
- },
- "index.p.2": {
-  "type": "plain",
-  "value": "从品牌规划、产品组合、品质沟通到全球经销，Aestyve以统一标准贯穿始终。值得信赖的解决方案与长久的合作关系是我们的核心。",
-  "label": "从品牌规划、产品组合、品质沟通到全球经销，Aestyve以统一标准贯穿始终。值得信赖的解决方…",
-  "page": "index.html"
- },
- "index.p.3": {
-  "type": "plain",
-  "value": "按用途与技术明确区分，打造自主医学美容产品组合。",
-  "label": "按用途与技术明确区分，打造自主医学美容产品组合。",
-  "page": "index.html"
- },
- "index.p.4": {
-  "type": "plain",
-  "value": "综合考量经验证的市场潜力与专业性，为全球合作伙伴甄选所需品牌。",
-  "label": "综合考量经验证的市场潜力与专业性，为全球合作伙伴甄选所需品牌。",
-  "page": "index.html"
- },
- "index.p.5": {
-  "type": "plain",
-  "value": "明确定义每项技术的作用，以拓展医护人员的临床经验并提升患者治疗效果。",
-  "label": "明确定义每项技术的作用，以拓展医护人员的临床经验并提升患者治疗效果。",
-  "page": "index.html"
- },
- "index.p.6": {
-  "type": "plain",
-  "value": "Premium PN Skin Booster · PN + HA",
-  "label": "Premium PN Skin Booster · PN + HA",
-  "page": "index.html"
- },
- "index.p.7": {
-  "type": "plain",
-  "value": "Liquid PCL · Collagen-oriented solution",
-  "label": "Liquid PCL · Collagen-oriented solution",
-  "page": "index.html"
- },
- "index.p.8": {
-  "type": "plain",
-  "value": "Advanced Cross-linked HA · α / β / γ",
-  "label": "Advanced Cross-linked HA · α / β / γ",
-  "page": "index.html"
- },
- "index.p.9": {
-  "type": "plain",
-  "value": "基于PLLA的渐进式美容解决方案",
-  "label": "基于PLLA的渐进式美容解决方案",
-  "page": "index.html"
- },
- "index.p.10": {
-  "type": "plain",
-  "value": "基于外泌体的专业皮肤解决方案",
-  "label": "基于外泌体的专业皮肤解决方案",
-  "page": "index.html"
- },
- "index.p.11": {
-  "type": "plain",
-  "value": "Aestyve从实际业务需求出发，甄选并引进全球市场中经过验证的美容品牌。",
-  "label": "Aestyve从实际业务需求出发，甄选并引进全球市场中经过验证的美容品牌。",
-  "page": "index.html"
- },
- "index.p.12": {
-  "type": "rich",
-  "value": "Injectables & Biostimulators<br>聚焦全球趋势的注射类产品组合",
-  "label": "Injectables & Biostimulators 聚焦全球趋势的注射类产品组合",
-  "page": "index.html"
- },
- "index.p.13": {
-  "type": "rich",
-  "value": "Skin Regeneration & Collagen Stimulators<br>再生与胶原蛋白刺激解决方案",
-  "label": "Skin Regeneration & Collagen Stimulators 再生与胶原…",
-  "page": "index.html"
- },
- "index.p.14": {
-  "type": "rich",
-  "value": "Medical Devices & Skincare<br>医疗器械及护肤解决方案",
-  "label": "Medical Devices & Skincare 医疗器械及护肤解决方案",
-  "page": "index.html"
- },
- "index.p.15": {
-  "type": "plain",
-  "value": "我们致力于成为凭技术、品质、一致性与专业性脱颖而出的品牌，而非依靠价格。",
-  "label": "我们致力于成为凭技术、品质、一致性与专业性脱颖而出的品牌，而非依靠价格。",
-  "page": "index.html"
- },
- "index.p.16": {
-  "type": "plain",
-  "value": "从经销、合作关系、营销物料到展会合作，Aestyve致力于构建共同成长的业务。",
-  "label": "从经销、合作关系、营销物料到展会合作，Aestyve致力于构建共同成长的业务。",
-  "page": "index.html"
- },
- "index.p.17": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "index.html"
- },
- "index.p.18": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "index.html"
- },
- "index.p.19": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "index.html"
- },
- "index.p.20": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "index.html"
- },
- "partnership.info-label.1": {
-  "type": "plain",
-  "value": "产品组合",
-  "label": "产品组合",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-desc.1": {
-  "type": "plain",
-  "value": "提供符合市场需求的产品组合方案",
-  "label": "提供符合市场需求的产品组合方案",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-label.2": {
-  "type": "plain",
-  "value": "市场营销",
-  "label": "市场营销",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-desc.2": {
-  "type": "plain",
-  "value": "提供目录、展会及销售物料支持",
-  "label": "提供目录、展会及销售物料支持",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-label.3": {
-  "type": "plain",
-  "value": "本地化",
-  "label": "本地化",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-desc.3": {
-  "type": "plain",
-  "value": "根据当地语言与市场情况进行沟通",
-  "label": "根据当地语言与市场情况进行沟通",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-label.4": {
-  "type": "plain",
-  "value": "供应",
-  "label": "供应",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-desc.4": {
-  "type": "plain",
-  "value": "订单、发货与交货周期的清晰沟通",
-  "label": "订单、发货与交货周期的清晰沟通",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-label.5": {
-  "type": "plain",
-  "value": "展会",
-  "label": "展会",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-desc.5": {
-  "type": "plain",
-  "value": "现场品牌体验与展会合作",
-  "label": "现场品牌体验与展会合作",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-label.6": {
-  "type": "plain",
-  "value": "长期合作",
-  "label": "长期合作",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.info-desc.6": {
-  "type": "plain",
-  "value": "重视可持续的合作关系，而非单次交易",
-  "label": "重视可持续的合作关系，而非单次交易",
-  "page": "partnership.html",
-  "group": "info"
- },
- "partnership.h1.1": {
-  "type": "rich",
-  "value": "不止于供应，<br>携手共建市场。",
-  "label": "不止于供应， 携手共建市场。",
-  "page": "partnership.html"
- },
- "partnership.p.1": {
-  "type": "plain",
-  "value": "从产品供应、营销物料、展会合作到本地化与产品组合方案，Aestyve致力于携手并进的长期合作关系。",
-  "label": "从产品供应、营销物料、展会合作到本地化与产品组合方案，Aestyve致力于携手并进的长期合作…",
-  "page": "partnership.html"
- },
- "partnership.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "partnership.html"
- },
- "partnership.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-  "label": "Aestyve · Seoul, Republic of Korea",
-  "page": "partnership.html"
- },
- "partnership.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "partnership.html"
- },
- "partnership.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "partnership.html"
- },
- "product-ha.info-label.1": {
-  "type": "plain",
-  "value": "24 mg/mL",
-  "label": "24 mg/mL",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-desc.1": {
-  "type": "plain",
-  "value": "交联透明质酸",
-  "label": "交联透明质酸",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-label.2": {
-  "type": "plain",
-  "value": "3 mg/mL",
-  "label": "3 mg/mL",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-desc.2": {
-  "type": "plain",
-  "value": "盐酸利多卡因",
-  "label": "盐酸利多卡因",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-label.3": {
-  "type": "plain",
-  "value": "1.1 mL",
-  "label": "1.1 mL",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-desc.3": {
-  "type": "plain",
-  "value": "预填充注射器",
-  "label": "预填充注射器",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.h1.1": {
-  "type": "rich",
-  "value": "Aestyve HA",
-  "label": "Aestyve HA",
-  "page": "product-ha.html"
- },
- "product-ha.h3.1": {
-  "type": "rich",
-  "value": "Ep. α Alpha",
-  "label": "Ep. α Alpha",
-  "page": "product-ha.html"
- },
- "product-ha.h3.2": {
-  "type": "rich",
-  "value": "Ep. β Beta",
-  "label": "Ep. β Beta",
-  "page": "product-ha.html"
- },
- "product-ha.h3.3": {
-  "type": "rich",
-  "value": "Ep. γ Gamma",
-  "label": "Ep. γ Gamma",
-  "page": "product-ha.html"
- },
- "product-ha.p.1": {
-  "type": "plain",
-  "value": "Aestyve HA产品线以交联透明质酸24 mg/mL与盐酸利多卡因3 mg/mL为基础，构建α、β、γ三种流变学特性方向。",
-  "label": "Aestyve HA产品线以交联透明质酸24 mg/mL与盐酸利多卡因3 mg/mL为基础，…",
-  "page": "product-ha.html"
- },
- "product-ha.p.2": {
-  "type": "plain",
-  "value": "适用于精细塑形与自然平衡效果的类型。",
-  "label": "适用于精细塑形与自然平衡效果的类型。",
-  "page": "product-ha.html"
- },
- "product-ha.p.3": {
-  "type": "plain",
-  "value": "适用于均衡黏弹性与形态维持效果的类型。",
-  "label": "适用于均衡黏弹性与形态维持效果的类型。",
-  "page": "product-ha.html"
- },
- "product-ha.p.4": {
-  "type": "plain",
-  "value": "适用于更强结构支撑与轮廓塑造效果的类型。",
-  "label": "适用于更强结构支撑与轮廓塑造效果的类型。",
-  "page": "product-ha.html"
- },
- "product-ha.p.5": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "product-ha.html"
- },
- "product-ha.p.6": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "product-ha.html"
- },
- "product-ha.p.7": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "product-ha.html"
- },
- "product-ha.p.8": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "product-ha.html"
- },
- "product-nad.info-label.1": {
-  "type": "plain",
-  "value": "NAD+",
-  "label": "NAD+",
-  "page": "product-nad.html",
-  "group": "info"
- },
- "product-nad.info-desc.1": {
-  "type": "plain",
-  "value": "包装标示成分",
-  "label": "包装标示成分",
-  "page": "product-nad.html",
-  "group": "info"
- },
- "product-nad.info-label.2": {
-  "type": "plain",
-  "value": "NMN",
-  "label": "NMN",
-  "page": "product-nad.html",
-  "group": "info"
- },
- "product-nad.info-desc.2": {
-  "type": "plain",
-  "value": "包装标示成分",
-  "label": "包装标示成分",
-  "page": "product-nad.html",
-  "group": "info"
- },
- "product-nad.info-label.3": {
-  "type": "plain",
-  "value": "Compliance",
-  "label": "Compliance",
-  "page": "product-nad.html",
-  "group": "info"
- },
- "product-nad.info-desc.3": {
-  "type": "plain",
-  "value": "以注册为先的沟通原则",
-  "label": "以注册为先的沟通原则",
-  "page": "product-nad.html",
-  "group": "info"
- },
- "product-nad.h1.1": {
-  "type": "rich",
-  "value": "1906NAD+",
-  "label": "1906NAD+",
-  "page": "product-nad.html"
- },
- "product-nad.p.1": {
-  "type": "plain",
-  "value": "本产品属于Aestyve高阶美容解决方案（Advanced Aesthetic Solutions）类别。最终文案设计为需以实际注册分类与成分资料为准。",
-  "label": "本产品属于Aestyve高阶美容解决方案（Advanced Aesthetic Soluti…",
-  "page": "product-nad.html"
- },
- "product-nad.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "product-nad.html"
- },
- "product-nad.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "product-nad.html"
- },
- "product-nad.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "product-nad.html"
- },
- "product-nad.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "product-nad.html"
- },
- "product-pcl.info-label.1": {
-  "type": "plain",
-  "value": "Liquid PCL",
-  "label": "Liquid PCL",
-  "page": "product-pcl.html",
-  "group": "info"
- },
- "product-pcl.info-desc.1": {
-  "type": "plain",
-  "value": "Liquid PCL配方",
-  "label": "Liquid PCL配方",
-  "page": "product-pcl.html",
-  "group": "info"
- },
- "product-pcl.info-label.2": {
-  "type": "plain",
-  "value": "2.0 mL",
-  "label": "2.0 mL",
-  "page": "product-pcl.html",
-  "group": "info"
- },
- "product-pcl.info-desc.2": {
-  "type": "plain",
-  "value": "安瓿规格",
-  "label": "安瓿规格",
-  "page": "product-pcl.html",
-  "group": "info"
- },
- "product-pcl.info-label.3": {
-  "type": "plain",
-  "value": "Collagen",
-  "label": "Collagen",
-  "page": "product-pcl.html",
-  "group": "info"
- },
- "product-pcl.info-desc.3": {
-  "type": "plain",
-  "value": "以胶原蛋白为导向的定位",
-  "label": "以胶原蛋白为导向的定位",
-  "page": "product-pcl.html",
-  "group": "info"
- },
- "product-pcl.h1.1": {
-  "type": "rich",
-  "value": "Aestyve Liquid PCL",
-  "label": "Aestyve Liquid PCL",
-  "page": "product-pcl.html"
- },
- "product-pcl.p.1": {
-  "type": "plain",
-  "value": "Aestyve专业解决方案，以Liquid PCL为基础，提出以胶原蛋白为核心的皮肤弹性与重塑方向。",
-  "label": "Aestyve专业解决方案，以Liquid PCL为基础，提出以胶原蛋白为核心的皮肤弹性与重…",
-  "page": "product-pcl.html"
- },
- "product-pcl.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "product-pcl.html"
- },
- "product-pcl.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "product-pcl.html"
- },
- "product-pcl.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "product-pcl.html"
- },
- "product-pcl.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "product-pcl.html"
- },
- "product-plla.info-label.1": {
-  "type": "plain",
-  "value": "PLLA",
-  "label": "PLLA",
-  "page": "product-plla.html",
-  "group": "info"
- },
- "product-plla.info-desc.1": {
-  "type": "plain",
-  "value": "聚左旋乳酸",
-  "label": "聚左旋乳酸",
-  "page": "product-plla.html",
-  "group": "info"
- },
- "product-plla.info-label.2": {
-  "type": "plain",
-  "value": "Biostimulation",
-  "label": "Biostimulation",
-  "page": "product-plla.html",
-  "group": "info"
- },
- "product-plla.info-desc.2": {
-  "type": "plain",
-  "value": "渐进式美容方法",
-  "label": "渐进式美容方法",
-  "page": "product-plla.html",
-  "group": "info"
- },
- "product-plla.info-label.3": {
-  "type": "plain",
-  "value": "Photo Pending",
-  "label": "Photo Pending",
-  "page": "product-plla.html",
-  "group": "info"
- },
- "product-plla.info-desc.3": {
-  "type": "plain",
-  "value": "待收到官方产品图片后替换",
-  "label": "待收到官方产品图片后替换",
-  "page": "product-plla.html",
-  "group": "info"
- },
- "product-plla.h1.1": {
-  "type": "rich",
-  "value": "Innofill PLLA",
-  "label": "Innofill PLLA",
-  "page": "product-plla.html"
- },
- "product-plla.p.1": {
-  "type": "plain",
-  "value": "本产品属于基于PLLA的生物刺激类别，是与PCL具有不同定位与诉求的专业产品线。",
-  "label": "本产品属于基于PLLA的生物刺激类别，是与PCL具有不同定位与诉求的专业产品线。",
-  "page": "product-plla.html"
- },
- "product-plla.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "product-plla.html"
- },
- "product-plla.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "product-plla.html"
- },
- "product-plla.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "product-plla.html"
- },
- "product-plla.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "product-plla.html"
- },
- "product-revibe.info-label.1": {
-  "type": "plain",
-  "value": "PN 1.5mL/30mg",
-  "label": "PN 85%",
-  "page": "product-revibe.html",
-  "group": "info"
- },
- "product-revibe.info-desc.1": {
-  "type": "plain",
-  "value": "多聚核苷酸",
-  "label": "多聚核苷酸",
-  "page": "product-revibe.html",
-  "group": "info"
- },
- "product-revibe.info-label.2": {
-  "type": "plain",
-  "value": "HA 0.5mL/10mg",
-  "label": "HA 15%",
-  "page": "product-revibe.html",
-  "group": "info"
- },
- "product-revibe.info-desc.2": {
-  "type": "plain",
-  "value": "透明质酸",
-  "label": "透明质酸",
-  "page": "product-revibe.html",
-  "group": "info"
- },
- "product-revibe.info-label.3": {
-  "type": "plain",
-  "value": "Balance",
-  "label": "Balance",
-  "page": "product-revibe.html",
-  "group": "info"
- },
- "product-revibe.info-desc.3": {
-  "type": "plain",
-  "value": "生理性/渗透压平衡",
-  "label": "生理性/渗透压平衡",
-  "page": "product-revibe.html",
-  "group": "info"
- },
- "product-revibe.h1.1": {
-  "type": "rich",
-  "value": "Revibe PN",
-  "label": "Revibe PN",
-  "page": "product-revibe.html"
- },
- "product-revibe.p.1": {
-  "type": "plain",
-  "value": "以PN 1.5mL/30mg + HA 0.5mL/10mg 配比、生理性平衡（Physiological Balance）与渗透压平衡（Osmolality Balance）理念为基础，专为皮肤调理设计的专业PN产品线。",
-  "label": "以PN 85% + HA 15%配比、生理性平衡（Physiological Balance…",
-  "page": "product-revibe.html"
- },
- "product-revibe.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "product-revibe.html"
- },
- "product-revibe.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "product-revibe.html"
- },
- "product-revibe.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "product-revibe.html"
- },
- "product-revibe.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "product-revibe.html"
- },
- "product-rvsc.info-label.1": {
-  "type": "plain",
-  "value": "Exosome",
-  "label": "Exosome",
-  "page": "product-rvsc.html",
-  "group": "info"
- },
- "product-rvsc.info-desc.1": {
-  "type": "plain",
-  "value": "基于外泌体的类别",
-  "label": "基于外泌体的类别",
-  "page": "product-rvsc.html",
-  "group": "info"
- },
- "product-rvsc.info-label.2": {
-  "type": "plain",
-  "value": "2 Vials",
-  "label": "2 Vials",
-  "page": "product-rvsc.html",
-  "group": "info"
- },
- "product-rvsc.info-desc.2": {
-  "type": "plain",
-  "value": "配套包装组合",
-  "label": "配套包装组合",
-  "page": "product-rvsc.html",
-  "group": "info"
- },
- "product-rvsc.info-label.3": {
-  "type": "plain",
-  "value": "Made in Korea",
-  "label": "Made in Korea",
-  "page": "product-rvsc.html",
-  "group": "info"
- },
- "product-rvsc.info-desc.3": {
-  "type": "plain",
-  "value": "包装标识",
-  "label": "包装标识",
-  "page": "product-rvsc.html",
-  "group": "info"
- },
- "product-rvsc.h1.1": {
-  "type": "rich",
-  "value": "RVSC Exosome",
-  "label": "RVSC Exosome",
-  "page": "product-rvsc.html"
- },
- "product-rvsc.p.1": {
-  "type": "plain",
-  "value": "本产品是运用外泌体技术的专业皮肤解决方案类别。功效宣称将根据实际产品资料及各国许可范围进行管理。",
-  "label": "本产品是运用外泌体技术的专业皮肤解决方案类别。功效宣称将根据实际产品资料及各国许可范围进行管…",
-  "page": "product-rvsc.html"
- },
- "product-rvsc.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "product-rvsc.html"
- },
- "product-rvsc.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "product-rvsc.html"
- },
- "product-rvsc.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "product-rvsc.html"
- },
- "product-rvsc.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "product-rvsc.html"
- },
- "science.qrow-label.1": {
-  "type": "plain",
-  "value": "关键参数",
-  "label": "关键参数",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.qrow-desc.1": {
-  "type": "plain",
-  "value": "以HA为例，我们围绕可通过实际数据验证的品质项目展开说明，包括无菌性、内毒素、BDDE残留、交联度、pH值、渗透压及凝胶均一性等。",
-  "label": "以HA为例，我们围绕可通过实际数据验证的品质项目展开说明，包括无菌性、内毒素、BDDE残留、…",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.qrow-label.2": {
-  "type": "plain",
-  "value": "批次一致性",
-  "label": "批次一致性",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.qrow-desc.2": {
-  "type": "plain",
-  "value": "将产品间的一致性与完整度作为重要的品质表达方式。",
-  "label": "将产品间的一致性与完整度作为重要的品质表达方式。",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.qrow-label.3": {
-  "type": "plain",
-  "value": "技术故事",
-  "label": "技术故事",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.qrow-desc.3": {
-  "type": "plain",
-  "value": "以易于理解的结构，传达Grand Hive、生理性平衡（Physiological Balance）、Liquid PCL等各产品的设计逻辑。",
-  "label": "以易于理解的结构，传达Grand Hive、生理性平衡（Physiological Bala…",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.qrow-label.4": {
-  "type": "plain",
-  "value": "负责任的宣称",
-  "label": "负责任的宣称",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.qrow-desc.4": {
-  "type": "plain",
-  "value": "相较于“最好”、“完全安全”、“无副作用”等夸大表述，我们更重视实际证明材料与各国法规。",
-  "label": "相较于“最好”、“完全安全”、“无副作用”等夸大表述，我们更重视实际证明材料与各国法规。",
-  "page": "science.html",
-  "group": "qrow"
- },
- "science.h1.1": {
-  "type": "rich",
-  "value": "品质，<br>始于严谨。",
-  "label": "品质， 始于严谨。",
-  "page": "science.html"
- },
- "science.h2.1": {
-  "type": "rich",
-  "value": "阐释技术，<br><em>验证数据，</em><br>管理表述。",
-  "label": "阐释技术， 验证数据， 管理表述。",
-  "page": "science.html"
- },
- "science.p.1": {
-  "type": "plain",
-  "value": "我们认为，产品性能并非取决于某一句宣传语，而是原料、工艺、物性、品质文件与一致性等多重因素共同作用的结果。",
-  "label": "我们认为，产品性能并非取决于某一句宣传语，而是原料、工艺、物性、品质文件与一致性等多重因素共…",
-  "page": "science.html"
- },
- "science.p.2": {
-  "type": "plain",
-  "value": "打造品牌，传递标准。",
-  "label": "打造品牌，传递标准。",
-  "page": "science.html"
- },
- "science.p.3": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-  "label": "Aestyve · Seoul, Republic of Korea",
-  "page": "science.html"
- },
- "science.p.4": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-  "label": "Aestyve · 首尔，大韩民国",
-  "page": "science.html"
- },
- "science.p.5": {
-  "type": "plain",
-  "value": "韩语 · 英语 · 中文",
-  "label": "韩语 · 英语 · 中文",
-  "page": "science.html"
- },
- "product-revibe.notice.1": {
-  "type": "plain",
-  "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "page": "product-revibe.html"
- },
- "distribution.notice.1": {
-  "type": "plain",
-  "value": "Restylane、Replengen、Juvéderm等外部品牌商标权归各自权利人所有，并非Aestyve自有品牌产品。实际经销品项与供应国家请通过咨询确认。",
-  "label": "Restylane、Replengen、Juvéderm等外部品牌商标权归各自权利人所有，并…",
-  "page": "distribution.html"
- },
- "contact.notice.1": {
-  "type": "plain",
-  "value": "为适配无服务器的静态HTML环境，此处以邮箱链接形式呈现，请替换为实际使用的邮箱地址。",
-  "label": "为适配无服务器的静态HTML环境，此处以邮箱链接形式呈现，请替换为实际使用的邮箱地址。",
-  "page": "contact.html"
- },
- "science.notice.1": {
-  "type": "plain",
-  "value": "认证、生产工艺、检测数据及审批机构等信息，仅在与实际证明文件一致时才可发布于公开页面。",
-  "label": "认证、生产工艺、检测数据及审批机构等信息，仅在与实际证明文件一致时才可发布于公开页面。",
-  "page": "science.html"
- },
- "product-plla.notice.1": {
-  "type": "plain",
-  "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "page": "product-plla.html"
- },
- "product-ha.notice.1": {
-  "type": "plain",
-  "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "page": "product-ha.html"
- },
- "product-pcl.notice.1": {
-  "type": "plain",
-  "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "page": "product-pcl.html"
- },
- "product-rvsc.notice.1": {
-  "type": "plain",
-  "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "page": "product-rvsc.html"
- },
- "product-nad.notice.1": {
-  "type": "plain",
-  "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-  "page": "product-nad.html"
- }
+  "404.h1.1": {
+    "type": "rich",
+    "value": "未找到页面。",
+    "label": "未找到页面。",
+    "page": "404.html"
+  },
+  "404.p.1": {
+    "type": "plain",
+    "value": "抱歉，未找到您请求的页面。",
+    "label": "抱歉，未找到您请求的页面。",
+    "page": "404.html"
+  },
+  "404.p.2": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "404.html"
+  },
+  "404.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
+    "label": "Aestyve · 首尔，大韩民国",
+    "page": "404.html"
+  },
+  "404.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "404.html"
+  },
+  "404.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "404.html"
+  },
+  "brands.h1.1": {
+    "type": "rich",
+    "value": "一套标准，<br>多元技术。",
+    "label": "一套标准， 多元技术。",
+    "page": "brands.html"
+  },
+  "brands.h3.1": {
+    "type": "rich",
+    "value": "Aestyve HA",
+    "label": "Aestyve HA",
+    "page": "brands.html"
+  },
+  "brands.h3.2": {
+    "type": "rich",
+    "value": "Revibe PN",
+    "label": "Revibe PN",
+    "page": "brands.html"
+  },
+  "brands.h3.3": {
+    "type": "rich",
+    "value": "Liquid PCL",
+    "label": "Liquid PCL",
+    "page": "brands.html"
+  },
+  "brands.h3.4": {
+    "type": "rich",
+    "value": "Innofill PLLA",
+    "label": "Innofill PLLA",
+    "page": "brands.html"
+  },
+  "brands.h3.5": {
+    "type": "rich",
+    "value": "RVSC Exosome",
+    "label": "RVSC Exosome",
+    "page": "brands.html"
+  },
+  "brands.p.1": {
+    "type": "plain",
+    "value": "我们按用途划分 HA、PN、PCL、PLLA、外泌体与高阶方案，并以艾薇这一套标准将它们连接起来。",
+    "label": "我们按用途划分 HA、PN、PCL、PLLA、外泌体与高阶方案，并以艾薇这一套标准将它们连接起来。",
+    "page": "brands.html"
+  },
+  "brands.p.2": {
+    "type": "plain",
+    "value": "α · β · γ / 高交联透明质酸",
+    "label": "α · β · γ / 高交联透明质酸",
+    "page": "brands.html"
+  },
+  "brands.p.3": {
+    "type": "plain",
+    "value": "PN 1.5 mL + HA 0.5 mL",
+    "label": "PN 1.5 mL + HA 0.5 mL",
+    "page": "brands.html"
+  },
+  "brands.p.4": {
+    "type": "plain",
+    "value": "Liquid PCL · 2.0 mL / Vial",
+    "label": "Liquid PCL · 2.0 mL / Vial",
+    "page": "brands.html"
+  },
+  "brands.p.5": {
+    "type": "plain",
+    "value": "基于 PLLA 的生物刺激类别",
+    "label": "基于 PLLA 的生物刺激类别",
+    "page": "brands.html"
+  },
+  "brands.p.6": {
+    "type": "plain",
+    "value": "基于外泌体的专业解决方案",
+    "label": "基于外泌体的专业解决方案",
+    "page": "brands.html"
+  },
+  "brands.p.7": {
+    "type": "plain",
+    "value": "专注时间的轨迹，精准美学的高度。",
+    "label": "专注时间的轨迹，精准美学的高度。",
+    "page": "brands.html"
+  },
+  "brands.p.8": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "brands.html"
+  },
+  "brands.p.9": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "brands.html"
+  },
+  "brands.p.10": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "brands.html"
+  },
+  "company.info-label.1": {
+    "type": "plain",
+    "value": "科学",
+    "label": "科学",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-desc.1": {
+    "type": "plain",
+    "value": "可被查证的技术与产品信息",
+    "label": "可被查证的技术与产品信息",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-label.2": {
+    "type": "plain",
+    "value": "精准",
+    "label": "精准",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-desc.2": {
+    "type": "plain",
+    "value": "细节品质与沟通的精确度",
+    "label": "细节品质与沟通的精确度",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-label.3": {
+    "type": "plain",
+    "value": "品质",
+    "label": "品质",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-desc.3": {
+    "type": "plain",
+    "value": "标准优先于价格",
+    "label": "标准优先于价格",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-label.4": {
+    "type": "plain",
+    "value": "创新",
+    "label": "创新",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-desc.4": {
+    "type": "plain",
+    "value": "HA · PN · PCL · PLLA · Exosome",
+    "label": "HA · PN · PCL · PLLA · Exosome",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-label.5": {
+    "type": "plain",
+    "value": "合作",
+    "label": "合作",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-desc.5": {
+    "type": "plain",
+    "value": "与全球市场一同成长的关系",
+    "label": "与全球市场一同成长的关系",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-label.6": {
+    "type": "plain",
+    "value": "韩国",
+    "label": "韩国",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.info-desc.6": {
+    "type": "plain",
+    "value": "韩国医学美容的专业积累",
+    "label": "韩国医学美容的专业积累",
+    "page": "company.html",
+    "group": "info"
+  },
+  "company.h1.1": {
+    "type": "rich",
+    "value": "专注时间的轨迹，<br>精准美学的高度。",
+    "label": "专注时间的轨迹， 精准美学的高度。",
+    "page": "company.html"
+  },
+  "company.h2.1": {
+    "type": "rich",
+    "value": "韩国医学美容，<br><em>为全球市场而生。</em>",
+    "label": "韩国医学美容，  为全球市场而生。",
+    "page": "company.html"
+  },
+  "company.p.1": {
+    "type": "plain",
+    "value": "Aestyve 艾薇以韩国医学美容的技术与品质标准为根基，打造自有品牌，为全球伙伴提供经过甄选的解决方案。",
+    "label": "Aestyve 艾薇以韩国医学美容的技术与品质标准为根基，打造自有品牌，为全球伙伴提供经过甄选的解决方案。",
+    "page": "company.html"
+  },
+  "company.p.2": {
+    "type": "plain",
+    "value": "我们不是以化妆品为核心的 K-Beauty，而是面向医美专业人士与经销伙伴的医学美容企业。",
+    "label": "我们不是以化妆品为核心的 K-Beauty，而是面向医美专业人士与经销伙伴的医学美容企业。",
+    "page": "company.html"
+  },
+  "company.p.3": {
+    "type": "plain",
+    "value": "专注时间的轨迹，精准美学的高度。",
+    "label": "专注时间的轨迹，精准美学的高度。",
+    "page": "company.html"
+  },
+  "company.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "company.html"
+  },
+  "company.p.5": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "company.html"
+  },
+  "company.p.6": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "company.html"
+  },
+  "contact.contact-label.1": {
+    "type": "plain",
+    "value": "邮箱",
+    "label": "邮箱",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.contact-desc.1": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.contact-label.2": {
+    "type": "plain",
+    "value": "所在地",
+    "label": "所在地",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.contact-desc.2": {
+    "type": "plain",
+    "value": "首尔 · 大韩民国",
+    "label": "首尔 · 大韩民国",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.contact-label.3": {
+    "type": "plain",
+    "value": "业务范围",
+    "label": "业务范围",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.contact-desc.3": {
+    "type": "plain",
+    "value": "品牌 · 经销 · 全球合作",
+    "label": "品牌 · 经销 · 全球合作",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.contact-label.4": {
+    "type": "plain",
+    "value": "语言",
+    "label": "语言",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.contact-desc.4": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "contact.html",
+    "group": "contact"
+  },
+  "contact.h2.1": {
+    "type": "rich",
+    "value": "告诉我们，<br>你想在哪个市场落地。",
+    "label": "告诉我们， 你想在哪个市场落地。",
+    "page": "contact.html"
+  },
+  "contact.p.1": {
+    "type": "plain",
+    "value": "产品咨询、区域经销、新的合作关系或展会协同——告诉我们你的目的，我们会给出对应的下一步。",
+    "label": "产品咨询、区域经销、新的合作关系或展会协同——告诉我们你的目的，我们会给出对应的下一步。",
+    "page": "contact.html"
+  },
+  "contact.p.2": {
+    "type": "plain",
+    "value": "专注时间的轨迹，精准美学的高度。",
+    "label": "专注时间的轨迹，精准美学的高度。",
+    "page": "contact.html"
+  },
+  "contact.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "contact.html"
+  },
+  "contact.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "contact.html"
+  },
+  "contact.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "contact.html"
+  },
+  "distribution.h1.1": {
+    "type": "rich",
+    "value": "甄选的品牌，<br>清晰的定位。",
+    "label": "甄选的品牌， 清晰的定位。",
+    "page": "distribution.html"
+  },
+  "distribution.h3.1": {
+    "type": "rich",
+    "value": "全球注射类产品",
+    "label": "全球注射类产品",
+    "page": "distribution.html"
+  },
+  "distribution.h3.2": {
+    "type": "rich",
+    "value": "再生美学技术",
+    "label": "再生美学技术",
+    "page": "distribution.html"
+  },
+  "distribution.h3.3": {
+    "type": "rich",
+    "value": "皮肤与器械方案",
+    "label": "皮肤与器械方案",
+    "page": "distribution.html"
+  },
+  "distribution.p.1": {
+    "type": "plain",
+    "value": "我们清楚区分艾薇自有产品与外部品牌经销。比起什么都做，我们更看重市场潜力、品牌价值与伙伴的真实需求。",
+    "label": "我们清楚区分艾薇自有产品与外部品牌经销。比起什么都做，我们更看重市场潜力、品牌价值与伙伴的真实需求。",
+    "page": "distribution.html"
+  },
+  "distribution.p.2": {
+    "type": "plain",
+    "value": "覆盖注射剂与生物刺激剂的全球产品组合",
+    "label": "覆盖注射剂与生物刺激剂的全球产品组合",
+    "page": "distribution.html"
+  },
+  "distribution.p.3": {
+    "type": "plain",
+    "value": "皮肤再生与胶原方向的品类",
+    "label": "皮肤再生与胶原方向的品类",
+    "page": "distribution.html"
+  },
+  "distribution.p.4": {
+    "type": "plain",
+    "value": "医疗器械与专业护肤方案",
+    "label": "医疗器械与专业护肤方案",
+    "page": "distribution.html"
+  },
+  "distribution.p.5": {
+    "type": "plain",
+    "value": "专注时间的轨迹，精准美学的高度。",
+    "label": "专注时间的轨迹，精准美学的高度。",
+    "page": "distribution.html"
+  },
+  "distribution.p.6": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "distribution.html"
+  },
+  "distribution.p.7": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "distribution.html"
+  },
+  "distribution.p.8": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "distribution.html"
+  },
+  "index.qrow-label.1": {
+    "type": "plain",
+    "value": "品牌开发",
+    "label": "品牌开发",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.qrow-desc.1": {
+    "type": "plain",
+    "value": "以清晰的人群定位与产品策略为前提，搭建自有品牌。",
+    "label": "以清晰的人群定位与产品策略为前提，搭建自有品牌。",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.qrow-label.2": {
+    "type": "plain",
+    "value": "品质文件",
+    "label": "品质文件",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.qrow-desc.2": {
+    "type": "plain",
+    "value": "以真实的产品资料与质量文件为依据，透明地提供所需信息。",
+    "label": "以真实的产品资料与质量文件为依据，透明地提供所需信息。",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.qrow-label.3": {
+    "type": "plain",
+    "value": "专业沟通",
+    "label": "专业沟通",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.qrow-desc.3": {
+    "type": "plain",
+    "value": "不做夸大表述，只用医生与合作伙伴能够理解的专业语言。",
+    "label": "不做夸大表述，只用医生与合作伙伴能够理解的专业语言。",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.qrow-label.4": {
+    "type": "plain",
+    "value": "全球合规",
+    "label": "全球合规",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.qrow-desc.4": {
+    "type": "plain",
+    "value": "依据各国注册与宣称范围的差异，统筹全球沟通口径。",
+    "label": "依据各国注册与宣称范围的差异，统筹全球沟通口径。",
+    "page": "index.html",
+    "group": "qrow"
+  },
+  "index.partner-label.1": {
+    "type": "plain",
+    "value": "品牌",
+    "label": "品牌",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.partner-desc.1": {
+    "type": "plain",
+    "value": "品牌开发",
+    "label": "品牌开发",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.partner-label.2": {
+    "type": "plain",
+    "value": "产品矩阵",
+    "label": "产品矩阵",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.partner-desc.2": {
+    "type": "plain",
+    "value": "严选经销",
+    "label": "严选经销",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.partner-label.3": {
+    "type": "plain",
+    "value": "市场",
+    "label": "市场",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.partner-desc.3": {
+    "type": "plain",
+    "value": "市场支持",
+    "label": "市场支持",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.partner-label.4": {
+    "type": "plain",
+    "value": "全球",
+    "label": "全球",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.partner-desc.4": {
+    "type": "plain",
+    "value": "全球网络",
+    "label": "全球网络",
+    "page": "index.html",
+    "group": "partner"
+  },
+  "index.h1.1": {
+    "type": "rich",
+    "value": "专注时间的轨迹，<br><em>精准美学的高度。</em>",
+    "label": "专注时间的轨迹，  精准美学的高度。",
+    "page": "index.html"
+  },
+  "index.h2.1": {
+    "type": "rich",
+    "value": "我们提供的不是单一产品，<br><em>而是看待医美市场的方式。</em>",
+    "label": "我们提供的不是单一产品，  而是看待医美市场的方式。",
+    "page": "index.html"
+  },
+  "index.h2.2": {
+    "type": "rich",
+    "value": "每一项技术，<br><em>都有明确的位置。</em>",
+    "label": "每一项技术，  都有明确的位置。",
+    "page": "index.html"
+  },
+  "index.h2.3": {
+    "type": "rich",
+    "value": "严选品牌，<br>走得长远的合作关系",
+    "label": "严选品牌， 走得长远的合作关系",
+    "page": "index.html"
+  },
+  "index.h2.4": {
+    "type": "rich",
+    "value": "信任，<br><em>建立在原则之上。</em>",
+    "label": "信任，  建立在原则之上。",
+    "page": "index.html"
+  },
+  "index.h2.5": {
+    "type": "rich",
+    "value": "超越产品本身，<br>与市场共同建立价值。",
+    "label": "超越产品本身， 与市场共同建立价值。",
+    "page": "index.html"
+  },
+  "index.h3.1": {
+    "type": "rich",
+    "value": "艾薇自有品牌",
+    "label": "艾薇自有品牌",
+    "page": "index.html"
+  },
+  "index.h3.2": {
+    "type": "rich",
+    "value": "严选经销",
+    "label": "严选经销",
+    "page": "index.html"
+  },
+  "index.h3.3": {
+    "type": "rich",
+    "value": "Revibe PN",
+    "label": "Revibe PN",
+    "page": "index.html"
+  },
+  "index.h3.4": {
+    "type": "rich",
+    "value": "Liquid PCL",
+    "label": "Liquid PCL",
+    "page": "index.html"
+  },
+  "index.h3.5": {
+    "type": "rich",
+    "value": "HA Filler Series",
+    "label": "HA Filler Series",
+    "page": "index.html"
+  },
+  "index.h3.6": {
+    "type": "rich",
+    "value": "Innofill PLLA",
+    "label": "Innofill PLLA",
+    "page": "index.html"
+  },
+  "index.h3.7": {
+    "type": "rich",
+    "value": "RVSC Exosome",
+    "label": "RVSC Exosome",
+    "page": "index.html"
+  },
+  "index.h3.8": {
+    "type": "rich",
+    "value": "全球注射类产品",
+    "label": "全球注射类产品",
+    "page": "index.html"
+  },
+  "index.h3.9": {
+    "type": "rich",
+    "value": "再生美学技术",
+    "label": "再生美学技术",
+    "page": "index.html"
+  },
+  "index.h3.10": {
+    "type": "rich",
+    "value": "皮肤与器械方案",
+    "label": "皮肤与器械方案",
+    "page": "index.html"
+  },
+  "index.h3.11": {
+    "type": "rich",
+    "value": "我们不在价格上竞争，<br><em>只在标准上竞争。</em>",
+    "label": "我们不在价格上竞争，  只在标准上竞争。",
+    "page": "index.html"
+  },
+  "index.p.1": {
+    "type": "plain",
+    "value": "Aestyve 艾薇以韩国医学美容的技术与品质标准为起点，打造自有品牌，并将经过甄选的专业产品带向全球市场。时间留下的每一处变化，都值得以更精准的方式回应。",
+    "label": "Aestyve 艾薇以韩国医学美容的技术与品质标准为起点，打造自有品牌，并将经过甄选的专业产品带向全球市场。时间留下的每一处变化，都值得以更精准的方式回应。",
+    "page": "index.html"
+  },
+  "index.p.2": {
+    "type": "plain",
+    "value": "从品牌规划、产品矩阵、品质沟通到全球经销，艾薇以同一套标准贯穿始终。可被验证的方案，与走得长远的合作关系，是我们衡量自己的尺度。",
+    "label": "从品牌规划、产品矩阵、品质沟通到全球经销，艾薇以同一套标准贯穿始终。可被验证的方案，与走得长远的合作关系，是我们衡量自己的尺度。",
+    "page": "index.html"
+  },
+  "index.p.3": {
+    "type": "plain",
+    "value": "按作用机制与使用目的清晰划分，构建属于自己的医学美容产品矩阵。",
+    "label": "按作用机制与使用目的清晰划分，构建属于自己的医学美容产品矩阵。",
+    "page": "index.html"
+  },
+  "index.p.4": {
+    "type": "plain",
+    "value": "以真实的市场表现与专业度为尺度，为全球伙伴筛选真正用得上的品牌。",
+    "label": "以真实的市场表现与专业度为尺度，为全球伙伴筛选真正用得上的品牌。",
+    "page": "index.html"
+  },
+  "index.p.5": {
+    "type": "plain",
+    "value": "我们为每一项技术界定清晰的作用边界，让医生的判断更从容，让结果更可预期。",
+    "label": "我们为每一项技术界定清晰的作用边界，让医生的判断更从容，让结果更可预期。",
+    "page": "index.html"
+  },
+  "index.p.6": {
+    "type": "plain",
+    "value": "高端 PN 水光针 · PN + HA",
+    "label": "高端 PN 水光针 · PN + HA",
+    "page": "index.html"
+  },
+  "index.p.7": {
+    "type": "plain",
+    "value": "Liquid PCL · 胶原方向解决方案",
+    "label": "Liquid PCL · 胶原方向解决方案",
+    "page": "index.html"
+  },
+  "index.p.8": {
+    "type": "plain",
+    "value": "高交联透明质酸 · α / β / γ",
+    "label": "高交联透明质酸 · α / β / γ",
+    "page": "index.html"
+  },
+  "index.p.9": {
+    "type": "plain",
+    "value": "基于 PLLA 的渐进式美学方案",
+    "label": "基于 PLLA 的渐进式美学方案",
+    "page": "index.html"
+  },
+  "index.p.10": {
+    "type": "plain",
+    "value": "基于外泌体的专业皮肤方案",
+    "label": "基于外泌体的专业皮肤方案",
+    "page": "index.html"
+  },
+  "index.p.11": {
+    "type": "plain",
+    "value": "艾薇以实际业务视角，甄选并引入全球市场中已被验证的美学品牌。",
+    "label": "艾薇以实际业务视角，甄选并引入全球市场中已被验证的美学品牌。",
+    "page": "index.html"
+  },
+  "index.p.12": {
+    "type": "rich",
+    "value": "Injectables &amp; Biostimulators<br>紧随全球趋势的注射类产品矩阵",
+    "label": "Injectables &amp; Biostimulators 紧随全球趋势的注射类产品矩阵",
+    "page": "index.html"
+  },
+  "index.p.13": {
+    "type": "rich",
+    "value": "Skin Regeneration &amp; Collagen Stimulators<br>再生与胶原刺激方向的解决方案",
+    "label": "Skin Regeneration &amp; Collagen Stimulators 再生与胶原刺激方向的解决方案",
+    "page": "index.html"
+  },
+  "index.p.14": {
+    "type": "rich",
+    "value": "Medical Devices &amp; Skincare<br>医疗器械与专业护肤方案",
+    "label": "Medical Devices &amp; Skincare 医疗器械与专业护肤方案",
+    "page": "index.html"
+  },
+  "index.p.15": {
+    "type": "plain",
+    "value": "让技术、品质、一致性与专业度，成为被选择的理由。",
+    "label": "让技术、品质、一致性与专业度，成为被选择的理由。",
+    "page": "index.html"
+  },
+  "index.p.16": {
+    "type": "plain",
+    "value": "从经销、合作、市场物料到展会协同，艾薇与伙伴一起把生意做长。",
+    "label": "从经销、合作、市场物料到展会协同，艾薇与伙伴一起把生意做长。",
+    "page": "index.html"
+  },
+  "index.p.17": {
+    "type": "plain",
+    "value": "专注时间的轨迹，精准美学的高度。",
+    "label": "专注时间的轨迹，精准美学的高度。",
+    "page": "index.html"
+  },
+  "index.p.18": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "index.html"
+  },
+  "index.p.19": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "index.html"
+  },
+  "index.p.20": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "index.html"
+  },
+  "partnership.info-label.1": {
+    "type": "plain",
+    "value": "产品组合",
+    "label": "产品组合",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-desc.1": {
+    "type": "plain",
+    "value": "贴合当地市场的产品搭配",
+    "label": "贴合当地市场的产品搭配",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-label.2": {
+    "type": "plain",
+    "value": "市场营销",
+    "label": "市场营销",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-desc.2": {
+    "type": "plain",
+    "value": "目录、展会与销售物料支持",
+    "label": "目录、展会与销售物料支持",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-label.3": {
+    "type": "plain",
+    "value": "本地化",
+    "label": "本地化",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-desc.3": {
+    "type": "plain",
+    "value": "依当地语言与市场情况沟通",
+    "label": "依当地语言与市场情况沟通",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-label.4": {
+    "type": "plain",
+    "value": "供应",
+    "label": "供应",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-desc.4": {
+    "type": "plain",
+    "value": "订单、发货与交期的清晰沟通",
+    "label": "订单、发货与交期的清晰沟通",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-label.5": {
+    "type": "plain",
+    "value": "展会",
+    "label": "展会",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-desc.5": {
+    "type": "plain",
+    "value": "现场品牌体验与展会协同",
+    "label": "现场品牌体验与展会协同",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-label.6": {
+    "type": "plain",
+    "value": "长期合作",
+    "label": "长期合作",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.info-desc.6": {
+    "type": "plain",
+    "value": "重视可持续的关系，而非单次交易",
+    "label": "重视可持续的关系，而非单次交易",
+    "page": "partnership.html",
+    "group": "info"
+  },
+  "partnership.h1.1": {
+    "type": "rich",
+    "value": "不止于供应，<br>与你共建市场。",
+    "label": "不止于供应， 与你共建市场。",
+    "page": "partnership.html"
+  },
+  "partnership.p.1": {
+    "type": "plain",
+    "value": "从产品供应、市场物料、展会合作到本地化与产品组合方案，艾薇追求可以走得长远的合作关系。",
+    "label": "从产品供应、市场物料、展会合作到本地化与产品组合方案，艾薇追求可以走得长远的合作关系。",
+    "page": "partnership.html"
+  },
+  "partnership.p.2": {
+    "type": "plain",
+    "value": "专注时间的轨迹，精准美学的高度。",
+    "label": "专注时间的轨迹，精准美学的高度。",
+    "page": "partnership.html"
+  },
+  "partnership.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "partnership.html"
+  },
+  "partnership.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "partnership.html"
+  },
+  "partnership.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "partnership.html"
+  },
+  "product-ha.info-label.1": {
+    "type": "plain",
+    "value": "24 mg/mL",
+    "label": "24 mg/mL",
+    "page": "product-ha.html",
+    "group": "info"
+  },
+  "product-ha.info-desc.1": {
+    "type": "plain",
+    "value": "交联透明质酸",
+    "label": "交联透明质酸",
+    "page": "product-ha.html",
+    "group": "info"
+  },
+  "product-ha.info-label.2": {
+    "type": "plain",
+    "value": "3 mg/mL",
+    "label": "3 mg/mL",
+    "page": "product-ha.html",
+    "group": "info"
+  },
+  "product-ha.info-desc.2": {
+    "type": "plain",
+    "value": "盐酸利多卡因",
+    "label": "盐酸利多卡因",
+    "page": "product-ha.html",
+    "group": "info"
+  },
+  "product-ha.info-label.3": {
+    "type": "plain",
+    "value": "1.1 mL",
+    "label": "1.1 mL",
+    "page": "product-ha.html",
+    "group": "info"
+  },
+  "product-ha.info-desc.3": {
+    "type": "plain",
+    "value": "预填充注射器",
+    "label": "预填充注射器",
+    "page": "product-ha.html",
+    "group": "info"
+  },
+  "product-ha.h1.1": {
+    "type": "rich",
+    "value": "Aestyve HA",
+    "label": "Aestyve HA",
+    "page": "product-ha.html"
+  },
+  "product-ha.h3.1": {
+    "type": "rich",
+    "value": "Ep. α Alpha",
+    "label": "Ep. α Alpha",
+    "page": "product-ha.html"
+  },
+  "product-ha.h3.2": {
+    "type": "rich",
+    "value": "Ep. β Beta",
+    "label": "Ep. β Beta",
+    "page": "product-ha.html"
+  },
+  "product-ha.h3.3": {
+    "type": "rich",
+    "value": "Ep. γ Gamma",
+    "label": "Ep. γ Gamma",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.1": {
+    "type": "plain",
+    "value": "Aestyve HA产品线以交联透明质酸24 mg/mL与盐酸利多卡因3 mg/mL为基础，构建α、β、γ三种流变学特性方向。",
+    "label": "Aestyve HA产品线以交联透明质酸24 mg/mL与盐酸利多卡因3 mg/mL为基础，…",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.2": {
+    "type": "plain",
+    "value": "适用于精细塑形与自然平衡效果的类型。",
+    "label": "适用于精细塑形与自然平衡效果的类型。",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.3": {
+    "type": "plain",
+    "value": "适用于均衡黏弹性与形态维持效果的类型。",
+    "label": "适用于均衡黏弹性与形态维持效果的类型。",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.4": {
+    "type": "plain",
+    "value": "适用于更强结构支撑与轮廓塑造效果的类型。",
+    "label": "适用于更强结构支撑与轮廓塑造效果的类型。",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.5": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.6": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
+    "label": "Aestyve · 首尔，大韩民国",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.7": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "product-ha.html"
+  },
+  "product-ha.p.8": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "product-ha.html"
+  },
+  "product-nad.info-label.1": {
+    "type": "plain",
+    "value": "NAD+",
+    "label": "NAD+",
+    "page": "product-nad.html",
+    "group": "info"
+  },
+  "product-nad.info-desc.1": {
+    "type": "plain",
+    "value": "包装标示成分",
+    "label": "包装标示成分",
+    "page": "product-nad.html",
+    "group": "info"
+  },
+  "product-nad.info-label.2": {
+    "type": "plain",
+    "value": "NMN",
+    "label": "NMN",
+    "page": "product-nad.html",
+    "group": "info"
+  },
+  "product-nad.info-desc.2": {
+    "type": "plain",
+    "value": "包装标示成分",
+    "label": "包装标示成分",
+    "page": "product-nad.html",
+    "group": "info"
+  },
+  "product-nad.info-label.3": {
+    "type": "plain",
+    "value": "Compliance",
+    "label": "Compliance",
+    "page": "product-nad.html",
+    "group": "info"
+  },
+  "product-nad.info-desc.3": {
+    "type": "plain",
+    "value": "以注册为先的沟通原则",
+    "label": "以注册为先的沟通原则",
+    "page": "product-nad.html",
+    "group": "info"
+  },
+  "product-nad.h1.1": {
+    "type": "rich",
+    "value": "1906NAD+",
+    "label": "1906NAD+",
+    "page": "product-nad.html"
+  },
+  "product-nad.p.1": {
+    "type": "plain",
+    "value": "本产品属于Aestyve高阶美容解决方案（Advanced Aesthetic Solutions）类别。最终文案设计为需以实际注册分类与成分资料为准。",
+    "label": "本产品属于Aestyve高阶美容解决方案（Advanced Aesthetic Soluti…",
+    "page": "product-nad.html"
+  },
+  "product-nad.p.2": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "product-nad.html"
+  },
+  "product-nad.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
+    "label": "Aestyve · 首尔，大韩民国",
+    "page": "product-nad.html"
+  },
+  "product-nad.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "product-nad.html"
+  },
+  "product-nad.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "product-nad.html"
+  },
+  "product-pcl.info-label.1": {
+    "type": "plain",
+    "value": "Liquid PCL",
+    "label": "Liquid PCL",
+    "page": "product-pcl.html",
+    "group": "info"
+  },
+  "product-pcl.info-desc.1": {
+    "type": "plain",
+    "value": "Liquid PCL配方",
+    "label": "Liquid PCL配方",
+    "page": "product-pcl.html",
+    "group": "info"
+  },
+  "product-pcl.info-label.2": {
+    "type": "plain",
+    "value": "2.0 mL",
+    "label": "2.0 mL",
+    "page": "product-pcl.html",
+    "group": "info"
+  },
+  "product-pcl.info-desc.2": {
+    "type": "plain",
+    "value": "安瓿规格",
+    "label": "安瓿规格",
+    "page": "product-pcl.html",
+    "group": "info"
+  },
+  "product-pcl.info-label.3": {
+    "type": "plain",
+    "value": "Collagen",
+    "label": "Collagen",
+    "page": "product-pcl.html",
+    "group": "info"
+  },
+  "product-pcl.info-desc.3": {
+    "type": "plain",
+    "value": "以胶原蛋白为导向的定位",
+    "label": "以胶原蛋白为导向的定位",
+    "page": "product-pcl.html",
+    "group": "info"
+  },
+  "product-pcl.h1.1": {
+    "type": "rich",
+    "value": "Aestyve Liquid PCL",
+    "label": "Aestyve Liquid PCL",
+    "page": "product-pcl.html"
+  },
+  "product-pcl.p.1": {
+    "type": "plain",
+    "value": "Aestyve专业解决方案，以Liquid PCL为基础，提出以胶原蛋白为核心的皮肤弹性与重塑方向。",
+    "label": "Aestyve专业解决方案，以Liquid PCL为基础，提出以胶原蛋白为核心的皮肤弹性与重…",
+    "page": "product-pcl.html"
+  },
+  "product-pcl.p.2": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "product-pcl.html"
+  },
+  "product-pcl.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
+    "label": "Aestyve · 首尔，大韩民国",
+    "page": "product-pcl.html"
+  },
+  "product-pcl.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "product-pcl.html"
+  },
+  "product-pcl.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "product-pcl.html"
+  },
+  "product-plla.info-label.1": {
+    "type": "plain",
+    "value": "PLLA",
+    "label": "PLLA",
+    "page": "product-plla.html",
+    "group": "info"
+  },
+  "product-plla.info-desc.1": {
+    "type": "plain",
+    "value": "聚左旋乳酸",
+    "label": "聚左旋乳酸",
+    "page": "product-plla.html",
+    "group": "info"
+  },
+  "product-plla.info-label.2": {
+    "type": "plain",
+    "value": "Biostimulation",
+    "label": "Biostimulation",
+    "page": "product-plla.html",
+    "group": "info"
+  },
+  "product-plla.info-desc.2": {
+    "type": "plain",
+    "value": "渐进式美容方法",
+    "label": "渐进式美容方法",
+    "page": "product-plla.html",
+    "group": "info"
+  },
+  "product-plla.info-label.3": {
+    "type": "plain",
+    "value": "Photo Pending",
+    "label": "Photo Pending",
+    "page": "product-plla.html",
+    "group": "info"
+  },
+  "product-plla.info-desc.3": {
+    "type": "plain",
+    "value": "待收到官方产品图片后替换",
+    "label": "待收到官方产品图片后替换",
+    "page": "product-plla.html",
+    "group": "info"
+  },
+  "product-plla.h1.1": {
+    "type": "rich",
+    "value": "Innofill PLLA",
+    "label": "Innofill PLLA",
+    "page": "product-plla.html"
+  },
+  "product-plla.p.1": {
+    "type": "plain",
+    "value": "本产品属于基于PLLA的生物刺激类别，是与PCL具有不同定位与诉求的专业产品线。",
+    "label": "本产品属于基于PLLA的生物刺激类别，是与PCL具有不同定位与诉求的专业产品线。",
+    "page": "product-plla.html"
+  },
+  "product-plla.p.2": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "product-plla.html"
+  },
+  "product-plla.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
+    "label": "Aestyve · 首尔，大韩民国",
+    "page": "product-plla.html"
+  },
+  "product-plla.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "product-plla.html"
+  },
+  "product-plla.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "product-plla.html"
+  },
+  "product-revibe.info-label.1": {
+    "type": "plain",
+    "value": "PN 1.5mL/30mg",
+    "label": "PN 85%",
+    "page": "product-revibe.html",
+    "group": "info"
+  },
+  "product-revibe.info-desc.1": {
+    "type": "plain",
+    "value": "多聚核苷酸",
+    "label": "多聚核苷酸",
+    "page": "product-revibe.html",
+    "group": "info"
+  },
+  "product-revibe.info-label.2": {
+    "type": "plain",
+    "value": "HA 0.5mL/10mg",
+    "label": "HA 15%",
+    "page": "product-revibe.html",
+    "group": "info"
+  },
+  "product-revibe.info-desc.2": {
+    "type": "plain",
+    "value": "透明质酸",
+    "label": "透明质酸",
+    "page": "product-revibe.html",
+    "group": "info"
+  },
+  "product-revibe.info-label.3": {
+    "type": "plain",
+    "value": "Balance",
+    "label": "Balance",
+    "page": "product-revibe.html",
+    "group": "info"
+  },
+  "product-revibe.info-desc.3": {
+    "type": "plain",
+    "value": "生理性/渗透压平衡",
+    "label": "生理性/渗透压平衡",
+    "page": "product-revibe.html",
+    "group": "info"
+  },
+  "product-revibe.h1.1": {
+    "type": "rich",
+    "value": "Revibe PN",
+    "label": "Revibe PN",
+    "page": "product-revibe.html"
+  },
+  "product-revibe.p.1": {
+    "type": "plain",
+    "value": "以PN 1.5mL/30mg + HA 0.5mL/10mg 配比、生理性平衡（Physiological Balance）与渗透压平衡（Osmolality Balance）理念为基础，专为皮肤调理设计的专业PN产品线。",
+    "label": "以PN 85% + HA 15%配比、生理性平衡（Physiological Balance…",
+    "page": "product-revibe.html"
+  },
+  "product-revibe.p.2": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "product-revibe.html"
+  },
+  "product-revibe.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
+    "label": "Aestyve · 首尔，大韩民国",
+    "page": "product-revibe.html"
+  },
+  "product-revibe.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "product-revibe.html"
+  },
+  "product-revibe.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "product-revibe.html"
+  },
+  "product-rvsc.info-label.1": {
+    "type": "plain",
+    "value": "Exosome",
+    "label": "Exosome",
+    "page": "product-rvsc.html",
+    "group": "info"
+  },
+  "product-rvsc.info-desc.1": {
+    "type": "plain",
+    "value": "基于外泌体的类别",
+    "label": "基于外泌体的类别",
+    "page": "product-rvsc.html",
+    "group": "info"
+  },
+  "product-rvsc.info-label.2": {
+    "type": "plain",
+    "value": "2 Vials",
+    "label": "2 Vials",
+    "page": "product-rvsc.html",
+    "group": "info"
+  },
+  "product-rvsc.info-desc.2": {
+    "type": "plain",
+    "value": "配套包装组合",
+    "label": "配套包装组合",
+    "page": "product-rvsc.html",
+    "group": "info"
+  },
+  "product-rvsc.info-label.3": {
+    "type": "plain",
+    "value": "Made in Korea",
+    "label": "Made in Korea",
+    "page": "product-rvsc.html",
+    "group": "info"
+  },
+  "product-rvsc.info-desc.3": {
+    "type": "plain",
+    "value": "包装标识",
+    "label": "包装标识",
+    "page": "product-rvsc.html",
+    "group": "info"
+  },
+  "product-rvsc.h1.1": {
+    "type": "rich",
+    "value": "RVSC Exosome",
+    "label": "RVSC Exosome",
+    "page": "product-rvsc.html"
+  },
+  "product-rvsc.p.1": {
+    "type": "plain",
+    "value": "本产品是运用外泌体技术的专业皮肤解决方案类别。功效宣称将根据实际产品资料及各国许可范围进行管理。",
+    "label": "本产品是运用外泌体技术的专业皮肤解决方案类别。功效宣称将根据实际产品资料及各国许可范围进行管…",
+    "page": "product-rvsc.html"
+  },
+  "product-rvsc.p.2": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "product-rvsc.html"
+  },
+  "product-rvsc.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
+    "label": "Aestyve · 首尔，大韩民国",
+    "page": "product-rvsc.html"
+  },
+  "product-rvsc.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "label": "info@aestyve.com",
+    "page": "product-rvsc.html"
+  },
+  "product-rvsc.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "product-rvsc.html"
+  },
+  "science.qrow-label.1": {
+    "type": "plain",
+    "value": "关键参数",
+    "label": "关键参数",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.qrow-desc.1": {
+    "type": "plain",
+    "value": "以 HA 为例，我们围绕可被实际数据验证的项目说明品质：无菌性、内毒素、BDDE 残留、交联度、pH、渗透压与凝胶均一性。",
+    "label": "以 HA 为例，我们围绕可被实际数据验证的项目说明品质：无菌性、内毒素、BDDE 残留、交联度、pH、渗透压与凝胶均一性。",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.qrow-label.2": {
+    "type": "plain",
+    "value": "批次一致性",
+    "label": "批次一致性",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.qrow-desc.2": {
+    "type": "plain",
+    "value": "产品之间的一致性与完整度，本身就是一种品质表达。",
+    "label": "产品之间的一致性与完整度，本身就是一种品质表达。",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.qrow-label.3": {
+    "type": "plain",
+    "value": "技术叙述",
+    "label": "技术叙述",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.qrow-desc.3": {
+    "type": "plain",
+    "value": "以清晰的结构说明每款产品的设计逻辑，如 Grand Hive、生理性平衡与 Liquid PCL。",
+    "label": "以清晰的结构说明每款产品的设计逻辑，如 Grand Hive、生理性平衡与 Liquid PCL。",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.qrow-label.4": {
+    "type": "plain",
+    "value": "负责任的宣称",
+    "label": "负责任的宣称",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.qrow-desc.4": {
+    "type": "plain",
+    "value": "比起「最好」「绝对安全」「无副作用」，我们更看重实际证明材料与各国法规。",
+    "label": "比起「最好」「绝对安全」「无副作用」，我们更看重实际证明材料与各国法规。",
+    "page": "science.html",
+    "group": "qrow"
+  },
+  "science.h1.1": {
+    "type": "rich",
+    "value": "品质，<br>始于严谨。",
+    "label": "品质， 始于严谨。",
+    "page": "science.html"
+  },
+  "science.h2.1": {
+    "type": "rich",
+    "value": "讲清技术，<br><em>验证数据，</em><br>管好表述。",
+    "label": "讲清技术，  验证数据，  管好表述。",
+    "page": "science.html"
+  },
+  "science.p.1": {
+    "type": "plain",
+    "value": "产品的表现不取决于某一句宣传语，而由原料、工艺、物性、品质文件与一致性共同决定。",
+    "label": "产品的表现不取决于某一句宣传语，而由原料、工艺、物性、品质文件与一致性共同决定。",
+    "page": "science.html"
+  },
+  "science.p.2": {
+    "type": "plain",
+    "value": "专注时间的轨迹，精准美学的高度。",
+    "label": "专注时间的轨迹，精准美学的高度。",
+    "page": "science.html"
+  },
+  "science.p.3": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "science.html"
+  },
+  "science.p.4": {
+    "type": "plain",
+    "value": "<!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国",
+    "label": "Aestyve 艾薇 · 首尔，大韩民国",
+    "page": "science.html"
+  },
+  "science.p.5": {
+    "type": "plain",
+    "value": "韩语 · 英语 · 中文",
+    "label": "韩语 · 英语 · 中文",
+    "page": "science.html"
+  },
+  "product-revibe.notice.1": {
+    "type": "plain",
+    "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "page": "product-revibe.html"
+  },
+  "distribution.notice.1": {
+    "type": "plain",
+    "value": "Restylane、Replengen、Juvéderm 等外部品牌的商标权归各自权利人所有，并非艾薇自有品牌。实际经销品项与供应国家请通过咨询确认。",
+    "label": "Restylane、Replengen、Juvéderm 等外部品牌的商标权归各自权利人所有，并非艾薇自有品牌。实际经销品项与供应国家请通过咨询确认。",
+    "page": "distribution.html"
+  },
+  "contact.notice.1": {
+    "type": "plain",
+    "value": "本页面为无服务器的静态环境，采用邮箱链接形式，请替换为实际使用的邮箱地址。",
+    "label": "本页面为无服务器的静态环境，采用邮箱链接形式，请替换为实际使用的邮箱地址。",
+    "page": "contact.html"
+  },
+  "science.notice.1": {
+    "type": "plain",
+    "value": "认证、生产工艺、检测数据与审批机构等信息，仅在与实际证明文件一致时才会出现在公开页面。",
+    "label": "认证、生产工艺、检测数据与审批机构等信息，仅在与实际证明文件一致时才会出现在公开页面。",
+    "page": "science.html"
+  },
+  "product-plla.notice.1": {
+    "type": "plain",
+    "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "page": "product-plla.html"
+  },
+  "product-ha.notice.1": {
+    "type": "plain",
+    "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "page": "product-ha.html"
+  },
+  "product-pcl.notice.1": {
+    "type": "plain",
+    "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "page": "product-pcl.html"
+  },
+  "product-rvsc.notice.1": {
+    "type": "plain",
+    "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "page": "product-rvsc.html"
+  },
+  "product-nad.notice.1": {
+    "type": "plain",
+    "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
+    "page": "product-nad.html"
+  }
 }

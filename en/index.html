@@ -66,14 +66,97 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
  .qrow{grid-template-columns:45px 1fr}.qrow span{grid-column:2}.statement-copy{padding:30px}.partner{padding:30px 24px}.partner-grid{grid-template-columns:1fr}
  .footer-grid{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column}.page-hero-copy{padding:31px 24px}.page-visual{min-height:320px}
 }
-</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/en/"><link rel="alternate" hreflang="zh-Hans" href="https://www.aestyve.com/zh/"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/"></head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><span class="lang-switch-group"><a class="lang-switch" href="/">KO</a><a class="lang-switch active" href="/en/">EN</a><a class="lang-switch" href="/zh/">中文</a></span></nav><button class="menu-btn">MENU</button></div></header>
+</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/en/"><link rel="alternate" hreflang="zh-Hans" href="https://www.aestyve.com/zh/"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/">
+<!-- EN TYPOGRAPHY : editorial serif display + neutral sans text -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --en-display:'Cormorant Garamond','Times New Roman',Georgia,serif;
+ --en-sans:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+}
+body{font-family:var(--en-sans);font-weight:300;font-size:15px;line-height:1.78;letter-spacing:0}
+em{font-style:normal}
+.menu{font-size:11px;font-weight:400;letter-spacing:.1em}
+.eyebrow{font-family:var(--en-sans);font-size:10px;font-weight:500;letter-spacing:.24em}
+
+.hero-left{padding-top:96px;padding-bottom:84px}
+.hero h1{font-family:var(--en-display);font-weight:300;font-size:clamp(46px,6vw,86px);
+ line-height:1.04;letter-spacing:-.012em;margin:26px 0 26px}
+.hero h1 em{font-weight:400;font-style:italic}
+.hero p{max-width:44ch;font-size:15px;line-height:1.85;color:rgba(255,255,255,.7)}
+.btn{font-family:var(--en-sans);font-size:10px;font-weight:500;letter-spacing:.14em;padding:12px 19px}
+.hero-badge{font-size:9px;letter-spacing:.2em}
+
+.page-hero h1{font-family:var(--en-display);font-weight:300;font-size:clamp(42px,5.6vw,74px);
+ line-height:1.06;letter-spacing:-.012em}
+.page-hero p{font-size:14px;line-height:1.85;max-width:52ch}
+
+.split-title{grid-template-columns:.3fr 1.7fr}
+.split-title h2,.distrib-head h2,.quality-title h2,.partner h2,.contact-left h2{
+ font-family:var(--en-display);font-weight:300;font-size:clamp(34px,4.4vw,58px);
+ line-height:1.1;letter-spacing:-.012em}
+.split-title h2 em,.quality-title h2 em,.partner h2 em,.contact-left h2 em{font-style:italic;font-weight:400}
+.split-title p{font-size:14.5px;line-height:1.85;margin-top:20px;max-width:56ch}
+
+.duo-card h3{font-family:var(--en-sans);font-size:11px;font-weight:500;letter-spacing:.16em;
+ text-transform:uppercase;margin-bottom:12px}
+.duo-card p{font-size:13.5px;line-height:1.8;opacity:.78}
+.duo-card .num{font-family:var(--en-display);font-size:32px}
+.small-link{font-size:10px;font-weight:500;letter-spacing:.14em}
+
+.solution .index{font-size:9.5px;font-weight:500;letter-spacing:.2em}
+.solution h3{font-family:var(--en-display);font-weight:400;font-size:31px;letter-spacing:-.01em;margin:6px 0}
+.solution p{font-size:12.5px;line-height:1.75}
+
+.distrib-head p{font-size:14px;line-height:1.85}
+.dcard h3{font-family:var(--en-display);font-size:21px;font-weight:400;margin-bottom:8px}
+.dcard p{font-size:12.5px;line-height:1.8}
+
+.info b{font-family:var(--en-display);font-size:27px;font-weight:400}
+.info span{font-size:12.5px;line-height:1.75}
+.product-card h3{font-family:var(--en-display);font-size:27px;font-weight:400}
+.product-card p{font-size:12px;line-height:1.75}
+.notice{font-size:11px;line-height:1.8}
+
+.quality{grid-template-columns:.78fr 1.22fr}
+.qrow{grid-template-columns:56px 200px 1fr;padding:21px 0}
+.qrow .n{font-family:var(--en-display);font-size:26px}
+.qrow b{font-family:var(--en-sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.qrow span{font-size:13px;line-height:1.8}
+.statement-copy h3{font-family:var(--en-display);font-weight:300;font-size:clamp(32px,4vw,52px);
+ line-height:1.1;letter-spacing:-.012em}
+.statement-copy h3 em{font-style:italic;font-weight:400}
+.statement-copy p{font-size:13px;line-height:1.85}
+
+.partner p{font-size:13.5px;line-height:1.85}
+.partner-item b{font-family:var(--en-sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.partner-item span{font-size:11.5px;opacity:.72}
+.contact-left p{font-size:13.5px;line-height:1.85}
+.contact-row b{font-size:9.5px;letter-spacing:.2em}
+.contact-row span{font-size:13.5px}
+
+.footer h4{font-size:9.5px;font-weight:500;letter-spacing:.2em}
+.footer a,.footer p{font-size:11.5px;line-height:1.85}
+.footer-bottom{font-size:9.5px;line-height:1.7}
+
+@media(max-width:960px){
+ .hero h1{font-size:clamp(40px,10vw,58px);line-height:1.08}
+ .hero-left{padding:64px 30px 58px}
+ .split-title h2,.distrib-head h2,.quality-title h2,.partner h2{font-size:clamp(30px,7.4vw,40px)}
+ .qrow{grid-template-columns:44px 1fr;row-gap:4px}
+ .qrow span{grid-column:2}
+}
+</style>
+</head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><span class="lang-switch-group"><a class="lang-switch" href="/">KO</a><a class="lang-switch active" href="/en/">EN</a><a class="lang-switch" href="/zh/">中文</a></span></nav><button class="menu-btn">MENU</button></div></header>
 <main>
 <section class="hero">
  <div class="hero-wrap">
   <div class="hero-left">
    <span class="eyebrow">AESTHETICS · BRANDS · SOLUTIONS</span>
-   <h1 data-cms="index.h1.1" data-cms-type="rich">Building brands.<br><em>Distributing standards.</em></h1>
-   <p data-cms="index.p.1">Aestyve develops its own brands on the foundation of Korean medical aesthetics technology and precise quality standards, connecting curated professional products to the global market.</p>
+   <h1 data-cms="index.h1.1" data-cms-type="rich">Time leaves its mark.<br><em>We answer with precision.</em></h1>
+   <p data-cms="index.p.1">Aestyve builds its own brands on Korean medical aesthetics, and brings a curated professional portfolio to markets worldwide.</p>
    <div class="actions"><a class="btn light" href="brands.html">OUR BRANDS <span>→</span></a><a class="btn ghost" href="distribution.html">DISTRIBUTION PORTFOLIO <span>→</span></a></div>
   </div>
   <div class="hero-right"><img src="/assets/hero_warm.webp" alt="Aestyve premium medical aesthetics visual"><span class="hero-badge">SEOUL · KOREA</span></div>
@@ -84,22 +167,22 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
  <div class="container">
   <div class="split-title reveal">
    <div><span class="eyebrow">WHO WE ARE</span></div>
-   <div><h2 data-cms="index.h2.1" data-cms-type="rich">Not just a single product —<br><em>we shape a perspective on the aesthetics market.</em></h2><p data-cms="index.p.2">From brand planning to product portfolio, quality communication, and global distribution, Aestyve connects every step under one standard. Trustworthy solutions and lasting partnerships are at our core.</p></div>
+   <div><h2 data-cms="index.h2.1" data-cms-type="rich">We don’t just supply products.<br><em>We offer a way of reading the market.</em></h2><p data-cms="index.p.2">Brand planning, portfolio, quality communication, distribution — one standard runs through all of it. Solutions that hold up, and partnerships that last.</p></div>
   </div>
   <div class="duo">
-   <a class="duo-card navy reveal" href="brands.html"><div><div class="num">01</div><h3 data-cms="index.h3.1" data-cms-type="rich">AESTYVE OWN BRANDS</h3><p data-cms="index.p.3">We develop our own medical aesthetics portfolio, clearly organized by purpose and technology.</p></div><span class="small-link">VIEW OUR BRANDS →</span></a>
-   <a class="duo-card peach reveal" href="distribution.html"><div><div class="num">02</div><h3 data-cms="index.h3.2" data-cms-type="rich">CURATED DISTRIBUTION</h3><p data-cms="index.p.4">We select the brands our global partners need, based on proven market fit and expertise.</p></div><span class="small-link">EXPLORE PORTFOLIO →</span></a>
+   <a class="duo-card navy reveal" href="brands.html"><div><div class="num">01</div><h3 data-cms="index.h3.1" data-cms-type="rich">Aestyve Own Brands</h3><p data-cms="index.p.3">A medical aesthetics portfolio organised by purpose and mechanism.</p></div><span class="small-link">VIEW OUR BRANDS →</span></a>
+   <a class="duo-card peach reveal" href="distribution.html"><div><div class="num">02</div><h3 data-cms="index.h3.2" data-cms-type="rich">Curated Distribution</h3><p data-cms="index.p.4">We select brands partners can genuinely sell — proven in the market, sound in expertise.</p></div><span class="small-link">EXPLORE PORTFOLIO →</span></a>
   </div>
  </div>
 </section>
 
 <section class="section white">
  <div class="container">
-  <div class="split-title reveal"><div><span class="eyebrow">OUR SOLUTIONS</span></div><div><h2 data-cms="index.h2.2" data-cms-type="rich">Designed with a clear purpose.</h2><p data-cms="index.p.5">We clearly define the role of each technology to expand clinical experience and improve patient outcomes.</p></div></div>
+  <div class="split-title reveal"><div><span class="eyebrow">OUR SOLUTIONS</span></div><div><h2 data-cms="index.h2.2" data-cms-type="rich">Every technology<br><em>has a defined place.</em></h2><p data-cms="index.p.5">We draw clear boundaries around what each technology does, so clinical judgement comes easier and outcomes stay predictable.</p></div></div>
   <div class="solutions">
-    <a class="solution model reveal" href="product-revibe.html"><div class="photo"><img src="/assets/skin_warm.webp" alt="Revibe PN concept"></div><div class="copy"><span class="index">01 · SKIN QUALITY</span><h3 data-cms="index.h3.3" data-cms-type="rich">Revibe PN</h3><p data-cms="index.p.6">Premium PN Skin Booster · PN + HA</p></div><span class="circle-arrow">→</span></a>
-    <a class="solution reveal" href="product-pcl.html"><div class="photo"><img src="/assets/pcl.webp" alt="Aestyve Liquid PCL"></div><div class="copy"><span class="index">02 · BIOSTIMULATION</span><h3 data-cms="index.h3.4" data-cms-type="rich">Liquid PCL</h3><p data-cms="index.p.7">Liquid PCL · Collagen-oriented solution</p></div><span class="circle-arrow">→</span></a>
-    <a class="solution reveal" href="product-ha.html"><div class="photo"><img src="/assets/ha_beta_scene.webp" alt="Aestyve HA Filler Series"></div><div class="copy"><span class="index">03 · STRUCTURE</span><h3 data-cms="index.h3.5" data-cms-type="rich">HA Filler Series</h3><p data-cms="index.p.8">Advanced Cross-linked HA · α / β / γ</p></div><span class="circle-arrow">→</span></a>
+    <a class="solution model reveal" href="product-revibe.html"><div class="photo"><img src="/assets/skin_warm.webp" alt="Revibe PN concept"></div><div class="copy"><span class="index">01 · SKIN QUALITY</span><h3 data-cms="index.h3.3" data-cms-type="rich">Revibe PN</h3><p data-cms="index.p.6">Premium PN skin booster · PN + HA</p></div><span class="circle-arrow">→</span></a>
+    <a class="solution reveal" href="product-pcl.html"><div class="photo"><img src="/assets/pcl.webp" alt="Aestyve Liquid PCL"></div><div class="copy"><span class="index">02 · BIOSTIMULATION</span><h3 data-cms="index.h3.4" data-cms-type="rich">Liquid PCL</h3><p data-cms="index.p.7">Liquid PCL · collagen-oriented solution</p></div><span class="circle-arrow">→</span></a>
+    <a class="solution reveal" href="product-ha.html"><div class="photo"><img src="/assets/ha_beta_scene.webp" alt="Aestyve HA Filler Series"></div><div class="copy"><span class="index">03 · STRUCTURE</span><h3 data-cms="index.h3.5" data-cms-type="rich">HA Filler Series</h3><p data-cms="index.p.8">Advanced cross-linked HA · α / β / γ</p></div><span class="circle-arrow">→</span></a>
     <a class="solution large reveal" href="product-plla.html"><div class="photo"><img src="/assets/innofill_plla.svg" alt="Innofill PLLA"></div><div class="copy"><span class="index">04 · BIOSTIMULATION</span><h3 data-cms="index.h3.6" data-cms-type="rich">Innofill PLLA</h3><p data-cms="index.p.9">PLLA-based progressive aesthetic solution</p></div><span class="circle-arrow">→</span></a>
     <a class="solution large reveal" href="product-rvsc.html"><div class="photo"><img src="/assets/rvsc.webp" alt="RVSC Exosome"></div><div class="copy"><span class="index">05 · ADVANCED SKIN</span><h3 data-cms="index.h3.7" data-cms-type="rich">RVSC Exosome</h3><p data-cms="index.p.10">Exosome-based professional skin solution</p></div><span class="circle-arrow">→</span></a>
   </div>
@@ -108,11 +191,11 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
 
 <section class="section navy">
  <div class="container">
-  <div class="distrib-head reveal"><div><span class="eyebrow">DISTRIBUTION PORTFOLIO</span><h2 data-cms="index.h2.3" data-cms-type="rich">Curated brands,<br>trusted partnerships</h2></div><p data-cms="index.p.11">Aestyve selects and connects proven aesthetic brands from the global market with a perspective grounded in real sales needs.</p></div>
+  <div class="distrib-head reveal"><div><span class="eyebrow">DISTRIBUTION PORTFOLIO</span><h2 data-cms="index.h2.3" data-cms-type="rich">Selected brands.<br>Partnerships that last.</h2></div><p data-cms="index.p.11">We bring in brands already proven in the global market, chosen from the perspective of real sales.</p></div>
   <div class="distrib-cards">
-   <div class="dcard reveal"><div class="round">01</div><svg viewBox="0 0 48 48"><circle cx="18" cy="25" r="9"/><circle cx="30" cy="21" r="8"/><path d="M10 35c8-5 18-8 29-9"/><path d="M29 9v8M25 13h8"/></svg><h3 data-cms="index.h3.8" data-cms-type="rich">Global Injectables</h3><p data-cms="index.p.12" data-cms-type="rich">Injectables & Biostimulators<br>An injectable portfolio built around global trends</p></div>
-   <div class="dcard reveal"><div class="round">02</div><svg viewBox="0 0 48 48"><path d="M12 31c8 7 20 5 25-4 4-8 0-17-8-20"/><path d="M13 31c-5-7-3-17 5-22"/><circle cx="25" cy="23" r="6"/><path d="M25 12v5m0 12v5m-11-11h5m12 0h5"/></svg><h3 data-cms="index.h3.9" data-cms-type="rich">Regenerative Aesthetics</h3><p data-cms="index.p.13" data-cms-type="rich">Skin Regeneration & Collagen Stimulators<br>Regeneration and collagen-stimulating solutions</p></div>
-   <div class="dcard reveal"><div class="round">03</div><svg viewBox="0 0 48 48"><rect x="8" y="10" width="20" height="27" rx="4"/><path d="M13 16h10M13 22h10M13 28h7"/><path d="M33 15c4 3 6 7 6 12s-2 9-6 12"/><path d="M30 19c2 2 3 5 3 8s-1 6-3 8"/></svg><h3 data-cms="index.h3.10" data-cms-type="rich">Skin & Device Solutions</h3><p data-cms="index.p.14" data-cms-type="rich">Medical Devices & Skincare<br>Medical device and skincare solutions</p></div>
+   <div class="dcard reveal"><div class="round">01</div><svg viewBox="0 0 48 48"><circle cx="18" cy="25" r="9"/><circle cx="30" cy="21" r="8"/><path d="M10 35c8-5 18-8 29-9"/><path d="M29 9v8M25 13h8"/></svg><h3 data-cms="index.h3.8" data-cms-type="rich">Global Injectables</h3><p data-cms="index.p.12" data-cms-type="rich">Injectables &amp; Biostimulators<br>An injectable portfolio built around global trends</p></div>
+   <div class="dcard reveal"><div class="round">02</div><svg viewBox="0 0 48 48"><path d="M12 31c8 7 20 5 25-4 4-8 0-17-8-20"/><path d="M13 31c-5-7-3-17 5-22"/><circle cx="25" cy="23" r="6"/><path d="M25 12v5m0 12v5m-11-11h5m12 0h5"/></svg><h3 data-cms="index.h3.9" data-cms-type="rich">Regenerative Aesthetics</h3><p data-cms="index.p.13" data-cms-type="rich">Skin Regeneration &amp; Collagen Stimulators<br>Regeneration and collagen-stimulating solutions</p></div>
+   <div class="dcard reveal"><div class="round">03</div><svg viewBox="0 0 48 48"><rect x="8" y="10" width="20" height="27" rx="4"/><path d="M13 16h10M13 22h10M13 28h7"/><path d="M33 15c4 3 6 7 6 12s-2 9-6 12"/><path d="M30 19c2 2 3 5 3 8s-1 6-3 8"/></svg><h3 data-cms="index.h3.10" data-cms-type="rich">Skin & Device Solutions</h3><p data-cms="index.p.14" data-cms-type="rich">Medical Devices &amp; Skincare<br>Medical device and professional skincare solutions</p></div>
   </div>
   <div class="brand-strip">
     <div class="brand-tile reveal"><img src="/assets/restylane.webp" alt="Restylane external distribution brand"></div>
@@ -125,16 +208,16 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
 <section class="section white">
  <div class="container">
   <div class="quality reveal">
-   <div class="quality-title"><span class="eyebrow">SCIENCE & QUALITY</span><h2 data-cms="index.h2.4" data-cms-type="rich">Trust<br><em>is built on principle,</em><br>and made whole.</h2></div>
+   <div class="quality-title"><span class="eyebrow">SCIENCE & QUALITY</span><h2 data-cms="index.h2.4" data-cms-type="rich">Trust<br><em>is built on principle.</em></h2></div>
    <div class="qrows">
-    <div class="qrow"><div class="n">01</div><b data-cms="index.qrow-label.1">Brand Development</b><span data-cms="index.qrow-desc.1">We design our own brands based on clear targeting and portfolio strategy.</span></div>
-    <div class="qrow"><div class="n">02</div><b data-cms="index.qrow-label.2">Quality Documentation</b><span data-cms="index.qrow-desc.2">We provide the information partners need transparently, grounded in real product data and quality documentation.</span></div>
-    <div class="qrow"><div class="n">03</div><b data-cms="index.qrow-label.3">Professional Communication</b><span data-cms="index.qrow-desc.3">We choose clear professional language that clinicians and partners can understand, rather than exaggerated claims.</span></div>
-    <div class="qrow"><div class="n">04</div><b data-cms="index.qrow-label.4">Global Compliance</b><span data-cms="index.qrow-desc.4">We manage global communication with each country's registration and claims regulations in mind.</span></div>
+    <div class="qrow"><div class="n">01</div><b data-cms="index.qrow-label.1">Brand Development</b><span data-cms="index.qrow-desc.1">We design our own brands from clear targeting and a defined portfolio strategy.</span></div>
+    <div class="qrow"><div class="n">02</div><b data-cms="index.qrow-label.2">Quality Documentation</b><span data-cms="index.qrow-desc.2">Real product data and quality documents, presented transparently.</span></div>
+    <div class="qrow"><div class="n">03</div><b data-cms="index.qrow-label.3">Professional Communication</b><span data-cms="index.qrow-desc.3">No inflated claims — language clinicians and partners can act on.</span></div>
+    <div class="qrow"><div class="n">04</div><b data-cms="index.qrow-label.4">Global Compliance</b><span data-cms="index.qrow-desc.4">Registration and claim boundaries differ by country. We manage the message accordingly.</span></div>
    </div>
   </div>
   <div class="statement reveal">
-   <div class="statement-copy"><span class="eyebrow">AESTYVE STANDARD</span><h3 data-cms="index.h3.11" data-cms-type="rich">We don't compete on price.<br><em>We compete on standards.</em></h3><p data-cms="index.p.15">We aim to be chosen for technology, quality, consistency, and expertise — not price.</p><div class="actions"><a class="btn ghost" href="science.html">OUR STANDARDS →</a></div></div>
+   <div class="statement-copy"><span class="eyebrow">AESTYVE STANDARD</span><h3 data-cms="index.h3.11" data-cms-type="rich">We don’t compete on price.<br><em>We compete on standards.</em></h3><p data-cms="index.p.15">Technology, quality, consistency, expertise. Those are the reasons to choose us.</p><div class="actions"><a class="btn ghost" href="science.html">OUR STANDARDS →</a></div></div>
    <div class="statement-art"><img src="/assets/seal.webp" alt="Aestyve Precision Tech Aesthetic Revival emblem"></div>
   </div>
  </div>
@@ -143,7 +226,7 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
 <section class="section">
  <div class="container">
   <div class="partner reveal">
-   <div><span class="eyebrow" style="color:#7f4b30">FOR PROFESSIONALS & PARTNERS</span><h2 data-cms="index.h2.5" data-cms-type="rich">Beyond the product,<br>we create value together in the market.</h2><p data-cms="index.p.16">From distribution to partnership, marketing materials, and exhibition collaboration, Aestyve builds a business that grows together with you.</p><div class="actions"><a class="btn navy" href="partnership.html">PARTNER WITH US →</a><a class="btn outline" href="contact.html">CONTACT US →</a></div></div>
+   <div><span class="eyebrow" style="color:#7f4b30">FOR PROFESSIONALS & PARTNERS</span><h2 data-cms="index.h2.5" data-cms-type="rich">Beyond the product,<br>we build market value together.</h2><p data-cms="index.p.16">Distribution, partnership, marketing materials, exhibitions — we grow the business alongside you.</p><div class="actions"><a class="btn navy" href="partnership.html">PARTNER WITH US →</a><a class="btn outline" href="contact.html">CONTACT US →</a></div></div>
    <div class="partner-grid">
     <div class="partner-item"><div class="partner-icon">◇</div><div><b data-cms="index.partner-label.1">Brand</b><span data-cms="index.partner-desc.1">Brand development</span></div></div>
     <div class="partner-item"><div class="partner-icon">▢</div><div><b data-cms="index.partner-label.2">Portfolio</b><span data-cms="index.partner-desc.2">Curated distribution</span></div></div>
@@ -156,7 +239,7 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
 </main>
 <footer class="footer"><div class="container">
     <div class="footer-grid">
-      <div><img class="footer-logo" src="/assets/logo.webp" alt="Aestyve"><p data-cms="index.p.17">Building brands, distributing standards.</p><p data-cms="index.p.18"><!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea</p></div>
+      <div><img class="footer-logo" src="/assets/logo.webp" alt="Aestyve"><p data-cms="index.p.17">Time leaves its mark. We answer with precision.</p><p data-cms="index.p.18"><!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea</p></div>
       <div><h4>COMPANY</h4><a href="company.html">About</a><a href="science.html">Science & Quality</a></div>
       <div><h4>BRANDS</h4><a href="brands.html">Own Brands</a><a href="product-ha.html">HA Series</a><a href="product-revibe.html">Revibe PN</a></div>
       <div><h4>BUSINESS</h4><a href="distribution.html">Distribution</a><a href="partnership.html">Partnership</a></div>

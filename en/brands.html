@@ -66,19 +66,102 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
  .qrow{grid-template-columns:45px 1fr}.qrow span{grid-column:2}.statement-copy{padding:30px}.partner{padding:30px 24px}.partner-grid{grid-template-columns:1fr}
  .footer-grid{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column}.page-hero-copy{padding:31px 24px}.page-visual{min-height:320px}
 }
-</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/brands.html"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/en/brands.html"><link rel="alternate" hreflang="zh-Hans" href="https://www.aestyve.com/zh/brands.html"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/brands.html"></head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="active" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><span class="lang-switch-group"><a class="lang-switch" href="/brands.html">KO</a><a class="lang-switch active" href="/en/brands.html">EN</a><a class="lang-switch" href="/zh/brands.html">中文</a></span></nav><button class="menu-btn">MENU</button></div></header>
+</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/brands.html"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/en/brands.html"><link rel="alternate" hreflang="zh-Hans" href="https://www.aestyve.com/zh/brands.html"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/brands.html">
+<!-- EN TYPOGRAPHY : editorial serif display + neutral sans text -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --en-display:'Cormorant Garamond','Times New Roman',Georgia,serif;
+ --en-sans:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+}
+body{font-family:var(--en-sans);font-weight:300;font-size:15px;line-height:1.78;letter-spacing:0}
+em{font-style:normal}
+.menu{font-size:11px;font-weight:400;letter-spacing:.1em}
+.eyebrow{font-family:var(--en-sans);font-size:10px;font-weight:500;letter-spacing:.24em}
+
+.hero-left{padding-top:96px;padding-bottom:84px}
+.hero h1{font-family:var(--en-display);font-weight:300;font-size:clamp(46px,6vw,86px);
+ line-height:1.04;letter-spacing:-.012em;margin:26px 0 26px}
+.hero h1 em{font-weight:400;font-style:italic}
+.hero p{max-width:44ch;font-size:15px;line-height:1.85;color:rgba(255,255,255,.7)}
+.btn{font-family:var(--en-sans);font-size:10px;font-weight:500;letter-spacing:.14em;padding:12px 19px}
+.hero-badge{font-size:9px;letter-spacing:.2em}
+
+.page-hero h1{font-family:var(--en-display);font-weight:300;font-size:clamp(42px,5.6vw,74px);
+ line-height:1.06;letter-spacing:-.012em}
+.page-hero p{font-size:14px;line-height:1.85;max-width:52ch}
+
+.split-title{grid-template-columns:.3fr 1.7fr}
+.split-title h2,.distrib-head h2,.quality-title h2,.partner h2,.contact-left h2{
+ font-family:var(--en-display);font-weight:300;font-size:clamp(34px,4.4vw,58px);
+ line-height:1.1;letter-spacing:-.012em}
+.split-title h2 em,.quality-title h2 em,.partner h2 em,.contact-left h2 em{font-style:italic;font-weight:400}
+.split-title p{font-size:14.5px;line-height:1.85;margin-top:20px;max-width:56ch}
+
+.duo-card h3{font-family:var(--en-sans);font-size:11px;font-weight:500;letter-spacing:.16em;
+ text-transform:uppercase;margin-bottom:12px}
+.duo-card p{font-size:13.5px;line-height:1.8;opacity:.78}
+.duo-card .num{font-family:var(--en-display);font-size:32px}
+.small-link{font-size:10px;font-weight:500;letter-spacing:.14em}
+
+.solution .index{font-size:9.5px;font-weight:500;letter-spacing:.2em}
+.solution h3{font-family:var(--en-display);font-weight:400;font-size:31px;letter-spacing:-.01em;margin:6px 0}
+.solution p{font-size:12.5px;line-height:1.75}
+
+.distrib-head p{font-size:14px;line-height:1.85}
+.dcard h3{font-family:var(--en-display);font-size:21px;font-weight:400;margin-bottom:8px}
+.dcard p{font-size:12.5px;line-height:1.8}
+
+.info b{font-family:var(--en-display);font-size:27px;font-weight:400}
+.info span{font-size:12.5px;line-height:1.75}
+.product-card h3{font-family:var(--en-display);font-size:27px;font-weight:400}
+.product-card p{font-size:12px;line-height:1.75}
+.notice{font-size:11px;line-height:1.8}
+
+.quality{grid-template-columns:.78fr 1.22fr}
+.qrow{grid-template-columns:56px 200px 1fr;padding:21px 0}
+.qrow .n{font-family:var(--en-display);font-size:26px}
+.qrow b{font-family:var(--en-sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.qrow span{font-size:13px;line-height:1.8}
+.statement-copy h3{font-family:var(--en-display);font-weight:300;font-size:clamp(32px,4vw,52px);
+ line-height:1.1;letter-spacing:-.012em}
+.statement-copy h3 em{font-style:italic;font-weight:400}
+.statement-copy p{font-size:13px;line-height:1.85}
+
+.partner p{font-size:13.5px;line-height:1.85}
+.partner-item b{font-family:var(--en-sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.partner-item span{font-size:11.5px;opacity:.72}
+.contact-left p{font-size:13.5px;line-height:1.85}
+.contact-row b{font-size:9.5px;letter-spacing:.2em}
+.contact-row span{font-size:13.5px}
+
+.footer h4{font-size:9.5px;font-weight:500;letter-spacing:.2em}
+.footer a,.footer p{font-size:11.5px;line-height:1.85}
+.footer-bottom{font-size:9.5px;line-height:1.7}
+
+@media(max-width:960px){
+ .hero h1{font-size:clamp(40px,10vw,58px);line-height:1.08}
+ .hero-left{padding:64px 30px 58px}
+ .split-title h2,.distrib-head h2,.quality-title h2,.partner h2{font-size:clamp(30px,7.4vw,40px)}
+ .qrow{grid-template-columns:44px 1fr;row-gap:4px}
+ .qrow span{grid-column:2}
+}
+</style>
+</head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="active" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><span class="lang-switch-group"><a class="lang-switch" href="/brands.html">KO</a><a class="lang-switch active" href="/en/brands.html">EN</a><a class="lang-switch" href="/zh/brands.html">中文</a></span></nav><button class="menu-btn">MENU</button></div></header>
 <main>
-<section class="page-hero"><div class="container page-hero-box"><div class="page-hero-copy"><span class="eyebrow">AESTYVE OWN BRANDS</span><h1 data-cms="brands.h1.1" data-cms-type="rich">One standard.<br>Multiple technologies.</h1><p data-cms="brands.p.1">We organize HA, PN, PCL, PLLA, Exosome, and Advanced Solutions by purpose, unified under one brand standard: Aestyve.</p></div><div class="page-visual"><img src="/assets/ha_alpha_scene.webp" alt="Aestyve own brands"></div></div></section>
+<section class="page-hero"><div class="container page-hero-box"><div class="page-hero-copy"><span class="eyebrow">AESTYVE OWN BRANDS</span><h1 data-cms="brands.h1.1" data-cms-type="rich">One standard.<br>Many technologies.</h1><p data-cms="brands.p.1">HA, PN, PCL, PLLA, Exosome and advanced solutions — organised by purpose, unified under a single standard.</p></div><div class="page-visual"><img src="/assets/ha_alpha_scene.webp" alt="Aestyve own brands"></div></div></section>
 <section class="section white"><div class="container"><div class="solutions">
 <a class="solution" href="product-ha.html"><div class="photo"><img src="/assets/ha_gamma_scene.webp" alt="Aestyve HA"></div><div class="copy"><span class="index">STRUCTURE</span><h3 data-cms="brands.h3.1" data-cms-type="rich">Aestyve HA</h3><p data-cms="brands.p.2">α · β · γ / Cross-linked HA</p></div><span class="circle-arrow">→</span></a>
-<a class="solution" href="product-revibe.html"><div class="photo"><img src="/assets/revibe_pack.webp" alt="Revibe PN"></div><div class="copy"><span class="index">REVITALIZE</span><h3 data-cms="brands.h3.2" data-cms-type="rich">Revibe PN</h3><p data-cms="brands.p.3">PN 85% + HA 15%</p></div><span class="circle-arrow">→</span></a>
-<a class="solution" href="product-pcl.html"><div class="photo"><img src="/assets/pcl.webp" alt="Liquid PCL"></div><div class="copy"><span class="index">REGENERATE</span><h3 data-cms="brands.h3.3" data-cms-type="rich">Liquid PCL</h3><p data-cms="brands.p.4">Liquid PCL · 2.0mL/Vial</p></div><span class="circle-arrow">→</span></a>
+<a class="solution" href="product-revibe.html"><div class="photo"><img src="/assets/revibe_pack.webp" alt="Revibe PN"></div><div class="copy"><span class="index">REVITALIZE</span><h3 data-cms="brands.h3.2" data-cms-type="rich">Revibe PN</h3><p data-cms="brands.p.3">PN 1.5 mL + HA 0.5 mL</p></div><span class="circle-arrow">→</span></a>
+<a class="solution" href="product-pcl.html"><div class="photo"><img src="/assets/pcl.webp" alt="Liquid PCL"></div><div class="copy"><span class="index">REGENERATE</span><h3 data-cms="brands.h3.3" data-cms-type="rich">Liquid PCL</h3><p data-cms="brands.p.4">Liquid PCL · 2.0 mL / Vial</p></div><span class="circle-arrow">→</span></a>
 <a class="solution large" href="product-plla.html"><div class="photo"><img src="/assets/innofill_plla.svg" alt="Innofill PLLA"></div><div class="copy"><span class="index">REBUILD</span><h3 data-cms="brands.h3.4" data-cms-type="rich">Innofill PLLA</h3><p data-cms="brands.p.5">PLLA-based biostimulation category</p></div><span class="circle-arrow">→</span></a>
 <a class="solution large" href="product-rvsc.html"><div class="photo"><img src="/assets/rvsc.webp" alt="RVSC Exosome"></div><div class="copy"><span class="index">REVIVE</span><h3 data-cms="brands.h3.5" data-cms-type="rich">RVSC Exosome</h3><p data-cms="brands.p.6">Exosome-based professional solution</p></div><span class="circle-arrow">→</span></a>
 </div></div></section>
 </main><footer class="footer"><div class="container">
     <div class="footer-grid">
-      <div><img class="footer-logo" src="/assets/logo.webp" alt="Aestyve"><p data-cms="brands.p.7">Building brands, distributing standards.</p><p data-cms="brands.p.8"><!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea</p></div>
+      <div><img class="footer-logo" src="/assets/logo.webp" alt="Aestyve"><p data-cms="brands.p.7">Time leaves its mark. We answer with precision.</p><p data-cms="brands.p.8"><!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea</p></div>
       <div><h4>COMPANY</h4><a href="company.html">About</a><a href="science.html">Science & Quality</a></div>
       <div><h4>BRANDS</h4><a href="brands.html">Own Brands</a><a href="product-ha.html">HA Series</a><a href="product-revibe.html">Revibe PN</a></div>
       <div><h4>BUSINESS</h4><a href="distribution.html">Distribution</a><a href="partnership.html">Partnership</a></div>

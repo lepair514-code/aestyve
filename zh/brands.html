@@ -66,19 +66,111 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}.container
  .qrow{grid-template-columns:45px 1fr}.qrow span{grid-column:2}.statement-copy{padding:30px}.partner{padding:30px 24px}.partner-grid{grid-template-columns:1fr}
  .footer-grid{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column}.page-hero-copy{padding:31px 24px}.page-visual{min-height:320px}
 }
-</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/brands.html"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/en/brands.html"><link rel="alternate" hreflang="zh-Hans" href="https://www.aestyve.com/zh/brands.html"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/brands.html"></head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve"></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="active" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><span class="lang-switch-group"><a class="lang-switch" href="/brands.html">KO</a><a class="lang-switch" href="/en/brands.html">EN</a><a class="lang-switch active" href="/zh/brands.html">中文</a></span></nav><button class="menu-btn">MENU</button></div></header>
+</style><link rel="alternate" hreflang="ko" href="https://www.aestyve.com/brands.html"><link rel="alternate" hreflang="en" href="https://www.aestyve.com/en/brands.html"><link rel="alternate" hreflang="zh-Hans" href="https://www.aestyve.com/zh/brands.html"><link rel="alternate" hreflang="x-default" href="https://www.aestyve.com/brands.html">
+<!-- ZH TYPOGRAPHY : 三极萧宋简体 (라이선스 폰트 — /assets/fonts/ 에 업로드 필요) -->
+<style>
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-light.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-light.woff') format('woff');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-regular.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-medium.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'SanJi XiaoSong';src:url('/assets/fonts/sanji-xiaosong-bold.woff2') format('woff2'),url('/assets/fonts/sanji-xiaosong-bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+:root{
+ --zh-song:'SanJi XiaoSong','三极萧宋简体','SanJiXiaoSongJianTi',"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",serif;
+ --zh-sans:"PingFang SC","HarmonyOS Sans SC","Noto Sans SC","Source Han Sans SC","Microsoft YaHei","Heiti SC",sans-serif;
+}
+body{font-family:var(--zh-sans);font-weight:400;font-size:15px;line-height:1.9;letter-spacing:.012em}
+em{font-style:normal}
+.menu{font-size:12px;font-weight:500;letter-spacing:.05em}
+.menu .cta,.menu .lang-switch{font-size:11px}
+.eyebrow{font-family:var(--zh-sans);font-size:11px;font-weight:600;letter-spacing:.2em}
+
+.hero-left{padding-top:96px;padding-bottom:84px}
+.hero h1{font-family:var(--zh-song);font-weight:300;font-size:clamp(33px,4.3vw,56px);
+ line-height:1.4;letter-spacing:.035em;margin:26px 0 26px}
+.hero h1 em{font-weight:500;letter-spacing:.045em}
+.hero p{max-width:30em;font-size:15px;line-height:2.05;color:rgba(255,255,255,.72)}
+.btn{font-family:var(--zh-sans);font-size:11.5px;font-weight:500;letter-spacing:.06em;padding:12px 19px}
+.hero-badge{font-size:10px;letter-spacing:.16em}
+
+.page-hero h1{font-family:var(--zh-song);font-weight:300;font-size:clamp(30px,4vw,50px);
+ line-height:1.4;letter-spacing:.035em}
+.page-hero p{font-size:14px;line-height:2}
+
+.split-title{grid-template-columns:.3fr 1.7fr}
+.split-title h2,.distrib-head h2,.quality-title h2,.partner h2,.contact-left h2{
+ font-family:var(--zh-song);font-weight:300;font-size:clamp(25px,3.1vw,39px);
+ line-height:1.5;letter-spacing:.03em}
+.split-title h2 em,.quality-title h2 em,.partner h2 em,.contact-left h2 em{font-weight:500}
+.split-title p{font-size:14.5px;line-height:2;margin-top:18px}
+.duo-card h3,.dcard h3,.qrow b,.partner-item b,.info b,.product-card h3,.contact-row b{font-family:var(--zh-song)}
+.duo-card h3{font-size:17px;font-weight:500;letter-spacing:.03em;margin-bottom:11px}
+.duo-card p{font-size:13.5px;line-height:1.95;opacity:.78}
+.duo-card .num{font-size:26px}
+.small-link{font-size:11px;font-weight:500;letter-spacing:.06em}
+
+.solution .index{font-size:10.5px;font-weight:600;letter-spacing:.14em}
+.solution h3{font-family:var(--zh-song);font-weight:400;font-size:25px;letter-spacing:.02em;margin:7px 0}
+.solution p{font-size:12.5px;line-height:1.8}
+
+.distrib-head p{font-size:14px;line-height:2}
+.dcard h3{font-size:16px;font-weight:500;letter-spacing:.03em;margin-bottom:8px}
+.dcard p{font-size:12.5px;line-height:1.9}
+
+.info b{font-size:19px;font-weight:500;letter-spacing:.04em}
+.info span{font-size:12.5px;line-height:1.85}
+.product-card h3{font-size:21px;font-weight:500}
+.product-card p{font-size:12px;line-height:1.85}
+.notice{font-size:11.5px;line-height:1.9}
+
+.quality{grid-template-columns:.78fr 1.22fr}
+.qrow{grid-template-columns:56px 190px 1fr;padding:21px 0}
+.qrow b{font-size:14px;font-weight:500;letter-spacing:.03em}
+.qrow span{font-size:13px;line-height:1.9}
+.statement-copy h3{font-family:var(--zh-song);font-weight:300;font-size:clamp(25px,2.9vw,35px);
+ line-height:1.52;letter-spacing:.03em}
+.statement-copy h3 em{font-weight:500}
+.statement-copy p{font-size:13.5px;line-height:1.95}
+
+.partner p{font-size:13.5px;line-height:1.95}
+.partner-item b{font-size:13.5px;font-weight:500}
+.partner-item span{font-size:11.5px;opacity:.72}
+.contact-left p{font-size:13.5px;line-height:2}
+.contact-row b{font-size:10.5px;letter-spacing:.14em}
+.contact-row span{font-size:13.5px}
+
+.footer h4{font-size:10.5px;font-weight:600;letter-spacing:.16em}
+.footer a,.footer p{font-size:12px;line-height:1.95}
+.footer-bottom{font-size:10px;line-height:1.8}
+
+.brand{display:flex;align-items:center;gap:11px}
+.brand-cn{font-family:var(--zh-song);font-size:16px;font-weight:400;letter-spacing:.16em;color:#fff;
+ opacity:.94;white-space:nowrap;padding-left:11px;border-left:1px solid rgba(255,255,255,.3)}
+.brand-cn sup{font-family:var(--zh-sans);font-size:.44em;font-weight:500;letter-spacing:.04em;
+ vertical-align:super;opacity:.68;margin-left:2px}
+.footer-brand{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.footer-brand .footer-logo{margin-bottom:0}
+
+@media(max-width:960px){
+ .hero h1{font-size:clamp(29px,7vw,40px);line-height:1.42}
+ .hero-left{padding:64px 30px 58px}
+ .split-title h2,.distrib-head h2,.quality-title h2,.partner h2{font-size:clamp(24px,5.4vw,31px)}
+ .brand-cn{font-size:14px;letter-spacing:.12em;padding-left:9px}
+ .qrow{grid-template-columns:44px 1fr;row-gap:4px}
+ .qrow span{grid-column:2}
+}
+</style>
+</head><body><header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="/assets/logo.webp" alt="Aestyve 艾薇"><span class="brand-cn">艾薇<sup>TM</sup></span></a><nav class="menu"><a class="" href="company.html">COMPANY</a><a class="active" href="brands.html">BRANDS</a><a class="" href="science.html">SCIENCE</a><a class="" href="distribution.html">DISTRIBUTION</a><a class="" href="partnership.html">PARTNERSHIP</a><a class="" href="contact.html">CONTACT</a><a class="cta" href="contact.html">INQUIRY</a><span class="lang-switch-group"><a class="lang-switch" href="/brands.html">KO</a><a class="lang-switch" href="/en/brands.html">EN</a><a class="lang-switch active" href="/zh/brands.html">中文</a></span></nav><button class="menu-btn">MENU</button></div></header>
 <main>
-<section class="page-hero"><div class="container page-hero-box"><div class="page-hero-copy"><span class="eyebrow">AESTYVE OWN BRANDS</span><h1 data-cms="brands.h1.1" data-cms-type="rich">统一标准，<br>多元技术。</h1><p data-cms="brands.p.1">我们按用途区分HA、PN、PCL、PLLA、外泌体（Exosome）及高阶解决方案（Advanced Solutions），并以Aestyve这一统一品牌标准将其连接。</p></div><div class="page-visual"><img src="/assets/ha_alpha_scene.webp" alt="Aestyve own brands"></div></div></section>
+<section class="page-hero"><div class="container page-hero-box"><div class="page-hero-copy"><span class="eyebrow">AESTYVE OWN BRANDS</span><h1 data-cms="brands.h1.1" data-cms-type="rich">一套标准，<br>多元技术。</h1><p data-cms="brands.p.1">我们按用途划分 HA、PN、PCL、PLLA、外泌体与高阶方案，并以艾薇这一套标准将它们连接起来。</p></div><div class="page-visual"><img src="/assets/ha_alpha_scene.webp" alt="Aestyve own brands"></div></div></section>
 <section class="section white"><div class="container"><div class="solutions">
-<a class="solution" href="product-ha.html"><div class="photo"><img src="/assets/ha_gamma_scene.webp" alt="Aestyve HA"></div><div class="copy"><span class="index">STRUCTURE</span><h3 data-cms="brands.h3.1" data-cms-type="rich">Aestyve HA</h3><p data-cms="brands.p.2">α · β · γ / Cross-linked HA</p></div><span class="circle-arrow">→</span></a>
-<a class="solution" href="product-revibe.html"><div class="photo"><img src="/assets/revibe_pack.webp" alt="Revibe PN"></div><div class="copy"><span class="index">REVITALIZE</span><h3 data-cms="brands.h3.2" data-cms-type="rich">Revibe PN</h3><p data-cms="brands.p.3">PN 85% + HA 15%</p></div><span class="circle-arrow">→</span></a>
-<a class="solution" href="product-pcl.html"><div class="photo"><img src="/assets/pcl.webp" alt="Liquid PCL"></div><div class="copy"><span class="index">REGENERATE</span><h3 data-cms="brands.h3.3" data-cms-type="rich">Liquid PCL</h3><p data-cms="brands.p.4">Liquid PCL · 2.0mL/Vial</p></div><span class="circle-arrow">→</span></a>
-<a class="solution large" href="product-plla.html"><div class="photo"><img src="/assets/innofill_plla.svg" alt="Innofill PLLA"></div><div class="copy"><span class="index">REBUILD</span><h3 data-cms="brands.h3.4" data-cms-type="rich">Innofill PLLA</h3><p data-cms="brands.p.5">基于PLLA的生物刺激类别</p></div><span class="circle-arrow">→</span></a>
+<a class="solution" href="product-ha.html"><div class="photo"><img src="/assets/ha_gamma_scene.webp" alt="Aestyve HA"></div><div class="copy"><span class="index">STRUCTURE</span><h3 data-cms="brands.h3.1" data-cms-type="rich">Aestyve HA</h3><p data-cms="brands.p.2">α · β · γ / 高交联透明质酸</p></div><span class="circle-arrow">→</span></a>
+<a class="solution" href="product-revibe.html"><div class="photo"><img src="/assets/revibe_pack.webp" alt="Revibe PN"></div><div class="copy"><span class="index">REVITALIZE</span><h3 data-cms="brands.h3.2" data-cms-type="rich">Revibe PN</h3><p data-cms="brands.p.3">PN 1.5 mL + HA 0.5 mL</p></div><span class="circle-arrow">→</span></a>
+<a class="solution" href="product-pcl.html"><div class="photo"><img src="/assets/pcl.webp" alt="Liquid PCL"></div><div class="copy"><span class="index">REGENERATE</span><h3 data-cms="brands.h3.3" data-cms-type="rich">Liquid PCL</h3><p data-cms="brands.p.4">Liquid PCL · 2.0 mL / Vial</p></div><span class="circle-arrow">→</span></a>
+<a class="solution large" href="product-plla.html"><div class="photo"><img src="/assets/innofill_plla.svg" alt="Innofill PLLA"></div><div class="copy"><span class="index">REBUILD</span><h3 data-cms="brands.h3.4" data-cms-type="rich">Innofill PLLA</h3><p data-cms="brands.p.5">基于 PLLA 的生物刺激类别</p></div><span class="circle-arrow">→</span></a>
 <a class="solution large" href="product-rvsc.html"><div class="photo"><img src="/assets/rvsc.webp" alt="RVSC Exosome"></div><div class="copy"><span class="index">REVIVE</span><h3 data-cms="brands.h3.5" data-cms-type="rich">RVSC Exosome</h3><p data-cms="brands.p.6">基于外泌体的专业解决方案</p></div><span class="circle-arrow">→</span></a>
 </div></div></section>
 </main><footer class="footer"><div class="container">
     <div class="footer-grid">
-      <div><img class="footer-logo" src="/assets/logo.webp" alt="Aestyve"><p data-cms="brands.p.7">打造品牌，传递标准。</p><p data-cms="brands.p.8"><!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国</p></div>
+      <div><span class="footer-brand"><img class="footer-logo" src="/assets/logo.webp" alt="Aestyve 艾薇"><span class="brand-cn">艾薇<sup>TM</sup></span></span><p data-cms="brands.p.7">专注时间的轨迹，精准美学的高度。</p><p data-cms="brands.p.8"><!-- EDIT COMPANY INFO -->Aestyve 艾薇 · 首尔，大韩民国</p></div>
       <div><h4>COMPANY</h4><a href="company.html">About</a><a href="science.html">Science & Quality</a></div>
       <div><h4>BRANDS</h4><a href="brands.html">Own Brands</a><a href="product-ha.html">HA Series</a><a href="product-revibe.html">Revibe PN</a></div>
       <div><h4>BUSINESS</h4><a href="distribution.html">Distribution</a><a href="partnership.html">Partnership</a></div>
