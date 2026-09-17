@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "^/facelab$",
+      "status": 308,
+      "headers": {
+        "Location": "/facelab/"
+      }
+    },
+    {
+      "src": "^/facelab/(.*)$",
+      "dest": "https://aestyve-face-lab.vercel.app/$1"
+    }
+  ]
+}
