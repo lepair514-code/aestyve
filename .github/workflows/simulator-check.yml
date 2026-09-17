@@ -30,12 +30,22 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Real WebGL and MediaPipe browser smoke tests
         run: node tests/browser.mjs
+      - name: Build single-file local web edition
+        run: python3 scripts/make_standalone.py dist standalone/Aestyve-Face-Lab.html
+      - name: Real offline file-mode browser smoke tests
+        run: node tests/standalone.mjs
       - name: Technical evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: aestyve-technical-evidence
           path: simulator/qa-results/
+          retention-days: 7
+      - name: Single-file local web edition (only when tests pass)
+        uses: actions/upload-artifact@v4
+        with:
+          name: aestyve-open-in-chrome
+          path: simulator/standalone/
           retention-days: 7
       - name: Deployment files (only when tests pass)
         uses: actions/upload-artifact@v4
