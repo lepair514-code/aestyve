@@ -881,120 +881,6 @@
     "label": "Korean · English · Chinese",
     "page": "partnership.html"
   },
-  "product-ha.info-label.1": {
-    "type": "plain",
-    "value": "24 mg/mL",
-    "label": "24 mg/mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.1": {
-    "type": "plain",
-    "value": "Cross-linked Hyaluronic Acid",
-    "label": "Cross-linked Hyaluronic Acid",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-label.2": {
-    "type": "plain",
-    "value": "3 mg/mL",
-    "label": "3 mg/mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.2": {
-    "type": "plain",
-    "value": "Lidocaine HCl",
-    "label": "Lidocaine HCl",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-label.3": {
-    "type": "plain",
-    "value": "1.1 mL",
-    "label": "1.1 mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.3": {
-    "type": "plain",
-    "value": "Pre-filled syringe",
-    "label": "Pre-filled syringe",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.h1.1": {
-    "type": "rich",
-    "value": "Aestyve HA",
-    "label": "Aestyve HA",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.1": {
-    "type": "rich",
-    "value": "Ep. α Alpha",
-    "label": "Ep. α Alpha",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.2": {
-    "type": "rich",
-    "value": "Ep. β Beta",
-    "label": "Ep. β Beta",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.3": {
-    "type": "rich",
-    "value": "Ep. γ Gamma",
-    "label": "Ep. γ Gamma",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.1": {
-    "type": "plain",
-    "value": "The Aestyve HA portfolio is built on Cross-linked HA 24 mg/mL and Lidocaine HCl 3 mg/mL, structured into three rheological directions: α, β, and γ.",
-    "label": "The Aestyve HA portfolio is built on Cross-lin…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.2": {
-    "type": "plain",
-    "value": "A type designed for delicate expression and natural balance.",
-    "label": "A type designed for delicate expression and na…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.3": {
-    "type": "plain",
-    "value": "A type designed for balanced viscoelasticity and shape retention.",
-    "label": "A type designed for balanced viscoelasticity a…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.4": {
-    "type": "plain",
-    "value": "A type designed for more structural support and contour definition.",
-    "label": "A type designed for more structural support an…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.5": {
-    "type": "plain",
-    "value": "Building brands, distributing standards.",
-    "label": "Building brands, distributing standards.",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.6": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-    "label": "Aestyve · Seoul, Republic of Korea",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.7": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.8": {
-    "type": "plain",
-    "value": "Korean · English · Chinese",
-    "label": "Korean · English · Chinese",
-    "page": "product-ha.html"
-  },
   "product-nad.info-label.1": {
     "type": "plain",
     "value": "NAD+",
@@ -1513,12 +1399,6 @@
     "label": "The intended use, claims, and supply scope of …",
     "page": "product-plla.html"
   },
-  "product-ha.notice.1": {
-    "type": "plain",
-    "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
-    "page": "product-ha.html"
-  },
   "product-pcl.notice.1": {
     "type": "plain",
     "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
@@ -1536,5 +1416,305 @@
     "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
     "label": "The intended use, claims, and supply scope of …",
     "page": "product-nad.html"
+  },
+  "product-ha.renewal.skip": {
+    "type": "plain",
+    "value": "Skip to content",
+    "label": "Skip to content",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.menu": {
+    "type": "plain",
+    "value": "Menu",
+    "label": "Menu",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.hero_k": {
+    "type": "plain",
+    "value": "AESTYVE HA FILLER COLLECTION",
+    "label": "AESTYVE HA FILLER COLLECTION",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.hero_h": {
+    "type": "rich",
+    "value": "Every detail<br>counts.",
+    "label": "Every detail counts.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.hero_p": {
+    "type": "plain",
+    "value": "Alpha · Beta · Gamma. Discover three HA fillers through clear specifications and performance data.",
+    "label": "Alpha · Beta · Gamma. Discover three HA fillers through clear specifications and performance data.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.explore": {
+    "type": "plain",
+    "value": "Explore the collection",
+    "label": "Explore the collection",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.inquiry": {
+    "type": "plain",
+    "value": "Product inquiry",
+    "label": "Product inquiry",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.ha": {
+    "type": "plain",
+    "value": "HA concentration",
+    "label": "HA concentration",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.volume": {
+    "type": "plain",
+    "value": "Syringe volume",
+    "label": "Syringe volume",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.lidocaine": {
+    "type": "plain",
+    "value": "Lidocaine",
+    "label": "Lidocaine",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.types": {
+    "type": "plain",
+    "value": "Product range",
+    "label": "Product range",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.collection_k": {
+    "type": "plain",
+    "value": "01 / COLLECTION",
+    "label": "01 / COLLECTION",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.collection_h": {
+    "type": "rich",
+    "value": "Three formulations.<br>One collection.",
+    "label": "Three formulations. One collection.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.collection_p": {
+    "type": "plain",
+    "value": "Select a product to explore its packaging, syringe, included accessories and elastic modulus.",
+    "label": "Select a product to explore its packaging, syringe, included accessories and elastic modulus.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.form": {
+    "type": "plain",
+    "value": "Formulation",
+    "label": "Formulation",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.elastic": {
+    "type": "plain",
+    "value": "Elastic modulus G′",
+    "label": "Elastic modulus G′",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.needle": {
+    "type": "plain",
+    "value": "Needle",
+    "label": "Needle",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.cannula": {
+    "type": "plain",
+    "value": "Cannula",
+    "label": "Cannula",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.compare_k": {
+    "type": "plain",
+    "value": "02 / SPECIFICATIONS",
+    "label": "02 / SPECIFICATIONS",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.compare_h": {
+    "type": "plain",
+    "value": "Compare at a glance.",
+    "label": "Compare at a glance.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.spec": {
+    "type": "plain",
+    "value": "Specification",
+    "label": "Specification",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.spec_note": {
+    "type": "plain",
+    "value": "Volume and accessories follow Aestyve packaging. Always consult the current instructions for use supplied with the product.",
+    "label": "Volume and accessories follow Aestyve packaging. Always consult the current instructions for use supplied with the product.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.tech_k": {
+    "type": "plain",
+    "value": "03 / TECHNOLOGY & PERFORMANCE",
+    "label": "03 / TECHNOLOGY & PERFORMANCE",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.tech_h": {
+    "type": "plain",
+    "value": "Precision, in detail.",
+    "label": "Precision, in detail.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.tech_p": {
+    "type": "plain",
+    "value": "Cross-linking stabilization, purification and uniform gel processing. Explore the processes and material properties described in the manufacturer’s technical data.",
+    "label": "Cross-linking stabilization, purification and uniform gel processing. Explore the processes and material properties described in the manufacturer’s technical data.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.nsp": {
+    "type": "plain",
+    "value": "NSP stabilization",
+    "label": "NSP stabilization",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.nsp_v": {
+    "type": "plain",
+    "value": "25°C · approx. 20 hours",
+    "label": "25°C · approx. 20 hours",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.nsp_p": {
+    "type": "plain",
+    "value": "After cross-linking, the gel is placed in 1 L block-shaped trays and stabilized in an incubator.",
+    "label": "After cross-linking, the gel is placed in 1 L block-shaped trays and stabilized in an incubator.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.purify": {
+    "type": "plain",
+    "value": "Purification process",
+    "label": "Purification process",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.purify_v": {
+    "type": "plain",
+    "value": "2 weeks",
+    "label": "2 weeks",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.purify_p": {
+    "type": "plain",
+    "value": "Two purification stages use the principle of osmotic pressure to control residual substances.",
+    "label": "Two purification stages use the principle of osmotic pressure to control residual substances.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.mgt": {
+    "type": "plain",
+    "value": "Micro Grinding Technology",
+    "label": "Micro Grinding Technology",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.mgt_v": {
+    "type": "plain",
+    "value": "Uniform gel processing",
+    "label": "Uniform gel processing",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.mgt_p": {
+    "type": "plain",
+    "value": "MGT processes the filler gel evenly and consistently.",
+    "label": "MGT processes the filler gel evenly and consistently.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.chart_h": {
+    "type": "plain",
+    "value": "Elastic modulus G′",
+    "label": "Elastic modulus G′",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.chart_p": {
+    "type": "plain",
+    "value": "Ranges by product · Pa",
+    "label": "Ranges by product · Pa",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.chart_note": {
+    "type": "plain",
+    "value": "Bars show the ranges reported by the manufacturer. Measurement frequency and temperature are not specified in the supplied data.",
+    "label": "Bars show the ranges reported by the manufacturer. Measurement frequency and temperature are not specified in the supplied data.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.force": {
+    "type": "plain",
+    "value": "Average extrusion force",
+    "label": "Average extrusion force",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.force_note": {
+    "type": "plain",
+    "value": "Aestyve Beta · 27G needle",
+    "label": "Aestyve Beta · 27G needle",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.force_p": {
+    "type": "plain",
+    "value": "Manufacturer-reported average. Extrusion force may vary with the needle and test conditions.",
+    "label": "Manufacturer-reported average. Extrusion force may vary with the needle and test conditions.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.cohesion": {
+    "type": "plain",
+    "value": "Cohesiveness test",
+    "label": "Cohesiveness test",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.cohesion_note": {
+    "type": "plain",
+    "value": "Lengths reported in the manufacturer’s cohesiveness test. These values do not establish a ranking of clinical outcomes.",
+    "label": "Lengths reported in the manufacturer’s cohesiveness test. These values do not establish a ranking of clinical outcomes.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.sources": {
+    "type": "plain",
+    "value": "About the test data",
+    "label": "About the test data",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.source_p": {
+    "type": "plain",
+    "value": "Source: manufacturer’s English technical brochure / Reanzen R&D. Product names follow the Aestyve range. Test values do not directly establish clinical outcomes or duration in humans.",
+    "label": "Source: manufacturer’s English technical brochure / Reanzen R&D. Product names follow the Aestyve range. Test values do not directly establish clinical outcomes or duration in humans.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.partner_k": {
+    "type": "plain",
+    "value": "FOR PROFESSIONALS & BUSINESS PARTNERS",
+    "label": "FOR PROFESSIONALS & BUSINESS PARTNERS",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.partner_h": {
+    "type": "rich",
+    "value": "Build your next<br>partnership with Aestyve.",
+    "label": "Build your next partnership with Aestyve.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.partner_p": {
+    "type": "plain",
+    "value": "Contact us for product documentation, market availability and partnership inquiries.",
+    "label": "Contact us for product documentation, market availability and partnership inquiries.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.brands": {
+    "type": "plain",
+    "value": "All brands",
+    "label": "All brands",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.footer_p": {
+    "type": "plain",
+    "value": "Building brands, distributing standards.",
+    "label": "Building brands, distributing standards.",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.market": {
+    "type": "plain",
+    "value": "Product availability and permitted claims may vary by market.",
+    "label": "Product availability and permitted claims may vary by market.",
+    "page": "product-ha.html"
   }
 }

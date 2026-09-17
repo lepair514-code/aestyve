@@ -881,120 +881,6 @@
   "label": "Korean · English · Chinese",
   "page": "partnership.html"
  },
- "product-ha.info-label.1": {
-  "type": "plain",
-  "value": "24 mg/mL",
-  "label": "24 mg/mL",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-desc.1": {
-  "type": "plain",
-  "value": "Cross-linked Hyaluronic Acid",
-  "label": "Cross-linked Hyaluronic Acid",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-label.2": {
-  "type": "plain",
-  "value": "3 mg/mL",
-  "label": "3 mg/mL",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-desc.2": {
-  "type": "plain",
-  "value": "Lidocaine HCl",
-  "label": "Lidocaine HCl",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-label.3": {
-  "type": "plain",
-  "value": "1.1 mL",
-  "label": "1.1 mL",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.info-desc.3": {
-  "type": "plain",
-  "value": "Pre-filled syringe",
-  "label": "Pre-filled syringe",
-  "page": "product-ha.html",
-  "group": "info"
- },
- "product-ha.h1.1": {
-  "type": "rich",
-  "value": "Aestyve HA",
-  "label": "Aestyve HA",
-  "page": "product-ha.html"
- },
- "product-ha.h3.1": {
-  "type": "rich",
-  "value": "Ep. α Alpha",
-  "label": "Ep. α Alpha",
-  "page": "product-ha.html"
- },
- "product-ha.h3.2": {
-  "type": "rich",
-  "value": "Ep. β Beta",
-  "label": "Ep. β Beta",
-  "page": "product-ha.html"
- },
- "product-ha.h3.3": {
-  "type": "rich",
-  "value": "Ep. γ Gamma",
-  "label": "Ep. γ Gamma",
-  "page": "product-ha.html"
- },
- "product-ha.p.1": {
-  "type": "plain",
-  "value": "Cross-linked HA 24 mg/mL과 Lidocaine HCl 3 mg/mL을 기반으로 α, β, γ 세 가지 물성 방향을 구성한 Aestyve HA 포트폴리오입니다.",
-  "label": "Cross-linked HA 24 mg/mL과 Lidocaine HCl 3 mg/m…",
-  "page": "product-ha.html"
- },
- "product-ha.p.2": {
-  "type": "plain",
-  "value": "섬세한 표현과 자연스러운 밸런스를 고려한 타입.",
-  "label": "섬세한 표현과 자연스러운 밸런스를 고려한 타입.",
-  "page": "product-ha.html"
- },
- "product-ha.p.3": {
-  "type": "plain",
-  "value": "균형 잡힌 점탄성과 형태 유지 방향을 고려한 타입.",
-  "label": "균형 잡힌 점탄성과 형태 유지 방향을 고려한 타입.",
-  "page": "product-ha.html"
- },
- "product-ha.p.4": {
-  "type": "plain",
-  "value": "보다 구조적인 지지와 윤곽 표현 방향을 고려한 타입.",
-  "label": "보다 구조적인 지지와 윤곽 표현 방향을 고려한 타입.",
-  "page": "product-ha.html"
- },
- "product-ha.p.5": {
-  "type": "plain",
-  "value": "브랜드를 만들고, 기준을 유통합니다.",
-  "label": "브랜드를 만들고, 기준을 유통합니다.",
-  "page": "product-ha.html"
- },
- "product-ha.p.6": {
-  "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
-  "label": "Aestyve · Seoul, Republic of Korea",
-  "page": "product-ha.html"
- },
- "product-ha.p.7": {
-  "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-  "label": "info@aestyve.com",
-  "page": "product-ha.html"
- },
- "product-ha.p.8": {
-  "type": "plain",
-  "value": "Korean · English · Chinese",
-  "label": "Korean · English · Chinese",
-  "page": "product-ha.html"
- },
  "product-nad.info-label.1": {
   "type": "plain",
   "value": "NAD+",
@@ -1513,12 +1399,6 @@
   "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
   "page": "product-plla.html"
  },
- "product-ha.notice.1": {
-  "type": "plain",
-  "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-  "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
-  "page": "product-ha.html"
- },
  "product-pcl.notice.1": {
   "type": "plain",
   "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
@@ -1536,5 +1416,305 @@
   "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
   "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
   "page": "product-nad.html"
+ },
+ "product-ha.renewal.skip": {
+  "type": "plain",
+  "value": "본문으로 이동",
+  "label": "본문으로 이동",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.menu": {
+  "type": "plain",
+  "value": "메뉴",
+  "label": "메뉴",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.hero_k": {
+  "type": "plain",
+  "value": "AESTYVE HA 필러 컬렉션",
+  "label": "AESTYVE HA 필러 컬렉션",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.hero_h": {
+  "type": "rich",
+  "value": "모든 디테일에,<br>에스티브.",
+  "label": "모든 디테일에, 에스티브.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.hero_p": {
+  "type": "plain",
+  "value": "Alpha · Beta · Gamma. 세 가지 HA 필러의 사양과 성능 데이터를 명확하게 살펴보세요.",
+  "label": "Alpha · Beta · Gamma. 세 가지 HA 필러의 사양과 성능 데이터를 명확하게 살펴보세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.explore": {
+  "type": "plain",
+  "value": "컬렉션 살펴보기",
+  "label": "컬렉션 살펴보기",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.inquiry": {
+  "type": "plain",
+  "value": "제품 문의",
+  "label": "제품 문의",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.ha": {
+  "type": "plain",
+  "value": "HA 농도",
+  "label": "HA 농도",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.volume": {
+  "type": "plain",
+  "value": "시린지 용량",
+  "label": "시린지 용량",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.lidocaine": {
+  "type": "plain",
+  "value": "리도카인",
+  "label": "리도카인",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.types": {
+  "type": "plain",
+  "value": "제품 라인업",
+  "label": "제품 라인업",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.collection_k": {
+  "type": "plain",
+  "value": "01 / 컬렉션",
+  "label": "01 / 컬렉션",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.collection_h": {
+  "type": "rich",
+  "value": "세 가지 제형,<br>하나의 컬렉션.",
+  "label": "세 가지 제형, 하나의 컬렉션.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.collection_p": {
+  "type": "plain",
+  "value": "제품을 선택해 패키지, 시린지, 구성품과 탄성계수를 비교하세요.",
+  "label": "제품을 선택해 패키지, 시린지, 구성품과 탄성계수를 비교하세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.form": {
+  "type": "plain",
+  "value": "제형",
+  "label": "제형",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.elastic": {
+  "type": "plain",
+  "value": "탄성계수 G′",
+  "label": "탄성계수 G′",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.needle": {
+  "type": "plain",
+  "value": "니들",
+  "label": "니들",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.cannula": {
+  "type": "plain",
+  "value": "캐뉼라",
+  "label": "캐뉼라",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.compare_k": {
+  "type": "plain",
+  "value": "02 / 제품 사양",
+  "label": "02 / 제품 사양",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.compare_h": {
+  "type": "plain",
+  "value": "한눈에 비교하세요.",
+  "label": "한눈에 비교하세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.spec": {
+  "type": "plain",
+  "value": "제품 사양",
+  "label": "제품 사양",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.spec_note": {
+  "type": "plain",
+  "value": "용량과 구성품은 에스티브 패키지 표기 기준입니다. 실제 사용 시 해당 제품의 최신 사용설명서를 확인하세요.",
+  "label": "용량과 구성품은 에스티브 패키지 표기 기준입니다. 실제 사용 시 해당 제품의 최신 사용설명서를 확인하세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.tech_k": {
+  "type": "plain",
+  "value": "03 / 기술과 성능",
+  "label": "03 / 기술과 성능",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.tech_h": {
+  "type": "plain",
+  "value": "데이터로 보는 정밀함.",
+  "label": "데이터로 보는 정밀함.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.tech_p": {
+  "type": "plain",
+  "value": "가교 안정화, 정제, 균일한 젤 가공. 제조사 기술자료를 바탕으로 에스티브의 공정과 물성을 소개합니다.",
+  "label": "가교 안정화, 정제, 균일한 젤 가공. 제조사 기술자료를 바탕으로 에스티브의 공정과 물성을 소개합니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.nsp": {
+  "type": "plain",
+  "value": "NSP 가교 안정화",
+  "label": "NSP 가교 안정화",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.nsp_v": {
+  "type": "plain",
+  "value": "25°C · 약 20시간",
+  "label": "25°C · 약 20시간",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.nsp_p": {
+  "type": "plain",
+  "value": "가교 후 젤을 1 L 단위의 블록형 트레이에 넣고 인큐베이터에서 안정화합니다.",
+  "label": "가교 후 젤을 1 L 단위의 블록형 트레이에 넣고 인큐베이터에서 안정화합니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.purify": {
+  "type": "plain",
+  "value": "정제 공정",
+  "label": "정제 공정",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.purify_v": {
+  "type": "plain",
+  "value": "2주",
+  "label": "2주",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.purify_p": {
+  "type": "plain",
+  "value": "삼투압 원리를 활용한 두 단계 정제 과정으로 잔류 물질을 관리합니다.",
+  "label": "삼투압 원리를 활용한 두 단계 정제 과정으로 잔류 물질을 관리합니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.mgt": {
+  "type": "plain",
+  "value": "MGT 미세 분쇄 기술",
+  "label": "MGT 미세 분쇄 기술",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.mgt_v": {
+  "type": "plain",
+  "value": "균일한 젤 가공",
+  "label": "균일한 젤 가공",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.mgt_p": {
+  "type": "plain",
+  "value": "젤을 고르고 일관되게 가공하는 Micro Grinding Technology를 적용합니다.",
+  "label": "젤을 고르고 일관되게 가공하는 Micro Grinding Technology를 적용합니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.chart_h": {
+  "type": "plain",
+  "value": "탄성계수 G′",
+  "label": "탄성계수 G′",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.chart_p": {
+  "type": "plain",
+  "value": "제품별 범위 · 단위 Pa",
+  "label": "제품별 범위 · 단위 Pa",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.chart_note": {
+  "type": "plain",
+  "value": "막대는 제조사 자료에 기재된 범위입니다. 측정 주파수와 온도는 제공 자료에 명시되어 있지 않습니다.",
+  "label": "막대는 제조사 자료에 기재된 범위입니다. 측정 주파수와 온도는 제공 자료에 명시되어 있지 않습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.force": {
+  "type": "plain",
+  "value": "평균 압출력",
+  "label": "평균 압출력",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.force_note": {
+  "type": "plain",
+  "value": "Aestyve Beta · 27G 니들 기준",
+  "label": "Aestyve Beta · 27G 니들 기준",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.force_p": {
+  "type": "plain",
+  "value": "제조사 자료의 평균값입니다. 니들과 시험 조건에 따라 압출력이 달라질 수 있습니다.",
+  "label": "제조사 자료의 평균값입니다. 니들과 시험 조건에 따라 압출력이 달라질 수 있습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.cohesion": {
+  "type": "plain",
+  "value": "응집성 시험",
+  "label": "응집성 시험",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.cohesion_note": {
+  "type": "plain",
+  "value": "제조사 응집성 시험에 기재된 길이입니다. 임상 효과의 우열을 나타내는 수치는 아닙니다.",
+  "label": "제조사 응집성 시험에 기재된 길이입니다. 임상 효과의 우열을 나타내는 수치는 아닙니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.sources": {
+  "type": "plain",
+  "value": "시험자료 안내",
+  "label": "시험자료 안내",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.source_p": {
+  "type": "plain",
+  "value": "출처: 제조사 영문 기술자료 / Reanzen R&D. 제품명은 에스티브 라인업에 맞춰 표기했습니다. 시험값은 임상 결과나 사람에서의 유지기간을 직접 의미하지 않습니다.",
+  "label": "출처: 제조사 영문 기술자료 / Reanzen R&D. 제품명은 에스티브 라인업에 맞춰 표기했습니다. 시험값은 임상 결과나 사람에서의 유지기간을 직접 의미하지 않습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.partner_k": {
+  "type": "plain",
+  "value": "전문가와 비즈니스 파트너를 위한 안내",
+  "label": "전문가와 비즈니스 파트너를 위한 안내",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.partner_h": {
+  "type": "rich",
+  "value": "에스티브와 함께할<br>파트너를 찾습니다.",
+  "label": "에스티브와 함께할 파트너를 찾습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.partner_p": {
+  "type": "plain",
+  "value": "제품 자료, 시장별 공급 가능 여부와 파트너십을 문의하세요.",
+  "label": "제품 자료, 시장별 공급 가능 여부와 파트너십을 문의하세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.brands": {
+  "type": "plain",
+  "value": "전체 브랜드",
+  "label": "전체 브랜드",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.footer_p": {
+  "type": "plain",
+  "value": "브랜드를 만들고, 기준을 유통합니다.",
+  "label": "브랜드를 만들고, 기준을 유통합니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.renewal.market": {
+  "type": "plain",
+  "value": "공급 범위와 허용되는 제품 표시는 국가별로 다를 수 있습니다.",
+  "label": "공급 범위와 허용되는 제품 표시는 국가별로 다를 수 있습니다.",
+  "page": "product-ha.html"
  }
 }

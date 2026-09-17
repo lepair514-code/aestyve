@@ -881,120 +881,6 @@
     "label": "韩语 · 英语 · 中文",
     "page": "partnership.html"
   },
-  "product-ha.info-label.1": {
-    "type": "plain",
-    "value": "24 mg/mL",
-    "label": "24 mg/mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.1": {
-    "type": "plain",
-    "value": "交联透明质酸",
-    "label": "交联透明质酸",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-label.2": {
-    "type": "plain",
-    "value": "3 mg/mL",
-    "label": "3 mg/mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.2": {
-    "type": "plain",
-    "value": "盐酸利多卡因",
-    "label": "盐酸利多卡因",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-label.3": {
-    "type": "plain",
-    "value": "1.1 mL",
-    "label": "1.1 mL",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.info-desc.3": {
-    "type": "plain",
-    "value": "预填充注射器",
-    "label": "预填充注射器",
-    "page": "product-ha.html",
-    "group": "info"
-  },
-  "product-ha.h1.1": {
-    "type": "rich",
-    "value": "Aestyve HA",
-    "label": "Aestyve HA",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.1": {
-    "type": "rich",
-    "value": "Ep. α Alpha",
-    "label": "Ep. α Alpha",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.2": {
-    "type": "rich",
-    "value": "Ep. β Beta",
-    "label": "Ep. β Beta",
-    "page": "product-ha.html"
-  },
-  "product-ha.h3.3": {
-    "type": "rich",
-    "value": "Ep. γ Gamma",
-    "label": "Ep. γ Gamma",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.1": {
-    "type": "plain",
-    "value": "Aestyve HA产品线以交联透明质酸24 mg/mL与盐酸利多卡因3 mg/mL为基础，构建α、β、γ三种流变学特性方向。",
-    "label": "Aestyve HA产品线以交联透明质酸24 mg/mL与盐酸利多卡因3 mg/mL为基础，…",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.2": {
-    "type": "plain",
-    "value": "适用于精细塑形与自然平衡效果的类型。",
-    "label": "适用于精细塑形与自然平衡效果的类型。",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.3": {
-    "type": "plain",
-    "value": "适用于均衡黏弹性与形态维持效果的类型。",
-    "label": "适用于均衡黏弹性与形态维持效果的类型。",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.4": {
-    "type": "plain",
-    "value": "适用于更强结构支撑与轮廓塑造效果的类型。",
-    "label": "适用于更强结构支撑与轮廓塑造效果的类型。",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.5": {
-    "type": "plain",
-    "value": "打造品牌，传递标准。",
-    "label": "打造品牌，传递标准。",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.6": {
-    "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · 首尔，大韩民国",
-    "label": "Aestyve · 首尔，大韩民国",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.7": {
-    "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
-    "label": "info@aestyve.com",
-    "page": "product-ha.html"
-  },
-  "product-ha.p.8": {
-    "type": "plain",
-    "value": "韩语 · 英语 · 中文",
-    "label": "韩语 · 英语 · 中文",
-    "page": "product-ha.html"
-  },
   "product-nad.info-label.1": {
     "type": "plain",
     "value": "NAD+",
@@ -1513,12 +1399,6 @@
     "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
     "page": "product-plla.html"
   },
-  "product-ha.notice.1": {
-    "type": "plain",
-    "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-    "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
-    "page": "product-ha.html"
-  },
   "product-pcl.notice.1": {
     "type": "plain",
     "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
@@ -1536,5 +1416,305 @@
     "value": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
     "label": "产品用途、宣称及供应范围可能因各国法规及实际产品资料而有所不同。",
     "page": "product-nad.html"
+  },
+  "product-ha.renewal.skip": {
+    "type": "plain",
+    "value": "跳转至正文",
+    "label": "跳转至正文",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.menu": {
+    "type": "plain",
+    "value": "菜单",
+    "label": "菜单",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.hero_k": {
+    "type": "plain",
+    "value": "AESTYVE 透明质酸填充剂系列",
+    "label": "AESTYVE 透明质酸填充剂系列",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.hero_h": {
+    "type": "rich",
+    "value": "每一处细节，<br>皆有用心。",
+    "label": "每一处细节， 皆有用心。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.hero_p": {
+    "type": "plain",
+    "value": "Alpha · Beta · Gamma。通过清晰的规格与性能数据，了解三款透明质酸填充剂。",
+    "label": "Alpha · Beta · Gamma。通过清晰的规格与性能数据，了解三款透明质酸填充剂。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.explore": {
+    "type": "plain",
+    "value": "探索产品系列",
+    "label": "探索产品系列",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.inquiry": {
+    "type": "plain",
+    "value": "产品咨询",
+    "label": "产品咨询",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.ha": {
+    "type": "plain",
+    "value": "透明质酸浓度",
+    "label": "透明质酸浓度",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.volume": {
+    "type": "plain",
+    "value": "注射器容量",
+    "label": "注射器容量",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.lidocaine": {
+    "type": "plain",
+    "value": "利多卡因",
+    "label": "利多卡因",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.types": {
+    "type": "plain",
+    "value": "产品系列",
+    "label": "产品系列",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.collection_k": {
+    "type": "plain",
+    "value": "01 / 产品系列",
+    "label": "01 / 产品系列",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.collection_h": {
+    "type": "rich",
+    "value": "三种配方，<br>一个系列。",
+    "label": "三种配方， 一个系列。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.collection_p": {
+    "type": "plain",
+    "value": "选择产品，查看包装、注射器、随附配件与弹性模量。",
+    "label": "选择产品，查看包装、注射器、随附配件与弹性模量。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.form": {
+    "type": "plain",
+    "value": "配方",
+    "label": "配方",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.elastic": {
+    "type": "plain",
+    "value": "弹性模量 G′",
+    "label": "弹性模量 G′",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.needle": {
+    "type": "plain",
+    "value": "锐针",
+    "label": "锐针",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.cannula": {
+    "type": "plain",
+    "value": "钝针",
+    "label": "钝针",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.compare_k": {
+    "type": "plain",
+    "value": "02 / 产品规格",
+    "label": "02 / 产品规格",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.compare_h": {
+    "type": "plain",
+    "value": "产品差异，一目了然。",
+    "label": "产品差异，一目了然。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.spec": {
+    "type": "plain",
+    "value": "产品规格",
+    "label": "产品规格",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.spec_note": {
+    "type": "plain",
+    "value": "容量与配件以 Aestyve 包装标示为依据。使用时请参阅产品随附的最新使用说明书。",
+    "label": "容量与配件以 Aestyve 包装标示为依据。使用时请参阅产品随附的最新使用说明书。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.tech_k": {
+    "type": "plain",
+    "value": "03 / 技术与性能",
+    "label": "03 / 技术与性能",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.tech_h": {
+    "type": "plain",
+    "value": "以数据呈现精细。",
+    "label": "以数据呈现精细。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.tech_p": {
+    "type": "plain",
+    "value": "交联稳定化、纯化与均匀凝胶加工。依据制造商技术资料，了解产品工艺与材料特性。",
+    "label": "交联稳定化、纯化与均匀凝胶加工。依据制造商技术资料，了解产品工艺与材料特性。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.nsp": {
+    "type": "plain",
+    "value": "NSP 交联稳定化",
+    "label": "NSP 交联稳定化",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.nsp_v": {
+    "type": "plain",
+    "value": "25°C · 约20小时",
+    "label": "25°C · 约20小时",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.nsp_p": {
+    "type": "plain",
+    "value": "交联后，将凝胶置于 1 L 单元的块状托盘中，并在恒温箱内进行稳定化处理。",
+    "label": "交联后，将凝胶置于 1 L 单元的块状托盘中，并在恒温箱内进行稳定化处理。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.purify": {
+    "type": "plain",
+    "value": "纯化工艺",
+    "label": "纯化工艺",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.purify_v": {
+    "type": "plain",
+    "value": "2周",
+    "label": "2周",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.purify_p": {
+    "type": "plain",
+    "value": "利用渗透压原理，通过两个阶段的纯化过程控制残留物质。",
+    "label": "利用渗透压原理，通过两个阶段的纯化过程控制残留物质。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.mgt": {
+    "type": "plain",
+    "value": "MGT 微研磨技术",
+    "label": "MGT 微研磨技术",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.mgt_v": {
+    "type": "plain",
+    "value": "均匀凝胶加工",
+    "label": "均匀凝胶加工",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.mgt_p": {
+    "type": "plain",
+    "value": "通过 Micro Grinding Technology 对填充剂凝胶进行均匀、一致的加工。",
+    "label": "通过 Micro Grinding Technology 对填充剂凝胶进行均匀、一致的加工。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.chart_h": {
+    "type": "plain",
+    "value": "弹性模量 G′",
+    "label": "弹性模量 G′",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.chart_p": {
+    "type": "plain",
+    "value": "各产品数值范围 · 单位 Pa",
+    "label": "各产品数值范围 · 单位 Pa",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.chart_note": {
+    "type": "plain",
+    "value": "横条表示制造商资料中的数值范围。所提供资料未注明测量频率与温度。",
+    "label": "横条表示制造商资料中的数值范围。所提供资料未注明测量频率与温度。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.force": {
+    "type": "plain",
+    "value": "平均挤出力",
+    "label": "平均挤出力",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.force_note": {
+    "type": "plain",
+    "value": "Aestyve Beta · 27G 锐针",
+    "label": "Aestyve Beta · 27G 锐针",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.force_p": {
+    "type": "plain",
+    "value": "制造商报告的平均值。挤出力可能因针具与试验条件而异。",
+    "label": "制造商报告的平均值。挤出力可能因针具与试验条件而异。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.cohesion": {
+    "type": "plain",
+    "value": "内聚性试验",
+    "label": "内聚性试验",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.cohesion_note": {
+    "type": "plain",
+    "value": "数值为制造商内聚性试验中报告的长度，不代表临床效果的优劣。",
+    "label": "数值为制造商内聚性试验中报告的长度，不代表临床效果的优劣。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.sources": {
+    "type": "plain",
+    "value": "试验资料说明",
+    "label": "试验资料说明",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.source_p": {
+    "type": "plain",
+    "value": "来源：制造商英文技术资料 / Reanzen R&D。产品名称按 Aestyve 系列标示。试验数值不直接代表临床结果或人体内的维持时间。",
+    "label": "来源：制造商英文技术资料 / Reanzen R&D。产品名称按 Aestyve 系列标示。试验数值不直接代表临床结果或人体内的维持时间。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.partner_k": {
+    "type": "plain",
+    "value": "面向专业人士与商业合作伙伴",
+    "label": "面向专业人士与商业合作伙伴",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.partner_h": {
+    "type": "rich",
+    "value": "与 Aestyve<br>开启合作。",
+    "label": "与 Aestyve 开启合作。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.partner_p": {
+    "type": "plain",
+    "value": "欢迎咨询产品资料、各市场供应情况及合作事宜。",
+    "label": "欢迎咨询产品资料、各市场供应情况及合作事宜。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.brands": {
+    "type": "plain",
+    "value": "全部品牌",
+    "label": "全部品牌",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.footer_p": {
+    "type": "plain",
+    "value": "打造品牌，传递标准。",
+    "label": "打造品牌，传递标准。",
+    "page": "product-ha.html"
+  },
+  "product-ha.renewal.market": {
+    "type": "plain",
+    "value": "产品供应范围与允许使用的宣称可能因市场而异。",
+    "label": "产品供应范围与允许使用的宣称可能因市场而异。",
+    "page": "product-ha.html"
   }
 }

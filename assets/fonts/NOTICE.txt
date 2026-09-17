@@ -1,0 +1,17 @@
+S-Core Dream
+Copyright (c) 2018 S-Core Co., Ltd. All rights reserved.
+
+Official font and license information:
+https://s-core.co.kr/company/font/
+
+The publisher permits free personal and commercial use and redistribution.
+Modification of the font files and sale of the font itself are not permitted.
+The bundled webfont files are unmodified copies of the webfonts previously
+referenced by this website, from:
+https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/
+
+Weights: 300 (3Light), 400 (4Regular), 600 (6Bold).
+S-Core Dream does not contain the Chinese characters used on these pages;
+Chinese glyphs use the bundled Noto Sans SC regular fallback, followed by
+available Chinese system fonts. See NotoSansSC-LICENSE.txt (SIL OFL 1.1).
+Noto Sans SC source: @fontsource/noto-sans-sc npm package.
