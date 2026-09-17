@@ -16,6 +16,12 @@ const assets=[
 async function download(url){let error;for(let attempt=0;attempt<3;attempt++){try{const response=await fetch(url,{signal:AbortSignal.timeout(60000)});if(!response.ok)throw Error(`${response.status}: ${url}`);const data=Buffer.from(await response.arrayBuffer());if(data.length<1024)throw Error(`Unexpected asset: ${url}`);return data;}catch(e){error=e;await new Promise(r=>setTimeout(r,500*(attempt+1)));}}throw error;}
 await rm(out,{recursive:true,force:true});await mkdir(out,{recursive:true});
 for(const name of ['index.html','style.css','app.js','engine.js','skin.js','content.js','gels.json','health.html','health.js'])await copyFile(resolve(root,name),resolve(out,name));
+// GLSL uniforms/varyings must have matching precision across shader stages.
+let engine=await readFile(resolve(out,'engine.js'),'utf8');
+const shaderStart='const VS=`attribute';
+if(engine.split(shaderStart).length!==2)throw Error('Review vertex shader precision before building');
+engine=engine.replace(shaderStart,'const VS=`precision mediump float;attribute');
+await writeFile(resolve(out,'engine.js'),engine);
 // Fail-closed upgrade transforms for the reviewed v0.2 source module.
 // Runtime behaviour is tested against dist/, the only deployment directory.
 let app=await readFile(resolve(out,'app.js'),'utf8');
