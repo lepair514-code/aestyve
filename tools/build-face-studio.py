@@ -60,7 +60,7 @@ def integrate():
     start=page.index('<section class="ha-material')
     page=page[:start]+block+page[start:]
    if 'assets/face-studio.css' not in page:
-    page=page.replace('</head>',f'<link rel="stylesheet" href="{rel}assets/face-studio.css?v=20260918a">\n</head>',1)
+    page=page.replace('</head>',f'<link rel="stylesheet" href="{rel}assets/face-studio.css?v=20260918b">\n</head>',1)
    if filename=='index.html' and 'assets/face-studio.js' not in page:
     page=page.replace('</body>',f'<script src="{rel}assets/face-studio.js?v=20260918a" defer></script></body>',1)
    path.write_text(page)

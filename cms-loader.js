@@ -1,4 +1,16 @@
 (function(){
+  var menuButton = document.querySelector('.menu-btn'), menu = document.querySelector('.menu');
+  if (menuButton && menu) {
+    menu.id = menu.id || 'site-navigation';
+    menuButton.setAttribute('aria-controls', menu.id);
+    var syncMenu = function(){ menuButton.setAttribute('aria-expanded', String(menu.classList.contains('open'))); };
+    var closeMenu = function(){ menu.classList.remove('open'); syncMenu(); };
+    syncMenu();
+    menuButton.addEventListener('click', function(){ requestAnimationFrame(syncMenu); });
+    menu.addEventListener('click', function(event){ if(event.target.closest('a')) closeMenu(); });
+    document.addEventListener('keydown', function(event){ if(event.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); menuButton.focus(); } });
+    matchMedia('(min-width:961px)').addEventListener('change', function(event){ if(event.matches) closeMenu(); });
+  }
   var path = location.pathname;
   var url = '/content.json';
   if (path.indexOf('/en/') === 0 || path === '/en') url = '/content-en.json';
