@@ -17,3 +17,9 @@ Horizontal pointer drag rotates the six-sided cartons, changes their orbital arr
 Three.js provides the lit WebGL scene. A six-face CSS 3D scene is present from the first paint and remains fully interactive when WebGL is unavailable, texture loading fails or the graphics context is lost. All artwork and runtime files are served locally; no CDN is required.
 
 To rebuild the WebGL module, install `three@0.186.0` and `esbuild@0.25.12` in an isolated tooling directory and invoke `tools/build-showroom.mjs` with `AESTYVE_TOOLING` pointing to it. The compiled module is committed because this is a static site. See `assets/vendor/THREE-LICENSE.txt` for the Three.js license.
+
+## Verification
+
+The protected Vercel preview was checked at desktop width and 390/320 px iframe widths in Korean, English and Chinese. Drag changes the active product and reveals all three formula panels. Direct product buttons, previous/next buttons, the formula toggle and arrow-key navigation are verified. Mobile content has no horizontal overflow. Page asset references and the two source JavaScript modules pass static checks.
+
+The verification browser disables WebGL, so visual and interaction checks ran against the fully volumetric CSS 3D fallback. The WebGL module is bundled successfully; GPU-specific lighting must also be reviewed on a WebGL-enabled device before production promotion.

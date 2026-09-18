@@ -180,3 +180,7 @@ body.ae-future{--ae-ink:#27293d;--ae-muted:#6d6865;--ae-teal:#a36443;--ae-navy:#
 .ae-future :is(.hero-v7-visual,.hero-box .hero-visual,.tissue-visual,.product-data-visual,.syringe-show,.why,.process-card,.progress-grid>article,.procedure-grid>article) img{display:block;width:100%;max-width:100%;height:auto!important;max-height:none;aspect-ratio:auto;object-fit:contain;padding:0}
 .ae-future .hero-box{align-items:center;min-height:0}
 .ae-future :is(.visual-wrap,.feature-visual-card,.mechanism-image-card){line-height:0}
+/* Intrinsic ratio wins over legacy fixed photo heights and forced aspect ratios. */
+.ae-future main img{height:auto!important;aspect-ratio:auto!important;object-fit:contain!important}
+.ae-future :is(.compare-image-card,.progress-visual-card,.procedure-visual-card,.progress-compare-card,.progress-single-image){height:auto;min-height:0;max-height:none;aspect-ratio:auto;padding:0;align-self:start;line-height:0;overflow:hidden}
+.ae-future :is(.compare-image-card,.progress-visual-card,.procedure-visual-card,.progress-compare-card,.progress-single-image)>img{display:block;width:100%;padding:0!important;max-height:none!important}
