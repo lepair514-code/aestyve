@@ -87,3 +87,6 @@
 }
 @media(min-width:1600px){.ae-showroom{padding-left:8%}}
 @media(min-width:761px) and (max-width:1100px){.ae-showroom{grid-template-columns:minmax(0,36%) 1fr;padding-left:4%;padding-right:4%;min-height:max(720px,calc(100svh - 72px))}.ae-room-info{width:min(190px,100%)}}
+
+/* Leave breathing room between the mobile product links and lineup controls. */
+@media(max-width:760px){.ae-showroom{height:1000px}.ae-room-info{bottom:195px}}
