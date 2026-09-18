@@ -76,3 +76,7 @@ for lang,c in COPY.items():
     data=json.loads(datafile.read_text());data={k:v for k,v in data.items() if not k.startswith('product-ha.studio.')};data.update(entries)
     datafile.write_text(json.dumps(data,ensure_ascii=False,indent=(1 if lang=='ko' else 2))+'\n')
     print('Built',path.relative_to(ROOT))
+
+# Restore the shared Face Studio entry after regenerating the catalog pages.
+import runpy
+runpy.run_path(str(ROOT/'tools/build-face-studio.py'), run_name='__main__')

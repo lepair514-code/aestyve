@@ -19,13 +19,13 @@
   },
   "404.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "404.html"
   },
   "404.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "404.html"
   },
@@ -43,7 +43,7 @@
   },
   "brands.h3.1": {
     "type": "rich",
-    "value": "Aestyve HA",
+    "value": "HA Filler Series",
     "label": "Aestyve HA",
     "page": "brands.html"
   },
@@ -79,31 +79,31 @@
   },
   "brands.p.2": {
     "type": "plain",
-    "value": "α · β · γ / Cross-linked HA",
+    "value": "Advanced cross-linked HA · α / β / γ",
     "label": "α · β · γ / Cross-linked HA",
     "page": "brands.html"
   },
   "brands.p.3": {
     "type": "plain",
-    "value": "PN 1.5 mL + HA 0.5 mL",
+    "value": "Premium PN skin booster · PN + HA",
     "label": "PN 1.5 mL + HA 0.5 mL",
     "page": "brands.html"
   },
   "brands.p.4": {
     "type": "plain",
-    "value": "Liquid PCL · 2.0 mL / Vial",
+    "value": "Liquid PCL · collagen-oriented solution",
     "label": "Liquid PCL · 2.0 mL / Vial",
     "page": "brands.html"
   },
   "brands.p.5": {
     "type": "plain",
-    "value": "PLLA-based biostimulation category",
+    "value": "PLLA-based progressive aesthetic solution",
     "label": "PLLA-based biostimulation category",
     "page": "brands.html"
   },
   "brands.p.6": {
     "type": "plain",
-    "value": "Exosome-based professional solution",
+    "value": "Exosome-based professional skin solution",
     "label": "Exosome-based professional solution",
     "page": "brands.html"
   },
@@ -115,13 +115,13 @@
   },
   "brands.p.8": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "brands.html"
   },
   "brands.p.9": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "brands.html"
   },
@@ -247,13 +247,13 @@
   },
   "company.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "company.html"
   },
   "company.p.5": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "company.html"
   },
@@ -272,7 +272,7 @@
   },
   "contact.contact-desc.1": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "contact.html",
     "group": "contact"
@@ -339,13 +339,13 @@
   },
   "contact.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "contact.html"
   },
   "contact.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "contact.html"
   },
@@ -411,13 +411,13 @@
   },
   "distribution.p.6": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "distribution.html"
   },
   "distribution.p.7": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "distribution.html"
   },
@@ -745,13 +745,13 @@
   },
   "index.p.18": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "index.html"
   },
   "index.p.19": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "index.html"
   },
@@ -865,13 +865,13 @@
   },
   "partnership.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "partnership.html"
   },
   "partnership.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "partnership.html"
   },
@@ -943,13 +943,13 @@
   },
   "product-nad.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-nad.html"
   },
   "product-nad.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-nad.html"
   },
@@ -1021,13 +1021,13 @@
   },
   "product-pcl.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-pcl.html"
   },
   "product-pcl.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-pcl.html"
   },
@@ -1099,13 +1099,13 @@
   },
   "product-plla.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-plla.html"
   },
   "product-plla.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-plla.html"
   },
@@ -1255,13 +1255,13 @@
   },
   "product-rvsc.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-rvsc.html"
   },
   "product-rvsc.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-rvsc.html"
   },
@@ -1353,13 +1353,13 @@
   },
   "science.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "science.html"
   },
   "science.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "science.html"
   },
@@ -1383,7 +1383,7 @@
   },
   "contact.notice.1": {
     "type": "plain",
-    "value": "Set up as a direct email link so it works in a static environment without a server. Please replace it with your operating address.",
+    "value": "Email us with the product, country and distribution or partnership details you would like to discuss.",
     "label": "Set up as a direct email link so it works in a static environment without a server. Please replace it with your operating address.",
     "page": "contact.html"
   },

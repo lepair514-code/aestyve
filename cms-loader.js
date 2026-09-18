@@ -7,10 +7,13 @@
     document.querySelectorAll('[data-cms]').forEach(function(el){
       var item = data[el.getAttribute('data-cms')];
       if(!item) return;
+      // Old CMS exports include authoring comments in plain-text fields.
+      // Keep these internal notes out of every language's rendered copy.
+      var value = String(item.value == null ? '' : item.value).replace(/<!--[\s\S]*?-->/g, '');
       if(item.type === 'rich'){
-        el.innerHTML = item.value;
+        el.innerHTML = value;
       } else {
-        el.textContent = item.value;
+        el.textContent = value;
       }
     });
   }).catch(function(){ /* content.json 로드 실패 시 기본 텍스트 유지 */ });
