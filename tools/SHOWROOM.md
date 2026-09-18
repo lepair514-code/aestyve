@@ -5,7 +5,7 @@ The homepage in Korean, English and Chinese shares `aestyve-showroom.css` and `a
 ## Source material
 
 - The supplied Verve screen recording guides the immersive first viewport and continuous product movement.
-- Uploaded Aestyve Alpha, Beta and Gamma 360-degree MOVs and product motion references guide the carton shape, turn and studio lighting. They are references, not embedded videos.
+- Uploaded Aestyve Alpha, Beta and Gamma 360-degree MOVs and product motion references guide the carton shape, turn and studio lighting. Four selected supplied films are now available on demand in Motion Gallery; see BRAND_FILMS.md.
 - The three original AESTYVE EP. carton PDFs supply all six label faces. The preview art on page 1 is rendered without redrawing or replacing brand typography; fold guides are excluded. The physical proportions are 72 × 190 × 28 mm.
 - The supplied Chinese banner and existing HA product specification supply cross-linked HA 24 mg/mL, lidocaine HCl 3 mg/mL (0.3%), phosphate-buffered saline q.s. and syringe volume 1.1 mL. The scene adds no efficacy claims.
 - The supplied translucent/glass design references guide the layered ingredient panels. Product art retains its original colors.

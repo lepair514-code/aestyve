@@ -1,0 +1,82 @@
+[
+  {
+    "key": "brand",
+    "source": "Ref to video 丨 2026-09-18 12_41_01.mp4",
+    "source_sha256": "307304e267b5dc37024dfbc8b92d1f5f5fb208ac4529df793543a076443d2780",
+    "output_sha256": "70cb34cb40b52dffd39d776514e71e15f0fb4236d610cd627f2db689501c676a",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "5.000000",
+        "size": "608842"
+      }
+    }
+  },
+  {
+    "key": "alpha",
+    "source": "cmu0xh6ji6u77ph25ci9zc1oh-0-29fe198684482944.mp4",
+    "source_sha256": "011ea5a3362487e56e74d772fb90e262388f0b6bb663cccd2f4f5118700f855c",
+    "output_sha256": "cae0e6ecd4656371d5ace1778efa658c3b49a1f1e4afd7ffda9384f4de52c3ff",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "2.000000",
+        "size": "197262"
+      }
+    }
+  },
+  {
+    "key": "beta",
+    "source": "cmu0xefaj6ujtu34t2rq0gp2d-0-16bce653534d049e.mp4",
+    "source_sha256": "67e3a182f36f26b53881699fc3ff17c0ffdf18b9db9ac633696718064863fe77",
+    "output_sha256": "af0705432b11548681e6570b0df3df6ceaf4d5899582c38d6dd673130718d774",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "2.000000",
+        "size": "157096"
+      }
+    }
+  },
+  {
+    "key": "gamma",
+    "source": "cmtzojmli3c5sh9j260yie6jl-0-d1ae0bd8f27cd18c.mp4",
+    "source_sha256": "cd2760f9880292e7d9cb08cc7c9bc12ef33546913efb6dde103541434f0f1d91",
+    "output_sha256": "960ee9eb2f6020caef02e377aef6b28f4bf918dd1e8c1f6e7f2d4c81830c3f9c",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "2.000000",
+        "size": "154106"
+      }
+    }
+  }
+]

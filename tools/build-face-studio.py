@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-URL = 'https://aestyve-face-lab.vercel.app/'
+URL = '/facelab/'
 COPY = {
  'ko': dict(title='정밀한 과학을,<br><em>나만의 밸런스로.</em>',intro='얼굴을 돌려 보고, 가상의 변화를 비교해 보세요.<br>에스티브의 미학을 직접 탐색하는 새로운 공간.',cta='나만의 밸런스 살펴보기',caption='가상 형태를 탐색하는 체험입니다. 실제 시술 결과를 예측하지 않습니다.',steps=['사진 준비','형태 탐색','나란히 비교'],balance='나만의 관점',balance_p='입체적으로 바라보다',compare='변화를 나란히',compare_p='편집 전과 후를 비교하다',hint='드래그하거나 제품을 선택해 보세요',scene='드래그하거나 방향키로 Alpha, Beta, Gamma 컬렉션 탐색',detail_title='컬렉션에서,<br><em>나만의 관점으로.</em>',detail_intro='제품을 살펴봤다면, 이제 Face Studio에서 가상의 형태와 밸런스를 탐색해 보세요.',detail_cta='Face Studio에서 체험하기',new='새 창에서 열기',image='업로드된 반투명 얼굴 디자인'),
  'en': dict(title='Precision in science.<br><em>Your perspective.</em>',intro='Turn your face. Explore virtual changes. Compare views.<br>A new space to experience the aesthetics of Aestyve.',cta='Explore your balance',caption='A virtual form exploration, not a prediction of treatment results.',steps=['Prepare a photo','Explore form','Compare views'],balance='Your perspective',balance_p='See form in dimension',compare='Side by side',compare_p='Compare before and after editing',hint='Drag or select a product to explore',scene='Drag or use arrow keys to explore Alpha, Beta and Gamma',detail_title='From the collection<br><em>to your perspective.</em>',detail_intro='Explore virtual form and balance in Face Studio after discovering the collection.',detail_cta='Explore Face Studio',new='Opens in a new tab',image='Supplied translucent face artwork'),
@@ -66,4 +66,7 @@ def integrate():
    path.write_text(page)
    print('Integrated',path.relative_to(ROOT))
 
-if __name__=='__main__': integrate()
+if __name__=='__main__':
+ integrate()
+ import runpy
+ runpy.run_path(str(ROOT/'tools/build-brand-films.py'), run_name='__main__')
