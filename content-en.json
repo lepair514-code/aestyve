@@ -19,13 +19,13 @@
   },
   "404.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "404.html"
   },
   "404.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "404.html"
   },
@@ -43,7 +43,7 @@
   },
   "brands.h3.1": {
     "type": "rich",
-    "value": "Aestyve HA",
+    "value": "HA Filler Series",
     "label": "Aestyve HA",
     "page": "brands.html"
   },
@@ -79,31 +79,31 @@
   },
   "brands.p.2": {
     "type": "plain",
-    "value": "α · β · γ / Cross-linked HA",
+    "value": "Advanced cross-linked HA · α / β / γ",
     "label": "α · β · γ / Cross-linked HA",
     "page": "brands.html"
   },
   "brands.p.3": {
     "type": "plain",
-    "value": "PN 1.5 mL + HA 0.5 mL",
+    "value": "Premium PN skin booster · PN + HA",
     "label": "PN 1.5 mL + HA 0.5 mL",
     "page": "brands.html"
   },
   "brands.p.4": {
     "type": "plain",
-    "value": "Liquid PCL · 2.0 mL / Vial",
+    "value": "Liquid PCL · collagen-oriented solution",
     "label": "Liquid PCL · 2.0 mL / Vial",
     "page": "brands.html"
   },
   "brands.p.5": {
     "type": "plain",
-    "value": "PLLA-based biostimulation category",
+    "value": "PLLA-based progressive aesthetic solution",
     "label": "PLLA-based biostimulation category",
     "page": "brands.html"
   },
   "brands.p.6": {
     "type": "plain",
-    "value": "Exosome-based professional solution",
+    "value": "Exosome-based professional skin solution",
     "label": "Exosome-based professional solution",
     "page": "brands.html"
   },
@@ -115,13 +115,13 @@
   },
   "brands.p.8": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "brands.html"
   },
   "brands.p.9": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "brands.html"
   },
@@ -247,13 +247,13 @@
   },
   "company.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "company.html"
   },
   "company.p.5": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "company.html"
   },
@@ -272,7 +272,7 @@
   },
   "contact.contact-desc.1": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "contact.html",
     "group": "contact"
@@ -339,13 +339,13 @@
   },
   "contact.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "contact.html"
   },
   "contact.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "contact.html"
   },
@@ -411,13 +411,13 @@
   },
   "distribution.p.6": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "distribution.html"
   },
   "distribution.p.7": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "distribution.html"
   },
@@ -745,13 +745,13 @@
   },
   "index.p.18": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "index.html"
   },
   "index.p.19": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "index.html"
   },
@@ -865,13 +865,13 @@
   },
   "partnership.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "partnership.html"
   },
   "partnership.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "partnership.html"
   },
@@ -943,13 +943,13 @@
   },
   "product-nad.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-nad.html"
   },
   "product-nad.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-nad.html"
   },
@@ -1021,13 +1021,13 @@
   },
   "product-pcl.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-pcl.html"
   },
   "product-pcl.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-pcl.html"
   },
@@ -1099,13 +1099,13 @@
   },
   "product-plla.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-plla.html"
   },
   "product-plla.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-plla.html"
   },
@@ -1255,13 +1255,13 @@
   },
   "product-rvsc.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "product-rvsc.html"
   },
   "product-rvsc.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "product-rvsc.html"
   },
@@ -1353,13 +1353,13 @@
   },
   "science.p.3": {
     "type": "plain",
-    "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+    "value": "Aestyve · Seoul, Republic of Korea",
     "label": "Aestyve · Seoul, Republic of Korea",
     "page": "science.html"
   },
   "science.p.4": {
     "type": "plain",
-    "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+    "value": "info@aestyve.com",
     "label": "info@aestyve.com",
     "page": "science.html"
   },
@@ -1383,7 +1383,7 @@
   },
   "contact.notice.1": {
     "type": "plain",
-    "value": "Set up as a direct email link so it works in a static environment without a server. Please replace it with your operating address.",
+    "value": "Email us with the product, country and distribution or partnership details you would like to discuss.",
     "label": "Set up as a direct email link so it works in a static environment without a server. Please replace it with your operating address.",
     "page": "contact.html"
   },
@@ -1715,6 +1715,234 @@
     "type": "plain",
     "value": "Product availability and permitted claims may vary by market.",
     "label": "Product availability and permitted claims may vary by market.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.tag": {
+    "type": "plain",
+    "value": "Aestyve aesthetics, beginning with material.",
+    "label": "Aestyve aesthetics, beginning with material.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.intro": {
+    "type": "plain",
+    "value": "Beyond the surface, into the structure.\nMeet three expressions: Alpha, Beta and Gamma.",
+    "label": "Beyond the surface, into the structure.\nMeet three expressions: Alpha,",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.composition": {
+    "type": "plain",
+    "value": "Cross-linked HA with lidocaine",
+    "label": "Cross-linked HA with lidocaine",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.ha": {
+    "type": "plain",
+    "value": "Cross-linked hyaluronic acid",
+    "label": "Cross-linked hyaluronic acid",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.lido": {
+    "type": "plain",
+    "value": "Lidocaine hydrochloride",
+    "label": "Lidocaine hydrochloride",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.pbs": {
+    "type": "plain",
+    "value": "Phosphate-buffered saline",
+    "label": "Phosphate-buffered saline",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.material": {
+    "type": "plain",
+    "value": "Look into the material.",
+    "label": "Look into the material.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.material_p": {
+    "type": "plain",
+    "value": "An HA gel composed of cross-linked hyaluronic acid and lidocaine hydrochloride. Discover the material through its light-catching texture.",
+    "label": "An HA gel composed of cross-linked hyaluronic acid and lidocaine hydro",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.volume": {
+    "type": "plain",
+    "value": "Syringe volume",
+    "label": "Syringe volume",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.gelnote": {
+    "type": "plain",
+    "value": "Supplied gel texture photographs; not test-result images.",
+    "label": "Supplied gel texture photographs; not test-result images.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.science": {
+    "type": "plain",
+    "value": "From structure to performance.",
+    "label": "From structure to performance.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.science_p": {
+    "type": "plain",
+    "value": "Explore processes and reported test values from the manufacturer’s technical materials.",
+    "label": "Explore processes and reported test values from the manufacturer’s tec",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.structure": {
+    "type": "plain",
+    "value": "Microstructure, beginning with low-temperature crosslinking.",
+    "label": "Microstructure, beginning with low-temperature crosslinking.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.structure_p": {
+    "type": "plain",
+    "value": "The manufacturer describes the three-dimensional HA gel microstructure through its HBCT low-temperature crosslinking process.",
+    "label": "The manufacturer describes the three-dimensional HA gel microstructure",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.semnote": {
+    "type": "plain",
+    "value": "Original SEM images. Magnification, preparation and replicate details were not supplied. Images alone do not quantify clinical superiority.",
+    "label": "Original SEM images. Magnification, preparation and replicate details ",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic": {
+    "type": "plain",
+    "value": "Storage modulus G′",
+    "label": "Storage modulus G′",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_p": {
+    "type": "plain",
+    "value": "Ranges by manufacturer formulation",
+    "label": "Ranges by manufacturer formulation",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_drag": {
+    "type": "plain",
+    "value": "Drag or select a formulation",
+    "label": "Drag or select a formulation",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_note": {
+    "type": "plain",
+    "value": "Bars show reported ranges, not means or error bars. Temperature, frequency, strain and replicate details were not supplied.",
+    "label": "Bars show reported ranges, not means or error bars. Temperature, frequ",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force": {
+    "type": "plain",
+    "value": "Consistency in motion.",
+    "label": "Consistency in motion.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force_note": {
+    "type": "plain",
+    "value": "Manufacturer’s Deep formulation · 27G needle · average extrusion force",
+    "label": "Manufacturer’s Deep formulation · 27G needle · average extrusion force",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force_p": {
+    "type": "plain",
+    "value": "MGT is a micro-grinding process for consistent gel processing. The displayed value is the mean reported in the manufacturer’s test.",
+    "label": "MGT is a micro-grinding process for consistent gel processing. The dis",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion": {
+    "type": "plain",
+    "value": "Held together.",
+    "label": "Held together.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion_p": {
+    "type": "plain",
+    "value": "Cohesiveness test · lengths shown in the source",
+    "label": "Cohesiveness test · lengths shown in the source",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion_note": {
+    "type": "plain",
+    "value": "Test speed, temperature and replicate details were not supplied. Lengths are not a ranking of clinical performance.",
+    "label": "Test speed, temperature and replicate details were not supplied. Lengt",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity": {
+    "type": "plain",
+    "value": "Purity, measured.",
+    "label": "Purity, measured.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity_p": {
+    "type": "plain",
+    "value": "Explore raw-material criteria separately from final-product test results.",
+    "label": "Explore raw-material criteria separately from final-product test resul",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.raw": {
+    "type": "plain",
+    "value": "HA raw-material criteria",
+    "label": "HA raw-material criteria",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.final": {
+    "type": "plain",
+    "value": "Final-product test table",
+    "label": "Final-product test table",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purification": {
+    "type": "plain",
+    "value": "Two stages · two weeks",
+    "label": "Two stages · two weeks",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity_note": {
+    "type": "plain",
+    "value": "Manufacturer’s technical data. 0 ppm is a reported result, not proof of absolute absence; the detection limit was not supplied.",
+    "label": "Manufacturer’s technical data. 0 ppm is a reported result, not proof o",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.observation": {
+    "type": "plain",
+    "value": "Observed over time.",
+    "label": "Observed over time.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.observation_p": {
+    "type": "plain",
+    "value": "Original animal-study MRI of a low-elasticity formulation. Select an observation interval.",
+    "label": "Original animal-study MRI of a low-elasticity formulation. Select an o",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.pre_note": {
+    "type": "plain",
+    "value": "KBIOHealth Animal Center · 2020.09.18–2021.03.23. These are observation times, not evidence of human longevity, retention or safety.",
+    "label": "KBIOHealth Animal Center · 2020.09.18–2021.03.23. These are observatio",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.compare": {
+    "type": "plain",
+    "value": "The collection, at a glance.",
+    "label": "The collection, at a glance.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.spec_note": {
+    "type": "plain",
+    "value": "Based on Aestyve carton labels. Store at 2–25°C, away from light and moisture. Refer to the latest label and instructions for expiry, lot and use information.",
+    "label": "Based on Aestyve carton labels. Store at 2–25°C, away from light and m",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.source_p": {
+    "type": "plain",
+    "value": "Composition, volume and accessories: Aestyve packaging (P01). Process and test data: manufacturer technical materials dated 2026.01.26, pp.4–6, 9 (T01), and English manufacturer brochure p.1 (T02). Content follows the 2026 HA Collection catalog worksheet. Fine, Deep and Volume are manufacturer formulation names; these are not presented as Aestyve clinical outcomes.",
+    "label": "Composition, volume and accessories: Aestyve packaging (P01). Process ",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.contact_p": {
+    "type": "plain",
+    "value": "Contact us for product materials, market availability and partnerships.",
+    "label": "Contact us for product materials, market availability and partnerships",
     "page": "product-ha.html"
   }
 }

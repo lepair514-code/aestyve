@@ -19,13 +19,13 @@
  },
  "404.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "404.html"
  },
  "404.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "404.html"
  },
@@ -43,7 +43,7 @@
  },
  "brands.h3.1": {
   "type": "rich",
-  "value": "Aestyve HA",
+  "value": "HA Filler Series",
   "label": "Aestyve HA",
   "page": "brands.html"
  },
@@ -79,31 +79,31 @@
  },
  "brands.p.2": {
   "type": "plain",
-  "value": "α · β · γ / Cross-linked HA",
+  "value": "Advanced Cross-linked HA · α / β / γ",
   "label": "α · β · γ / Cross-linked HA",
   "page": "brands.html"
  },
  "brands.p.3": {
   "type": "plain",
-  "value": "PN 85% + HA 15%",
+  "value": "Premium PN Skin Booster · PN + HA",
   "label": "PN 85% + HA 15%",
   "page": "brands.html"
  },
  "brands.p.4": {
   "type": "plain",
-  "value": "Liquid PCL · 2.0mL/Vial",
+  "value": "Liquid PCL · Collagen-oriented solution",
   "label": "Liquid PCL · 2.0mL/Vial",
   "page": "brands.html"
  },
  "brands.p.5": {
   "type": "plain",
-  "value": "PLLA-based biostimulation category",
+  "value": "PLLA-based progressive aesthetic solution",
   "label": "PLLA-based biostimulation category",
   "page": "brands.html"
  },
  "brands.p.6": {
   "type": "plain",
-  "value": "Exosome-based professional solution",
+  "value": "Exosome-based professional skin solution",
   "label": "Exosome-based professional solution",
   "page": "brands.html"
  },
@@ -115,13 +115,13 @@
  },
  "brands.p.8": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "brands.html"
  },
  "brands.p.9": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "brands.html"
  },
@@ -411,13 +411,13 @@
  },
  "distribution.p.6": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "distribution.html"
  },
  "distribution.p.7": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "distribution.html"
  },
@@ -865,13 +865,13 @@
  },
  "partnership.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "partnership.html"
  },
  "partnership.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "partnership.html"
  },
@@ -943,13 +943,13 @@
  },
  "product-nad.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-nad.html"
  },
  "product-nad.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-nad.html"
  },
@@ -1021,13 +1021,13 @@
  },
  "product-pcl.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-pcl.html"
  },
  "product-pcl.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-pcl.html"
  },
@@ -1099,13 +1099,13 @@
  },
  "product-plla.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-plla.html"
  },
  "product-plla.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-plla.html"
  },
@@ -1177,7 +1177,7 @@
  },
  "product-revibe.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-revibe.html"
  },
@@ -1255,13 +1255,13 @@
  },
  "product-rvsc.p.3": {
   "type": "plain",
-  "value": "<!-- EDIT COMPANY INFO -->Aestyve · Seoul, Republic of Korea",
+  "value": "Aestyve · Seoul, Republic of Korea",
   "label": "Aestyve · Seoul, Republic of Korea",
   "page": "product-rvsc.html"
  },
  "product-rvsc.p.4": {
   "type": "plain",
-  "value": "<!-- EDIT CONTACT EMAIL -->info@aestyve.com",
+  "value": "info@aestyve.com",
   "label": "info@aestyve.com",
   "page": "product-rvsc.html"
  },
@@ -1383,7 +1383,7 @@
  },
  "contact.notice.1": {
   "type": "plain",
-  "value": "정적 HTML 환경에서 서버 없이 작동하도록 이메일 링크로 구성했습니다. 실제 운영 이메일로 수정해 주세요.",
+  "value": "문의하실 제품과 국가, 유통 또는 파트너십 관련 내용을 이메일로 보내주세요.",
   "label": "정적 HTML 환경에서 서버 없이 작동하도록 이메일 링크로 구성했습니다. 실제 운영…",
   "page": "contact.html"
  },
@@ -1715,6 +1715,234 @@
   "type": "plain",
   "value": "공급 범위와 허용되는 제품 표시는 국가별로 다를 수 있습니다.",
   "label": "공급 범위와 허용되는 제품 표시는 국가별로 다를 수 있습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.tag": {
+  "type": "plain",
+  "value": "소재에서 시작되는 에스티브의 미학.",
+  "label": "소재에서 시작되는 에스티브의 미학.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.intro": {
+  "type": "plain",
+  "value": "보이는 형태를 넘어, 소재의 구조까지.\nAlpha · Beta · Gamma, 세 가지 표현을 만나다.",
+  "label": "보이는 형태를 넘어, 소재의 구조까지.\nAlpha · Beta · Gamma, 세 가지 표현을 만나다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.composition": {
+  "type": "plain",
+  "value": "리도카인 함유 가교 히알루론산",
+  "label": "리도카인 함유 가교 히알루론산",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.ha": {
+  "type": "plain",
+  "value": "가교 히알루론산",
+  "label": "가교 히알루론산",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.lido": {
+  "type": "plain",
+  "value": "리도카인염산염",
+  "label": "리도카인염산염",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.pbs": {
+  "type": "plain",
+  "value": "인산완충생리식염수",
+  "label": "인산완충생리식염수",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.material": {
+  "type": "plain",
+  "value": "소재의 본질을 들여다보다.",
+  "label": "소재의 본질을 들여다보다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.material_p": {
+  "type": "plain",
+  "value": "가교 히알루론산과 리도카인염산염으로 구성된 HA 젤. 빛을 머금은 질감에서, 소재를 이해하는 여정이 시작됩니다.",
+  "label": "가교 히알루론산과 리도카인염산염으로 구성된 HA 젤. 빛을 머금은 질감에서, 소재를 이해하는 여정이 시작됩니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.volume": {
+  "type": "plain",
+  "value": "시린지 용량",
+  "label": "시린지 용량",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.gelnote": {
+  "type": "plain",
+  "value": "제공된 겔 질감 사진 · 시험 결과 이미지가 아닙니다.",
+  "label": "제공된 겔 질감 사진 · 시험 결과 이미지가 아닙니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.science": {
+  "type": "plain",
+  "value": "구조에서 물성으로.",
+  "label": "구조에서 물성으로.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.science_p": {
+  "type": "plain",
+  "value": "제조사 기술자료에 담긴 공정과 시험값을 하나씩 살펴보세요.",
+  "label": "제조사 기술자료에 담긴 공정과 시험값을 하나씩 살펴보세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.structure": {
+  "type": "plain",
+  "value": "저온 가교에서 시작되는 미세구조.",
+  "label": "저온 가교에서 시작되는 미세구조.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.structure_p": {
+  "type": "plain",
+  "value": "제조사 자료는 저온 가교를 통한 입체적 HA 젤의 미세구조를 HBCT 공정으로 설명합니다.",
+  "label": "제조사 자료는 저온 가교를 통한 입체적 HA 젤의 미세구조를 HBCT 공정으로 설명합니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.semnote": {
+  "type": "plain",
+  "value": "원본 SEM 이미지 · 배율·전처리·반복 수 상세 미제시. 이미지만으로 임상적 우열을 정량화하지 않습니다.",
+  "label": "원본 SEM 이미지 · 배율·전처리·반복 수 상세 미제시. 이미지만으로 임상적 우열을 정량화하지 않습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.elastic": {
+  "type": "plain",
+  "value": "저장탄성률 G′",
+  "label": "저장탄성률 G′",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.elastic_p": {
+  "type": "plain",
+  "value": "제조사 제형별 범위",
+  "label": "제조사 제형별 범위",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.elastic_drag": {
+  "type": "plain",
+  "value": "제형을 드래그하거나 버튼으로 선택하세요",
+  "label": "제형을 드래그하거나 버튼으로 선택하세요",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.elastic_note": {
+  "type": "plain",
+  "value": "막대는 평균이나 오차가 아닌 보고된 범위입니다. 측정 온도·주파수·변형률·반복 수는 상세 미제시.",
+  "label": "막대는 평균이나 오차가 아닌 보고된 범위입니다. 측정 온도·주파수·변형률·반복 수는 상세 미제시.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.force": {
+  "type": "plain",
+  "value": "일관된 흐름을 향한 가공.",
+  "label": "일관된 흐름을 향한 가공.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.force_note": {
+  "type": "plain",
+  "value": "제조사 Deep 제형 · 27G 니들 · 평균 압출력",
+  "label": "제조사 Deep 제형 · 27G 니들 · 평균 압출력",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.force_p": {
+  "type": "plain",
+  "value": "MGT는 젤을 고르고 일관되게 가공하는 미세 분쇄 기술입니다. 표시값은 제조사 시험의 평균값입니다.",
+  "label": "MGT는 젤을 고르고 일관되게 가공하는 미세 분쇄 기술입니다. 표시값은 제조사 시험의 평균값입니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.cohesion": {
+  "type": "plain",
+  "value": "젤 내부의 결합을 관찰하다.",
+  "label": "젤 내부의 결합을 관찰하다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.cohesion_p": {
+  "type": "plain",
+  "value": "응집성 시험 · 원자료에 표기된 길이",
+  "label": "응집성 시험 · 원자료에 표기된 길이",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.cohesion_note": {
+  "type": "plain",
+  "value": "시험 속도·온도·반복 수 상세 미제시. 길이는 임상 성능의 순위를 뜻하지 않습니다.",
+  "label": "시험 속도·온도·반복 수 상세 미제시. 길이는 임상 성능의 순위를 뜻하지 않습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.purity": {
+  "type": "plain",
+  "value": "정제의 과정, 관리의 기준.",
+  "label": "정제의 과정, 관리의 기준.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.purity_p": {
+  "type": "plain",
+  "value": "원료의 관리 기준과 최종 제품의 시험값을 구분해 확인하세요.",
+  "label": "원료의 관리 기준과 최종 제품의 시험값을 구분해 확인하세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.raw": {
+  "type": "plain",
+  "value": "HA 원료 관리 기준",
+  "label": "HA 원료 관리 기준",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.final": {
+  "type": "plain",
+  "value": "최종 제품 시험표",
+  "label": "최종 제품 시험표",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.purification": {
+  "type": "plain",
+  "value": "2단계 · 2주 정제",
+  "label": "2단계 · 2주 정제",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.purity_note": {
+  "type": "plain",
+  "value": "제조사 기술자료 기준. 0 ppm은 보고된 시험값이며, 검출한계가 미제시되어 절대적 무잔류를 뜻하지 않습니다.",
+  "label": "제조사 기술자료 기준. 0 ppm은 보고된 시험값이며, 검출한계가 미제시되어 절대적 무잔류를 뜻하지 않습니다.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.observation": {
+  "type": "plain",
+  "value": "시간에 따른 관찰.",
+  "label": "시간에 따른 관찰.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.observation_p": {
+  "type": "plain",
+  "value": "저탄성 제형의 동물시험 MRI 원본. 두 관찰 구간을 선택해 확인하세요.",
+  "label": "저탄성 제형의 동물시험 MRI 원본. 두 관찰 구간을 선택해 확인하세요.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.pre_note": {
+  "type": "plain",
+  "value": "KBIOHealth 동물센터 · 2020.09.18–2021.03.23. 관찰 시점이며 사람의 유지기간·잔존율·안전성을 입증하는 수치가 아닙니다.",
+  "label": "KBIOHealth 동물센터 · 2020.09.18–2021.03.23. 관찰 시점이며 사람의 유지기간·잔존율·안전성을 입증하",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.compare": {
+  "type": "plain",
+  "value": "한눈에 보는 컬렉션.",
+  "label": "한눈에 보는 컬렉션.",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.spec_note": {
+  "type": "plain",
+  "value": "에스티브 패키지 표기 기준. 보관 2–25°C, 빛과 습기 회피. 유효기간·로트·사용 정보는 최신 라벨과 사용설명서를 확인하세요.",
+  "label": "에스티브 패키지 표기 기준. 보관 2–25°C, 빛과 습기 회피. 유효기간·로트·사용 정보는 최신 라벨과 사용설명서를 확인하세",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.source_p": {
+  "type": "plain",
+  "value": "제품 조성·용량·구성품: Aestyve 패키지(P01). 공정·시험: 제조사 기술자료 2026.01.26, p.4–6·9(T01), 제조사 영문 브로슈어 p.1(T02). 「필러 카탈로그 제작」의 2026 HA Collection 정리본을 기준으로 구성했습니다. Fine·Deep·Volume은 제조사 제형 표기이며 Aestyve 자체 임상 결과로 제시하지 않습니다.",
+  "label": "제품 조성·용량·구성품: Aestyve 패키지(P01). 공정·시험: 제조사 기술자료 2026.01.26, p.4–6·9(T0",
+  "page": "product-ha.html"
+ },
+ "product-ha.studio.contact_p": {
+  "type": "plain",
+  "value": "제품 자료와 시장별 공급, 파트너십을 문의하세요.",
+  "label": "제품 자료와 시장별 공급, 파트너십을 문의하세요.",
   "page": "product-ha.html"
  }
 }
