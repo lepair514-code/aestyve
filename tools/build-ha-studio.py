@@ -5,6 +5,7 @@ photographic silhouettes; manufacturer data is kept separate from carton specs.
 """
 from pathlib import Path
 import re, json
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 COPY = {
@@ -28,7 +29,9 @@ for lang,c in COPY.items():
     def txt(key,tag='p',cl=''):
         return f'<{tag} {t(key)}'+(f' class="{cl}"' if cl else '')+f'>{c[key]}</{tag}>'
     def img(name,cl='',alt='',lazy=True):
-        return f'<img class="{cl}" src="{rel}assets/{name}" alt="{alt}"'+(' loading="lazy"' if lazy else '')+' draggable="false">'
+        with Image.open(ROOT/'assets'/name) as image:
+            w,h=image.size
+        return f'<img class="{cl}" src="{rel}assets/{name}" alt="{alt}" width="{w}" height="{h}"'+(' loading="lazy"' if lazy else '')+' draggable="false">'
     controls=''.join(f'<button type="button" data-product="{i}" aria-pressed="{str(i==0).lower()}">{img("ha-studio/"+n+"-symbol.png",alt="")}<span>{n.title()}</span></button>' for i,n in enumerate(['alpha','beta','gamma']))
     packs=''.join(f'<div class="ha-photo-orbit" data-orbit="{i}"><div class="ha-photo-shadow">{img("ha_"+n+"_pack.webp","ha-photo ha-photo-"+n,"Aestyve Ep. "+n.title(),False)}</div></div>' for i,n in enumerate(['alpha','beta','gamma']))
     syringes=''.join(f'<div class="ha-syringe-wrap" data-syringe="{i}"'+(' hidden' if i else '')+f'>{img("ha_"+n+"_syringe.webp","ha-syringe","Aestyve "+n.title()+" syringe",False)}</div>' for i,n in enumerate(['alpha','beta','gamma']))
