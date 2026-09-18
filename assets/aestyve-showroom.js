@@ -61,7 +61,7 @@ if (root) {
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else wake()});
  reduced.addEventListener('change',wake);root.dataset.activeProduct='alpha';root.dataset.renderer='css3d';wake();
  // A volumetric, fully interactive fallback is already visible while WebGL loads.
- import('./aestyve-webgl.js?v=20260918b').then(async({createShowroom})=>{
+ import('./aestyve-webgl.js?v=20260918d').then(async({createShowroom})=>{
   webgl=await createShowroom(root.querySelector('.ae-webgl'),size,()=>{root.dataset.renderer='css3d';webgl=null;wake()});
   if(webgl){webgl.draw(poses(performance.now()));root.dataset.renderer='webgl';wake()}
  }).catch(()=>{/* CSS 3D retains the complete collection, drag and formula experience. */});

@@ -3,7 +3,7 @@ import {Scene,PerspectiveCamera,WebGLRenderer,Group,Mesh,BoxGeometry,PlaneGeomet
 export async function createShowroom(host,size,onLost){
  let renderer;
  try{renderer=new WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'})}catch{return null}
- renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(size.width,size.height);renderer.setClearColor(0,0);renderer.outputColorSpace=SRGBColorSpace;renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
+ renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(size.width,size.height);renderer.setClearColor(0,0);renderer.outputColorSpace=SRGBColorSpace;renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=.95;
  const scene=new Scene(),camera=new PerspectiveCamera(31,size.width/size.height,.1,50);
  const env=new Scene();env.background=new Color('#e7e4e2');
  const room=new Mesh(new BoxGeometry(12,12,12),new MeshBasicMaterial({color:0xdedbd6,side:BackSide}));env.add(room);
@@ -18,8 +18,13 @@ export async function createShowroom(host,size,onLost){
  try{
   for(const name of names){
    const textures=await Promise.all(faces.map(face=>loader.loadAsync(new URL(`./ha-3d/${name}-${face}.webp`,import.meta.url).href)));
-   textures.forEach(t=>{t.colorSpace=SRGBColorSpace;t.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),8)});
-   const materials=textures.map(map=>new MeshPhysicalMaterial({map,color:0xffffff,roughness:.35,metalness:.07,clearcoat:.45,clearcoatRoughness:.26,envMapIntensity:.55}));
+   textures.forEach(t=>{t.colorSpace=SRGBColorSpace;t.anisotropy=renderer.capabilities.getMaxAnisotropy()});
+   // Printed carton artwork should retain its supplied sRGB ink colors. The
+   // previous glossy, brightly lit material desaturated the logos. Neutral
+   // side-face shading gives the carton depth without bleaching the print;
+   // physical environment lighting remains on the surrounding glass droplets.
+   const faceShades=[0xe3e4e8,0xe3e4e8,0xffffff,0xccccd2,0xffffff,0xe6e6ea];
+   const materials=textures.map((map,i)=>new MeshBasicMaterial({map,color:faceShades[i],toneMapped:false}));
    const group=new Group();group.add(new Mesh(geometry,materials));scene.add(group);boxes.push(group);
   }
  }catch{renderer.dispose();envTarget.dispose();pmrem.dispose();return null}

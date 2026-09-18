@@ -16,7 +16,7 @@
 .ae-carton{position:absolute;left:50%;top:50%;width:154px;height:407px;margin:-203.5px 0 0 -77px;transform-style:preserve-3d;will-change:transform;transform:translateX(0) rotateY(-18deg) rotateZ(-6deg)}
 .ae-carton-1{transform:translate3d(220px,15px,-70px) rotateY(-35deg) rotateZ(13deg)}.ae-carton-2{transform:translate3d(-220px,-5px,-70px) rotateY(12deg) rotateZ(-14deg)}
 .ae-carton-face{position:absolute;display:block;background-size:100% 100%;background-color:#f5f6f7;border:1px solid #dddfe080;backface-visibility:hidden;overflow:hidden}
-.ae-carton-face::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,#fff5,transparent 40%,#27293d10);pointer-events:none}
+.ae-carton-face::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 65%,#27293d08);pointer-events:none}
 .ae-face-front,.ae-face-back{width:154px;height:407px}.ae-face-front{transform:translateZ(30px)}.ae-face-back{transform:rotateY(180deg) translateZ(30px);filter:brightness(.9)}
 .ae-face-left,.ae-face-right{width:60px;height:407px;left:47px;filter:brightness(.89)}.ae-face-left{transform:rotateY(-90deg) translateZ(77px)}.ae-face-right{transform:rotateY(90deg) translateZ(77px)}
 .ae-face-top,.ae-face-bottom{width:154px;height:60px;top:173.5px}.ae-face-top{transform:rotateX(90deg) translateZ(203.5px)}.ae-face-bottom{transform:rotateX(-90deg) translateZ(203.5px);filter:brightness(.8)}

@@ -16,6 +16,23 @@ Horizontal pointer drag rotates the six-sided cartons, changes their orbital arr
 
 Three.js provides the lit WebGL scene. A six-face CSS 3D scene is present from the first paint and remains fully interactive when WebGL is unavailable, texture loading fails or the graphics context is lost. All artwork and runtime files are served locally; no CDN is required.
 
+The carton print uses sRGB textures and tone-mapping-independent basic materials,
+with neutral shading on the side faces. This preserves the uploaded pink/coral,
+violet and red label colors instead of bleaching them with studio reflections.
+The supplied texture files are unchanged. Physical environment reflections remain
+on the decorative glass, and the CSS fallback no longer overlays a white glare
+gradient across the printed faces.
+
+The five homepage solution cards share a single horizontal carousel with equal
+dimensions. `product-carousel.css` and `product-carousel.js` provide mouse drag,
+native touch swiping, arrow buttons, keyboard access and a visible item count.
+Each glass card tilts by up to 2.5° toward the mouse, with a subtle moving
+edge highlight. Dragging and reduced-motion preferences disable the tilt.
+The Innofill card uses the existing correctly encoded `innofill-family.png`.
+The RVSC photo window excludes the original transparent top margin and extra
+backdrop while preserving the box and both vials. Original image bytes and
+proportions are unchanged.
+
 To rebuild the WebGL module, install `three@0.186.0` and `esbuild@0.25.12` in an isolated tooling directory and invoke `tools/build-showroom.mjs` with `AESTYVE_TOOLING` pointing to it. The compiled module is committed because this is a static site. See `assets/vendor/THREE-LICENSE.txt` for the Three.js license.
 
 ## Verification
