@@ -23,7 +23,7 @@ def integrate():
             end = page.index('</section>', start) + len('</section>')
             page = page[:end] + block + page[end:]
             if 'assets/brand-films.css' not in page:
-                page = page.replace('</head>', f'<link rel="stylesheet" href="{prefix}assets/brand-films.css?v=20260918a">\n</head>', 1)
+                page = page.replace('</head>', f'<link rel="stylesheet" href="{prefix}assets/brand-films.css?v=20260918b">\n</head>', 1)
             if 'assets/brand-films.js' not in page:
                 page = page.replace('</body>', f'<script type="module" src="{prefix}assets/brand-films.js?v=20260918a"></script>\n</body>', 1)
             page = page.replace('href="https://aestyve-face-lab.vercel.app/"', 'href="/facelab/"')
