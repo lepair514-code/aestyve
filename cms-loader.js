@@ -28,5 +28,14 @@
         el.textContent = value;
       }
     });
+    // The inquiry button must use the same address as the editable EMAIL field.
+    var contactEmail = document.querySelector('[data-cms="contact.contact-desc.1"]');
+    var address = contactEmail && contactEmail.textContent.trim();
+    if (address && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address)) {
+      document.querySelectorAll('main a[href^="mailto:"]').forEach(function(link){
+        var query = link.getAttribute('href').split('?')[1];
+        link.setAttribute('href', 'mailto:' + address + (query ? '?' + query : ''));
+      });
+    }
   }).catch(function(){ /* content.json 로드 실패 시 기본 텍스트 유지 */ });
 })();
