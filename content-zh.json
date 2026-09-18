@@ -1716,5 +1716,233 @@
     "value": "产品供应范围与允许使用的宣称可能因市场而异。",
     "label": "产品供应范围与允许使用的宣称可能因市场而异。",
     "page": "product-ha.html"
+  },
+  "product-ha.studio.tag": {
+    "type": "plain",
+    "value": "从材料出发，理解艾薇美学。",
+    "label": "从材料出发，理解艾薇美学。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.intro": {
+    "type": "plain",
+    "value": "超越外观，深入材料结构。\n探索 Alpha · Beta · Gamma 三款产品。",
+    "label": "超越外观，深入材料结构。\n探索 Alpha · Beta · Gamma 三款产品。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.composition": {
+    "type": "plain",
+    "value": "含利多卡因的交联透明质酸",
+    "label": "含利多卡因的交联透明质酸",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.ha": {
+    "type": "plain",
+    "value": "交联透明质酸",
+    "label": "交联透明质酸",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.lido": {
+    "type": "plain",
+    "value": "盐酸利多卡因",
+    "label": "盐酸利多卡因",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.pbs": {
+    "type": "plain",
+    "value": "磷酸盐缓冲盐水",
+    "label": "磷酸盐缓冲盐水",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.material": {
+    "type": "plain",
+    "value": "深入材料本质。",
+    "label": "深入材料本质。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.material_p": {
+    "type": "plain",
+    "value": "由交联透明质酸与盐酸利多卡因组成的 HA 凝胶。从映照光线的质感，开启理解材料的旅程。",
+    "label": "由交联透明质酸与盐酸利多卡因组成的 HA 凝胶。从映照光线的质感，开启理解材料的旅程。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.volume": {
+    "type": "plain",
+    "value": "注射器容量",
+    "label": "注射器容量",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.gelnote": {
+    "type": "plain",
+    "value": "提供的凝胶质感照片，非试验结果图像。",
+    "label": "提供的凝胶质感照片，非试验结果图像。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.science": {
+    "type": "plain",
+    "value": "从结构到性能。",
+    "label": "从结构到性能。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.science_p": {
+    "type": "plain",
+    "value": "探索制造商技术资料中的工艺与试验报告值。",
+    "label": "探索制造商技术资料中的工艺与试验报告值。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.structure": {
+    "type": "plain",
+    "value": "始于低温交联的微观结构。",
+    "label": "始于低温交联的微观结构。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.structure_p": {
+    "type": "plain",
+    "value": "制造商以 HBCT 低温交联工艺说明立体 HA 凝胶的微观结构。",
+    "label": "制造商以 HBCT 低温交联工艺说明立体 HA 凝胶的微观结构。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.semnote": {
+    "type": "plain",
+    "value": "原始 SEM 图像。未详细提供倍率、前处理及重复次数。不能仅依据图像量化临床优劣。",
+    "label": "原始 SEM 图像。未详细提供倍率、前处理及重复次数。不能仅依据图像量化临床优劣。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic": {
+    "type": "plain",
+    "value": "储能模量 G′",
+    "label": "储能模量 G′",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_p": {
+    "type": "plain",
+    "value": "制造商各配方的数值范围",
+    "label": "制造商各配方的数值范围",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_drag": {
+    "type": "plain",
+    "value": "拖动或点击选择配方",
+    "label": "拖动或点击选择配方",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_note": {
+    "type": "plain",
+    "value": "条形表示报告范围，并非均值或误差线。未详细提供温度、频率、应变及重复次数。",
+    "label": "条形表示报告范围，并非均值或误差线。未详细提供温度、频率、应变及重复次数。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force": {
+    "type": "plain",
+    "value": "流动中的一致性。",
+    "label": "流动中的一致性。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force_note": {
+    "type": "plain",
+    "value": "制造商 Deep 配方 · 27G 针头 · 平均挤出力",
+    "label": "制造商 Deep 配方 · 27G 针头 · 平均挤出力",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force_p": {
+    "type": "plain",
+    "value": "MGT 是用于均匀、一致凝胶加工的微研磨技术。所示数值为制造商试验的平均报告值。",
+    "label": "MGT 是用于均匀、一致凝胶加工的微研磨技术。所示数值为制造商试验的平均报告值。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion": {
+    "type": "plain",
+    "value": "凝胶内部的相互作用。",
+    "label": "凝胶内部的相互作用。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion_p": {
+    "type": "plain",
+    "value": "内聚性试验 · 原资料标注长度",
+    "label": "内聚性试验 · 原资料标注长度",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion_note": {
+    "type": "plain",
+    "value": "未详细提供试验速度、温度及重复次数。长度不代表临床性能排名。",
+    "label": "未详细提供试验速度、温度及重复次数。长度不代表临床性能排名。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity": {
+    "type": "plain",
+    "value": "纯度，以数据呈现。",
+    "label": "纯度，以数据呈现。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity_p": {
+    "type": "plain",
+    "value": "分别了解原料管理标准与最终产品试验结果。",
+    "label": "分别了解原料管理标准与最终产品试验结果。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.raw": {
+    "type": "plain",
+    "value": "HA 原料管理标准",
+    "label": "HA 原料管理标准",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.final": {
+    "type": "plain",
+    "value": "最终产品试验表",
+    "label": "最终产品试验表",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purification": {
+    "type": "plain",
+    "value": "两阶段 · 两周纯化",
+    "label": "两阶段 · 两周纯化",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity_note": {
+    "type": "plain",
+    "value": "基于制造商技术资料。0 ppm 为报告值；因未提供检出限，不代表绝对无残留。",
+    "label": "基于制造商技术资料。0 ppm 为报告值；因未提供检出限，不代表绝对无残留。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.observation": {
+    "type": "plain",
+    "value": "随时间观察。",
+    "label": "随时间观察。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.observation_p": {
+    "type": "plain",
+    "value": "低弹性配方动物试验的原始 MRI 图像。请选择观察时段。",
+    "label": "低弹性配方动物试验的原始 MRI 图像。请选择观察时段。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.pre_note": {
+    "type": "plain",
+    "value": "KBIOHealth 动物中心 · 2020.09.18–2021.03.23。所示为观察时间，并非人体维持期、留存率或安全性的证明。",
+    "label": "KBIOHealth 动物中心 · 2020.09.18–2021.03.23。所示为观察时间，并非人体维持期、留存率或安全性的证明。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.compare": {
+    "type": "plain",
+    "value": "一览产品系列。",
+    "label": "一览产品系列。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.spec_note": {
+    "type": "plain",
+    "value": "依据 Aestyve 包装标注。2–25°C 储存，避光防潮。有效期、批次和使用信息请参考最新标签与说明书。",
+    "label": "依据 Aestyve 包装标注。2–25°C 储存，避光防潮。有效期、批次和使用信息请参考最新标签与说明书。",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.source_p": {
+    "type": "plain",
+    "value": "成分、容量及配件：Aestyve 包装（P01）。工艺与试验：2026.01.26 制造商技术资料第4–6、9页（T01）及英文宣传册第1页（T02）。内容依据2026 HA Collection 产品目录工作表。Fine、Deep、Volume 为制造商配方名称，不作为 Aestyve 自身临床结果呈现。",
+    "label": "成分、容量及配件：Aestyve 包装（P01）。工艺与试验：2026.01.26 制造商技术资料第4–6、9页（T01）及英文宣传册第1页",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.contact_p": {
+    "type": "plain",
+    "value": "咨询产品资料、市场供应与合作事宜。",
+    "label": "咨询产品资料、市场供应与合作事宜。",
+    "page": "product-ha.html"
   }
 }

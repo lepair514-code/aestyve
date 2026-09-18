@@ -1716,5 +1716,233 @@
     "value": "Product availability and permitted claims may vary by market.",
     "label": "Product availability and permitted claims may vary by market.",
     "page": "product-ha.html"
+  },
+  "product-ha.studio.tag": {
+    "type": "plain",
+    "value": "Aestyve aesthetics, beginning with material.",
+    "label": "Aestyve aesthetics, beginning with material.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.intro": {
+    "type": "plain",
+    "value": "Beyond the surface, into the structure.\nMeet three expressions: Alpha, Beta and Gamma.",
+    "label": "Beyond the surface, into the structure.\nMeet three expressions: Alpha,",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.composition": {
+    "type": "plain",
+    "value": "Cross-linked HA with lidocaine",
+    "label": "Cross-linked HA with lidocaine",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.ha": {
+    "type": "plain",
+    "value": "Cross-linked hyaluronic acid",
+    "label": "Cross-linked hyaluronic acid",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.lido": {
+    "type": "plain",
+    "value": "Lidocaine hydrochloride",
+    "label": "Lidocaine hydrochloride",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.pbs": {
+    "type": "plain",
+    "value": "Phosphate-buffered saline",
+    "label": "Phosphate-buffered saline",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.material": {
+    "type": "plain",
+    "value": "Look into the material.",
+    "label": "Look into the material.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.material_p": {
+    "type": "plain",
+    "value": "An HA gel composed of cross-linked hyaluronic acid and lidocaine hydrochloride. Discover the material through its light-catching texture.",
+    "label": "An HA gel composed of cross-linked hyaluronic acid and lidocaine hydro",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.volume": {
+    "type": "plain",
+    "value": "Syringe volume",
+    "label": "Syringe volume",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.gelnote": {
+    "type": "plain",
+    "value": "Supplied gel texture photographs; not test-result images.",
+    "label": "Supplied gel texture photographs; not test-result images.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.science": {
+    "type": "plain",
+    "value": "From structure to performance.",
+    "label": "From structure to performance.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.science_p": {
+    "type": "plain",
+    "value": "Explore processes and reported test values from the manufacturer’s technical materials.",
+    "label": "Explore processes and reported test values from the manufacturer’s tec",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.structure": {
+    "type": "plain",
+    "value": "Microstructure, beginning with low-temperature crosslinking.",
+    "label": "Microstructure, beginning with low-temperature crosslinking.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.structure_p": {
+    "type": "plain",
+    "value": "The manufacturer describes the three-dimensional HA gel microstructure through its HBCT low-temperature crosslinking process.",
+    "label": "The manufacturer describes the three-dimensional HA gel microstructure",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.semnote": {
+    "type": "plain",
+    "value": "Original SEM images. Magnification, preparation and replicate details were not supplied. Images alone do not quantify clinical superiority.",
+    "label": "Original SEM images. Magnification, preparation and replicate details ",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic": {
+    "type": "plain",
+    "value": "Storage modulus G′",
+    "label": "Storage modulus G′",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_p": {
+    "type": "plain",
+    "value": "Ranges by manufacturer formulation",
+    "label": "Ranges by manufacturer formulation",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_drag": {
+    "type": "plain",
+    "value": "Drag or select a formulation",
+    "label": "Drag or select a formulation",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.elastic_note": {
+    "type": "plain",
+    "value": "Bars show reported ranges, not means or error bars. Temperature, frequency, strain and replicate details were not supplied.",
+    "label": "Bars show reported ranges, not means or error bars. Temperature, frequ",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force": {
+    "type": "plain",
+    "value": "Consistency in motion.",
+    "label": "Consistency in motion.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force_note": {
+    "type": "plain",
+    "value": "Manufacturer’s Deep formulation · 27G needle · average extrusion force",
+    "label": "Manufacturer’s Deep formulation · 27G needle · average extrusion force",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.force_p": {
+    "type": "plain",
+    "value": "MGT is a micro-grinding process for consistent gel processing. The displayed value is the mean reported in the manufacturer’s test.",
+    "label": "MGT is a micro-grinding process for consistent gel processing. The dis",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion": {
+    "type": "plain",
+    "value": "Held together.",
+    "label": "Held together.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion_p": {
+    "type": "plain",
+    "value": "Cohesiveness test · lengths shown in the source",
+    "label": "Cohesiveness test · lengths shown in the source",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.cohesion_note": {
+    "type": "plain",
+    "value": "Test speed, temperature and replicate details were not supplied. Lengths are not a ranking of clinical performance.",
+    "label": "Test speed, temperature and replicate details were not supplied. Lengt",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity": {
+    "type": "plain",
+    "value": "Purity, measured.",
+    "label": "Purity, measured.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity_p": {
+    "type": "plain",
+    "value": "Explore raw-material criteria separately from final-product test results.",
+    "label": "Explore raw-material criteria separately from final-product test resul",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.raw": {
+    "type": "plain",
+    "value": "HA raw-material criteria",
+    "label": "HA raw-material criteria",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.final": {
+    "type": "plain",
+    "value": "Final-product test table",
+    "label": "Final-product test table",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purification": {
+    "type": "plain",
+    "value": "Two stages · two weeks",
+    "label": "Two stages · two weeks",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.purity_note": {
+    "type": "plain",
+    "value": "Manufacturer’s technical data. 0 ppm is a reported result, not proof of absolute absence; the detection limit was not supplied.",
+    "label": "Manufacturer’s technical data. 0 ppm is a reported result, not proof o",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.observation": {
+    "type": "plain",
+    "value": "Observed over time.",
+    "label": "Observed over time.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.observation_p": {
+    "type": "plain",
+    "value": "Original animal-study MRI of a low-elasticity formulation. Select an observation interval.",
+    "label": "Original animal-study MRI of a low-elasticity formulation. Select an o",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.pre_note": {
+    "type": "plain",
+    "value": "KBIOHealth Animal Center · 2020.09.18–2021.03.23. These are observation times, not evidence of human longevity, retention or safety.",
+    "label": "KBIOHealth Animal Center · 2020.09.18–2021.03.23. These are observatio",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.compare": {
+    "type": "plain",
+    "value": "The collection, at a glance.",
+    "label": "The collection, at a glance.",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.spec_note": {
+    "type": "plain",
+    "value": "Based on Aestyve carton labels. Store at 2–25°C, away from light and moisture. Refer to the latest label and instructions for expiry, lot and use information.",
+    "label": "Based on Aestyve carton labels. Store at 2–25°C, away from light and m",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.source_p": {
+    "type": "plain",
+    "value": "Composition, volume and accessories: Aestyve packaging (P01). Process and test data: manufacturer technical materials dated 2026.01.26, pp.4–6, 9 (T01), and English manufacturer brochure p.1 (T02). Content follows the 2026 HA Collection catalog worksheet. Fine, Deep and Volume are manufacturer formulation names; these are not presented as Aestyve clinical outcomes.",
+    "label": "Composition, volume and accessories: Aestyve packaging (P01). Process ",
+    "page": "product-ha.html"
+  },
+  "product-ha.studio.contact_p": {
+    "type": "plain",
+    "value": "Contact us for product materials, market availability and partnerships.",
+    "label": "Contact us for product materials, market availability and partnerships",
+    "page": "product-ha.html"
   }
 }

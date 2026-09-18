@@ -70,3 +70,10 @@
 }
 @media(max-width:360px){.ae-showroom{height:980px}.ae-lineup button{padding:10px 8px}.ae-lineup .ae-arrow{padding:8px}.ae-lineup button>span{font-size:18px}.ae-room-heading{left:20px}.ae-room-info{left:20px;right:20px}.ae-hud-ha{width:128px}}
 @media(prefers-reduced-motion:reduce){.ae-showroom *{transition:none!important;animation:none!important}}
+
+/* Muted pearl lighting and the supplied Aestyve emblem. */
+.ae-showroom{background:radial-gradient(ellipse at 80% 60%,#d4b29260,transparent 53%),radial-gradient(ellipse at 15% 0%,#bdb9cb70,transparent 65%),linear-gradient(125deg,#b3b0ba,#9ea0ac 65%,#b6a49a)}
+.ae-room-wordmark{left:37%;top:12%;width:48%;opacity:.16;transform:rotate(-14deg)}
+.ae-room-wordmark img{width:100%;height:auto;display:block}
+.ae-overline{color:#514556}.ae-room-heading h1 em{color:#f8dec5}.ae-room-heading>p,.ae-room-meta,.ae-room-volume>span,.ae-drag-hint,.ae-room-source{color:#424353}.ae-room-heading h1{color:#27293d}.ae-formula-toggle{color:#3e3a4d;border-color:#68606a}.ae-lineup{background:#e5dde166;border-color:#ffffff70}.ae-lineup button{color:#444052}.ae-hud-card{background:linear-gradient(130deg,#e9e2e5e0,#d3c3b4ba);border-color:#ffffff90}.ae-hud-index,.ae-hud-foot{color:#61525a}
+@media(max-width:760px){.ae-room-wordmark{left:23%;top:31%;width:70%}}
