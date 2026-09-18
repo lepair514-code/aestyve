@@ -47,3 +47,18 @@ the tab is hidden. No continuously running decorative render loop is used.
 
 Home hero: the existing 3D carton implementation is retained; only background
 lighting and the supplied emblem replace the previous decorative wordmark.
+
+## Verification (2026-09-18)
+
+- Browser: horizontal product drag changes the active line and needle/cannula
+  values; composition panels open. Buttons and arrow-key selection also work.
+- Browser: gel drag advances the original photograph; manufacturer G′ selection
+  updates the labeled range; MRI interval buttons switch the original strips.
+- Korean/English/Chinese rendering inspected, including 390px and 320px mobile
+  containers. Small-screen controls no longer overlap the specification card.
+- Main hero displays the supplied emblem on the muted background, with no
+  horizontal document overflow. Packaging and syringe photo mats are absent.
+- All local page assets/download paths resolve. JavaScript syntax and git diff
+  whitespace checks pass. Image dimensions reserve space before loading;
+  neighboring gel photos preload as the texture section approaches the viewport.
+- These are preview-branch changes. Production has not been promoted.
