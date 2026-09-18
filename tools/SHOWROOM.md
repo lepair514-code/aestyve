@@ -37,6 +37,14 @@ To rebuild the WebGL module, install `three@0.186.0` and `esbuild@0.25.12` in an
 
 ## Verification
 
+The product carousel was checked in the protected preview at desktop width and
+390/320 px iframe widths. All five cards have identical dimensions and aligned
+top edges; all images load. Desktop next/previous controls, mouse drag, click
+suppression after dragging, keyboard Home/End and the visible item count work.
+Cursor movement updates the card tilt within the 2.5° limit. Korean, English and
+Chinese mobile layouts have no horizontal document overflow. The temporary
+responsive-review page was removed after verification.
+
 The protected Vercel preview was checked at desktop width and 390/320 px iframe widths in Korean, English and Chinese. Drag changes the active product and reveals all three formula panels. Direct product buttons, previous/next buttons, the formula toggle and arrow-key navigation are verified. Mobile content has no horizontal overflow. Page asset references and the two source JavaScript modules pass static checks.
 
 The verification browser disables WebGL, so visual and interaction checks ran against the fully volumetric CSS 3D fallback. The WebGL module is bundled successfully; GPU-specific lighting must also be reviewed on a WebGL-enabled device before production promotion.
