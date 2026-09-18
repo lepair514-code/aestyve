@@ -108,6 +108,7 @@ body.ae-future{
 .ae-collection-stage img{width:29%!important;height:325px!important;max-height:none!important;padding:0!important;object-fit:contain!important;filter:drop-shadow(12px 24px 12px #324b6038);transform:translateY(8px) rotate(-9deg)}
 .ae-collection-stage img:nth-of-type(2){height:380px!important;transform:translateY(-14px);z-index:2}
 .ae-collection-stage img:nth-of-type(3){transform:translateY(8px) rotate(9deg)}
+.ae-collection-stage img,.ae-future .product-panel .pack,.ae-future .product-panel .syringe{mix-blend-mode:multiply}
 .ae-stage-label{position:absolute;top:25px;left:26px;font-size:9px;letter-spacing:.16em;color:#456776}
 .ae-stage-lineup{position:absolute;bottom:21px;left:0;right:0;text-align:center;font-size:9px;letter-spacing:.14em;color:#345768}
 .ae-orb{position:absolute;width:45px;height:45px;top:20%;right:12%;border:1px solid #fff;border-radius:50%;background:radial-gradient(circle at 30% 20%,#fff,#c7efee66 48%,#b5c4e966 76%,#ffffffe0);box-shadow:inset -4px -3px 8px #719eaf22,0 10px 25px #44748712}
