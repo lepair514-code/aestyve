@@ -26,6 +26,9 @@ gradient across the printed faces.
 The five homepage solution cards share a single horizontal carousel with equal
 dimensions. `product-carousel.css` and `product-carousel.js` provide mouse drag,
 native touch swiping, arrow buttons, keyboard access and a visible item count.
+The Korean, English and Chinese brand pages reuse those same assets, product
+photos, ordering, card dimensions and localized carousel controls. Existing
+brand-page CMS identifiers and localized product-detail links are retained.
 Each glass card tilts by up to 2.5° toward the mouse, with a subtle moving
 edge highlight. Dragging and reduced-motion preferences disable the tilt.
 The Innofill card uses the existing correctly encoded `innofill-family.png`.
