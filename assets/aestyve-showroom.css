@@ -77,3 +77,16 @@
 .ae-room-wordmark img{width:100%;height:auto;display:block}
 .ae-overline{color:#514556}.ae-room-heading h1 em{color:#f8dec5}.ae-room-heading>p,.ae-room-meta,.ae-room-volume>span,.ae-drag-hint,.ae-room-source{color:#424353}.ae-room-heading h1{color:#27293d}.ae-formula-toggle{color:#3e3a4d;border-color:#68606a}.ae-lineup{background:#e5dde166;border-color:#ffffff70}.ae-lineup button{color:#444052}.ae-hud-card{background:linear-gradient(130deg,#e9e2e5e0,#d3c3b4ba);border-color:#ffffff90}.ae-hud-index,.ae-hud-foot{color:#61525a}
 @media(max-width:760px){.ae-room-wordmark{left:23%;top:31%;width:70%}}
+
+/* Keep the introduction and product details in flow on short desktop screens. */
+@media(min-width:761px){
+ .ae-showroom{display:grid;grid-template-columns:minmax(0,34%) 1fr;grid-template-rows:auto auto 1fr;column-gap:0;row-gap:28px;align-content:start;height:auto;min-height:max(740px,calc(100svh - 72px));max-height:none;padding:clamp(40px,6svh,72px) 5% 155px 5.5%}
+ .ae-room-heading{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;max-width:470px}
+ .ae-room-heading>p{margin-bottom:0}
+ .ae-room-info{position:relative;inset:auto;grid-column:1;grid-row:2;align-self:start;margin:0;width:min(240px,100%)}
+}
+@media(min-width:1600px){.ae-showroom{padding-left:8%}}
+@media(min-width:761px) and (max-width:1100px){.ae-showroom{grid-template-columns:minmax(0,36%) 1fr;padding-left:4%;padding-right:4%;min-height:max(720px,calc(100svh - 72px))}.ae-room-info{width:min(190px,100%)}}
+
+/* Leave breathing room between the mobile product links and lineup controls. */
+@media(max-width:760px){.ae-showroom{height:1000px}.ae-room-info{bottom:195px}}
