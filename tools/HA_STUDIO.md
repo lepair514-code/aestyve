@@ -61,4 +61,4 @@ lighting and the supplied emblem replace the previous decorative wordmark.
 - All local page assets/download paths resolve. JavaScript syntax and git diff
   whitespace checks pass. Image dimensions reserve space before loading;
   neighboring gel photos preload as the texture section approaches the viewport.
-- These are preview-branch changes. Production has not been promoted.
+- HA Studio and Motion Gallery are published on www.aestyve.com. See BRAND_FILMS.md for the follow-up verification.

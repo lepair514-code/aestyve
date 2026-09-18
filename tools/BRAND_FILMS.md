@@ -37,5 +37,28 @@ homepage generator. Styles and behavior are `assets/brand-films.css` and `.js`.
 This change builds on main 137037e. Existing rotating carton selection and all
 three floating composition cards were directly verified on the live page.
 The review browser uses the CSS 3D fallback; GPU/WebGL rendering is not verified
-by that environment. Film playback and mobile review results are recorded with
-the release after preview verification.
+by that environment.
+
+Verified on the public production URL, 2026-09-18:
+- All six changed pages pass local asset, duplicate-ID, film-entry and branded
+  Face Studio link checks. Original HTML content/attributes match the previous
+  release after excluding the intended new strip/resources and URL replacement.
+- Four full MP4s decode without errors; browser playback reaches 5 seconds for
+  Brand and 2 seconds each for Alpha/Beta/Gamma, readyState 4, no media errors.
+- The closed dialog has no video source before first activation. Escape clears
+  the source, pauses playback, removes the scroll lock and restores entry focus.
+- English HA and Chinese home display localized dialog controls and source notes;
+  selection and close buttons work. Korean desktop and 320px/390px iframe
+  layouts were visually inspected. This is viewport testing, not physical
+  iPhone/Android device testing.
+- A narrow-screen flex layout squeezed the entry copy at 320px. Replaced it with
+  two columns and a separate button row; rechecked Korean home 390px, Korean HA
+  320px and English home 320px. The film dialog fits 320px and 390px screens.
+- The existing /facelab/ route returns HTTP 200. No simulator behavior or clinical
+  accuracy is claimed by this brand-site release.
+- Vercel reports successful builds for the brand site and its linked admin project.
+  Protected preview UI access was unavailable (expired browser login and share
+  API 403), so UI checks used the authorized public production deployment.
+  Protection settings were not changed. The noindex responsive review fixture
+  was removed after verification.
+
