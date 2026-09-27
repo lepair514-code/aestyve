@@ -1,0 +1,11 @@
+(()=>{'use strict';
+const scene=document.querySelector('.pcl-scene'),plane=document.querySelector('.product-plane'),reset=document.querySelector('#reset'),reduce=matchMedia('(prefers-reduced-motion: reduce)');let x=0,y=0,tx=0,ty=0,frame=0;
+const clamp=v=>Math.max(-1,Math.min(1,v));
+function tick(){frame=0;x+=(tx-x)*.12;y+=(ty-y)*.12;plane.style.transform=`rotateX(${-y*5}deg) rotateY(${x*9}deg) translate3d(${x*5}px,${y*3}px,0)`;if(Math.abs(x-tx)+Math.abs(y-ty)>.001)wake()}
+function wake(){if(!frame)frame=requestAnimationFrame(tick)}
+function neutral(){tx=ty=0;wake()}
+scene.addEventListener('pointermove',e=>{if(reduce.matches||e.pointerType==='touch')return;const r=scene.getBoundingClientRect();tx=clamp((e.clientX-r.left)/r.width*2-1);ty=clamp((e.clientY-r.top)/r.height*2-1);wake()});scene.addEventListener('pointerleave',neutral);scene.addEventListener('blur',neutral);reset.addEventListener('click',neutral);
+scene.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;e.preventDefault();if(reduce.matches)return;if(e.key==='Home'){neutral();return}if(e.key==='ArrowLeft')tx=clamp(tx-.2);if(e.key==='ArrowRight')tx=clamp(tx+.2);if(e.key==='ArrowUp')ty=clamp(ty-.2);if(e.key==='ArrowDown')ty=clamp(ty+.2);wake()});reduce.addEventListener('change',()=>{x=y=tx=ty=0;plane.style.transform='none'});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;x=y=tx=ty=0;plane.style.transform='none'}});
+const ui={ko:['Liquid PCL 제품·공급 문의','대상 국가','사업 유형','회사 / 기관','예상 수량 / 도입 시점','필요한 자료·질문'],en:['Liquid PCL product and supply inquiry','Target country','Business type','Company / institution','Expected quantity / timing','Documents and questions'],'zh-CN':['Liquid PCL 产品与供应咨询','目标国家','业务类型','公司 / 机构','预计数量 / 引进时间','所需资料与问题']}[document.documentElement.lang];
+const form=document.querySelector('#buyer-form');form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const d=new FormData(form);const body=[ui[0],'',...['market','type','company','plan','request'].map((k,i)=>ui[i+1]+': '+d.get(k))].join('\n');location.href='mailto:aestyve@naver.com?subject='+encodeURIComponent(ui[0])+'&body='+encodeURIComponent(body)});
+})();
