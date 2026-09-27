@@ -79,8 +79,8 @@
   },
   "product-nad.h1.1": {
     "type": "rich",
-    "value": "1906NAD+",
-    "label": "1906NAD+",
+    "value": "NAD+",
+    "label": "NAD+",
     "page": "product-nad.html"
   },
   "product-nad.p.1": {
@@ -271,8 +271,8 @@
   },
   "product-revibe.info-label.1": {
     "type": "plain",
-    "value": "PN 1.5mL/30mg",
-    "label": "PN 85%",
+    "value": "PN 30 mg",
+    "label": "PN 30 mg",
     "page": "product-revibe.html",
     "group": "info"
   },
@@ -285,8 +285,8 @@
   },
   "product-revibe.info-label.2": {
     "type": "plain",
-    "value": "HA 0.5mL/10mg",
-    "label": "HA 15%",
+    "value": "HA 10 mg",
+    "label": "HA 10 mg",
     "page": "product-revibe.html",
     "group": "info"
   },
@@ -319,8 +319,8 @@
   },
   "product-revibe.p.1": {
     "type": "plain",
-    "value": "PN 1.5mL + HA 0.5mL Physiological Balance와 Osmolality Balance 접근을 바탕으로 피부 컨디셔닝을 위한 전문 PN 포트폴리오입니다.",
-    "label": "PN 85% + HA 15% 조합, Physiological Balance와 Osm…",
+    "value": "PN 30 mg + HA 10 mg · 2.0 mL / 시린지",
+    "label": "PN 30 mg + HA 10 mg · 2.0 mL / 시린지",
     "page": "product-revibe.html"
   },
   "product-revibe.p.2": {
@@ -428,7 +428,7 @@
   "product-revibe.notice.1": {
     "type": "plain",
     "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-    "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+    "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
     "page": "product-revibe.html"
   },
   "product-plla.notice.1": {
