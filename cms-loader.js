@@ -39,3 +39,4 @@
     }
   }).catch(function(){ /* content.json 로드 실패 시 기본 텍스트 유지 */ });
 })();
+
