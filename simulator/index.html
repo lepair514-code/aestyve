@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; connect-src 'self' https://cdn.jsdelivr.net https://storage.googleapis.com; img-src 'self' blob: data:; style-src 'self'; font-src 'self' https://cdn.jsdelivr.net; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Aestyve · 3D Face Lab</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar"><a class="wordmark" href="./" aria-label="Aestyve Face Lab">Aestyve<span>FACE LAB</span></a><span class="top-note" data-t="lab"></span><label class="lang"><span class="sr-only">Language</span><select id="language" aria-label="Language"><option value="ko">KR</option><option value="en">EN</option><option value="zh">中文</option></select></label></header>
+<main>
+<div class="intro"><div><div class="eyebrow">YOUR FACE. YOUR CHOICE.</div><h1 data-t="title"></h1><p data-t="intro"></p></div><div class="intro-right"><span class="pill"><i></i> <span id="engine-mode">WEBGL / 3D</span></span><p data-t="previewOnly"></p></div></div>
+<div class="workspace">
+<aside class="left panel">
+ <div class="section-label">01 / MY PHOTO</div><h2 data-t="privacyTitle"></h2><p class="small" data-t="photoGuide"></p>
+ <label class="consent"><input id="consent" type="checkbox"><span data-t="consent"></span></label>
+ <button id="upload" class="primary" disabled data-t="upload"></button><input id="photo" class="sr-only" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Face photo">
+ <details class="privacy"><summary data-t="privacyTitle"></summary><p data-t="privacy"></p></details>
+ <button id="erase" class="text-button" data-t="erase"></button>
+ <div class="separator"></div><div class="section-label">02 / MATERIAL LIBRARY</div><h2 data-t="gelTitle"></h2>
+ <div id="gels" class="gels" aria-label="Gel reference images"><button class="gel active" data-gel="1" draggable="true" aria-label="Gel reference 01"><img alt="User-provided gel reference 01" draggable="false"><span>GEL 01</span></button><button class="gel" data-gel="2" draggable="true" aria-label="Gel reference 02"><img alt="User-provided gel reference 02" draggable="false"><span>GEL 02</span></button><button class="gel" data-gel="3" draggable="true" aria-label="Gel reference 03"><img alt="User-provided gel reference 03" draggable="false"><span>GEL 03</span></button></div>
+ <p class="micro" data-t="gelNote"></p>
+ <div class="private-stamp"><span>◎</span><div>LOCAL PROCESSING<small>NO PHOTO UPLOAD</small></div></div>
+</aside>
+<section class="studio" aria-label="Interactive 3D face viewer">
+ <div class="studio-top"><span class="model-label" id="model-label" data-t="modelDemo"></span><button id="wire" class="chip" aria-pressed="false" data-t="wire"></button></div>
+ <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+ <canvas id="face3d" aria-label="3D face. Drag to rotate, wheel to zoom, tap to place a shape point." tabindex="0"></canvas>
+ <div class="view-switch"><button id="before" data-t="before" aria-pressed="false"></button><button id="after" class="active" data-t="after" aria-pressed="true"></button></div>
+ <div class="view-tools"><button id="home" data-t="home"></button><button id="clay" data-t="clay" aria-pressed="false"></button><button id="zoom-out" aria-label="Zoom out">−</button><button id="zoom-in" aria-label="Zoom in">＋</button></div>
+ <div class="studio-bottom"><p data-t="rotateHint"></p><p class="micro" data-t="meshNote"></p></div>
+</section>
+<aside class="right panel">
+ <div class="tabs" role="tablist"><button id="shape-tab" role="tab" aria-controls="shape-panel" aria-selected="true" data-t="shapeTab" class="active"></button><button id="skin-tab" role="tab" aria-controls="skin-panel" aria-selected="false" data-t="skinTab"></button></div>
+ <section id="shape-panel" role="tabpanel" aria-labelledby="shape-tab">
+  <div class="section-label">03 / SHAPE EXPLORER</div><h2 data-t="shapeTitle"></h2>
+  <label class="small" for="product" data-t="product"></label><select id="product"><option>Alpha</option><option>Beta</option><option>Gamma</option></select>
+  <div class="strength-label"><label for="strength" data-t="strength"></label><output id="strength-value" for="strength">35</output></div><input id="strength" type="range" min="0" max="100" value="35"><p class="micro" data-t="units"></p>
+  <p class="subtle" data-t="noMl"></p>
+  <h3 data-t="points"></h3><div id="points" class="points"></div>
+  <div class="row"><button id="undo" class="secondary" data-t="undo"></button><button id="reset" class="secondary" data-t="reset"></button></div>
+  <button id="save" class="primary" data-t="save"></button>
+  <div id="slots" class="slots"><button data-slot="0"><b>A</b><span></span></button><button data-slot="1"><b>B</b><span></span></button><button data-slot="2"><b>C</b><span></span></button></div>
+  <button id="download" class="secondary full" data-t="download"></button>
+ </section>
+ <section id="skin-panel" role="tabpanel" aria-labelledby="skin-tab" hidden>
+  <div class="section-label">03 / SKIN NOTES</div><h2 data-t="skinTitle"></h2><p class="small" data-t="skinIntro"></p>
+  <div id="no-skin" class="subtle" data-t="noSkin"></div>
+  <div id="skin-readout" hidden><h3 data-t="qualityTitle"></h3><p id="quality" class="quality"></p><p class="micro" data-t="qualityWhy"></p><div class="map-tools"><button data-map="0" data-t="originalMap" class="active"></button><button data-map="1" data-t="redMap"></button><button data-map="2" data-t="toneMap"></button></div><div class="legend"></div><p class="micro" data-t="legend"></p><p class="subtle" data-t="mapNote"></p></div>
+  <p class="subtle" data-t="notMeasured"></p>
+  <fieldset><legend data-t="concernTitle"></legend><div class="concerns"><label><input type="checkbox" name="concern" value="dry"><span data-t="dry"></span></label><label><input type="checkbox" name="concern" value="red"><span data-t="red"></span></label><label><input type="checkbox" name="concern" value="pigment"><span data-t="pigment"></span></label><label><input type="checkbox" name="concern" value="texture"><span data-t="texture"></span></label></div></fieldset>
+  <label for="risk" class="small" data-t="safety"></label><p class="micro" data-t="risk"></p><select id="risk"><option value="unknown" data-t="riskUnknown"></option><option value="no" data-t="riskNo"></option><option value="yes" data-t="riskYes"></option></select>
+  <h3 data-t="optionsTitle"></h3><p class="small" data-t="optionsNote"></p><div id="options"></div>
+  <button id="report" class="secondary full" data-t="report"></button><p class="micro" data-t="reference"></p>
+ </section>
+</aside>
+</div>
+<div class="statusbar"><span id="status-dot"></span><p id="status" role="status" aria-live="polite"></p><span id="geometry-count"></span></div>
+<footer><div class="section-label">AESTYVE / RESPONSIBLE EXPLORATION</div><p data-t="footer"></p></footer>
+</main>
+<noscript>JavaScript and WebGL are required for this 3D preview. No photo is processed while JavaScript is disabled.</noscript>
+<script type="module" src="./app.js"></script>
+</body></html>
