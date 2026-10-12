@@ -22,7 +22,8 @@ SEO 수정
 - 추후 영문/중문 페이지 제작 시 hreflang 추가 권장.
 
 연락처
-- 현재 info@aestyve.com / Seoul, Republic of Korea 로 임시 설정.
+- 공식 대표 이메일: info@aestyve.com (2026-10-13 확인).
+- 이메일 변경 시 HTML·다국어 content JSON·문의 스크립트·다운로드 PDF를 함께 갱신하세요.
 - 실제 정보로 변경하려면 'EDIT CONTACT EMAIL' / 'EDIT COMPANY INFO' 검색.
 
 사진
