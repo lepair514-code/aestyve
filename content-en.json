@@ -72,8 +72,8 @@
   },
   "product-nad.info-desc.3": {
     "type": "plain",
-    "value": "Registration-first communication",
-    "label": "Registration-first communication",
+    "value": "Market-specific availability",
+    "label": "Market-specific availability",
     "page": "product-nad.html",
     "group": "info"
   },
@@ -86,7 +86,7 @@
   "product-nad.p.1": {
     "type": "plain",
     "value": "Explore the Aestyve NAD+ product line. Contact us for product configuration and sourcing enquiries.",
-    "label": "Explore the Aestyve NAD+ product line. Contact us for product configuration and sourcing enquiries.",
+    "label": "Explore the Aestyve NAD+ product line. Contact us for product configur",
     "page": "product-nad.html"
   },
   "product-nad.p.2": {
@@ -150,8 +150,8 @@
   },
   "product-pcl.info-desc.3": {
     "type": "plain",
-    "value": "Collagen-oriented positioning",
-    "label": "Collagen-oriented positioning",
+    "value": "PCL formulation",
+    "label": "PCL formulation",
     "page": "product-pcl.html",
     "group": "info"
   },
@@ -370,8 +370,8 @@
   },
   "product-rvsc.info-desc.2": {
     "type": "plain",
-    "value": "Attached package configuration",
-    "label": "Attached package configuration",
+    "value": "Package configuration",
+    "label": "Package configuration",
     "page": "product-rvsc.html",
     "group": "info"
   },
@@ -398,7 +398,7 @@
   "product-rvsc.p.1": {
     "type": "plain",
     "value": "RVSC Exosome is the Aestyve exosome product line. Explore product information and request detailed documentation.",
-    "label": "RVSC Exosome is the Aestyve exosome product line. Explore product information and request detailed documentation.",
+    "label": "RVSC Exosome is the Aestyve exosome product line. Explore product info",
     "page": "product-rvsc.html"
   },
   "product-rvsc.p.2": {
@@ -446,13 +446,13 @@
   "product-rvsc.notice.1": {
     "type": "plain",
     "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
+    "label": "The intended use, claims, and supply scope of this product may vary de",
     "page": "product-rvsc.html"
   },
   "product-nad.notice.1": {
     "type": "plain",
     "value": "The intended use, claims, and supply scope of this product may vary depending on country-specific regulations and actual product documentation.",
-    "label": "The intended use, claims, and supply scope of …",
+    "label": "The intended use, claims, and supply scope of this product may vary de",
     "page": "product-nad.html"
   },
   "product-ha.renewal.skip": {
@@ -913,8 +913,8 @@
   },
   "product-ha.studio.purity_p": {
     "type": "plain",
-    "value": "Explore raw-material criteria separately from final-product test results.",
-    "label": "Explore raw-material criteria separately from final-product test resul",
+    "value": "HA raw-material criteria, purification and finished-product test results.",
+    "label": "HA raw-material criteria, purification and finished-product test resul",
     "page": "product-ha.html"
   },
   "product-ha.studio.raw": {
@@ -973,7 +973,7 @@
   },
   "product-ha.studio.source_p": {
     "type": "plain",
-    "value": "Composition, volume and accessories: Aestyve packaging (P01). Process and test data: manufacturer technical materials dated 2026.01.26, pp.4–6, 9 (T01), and English manufacturer brochure p.1 (T02). Content follows the 2026 HA Collection catalog worksheet. Fine, Deep and Volume are manufacturer formulation names; these are not presented as Aestyve clinical outcomes.",
+    "value": "Composition, volume and accessories: Aestyve packaging (P01). Process and test data: manufacturer technical materials dated 2026.01.26, pp.4–6, 9 (T01), and English manufacturer brochure p.1 (T02). Fine, Deep and Volume are manufacturer formulation names; these are not presented as Aestyve clinical outcomes.",
     "label": "Composition, volume and accessories: Aestyve packaging (P01). Process ",
     "page": "product-ha.html"
   },
