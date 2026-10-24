@@ -72,8 +72,8 @@
   },
   "product-nad.info-desc.3": {
     "type": "plain",
-    "value": "Registration-first communication",
-    "label": "Registration-first communication",
+    "value": "Market-specific availability",
+    "label": "Market-specific availability",
     "page": "product-nad.html",
     "group": "info"
   },
@@ -150,8 +150,8 @@
   },
   "product-pcl.info-desc.3": {
     "type": "plain",
-    "value": "Collagen-oriented positioning",
-    "label": "Collagen-oriented positioning",
+    "value": "PCL formulation",
+    "label": "PCL formulation",
     "page": "product-pcl.html",
     "group": "info"
   },
@@ -370,8 +370,8 @@
   },
   "product-rvsc.info-desc.2": {
     "type": "plain",
-    "value": "Attached package configuration",
-    "label": "Attached package configuration",
+    "value": "Package configuration",
+    "label": "Package configuration",
     "page": "product-rvsc.html",
     "group": "info"
   },
@@ -427,32 +427,32 @@
   },
   "product-revibe.notice.1": {
     "type": "plain",
-    "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-    "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
+    "value": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
+    "label": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
     "page": "product-revibe.html"
   },
   "product-plla.notice.1": {
     "type": "plain",
-    "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
+    "value": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
     "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
     "page": "product-plla.html"
   },
   "product-pcl.notice.1": {
     "type": "plain",
-    "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
+    "value": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
     "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
     "page": "product-pcl.html"
   },
   "product-rvsc.notice.1": {
     "type": "plain",
-    "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-    "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+    "value": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
+    "label": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
     "page": "product-rvsc.html"
   },
   "product-nad.notice.1": {
     "type": "plain",
-    "value": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있습니다.",
-    "label": "제품의 용도·표현·공급 범위는 국가별 규정 및 실제 제품 자료에 따라 달라질 수 있…",
+    "value": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
+    "label": "제품의 사용목적과 공급 가능 여부는 해당 국가의 등록사항 및 제품 사용설명서를 따릅니다.",
     "page": "product-nad.html"
   },
   "product-ha.renewal.skip": {
@@ -913,8 +913,8 @@
   },
   "product-ha.studio.purity_p": {
     "type": "plain",
-    "value": "원료의 관리 기준과 최종 제품의 시험값을 구분해 확인하세요.",
-    "label": "원료의 관리 기준과 최종 제품의 시험값을 구분해 확인하세요.",
+    "value": "HA 원료 관리 기준, 정제 공정과 최종 제품의 시험 결과입니다.",
+    "label": "HA 원료 관리 기준, 정제 공정과 최종 제품의 시험 결과입니다.",
     "page": "product-ha.html"
   },
   "product-ha.studio.raw": {
@@ -973,7 +973,7 @@
   },
   "product-ha.studio.source_p": {
     "type": "plain",
-    "value": "제품 조성·용량·구성품: Aestyve 패키지(P01). 공정·시험: 제조사 기술자료 2026.01.26, p.4–6·9(T01), 제조사 영문 브로슈어 p.1(T02). 「필러 카탈로그 제작」의 2026 HA Collection 정리본을 기준으로 구성했습니다. Fine·Deep·Volume은 제조사 제형 표기이며 Aestyve 자체 임상 결과로 제시하지 않습니다.",
+    "value": "제품 조성·용량·구성품: Aestyve 패키지(P01). 공정·시험: 제조사 기술자료 2026.01.26, p.4–6·9(T01), 제조사 영문 브로슈어 p.1(T02). Fine·Deep·Volume은 제조사 제형 표기이며 Aestyve 자체 임상 결과로 제시하지 않습니다.",
     "label": "제품 조성·용량·구성품: Aestyve 패키지(P01). 공정·시험: 제조사 기술자료 2026.01.26, p.4–6·9(T0",
     "page": "product-ha.html"
   },

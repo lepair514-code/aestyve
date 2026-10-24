@@ -2,6 +2,41 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
+      "src": "^/zh/aestyve-revibe-pn-ZH\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/zh/product-revibe.html"
+      }
+    },
+    {
+      "src": "^/en/aestyve-revibe-pn-EN\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/en/product-revibe.html"
+      }
+    },
+    {
+      "src": "^/revibe-pn\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/product-revibe.html"
+      }
+    },
+    {
+      "src": "^/en/revibe-pn\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/en/product-revibe.html"
+      }
+    },
+    {
+      "src": "^/zh/revibe-pn\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/zh/product-revibe.html"
+      }
+    },
+    {
       "src": "^/facelab$",
       "status": 308,
       "headers": {
