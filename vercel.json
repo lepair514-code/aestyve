@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
+      "src": "^/revibe-catalog/(.*)$",
+      "dest": "https://aestyve-revibe-pn-studio.aestyve.chatgpt.site/$1"
+    },
+    {
       "src": "^/zh/aestyve-revibe-pn-ZH\\.html$",
       "status": 308,
       "headers": {
