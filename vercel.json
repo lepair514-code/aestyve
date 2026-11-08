@@ -2,6 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
+      "src": "^/zh/e-catalog/?$",
+      "dest": "/zh/e-catalog.html"
+    },
+    {
+      "src": "^/zh/e-catalog/(.*)$",
+      "dest": "https://aestyve-filler-collection.aestyve.chatgpt.site/$1"
+    },
+    {
       "src": "^/zh/aestyve-revibe-pn-ZH\\.html$",
       "status": 308,
       "headers": {
