@@ -597,6 +597,40 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     .dive-cap h3 {white-space:normal;overflow-wrap:anywhere}
   }
 </style>
+<style>
+  .dossier .dossier-head .label {color:var(--revibe-accent-text);font-weight:700}
+  .dossier .list {display:grid;gap:.55rem;border:0}
+  .dossier .list li {display:block;border:0;padding:0;min-width:0}
+  .dossier .list:hover li.in {opacity:1}
+  .dossier-row {
+    appearance:none;display:grid;width:100%;grid-template-columns:minmax(0,1.1fr) minmax(0,1.35fr) auto;
+    gap:.9rem;align-items:baseline;text-align:left;padding:1rem 1.1rem;
+    border:1px solid var(--line);border-radius:14px;background:rgba(255,250,246,.46);
+    color:var(--ink);font:inherit;cursor:pointer;
+    transition:background .22s,border-color .22s,box-shadow .22s;
+  }
+  .dossier .list .desc {color:var(--ink);font-weight:400}
+  .dossier .list .tag {color:var(--revibe-accent-text);font-weight:500}
+  .dossier .list:not(.is-previewing) .dossier-row[aria-pressed="true"],
+  .dossier .list li.is-previewed .dossier-row,.dossier-row:focus-visible {
+    border-color:rgba(255,255,255,.94);
+    background:linear-gradient(128deg,rgba(255,255,255,.89),rgba(255,241,230,.65));
+    box-shadow:inset 3px 0 0 #c57862,inset 0 1px 0 #fff,0 9px 23px rgba(90,43,31,.16);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  }
+  :root[data-theme="dark"] .dossier-row {background:rgba(65,38,37,.77)}
+  :root[data-theme="dark"] .dossier .list:not(.is-previewing) .dossier-row[aria-pressed="true"],
+  :root[data-theme="dark"] .dossier .list li.is-previewed .dossier-row,
+  :root[data-theme="dark"] .dossier-row:focus-visible {
+    background:linear-gradient(128deg,#69483f,#442923);border-color:#ba8c7a;
+    box-shadow:inset 3px 0 0 #ffb49e,0 9px 23px rgba(0,0,0,.24);
+  }
+  @media (max-width:760px) {
+    .dossier-row {grid-template-columns:minmax(0,1fr) auto;column-gap:.6rem;row-gap:.38rem;padding:.85rem 1rem}
+    .dossier .list .desc {grid-column:1/-1;order:3}
+  }
+  @media (prefers-reduced-motion:reduce) {.dossier-row {transition:none}}
+</style>
 </head>
 <body>
 <script type="image/svg+xml" id="logo-svg"><svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 2834.65 2834.65">
@@ -1056,14 +1090,14 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
         <h2 class="display"><span class="reveal"><span>Revibe PN,</span></span><span class="reveal" style="--d:.08s"><span>at a glance.</span></span></h2>
       </div>
       <ul class="list" id="list">
-        <li class="fade" data-pos="20% 30%" data-l="PRODUCT"><span class="name display">Product</span><span class="desc ko">Aestyve Revibe PN</span><span class="tag ko">产品名称</span></li>
-        <li class="fade" data-pos="70% 60%" data-l="FORMULA"><span class="name display">Formula</span><span class="desc ko">PN 30 mg + HA 10 mg</span><span class="tag ko">成分</span></li>
-        <li class="fade" data-pos="40% 80%" data-l="VOLUME"><span class="name display">Volume</span><span class="desc ko">2.0 mL (PN 1.5 mL + HA 0.5 mL)</span><span class="tag ko">容量</span></li>
-        <li class="fade" data-pos="85% 20%" data-l="PACK"><span class="name display">Pack</span><span class="desc ko">1 支注射器 / 盒，一次性无菌</span><span class="tag ko">包装</span></li>
-        <li class="fade" data-pos="10% 70%" data-l="SOURCE"><span class="name display">Source</span><span class="desc ko">源自鳟鱼的高纯度 PN</span><span class="tag ko">原料</span></li>
-        <li class="fade" data-pos="55% 45%" data-l="STORAGE"><span class="name display">Storage</span><span class="desc ko">1–30℃，避光保存</span><span class="tag ko">储存</span></li>
-        <li class="fade" data-pos="35% 55%" data-l="SHELF LIFE"><span class="name display">Shelf life</span><span class="desc ko">自生产之日起 3 年</span><span class="tag ko">有效期</span></li>
-        <li class="fade" data-pos="60% 30%" data-l="MADE IN KOREA"><span class="name display">Made in Korea</span><span class="desc ko">仅限医疗专业人员使用</span><span class="tag ko">使用</span></li>
+        <li class="fade" data-pos="20% 30%" data-l="PRODUCT"><button class="dossier-row" type="button" aria-pressed="true"><span class="name display">Product</span><span class="desc ko">Aestyve Revibe PN</span><span class="tag ko">产品名称</span></button></li>
+        <li class="fade" data-pos="70% 60%" data-l="FORMULA"><button class="dossier-row" type="button" aria-pressed="false"><span class="name display">Formula</span><span class="desc ko">PN 30 mg + HA 10 mg</span><span class="tag ko">成分</span></button></li>
+        <li class="fade" data-pos="40% 80%" data-l="VOLUME"><button class="dossier-row" type="button" aria-pressed="false"><span class="name display">Volume</span><span class="desc ko">2.0 mL (PN 1.5 mL + HA 0.5 mL)</span><span class="tag ko">容量</span></button></li>
+        <li class="fade" data-pos="85% 20%" data-l="PACK"><button class="dossier-row" type="button" aria-pressed="false"><span class="name display">Pack</span><span class="desc ko">1 支注射器 / 盒，一次性无菌</span><span class="tag ko">包装</span></button></li>
+        <li class="fade" data-pos="10% 70%" data-l="SOURCE"><button class="dossier-row" type="button" aria-pressed="false"><span class="name display">Source</span><span class="desc ko">源自鳟鱼的高纯度 PN</span><span class="tag ko">原料</span></button></li>
+        <li class="fade" data-pos="55% 45%" data-l="STORAGE"><button class="dossier-row" type="button" aria-pressed="false"><span class="name display">Storage</span><span class="desc ko">1–30℃，避光保存</span><span class="tag ko">储存</span></button></li>
+        <li class="fade" data-pos="35% 55%" data-l="SHELF LIFE"><button class="dossier-row" type="button" aria-pressed="false"><span class="name display">Shelf life</span><span class="desc ko">自生产之日起 3 年</span><span class="tag ko">有效期</span></button></li>
+        <li class="fade" data-pos="60% 30%" data-l="MADE IN KOREA"><button class="dossier-row" type="button" aria-pressed="false"><span class="name display">Made in Korea</span><span class="desc ko">仅限医疗专业人员使用</span><span class="tag ko">使用</span></button></li>
       </ul>
     </section>
 
@@ -1219,16 +1253,30 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
   /* ---------- list preview ---------- */
   var list = document.getElementById('list'), pv = document.getElementById('preview'), pvv = document.getElementById('pv'), pvl = document.getElementById('pvl');
   var PV = {x:P.x, y:P.y}, overList = false;
-  Array.prototype.forEach.call(list.children, function(li, i){
-    li.addEventListener('pointerenter', function(){
-      if (!fine) return; overList = true; pv.classList.add('on');
+  var dossierRows = Array.from(list.querySelectorAll('.dossier-row'));
+  dossierRows.forEach(function(row, i){
+    var li = row.parentElement;
+    row.addEventListener('click', function(){
+      dossierRows.forEach(function(item){ item.setAttribute('aria-pressed', String(item === row)); });
+    });
+    li.addEventListener('pointerenter', function(event){
+      if (!fine || event.pointerType === 'touch') return;
+      list.classList.add('is-previewing');
+      li.classList.add('is-previewed');
+      overList = true; pv.classList.add('on');
       pvv.style.objectPosition = li.dataset.pos; pvl.textContent = li.dataset.l;
       pvv.style.filter = 'hue-rotate(' + (i*-8) + 'deg) saturate(' + (1.05+i*.07) + ')';
       if (pvv.paused){ var r = pvv.play(); r && r.catch && r.catch(function(){}); }
       ping(i, .8);
     });
+    li.addEventListener('pointerleave', function(){
+      li.classList.remove('is-previewed');
+      list.classList.remove('is-previewing');
+      overList = false;
+      pv.classList.remove('on');
+    });
   });
-  list.addEventListener('pointerleave', function(){ overList = false; pv.classList.remove('on'); });
+  list.addEventListener('pointerleave', function(){ pvv.pause(); });
 
 
   /* ---------- scroll-scrubbed sections ---------- */
