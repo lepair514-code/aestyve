@@ -2,6 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
+      "src": "^/kr/revibe-e-catalog/?$",
+      "dest": "/kr/revibe-e-catalog/index.html"
+    },
+    {
+      "src": "^/cn/revibe-e-catalog/?$",
+      "dest": "/cn/revibe-e-catalog/index.html"
+    },
+    {
       "src": "^/zh/e-catalog/?$",
       "dest": "/zh/e-catalog.html"
     },
