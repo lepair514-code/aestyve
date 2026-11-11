@@ -781,17 +781,17 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
         <div class="jv-panels">
         <article class="jv-panel" data-side="right" data-ay=".27" data-ax=".2" style="--top:16%">
           <span class="jv-tag">01 / Polynucleotide</span>
-          <div class="jv-figs"><span class="jv-big display"><b>1.5</b><small>mL</small></span><span class="jv-big display"><b>30</b><small>mg</small></span></div>
+          <div class="jv-figs"><span class="jv-big display"><b data-formula-value="1.5" aria-label="1.5">1.5</b><small>mL</small></span><span class="jv-big display"><b data-formula-value="30" aria-label="30">30</b><small>mg</small></span></div>
           <p class="ko">从鳟鱼中提取并高度纯化的 PN。长链 DNA 高分子停留于真皮层，充盈肌肤内部环境。</p>
         </article>
         <article class="jv-panel" data-side="left" data-ay=".44" data-ax=".2" style="--top:38%">
           <span class="jv-tag">02 / Hyaluronic acid</span>
-          <div class="jv-figs"><span class="jv-big display"><b>0.5</b><small>mL</small></span><span class="jv-big display"><b>10</b><small>mg</small></span></div>
+          <div class="jv-figs"><span class="jv-big display"><b data-formula-value="0.5" aria-label="0.5">0.5</b><small>mL</small></span><span class="jv-big display"><b data-formula-value="10" aria-label="10">10</b><small>mg</small></span></div>
           <p class="ko">锁住水分的透明质酸。与 PN 协同，由内而外营造水润环境。</p>
         </article>
         <article class="jv-panel" data-side="right" data-ay=".62" data-ax=".42" style="--top:58%">
           <span class="jv-tag">Premium formula</span>
-          <div class="jv-figs"><span class="jv-big display"><b>2.0</b><small>mL</small></span></div>
+          <div class="jv-figs"><span class="jv-big display"><b data-formula-value="2.0" aria-label="2.0">2.0</b><small>mL</small></span></div>
           <p class="ko"><strong>PN 1.5 mL</strong> + <strong>HA 0.5 mL</strong>。以最佳比例设计的一体化配方，1 支注射器 / 1 盒。</p>
         </article>
         </div>
@@ -1781,7 +1781,11 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     var path=document.createElementNS(NS,'path'), dot=document.createElementNS(NS,'circle'), pl=document.createElementNS(NS,'circle');
     dot.setAttribute('r','3.5'); dot.setAttribute('class','dot'); pl.setAttribute('r','3.5'); pl.setAttribute('class','pulse');
     svg.appendChild(path); svg.appendChild(dot); svg.appendChild(pl); dot.style.opacity=pl.style.opacity=0;
-    return {p:p,path:path,dot:dot,pl:pl,on:false,len:0};
+    var values=Array.from(p.querySelectorAll('[data-formula-value]'),function(node){
+      var raw=node.dataset.formulaValue;
+      return {node:node,target:Number(raw),digits:(raw.split('.')[1]||'').length};
+    });
+    return {p:p,path:path,dot:dot,pl:pl,on:false,len:0,values:values};
   });
   function layout(){
     var sr=svg.getBoundingClientRect(), yr=syr.getBoundingClientRect(), mob=innerWidth<=760;
@@ -1809,6 +1813,18 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     items.forEach(function(it,i){
       var trigger=narrow.matches ? (+it.p.dataset.ay-.04)/.88 : .1+i*.24;
       var want=reduced.matches || jp>=trigger;
+      var count=Math.min(1,Math.max(0,(jp-trigger)/.13));
+      if (narrow.matches || reduced.matches){
+        it.values.forEach(function(value){
+          var label=(value.target*(reduced.matches ? 1 : 1-Math.pow(1-count,2))).toFixed(value.digits);
+          if (value.node.textContent!==label) value.node.textContent=label;
+        });
+      } else {
+        it.values.forEach(function(value){
+          var label=value.target.toFixed(value.digits);
+          if (value.node.textContent!==label) value.node.textContent=label;
+        });
+      }
       if(want!==it.on){it.on=want;it.p.classList.toggle('on',want);
         it.path.style.strokeDashoffset=want?0:it.len; it.dot.style.opacity=it.pl.style.opacity=want?1:0;
       }
