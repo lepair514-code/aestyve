@@ -554,7 +554,6 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     #bibi-companion {width:40px;height:40px}
     #bibi-companion.shown {opacity:.48}
     #bibi-companion.shown.active {opacity:.7}
-    .sheet-bg video {display:none}
   }
   @media (prefers-reduced-motion:reduce) {#bibi-companion {transition:none}}
 </style>
@@ -1104,11 +1103,48 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
   });
   if (desktop) await Promise.allSettled([loadScript(libs[0]),sceneLibraries]);
 
+  var mobileMedia = !matchMedia('(min-width:760px) and (hover:hover) and (pointer:fine)').matches;
+  var mobileCoverPath = '/cn/revibe-e-catalog/media/revibe-cover-mobile.mp4';
+  var activeMobileVideos = new Set(), blockedMobileVideos = new Set();
+  function playMobileVideo(video){
+    blockedMobileVideos.delete(video);
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.play().catch(function(error){
+      if (error.name === 'NotAllowedError' && activeMobileVideos.has(video)) blockedMobileVideos.add(video);
+    });
+  }
+  function setMobileVideo(video, active){
+    if (!video || activeMobileVideos.has(video) === active) return;
+    if (active){
+      activeMobileVideos.add(video);
+      video.autoplay = true;
+      playMobileVideo(video);
+    } else {
+      activeMobileVideos.delete(video);
+      blockedMobileVideos.delete(video);
+      video.autoplay = false;
+      video.pause();
+    }
+  }
+  function retryMobileVideos(){
+    Array.from(blockedMobileVideos).forEach(playMobileVideo);
+  }
+  if (mobileMedia){
+    document.addEventListener('touchend',retryMobileVideos,{passive:true});
+    document.addEventListener('click',retryMobileVideos);
+  }
+
   var promo = document.getElementById('promo');
   new IntersectionObserver(function(entries){
+    if (mobileMedia){
+      setMobileVideo(promo,entries[0].isIntersecting);
+      return;
+    }
     if (entries[0].isIntersecting) promo.play().catch(function(){});
     else promo.pause();
-  }, {rootMargin:'120px'}).observe(promo);
+  }, mobileMedia ? {threshold:.15} : {rootMargin:'120px'}).observe(promo);
 
   /* ---------- smooth scroll ---------- */
   var lenis = null;
@@ -1215,8 +1251,19 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     }).finally(function(){ pendingPlay.delete(video); });
   }
   divePlay.addEventListener('click',function(){
-    if (activeDiveVideo) playDive(activeDiveVideo,true);
+    if (!activeDiveVideo) return;
+    if (mobileMedia) playMobileVideo(activeDiveVideo);
+    else playDive(activeDiveVideo,true);
   });
+  if (mobileMedia && diveEl){
+    new IntersectionObserver(function(entries){
+      if (!entries[0].isIntersecting){
+        setMobileVideo(activeDiveVideo,false);
+        activeDiveVideo = null;
+        divePlay.hidden = true;
+      }
+    }).observe(diveEl);
+  }
   function ease(x){ return x<0?0:x>1?1:x*x*(3-2*x); }
   function diveTick(el, r, vh){
     var N = diveScenes.length, s = -r.top / (r.height - vh); s = s<0?0:s>1?1:s;
@@ -1224,10 +1271,16 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     if (x >= N-1){ i = N-2; tt = 1; }
     var q = X > N-1 ? Math.min(1, (X-(N-1))/HOLD) : 0;
     var active = tt > .62 ? i+1 : i;
-    activeDiveVideo = r.top < vh && r.bottom > 0 ? diveScenes[active].querySelector('video:not(.scrub)') : null;
-    divePlay.hidden = !activeDiveVideo || !blockedPlay.has(activeDiveVideo);
+    var nextVideo = r.top < vh && r.bottom > 0 ? diveScenes[active].querySelector(mobileMedia ? 'video' : 'video:not(.scrub)') : null;
+    if (mobileMedia && activeDiveVideo !== nextVideo){
+      setMobileVideo(activeDiveVideo,false);
+      if (nextVideo) nextVideo.loop = true;
+      setMobileVideo(nextVideo,true);
+    }
+    activeDiveVideo = nextVideo;
+    divePlay.hidden = !activeDiveVideo || !(mobileMedia ? blockedMobileVideos : blockedPlay).has(activeDiveVideo);
     var sv = diveScenes[N-1].querySelector('video.scrub');
-    if (sv && sv.readyState >= 1 && sv.duration){
+    if (!mobileMedia && sv && sv.readyState >= 1 && sv.duration){
       if (sv.seekable && sv.seekable.length){
         var want = q * (sv.duration - .05);
         if (Math.abs(sv.currentTime - want) > .03) { try { sv.currentTime = want; } catch(e){} }
@@ -1235,7 +1288,7 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     }
     var inView = r.top < vh && r.bottom > 0;
     diveScenes.forEach(function(sc, j){
-      var v = sc.querySelector('video:not(.scrub)');
+      var v = mobileMedia ? null : sc.querySelector('video:not(.scrub)');
       if (j === i){
         var z = reduce ? 1 : 1 + ease(tt)*1.9;
         sc.style.visibility = tt >= 1 ? 'hidden' : 'visible';
@@ -1342,13 +1395,17 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     if (!video.src) video.src = video.dataset.src;
     return video.play();
   }
-  if (desktop){
+  if (desktop || (mobileMedia && !reduce)){
     var sheetVideo = document.getElementById('sheetv');
     sheetVideo.addEventListener('timeupdate',function(){ sheetVideo.classList.add('has-frame'); }, {once:true});
     new IntersectionObserver(function(entries){
-      if (entries[0].isIntersecting) playBackground(sheetVideo).catch(function(){});
+      var visible = entries[0].isIntersecting;
+      if (mobileMedia){
+        if (visible && !sheetVideo.src) sheetVideo.src = mobileCoverPath;
+        setMobileVideo(sheetVideo,visible);
+      } else if (visible) playBackground(sheetVideo).catch(function(){});
       else sheetVideo.pause();
-    }).observe(document.querySelector('.sheet'));
+    }).observe(mobileMedia ? document.querySelector('.sheet-bg') : document.querySelector('.sheet'));
   }
 
   function build(posterImage){
@@ -1629,12 +1686,10 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     }, {once:true});
     frame();
     if (posterImage && !desktop && !reduce){
-      var coverVideoPath = '/cn/revibe-e-catalog/media/revibe-cover-mobile.mp4';
       var coverObserver = new IntersectionObserver(function(entries){
-        if (entries[0].isIntersecting){
-          if (!bgVideo.src) bgVideo.src = coverVideoPath;
-          bgVideo.play().catch(function(){});
-        } else bgVideo.pause();
+        var visible = entries[0].isIntersecting;
+        if (visible && !bgVideo.src) bgVideo.src = mobileCoverPath;
+        setMobileVideo(bgVideo,visible);
       });
       bgVideo.addEventListener('timeupdate',function showVideo(){
         if (bgVideo.currentTime <= 0 || bgVideo.readyState < 2) return;
@@ -1651,7 +1706,7 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
       });
       canvas.addEventListener('webglcontextlost',function(){
         coverObserver.disconnect();
-        bgVideo.pause();
+        setMobileVideo(bgVideo,false);
       },{once:true});
       coverObserver.observe(hero);
     }
