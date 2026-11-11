@@ -536,6 +536,11 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
   }
   .revibe-cover {position:absolute;inset:0 0 auto;height:max(600px,100svh);pointer-events:none}
   .scene-ready #fallback {display:none}
+  @media (max-width:759px),(hover:none),(pointer:coarse) {
+    .revibe-cover {background-image:url('/cn/revibe-e-catalog/media/revibe-cover.jpg');background-size:cover;background-position:center}
+    #fallback {visibility:hidden}
+    .scene-unavailable #fallback {visibility:visible}
+  }
   .sheet-bg video {visibility:hidden}
   .sheet-bg video.has-frame {visibility:visible}
   .revibe-home-link {display:inline-flex;align-items:center;gap:.45em;min-height:44px;padding:0 .9em;border:1px solid currentColor;border-radius:2em;text-decoration:none}
@@ -1043,8 +1048,7 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
   var fine = matchMedia('(pointer: fine)').matches;
   var root = document.documentElement;
 
-  if (desktop){
-    function loadScript(url){
+  function loadScript(url){
       return new Promise(function(resolve,reject){
         var script = document.createElement('script');
         script.src = url;
@@ -1054,12 +1058,10 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
       });
     }
     var libs = ["https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js","https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js","https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/SVGLoader.js","https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"];
-    try {
-      await Promise.allSettled([loadScript(libs[0]),loadScript(libs[1]).then(function(){
-        return Promise.all([loadScript(libs[2]),loadScript(libs[3])]);
-      })]);
-    } catch(e){}
-  }
+  var sceneLibraries = loadScript(libs[1]).then(function(){
+    return Promise.all([loadScript(libs[2]),loadScript(libs[3])]);
+  });
+  if (desktop) await Promise.allSettled([loadScript(libs[0]),sceneLibraries]);
 
   var promo = document.getElementById('promo');
   new IntersectionObserver(function(entries){
@@ -1273,8 +1275,8 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
 
   /* ======================= 3D ======================= */
   var canvas = document.getElementById('scene');
-  var THREE = window.THREE, scene3d = null;
-  var bgVideo = document.getElementById('bgv'), liqVideo = document.getElementById('liq');
+  var THREE;
+  var bgVideo = document.getElementById('bgv');
   function playBackground(video){
     if (!video.src) video.src = video.dataset.src;
     return video.play();
@@ -1288,7 +1290,7 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     }).observe(document.querySelector('.sheet'));
   }
 
-  function build(){
+  function build(posterImage){
     if (THREE.ColorManagement) THREE.ColorManagement.legacyMode = false;
     var renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:false, powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio||1, innerWidth<760 ? 1.5 : 1.75));
@@ -1303,7 +1305,9 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     scene.environment = pmrem.fromScene(new THREE.RoomEnvironment(), .04).texture;
 
     // background plane with the light-leak video (opaque, so the glass refracts it)
-    var bgTex = new THREE.VideoTexture(bgVideo); bgTex.encoding = THREE.sRGBEncoding;
+    var bgTex = posterImage ? new THREE.Texture(posterImage) : new THREE.VideoTexture(bgVideo);
+    bgTex.encoding = THREE.sRGBEncoding;
+    if (posterImage) bgTex.needsUpdate = true;
     var bgMat = new THREE.MeshBasicMaterial({map:bgTex, toneMapped:false});
     var bgPlane = new THREE.Mesh(new THREE.PlaneGeometry(1,1), bgMat);
     bgPlane.position.z = -14; scene.add(bgPlane);
@@ -1313,7 +1317,6 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     var cursorLight = new THREE.PointLight(0xffffff, 0, 30, 1.6); cursorLight.position.set(0,0,5); scene.add(cursorLight);
 
     // ----- logo from the SVG -----
-    var liqTex = new THREE.VideoTexture(liqVideo); liqTex.encoding = THREE.sRGBEncoding;
     var data = new THREE.SVGLoader().parse(document.getElementById('logo-svg').textContent);
     var shapesTop = [], shapesBottom = [], minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
     var all = [];
@@ -1460,9 +1463,9 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
       if (onLogo || (P.x>rect.x0 && P.x<rect.x1 && P.y>rect.y0 && P.y<rect.y1)){ squish = 1; ping((Math.random()*7)|0); }
     });
 
-    var scrollP = 0, clock3 = new THREE.Clock(), running = true;
+    var scrollP = 0, clock3 = new THREE.Clock(), animationFrame = 0;
     function frame(){
-      requestAnimationFrame(frame);
+      animationFrame = requestAnimationFrame(frame);
       var t = clock3.getElapsedTime();
       scrollP = Math.min(1.4, Math.max(0, scrollY / Math.max(1, hero.offsetHeight)));
 
@@ -1523,8 +1526,13 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
       renderer.render(scene, camera);
       root.classList.add('scene-ready');
     }
+    canvas.addEventListener('webglcontextlost', function(){
+      cancelAnimationFrame(animationFrame);
+      removeEventListener('resize',resize);
+      root.classList.add('scene-unavailable');
+      startFallback();
+    }, {once:true});
     frame();
-    return true;
   }
 
   function startFallback(){
@@ -1546,17 +1554,27 @@ header.solid{background:color-mix(in srgb,var(--paper) 86%,transparent)}
     if (fine) addEventListener('pointermove',schedule,{passive:true});
     schedule();
   }
-  if (desktop && THREE && THREE.SVGLoader && THREE.RoomEnvironment){
-    Promise.all([playBackground(bgVideo),playBackground(liqVideo)]).then(function(){
-      build();
-    }).catch(function(){
-      bgVideo.pause();
-      liqVideo.pause();
-      startFallback();
+  function loadCoverImage(){
+    return new Promise(function(resolve,reject){
+      var image = new Image();
+      image.onload = function(){ resolve(image); };
+      image.onerror = reject;
+      image.src = '/cn/revibe-e-catalog/media/revibe-cover.jpg';
     });
-  } else {
-    startFallback();
   }
+
+  sceneLibraries.then(function(){
+    THREE = window.THREE;
+    if (!THREE || !THREE.SVGLoader || !THREE.RoomEnvironment) throw new Error('3D libraries unavailable');
+    if (!desktop) return loadCoverImage().then(build);
+    return playBackground(bgVideo).then(function(){ build(); },function(){
+      return loadCoverImage().then(build);
+    });
+  }).catch(function(){
+    bgVideo.pause();
+    root.classList.add('scene-unavailable');
+    startFallback();
+  });
   applyTheme();
 
   if (lenis){ (function raf(time){ lenis.raf(time); requestAnimationFrame(raf); })(performance.now()); }
